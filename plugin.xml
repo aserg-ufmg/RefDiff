@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="RefDiff Ref-Finder Plugin"
+            id="refdiff-adapter-ref-finder.commands.category">
+      </category>
+      <command
+            name="Run Ref-Finder"
+            categoryId="refdiff-adapter-ref-finder.commands.category"
+            id="refdiff-adapter-ref-finder.commands.run">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="refdiff-adapter-ref-finder.commands.run"
+            class="refdiff.adapter.reffinder.handlers.RunHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="RefDiff Ref-Finder"
+               mnemonic="M"
+               id="refdiff-adapter-ref-finder.menus.sampleMenu">
+            <command
+                  commandId="refdiff-adapter-ref-finder.commands.run"
+                  mnemonic="R"
+                  id="refdiff-adapter-ref-finder.menus.run">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
