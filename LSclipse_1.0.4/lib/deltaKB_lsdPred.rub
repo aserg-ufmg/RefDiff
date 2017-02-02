@@ -1,0 +1,195 @@
+//TYPE Package AS Strings
+//TYPE String AS String 
+//TYPE String AS String
+//TYPE String AS String
+
+#include "deltaKB_primed_lsdPred.rub"
+
+modified_package :: String
+MODES
+  (F) IS NONDET
+END
+
+
+modified_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+modified_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+modified_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+added_package :: String
+MODES
+  (F) IS NONDET
+END
+
+added_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_method :: String, String, String 
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+added_return :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+added_extends :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_implements :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_accesses :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_calls :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_fieldoftype ::String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+added_typeintype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+added_inheritedmethod :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+added_inheritedfield :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+
+
+deleted_package :: String
+MODES
+  (F) IS NONDET
+END
+
+deleted_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END 
+
+deleted_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_method :: String, String, String 
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+deleted_return :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+deleted_extends :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+
+deleted_implements :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+deleted_accesses :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+deleted_calls :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+deleted_fieldoftype ::String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+deleted_typeintype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+deleted_inheritedmethod :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+deleted_inheritedfield :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+

@@ -1,0 +1,65 @@
+/***** Auxiliary predicates for constructing Java syntax */
+
+/*Create a java type expression (basically this is to handle array types
+  nicely*/
+
+/*Create an implements or extends clause (?symbol indicates which) */
+JavaClause(?symbol,[],{}).
+JavaClause(?symbol,[?f|?r], {?symbol ?itflist})
+ :- JavaCommaList([?f|?r],?itflist).
+
+/*Construct a list of comma separated elements*/
+JavaCommaList([],{}).
+JavaCommaList([?e|?r],?c) :- 
+   JavaCommaCons(?e,?cr,?c),
+   JavaCommaList(?r,?cr).
+
+/*Construct a list of Semi-colon terminated elements */
+JavaSemiList([],{}).
+JavaSemiList([?f | ?r],{?f; ?sr}) :- JavaSemiList(?r,?sr).
+
+/*Generate a list of formals from types and variable names*/
+JavaFormals([],[],{}).
+JavaFormals([?T|?R],[?n|?r],?formals) :-
+   JavaCommaCons({?T ?n},?Rr,?formals),
+   JavaFormals(?R,?r,?Rr).
+
+/*Is a formal an element of a list of JavaFormals? */
+JavaFormalsElement({?T ?n},?formals) :-
+  JavaCommaCons({?T ?n},?rest,?formals).
+JavaFormalsElement({?T ?n},?formals) :-
+  JavaCommaCons({?TTT ?nnn},?rest,?formals),
+  JavaFormalsElement({?T ?n},?rest).
+
+JavaCommaCons(?x,{},{?x}).
+JavaCommaCons(?x,{?y},{?x,?y}).
+JavaCommaCons(?x,{?y,?z},{?x,?yz}) :- equal(?yz,{?y,?z}).
+
+/*Generate code for a method declaration without the body */
+JavaMethod(method<?R,?m,?A>,?a,{?R ?m(?formals)}) :-
+  JavaFormals(?A,?formals).
+
+/*Generate a "Conjunction": (A1) && (A2) && (A3) ... */
+JavaConjunction([],{true}).
+JavaConjunction([?a],{(?a)}).
+JavaConjunction([?a1, ?a2 | ?r],{(?a1) && ?rest}) :-
+  JavaConjunction([?a2 | ?r],?rest).
+
+/*Generate initialization code for initializing instance variables from
+  formal arguments with the same name. Often used to define constructors */
+JavaInitFromArgs([],{}).
+JavaInitFromArgs([?a|?as],{
+        this.?a=?a;?ias}) 
+:- JavaInitFromArgs(?as,?ias). 
+
+JavaPrimType(int).
+JavaPrimType(char).
+JavaPrimType(float).
+JavaPrimType(boolean).
+// etc.
+
+JavaModifier(private).
+JavaModifier(public).
+JavaModifier(protected).
+JavaModifier(static).
+JavaModifier(abstract).

@@ -1,0 +1,9 @@
+tyrubadoc :: String, String, String
+MODES
+	(F,F,F) IS NONDET
+END
+
+tyrubadocGroup :: Integer, String, String, String
+MODES
+	(F,F,F,F) IS NONDET
+END

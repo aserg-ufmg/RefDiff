@@ -1,0 +1,103 @@
+/* A few useful logic predicates (not all from prolog) */
+
+list_ref :: =Integer, [?x], ?x
+MODES
+(B,B,F) REALLY IS SEMIDET
+(F,B,B) IS NONDET
+END
+
+list_ref(0,[?x|?],?x).
+list_ref(?i,[?x|?r],?el) :-
+	greater(?i,0), sum(?ii,1,?i), list_ref(?ii,?r,?el).
+
+/* --------------------------------------------------------------------- */
+append :: [?t], [?t], [?t]
+MODES
+(B,B,F) IS DET
+(B,F,B) IS SEMIDET
+(F,B,B) REALLY IS SEMIDET
+(F,F,B) IS MULTI
+END
+
+append([],?x,?x).
+append([?x|?xs],?ys,[?x|?zs]) :- append(?xs,?ys,?zs).
+
+/* --------------------------------------------------------------------- */
+member :: ?t, [?t]
+MODES
+(F,B) IS NONDET
+END
+
+member(?e,[?e|?r]).
+member(?e,[?a|?r]) :- member(?e,?r).
+
+/* --------------------------------------------------------------------- */
+permutation :: [?t], [?t]
+MODES
+(F,B) IS MULTI
+(B,F) IS MULTI
+END
+
+permutation([],[]).
+permutation([?l|?ist],?tlsi) :-	append(?t,[?l|?si],?tlsi),
+	append(?t,?si,?tsi),  permutation(?ist,?tsi).
+	
+selection :: [?a], [?a]
+MODES
+  (F,B) IS MULTI
+END
+
+selection([],?list).
+selection([?l|?st],[?l|?ist]) :- selection(?st,?ist). 
+selection(?st,[?l|?ist]) :- selection(?st,?ist). 
+
+/* --------------------------------------------------------------------- */
+reverse :: [?t], [?t]
+MODES
+(BOUND, FREE) IS DET
+(FREE, BOUND) IS DET
+END
+
+reverse([],[]).
+reverse([?l|?ist],?tsil) 
+ :- BOUND ?ist  : reverse(?ist,?tsi), append(?tsi,[?l],?tsil)
+  | BOUND ?tsil : reverse(?tsil,[?l|?ist]).
+
+/* --------------------------------------------------------------------- */
+equals :: ?a, ?a
+MODES
+(F,B) IS DET
+(B,F) IS DET
+END
+
+equals(?x,?x).
+
+zip :: [?a], [?b], [<?a,?b>]
+MODES
+(F,F,B) IS DET
+(B,B,F) IS SEMIDET
+END
+
+zip([],[],[]).
+zip([?a|?as],[?x|?xs],[<?a,?x>|?axs]) :- zip(?as,?xs,?axs). 
+
+/* ------------------------------------------------------------ */
+
+sumList :: [=Integer], =Integer
+MODES
+  (B,F) IS DET
+END
+
+sumList([],0).
+sumList([?x|?xs],?sum) :-
+   sumList(?xs,?restsum),sum(?x,?restsum,?sum).
+   
+/* ------------------------------------------------------------- */
+
+false :: ()
+MODES () IS SEMIDET END  // Maybe we should have a "fail" mode?
+
+true :: ()
+MODES () IS DET END
+true().
+ 

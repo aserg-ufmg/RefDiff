@@ -1,0 +1,61 @@
+/***********************************************************************\
+ 
+ javagenerator_extras.rub
+
+ These are some add ons for the java generator which I have found useful
+ in a number of situations.
+
+\***********************************************************************/
+
+//
+// mod_var_(?class,?modlist,?T,?n).
+// mod_var_(?class,?modlist,?T,?n,?init).
+//
+//   same as var_ but with a list of modifiers for convenience.
+
+var_(?C,?T,?n) :- mod_var_(?C,?,?T,?n).
+var_(?C,?T,?n,?i) :- mod_var_(?C,?,?T,?n,?i).
+modifier_(var<?cls,?name>,?m) :- 
+   (mod_var_(?cls,?mods,?,?name);mod_var_(?cls,?mods,?,?name,?)),
+   member(?m,?mods).
+
+//
+// Special modifiers for variables : read and write
+//
+// Variables with accessors 
+private_(var<?c,?n>) :- modifier_(var<?c,?n>,read),(var_(?c,?T,?n,?);var_(?c,?T,?n)).
+public_(method<?c,?getter,[]>) 
+        :-  modifier_(var<?c,?n>,read),(var_(?c,?T,?n,?);var_(?c,?T,?n)),
+            getter_name(?n,?getter).
+method_(?c,?T,?getter,[],[],{
+        return ?n; })
+        :-  modifier_(var<?c,?n>,read),(var_(?c,?T,?n,?);var_(?c,?T,?n)),
+            getter_name(?n,?getter).
+            
+private_(var<?c,?n>) 
+        :- modifier_(var<?c,?n>,write),(var_(?c,?T,?n);var_(?c,?T,?n,?)).
+public_(method<?c,?setter,[?T]>)
+        :- modifier_(var<?c,?n>,write),(var_(?c,?T,?n);var_(?c,?T,?n,?)),
+           setter_name(?n,?setter).
+method_(?c,void,?setter,[?T],[newValue],{
+        ?n = newValue; })
+        :- modifier_(var<?c,?n>,write),(var_(?c,?T,?n);var_(?c,?T,?n,?)),
+           setter_name(?n,?setter).
+
+//The following rules define the naming conventions for getters and setters
+getter_name(?name,?getter) :- capitalize(?name,?Name),string_append(get,?Name,?getter).
+setter_name(?name,?setter) :- capitalize(?name,?Name),string_append(set,?Name,?setter).
+
+// 
+// declare: data_class_(?cls,[ [?Type,?name], [?Type2,?name2] ... ]).
+//
+// To get a "data_class" with some parts and a constructor to initialize
+// the parts from its arguments.
+//
+
+class_(?cls) :- data_class_(?cls,?parts).
+var_(?cls,?T,?n) :- data_class_(?cls,?parts), member([?T,?n],?parts).
+constructor_(?cls,?Ts,?ns,?init) :-
+        data_class_(?cls,?parts), 
+        zip(?Ts,?ns,?parts),
+        JavaInitFromArgs(?ns,?init).

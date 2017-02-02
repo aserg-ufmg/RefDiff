@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+	<category 
+           id="org.eclipse.ui.lsdiff"
+           name="LSDiff">
+    </category>
+      <view
+            id="lsclipse.views.RulesView"
+            name="Rules View"
+            category="org.eclipse.ui.lsdiff"
+            class="lsclipse.views.RulesView">
+      </view>
+      <view
+            id="lsclipse.views.TreeView"
+            name="Refactorings"
+            category="org.eclipse.ui.lsdiff"
+            class="lsclipse.views.TreeView">
+      </view>
+   </extension>
+</plugin>

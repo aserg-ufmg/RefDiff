@@ -1,0 +1,258 @@
+/***************************************************************************\
+  javagenerator.rub
+  
+  Builds on javafilegenerator.rub (defines generate(?packageclassname,?definition) out of more
+  finegrained declarations.
+  
+  Back to the basics. Let's just keep the facts as close as possible to
+  the actual Java syntax. This will look much more like the original tyruba
+  facts for declaring Java code. 
+
+  Some differences: fully qualified typenames must be used everywhere, that
+  is the convention. You can probably get away with not doing it everywhere
+  but that is asking for trouble when you want to do things which compare
+  types in some or other way.
+
+  Facts for declaring Java code:
+
+  class_(?name).
+  interface_(?name).
+
+  import_(?name,?import).             // import into a single class
+  package_import_(?package,?import).  // package wide import
+
+  extends_(?class,?superclass).
+  extends_(?intf,?superitf).
+  implements_(?class,?itf).
+
+  var_(?class,?type,?name).
+  var_(?class,?type,?name,?init).
+
+  constructor_(?class,?types,?formals,?body).
+  
+  method_(?class,?Return,?name,?types).
+  method_(?class,?Return,?name,?types,?body).
+
+  modifier_(?unit,?modifier).  
+    ?modifier = public | private | ...
+    ?unit = ?name    // interface or class name
+          | method<?classname,?name,?argtypes>
+          | constructor<?classname,?argtypes>
+          | var<?classname,?name>
+
+  // alternative notation for the above:
+  private_(?unit).
+  public_(?unit). 
+
+\***************************************************************************/
+
+TYPE Feature<> = var<> | callable<>
+TYPE callable<> =  constructor<> | method<>
+TYPE var<> AS <String,String>
+TYPE constructor<> AS <String,[String]>
+TYPE method<> AS <String,String,[String]>
+
+class_or_interface_ :: =String, String
+MODES (F,F) IS NONDET END
+
+imports_ :: =String, String
+MODES (B,F) IS DET END
+
+import_ :: =String, String
+MODES (B,F) IS NONDET END
+
+package_import_ :: =String, String
+MODES (B,F) IS NONDET END
+
+class_ :: =String
+MODES (F) IS NONDET END
+
+interface_ :: =String
+MODES (F) IS NONDET END
+
+clause_ :: =String, String
+MODES (B,F) IS DET END
+
+throwsclause_ :: callable, String
+MODES (B,F) IS DET END
+
+modifiers_ :: =String, [String]
+MODES (B,F) IS DET END
+
+modifier_ :: =String, String
+MODES (F,F) IS NONDET END
+
+feature_ :: =String, String
+MODES (F,F) IS NONDET END
+
+var_ :: =String, String, String
+MODES (F,F,F) IS NONDET END
+
+var_ :: =String, String, String, String
+MODES (F,F,F,F) IS NONDET END
+
+simplifyType :: =String, =String, =String
+MODES (B,B,F) IS DET END
+
+simplifyTypes :: =String, [=String], [=String]
+MODES (B,B,F) IS DET END
+
+constructor_ :: =String, [=String], [=String], String
+MODES (F,F,F,F) IS NONDET END
+
+method_ :: =String, =String, =String, [=String], [=String], String
+MODES (F,F,F,F,F,F) IS NONDET END
+
+method_ :: =String, =String, =String, [=String], [=String]
+MODES (F,F,F,F,F) IS NONDET END
+
+////////////////////////////////////////////////////////////////////////
+// Compilation unit
+//
+
+generate(?pkgcls,
+{/*****************************************************************\
+ * File:        ?className.java
+ * Author:      TyRuBa
+ * Meta author: Kris De Volder <kdvolder@cs.ubc.ca>
+\*****************************************************************/
+package ?package;
+?imports
+
+?code
+}) :- class_or_interface_(?pkgcls,?code),
+      package_class(?package,?className,?pkgcls),
+      imports_(?pkgcls,?imports).
+
+imports_(?class,{?imports}) :- FINDALL(import_(?class,?import),{
+import ?import;},?imports).
+
+import_(?pkgcls,?import) :- package_class(?pkg,?,?pkgcls),package_import_(?pkg,?import).
+
+////////////////////////////////////////////////////////////////////////
+// Class generation
+//
+
+class_or_interface_(?pkgclsString,
+{?classTags class ?className ?clauses {
+    ?classFeatures
+}})
+:- class_(?pkgclsString),
+   package_class(?package,?className,?pkgclsString),
+   FINDALL(clause_(?pkgclsString,?clause),{?clause },?clauses),
+   convertToString(?pkgcls,?pkgclsString),
+   modifiers_(?pkgcls,?classTags),
+   FINDALL(feature_(?pkgcls,?code),?code,?classFeatures).
+
+/****** class feature generation **************/ 
+
+// variable declaration
+feature_(?cls,{
+    ?tags?simpletype ?name;})
+:- class_(?cls),
+   var_(?cls,?type,?name),
+   simplifyType(?cls,?type,?simpletype),
+   modifiers_(var<?cls,?name>,?tags).
+
+// variable declaration with initializer
+feature_(?cls,{
+    ?tags?simpletype ?name=?init;})
+:- class_(?cls),
+   var_(?cls,?type,?name,?init),
+   simplifyType(?cls,?type,?simpletype),
+   modifiers_(var<?cls,?name>,?tags).
+
+// constructor declaration
+feature_(?cls,{
+    ?tags?clsName(?formals) ?throws{ ?body 
+    } }) 
+:- class_(?cls),
+   package_class(?pkg,?clsName,?cls),
+   constructor_(?cls,?types,?vars,?body),
+   simplifyTypes(?cls,?types,?simpletypes),
+   JavaFormals(?simpletypes,?vars,?formals),
+   modifiers_(constructor<?cls,?types>,?tags),
+   throwsclause_(constructor<?cls,?types>,?throws).
+
+// method declaration
+feature_(?cls,{
+    ?tags?SimpleReturn ?name(?formals) ?throws{ ?body 
+    } })
+:- class_(?cls),
+   method_(?cls,?Return,?name,?types,?vars,?body),
+   simplifyType(?cls,?Return,?SimpleReturn),
+   simplifyTypes(?cls,?types,?simpletypes),
+   JavaFormals(?simpletypes,?vars,?formals),
+   modifiers_(method<?cls,?name,?types>,?tags),
+   throwsclause_(method<?cls,?name,?types>,?throws).
+
+////////////////////////////////////////////////////////////////////////
+// Interface generation
+//
+
+class_or_interface_(?pkgitf,
+{?tags interface ?itfName ?clauses {
+    ?itfFeatures
+}})
+:- interface_(?pkgitfString),
+   package_class(?package,?itfName,?pkgitfString),
+   FINDALL(clause_(?pkgitfString,?clause),{?clause },?clauses),
+   convertToString(?pkgitf,?pkgitfString),
+   modifiers_(?pkgitf,?tags),
+   FINDALL(feature_(?pkgitfString,?code),?code,?itfFeatures).
+
+////////////////////////////////////////////////////////////////////////
+// These things are useful for generation classes and interfaces both
+//
+
+// little helper predicate to remove the package from some types.
+simplifyType(?cls,?Type,?SimpleType) :-
+   package_class(?p,?c,?cls),package_class(?p,?SimpleType,?Type).
+simplifyType(?cls,?Type,?Type) :-
+   NOT(package_class(?p,?c,?cls),package_class(?p,?SimpleType,?Type)).
+   
+simplifyTypes(?cls,[],[]).
+simplifyTypes(?cls,[?T|?R],[?sT|?sR]) :-
+	simplifyType(?cls,?T,?sT),simplifyTypes(?cls,?R,?sR).
+
+// abstract method declaration (without body)
+feature_(?cls,{
+    ?tags?Return ?name(?formals) ?throws; 
+    })
+:- (class_(?cls);
+    interface_(?cls)  //actually this should work for interfaces just as well
+   ), 
+   method_(?cls,?Return,?name,?types,?vars), 
+   JavaFormals(?types,?vars,?formals),
+   modifiers_(method<?cls,?name,?types>,?tags),
+   throwsclause_(method<?cls,?name,?types>,?throws).
+
+modifiers_(?x,?tags) :-
+   FINDALL((modifier_(?x,?tag),JavaModifier(?tag)),{?tag },?tags).
+
+modifier_(?x,private) :-   private_(?x). 
+modifier_(?x,public) :-    public_(?x). 
+modifier_(?x,protected) :- protected_(?x).
+modifier_(?x,static) :-    static_(?x).
+modifier_(?x,abstract) :-  abstract_(?x).
+
+hasClauseType(?x,implements) :- implements_(?x,?).
+hasClauseType(?x,extends) :- extends_(?x,?).
+
+clause_(?x,{?clauseType ?parts}) :-
+  hasClauseType(?x,?clauseType),
+  string_append(?clauseType,"_",?query), 
+  FINDALL(?query(?x,?part),?part,?partList),
+  JavaCommaList(?partList,?parts).
+
+throwsclause_(?x,{throws ?throws }) :- 
+   FINDALL(throws_(?x,?t),?t,?tlist),
+   NOT(equal(?tlist,[])),  //must have at least one
+   JavaCommaList(?tlist,?throws).
+throwsclause_(?x,"") :- NOT(throws_(?x,?)). 
+
+//
+/*Generate code for a method declaration without the body */
+//JavaMethod(method<?R,?m,?A>,{?R ?m(?formals)}) :-
+//  JavaFormals(?A,?formals).
+

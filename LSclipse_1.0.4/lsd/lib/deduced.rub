@@ -1,0 +1,15 @@
+/** subtype(?subtype,?supertype) :- 
+      ?subtype is a subtype of ?supertype according to Java type rules
+*/
+subtype(?sub,?super) :- BOUND(?sub),
+   subtype1(?sub,?mid),subtype(?mid,?super).
+subtype(?sub,?super) :- NOT(BOUND(?sub)),
+   subtype1(?mid,?super),subtype(?sub,?mid).
+subtype(?t,?t) :- class(?t);interface(?t).
+
+subclass(?class,?super) :- 
+   BOUND(?class),class(?class),extends(?class,?midclass),subclass(?midclass,?super) |
+   class(?super),extends(?midclass,?super),subclass(?class,?midclass).
+subclass(?class,?super) :- extends(?class,?super).
+
+subtype1(?x,?y) :- extends(?x,?y);implements(?x,?y).

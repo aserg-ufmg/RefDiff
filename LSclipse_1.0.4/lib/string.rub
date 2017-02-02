@@ -1,0 +1,8 @@
+string_append :: =String, =String, =String, =String
+MODES
+(B,B,B,F) IS DET
+(F,F,F,B) IS MULTI
+END
+
+string_append(?s1,?s2,?s3,?s123) :- 
+	string_append(?s1,?s2,?s12), string_append(?s12,?s3,?s123).

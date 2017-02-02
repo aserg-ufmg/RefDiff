@@ -1,0 +1,68 @@
+LSclipse fact extractor syntax guide
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This document describes the syntax of facts captured by the LSclipse fact extractor. Specifically, it lists the differences in the format of facts extracted by LSDiff, JQuery and JDT.
+
+This section describes the behavior of LSclipse, highlighting those differences with JDT and JQuery
+
+LSclipse vs JDT
+- Class instance creation, constructor invocation and super constructor invocation are method calls
+- Ignore type parameters in qualified names
+- Parents of interfaces are extended
+- Anonymous inner classes treated as type declarations
+- Static variables are treated as field access
+- Local variables are treated as field accesses
+- Super invocation, Class instance creation, constructor and super constructor calls are also methods
+- Default inherited constructors show up as normal constructors
+- Include inheritance facts where the parent is not part of the current program
+
+LSclipse vs JQuery
+- Fields are marked as inherited even if the child class declares its own (not so for methods)
+
+Special cases
+- methods with PACKAGE visibility (ie declared without any modifiers) are inherited by all subtypes (even those outside current package)
+	* This is a BUG but the fix will cause finding inherited facts to be even slower than it already is
+
+
+Pending investigation:
+- When calling method() defined in ParentClass but inherited in ChildClass, does JQuery do ChildClass.method() or ParentClass.method()?
+compare: 
+after_calls("org.jfree.chart%.ClipPath#generateClipPath(java.awt.geom%.Rectangle2D,org.jfree.chart.axis%.ValueAxis,org.jfree.chart.axis%.ValueAxis)","java.awt.geom%.GeneralPath#closePath()").
+after_calls("org.jfree.chart%.ClipPath#generateClipPath(java.awt.geom%.Rectangle2D,org.jfree.chart.axis%.ValueAxis,org.jfree.chart.axis%.ValueAxis)","java.awt.geom%.GeneralPath#lineTo(float,float)").
+after_calls("org.jfree.chart%.ClipPath#generateClipPath(java.awt.geom%.Rectangle2D,org.jfree.chart.axis%.ValueAxis,org.jfree.chart.axis%.ValueAxis)","java.awt.geom%.GeneralPath#moveTo(float,float)").
+vs:
+after_calls("org.jfree.chart%.ChartFactory#createBarChart(java.lang%.String,java.lang%.String,java.lang%.String,org.jfree.data.category%.CategoryDataset,org.jfree.chart.plot%.PlotOrientation,boolean,boolean,boolean)","org.jfree.chart.renderer%.AbstractRenderer#setBasePositiveItemLabelPosition(org.jfree.chart.labels%.ItemLabelPosition)").
+after_calls("org.jfree.chart%.ChartFactory#createBarChart(java.lang%.String,java.lang%.String,java.lang%.String,org.jfree.data.category%.CategoryDataset,org.jfree.chart.plot%.PlotOrientation,boolean,boolean,boolean)","org.jfree.chart.renderer.category%.AbstractCategoryItemRenderer#setBaseItemURLGenerator(org.jfree.chart.urls%.CategoryURLGenerator)").
+after_calls("org.jfree.chart%.ChartFactory#createBarChart(java.lang%.String,java.lang%.String,java.lang%.String,org.jfree.data.category%.CategoryDataset,org.jfree.chart.plot%.PlotOrientation,boolean,boolean,boolean)","org.jfree.chart.renderer.category%.AbstractCategoryItemRenderer#setBaseToolTipGenerator(org.jfree.chart.labels%.CategoryToolTipGenerator)").
+* Maybe it's whether the function is in current library???
+
+- Is it java.lang.class or java.lang.class<...>?
+For non Java.lang.class it is *usually* un-parameterized, but for java.lang.class it seems random
+
+- BUG? These (malformed) outputs were created by JQuery
+after_method("org.jfree.chart.axis%.SegmentedTimeline#Segment#after(org.jfree.chart.axis%.SegmentedTimeline#Segment)","Segment)","org.jfree.chart.axis%.SegmentedTimeline#Segment#after(org.jfree.chart.axis%.SegmentedTimeline").
+after_method("org.jfree.chart.axis%.SegmentedTimeline#Segment#before(org.jfree.chart.axis%.SegmentedTimeline#Segment)","Segment)","org.jfree.chart.axis%.SegmentedTimeline#Segment#before(org.jfree.chart.axis%.SegmentedTimeline").
+after_method("org.jfree.chart.axis%.SegmentedTimeline#Segment#contains(org.jfree.chart.axis%.SegmentedTimeline#Segment)","Segment)","org.jfree.chart.axis%.SegmentedTimeline#Segment#contains(org.jfree.chart.axis%.SegmentedTimeline").
+and also
+after_method("org.jfree.chart.renderer.category%.CategoryStepRenderer#drawLine(java.awt%.Graphics2D,org.jfree.chart.renderer.category%.CategoryStepRenderer#State,org.jfree.chart.plot%.PlotOrientation,double,double,double,double)","State,org.jfree.chart.plot%.PlotOrientation,double,double,double,double)","org.jfree.chart.renderer.category%.CategoryStepRenderer#drawLine(java.awt%.Graphics2D,org.jfree.chart.renderer.category%.CategoryStepRenderer").
+
+- BUG? Does not capture inheritance for 
+after_inheritedmethod("before(org.jfree.chart.axis%.SegmentedTimeline#Segment)","org.jfree.chart.axis%.SegmentedTimeline#Segment","org.jfree.chart.axis%.SegmentedTimeline#BaseTimelineSegmentRange").
+after_inheritedmethod("before(org.jfree.chart.axis%.SegmentedTimeline#Segment)","org.jfree.chart.axis%.SegmentedTimeline#Segment","org.jfree.chart.axis%.SegmentedTimeline#SegmentRange").
+after_inheritedmethod("combine(org.jfree.data%.Range,org.jfree.data%.Range)","org.jfree.data%.Range","org.jfree.data.time%.DateRange").
+
+- How does JQuery handle polymorphic calls?
+eg. 
+after_calls("org.jfree.chart%.ChartPanel#addChartMouseListener(org.jfree.chart%.ChartMouseListener)","javax.swing.event%.EventListenerList#add(java.lang%.Class,org.jfree.chart%.ChartMouseListener)").
+vs:
+after_calls("org.jfree.chart.renderer.xy%.SamplingXYLineRenderer#State#startSeriesPass(org.jfree.data.xy%.XYDataset,int,int,int,int,int)","java.awt.geom%.GeneralPath#reset()").
+Most of those in java.awt.geom%.GeneralPath have similar issue
+
+- Does JQuery include facts where some literal is outside scope?
+eg. after_calls("org.xbill.DNS%.APLRecordTest#Test_init#test_getObject()","junit.framework%.Assert#assertTrue(boolean)").
+where junit.framework is not inside the current project
+also when the literal is a class, eg
+after_extends("java.io%.IOException","org.xbill.DNS%.TextParseException").
+
+- Does JQuery transitively inherit implementation of interfaces?
+ie A implements I, B extends A |= B implements I??

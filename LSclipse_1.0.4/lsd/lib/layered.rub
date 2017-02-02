@@ -1,0 +1,91 @@
+/***********************************************************************
+ Layers of code to code transformations on top of eachother.
+
+ General Idea:
+
+ ============================================================
+  bottom layer= Base code. No aspects.
+  +
+  /-------------------------------
+  | Aspect declarations
+  /--------------------------------
+ ============ V generate code ===============================
+  code with aspects "weaved" into it
+
+  /-------------------------------
+  | More aspect declarations
+  /--------------------------------
+ ============ V Generate code ===============================  
+  ....
+ ============ V generate code ===============================
+  Final code with all aspects
+ ============================================================
+
+*/
+
+/* The final layer is always called FI. This layer is used to 
+   actually generate real Java output code.
+*/
+
+CG_abstract(?class,{abstract}) :- abstract_(FI,?class).
+CG_abstract(?class,{}) :- NOT(abstract_(FI,?class)).
+
+CG_feature(?class,var<?name>,?impl) :-
+  var_(FI,?class,?type,?name,?impl).
+CG_feature(?class,method<?name,?argTypes>,{?head {?body}}) :-
+  method_(FI,?class,?retType,?name,?argTypes,?head,?body).
+CG_feature(?class,constructor<?argTypes>,{?head {?body}}) :-
+  constructor_(FI,?class,?argTypes,?head,?body).
+
+generate(?class,{
+?abstract class ?class 
+  ?extendsClause 
+  ?implClause 
+  { ?features }
+}) :-
+  class_(FI,?class),
+  CG_abstract(?class,?abstract),
+  CG_extendsclause(?class,?extendsClause),
+  CG_implementsclause(?class,?implClause),
+  FINDALL(NODUP([?class|?feature],CG_feature(?class,?feature,?implem)),
+          ?implem,
+          ?features).
+
+generate(?itf,{
+interface ?itf
+  ?extendsClause
+  { ?features }
+}) :- 
+  interface_(FI,?itf),
+  CG_extendsclause(?itf,?extendsClause),
+  FINDALL(NODUP([?itf|?feature],CG_feature(?itf,?feature,?implem)),
+          ?implem,
+          ?features).
+
+CG_extendsclause(?x,?extendsclause) :-
+  FINDALL(NODUP(?extended,extends_(FI,?x,?extended)),
+          ?extended,?extendslist),
+  JavaClause(extends,?extendslist,?extendsclause).
+CG_implementsclause(?x,?implementsclause) :-
+  FINDALL(NODUP(?itf,implements_(FI,?x,?itf)),
+          ?itf,?implementslist),
+  JavaClause(implements,?implementslist,?implementsclause).
+
+/** If you want to copy a layer to another layer just
+assert the fact: copyLayer(?source,?dest).
+*/
+
+class_(?dest,?cl) :- copyLayer(?source,?dest), class_(?source,?cl).
+interface_(?dest,?cl) :- copyLayer(?source,?dest), interface_(?source,?cl).
+implements_(?dest,?cl,?itf) :- copyLayer(?source,?dest),
+    implements_(?source,?cl,?itf).
+extends_(?dest,?cl,?itf) :- extends_(?source,?dest),
+    implements_(?source,?cl,?itf).
+var_(?dest,?class,?type,?name,?impl) :- copyLayer(?source,?dest),
+   var_(?source,?class,?type,?name,?impl).
+method_(?dest,?class,?retType,?name,?argTypes,?head,?body) :- 
+   copyLayer(?source,?dest),
+   method_(?source,?class,?retType,?name,?argTypes,?head,?body).
+constructor_(?dest,?class,?argTypes,?head,?body) :-
+   copyLayer(?source,?dest),
+   constructor_(?source,?class,?argTypes,?head,?body).

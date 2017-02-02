@@ -1,0 +1,1152 @@
+/**
+ * Copyright (C) 1997
+ *
+ * Parser to read (a) prolog rules file(s) and create 
+ * a rule-base for it.
+ */
+
+options { 
+	STATIC = false;
+	//DEBUG_PARSER= true;
+	JAVA_UNICODE_ESCAPE = true;
+}
+
+PARSER_BEGIN(TyRuBaParser)
+
+package tyRuBa.parser;
+
+import java.io.*;
+import java.util.*;
+import tyRuBa.engine.*;
+import tyRuBa.modes.*;
+import tyRuBa.util.ElementSource;
+import java.net.URL;
+import java.net.MalformedURLException;
+
+public class TyRuBaParser {
+
+	private PrintStream outputStream;
+	private URL baseURL = null;
+	private boolean interactive;
+
+	public TyRuBaParser(InputStream is,PrintStream os) {
+		this(is,os,null);      
+	}
+
+	public TyRuBaParser(InputStream is,PrintStream os, URL base) {
+		this(is);
+		outputStream = os;
+		baseURL = base;
+		interactive = is == System.in;
+	}
+
+	/** Parse from a URL, add any facts and rules it defines into the
+		rulebase, "rules". Any code which is generated during parsing
+		(by #generate directives) is written to the PrintStream
+		"os".
+      
+		The file may contain queries, (usually for debugging purposes).
+		The results of these queries will be reported to the standard
+		error device. */
+     
+	public static void parse(QueryEngine rules,URL url,PrintStream os)
+	throws ParseException, IOException, TypeModeError {
+		InputStream is = url.openStream();
+		try { 
+			TyRuBaParser parser = new TyRuBaParser(is,os,url);
+			parser.CompilationUnit(rules);
+		}
+		finally {
+			is.close();
+		}
+	}
+
+	/** Parse from a file, add any facts and rules it defines into the
+		rulebase. Any code which is generated during parsing
+		(by #generate directives) is written to the PrintStream
+		"os".
+      
+		The file may contain queries, (usually for debugging purposes).
+		The results of these queries will be reported to the standard
+		error device. */
+
+	public static void parse(QueryEngine rules,String fileName,PrintStream os)
+	throws ParseException, IOException, TypeModeError {
+		parse(rules,new File(fileName).toURL(),os);
+	}
+
+	/** Parsing from an InputStream (interactive mode) */
+	public static void parse(QueryEngine rules,InputStream is,PrintStream os)
+	throws ParseException, TypeModeError {
+		TyRuBaParser parser = new TyRuBaParser(is,os);
+		parser.CompilationUnit(rules);
+	}
+
+    public static RBExpression parseExpression(InputStream is,PrintStream os,QueryEngine rules) 
+	throws ParseException, TypeModeError {
+		TyRuBaParser parser = new TyRuBaParser(is,os);
+		return parser.ExpressionAndEOF(rules);
+	}
+
+	/** Compute the string from the image of a string literal, quotes already 
+		removed before calling this method. */
+	static String internalStringLiteral(String src) {
+		StringBuffer trg = new StringBuffer(src.length());
+		for (int i = 0; i < src.length(); i++) {
+			if (src.charAt(i) == '\\') {
+				i++;
+				//This does not yet implement any of the special character code
+				//such as \t \n etc.
+				// \\ works however, also \" works. 
+				trg.append(src.charAt(i));
+			}
+			else {
+				trg.append(src.charAt(i));
+			}
+		}
+		return trg.toString();
+	}
+
+	/** Compute the string from the image of a string literal. */
+	static String stringLiteral(String src) {
+		return internalStringLiteral(stripQuotes(src));
+	}
+
+	/** Strip of first and last chars, supposedly they are some kind of quotes */
+	static String stripQuotes(String src) {
+		return src.substring(1, src.length() - 1);
+	}
+
+	/** Extract the class name from JAVA_CLASS token */
+	static String javaClassName(String classToken) {
+		if (classToken.endsWith("[]")) 
+			return "[L" + classToken.substring(1, classToken.length() - 2) + ";";
+		else
+			return classToken.substring(1);
+	}
+
+	/** Replace all occurrences of ?? by ? */
+	private static String undoubleQuestionMarks(String src) {
+		StringBuffer trg = new StringBuffer(src.length());
+		for (int i = 0; i < src.length(); i++) {
+			if (src.charAt(i) == '?' && i + 1 < src.length() 
+				&& src.charAt(i + 1) == '?') {
+				//System.err.println("Removed char at " + i + "in \"" + src + "\"");
+				trg.append(src.charAt(i++)); //append one and skip the other	
+			}
+			else 
+				trg.append(src.charAt(i));
+		}
+		return trg.toString();
+	}
+
+	/** Auxiliary function for makeQuotedCode: snip of the first part of the
+		string upto the next Variable. */
+	private static RBTerm makeQuotedCodeName(String s, int startName) {
+		int startVar = s.indexOf('?', startName);
+		while (startVar < s.length() && s.charAt(startVar + 1) == '?') {
+			// The ? is escaped
+			startVar = s.indexOf('?',startVar+2);
+		}
+		if (startVar == -1) {
+			if (s.length() - startName > 1) 
+				return FrontEnd.makeName(
+					undoubleQuestionMarks(s.substring(startName, s.length() - 1)));
+			else
+				return FrontEnd.theEmptyList;
+		}
+		else { 
+			// There's a name first, then there's variable
+			if (startVar == startName)
+				//Oops there is no name after all, the name is empty
+				return makeQuotedCodeVar(s,startVar);
+			else {
+				//Ah now there is a name!
+				RBTerm car = FrontEnd.makeName(
+					undoubleQuestionMarks(s.substring(startName, startVar)));
+				return new RBPair(car, makeQuotedCodeVar(s, startVar));
+			}
+		}
+	}
+
+	/** Auxiliary function for makeQuotedCode: snip of the first part of the
+		string which matches a variable. */
+	private static RBTerm makeQuotedCodeVar(String s, int startVar) {
+		int startName = startVar + 1;
+		while (startName < s.length() - 1
+			&& Character.isJavaIdentifierPart(s.charAt(startName))) 
+			startName++;
+		RBVariable car = FrontEnd.makeVar(s.substring(startVar, startName));
+		return new RBPair(car, makeQuotedCodeName(s, startName));
+	}
+
+	/** Analyze the text of a {} block and turn it into a RBQuotedCode object. */
+	static RBTerm makeQuotedCode(String s) {
+		return new RBQuoted(makeQuotedCodeName(s, 1));
+	}
+
+}
+
+PARSER_END(TyRuBaParser)
+
+TOKEN_MGR_DECLS : {
+	int nestedBraces = 0;
+}
+
+SKIP : /* WHITE SPACE */
+{
+  <WHITECHAR: ( " "
+	| "\t"
+	| "\n"
+	| "\r"
+	| "\f")>
+}
+
+SKIP : /* COMMENTS */
+{ 
+  <COMMENT: (<SINGLE_LINE_COMMENT> | <FORMAL_COMMENT> | <MULTI_LINE_COMMENT>) >
+| <SINGLE_LINE_COMMENT: "//" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+| <FORMAL_COMMENT: "/**" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+| <MULTI_LINE_COMMENT: "/*" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+}
+
+TOKEN : /* LITERALS */
+{
+  < INTEGER_LITERAL:
+	  ("-")? <DECIMAL_LITERAL> (["l","L"])?
+	| <HEX_LITERAL> (["l","L"])?
+	| <OCTAL_LITERAL> (["l","L"])?
+  >
+|
+  < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* >
+|
+  < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ >
+|
+  < #OCTAL_LITERAL: "0" (["0"-"7"])* >
+|
+  < FLOATING_POINT_LITERAL:
+      ("-")?
+      ( (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)? (["f","F","d","D"])?
+      | "." (["0"-"9"])+ (<EXPONENT>)? (["f","F","d","D"])?
+      | (["0"-"9"])+ <EXPONENT> (["f","F","d","D"])?
+      | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"] )
+  >
+|
+  < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+}
+TOKEN : {
+  < STRING_LITERAL:
+    ("\""
+      (   (~["\"","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )*
+      "\"")
+    |( "'" 
+      (   (~["\'","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )*
+      "'")
+  >
+}
+
+TOKEN : 
+{ < INCLUDE:  "#include" > 
+| < LIBRARY:  "#library" > 
+| < GENERATE:  "#generate" > 
+}
+
+TOKEN : /* Reserved words */
+{ < NOT: "NOT" >
+| < EXISTS: "EXISTS" >
+//| < FIRST: "FIRST" >
+| < NODUP: "NODUP" >
+| < FINDALL: "FINDALL" >
+| < COUNTALL: "COUNTALL" >
+//| < TERM2LIST: "TERM2LIST" >
+//| < ASSERT: "ASSERT" >
+//| < RETRACT: "RETRACT" >
+| < UNIQUE: "UNIQUE" >
+| < TEST: "TEST" >
+//| < JAVASEND: "JAVASEND" >
+//| < JAVASOLVE: "JAVASOLVE" >
+| < MODES: "MODES" >
+| < IS: "IS" >
+| < REALLY: "REALLY" >
+| < TYPEDEF: "TYPE" >
+| < REPRESENTED_AS: "AS" >
+| < MODEEND: "END" >
+| < DET: "DET" >
+| < SEMIDET: "SEMIDET" >
+| < MULTI: "MULTI" >
+| < NONDET: "NONDET" >
+| < BOUND: "BOUND" >
+| < DEF: "DEFAULT" >
+| < FACT: "FACT" >
+| < OF: "OF" >
+| < PERSISTENT: "PERSISTENT" >
+}
+
+TOKEN : /* Special operator predicates */
+{ < OR: "||" >
+| < AND: "&&">
+| < TYPE: "::" >
+} 
+
+TOKEN : /* SEPARATORS */
+{
+  < LPAREN: "(" >
+| < RPAREN: ")" >
+| < LBRACKET: "[" >
+| < RBRACKET: "]" >
+| < LANGLE:   "<" >
+| < RANGLE:   ">" >
+| < SEMICOLON: ";" >
+| < COMMA: "," >
+| < DOT: "." >
+| < HASH: "#" >
+| < UNQUOTE: "@" >
+| < VERTSLASH: "|" >
+| < SLASH: "/" >
+| < WHEN: ":-" >
+| < PLUS: "+" >
+| < STAR: "*" >
+| < STRICT: "=" >
+| < SPECIAL: <SPECIAL_CHAR>(<SPECIAL_CHAR>)* >
+| < #SPECIAL_CHAR: ("!"|"-"|"="|"*"|"&"|"^"|"%"|"$"|"&"|"|"|"#"|"+") >
+}
+
+TOKEN : /* IDENTIFIERS */
+{
+  < IDENTIFIER: (<LETTER>|<HASH>) (<LETTER>|<DOT>|<HASH>|<STAR>|<PLUS>|<DIGIT>)* >
+//  < IDENTIFIER: <LOWCASE> (<LETTER>|<SPECIAL_IDENT_CHAR>|<DIGIT>)* >
+|
+  < VARIABLE: "?" (<LETTER>|<DIGIT>)* >
+//  < VARIABLE: (<UPCASE>|"_"|"?") (<LETTER>|<DIGIT>)* >
+|
+  < TEMPLATE_VAR: "!" (<LETTER>|<DIGIT>)* >
+|
+  < JAVA_CLASS: "#"<IDENTIFIER>("[]")? >
+|
+   <REGEXP: "/" (~["/"]|"\\/")* "/" > 
+|
+  < #LOWCASE: ["a"-"z"] >
+|
+  < #UPCASE: ["A"-"Z"] >
+|
+  < #LETTER:
+      [
+       "\u0024",
+       "\u0041"-"\u005a",
+       "\u005f",
+       "\u0061"-"\u007a",
+       "\u00c0"-"\u00d6",
+       "\u00d8"-"\u00f6",
+       "\u00f8"-"\u00ff",
+       "\u0100"-"\u1fff",
+       "\u3040"-"\u318f",
+       "\u3300"-"\u337f",
+       "\u3400"-"\u3d2d",
+       "\u4e00"-"\u9fff",
+       "\uf900"-"\ufaff"
+      ]
+  >
+|
+  < #DIGIT: ["0"-"9"] >
+}
+
+/* Braces */
+
+MORE : 
+{
+  "{" : inBraces 
+}
+
+<inBraces,inNestedBraces> MORE : 
+{ 
+    <(~["{","}"])> 
+}
+
+<inBraces,inNestedBraces> MORE : 
+{ 
+    "{" { nestedBraces++; } : inNestedBraces 
+}
+
+<inNestedBraces> MORE :
+{
+    "}"
+	{
+		nestedBraces--; 
+		if (nestedBraces == 0) SwitchTo(inBraces);
+	}
+}
+<inBraces> TOKEN : 
+{
+    < QUOTEDCODE: "}" > : DEFAULT  
+}
+
+/*****************************************
+ * AN IMPROVISED (PSEUDO)PROLOG GRAMMAR
+ *****************************************/
+
+/*
+ * Program structuring syntax follows.
+ */
+
+void CompilationUnit(QueryEngine rules) throws TypeModeError :
+{ }
+{
+  ( LOOKAHEAD(2)
+    PredInfoRules(rules)
+   	{
+   		if (interactive)
+   			System.err.println("** predicate info added to db **");
+   	}
+  | UserDefinedTypeDeclaration(rules)
+    {
+   		if (interactive)
+   			System.err.println("** I have defined your type! **");
+    }
+  | Rule(rules)
+   	{
+   		if (interactive) 
+ 			System.err.println("** assertion added to rulebase **");
+    }
+  | Query(rules) 
+  | IncludeDirective(rules)
+  | LibraryDirective(rules)
+//  | GenerateDirective(rules)
+  ) *
+  <EOF>
+}
+
+//void GenerateDirective(QueryEngine rules) throws TypeModeError :
+//{ RBTerm className; }
+//{
+// "#generate" className=CompoundTerm(rules) 
+//   { CodeGenerator cg = new CodeGenerator(rules,className);
+//     cg.generate(outputStream);
+//   }
+//}
+
+void LibraryDirective(QueryEngine rules) throws TypeModeError :
+{	Token t;
+	URL url; 
+	String fileName; }
+{
+	"#library" t=<STRING_LITERAL>
+    {
+		try { 
+			fileName = stringLiteral(t.image);
+			System.err.println("LOADING LIBRARY " + fileName);
+			rules.loadLibrary(fileName);
+			System.err.println("LOADING LIBRARY " + fileName + " Done");
+		}
+		catch (MalformedURLException e) {
+			System.err.println("Warning: MalformedURL in #library");
+			System.err.println(e.getMessage());
+		}
+		catch (IOException e) {
+			System.err.println("Warning: IOException in #library");
+			System.err.println(e.getMessage());
+		}
+	}
+}
+
+void IncludeDirective(QueryEngine rules) throws TypeModeError :
+{	Token t;
+	URL url;
+	String fileName; }
+{
+	"#include" t=<STRING_LITERAL>
+	{
+		try { 
+			fileName = stringLiteral(t.image);
+			if (baseURL != null) {
+           		url = new URL(baseURL, fileName);
+			}
+			else 
+				url = new URL(fileName);
+			System.err.println("INCLUDING " + url.toString());
+			parse(rules, url, outputStream);
+			System.err.println("INCLUDING " + url.toString() + " Done");
+		}
+		catch (MalformedURLException e) {
+			System.err.println("Warning: MalformedURL in #include");
+			System.err.println(e.getMessage());
+		}
+		catch (IOException e) {
+			System.err.println("Warning: IOException in #include");
+			System.err.println(e.getMessage());
+		}
+	}
+}
+
+RBFact Fact(QueryEngine rules) throws TypeModeError :
+{	RBPredicateExpression pred; }
+{
+   pred=SimplePredicate(rules)
+   {
+      return new RBFact(pred);
+   }
+}
+
+void Rule(QueryEngine rules) throws TypeModeError :
+{	RBPredicateExpression pred; 
+	RBExpression exp = null; }
+{
+	( pred = SimplePredicate(rules) 
+		[ ":-"  
+			(exp = Expression(rules) | exp = ModeSwitchExpression(rules)) ] "."
+		{
+			if (exp == null)
+				rules.insert(pred);
+			else
+				rules.insert(new RBRule(pred, exp));  
+		}
+	)
+}
+
+RBPredicateExpression SimplePredicate(QueryEngine rules) throws TypeModeError :
+{	Token t;
+	RBPredicateExpression e;
+	ArrayList terms; }
+{
+	t = <IDENTIFIER>   
+	("("
+		{ terms = new ArrayList(); }
+	 TermList(terms, rules)
+	 	{ e = new RBPredicateExpression(t.image, terms); }
+	 ")")
+	{ return e; }
+}
+
+void predNameList(ArrayList names) :
+{	Token t; }
+{
+	t = <IDENTIFIER> { names.add(t.image); }
+	[ "," predNameList(names) ]
+}
+
+void PredInfoRules(QueryEngine rules) throws TypeModeError :
+{ 	ArrayList names = new ArrayList();
+	TupleType types;
+	PredInfo p;
+	TVarFactory tfact;
+	ArrayList predModes = new ArrayList();
+	boolean isPersistent = false;	}
+{
+	predNameList(names) "::"       
+	{
+		types = Factory.makeTupleType();
+		tfact = new TVarFactory();
+	}
+	(	TypeList(types, tfact, rules)
+	  | "(" ")"
+	)
+	[ "PERSISTENT" { isPersistent = true; } ]
+	[ "MODES" (ModeRule(predModes, types.size(), names))* "END" ]
+		{
+			for (int i = 0; i < names.size(); i++) {
+				p = Factory.makePredInfo(rules,(String)names.get(i), types, predModes, isPersistent);
+				rules.insertPredInfo(p); 
+			}
+		}
+}
+
+void TypeList(TupleType types, TVarFactory tfact, QueryEngine rules) throws TypeModeError:
+{ 	Type t;	}
+{
+	t = Type(tfact, rules)
+	 	{ types.add(t); }
+   	[ "," TypeList(types, tfact, rules) ]
+}
+
+Type Type(TVarFactory tfact, QueryEngine rules) throws TypeModeError :
+{	Type t;	}
+{
+	( LOOKAHEAD(3) t = CompositeType(tfact, rules)
+	| t = AtomicType(rules)
+	| t = TypeVariable(tfact)
+	| t = TupleType(tfact, rules)
+	| t = ListType(tfact, rules) )
+	{ return t; }
+}
+
+Type AtomicType(QueryEngine rules) throws TypeModeError :
+{	Token t;
+	Type type;
+	boolean strict = false; }
+{
+	["=" { strict = true; }]
+	t = <IDENTIFIER>
+	{
+		if (strict)
+			type = Factory.makeStrictAtomicType(rules.findType(t.image));
+		else
+			type = Factory.makeAtomicType(rules.findType(t.image));
+		return type;
+	}
+}
+
+Type CompositeType(TVarFactory tfact, QueryEngine rules) throws TypeModeError :
+{	Token t;
+	TupleType args;
+	Type type;
+	boolean strict = false;
+	int arity = -1;	}
+{
+	["=" { strict = true; }]
+	t = <IDENTIFIER> 
+//	(
+       args = TupleType(tfact, rules) {arity = ((TupleType)args).size();}
+//	 | args = ListType(tfact, rules)
+//	)
+	{
+		if (strict)
+			type = rules.findTypeConst(t.image, arity).applyStrict(args, false);
+	    else
+	        type = rules.findTypeConst(t.image, arity).apply(args, false);
+		return type;
+	}
+}
+
+Type ListType(TVarFactory tfact, QueryEngine rules) throws TypeModeError :
+{	Type t;	}
+{
+	( "[" t=Type(tfact, rules) "]" )
+	{ return Factory.makeListType(t); }
+}
+
+TupleType TupleType(TVarFactory tfact, QueryEngine rules) throws TypeModeError :
+{	TupleType types = Factory.makeTupleType();	}
+{
+	"<" [ TypeList(types, tfact, rules) ] ">"
+	{ return types; }
+}
+
+TVar TypeVariable(TVarFactory tfact) :
+{	Token t; }
+{
+	t = <VARIABLE>
+	{ return tfact.makeTVar(t.image.substring(1)); }
+}
+
+void ModeRule(ArrayList predModes, int numArgs, ArrayList names) throws TypeModeError :
+{	BindingList bList = Factory.makeBindingList();
+	Mode mode;
+	boolean toBeCheck = true;	}
+{
+	"(" [ bList = ModeElem(bList)
+		  ( "," bList = ModeElem(bList) )*
+		]
+	")"
+	{
+		if (bList.size() != numArgs) {
+			throw new TypeModeError(
+				"Number of arguments in mode declaration is different from "
+				+ "type declaration in predicate(s) " + names);
+		}
+	}
+	[ "REALLY"		{ toBeCheck = false; } ]
+	"IS"
+	mode = PredMode()
+	{
+		if (bList.size() == 0) {
+			if (mode.isMulti() || mode.isNondet()) {
+				throw new TypeModeError(
+					"Predicate with no argument can never return more than "
+					+ "one result in the predicate(s)" + names);
+			}
+		}
+		predModes.add(Factory.makePredicateMode(bList, mode, toBeCheck)); 
+	}
+}
+
+BindingList ModeElem(BindingList bList) :
+{	BindingMode bm;	}
+{
+	bm = Mode()
+	{
+		bList.add(bm);
+		return bList;
+	}
+}
+
+BindingMode Mode() :
+{	Token t; }
+{
+	(	t = <IDENTIFIER>
+		{
+			if (t.image.equals("B"))
+				return Factory.makeBound();
+			else if (t.image.equals("F") || t.image.equals("FREE"))
+				return Factory.makeFree();
+			else
+				throw new ParseException("Unknow binding mode " + t.image);
+		}	
+	) 
+	|	"BOUND" { return Factory.makeBound(); }
+}
+
+Mode PredMode() :
+{	Mode m;	}
+{
+	(	m = Det()
+		| m = SemiDet()
+		| m = Multi()
+		| m = NonDet() )			{ return m; }
+}
+
+Mode Det() :
+{	}
+{ 
+	"DET"		{ return Mode.makeDet(); } 
+}
+
+Mode SemiDet() :
+{	}
+{
+	"SEMIDET"	{ return Mode.makeSemidet(); }
+}
+
+Mode Multi() :
+{	}
+{
+	"MULTI"		{ return Mode.makeMulti(); }
+}
+
+Mode NonDet() :
+{	}
+{
+	"NONDET"	{ return Mode.makeNondet(); }
+}
+
+TypeConstructor ExistingTypeAtomName(QueryEngine rules) throws TypeModeError :
+{	Token t; }
+{
+	t = <IDENTIFIER>		{ return rules.findType(t.image); }
+}
+
+
+void UserDefinedTypeDeclaration(QueryEngine rules) throws TypeModeError :
+{	CompositeType t1;
+	Type t2, representedBy;
+	TVarFactory tfact = new TVarFactory(); }
+{
+	"TYPE"
+	t1 = NewCompositeType(rules, tfact)
+	(	"=" t2 = ExistingType(rules, tfact)			{ t1.addSubType(t2); }
+	  ( "|" t2 = ExistingType(rules, tfact)			{ t1.addSubType(t2); } )*
+	|
+		"AS" representedBy = Type(tfact, rules)
+		{
+			t1.setRepresentationType(representedBy);
+			rules.addFunctorConst(representedBy, t1);
+		}
+	)
+}
+
+CompositeType NewCompositeType(QueryEngine rules, TVarFactory tfact) throws TypeModeError :
+{	Token t;
+	Type arg;
+	TupleType tuple = Factory.makeTupleType(); }
+{
+	t = <IDENTIFIER>
+	[tuple = tupleOfTVars(tfact)]
+	{ return rules.addNewType(
+		(CompositeType) Factory.makeTypeConstructor(t.image, tuple.size()).apply(tuple, false)); }	
+}
+
+Type ExistingType(QueryEngine rules, TVarFactory tfact) throws TypeModeError :
+{	Token t;
+	TupleType tuple = Factory.makeTupleType(); }
+{
+	t = <IDENTIFIER>
+	[ tuple = tupleOfTVars(tfact) ]
+	{ return rules.findTypeConst(t.image, tuple.size()).apply(tuple, false); }
+}
+
+TupleType tupleOfTVars(TVarFactory tfact) :
+{	Type arg;
+	TupleType tuple = Factory.makeTupleType(); }
+{
+	"<"
+	[ arg = TypeVariable(tfact) {tuple.add(arg);}
+	  ("," arg = TypeVariable(tfact) {tuple.add(arg);} )* ]
+	">"
+	{ return tuple; }
+}
+
+void Query(QueryEngine rules) throws TypeModeError :
+{	RBExpression q; 
+	Frame solution; 
+	ElementSource solutions; }
+{
+	":-" q = Expression(rules) "."
+	{
+		System.err.println("##QUERY : " + q); 
+		solutions = rules.frameQuery(q);
+		if (!solutions.hasMoreElements()) {
+			System.err.println();
+			System.err.println("FAILURE");
+		}
+		else {
+			while (solutions.hasMoreElements()) {
+				System.err.println();
+				solution = (Frame)solutions.nextElement();
+				//q.substitute(solution).print(System.err);
+				//System.err.print('.');
+				System.err.print(solution.toString());
+			}
+			System.err.println();
+		}
+		System.err.println("##END QUERY");
+	}
+}
+
+ModeCase ModeCase(QueryEngine rules) throws TypeModeError :
+{	RBExpression exp;
+	Collection boundVars = new HashSet();
+	RBVariable var; }
+{
+	"BOUND" ( var = Variable() { boundVars.add(var); } )+ 
+	":" exp = Expression(rules) { return new ModeCase(boundVars, exp); }
+}
+
+RBExpression ModeSwitchExpression(QueryEngine rules) throws TypeModeError :
+{	RBModeSwitchExpression msExp;
+	ModeCase mc;
+	RBExpression defaultExp; }
+{
+	(
+		mc = ModeCase(rules) { msExp = new RBModeSwitchExpression(mc); }
+		(
+			LOOKAHEAD(2) "|" 
+			mc = ModeCase(rules) { msExp.addModeCase(mc); }
+		)*
+		[	
+			"|" "DEFAULT" ":" defaultExp = Expression(rules)
+			{ msExp.addDefaultCase(defaultExp); }
+		]
+	) { return msExp; }
+}
+
+RBExpression ExpressionAndEOF(QueryEngine rules) throws TypeModeError :
+{	RBExpression e; }
+{
+	e = Expression(rules) <EOF>
+	{return e;} 
+}
+
+RBExpression Expression(QueryEngine rules) throws TypeModeError :
+{	RBExpression e; }
+{
+	(  e = Quantifier(rules) 
+	 | e = Disjunction(rules) 
+	)  {return e;} 
+}
+
+RBExpression Disjunction(QueryEngine rules) throws TypeModeError : 
+{	RBExpression e1, e2;
+	RBCompoundExpression ce = null; }
+{
+	e1 = Conjunction(rules) 
+	( ";" e2 = Conjunction(rules)
+		{
+			if (ce == null)
+				ce = new RBDisjunction(e1, e2);
+			else
+				ce.addSubexp(e2);
+		}
+	)*
+	{ if (ce == null) return e1; else return ce; }
+}
+
+RBExpression Conjunction(QueryEngine rules) throws TypeModeError :
+{	RBExpression e1, e2;
+	RBCompoundExpression ce = null; }
+{
+	e1 = Predicate(rules) 
+	("," e2 = Predicate(rules)
+		{
+			if (ce == null)
+				ce = FrontEnd.makeAnd(e1, e2);
+			else {
+				ce.addSubexp(e2);
+			}
+		}
+  	)*
+	{ if (ce==null) return e1; else return ce; }
+}
+
+RBExpression Predicate(QueryEngine rules) throws TypeModeError : 
+{	RBExpression e; }
+{ 
+	( e = PredicateExpression(rules)
+	| e = NotFilter(rules)
+	| e = TestFilter(rules)
+	//| e = BoundFilter(rules)
+	//| e = NoDuplicates(rules)
+	//| e = FirstOf(rules)
+	| e = FindAll(rules)
+	| e = CountAll(rules)
+	//| e = Term2List(rules)
+	//| e = JavaSend(rules)
+	| "("e = Expression(rules)")" )
+	{ return e; }
+}
+
+RBExpression PredicateExpression(QueryEngine rules) throws TypeModeError :
+{	Token t;
+	ArrayList terms = new ArrayList();
+	TypeConstructor type;
+	String typeName;	}
+{
+	t = <IDENTIFIER>
+	("("
+        TermList(terms, rules)
+     ")")
+	{ 
+		return new RBPredicateExpression(t.image, terms); 
+	}
+}
+
+//RBExpression BoundFilter(QueryEngine rules) :
+//{ RBVariable v;}
+//{
+//  "BOUND" "(" v = Variable() ")"
+//  { return new RBBoundFilter(v); }
+//}
+
+//RBExpression Assert(QueryEngine rules) throws TypeModeError :
+//{ RBTerm fact;}
+//{
+//  "ASSERT" "(" fact = Term(rules) ")"
+//  { return new RBAssert(fact,rules); }
+//}
+
+//RBExpression Retract(QueryEngine rules) :
+//{ RBTerm fact;}
+//{
+//  "RETRACT" "(" fact = Term(rules) ")"
+//  { return new RBRetract(fact,rules); }
+//}
+
+RBExpression FindAll(QueryEngine rules) throws TypeModeError :
+{	RBExpression p; 
+	RBTerm t1,t2; }
+{
+	"FINDALL" "(" p = Predicate(rules) 
+	"," t1 = Term(rules) 
+	"," t2 = Term(rules) ")"
+	{ return new RBFindAll(p, t1, t2); }
+}
+
+RBExpression CountAll(QueryEngine rules) throws TypeModeError :
+{	RBExpression p; 
+	RBTerm t1,t2; }
+{
+	"COUNTALL" "(" p = Predicate(rules) 
+	"," t1 = Term(rules) 
+	"," t2 = Term(rules) ")"
+	{ return new RBCountAll(p, t1, t2); }
+}
+
+//RBExpression Term2List(QueryEngine rules) throws TypeModeError :
+//{ 	RBTerm t1,t2; }
+//{
+//	"TERM2LIST" "(" 
+//	t1 = Term(rules) "," 
+//	t2 = Term(rules) ")"
+//	{ return new RBTerm2List(t1,t2); }
+//}
+
+//RBExpression FirstOf(QueryEngine rules) throws TypeModeError :
+//{	RBExpression p; }
+//{
+//	"FIRST" "(" p = Expression(rules) ")"
+//	{ return new RBFirstOf(p); }
+//}
+
+//RBExpression NoDuplicates(QueryEngine rules) throws TypeModeError :
+//{	RBExpression e; RBTerm t; }
+//{
+//	"NODUP" "(" 
+//	t=Term(rules) "," 
+//	e = Expression(rules) ")"
+//	{ return new RBDuplicatesFilter(t,e); } 
+//}
+
+//RBExpression JavaSend(QueryEngine rules) throws TypeModeError :
+//{ RBTerm receiver,message,arguments,result=null; }
+//{
+//  ("JAVASEND" "(" receiver=Term(rules) "," message=Term(rules) "," arguments=Term(rules) ["," result=Term(rules)] ")"
+//     { return new RBJavaSend(receiver,message,arguments,result); })
+//| ("JAVASOLVE" "(" receiver=Term(rules) "," message=Term(rules) "," arguments=Term(rules) "," result=Term(rules) ")"
+//     { return new RBJavaSolve(receiver,message,arguments,result); })
+//}
+
+RBExpression NotFilter(QueryEngine rules) throws TypeModeError :
+{	RBExpression e; }
+{
+	"NOT" "(" e = Expression(rules) ")"
+	{ return new RBNotFilter(e); }
+}
+
+RBExpression TestFilter(QueryEngine rules) throws TypeModeError :
+{	RBExpression e; }
+{
+	"TEST" "(" e = Expression(rules) ")"
+	{ return new RBTestFilter(e); }
+}
+
+RBExpression Quantifier(QueryEngine rules) throws TypeModeError :
+{	RBExpression e;
+	Token t;
+	ArrayList vars = new ArrayList();	}
+{
+	(t = "EXISTS" | t = "UNIQUE")
+	varList(vars) ":"
+	e = Expression(rules) 
+	{ 
+		if (t.image == "EXISTS")
+			return new RBExistsQuantifier(vars, e);
+		else if (t.image == "UNIQUE")
+			return new RBUniqueQuantifier(vars, e);
+	}
+}
+
+void varList(ArrayList v) :
+{	RBVariable var;	}
+{
+	var = Variable() { v.add(var); }
+	(
+		"," var = Variable()
+		{ v.add(var); }
+	)*
+}
+
+RBTerm Term(QueryEngine rules) throws TypeModeError :
+{	RBTerm t;}
+{ 
+	( LOOKAHEAD(2)
+	  t = CompoundTerm(rules)
+	| t = SimpleTerm(rules)
+	| t = Tuple(rules)
+	| t = QuotedCode()
+	| t = List(rules) )
+	{ return t; }
+}
+
+RBTerm Tuple(QueryEngine rules) throws TypeModeError :
+{	ArrayList terms = new ArrayList(); }
+{	
+	"<" TermList(terms, rules) ">"  
+	{ return RBTuple.make(terms); }
+}
+
+RBTerm CompoundTerm(QueryEngine rules) throws TypeModeError :
+{	RBTerm t;
+	Token typeName;
+	ArrayList terms = new ArrayList(); }
+{
+	(	LOOKAHEAD(2)
+	  	typeName = <IDENTIFIER>
+		("<"
+			TermList(terms, rules)   
+			{ t = rules.findConstructorType(new FunctorIdentifier(typeName.image, terms.size()))
+			        .apply(terms); }
+		 ">" 
+//		|"("
+//			TermList(terms, rules)   
+//			{ t = new RBCompoundTerm(pred.image, terms); }
+//		 ")"
+		|"["
+			t = RealTermList(rules)
+			{ t = rules.findConstructorType(new FunctorIdentifier(typeName.image, 1))
+			        .apply(t); }
+		 "]") 
+	|	LOOKAHEAD(2)
+		t = SimpleTerm(rules)
+	)
+	{ return t; }
+}
+
+RBTerm SimpleTerm(QueryEngine rules) throws TypeModeError :
+{	RBTerm t;
+	TypeConstructor typeAtom; }
+{ 
+	( t = Constant() | t = Variable() )
+    ["::" typeAtom = ExistingTypeAtomName(rules)
+		          			  { t = t.addTypeCast(typeAtom); }
+    ]
+	{ return t; }
+}
+
+RBTerm List(QueryEngine rules) throws TypeModeError :
+{	RBTerm r; }
+{
+	"[" r = RealTermList(rules) "]"
+	{ return r; }
+}
+ 
+RBTerm Constant() : 
+{	Token t; }
+{
+	( t = <INTEGER_LITERAL>			{ return FrontEnd.makeInteger(t.image); } ) 
+  | ( t = <FLOATING_POINT_LITERAL>	{ return FrontEnd.makeReal(t.image); } )
+  | ( t = <STRING_LITERAL>			{ return FrontEnd.makeName(stringLiteral(t.image)); } )
+  | ( t = <IDENTIFIER>				{ return FrontEnd.makeName(t.image); } )
+  | ( t = <TEMPLATE_VAR>			{ return FrontEnd.makeTemplateVar(t.image); } )
+  | ( t = <JAVA_CLASS>				{ return RBJavaObjectCompoundTerm.javaClass(javaClassName(t.image)); } )
+  | ( t = <REGEXP>					{ return RBJavaObjectCompoundTerm.regexp(stripQuotes(t.image)); } )
+}
+
+void TermList(ArrayList terms, QueryEngine rules) throws TypeModeError :
+{	RBTerm t;}
+{
+	[ t = Term(rules)	{ terms.add(t); }
+	  [ "," TermList(terms, rules) ]
+	]
+}
+
+RBTerm RealTermList(QueryEngine rules) throws TypeModeError :
+{	RBTerm t1, t2 = FrontEnd.theEmptyList; }
+{(
+	t1 = Term(rules) ["," t2 = RealTermList(rules)
+				|"|" t2=Term(rules) ]
+		{ return new RBPair(t1, t2); }
+| 
+	/*empty*/	{ return FrontEnd.theEmptyList; }
+)}
+
+RBVariable Variable() :
+{	Token t; 
+	RBVariable var; }
+{ 
+	t = <VARIABLE>
+	{ 
+		if (t.image.length() == 1)
+			var = FrontEnd.makeIgnoredVar();
+		else 
+			var = FrontEnd.makeVar(t.image); 
+	}
+	{ return var; }
+}
+
+RBTerm QuotedCode() :
+{	Token t;}
+{
+	(t = <QUOTEDCODE>)
+	{ return makeQuotedCode(t.image); }
+}

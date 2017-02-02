@@ -1,0 +1,172 @@
+//TYPE Package AS String
+//TYPE String AS String 
+//TYPE String AS String
+//TYPE String AS String
+
+
+before_package :: String
+MODES
+  (F) IS NONDET
+END
+
+before_type :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+before_field :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+before_method :: String, String, String 
+MODES
+  (F,F,F) IS NONDET
+END
+
+
+before_return :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+before_extends :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+before_implements :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+before_accesses :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+before_calls :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+before_fieldoftype ::String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+before_typeintype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+before_inheritedmethod :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+before_inheritedfield :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+
+after_package :: String
+MODES
+  (F) IS NONDET
+END
+
+after_type :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+after_field :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+after_method :: String, String, String 
+MODES
+  (F,F,F) IS NONDET
+END
+
+
+after_return :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+after_extends :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+after_implements :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+
+after_accesses :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+after_calls :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+after_fieldoftype ::String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+after_typeintype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+after_inheritedmethod :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+after_inheritedfield :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+
+
+
+

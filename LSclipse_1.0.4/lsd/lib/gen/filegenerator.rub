@@ -1,0 +1,50 @@
+/***********************************************************************\
+  This file is loaded together with a code generator that
+  defines either
+  
+    file(?pathfilename,?filecontents).
+ 
+  or
+  
+    file(?path,?filename,?filecontents).
+    
+  Then run the query :- genfiles(). to trigger the files to be generated
+  as a side effect.
+
+\***********************************************************************/  
+
+//
+// Predicates that someone else must(may) define and upon which this file depends
+//
+
+file :: =String, String
+MODES (F,F) IS NONDET END
+   // params:  
+   //   - filepath name of generated file
+   //   - generated file contents
+
+file :: =String, =String, String
+MODES (F,F,F) IS NONDET END
+   // params:  
+   //   - path name of generated file
+   //   - file name of generated file
+   //   - generated file contents
+
+file({?dirname?sep?filename},?contents) :-
+   file(?dirname,?filename,?contents),
+   fileseparator(?sep).
+
+//
+// Predicates that are defined here and that you can call
+//
+
+genfiles :: ()
+  // Call this and as a side effect it writes all generated files to disk.
+
+genfiles() :- file(?f,?c),write_file(?f,?c).
+
+file :: =String
+MODES (F) IS NONDET END
+  // :- file(?f). find names of generated files.
+
+file(?name) :- file(?name,?contents).

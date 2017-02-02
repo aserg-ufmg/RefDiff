@@ -1,0 +1,14 @@
+// 
+// Stupidly simple library file for a simple error reporting
+// mechanism.
+//
+// any file can declare errors in the form of facts or rules
+// error(?msg) 
+//
+// Then, whenever this query is run:
+//
+// :- run_tests .
+//
+// If there are any declared errors, an Exception will be thrown.
+
+run_tests :- NOT(error(?msg),throw_error(?msg)).

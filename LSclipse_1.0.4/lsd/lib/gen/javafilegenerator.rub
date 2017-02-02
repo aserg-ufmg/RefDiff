@@ -1,0 +1,64 @@
+//
+// javagenerator.rub
+//
+//
+// This file depends (builds) upon filegenerator.rub.
+
+//
+// Predicates that are supposed to be defined by clients and upong which this
+// file depends.
+//
+
+generate :: =String, String
+MODES 
+  (F,F) IS NONDET
+END
+
+// generate(?classname,?classdefinition)
+
+classpath :: String
+MODES
+  (F) IS SEMIDET
+END
+
+default_package :: String
+MODES 
+  (F) IS SEMIDET
+END
+
+java_source_file_name :: =String, =String, =String
+MODES (B,F,F) REALLY IS SEMIDET END
+
+package_class :: =String, =String, =String
+MODES 
+  (B,B,F) REALLY IS DET
+  (F,F,B) REALLY IS DET
+END
+
+file(?dirname,?filename,?contents) :-
+	generate(?class,?contents),
+        java_source_file_name(?class,?dirname,?filename),
+    debug_print({** generating: ?class}).
+
+java_source_file_name(?class,?classpath,{?filename.java}) :-
+	fileseparator(?sep),
+	package_class("",?filename,?class),
+	classpath(?classpath).
+
+java_source_file_name(?class,{?classpath?sep?dir},{?filename.java}) :-
+	fileseparator(?sep), 
+	package_class(?pkg,?filename,?class),
+	NOT(equals(?pkg,"")),
+	string_replace(".",?sep,?pkg,?dir),
+	classpath(?classpath).
+
+package_class(?pkg,?cls,?pkgcls) 
+   :- string_split_at_last(".",?pkgcls,?pkg,?cls),
+	NOT(equals(?pkg,"")).
+package_class(?defpkg,?cls,?pkgcls) 
+   :- string_split_at_last(".", ?pkgcls,?pkg,?cls),
+      equals(?pkg,""),default_package(?defpkg).
+package_class("",?cls,?pkgcls) 
+   :- string_split_at_last(".", ?pkgcls,?pkg,?cls),
+      equals(?pkg,""),NOT(EXISTS ?defpkg : default_package(?defpkg)).
+

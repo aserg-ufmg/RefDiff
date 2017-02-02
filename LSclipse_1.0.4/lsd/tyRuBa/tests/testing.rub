@@ -1,0 +1,117 @@
+foo :: =Integer, =Integer
+MODES (B,F) IS NONDET
+      (F,B) IS NONDET
+END
+
+oof :: =Integer, =Integer
+MODES (B,F) IS NONDET
+      (F,B) IS NONDET
+END
+
+oof(?x,?y) :- foo(?y,?x).
+
+bound :: Integer
+MODES (F) IS DET
+END
+
+bound(1000).
+
+foo(?x,?y) :- sum(?x,1,?y), greater(?bound,?x), bound(?bound).
+
+//foo(?x,?doublex) :- bound(?bound), mul(?x,2,?doublex), greater(?bound,?x).
+//
+//foo(?x,?doublex1) :- bound(?bound), 
+//   mul(?x,2,?doublex), sum(?doublex,1,?doublex1), greater(?bound,?x).
+
+foo+ :: =Integer, =Integer
+MODES (B,F) IS NONDET
+      (F,B) IS NONDET
+END
+
+foo+(?x,?y) :- foo(?x,?y) ; foo(?x,?m), foo+(?m,?y).
+
+//married :: String, String
+//MODES
+//  (F,F) IS NONDET
+//END
+//
+//married(Minnie,Mickey).
+//married(?x,?y) :- married(?y,?x).
+
+oof+ :: =Integer, =Integer
+MODES (B,F) IS NONDET
+      (F,B) IS NONDET
+END
+oof+(?x,?y) :- oof(?x,?y) ; oof(?x,?m), oof+(?m,?y).
+
+//:- foo+(1,?x).
+//:- oof+(?x,1).
+
+perm :: [?a], [?a]
+MODES (B,F) IS MULTI
+      (F,B) IS MULTI
+END
+
+swap :: [?a], [?a]
+MODES (B,F) IS MULTI
+      (F,B) IS MULTI
+END
+
+swap(?list,?slit) :- append(?li,[?s|?t],?list), append([?s|?li],?t,?slit).
+
+perm(?l1,?l3) :- BOUND ?l1 : perm(?l1,?l2), swap(?l2,?l3)
+				|BOUND ?l3 : perm(?l2,?l3), swap(?l1,?l2).
+perm(?l1,?l1).
+
+weirdPred :: =Integer, =Integer, =Integer
+MODES
+(B,F,F) IS DET
+(F,B,F) IS DET
+(F,F,F) IS NONDET
+END
+
+weirdPred(?x,?y,?z) :- BOUND ?x : sum(?x,?x,?y), sum(?y,1,?z)
+					|  BOUND ?y : sum(?y,?y,?x), sum(?x,1,?z)
+					|  DEFAULT  : equals(?x,1), equals(?y,1), equals(?z,1).
+			
+modifier :: Object, String
+MODES
+  	(F,F) IS NONDET
+END 
+					
+//adornmentFlag :: Object, =Integer
+//MODES
+//	(B,F) IS SEMIDET
+//END 
+
+//adornmentFlag(?X,1) :- modifier(?X,abstract).
+//adornmentFlag(?X,2) :- modifier(?X,final).
+//adornmentFlag(?X,4) :- modifier(?X,synchronized).
+//adornmentFlag(?X,8) :- modifier(?X,static).
+
+//qualifiedLabel :: Object, String
+//MODES
+//	(B,F) REALLY IS SEMIDET
+//END
+//qualifiedLabel(?X,?Xs) :- (type(?X); field(?X); method(?X)), convertToString(?X,?Xs).
+
+
+TYPE Tree<?key,?value> 
+	= Node<?key,?value>
+	| Leaf<?value>
+	| EmptyTree<>
+
+TYPE Node<?key,?value> AS <?key, Tree<?key,?value>,Tree<?key,?value>>
+TYPE Leaf<?value> AS <?value>
+TYPE EmptyTree<> AS <>
+
+fringe :: Tree<?k,?v>, [=Leaf<?v>]
+
+MODES (B,F) IS DET END
+
+fringe(EmptyTree<>,[]).
+fringe(Leaf<?v>,[Leaf<?v>]).
+fringe(Node<?k,?t1,?t2>,?fringe) :-
+	fringe(?t1,?f1),fringe(?t2,?f2),
+	append(?f1,?f2,?fringe).
+			

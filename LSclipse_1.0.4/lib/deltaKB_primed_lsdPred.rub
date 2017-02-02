@@ -1,0 +1,159 @@
+//TYPE Package AS String
+//TYPE String AS String 
+//TYPE String AS String
+//TYPE String AS String
+
+
+added_p_package :: String
+MODES
+  (F) IS NONDET
+END
+
+added_p_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+changed_p_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_p_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_p_method :: String, String, String 
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+added_p_return :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+added_p_subtype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_p_accesses :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_p_calls :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+added_p_fieldoftype ::String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+added_p_typeintype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+added_p_inheritedmethod :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+added_p_inheritedfield :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+
+
+deleted_p_package :: String
+MODES
+  (F) IS NONDET
+END
+
+deleted_p_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END 
+
+deleted_p_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_p_method :: String, String, String 
+MODES
+  (F, F, F) IS NONDET
+END
+
+
+deleted_p_return :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+deleted_p_subtype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+deleted_p_accesses :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+deleted_p_calls :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS NONDET
+  (F,B) IS NONDET
+END
+
+deleted_p_fieldoftype ::String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+deleted_p_typeintype :: String, String
+MODES
+  (F,F) IS NONDET
+  (B,F) IS SEMIDET
+  (F,B) IS NONDET
+END
+
+deleted_p_inheritedmethod :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+
+deleted_p_inheritedfield :: String, String, String
+MODES
+  (F,F,F) IS NONDET
+END
+

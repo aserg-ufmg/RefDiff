@@ -1,0 +1,162 @@
+/**
+  * tyni.rub
+  *
+  *  tyni = TYruba Native Interface
+  *
+  *  This file uses tyruba's native interface, the JAVASEND meta predicate
+  *  to define some useful predicates.
+  *
+  **/
+
+/*
+ *  string(?x).
+ *  integer(?x).
+ */
+
+//test_must_succeed(string(abcd)).
+//test_must_fail(string(123)).
+//test_must_fail(string(abc<def>)).
+//test_must_fail(string(?a)).
+
+//test_must_succeed(integer(123)).
+//test_must_fail(integer(x)).
+//test_must_fail(integer(abc<def>)).
+//test_must_fail(integer(?a)).
+
+//string :: String
+//string(?x) :- tyni_type(?x,#java.lang.String).
+
+//integer :: Integer
+//integer(?x) :- tyni_type(?x,#java.lang.Integer).
+
+//tyni_type(?x,?class) :- BOUND(?class),BOUND(?x),
+//	JAVASEND(?class,[isInstance,#java.lang.Class,#java.lang.Object],[?x]).
+
+/*
+ * range(?lowInteger,?highInteger,?x)
+ *
+ * ?lowInteger  <- integer
+ * ?highInteger <- integer
+ * ?x           -> integer  ?low <= ?x < ?high
+ */
+
+//test_must_findall(range(23,27,?x),?x,[23,24,25,26]).
+
+//range(?small,?large,?x) :- integer(?small),integer(?large),
+//	greater(?large,?small),
+//	sum(?small,1,?next),range(?next,?large,?x).
+//range(?small,?large,?small) :- integer(?small),integer(?large),
+//	greater(?large,?small).
+
+/*
+ * greater(?lowInteger,?highInteger)
+ */
+
+//test_must_succeed(greater(10,5)).
+//test_must_fail(greater(5,10)).
+
+//greater(?x,?y) :- integer(?x),integer(?y),
+//      JAVASEND(static,[greater,#tyRuBa.engine.Tyni,#java.lang.Integer,#java.lang.Integer],
+//                      [?x,?y]).
+/*
+ * sum(?a,?b,?c)
+ *
+ *  ?a + ?b = ?c
+ *
+ *  If any two are known, compute third
+ */
+
+//test_must_succeed(sum(1,2,3)).
+//test_must_equal(sum(1,2,?x),?x,3).
+//test_must_equal(sum(1,?x,3),?x,2).
+//test_must_equal(sum(?x,2,3),?x,1).
+
+//sum(?a,?b,?c) :- 
+//    integer(?a),integer(?b),
+//      JAVASEND(static,[add,#tyRuBa.engine.Tyni,#java.lang.Integer,#java.lang.Integer],
+//                      [?a,?b],?c) | 
+//    integer(?a),integer(?c),
+//      JAVASEND(static,[subtract,#tyRuBa.engine.Tyni,#java.lang.Integer,#java.lang.Integer],
+//                      [?c,?a],?b) |
+//    integer(?b),integer(?c),
+//      JAVASEND(static,[subtract,#tyRuBa.engine.Tyni,#java.lang.Integer,#java.lang.Integer],
+//                      [?c,?b],?a) .
+
+/*
+ * mul(?a,?b,?c)
+ *
+ *  ?a * ?b = ?c
+ *
+ *  At least ?a and ?b must be bound (to integers).
+ */
+
+//test_must_succeed(mul(2,3,6)).
+//test_must_fail(mul(2,3,7)).
+//test_must_equal(mul(2,3,?x),?x,6).
+
+//mul(?a,?b,?c) :- 
+//    integer(?a),integer(?b),
+//      JAVASEND(static,[mul,#tyRuBa.engine.Tyni,#java.lang.Integer,#java.lang.Integer],
+//                      [?a,?b],?c) | 
+//    NOT(integer(?a),integer(?b)),
+//      throw_error({Illegal use of mul predicate}).
+
+
+
+//
+// A predicate which prints a message when it is evaluated. Good 
+// for debugging.
+// Argument passed to debug_print is printed with toString()
+//
+//debug_print(?msg) :- 
+//   JAVASEND(static,[debug_print,#tyRuBa.engine.Tyni,#java.lang.Object],[?msg]).
+
+//throw_error(?msg) :- 
+//   JAVASEND(static,[throw_error,#tyRuBa.engine.Tyni,#java.lang.String],[?msg]).
+
+//write_file(?filename,?contents) :-
+//	debug_print({writing file: ?filename}),
+//	JAVASEND(static,[write_file,#tyRuBa.engine.Tyni,#java.lang.String,#java.lang.String],
+//                        [?filename,?contents]).
+
+//write_output(?contents) :-
+//	JAVASEND(static,[write_output,#tyRuBa.engine.Tyni,#java.lang.String],
+//                        [?contents]).
+
+/* Unfortunately this does not work. Will always point to the tyruba classpath
+ *    Use the -classpath option of tyruba commandline  
+ * classpath(?cp) :- JAVASEND(static,[getProperty,#java.lang.System,#java.lang.String],
+ *                                   [java.class.path],?cp).
+ */
+
+/*
+//fileseparator(?fs) :- JAVASEND(static,[getProperty,#java.lang.System,#java.lang.String],
+//                                  [file.separator],?fs).
+*/
+/*
+ * hash_value(?s,?v) 
+ *  ?s <-  
+ *  ?v -> Java hashCode
+ */
+//hash_value(?s,?v) :- JAVASEND(?s,[hashCode,#java.lang.Object],[],?v).
+//test_must_succeed(and(hash_value(foobar,?v),integer(?v))).
+
+/*
+ * length(?list,?len).
+ *   ?list <- a list
+ *   ?len  -> length of list
+ */
+//test_must_equal(length([a,b,c],?x),?x,3).
+//test_must_succeed(length([a,b,c],3)).
+//test_must_fail(length([a,b,c],2)).
+
+//length(?lis,?len) :- 
+//   BOUND(?len), gen_list(?len,?lis)
+/*
+ | JAVASEND(static,[list_len,#tyRuBa.engine.Tyni,#java.lang.Object[]],
+                      [?lis],?len).
+
+gen_list(0,[]).
+gen_list(?i,[?|?r]) :- greater(?i,0),sum(?ii,1,?i),
+	gen_list(?ii,?r).
+*/

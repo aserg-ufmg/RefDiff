@@ -1,0 +1,62 @@
+# A set of pre-defined rules to winnow out some of the superfluous facts
+# in our KB.  These rules are tautologies built in to how code changes work,
+# so they shouldn't need to be output to the user.
+
+# These rules are not only always true, but the antecedents are satisfied
+# for every occurance of the predicates in their conclusions.
+# Thus, these predicates will always be winnowed.
+
+deleted_type(i,n,g) ^ before_typeintype(i,t)       => deleted_typeintype(i,t)
+
+deleted_type(p,n,g) ^ before_extends(s,p)          => deleted_extends(s,p)
+deleted_type(s,n,g) ^ before_extends(s,p)          => deleted_extends(s,p)
+deleted_type(p,n,g) ^ before_implements(s,p)          => deleted_implements(s,p)
+deleted_type(s,n,g) ^ before_implements(s,p)          => deleted_implements(s,p)
+
+deleted_type(s,n,g) ^ before_inheritedfield(f,p,s) =>deleted_inheritedfield(f,p,s)
+deleted_type(s,n,g) ^ before_inheritedmethod(f,p,s)=>deleted_inheritedmethod(f,p,s)
+deleted_method(m,n,c)  ^ before_return(m,t)       => deleted_return(m,t)
+deleted_method(m1,n,c) ^ before_calls(m1,m2)      => deleted_calls(m1,m2)
+deleted_method(m2,n,c) ^ before_calls(m1,m2)      => deleted_calls(m1,m2)
+deleted_field(f,n,c) ^ before_fieldoftype(f,t) => deleted_fieldoftype(f,t)
+deleted_field(f,n,c) ^ before_accesses(f,m)      => deleted_accesses(f,m)
+deleted_method(m,n,c) ^ before_accesses(f,m) => deleted_accesses(f,m)
+
+# These are always-true rules that can probably be left unstated,
+# but will only winnow some instances of the predicate in their conclusions.
+
+deleted_package(p) ^ before_type(t,n,p)  => deleted_type(t,n,p)
+deleted_type(t,n,g) ^ before_typeintype(i, t) ^ before_type(i, n1, g) => deleted_type(i, n1, g)
+deleted_type(t,n,g)  ^ before_method(m,mn,t)   => deleted_method(m, mn, t)
+deleted_type(t,n,g)  ^ before_field(f,fn,t)    => deleted_field(f, fn, t) 
+
+# We only consider the name of methods and fields now.
+# The following rules might have some meaning if that changes.
+#deleted_type(t)    ^ before_return(m, t)        => deleted_method(m)
+#deleted_type(t)    ^ before_fieldoftype(f,t)    => deleted_field(f)
+
+added_type(i,n,g) ^ after_typeintype(i,t)       => added_typeintype(i,t)
+#added_type(p,n,g) ^ after_subtype(p,s)          => added_subtype(p,s)
+#added_type(s,n,g) ^ after_subtype(p,s)          => added_subtype(p,s)
+added_type(p,n,g) ^ after_extends(s,p)          => added_extends(s,p)
+added_type(s,n,g) ^ after_extends(s,p)          => added_extends(s,p)
+added_type(p,n,g) ^ after_implements(s,p)          => added_implements(s,p)
+added_type(s,n,g) ^ after_implements(s,p)          => added_implements(s,p)
+
+added_type(s,n,g) ^ after_inheritedfield(f,p,s) =>added_inheritedfield(f,p,s)
+added_type(s,n,g) ^ after_inheritedmethod(f,p,s)=>added_inheritedmethod(f,p,s)
+added_method(m,n,c)  ^ after_return(m,t)       => added_return(m,t)
+added_method(m1,n,c) ^ after_calls(m1,m2)      => added_calls(m1,m2)
+added_method(m2,n,c) ^ after_calls(m1,m2)      => added_calls(m1,m2)
+added_field(f,n,c) ^ after_fieldoftype(f,t) => added_fieldoftype(f,t)
+added_field(f,n,c) ^ after_accesses(f,m)      => added_accesses(f,m)
+added_method(m,n,c) ^ after_accesses(f,m) => added_accesses(f,m)
+
+# These are always-true rules that can probably be left unstated,
+# but will only winnow some instances of the predicate in their conclusions.
+
+added_package(p) ^ after_type(t,n,p)  => added_type(t,n,p)
+added_type(t,n,g) ^ after_typeintype(i, t) ^ after_type(i, n1, g) => added_type(i, n1, g)
+added_type(t,n,g)  ^ after_method(m,mn,t)   => added_method(m, mn, t)
+added_type(t,n,g)  ^ after_field(f,fn,t)    => added_field(f, fn, t) 
+

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: refdiff-adapter-ref-finder
+Bundle-SymbolicName: refdiff-adapter-ref-finder;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.jdt.core,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ LSclipse;bundle-version="1.0.4"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .

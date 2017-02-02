@@ -1,0 +1,114 @@
+/***** Auxiliary predicates for constructing Java syntax */
+
+//
+// Helper for constructing lists of comma separated elements
+//
+
+//JavaCommaCons :: String, String, String
+//MODES (B,B,F) REALLY IS DET END
+
+//JavaCommaCons(?x,{},{?x}) :- String(?x).
+//JavaCommaCons(?x,{?y},{?x,?y}) :- String(?x).
+//JavaCommaCons(?x,{?y,?z},{?x,?yz}) :- String(?x),equals(?yz,{?y,?z}).
+
+//
+// Construct a list of comma separated elements*/
+//
+
+JavaCommaList :: [Object], String
+MODES (B,F) REALLY IS DET END
+
+JavaCommaList([],{}).
+JavaCommaList([?e],{?e}).
+JavaCommaList([?e|?r],{?e,?rc}) :-
+   JavaCommaList(?r,?rc).
+
+//
+// Create an implements or extends clause (?symbol indicates which) */
+//
+
+JavaClause :: Object, [Object], String
+MODES (B,B,F) IS DET END
+
+JavaClause(?symbol,[],{}).
+JavaClause(?symbol,[?f|?r], {?symbol ?itflist})
+	:- JavaCommaList([?f|?r],?itflist).
+
+//
+// Construct a list of Semi-colon terminated elements.
+//
+
+JavaSemiList :: [String], String
+MODES (B,F) IS DET END
+
+JavaSemiList([],{}).
+JavaSemiList([?f | ?r],{?f; ?sr}) :- JavaSemiList(?r,?sr).
+
+//
+// Splice together a list of types with a list of variable names
+// into a formal parameter list.
+//
+
+JavaFormals :: [=String], [=String], String
+MODES (B,B,F) IS DET END
+
+JavaFormalsHelper :: [=String],[=String],[String]
+MODES (B,B,F) IS DET END
+
+JavaFormals(?Ts,?ns,?formals) :-
+   JavaFormalsHelper(?Ts,?ns,?formalsList),
+   JavaCommaList(?formalsList,?formals).
+   
+JavaFormalsHelper([],[],[]).
+JavaFormalsHelper([?T | ?Ts],[?n | ?ns],[{?T ?n}|?rest]) :-
+   JavaFormalsHelper(?Ts,?ns,?rest).
+
+/*Is a formal an element of a list of JavaFormals? */
+//JavaFormalsElement({?T ?n},?formals) :-
+//  JavaCommaCons({?T ?n},?rest,?formals).
+//JavaFormalsElement({?T ?n},?formals) :-
+//  JavaCommaCons({?TTT ?nnn},?rest,?formals),
+//  JavaFormalsElement({?T ?n},?rest).
+
+//
+// Generate a "Conjunction": (A1) && (A2) && (A3) ... */
+//
+
+JavaConjunction :: [Object], String
+MODES (B,F) REALLY IS DET END
+
+JavaConjunction([],{true}).
+JavaConjunction([?a],{(?a)}).
+JavaConjunction([?a1, ?a2 | ?r],{(?a1) && ?rest}) :-
+  JavaConjunction([?a2 | ?r],?rest).
+
+//
+// Generate initialization code for initializing instance variables from
+//   formal arguments with the same name. Often used to define constructors */
+//
+
+JavaInitFromArgs :: [Object],String
+MODES (B,F) IS DET END 
+
+JavaInitFromArgs([],{}).
+JavaInitFromArgs([?a|?as],{
+        this.?a=?a;?ias}) 
+:- JavaInitFromArgs(?as,?ias). 
+
+JavaPrimType :: String
+MODES (F) IS MULTI END
+
+JavaPrimType(int).
+JavaPrimType(char).
+JavaPrimType(float).
+JavaPrimType(boolean).
+// etc.
+
+JavaModifier :: String
+MODES (F) IS MULTI END
+
+JavaModifier(private).
+JavaModifier(public).
+JavaModifier(protected).
+JavaModifier(static).
+JavaModifier(abstract).

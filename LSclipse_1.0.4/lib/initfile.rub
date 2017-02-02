@@ -1,0 +1,24 @@
+//#include "types.rub"
+#include "prolog.rub"
+//#include "tyni.rub"
+#include "string.rub"
+//#include "regexp.rub"
+#include "tyrubadoc.rub"
+
+//#include "foo.rub"
+
+// The following are not loaded by default. The default should
+// only load things that would be of general use to all
+// applications.
+//#include "java.rub"
+//#include "javagenerator.rub"
+//#include "javagenerator_extras.rub"
+//#include "filegenerator.rub"
+
+// Goodies: If you did not install Java mail API you should outcomment this
+// line or you will get a class not found exception when loading the initfiles.
+//#include "mail.rub"
+
+// Experimental stuff (not very useful, but have a look at this file for 
+// examples on how to use TyNI to get information from java.lang.reflect
+//#include "reflect.rub"

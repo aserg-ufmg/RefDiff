@@ -1,0 +1,896 @@
+replace_subclass_with_fields :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_magic_number_with_constant :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+introduce_parameter_object :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_param_explicit_methods :: String
+MODES
+  (F) IS NONDET
+END
+
+replace_array_with_object :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+introduce_null_object :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+
+introduce_explaining_variable :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+pull_up_constructor_body :: String
+MODES
+  (F) IS NONDET
+END
+
+
+preserve_whole_object :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+parameterize_method :: String
+MODES
+  (F) IS NONDET
+END
+
+replace_constructor_with_factory_method :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_nested_cond_guard_clauses :: String
+MODES
+  (F) IS NONDET
+END
+
+consolidate_cond_expression :: String
+MODES
+  (F) IS NONDET
+END
+
+replace_array_with_object :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+remove_setting_method :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+remove_get_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+remove_control_flag :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_error_code_with_exception :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+extract_hierarchy :: String
+MODES
+  (F) IS NONDET
+END
+
+replace_temp_with_query :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_exception_with_test :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+encapsulate_downcast :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+separate_query_from_modifier :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+split_temp :: String
+MODES
+  (F) IS NONDET
+END
+
+replace_type_code_with_subclasses :: String
+MODES
+  (F) IS NONDET
+END
+
+replace_inheritance_with_delegation :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_type_code_with_class :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_data_with_object :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+remove_middle_man :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+introduce_local_extension :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+extract_class :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+extract_interface :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+change_uni_to_bi :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+form_template_method :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+hide_delegate :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+hide_method :: String
+MODES
+  (F) IS NONDET
+END
+
+deleted_set_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_get_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+consolidate_duplicate_cond_fragments :: String
+MODES
+  (F) IS NONDET
+END
+
+encapsulate_field :: String
+MODES
+  (F) IS NONDET
+END
+
+encapsulate_collection :: String
+MODES
+  (F) IS NONDET
+END
+
+added_fieldmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_fieldmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_fieldmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_fieldmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_methodmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_methodmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_methodmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_methodmodifier :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_param_with_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+introduce_assertion :: String
+MODES
+  (F) IS NONDET
+END
+
+inline_method :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+change_bi_to_uni :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+inline_class :: String
+MODES
+  (F) IS NONDET
+END
+
+inline_temp :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+remove_parameter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+add_parameter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_parameter :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_parameter :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_parameter :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_parameter :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_package :: String
+MODES
+  (F) IS NONDET
+END
+
+after_package :: String
+MODES
+  (F) IS NONDET
+END
+
+added_package :: String
+MODES
+  (F) IS NONDET
+END
+
+deleted_package :: String
+MODES
+  (F) IS NONDET
+END
+
+added_typeintype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_typeintype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_implements :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_typeintype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_typeintype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_implements :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_implements :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_implements :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_delegation_with_inheritance :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+extract_subclass :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+extract_superclass :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_fieldoftype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_extends :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_extends :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_extends :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_extends :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_fieldoftype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_fieldoftype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_fieldoftype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_return :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_return :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_return :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_return :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+move_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_inheritedfield :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_inheritedfield :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_inheritedfield :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_inheritedfield :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_inheritedmethod :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_inheritedmethod :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_inheritedmethod :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_inheritedmethod :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_accesses :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_accesses :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_accesses :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_calls :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_calls :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_calls :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_calls :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_accesses :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+self_encapsulate_field :: String
+MODES
+  (F) IS NONDET
+END
+
+added_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_body :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_get_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_set_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_subtype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_subtype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_subtype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_subtype :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+pull_up_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+pull_up_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_body :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_methodbody :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+collapse_hierarchy :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_methodbody :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_methodbody :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_methodbody :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+same_body :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+push_down_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+push_down_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+extract_method :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+decompose_conditional :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+rename_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+move_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_conditional :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+added_conditional :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+before_conditional :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+after_conditional :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+replace_type_code_with_state :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+replace_conditional_with_polymorphism :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+modified_type :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+modified_method :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+modified_package :: String
+MODES
+  (F) IS NONDET
+END
+
+modified_field :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_cast :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+after_cast :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+added_cast :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+deleted_cast :: String, String, String
+MODES
+  (F, F, F) IS NONDET
+END
+
+before_trycatch :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+after_trycatch :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+added_trycatch :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+deleted_trycatch :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+change_value_to_reference :: String
+MODES
+  (F) IS NONDET
+END
+
+change_reference_to_value :: String
+MODES
+  (F) IS NONDET
+END
+
+tease_apart_inheritance :: String
+MODES
+  (F) IS NONDET
+END
+
+remove_assignment_to_parameters :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_throws :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_throws :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_throws :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_throws :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_getter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_getter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_getter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_getter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_setter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+after_setter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+added_setter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+deleted_setter :: String, String
+MODES
+  (F, F) IS NONDET
+END
+
+before_localvar :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+after_localvar :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+added_localvar :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+deleted_localvar :: String, String, String, String
+MODES
+  (F, F, F, F) IS NONDET
+END
+
+replace_method_with_method_object :: String, String
+MODES
+  (F, F) IS NONDET
+END
