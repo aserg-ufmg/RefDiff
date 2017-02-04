@@ -1,9 +1,12 @@
 package lsclipse.views;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -76,8 +79,8 @@ public class TreeView extends ViewPart {
 	private Action doubleClickTreeAction;
 	private Action doubleClickListAction;
 	private Action selectAction;
-	private Composite parent;
-	private Vector<Node> nodeList;
+	Composite parent;
+	Vector<Node> nodeList;
 	private Map<String, Node> allNodes;
 	private HashMap<String, Node> hashNode;
 	HashMap<String, Node> strNodeRelation;
@@ -388,21 +391,29 @@ public class TreeView extends ViewPart {
 		strNodeRelation = new HashMap<String, Node>();
 		Set<String> parents = new HashSet<String>();
 
-		for (Entry<String, java.util.List<String>> queryEntry : dependentMap
-				.entrySet()) {
-			String filledQuery = queryEntry.getKey();
-			Node temp = makeNode(filledQuery, queryEntry.getValue(), baseproj,
-					newproj);
-			hashNode.put("[" + temp.getName() + "]", temp);
-			allNodes.put(filledQuery, temp);
-			System.out.println(filledQuery);
-			strNodeRelation.put(filledQuery, temp);
-
-			nodeList.add(temp);
-			viewer.add(temp.getName());
-			parents.add(filledQuery);
-
-		}
+		String fileName = newproj.getName().replace("-v1", "");
+		File outputFile = new File("C:/Users/danilofs/git/RefactoringMiner/data/ref-finder-results", fileName);
+		try (PrintWriter pw = new PrintWriter(outputFile)) {
+		    
+		    for (Entry<String, java.util.List<String>> queryEntry : dependentMap
+		            .entrySet()) {
+		        String filledQuery = queryEntry.getKey();
+		        Node temp = makeNode(filledQuery, queryEntry.getValue(), baseproj,
+		            newproj);
+		        hashNode.put("[" + temp.getName() + "]", temp);
+		        allNodes.put(filledQuery, temp);
+		        System.out.println(filledQuery);
+		        pw.println(filledQuery);
+		        strNodeRelation.put(filledQuery, temp);
+		        
+		        nodeList.add(temp);
+		        viewer.add(temp.getName());
+		        parents.add(filledQuery);
+		    }
+		} catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+		
 
 		// Print Summary Data
 		System.out.println("\nTotal time for inference(ms): "
