@@ -314,23 +314,32 @@ public class ResultComparator {
             return ResultComparator.getF1(tp, fp, fn);
         }
 
-        public CompareResult filterBy(RefactoringType rt) {
+        public CompareResult filterBy(RefactoringType ... rts) {
             return new CompareResult(
-                this.truePositives.stream().filter(r -> r.toString().startsWith(rt.getDisplayName())).collect(Collectors.toSet()),
-                this.falsePositives.stream().filter(r -> r.toString().startsWith(rt.getDisplayName())).collect(Collectors.toSet()),
-                this.falseNegatives.stream().filter(r -> r.toString().startsWith(rt.getDisplayName())).collect(Collectors.toSet()));
+                this.truePositives.stream().filter(r -> isOneOf(r, rts)).collect(Collectors.toSet()),
+                this.falsePositives.stream().filter(r -> isOneOf(r, rts)).collect(Collectors.toSet()),
+                this.falseNegatives.stream().filter(r -> isOneOf(r, rts)).collect(Collectors.toSet()));
         }
 
-        public int getTPCount(RefactoringType rt) {
-            return (int) this.truePositives.stream().filter(r -> r.toString().startsWith(rt.getDisplayName())).count();
+        public int getTPCount(RefactoringType ... rts) {
+            return (int) this.truePositives.stream().filter(r -> isOneOf(r, rts)).count();
         }
 
-        public int getFPCount(RefactoringType rt) {
-            return (int) this.falsePositives.stream().filter(r -> r.toString().startsWith(rt.getDisplayName())).count();
+        public int getFPCount(RefactoringType ... rts) {
+            return (int) this.falsePositives.stream().filter(r -> isOneOf(r, rts)).count();
         }
 
-        public int getFNCount(RefactoringType rt) {
-            return (int) this.falseNegatives.stream().filter(r -> r.toString().startsWith(rt.getDisplayName())).count();
+        public int getFNCount(RefactoringType ... rts) {
+            return (int) this.falseNegatives.stream().filter(r -> isOneOf(r, rts)).count();
+        }
+        
+        private boolean isOneOf(Object r, RefactoringType ... rts) {
+            for (RefactoringType rt : rts) {
+                if (r.toString().startsWith(rt.getDisplayName())) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
