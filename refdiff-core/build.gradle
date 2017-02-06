@@ -35,4 +35,4 @@ dependencies {
 }
 
 applicationName = 'refdiff-core'
-mainClassName = 'org.refactoringminer.RefactoringMiner'
+mainClassName = 'refdiff.core.RefDiff'
