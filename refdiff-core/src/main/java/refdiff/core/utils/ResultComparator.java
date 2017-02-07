@@ -67,8 +67,15 @@ public class ResultComparator {
         return this;
     }
 
-    
-    
+    public int getExpectedCount(EnumSet<RefactoringType> refTypesToConsider) {
+        int sum = 0;
+        EnumSet<RefactoringType> ignore = EnumSet.complementOf(refTypesToConsider);
+        for (RefactoringSet set : expectedMap.values()) {
+            sum += set.ignoring(ignore).getRefactorings().size();
+        }
+        return sum;
+    }
+
     public void printSummary(PrintStream out, EnumSet<RefactoringType> refTypesToConsider) {
         for (String groupId : groupIds) {
             CompareResult r = getCompareResult(groupId, refTypesToConsider);

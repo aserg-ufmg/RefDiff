@@ -107,11 +107,26 @@ public class TestWithArqsoft16Dataset {
 //        rcRFind2.printSummary(System.out, refTypesRFind);
 //        rcRFind.printDetails(System.out, refTypesRFind);
         
-        printTable1();
+        //printTable1();
         
         printTable3();
+        
+//        printTableOracle();
     }
 
+    private void printTableOracle() {
+        System.out.println("\\begin{tabular}{@{}l@{}}");
+        System.out.println("\\toprule");
+        System.out.println("Repository\\\\");
+        System.out.println("\\midrule");
+        
+        System.out.println(String.format(Locale.US, "%s & %d\\\\", "Total", rcRDiff.getExpectedCount(refTypesOracle)));
+        System.out.println(String.format(Locale.US, "%s & %d\\\\", "RCraw", rcRDiff.getExpectedCount(refTypesRCraw)));
+        System.out.println(String.format(Locale.US, "%s & %d\\\\", "RFind", rcRDiff.getExpectedCount(refTypesRFind)));
+        System.out.println("\\bottomrule");
+        System.out.println("\\end{tabular}");
+    }
+    
     private void printTable1() {
         String[] tools = new String[] {"RDiff", "RMinr", "RCraw", "RCraw*", "RFind", "RFind*"};
         CompareResult[] results = new CompareResult[] {
@@ -135,89 +150,19 @@ public class TestWithArqsoft16Dataset {
         System.out.println("\\end{tabular}");
     }
 
-    private void printTable2() {
-        String[] tools = new String[] {"RDiff ", "RMinr ", "RCraw ", "RCraw*", "RFind ", "RFind*"};
+    private void printTable3() {
+        String[] tools = new String[] {"RDiff ", "RMinr ", "RCraw", "RFind"};
         CompareResult[] results = new CompareResult[] {
             rcRDiff.getCompareResult("RDiff", refTypesOracle),
             rcRDiff.getCompareResult("RMinr", refTypesOracle),
             rcRCraw.getCompareResult("RCraw", refTypesRCraw),
-            rcRCraw2.getCompareResult("RCraw", refTypesRCraw),
-            rcRFind.getCompareResult("RFind", refTypesRFind),
-            rcRFind2.getCompareResult("RFind", refTypesRFind)
+            rcRFind.getCompareResult("RFind", refTypesRFind)
         };
-        System.out.println("\\begin{tabular}{@{}lllllllllllll@{}}");
+        System.out.println("\\begin{tabular}{@{}lcccccccc@{}}");
         System.out.println("\\toprule");
-        //System.out.println("Approach & Prec.\\\\");
-        System.out.println("\\midrule");
-        for (int i = 0; i < tools.length; i++) {
-            String tool = tools[i];
-            CompareResult r = results[i];
-            System.out.print(String.format(Locale.US, "%s", tool));
-            boolean pOrR = true;
-            table2Col(pOrR, r, RefactoringType.RENAME_CLASS);
-            table2Col(pOrR, r, RefactoringType.MOVE_CLASS);
-            table2Col(pOrR, r, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
-            table2Col(pOrR, r, RefactoringType.RENAME_METHOD);
-            table2Col(pOrR, r, RefactoringType.PULL_UP_OPERATION);
-            table2Col(pOrR, r, RefactoringType.PUSH_DOWN_OPERATION);
-            table2Col(pOrR, r, RefactoringType.MOVE_OPERATION);
-            table2Col(pOrR, r, RefactoringType.EXTRACT_OPERATION);
-            table2Col(pOrR, r, RefactoringType.INLINE_OPERATION);
-            table2Col(pOrR, r, RefactoringType.PULL_UP_ATTRIBUTE);
-            table2Col(pOrR, r, RefactoringType.PUSH_DOWN_ATTRIBUTE);
-            table2Col(pOrR, r, RefactoringType.MOVE_ATTRIBUTE);
-            System.out.println("\\\\");
-        }
-        System.out.println("\\midrule");
-        for (int i = 0; i < tools.length; i++) {
-            String tool = tools[i];
-            CompareResult r = results[i];
-            System.out.print(String.format(Locale.US, "%s", tool));
-            boolean pOrR = false;
-            table2Col(pOrR, r, RefactoringType.RENAME_CLASS);
-            table2Col(pOrR, r, RefactoringType.MOVE_CLASS);
-            table2Col(pOrR, r, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
-            table2Col(pOrR, r, RefactoringType.RENAME_METHOD);
-            table2Col(pOrR, r, RefactoringType.PULL_UP_OPERATION);
-            table2Col(pOrR, r, RefactoringType.PUSH_DOWN_OPERATION);
-            table2Col(pOrR, r, RefactoringType.MOVE_OPERATION);
-            table2Col(pOrR, r, RefactoringType.EXTRACT_OPERATION);
-            table2Col(pOrR, r, RefactoringType.INLINE_OPERATION);
-            table2Col(pOrR, r, RefactoringType.PULL_UP_ATTRIBUTE);
-            table2Col(pOrR, r, RefactoringType.PUSH_DOWN_ATTRIBUTE);
-            table2Col(pOrR, r, RefactoringType.MOVE_ATTRIBUTE);
-            System.out.println("\\\\");
-        }
-        System.out.println("\\bottomrule");
-        System.out.println("\\end{tabular}");
-    }
-
-    private void table2Col(boolean precision, CompareResult r, RefactoringType ... refactoringTypes) {
-        CompareResult fr = r.filterBy(refactoringTypes);
-        if ((fr.getTPCount() + fr.getFNCount()) > 0) {
-            if (precision) {
-                System.out.print(String.format(" & \\xbar{%.3f}", fr.getPrecision()));
-            } else {
-                System.out.print(String.format(" & \\xbar{%.3f}", fr.getRecall()));
-            }
-        } else {
-            System.out.print(" &             ");
-        }
-    }
-    
-    private void printTable3() {
-        String[] tools = new String[] {"RDiff ", "RMinr ", "RCraw*", "RFind*"};
-        CompareResult[] results = new CompareResult[] {
-            rcRDiff.getCompareResult("RDiff", refTypesOracle),
-            rcRDiff.getCompareResult("RMinr", refTypesOracle),
-            rcRCraw2.getCompareResult("RCraw", refTypesRCraw),
-            rcRFind2.getCompareResult("RFind", refTypesRFind)
-        };
-        System.out.println("\\begin{tabular}{@{}lrllllllll@{}}");
-        System.out.println("\\toprule");
-        System.out.println("          & & \\multicolumn{2}{c}{RDiff} & \\multicolumn{2}{c}{RMinr} & \\multicolumn{2}{c}{RCraw} & \\multicolumn{2}{c}{RFind}\\\\");
-        System.out.println("\\cmidrule(lr){3-4} \\cmidrule(lr){5-6} \\cmidrule(lr){7-8} \\cmidrule(lr){9-10}");
-        System.out.println("Ref. Type & \\# & Precision & Recall & Precision & Recall & Precision & Recall & Precision & Recall\\\\");
+        System.out.println("          & \\multicolumn{2}{c}{RDiff} & \\multicolumn{2}{c}{RMinr} & \\multicolumn{2}{c}{RCraw} & \\multicolumn{2}{c}{RFind}\\\\");
+        System.out.println("\\cmidrule(lr){2-3} \\cmidrule(lr){4-5} \\cmidrule(lr){6-7} \\cmidrule(lr){8-9}");
+        System.out.println("Ref. Type & Precision & Recall & Precision & Recall & Precision & Recall & Precision & Recall\\\\");
         System.out.println("\\midrule");
         
         table3Row(tools, results, "Rename Type", RefactoringType.RENAME_CLASS);
@@ -226,7 +171,7 @@ public class TestWithArqsoft16Dataset {
         table3Row(tools, results, "Rename Method", RefactoringType.RENAME_METHOD);
         table3Row(tools, results, "Pull Up Method", RefactoringType.PULL_UP_OPERATION);
         table3Row(tools, results, "Push Down Method", RefactoringType.PUSH_DOWN_OPERATION);
-        table3Row(tools, results, "Mome Method ", RefactoringType.MOVE_OPERATION);
+        table3Row(tools, results, "Move Method ", RefactoringType.MOVE_OPERATION);
         table3Row(tools, results, "Extract Method", RefactoringType.EXTRACT_OPERATION);
         table3Row(tools, results, "Inline Method", RefactoringType.INLINE_OPERATION);
         table3Row(tools, results, "Pull Up Field", RefactoringType.PULL_UP_ATTRIBUTE);
@@ -238,8 +183,7 @@ public class TestWithArqsoft16Dataset {
     }
     
     private void table3Row(String[] tools, CompareResult[] results, String name, RefactoringType ... refactoringTypes) {
-        CompareResult rDiffResult = rcRDiff.getCompareResult("RDiff", refTypesOracle);
-        System.out.print(String.format(Locale.US, "%s & %d", name, rDiffResult.getTPCount(refactoringTypes) + rDiffResult.getFNCount(refactoringTypes)));
+        System.out.print(String.format(Locale.US, "%s", name));
         for (int i = 0; i < tools.length; i++) {
             CompareResult r = results[i];
             CompareResult fr = r.filterBy(refactoringTypes);
