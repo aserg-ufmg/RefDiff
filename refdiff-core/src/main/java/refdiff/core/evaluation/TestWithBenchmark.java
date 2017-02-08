@@ -3,6 +3,7 @@ package refdiff.core.evaluation;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Locale;
 
 import refdiff.core.rm2.analysis.GitHistoryRefactoringMiner2;
 import refdiff.core.rm2.analysis.RefactoringDetectorConfigImpl;
@@ -47,15 +48,16 @@ public class TestWithBenchmark {
 //        config = calibrate(oracle, config, RelationshipType.PUSH_DOWN_FIELD, RefactoringType.PUSH_DOWN_ATTRIBUTE);
 //        config = calibrate(oracle, config, RelationshipType.MOVE_FIELD, RefactoringType.MOVE_ATTRIBUTE);
         
-        config.setId("rm2-idf-default");
-
-        ResultComparator rc1 = new ResultComparator();
-        rc1.expect(oracle.all());
-        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new GitHistoryRefactoringMiner2(config), oracle.all()));
-        rc1.printSummary(System.out, EnumSet.allOf(RefactoringType.class));
-        rc1.printDetails(System.out, EnumSet.allOf(RefactoringType.class));
-        
-        System.out.println(config.toString());
+//        config.setId("rm2-idf-default");
+//
+//        ResultComparator rc1 = new ResultComparator();
+//        rc1.expect(oracle.all());
+//        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new GitHistoryRefactoringMiner2(config), oracle.all()));
+//        rc1.printSummary(System.out, EnumSet.allOf(RefactoringType.class));
+//        rc1.printDetails(System.out, EnumSet.allOf(RefactoringType.class));
+//        
+//        System.out.println(config.toString());
+        printTable3();
     }
 
     private static RefactoringDetectorConfigImpl calibrate(BenchmarkDataset oracle, RefactoringDetectorConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
@@ -94,4 +96,43 @@ public class TestWithBenchmark {
         return list;
     }
 
+    
+    private static void printTable3() {
+        ResultComparator rc1 = new ResultComparator();
+        BenchmarkDataset oracle = new BenchmarkDataset();
+        rc1.expect(oracle.all());
+        RefactoringDetectorConfigImpl config = new RefactoringDetectorConfigImpl();
+        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new GitHistoryRefactoringMiner2(config), oracle.all()));
+        CompareResult r = rc1.getCompareResult(config.getId(), EnumSet.allOf(RefactoringType.class));
+        
+        System.out.println("\\begin{tabular}{@{}lrrrrrcc@{}}");
+        System.out.println("\\toprule");
+        System.out.println("Ref. Type & \\# & Threshold & TP & FP & FN & Precision & Recall\\\\");
+        System.out.println("\\midrule");
+        
+        table3Row(r, "Rename Type", 0.4, RefactoringType.RENAME_CLASS);
+        table3Row(r, "Move Type", 0.9, RefactoringType.MOVE_CLASS);
+        table3Row(r, "Extract Superclass", 0.8, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
+        table3Row(r, "Rename Method", 0.3, RefactoringType.RENAME_METHOD);
+        table3Row(r, "Pull Up Method", 0.4, RefactoringType.PULL_UP_OPERATION);
+        table3Row(r, "Push Down Method", 0.6, RefactoringType.PUSH_DOWN_OPERATION);
+        table3Row(r, "Move Method", 0.4, RefactoringType.MOVE_OPERATION);
+        table3Row(r, "Extract Method", 0.1, RefactoringType.EXTRACT_OPERATION);
+        table3Row(r, "Inline Method", 0.3, RefactoringType.INLINE_OPERATION);
+        table3Row(r, "Pull Up Field", 0.5, RefactoringType.PULL_UP_ATTRIBUTE);
+        table3Row(r, "Push Down Field", 0.3, RefactoringType.PUSH_DOWN_ATTRIBUTE);
+        table3Row(r, "Move Field", 0.5, RefactoringType.MOVE_ATTRIBUTE);
+        System.out.println("\\addlinespace");
+        System.out.println(String.format(Locale.US, "Total & %d & & %d & %d & %d & \\xbar{%.3f} & \\xbar{%.3f}\\\\", r.getTPCount() + r.getFNCount(), r.getTPCount(), r.getFPCount(), r.getFNCount(), r.getPrecision(), r.getRecall()));
+        System.out.println("\\bottomrule");
+        System.out.println("\\end{tabular}");
+    }
+    
+    private static void table3Row(CompareResult r, String name, double threshold, RefactoringType ... refactoringTypes) {
+        System.out.print(String.format(Locale.US, "%s", name));
+        CompareResult fr = r.filterBy(refactoringTypes);
+        int expected = fr.getTPCount() + fr.getFNCount();
+        System.out.println(String.format(Locale.US, " & %d & %.1f & %d & %d & %d & \\xbar{%.3f} & \\xbar{%.3f}\\\\", expected, threshold, fr.getTPCount(), fr.getFPCount(), fr.getFNCount(), fr.getPrecision(), fr.getRecall()));
+    }
+    
 }
