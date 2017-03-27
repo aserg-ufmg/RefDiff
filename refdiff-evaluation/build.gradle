@@ -1,0 +1,9 @@
+apply plugin: 'application'
+
+dependencies {
+    compile project(':refdiff-core')
+    
+    compile 'com.jcabi:jcabi-github:0.17'
+	compile 'org.hibernate:hibernate-entitymanager:4.2.6.Final'
+    
+}
