@@ -13,20 +13,27 @@ import javax.persistence.Table;
 public class DbRepository {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_repository")
-    @SequenceGenerator(name="seq_repository", initialValue=1)
+    @SequenceGenerator(name = "seq_repository", sequenceName = "seq_repository", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_repository")
     private Integer id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 200)
     private String fullName;
 
-	public Integer getId() {
-		return id;
-	}
+    public DbRepository(String fullName) {
+        this.fullName = fullName;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public DbRepository() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getFullName() {
         return fullName;

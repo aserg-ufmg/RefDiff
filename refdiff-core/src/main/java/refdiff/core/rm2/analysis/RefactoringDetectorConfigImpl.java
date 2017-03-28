@@ -8,7 +8,7 @@ import refdiff.core.rm2.model.RelationshipType;
 
 public class RefactoringDetectorConfigImpl implements RefactoringDetectorConfig {
 
-    private String id = "rm2-default";
+    private String id = "refdiff";
 
     private double defaultThreshold = 0.5;
     

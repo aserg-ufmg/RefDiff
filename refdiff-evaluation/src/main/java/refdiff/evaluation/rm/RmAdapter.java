@@ -34,7 +34,7 @@ public class RmAdapter implements GitHistoryRefactoringMiner {
 
     @Override
     public String getConfigId() {
-        return "RM1";
+        return "rm";
     }
 
     private static class RefactoringHandlerAdapter extends org.refactoringminer.api.RefactoringHandler {

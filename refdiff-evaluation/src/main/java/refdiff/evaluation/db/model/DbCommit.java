@@ -1,5 +1,6 @@
 package refdiff.evaluation.db.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,15 +16,25 @@ import javax.persistence.UniqueConstraint;
 public class DbCommit {
 
     @Id
+    @SequenceGenerator(name = "seq_commit", sequenceName = "seq_commit", initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_commit")
-    @SequenceGenerator(name = "seq_commit", initialValue = 1)
     private Integer id;
 
+    @Column(length = 100)
     private String sha1;
 
     @ManyToOne
     @JoinColumn(name = "repository")
     private DbRepository repository;
+
+    public DbCommit() {
+        super();
+    }
+
+    public DbCommit(DbRepository repository, String sha1) {
+        this.sha1 = sha1;
+        this.repository = repository;
+    }
 
     public Integer getId() {
         return id;

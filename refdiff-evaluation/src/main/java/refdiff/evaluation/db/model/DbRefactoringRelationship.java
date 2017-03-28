@@ -1,6 +1,5 @@
 package refdiff.evaluation.db.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,21 +15,32 @@ import javax.persistence.Table;
 public class DbRefactoringRelationship {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_refactoring_relationship")
-    @SequenceGenerator(name="seq_refactoring_relationship", initialValue=1)
+    @SequenceGenerator(name = "seq_refactoring_relationship", sequenceName = "seq_refactoring_relationship", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_refactoring_relationship")
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "commitResult")
     private DbCommitResult commitResult;
-    
-	private String refactoringType;
 
-	@Column(length = 1000)
-	private String entityBefore;
+    @Column(length = 200)
+    private String refactoringType;
 
-	@Column(length = 1000)
-	private String entityAfter;
+    @Column(length = 1000)
+    private String entityBefore;
+
+    @Column(length = 1000)
+    private String entityAfter;
+
+    public DbRefactoringRelationship(DbCommitResult commitResult, String refactoringType, String entityBefore, String entityAfter) {
+        this.commitResult = commitResult;
+        this.refactoringType = refactoringType;
+        this.entityBefore = entityBefore;
+        this.entityAfter = entityAfter;
+    }
+
+    public DbRefactoringRelationship() {
+    }
 
     public Integer getId() {
         return id;

@@ -9,6 +9,7 @@ dependencies {
     compile project(':refdiff-core')
     
     compile files('lib/RefactoringMiner.jar')
+    compile files('lib/postgresql-42.0.0.jar')
     
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'com.h2database:h2'

@@ -2,6 +2,7 @@ package refdiff.evaluation.db.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,24 +19,34 @@ import javax.persistence.UniqueConstraint;
 public class DbCommitResult {
 
     @Id
+    @SequenceGenerator(name = "seq_commit_result", sequenceName = "seq_commit_result", initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_commit_result")
-    @SequenceGenerator(name = "seq_commit_result", initialValue = 1)
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "commit")
     private DbCommit commit;
 
+    @Column(length = 200)
     private String tool;
 
     private Long execTime;
 
     private boolean success = true;
 
-    private String errorLog; 
+    @Column(length = 2000)
+    private String errorLog;
 
     @OneToMany(mappedBy = "commitResult")
     private Set<DbRefactoringRelationship> refactorings;
+
+    public DbCommitResult(DbCommit commit, String tool) {
+        this.commit = commit;
+        this.tool = tool;
+    }
+
+    public DbCommitResult() {
+    }
 
     public Integer getId() {
         return id;
