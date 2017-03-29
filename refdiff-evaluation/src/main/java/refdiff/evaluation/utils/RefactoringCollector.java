@@ -8,6 +8,7 @@ import gr.uom.java.xmi.diff.ExtractOperationRefactoring;
 import gr.uom.java.xmi.diff.ExtractSuperclassRefactoring;
 import gr.uom.java.xmi.diff.InlineOperationRefactoring;
 import gr.uom.java.xmi.diff.MoveAttributeRefactoring;
+import gr.uom.java.xmi.diff.MoveClassFolderRefactoring;
 import gr.uom.java.xmi.diff.MoveClassRefactoring;
 import gr.uom.java.xmi.diff.MoveOperationRefactoring;
 import gr.uom.java.xmi.diff.RenameClassRefactoring;
@@ -61,6 +62,9 @@ public class RefactoringCollector extends RefactoringHandler {
                     MoveAttributeRefactoring ref = (MoveAttributeRefactoring) r;
                     String attrName = ref.getMovedAttribute().getName();
                     rs.add(new RefactoringRelationship(refactoringTypeOf(r), ref.getSourceClassName() + "#" + attrName, ref.getTargetClassName() + "#" + attrName));
+                } else if (r instanceof MoveClassFolderRefactoring) {
+                    MoveClassFolderRefactoring ref = (MoveClassFolderRefactoring) r;
+                    // ignore
                 } else {
                     throw new RuntimeException("refactoring not supported");
                 }

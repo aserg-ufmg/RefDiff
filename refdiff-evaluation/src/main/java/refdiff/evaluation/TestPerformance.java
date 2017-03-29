@@ -2,6 +2,12 @@ package refdiff.evaluation;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
@@ -27,6 +33,7 @@ import refdiff.evaluation.db.model.DbRepository;
 import refdiff.evaluation.db.model.DbRepositoryDao;
 import refdiff.evaluation.rm.RmAdapter;
 import refdiff.evaluation.utils.RefactoringCollector;
+import refdiff.evaluation.utils.RefactoringRelationship;
 import refdiff.evaluation.utils.RefactoringSet;
 
 @SpringBootApplication
@@ -52,11 +59,24 @@ public class TestPerformance {
 
         @Override
         public void run(String... args) throws Exception {
+            mine("ReactiveX/RxJava", "2.x", "D:/Danilo/Workspaces/refdiff-eval-2/RxJava");
+            mine("elastic/elasticsearch", "master", "D:/Danilo/Workspaces/refdiff-eval-2/elasticsearch");
+            mine("square/okhttp", "master", "D:/Danilo/Workspaces/refdiff-eval-2/okhttp");
+            //mine("nostra13/Android-Universal-Image-Loader", "master", "D:/Danilo/Workspaces/refdiff-eval-2/Android-Universal-Image-Loader");
+            mine("androidannotations/androidannotations", "develop", "D:/Danilo/Workspaces/refdiff-eval-2/androidannotations");
+            mine("PhilJay/MPAndroidChart", "master", "D:/Danilo/Workspaces/refdiff-eval-2/MPAndroidChart");
+            mine("bumptech/glide", "master", "D:/Danilo/Workspaces/refdiff-eval-2/glide");
+            mine("zxing/zxing", "master", "D:/Danilo/Workspaces/refdiff-eval-2/zxing");
+            mine("spring-projects/spring-framework", "master", "D:/Danilo/Workspaces/refdiff-eval-2/spring-framework");
+            mine("libgdx/libgdx", "master", "D:/Danilo/Workspaces/refdiff-eval-2/libgdx");
+            mine("netty/netty", "4.1", "D:/Danilo/Workspaces/refdiff-eval-2/netty");
+        }
+
+        private void mine(String fullName, String branch, String folder) {
             GitHistoryRefactoringMiner refdiff = new GitHistoryRefactoringMiner2();
             GitHistoryRefactoringMiner rm = new RmAdapter(new GitHistoryRefactoringMinerImpl());
-
-            mine("ReactiveX/RxJava", "2.x", "D:/Danilo/Workspaces/refdiff-eval-2/RxJava", refdiff);
-            mine("ReactiveX/RxJava", "2.x", "D:/Danilo/Workspaces/refdiff-eval-2/RxJava", rm);
+            mine(fullName, branch, folder, rm);
+            mine(fullName, branch, folder, refdiff);
         }
 
         private void mine(String fullName, String branch, String folder, GitHistoryRefactoringMiner algo) {
@@ -72,7 +92,8 @@ public class TestPerformance {
                     try {
                         RefactoringSet set = rc.assertAndGetResult();
                         result.setSuccess(true);
-                        result.setRefactorings(set.getRefactorings().stream()
+                        Set<RefactoringRelationship> refactoringsFound = set.getRefactorings();
+                        result.setRefactorings(refactoringsFound.stream()
                             .map(r -> new DbRefactoringRelationship(result, r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter()))
                             .collect(Collectors.toSet()));
                     } catch (Exception e) {
@@ -105,9 +126,18 @@ public class TestPerformance {
                         if (dbCommit == null) {
                             dbCommit = commitDao.save(new DbCommit(dbRepository, sha1));
                         }
+                        if (dbCommit.getAffectedFiles() == null) {
+                            List<String> javaFiles = new ArrayList<>();
+                            Map<String, String> renamed = new HashMap<>();
+                            gitService.fileTreeDiff(repository, commit, javaFiles, javaFiles, renamed, false);
+                            Set<String> distinctFiles = new HashSet<>(javaFiles);
+                            dbCommit.setAffectedFiles(distinctFiles.size());
+                            commitDao.save(dbCommit);
+                        }
                         processCommitFn.processCommit(repository, commit, dbCommit);
                     }
                 }
+                gitService.checkout(repository, branch);
             } catch (Exception e) {
                 e.printStackTrace(System.err);
             }

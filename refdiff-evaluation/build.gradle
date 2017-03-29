@@ -13,4 +13,13 @@ dependencies {
     
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'com.h2database:h2'
+    
+    // RefactoringMiner
+    compile 'asm:asm:3.3.1'
+	compile 'asm:asm-tree:3.3.1'
+	compile 'asm:asm-util:3.3.1'
+	compile 'commons-io:commons-io:2.0.1'
+	compile 'org.apache.commons:commons-lang3:3.3.2'
+	compile 'joda-time:joda-time:2.1'
+	compile 'org.jdom:jdom:1.1.3'
 }

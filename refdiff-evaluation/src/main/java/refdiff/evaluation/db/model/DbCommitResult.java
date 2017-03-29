@@ -2,6 +2,7 @@ package refdiff.evaluation.db.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class DbCommitResult {
     @Column(length = 2000)
     private String errorLog;
 
-    @OneToMany(mappedBy = "commitResult")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commitResult")
     private Set<DbRefactoringRelationship> refactorings;
 
     public DbCommitResult(DbCommit commit, String tool) {

@@ -27,6 +27,8 @@ public class DbCommit {
     @JoinColumn(name = "repository")
     private DbRepository repository;
 
+    private Integer affectedFiles;
+
     public DbCommit() {
         super();
     }
@@ -58,6 +60,14 @@ public class DbCommit {
 
     public void setRepository(DbRepository repository) {
         this.repository = repository;
+    }
+
+    public Integer getAffectedFiles() {
+        return affectedFiles;
+    }
+
+    public void setAffectedFiles(Integer affectedFiles) {
+        this.affectedFiles = affectedFiles;
     }
 
 }
