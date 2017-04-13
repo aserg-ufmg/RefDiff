@@ -6,25 +6,15 @@ import java.util.stream.Collectors;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 
-import refdiff.core.api.GitHistoryRefactoringMiner;
+import refdiff.core.api.GitRefactoringDetector;
 import refdiff.core.api.RefactoringHandler;
 
-public class RmAdapter implements GitHistoryRefactoringMiner {
+public class RmAdapter implements GitRefactoringDetector {
 
     private final org.refactoringminer.api.GitHistoryRefactoringMiner rm;
     
     public RmAdapter(org.refactoringminer.api.GitHistoryRefactoringMiner rm) {
         this.rm = rm;
-    }
-
-    @Override
-    public void detectAll(Repository repository, String branch, RefactoringHandler handler) throws Exception {
-        this.rm.detectAll(repository, branch, new RefactoringHandlerAdapter(handler));
-    }
-
-    @Override
-    public void fetchAndDetectNew(Repository repository, RefactoringHandler handler) throws Exception {
-        this.rm.fetchAndDetectNew(repository, new RefactoringHandlerAdapter(handler));
     }
 
     @Override
@@ -44,10 +34,6 @@ public class RmAdapter implements GitHistoryRefactoringMiner {
             this.handler = handler;
         }
 
-        public boolean skipCommit(String commitId) {
-            return handler.skipCommit(commitId);
-        }
-
         public void handle(RevCommit commitData, List<org.refactoringminer.api.Refactoring> refactorings) {
             handler.handle(commitData, refactorings.stream().map(RefactoringAdapter::from).collect(Collectors.toList()));
         }
@@ -56,9 +42,6 @@ public class RmAdapter implements GitHistoryRefactoringMiner {
             handler.handleException(commitId, e);
         }
 
-        public void onFinish(int refactoringsCount, int commitsCount, int errorCommitsCount) {
-            handler.onFinish(refactoringsCount, commitsCount, errorCommitsCount);
-        }
     }
     
 }

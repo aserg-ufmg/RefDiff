@@ -20,9 +20,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
-import refdiff.core.api.GitHistoryRefactoringMiner;
+import refdiff.core.RefDiff;
+import refdiff.core.api.GitRefactoringDetector;
 import refdiff.core.api.GitService;
-import refdiff.core.rm2.analysis.GitHistoryRefactoringMiner2;
 import refdiff.core.util.GitServiceImpl;
 import refdiff.evaluation.db.model.DbCommit;
 import refdiff.evaluation.db.model.DbCommitDao;
@@ -73,13 +73,13 @@ public class TestPerformance {
         }
 
         private void mine(String fullName, String branch, String folder) {
-            GitHistoryRefactoringMiner refdiff = new GitHistoryRefactoringMiner2();
-            GitHistoryRefactoringMiner rm = new RmAdapter(new GitHistoryRefactoringMinerImpl());
+            GitRefactoringDetector refdiff = new RefDiff();
+            GitRefactoringDetector rm = new RmAdapter(new GitHistoryRefactoringMinerImpl());
             mine(fullName, branch, folder, rm);
             mine(fullName, branch, folder, refdiff);
         }
 
-        private void mine(String fullName, String branch, String folder, GitHistoryRefactoringMiner algo) {
+        private void mine(String fullName, String branch, String folder, GitRefactoringDetector algo) {
             process(fullName, branch, folder, (repository, commit, dbCommit) -> {
                 if (commitResultDao.findOneByCommitAndTool(dbCommit, algo.getConfigId()) == null) {
                     String sha1 = commit.getId().getName();

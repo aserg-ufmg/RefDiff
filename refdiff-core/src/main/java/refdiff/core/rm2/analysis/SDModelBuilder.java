@@ -27,12 +27,12 @@ import refdiff.core.rm2.model.SourceRepresentation;
 
 public class SDModelBuilder {
     
-    private final RefactoringDetectorConfig config;
+    private final RefDiffConfig config;
     private final SourceRepresentationBuilder srbForTypes;
     private final SourceRepresentationBuilder srbForMethods;
     private final SourceRepresentationBuilder srbForAttributes;
 
-    public SDModelBuilder(RefactoringDetectorConfig config) {
+    public SDModelBuilder(RefDiffConfig config) {
         this.config = config;
         this.srbForTypes = config.getCodeSimilarityStrategy().createSourceRepresentationBuilderForTypes();
         this.srbForMethods = config.getCodeSimilarityStrategy().createSourceRepresentationBuilderForMethods();

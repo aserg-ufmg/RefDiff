@@ -5,9 +5,9 @@ import java.util.Locale;
 
 import org.refactoringminer.rm1.GitHistoryRefactoringMinerImpl;
 
-import refdiff.core.api.GitHistoryRefactoringMiner;
+import refdiff.core.RefDiff;
+import refdiff.core.api.GitRefactoringDetector;
 import refdiff.core.api.RefactoringType;
-import refdiff.core.rm2.analysis.GitHistoryRefactoringMiner2;
 import refdiff.evaluation.rm.RmAdapter;
 import refdiff.evaluation.utils.RefFinderResultReader;
 import refdiff.evaluation.utils.RefactoringCrawlerResultReader;
@@ -65,7 +65,7 @@ public class TestWithArqsoft16Dataset {
     public void run() {
         Arqsoft16Dataset oracle = new Arqsoft16Dataset();
         GitHistoryRefactoringMinerImpl rm1 = new GitHistoryRefactoringMinerImpl();
-        GitHistoryRefactoringMiner rm2 = new GitHistoryRefactoringMiner2();
+        GitRefactoringDetector rm2 = new RefDiff();
 
         RefactoringSet[] rmResults = getRmResults(rm1);
         RefactoringSet[] refDiffResults = getRmResults(rm2);
@@ -226,7 +226,7 @@ public class TestWithArqsoft16Dataset {
         return getRmResults(new RmAdapter(rm));
     }
 
-    private static RefactoringSet[] getRmResults(GitHistoryRefactoringMiner rm) {
+    private static RefactoringSet[] getRmResults(GitRefactoringDetector rm) {
         return new RefactoringSet[] {
             ResultComparator.collectRmResult(rm, "https://github.com/aserg-ufmg/atmosphere.git", "cc2b3f1"),
             ResultComparator.collectRmResult(rm, "https://github.com/aserg-ufmg/clojure.git", "17217a1"),

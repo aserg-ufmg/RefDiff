@@ -66,7 +66,8 @@ public class AstUtils {
 		StringBuilder sb = new StringBuilder();
 		sb.append(methodName);
 		sb.append('(');
-		Iterator<SingleVariableDeclaration> parameters = methodDeclaration.parameters().iterator();
+		@SuppressWarnings("unchecked")
+        Iterator<SingleVariableDeclaration> parameters = methodDeclaration.parameters().iterator();
 		while (parameters.hasNext()) {
 			SingleVariableDeclaration parameter = parameters.next();
 			Type parameterType = parameter.getType();
@@ -190,7 +191,8 @@ public class AstUtils {
 		if (javadoc == null) {
 			return false;
 		}
-		List<TagElement> javadocTags = (List<TagElement>) javadoc.tags();
+		@SuppressWarnings("unchecked")
+        List<TagElement> javadocTags = (List<TagElement>) javadoc.tags();
 		for (TagElement tag : javadocTags) {
 			if ("@deprecated".equals(tag.getTagName())) {
 				return true;

@@ -6,21 +6,10 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import refdiff.core.api.Refactoring;
 
 /**
- * Handler object that works in conjunction with {@link refdiff.core.api.GitHistoryRefactoringMiner}.
+ * Handler object that works in conjunction with {@link refdiff.core.api.GitRefactoringDetector}.
  * 
  */
 public abstract class RefactoringHandler {
-
-	/**
-	 * Indicate commits that should be ignored.
-	 * You may override this method to implement custom logic.
-	 *  
-	 * @param commitId The SHA key that identifies the commit.
-	 * @return True to skip the commit, false otherwise.
-	 */
-	public boolean skipCommit(String commitId) {
-		return false;
-	}
 
 	/**
 	 * This method is called after each commit is analyzed.
@@ -42,13 +31,4 @@ public abstract class RefactoringHandler {
         throw new RuntimeException(e);
     }
 
-	/**
-	 * This method is called after all commits are analyzed.
-	 * You may override this method to implement custom logic.
-	 * 
-	 * @param refactoringsCount Total number of refactorings detected. 
-	 * @param commitsCount Total number of commits analyzed.
-	 * @param errorCommitsCount Total number of commits not analyzed due to errors.
-	 */
-	public void onFinish(int refactoringsCount, int commitsCount, int errorCommitsCount) {}
 }

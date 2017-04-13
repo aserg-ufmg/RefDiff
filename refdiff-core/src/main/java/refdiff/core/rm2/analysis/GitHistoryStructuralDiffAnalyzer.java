@@ -20,13 +20,13 @@ import refdiff.core.util.GitServiceImpl;
 public class GitHistoryStructuralDiffAnalyzer {
 
 	Logger logger = LoggerFactory.getLogger(GitHistoryStructuralDiffAnalyzer.class);
-	private final RefactoringDetectorConfig config;
+	private final RefDiffConfig config;
 	
 	public GitHistoryStructuralDiffAnalyzer() {
-        this(new RefactoringDetectorConfigImpl());
+        this(new RefDiffConfigImpl());
     }
 	
-	public GitHistoryStructuralDiffAnalyzer(RefactoringDetectorConfig config) {
+	public GitHistoryStructuralDiffAnalyzer(RefDiffConfig config) {
         this.config = config;
     }
 

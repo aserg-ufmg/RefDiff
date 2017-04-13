@@ -118,20 +118,11 @@ public class GitServiceImpl implements GitService {
 //		ExternalProcess.execute(workingDir, "git", "checkout", commitId);
 	}
 
-	public void checkout2(Repository repository, String commitId) throws Exception {
-	    logger.info("Checking out {} {} ...", repository.getDirectory().getParent().toString(), commitId);
-		File workingDir = repository.getDirectory().getParentFile();
-		String output = ExternalProcess.execute(workingDir, "git", "checkout", commitId);
-		if (output.startsWith("fatal")) {
-		    throw new RuntimeException("git error " + output);
-		}
-	}
-
 	@Override
 	public int countCommits(Repository repository, String branch) throws Exception {
 		RevWalk walk = new RevWalk(repository);
 		try {
-			Ref ref = repository.getRef(REMOTE_REFS_PREFIX + branch);
+			Ref ref = repository.findRef(REMOTE_REFS_PREFIX + branch);
 			ObjectId objectId = ref.getObjectId();
 			RevCommit start = walk.parseCommit(objectId);
 			walk.setRevFilter(RevFilter.NO_MERGES);
@@ -239,40 +230,6 @@ public class GitServiceImpl implements GitService {
 			return "RegularCommitsFilter";
 		}
 	}
-
-//	@Override
-	public void fileTreeDiff2(Repository repository, RevCommit current, List<String> javaFilesBefore, List<String> javaFilesCurrent, Map<String, String> renamedFilesHint, boolean detectRenames) throws Exception {
-        File workingDir = repository.getDirectory().getParentFile();
-        String sha = current.getId().getName();
-        String output;
-        if (detectRenames) {
-            output = ExternalProcess.execute(workingDir, "git", "diff", "--name-status", "--find-renames", sha + "^.." + sha);
-        } else {
-            output = ExternalProcess.execute(workingDir, "git", "diff", "--name-status", sha + "^.." + sha);
-        }
-        if (output.startsWith("fatal")) {
-            throw new RuntimeException("git error " + output);
-        }
-        for (String line : output.split("\n")) {
-        	String[] fields = line.split("\t");
-        	char changeType = fields[0].charAt(0);
-        	String path = fields[1];
-        	if (isJavafile(path)) {
-        		if (changeType != 'A') {
-        			javaFilesBefore.add(path);
-        		}
-        		if (changeType != 'D') {
-        			if (changeType == 'R') {
-        				String newPath = fields[2];
-        				javaFilesCurrent.add(newPath);
-        				renamedFilesHint.put(path, newPath);
-        			} else {
-        				javaFilesCurrent.add(path);
-        			}
-        		}
-        	}
-        }
-	}
 	
 	@Override
 	public void fileTreeDiff(Repository repository, RevCommit current, List<String> javaFilesBefore, List<String> javaFilesCurrent, Map<String, String> renamedFilesHint, boolean detectRenames) throws Exception {
@@ -286,36 +243,38 @@ public class GitServiceImpl implements GitService {
 		CanonicalTreeParser newTreeIter = new CanonicalTreeParser();
 		newTreeIter.reset(reader, head);
 		// finally get the list of changed files
-		List<DiffEntry> diffs = new Git(repository).diff()
-		                    .setNewTree(newTreeIter)
-		                    .setOldTree(oldTreeIter)
-		                    .setShowNameAndStatusOnly(true)
-		                    .call();
-		if (detectRenames) {
-		    RenameDetector rd = new RenameDetector(repository);
-		    rd.addAll(diffs);
-		    diffs = rd.compute();
+		try (Git git = new Git(repository)) {
+		    List<DiffEntry> diffs = git.diff()
+		            .setNewTree(newTreeIter)
+		            .setOldTree(oldTreeIter)
+		            .setShowNameAndStatusOnly(true)
+		            .call();
+		    if (detectRenames) {
+		        RenameDetector rd = new RenameDetector(repository);
+		        rd.addAll(diffs);
+		        diffs = rd.compute();
+		    }
+		    
+		    for (DiffEntry entry : diffs) {
+		        ChangeType changeType = entry.getChangeType();
+		        if (changeType != ChangeType.ADD) {
+		            String oldPath = entry.getOldPath();
+		            if (isJavafile(oldPath)) {
+		                javaFilesBefore.add(oldPath);
+		            }
+		        }
+		        if (changeType != ChangeType.DELETE) {
+		            String newPath = entry.getNewPath();
+		            if (isJavafile(newPath)) {
+		                javaFilesCurrent.add(newPath);
+		                if (changeType == ChangeType.RENAME) {
+		                    String oldPath = entry.getOldPath();
+		                    renamedFilesHint.put(oldPath, newPath);
+		                }
+		            }
+		        }
+		    }
 		}
-		
-        for (DiffEntry entry : diffs) {
-        	ChangeType changeType = entry.getChangeType();
-        	if (changeType != ChangeType.ADD) {
-        		String oldPath = entry.getOldPath();
-        		if (isJavafile(oldPath)) {
-        			javaFilesBefore.add(oldPath);
-        		}
-        	}
-    		if (changeType != ChangeType.DELETE) {
-        		String newPath = entry.getNewPath();
-        		if (isJavafile(newPath)) {
-        			javaFilesCurrent.add(newPath);
-        			if (changeType == ChangeType.RENAME) {
-        				String oldPath = entry.getOldPath();
-        				renamedFilesHint.put(oldPath, newPath);
-        			}
-        		}
-    		}
-        }
 	}
 	
 	private boolean isJavafile(String path) {

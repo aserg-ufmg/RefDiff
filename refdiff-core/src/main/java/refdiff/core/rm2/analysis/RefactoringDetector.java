@@ -25,9 +25,9 @@ import refdiff.core.rm2.model.refactoring.SDRenameMethod;
 
 public class RefactoringDetector {
 
-    private final RefactoringDetectorConfig config;
+    private final RefDiffConfig config;
 
-    public RefactoringDetector(RefactoringDetectorConfig config) {
+    public RefactoringDetector(RefDiffConfig config) {
         this.config = config;
     }
 

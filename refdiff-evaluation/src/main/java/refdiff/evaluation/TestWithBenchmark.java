@@ -5,18 +5,18 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Locale;
 
-import refdiff.core.rm2.analysis.GitHistoryRefactoringMiner2;
-import refdiff.core.rm2.analysis.RefactoringDetectorConfigImpl;
+import refdiff.core.RefDiff;
+import refdiff.core.api.RefactoringType;
+import refdiff.core.rm2.analysis.RefDiffConfigImpl;
 import refdiff.core.rm2.analysis.codesimilarity.CodeSimilarityStrategy;
 import refdiff.core.rm2.model.RelationshipType;
 import refdiff.evaluation.utils.ResultComparator;
 import refdiff.evaluation.utils.ResultComparator.CompareResult;
-import refdiff.core.api.RefactoringType;
 
 public class TestWithBenchmark {
 
     public static void main(String[] args) {
-        RefactoringDetectorConfigImpl config = new RefactoringDetectorConfigImpl();
+        RefDiffConfigImpl config = new RefDiffConfigImpl();
         BenchmarkDataset oracle = new BenchmarkDataset();
         
         config.setThreshold(RelationshipType.MOVE_TYPE, 0.9);
@@ -59,17 +59,17 @@ public class TestWithBenchmark {
         printTable3();
     }
 
-    private static RefactoringDetectorConfigImpl calibrate(BenchmarkDataset oracle, RefactoringDetectorConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
+    private static RefDiffConfigImpl calibrate(BenchmarkDataset oracle, RefDiffConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
         ResultComparator rc1 = new ResultComparator();
         rc1.expect(oracle.all());
         EnumSet<RefactoringType> refTypeSet = EnumSet.of(refType, refTypes);
         
-        List<RefactoringDetectorConfigImpl> configurations = generateRmConfigurations(baseConfig, relType);
+        List<RefDiffConfigImpl> configurations = generateRmConfigurations(baseConfig, relType);
         double maxF1 = 0.0;
-        RefactoringDetectorConfigImpl maxConfig = configurations.get(0);
+        RefDiffConfigImpl maxConfig = configurations.get(0);
         
-        for (RefactoringDetectorConfigImpl config : configurations) {
-            rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new GitHistoryRefactoringMiner2(config), oracle.all()));
+        for (RefDiffConfigImpl config : configurations) {
+            rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new RefDiff(config), oracle.all()));
             CompareResult result = rc1.getCompareResult(config.getId(), refTypeSet);
             double f1 = result.getF1();
             if (f1 >= maxF1) {
@@ -82,11 +82,11 @@ public class TestWithBenchmark {
         return maxConfig;
     }
 
-    public static List<RefactoringDetectorConfigImpl> generateRmConfigurations(RefactoringDetectorConfigImpl baseConfig, RelationshipType relationshipType) {
-        List<RefactoringDetectorConfigImpl> list = new ArrayList<>();
+    public static List<RefDiffConfigImpl> generateRmConfigurations(RefDiffConfigImpl baseConfig, RelationshipType relationshipType) {
+        List<RefDiffConfigImpl> list = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
             double t = 0.1 * i;
-            RefactoringDetectorConfigImpl config = baseConfig.clone();
+            RefDiffConfigImpl config = baseConfig.clone();
             config.setId("rm2-idf-" + relationshipType + "-" + i);
             config.setThreshold(relationshipType, t);
             config.setCodeSimilarityStrategy(CodeSimilarityStrategy.TFIDF);
@@ -100,8 +100,8 @@ public class TestWithBenchmark {
         ResultComparator rc1 = new ResultComparator();
         BenchmarkDataset oracle = new BenchmarkDataset();
         rc1.expect(oracle.all());
-        RefactoringDetectorConfigImpl config = new RefactoringDetectorConfigImpl();
-        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new GitHistoryRefactoringMiner2(config), oracle.all()));
+        RefDiffConfigImpl config = new RefDiffConfigImpl();
+        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new RefDiff(config), oracle.all()));
         CompareResult r = rc1.getCompareResult(config.getId(), EnumSet.allOf(RefactoringType.class));
         
         System.out.println("\\begin{tabular}{@{}lrrrrrcc@{}}");

@@ -6,7 +6,7 @@ import java.util.Map;
 import refdiff.core.rm2.analysis.codesimilarity.CodeSimilarityStrategy;
 import refdiff.core.rm2.model.RelationshipType;
 
-public class RefactoringDetectorConfigImpl implements RefactoringDetectorConfig {
+public class RefDiffConfigImpl implements RefDiffConfig {
 
     private String id = "refdiff";
 
@@ -16,7 +16,7 @@ public class RefactoringDetectorConfigImpl implements RefactoringDetectorConfig 
     
     private CodeSimilarityStrategy codeSimilarityStrategy = CodeSimilarityStrategy.TFIDF;
 
-    public RefactoringDetectorConfigImpl() {
+    public RefDiffConfigImpl() {
         setThreshold(RelationshipType.MOVE_TYPE, 0.9);
         setThreshold(RelationshipType.RENAME_TYPE, 0.4);
         setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.8);
@@ -64,14 +64,14 @@ public class RefactoringDetectorConfigImpl implements RefactoringDetectorConfig 
         return codeSimilarityStrategy;
     }
 
-    public RefactoringDetectorConfig setCodeSimilarityStrategy(CodeSimilarityStrategy codeSimilarityStrategy) {
+    public RefDiffConfig setCodeSimilarityStrategy(CodeSimilarityStrategy codeSimilarityStrategy) {
         this.codeSimilarityStrategy = codeSimilarityStrategy;
         return this;
     }
 
     @Override
-    public RefactoringDetectorConfigImpl clone() {
-        RefactoringDetectorConfigImpl c = new RefactoringDetectorConfigImpl();
+    public RefDiffConfigImpl clone() {
+        RefDiffConfigImpl c = new RefDiffConfigImpl();
         c.id = id;
         c.defaultThreshold = defaultThreshold;
         c.codeSimilarityStrategy = codeSimilarityStrategy;
