@@ -2,6 +2,5 @@
 /build/
 /.gradle/
 /.settings/
-/tmpResult/
 .classpath
 .project

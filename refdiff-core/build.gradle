@@ -4,22 +4,7 @@ plugins {
 }
 
 dependencies {
-	compile 'org.eclipse.jgit:org.eclipse.jgit:4.1.0.201509280440-r'
-	
-	compile files('lib/org.eclipse.core.commands_3.7.0.v20150422-0725.jar')
-	compile files('lib/org.eclipse.core.contenttype_3.5.0.v20150421-2214.jar')
-	compile files('lib/org.eclipse.core.expressions_3.5.0.v20150421-2214.jar')
-	compile files('lib/org.eclipse.core.filesystem_1.5.0.v20150725-1910.jar')
-	compile files('lib/org.eclipse.core.jobs_3.7.0.v20150330-2103.jar')
-	compile files('lib/org.eclipse.core.resources_3.10.1.v20150725-1910.jar')
-	compile files('lib/org.eclipse.core.runtime_3.11.1.v20150903-1804.jar')
-	compile files('lib/org.eclipse.equinox.app_1.3.300.v20150423-1356.jar')
-	compile files('lib/org.eclipse.equinox.common_3.7.0.v20150402-1709.jar')
-	compile files('lib/org.eclipse.equinox.preferences_3.5.300.v20150408-1437.jar')
-	compile files('lib/org.eclipse.equinox.registry_3.6.0.v20150318-1503.jar')
-	compile files('lib/org.eclipse.jdt.core_3.12.1.v20160829-0950.jar')
-	compile files('lib/org.eclipse.osgi_3.10.101.v20150820-1432.jar')
-	compile files('lib/org.eclipse.text_3.5.400.v20150505-1044.jar')
-	
+	compile 'org.eclipse.jgit:org.eclipse.jgit:4.7.0.201704051617-r'
+	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
 	testCompile 'junit:junit:4.11'
 }
