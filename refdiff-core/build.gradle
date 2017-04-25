@@ -8,3 +8,8 @@ dependencies {
 	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
 	testCompile 'junit:junit:4.11'
 }
+
+task refdiff(type: JavaExec) {
+    main = 'refdiff.core.RefDiff'
+    classpath = configurations.runtime
+}
