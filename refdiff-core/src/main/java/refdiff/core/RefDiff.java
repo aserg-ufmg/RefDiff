@@ -1,5 +1,6 @@
 package refdiff.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jgit.lib.Repository;
@@ -14,6 +15,7 @@ import refdiff.core.rm2.analysis.RefDiffConfig;
 import refdiff.core.rm2.analysis.RefDiffConfigImpl;
 import refdiff.core.rm2.analysis.StructuralDiffHandler;
 import refdiff.core.rm2.model.SDModel;
+import refdiff.core.rm2.model.refactoring.SDRefactoring;
 import refdiff.core.util.GitServiceImpl;
 
 public class RefDiff implements GitRefactoringDetector {
@@ -30,7 +32,7 @@ public class RefDiff implements GitRefactoringDetector {
             GitRefactoringDetector detector = new RefDiff();
             detector.detectAtCommit(repo, commitId, new RefactoringHandler() {
                 @Override
-                public void handle(RevCommit commitData, List<Refactoring> refactorings) {
+                public void handle(RevCommit commitData, List<? extends Refactoring> refactorings) {
                     if (refactorings.isEmpty()) {
                         System.out.println("No refactorings found in commit " + commitId);
                     } else {
@@ -47,6 +49,25 @@ public class RefDiff implements GitRefactoringDetector {
                 }
             });
         }
+    }
+
+    /**
+     * Detect refactorings performed in the specified commit. 
+     * 
+     * @param repository A git repository (from JGit library).
+     * @param commitId The SHA key that identifies the commit.
+     * @returns A list with the detected refactorings. 
+     */
+    public List<SDRefactoring> detectAtCommit(Repository repository, String commitId) {
+        List<SDRefactoring> result = new ArrayList<>();
+        GitHistoryStructuralDiffAnalyzer sda = new GitHistoryStructuralDiffAnalyzer(config);
+        sda.detectAtCommit(repository, commitId, new StructuralDiffHandler() {
+            @Override
+            public void handle(RevCommit commitData, SDModel sdModel) {
+                result.addAll(sdModel.getRefactorings());
+            }
+        });
+        return result;
     }
 
     private RefDiffConfig config;

@@ -10,8 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import refdiff.core.rm2.exception.DuplicateEntityException;
-
-import refdiff.core.api.Refactoring;
+import refdiff.core.rm2.model.refactoring.SDRefactoring;
 
 public class SDModel {
 
@@ -187,7 +186,7 @@ public class SDModel {
 	
 	private int nextId = 0;
 //	EntitySet<SDMethod> extractedMethods = new EntitySet<SDMethod>();
-	List<Refactoring> refactorings = new ArrayList<Refactoring>();
+	List<SDRefactoring> refactorings = new ArrayList<SDRefactoring>();
 	
 	private ArrayList<LinkedList<Relationship>> relationships;
 	
@@ -215,11 +214,11 @@ public class SDModel {
 	}
 	
 
-	public void addRefactoring(Refactoring ref) {
+	public void addRefactoring(SDRefactoring ref) {
 		refactorings.add(ref);
 	}
 
-	public List<Refactoring> getRefactorings() {
+	public List<SDRefactoring> getRefactorings() {
 		return refactorings;
 	}
 

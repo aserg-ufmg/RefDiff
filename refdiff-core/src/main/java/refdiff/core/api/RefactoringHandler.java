@@ -18,7 +18,7 @@ public abstract class RefactoringHandler {
 	 * @param commitData An object (from JGit library) that contains metadata information about the commit such as date, author, etc.
 	 * @param refactorings List of refactorings detected in the commit.
 	 */
-	public void handle(RevCommit commitData, List<Refactoring> refactorings) {}
+	public void handle(RevCommit commitData, List<? extends Refactoring> refactorings) {}
 
 	/**
      * This method is called whenever an exception is thrown during the analysis of the given commit.

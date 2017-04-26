@@ -28,7 +28,7 @@ public class RefactoringCollector extends RefactoringHandler {
     }
 
     @Override
-    public void handle(RevCommit commitData, List<Refactoring> refactorings) {
+    public void handle(RevCommit commitData, List<? extends Refactoring> refactorings) {
         for (Refactoring rx : refactorings) {
             if (rx instanceof SDRefactoring) {
                 SDRefactoring sdr = (SDRefactoring) rx;
