@@ -10,13 +10,13 @@ import refdiff.evaluation.utils.RefactoringSet;
 
 public class Arqsoft16Dataset {
 
-  public final RefactoringSet atmosphere_cc2b3f1 = new RefactoringSet("https://github.com/aserg-ufmg/atmosphere.git", "cc2b3f1");
-  public final RefactoringSet clojure_17217a1 = new RefactoringSet("https://github.com/aserg-ufmg/clojure.git", "17217a1");
-  public final RefactoringSet guava_79767ec = new RefactoringSet("https://github.com/aserg-ufmg/guava.git", "79767ec");
-  public final RefactoringSet metrics_276d5e4 = new RefactoringSet("https://github.com/aserg-ufmg/metrics.git", "276d5e4");
-  public final RefactoringSet orientdb_b213aaf = new RefactoringSet("https://github.com/aserg-ufmg/orientdb.git", "b213aaf");
-  public final RefactoringSet retrofit_f13f317 = new RefactoringSet("https://github.com/aserg-ufmg/retrofit.git", "f13f317");
-  public final RefactoringSet springBoot_48e893a = new RefactoringSet("https://github.com/aserg-ufmg/spring-boot.git", "48e893a");
+  public final RefactoringSet atmosphere_cc2b3f1 = new RefactoringSet("https://github.com/refdiff-data/atmosphere.git", "cc2b3f1");
+  public final RefactoringSet clojure_17217a1 = new RefactoringSet("https://github.com/refdiff-data/clojure.git", "17217a1");
+  public final RefactoringSet guava_79767ec = new RefactoringSet("https://github.com/refdiff-data/guava.git", "79767ec");
+  public final RefactoringSet metrics_276d5e4 = new RefactoringSet("https://github.com/refdiff-data/metrics.git", "276d5e4");
+  public final RefactoringSet orientdb_b213aaf = new RefactoringSet("https://github.com/refdiff-data/orientdb.git", "b213aaf");
+  public final RefactoringSet retrofit_f13f317 = new RefactoringSet("https://github.com/refdiff-data/retrofit.git", "f13f317");
+  public final RefactoringSet springBoot_48e893a = new RefactoringSet("https://github.com/refdiff-data/spring-boot.git", "48e893a");
   
   public Arqsoft16Dataset() {
     atmosphere_cc2b3f1.add(item("Move Class", "org.atmosphere.util.annotation.InputStreamIterator", "org.atmosphere.util.annotation.iterator.InputStreamIterator"));

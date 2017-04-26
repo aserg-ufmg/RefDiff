@@ -14,7 +14,7 @@ public class RefDiffExample {
     public static void main(String[] args) throws Exception {
         RefDiff refDiff = new RefDiff();
         GitService gitService = new GitServiceImpl(); 
-        try (Repository repository = gitService.openRepository("C:/tmp/clojure")) {
+        try (Repository repository = gitService.cloneIfNotExists("C:/tmp/clojure", "https://github.com/refdiff-data/clojure.git")) {
             List<SDRefactoring> refactorings = refDiff.detectAtCommit(repository, "17217a1");
             for (SDRefactoring refactoring : refactorings) {
                 System.out.println(refactoring.toString());

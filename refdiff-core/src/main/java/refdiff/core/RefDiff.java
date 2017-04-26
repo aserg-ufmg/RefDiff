@@ -56,7 +56,7 @@ public class RefDiff implements GitRefactoringDetector {
      * 
      * @param repository A git repository (from JGit library).
      * @param commitId The SHA key that identifies the commit.
-     * @returns A list with the detected refactorings. 
+     * @return A list with the detected refactorings. 
      */
     public List<SDRefactoring> detectAtCommit(Repository repository, String commitId) {
         List<SDRefactoring> result = new ArrayList<>();
