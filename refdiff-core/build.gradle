@@ -1,6 +1,65 @@
 plugins {
     id 'java'
     id 'eclipse'
+    id 'signing'
+    id 'maven'
+}
+
+group = 'com.github.aserg-ufmg'
+version = '0.1.0-SNAPSHOT'
+description = 'An automated tool to detect refactorings in version histories'
+
+signing {
+	sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            // POM signature
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+            // Target repository
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+                authentication(userName: ossrhUser, password: ossrhPassword)
+            }
+            snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
+                authentication(userName: ossrhUser, password: ossrhPassword)
+            }
+            pom.project {
+                name project.name
+                description project.description
+                packaging 'jar'
+                url 'https://github.com/aserg-ufmg/RefDiff'
+
+                scm {
+                    connection 'scm:git:https://github.com/aserg-ufmg/RefDiff.git'
+                    developerConnection 'scm:git:git@github.com:aserg-ufmg/RefDiff.git'
+                    url 'https://github.com/aserg-ufmg/RefDiff.git'
+                }
+
+                licenses {
+                    license {
+                        name 'The MIT License (MIT)'
+                        url 'http://opensource.org/licenses/MIT'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'danilofs'
+                        name = 'Danilo Ferreira e Silva'
+                        email = 'danilofs@dcc.ufmg.br'
+                    }
+                }
+            }
+        }
+    }
+}
+
+nexusStaging {  
+    username = ossrhUser
+    password = ossrhPassword
 }
 
 dependencies {
@@ -9,7 +68,16 @@ dependencies {
 	testCompile 'junit:junit:4.11'
 }
 
-task refdiff(type: JavaExec) {
-    main = 'refdiff.core.RefDiff'
-    classpath = configurations.runtime
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
 }
