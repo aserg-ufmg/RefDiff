@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.github.aserg-ufmg'
-version = '0.1.0'
+version = '0.1.1'
 description = 'An automated tool to detect refactorings in version histories'
 
 signing {

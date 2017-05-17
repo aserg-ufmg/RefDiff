@@ -109,7 +109,8 @@ public class SDModel {
 		
 		private void putAtMap(EntityKey key, SDEntity entity) {
 		    if (map.containsKey(key)) {
-		        throw new DuplicateEntityException(key.toString());
+		        return;
+		        //throw new DuplicateEntityException(key.toString());
 		    }
 		    map.put(key, entity);
 		    nameToKey.put(key.toName(), key);
