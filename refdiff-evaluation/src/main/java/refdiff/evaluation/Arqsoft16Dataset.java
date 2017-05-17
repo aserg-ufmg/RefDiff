@@ -177,17 +177,6 @@ public class Arqsoft16Dataset {
     clojure_17217a1.add(item("Inline Method", "clojure.lang.LazySeq.reify()", "clojure.lang.LazySeq.subList(int, int)\nclojure.lang.LazySeq.listIterator(int)\nclojure.lang.LazySeq.listIterator()\nclojure.lang.LazySeq.lastIndexOf(Object)"));
     clojure_17217a1.add(item("Inline Method", "clojure.lang.MultiFn.isA(Object, Object)", "clojure.lang.MultiFn.dominates(Object, Object)\nclojure.lang.MultiFn.findAndCacheBestMethod(Object)"));
     clojure_17217a1.add(item("Inline Method", "clojure.lang.Util.dohasheq(IHashEq)", "clojure.lang.Util.hasheq(Object)"));
-    clojure_17217a1.add(item("Move Field", "", ""));
-    clojure_17217a1.add(item("Move Field", "", ""));
-    clojure_17217a1.add(item("Move Field", "", ""));
-    clojure_17217a1.add(item("Move Field", "", ""));
-    clojure_17217a1.add(item("Move Field", "", ""));
-    clojure_17217a1.add(item("Pull Up Field", "", ""));
-    clojure_17217a1.add(item("Pull Up Field", "", ""));
-    clojure_17217a1.add(item("Pull Up Field", "", ""));
-    clojure_17217a1.add(item("Push Down Field", "", ""));
-    clojure_17217a1.add(item("Push Down Field", "", ""));
-    clojure_17217a1.add(item("Push Down Field", "", ""));
     
     metrics_276d5e4.add(item("Rename Class", "io.dropwizard.metrics.benchmarks.ReservoirBenchmark", "io.dropwizard.metrics.benchmarks.ReservoirBenchmarkData"));
     metrics_276d5e4.add(item("Rename Class", "io.dropwizard.metrics.benchmarks.MeterBenchmark", "io.dropwizard.metrics.benchmarks.MeterBenchmarkData"));

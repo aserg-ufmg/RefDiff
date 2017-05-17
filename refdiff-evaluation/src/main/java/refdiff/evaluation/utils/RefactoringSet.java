@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -99,6 +101,15 @@ public class RefactoringSet {
             pw.printf("\n    .add(RefactoringType.%s, \"%s\", \"%s\")", r.getRefactoringType().toString(), r.getEntityBefore(), r.getEntityAfter());
         }
         pw.println(";");
+    }
+
+    public void printCsv(PrintStream pw) {
+        ArrayList<RefactoringRelationship> list = new ArrayList<>();
+        list.addAll(refactorings);
+        Collections.sort(list);
+        for (RefactoringRelationship r : list) {
+            pw.printf("%s\t%s\t%s\n", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
+        }
     }
 
     public void saveToFile(File file) {

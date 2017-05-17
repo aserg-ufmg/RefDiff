@@ -60,4 +60,6 @@ The algorithm RefDiff uses is described in details in the following paper:
 
 * Danilo Silva, Marco Tulio Valente. [RefDiff: Detecting Refactorings in Version Histories](http://www.dcc.ufmg.br/~mtov/pub/2017-msr.pdf). In 14th International Conference on Mining Software Repositories (MSR), 2017.
 
+The data used in the evaluation is available in [this spreadsheet](refdiff-evaluation/data/evaluation-oracle.xlsx).
+
 Learn more about our research group at http://aserg.labsoft.dcc.ufmg.br/

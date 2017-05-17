@@ -5,28 +5,31 @@ import java.util.regex.Pattern;
 
 public enum RefactoringType {
 
-	EXTRACT_OPERATION("Extract Method", "Extract Method (.+) extracted from (.+) in class (.+)", 2),
-	RENAME_CLASS("Rename Class", "Rename Class (.+) renamed to (.+)"),
+    RENAME_CLASS("Rename Class", "Rename Class (.+) renamed to (.+)"),
+    MOVE_CLASS("Move Class", "Move Class (.+) moved to (.+)"),
+    MOVE_RENAME_CLASS("Move And Rename Class", ".+"),
+    EXTRACT_INTERFACE("Extract Interface", "Extract Interface (.+) from classes \\[(.+)\\]", 2),
+    EXTRACT_SUPERCLASS("Extract Superclass", "Extract Superclass (.+) from classes \\[(.+)\\]", 2),
+
+    RENAME_METHOD("Rename Method", "Rename Method (.+) renamed to (.+) in class (.+)"),
+    CHANGE_METHOD_SIGNATURE("Change Method Signature", "Change Method Signature (.+) to (.+) in class (.+)"),
+    PULL_UP_OPERATION("Pull Up Method", "Pull Up Method (.+) from class (.+) to (.+) from class (.+)", 1, 2),
+    PUSH_DOWN_OPERATION("Push Down Method", "Push Down Method (.+) from class (.+) to (.+) from class (.+)", 3, 4),
+    MOVE_OPERATION("Move Method", "Move Method (.+) from class (.+) to (.+) from class (.+)"),
+    EXTRACT_OPERATION("Extract Method", "Extract Method (.+) extracted from (.+) in class (.+)", 2),
+    INLINE_OPERATION("Inline Method", "Inline Method (.+) inlined to (.+) in class (.+)", 2),
+
+    PULL_UP_ATTRIBUTE("Pull Up Attribute", "Pull Up Attribute (.+) from class (.+) to class (.+)", 2),
+    PUSH_DOWN_ATTRIBUTE("Push Down Attribute", "Push Down Attribute (.+) from class (.+) to class (.+)", 3),
 	MOVE_ATTRIBUTE("Move Attribute", "Move Attribute (.+) from class (.+) to class (.+)"),
-	RENAME_METHOD("Rename Method", "Rename Method (.+) renamed to (.+) in class (.+)"),
-	INLINE_OPERATION("Inline Method", "Inline Method (.+) inlined to (.+) in class (.+)", 2),
-	MOVE_OPERATION("Move Method", "Move Method (.+) from class (.+) to (.+) from class (.+)"),
-	PULL_UP_OPERATION("Pull Up Method", "Pull Up Method (.+) from class (.+) to (.+) from class (.+)", 1, 2),
-	MOVE_CLASS("Move Class", "Move Class (.+) moved to (.+)"),
-	MOVE_RENAME_CLASS("Move And Rename Class", ".+"),
+
 	MOVE_CLASS_FOLDER("Move Class Folder", ".+"),
-	PULL_UP_ATTRIBUTE("Pull Up Attribute", "Pull Up Attribute (.+) from class (.+) to class (.+)", 2),
-	PUSH_DOWN_ATTRIBUTE("Push Down Attribute", "Push Down Attribute (.+) from class (.+) to class (.+)", 3),
-	PUSH_DOWN_OPERATION("Push Down Method", "Push Down Method (.+) from class (.+) to (.+) from class (.+)", 3, 4),
-	EXTRACT_INTERFACE("Extract Interface", "Extract Interface (.+) from classes \\[(.+)\\]", 2),
-	EXTRACT_SUPERCLASS("Extract Superclass", "Extract Superclass (.+) from classes \\[(.+)\\]", 2),
 	//EXTRACT_SUPERTYPE("Extract Supertype", "Extract Supertype (.+) from classes \\[(.+)\\]", 2),
 	MERGE_OPERATION("Merge Method", ".+"),
 	EXTRACT_AND_MOVE_OPERATION("Extract And Move Method", ".+"),
 	CONVERT_ANONYMOUS_CLASS_TO_TYPE("Convert Anonymous Class to Type", ".+"),
 	INTRODUCE_POLYMORPHISM("Introduce Polymorphism", ".+"),
-	RENAME_PACKAGE("Rename Package", "Rename Package (.+) to (.+)"),
-    CHANGE_METHOD_SIGNATURE("Change Method Signature", "Change Method Signature (.+) to (.+) in class (.+)");
+	RENAME_PACKAGE("Rename Package", "Rename Package (.+) to (.+)");
 
 	private String displayName;
 	private Pattern regex;
