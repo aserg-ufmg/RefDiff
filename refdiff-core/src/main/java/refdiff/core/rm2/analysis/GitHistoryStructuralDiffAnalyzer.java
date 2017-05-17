@@ -99,8 +99,10 @@ public class GitHistoryStructuralDiffAnalyzer {
 		//RevWalk walk = new RevWalk(repository);
 		try (RevWalk walk = new RevWalk(repository)) {
 			RevCommit commit = walk.parseCommit(repository.resolve(commitId));
-			walk.parseCommit(commit.getParent(0));
-			this.detectRefactorings(gitService, repository, handler, projectFolder, commit);
+			if (commit.getParentCount() == 1) {
+			    walk.parseCommit(commit.getParent(0));
+			    this.detectRefactorings(gitService, repository, handler, projectFolder, commit);
+			}
 		} catch (Exception e) {
 		    logger.warn(String.format("Ignored revision %s due to error", commitId), e);
 		    handler.handleException(commitId, e);

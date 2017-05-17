@@ -145,15 +145,15 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
             extractSupertypesForPostProcessing(type, superTypeBinding);
         }
 
-        final List<String> references = new ArrayList<String>();
-        node.accept(new DependenciesAstVisitor(true) {
-            @Override
-            protected void onTypeAccess(ASTNode node, ITypeBinding binding) {
-                String typeKey = AstUtils.getKeyFromTypeBinding(binding);
-                references.add(typeKey);
-            }
-        });
-        postProcessReferences.put(type, references);
+//        final List<String> references = new ArrayList<String>();
+//        node.accept(new DependenciesAstVisitor(true) {
+//            @Override
+//            protected void onTypeAccess(ASTNode node, ITypeBinding binding) {
+//                String typeKey = AstUtils.getKeyFromTypeBinding(binding);
+//                references.add(typeKey);
+//            }
+//        });
+//        postProcessReferences.put(type, references);
 
         return type;
     }
