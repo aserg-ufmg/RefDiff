@@ -28,7 +28,7 @@ The easiest way to get RefDiff is from the Mavel Central. Declare it as a depend
 <dependency>
   <groupId>com.github.aserg-ufmg</groupId>
   <artifactId>refdiff-core</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
