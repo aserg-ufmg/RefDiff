@@ -79,9 +79,9 @@ Later, we call `refDiff.detectAtCommit`, passing the repository and the ID of th
 List<SDRefactoring> refactorings = refDiff.detectAtCommit(repository, "d94ca2b27c9e8a5fa9fe19483d58d2f2ef024606");
 ```
 
-This is the most straightforward way to use RefDiff's API, in which the source code is compared before and after the commit to find refactorings. Specifically, RefDiff compares the specified commit with its parent commit, assuming the commit has only one parent. Commits that with more than one parent (merges) and with no parent (first commit) will produce an empty list of refactorings.
+This is the most straightforward way to use RefDiff's API, in which the source code is compared before and after the commit to find refactorings. Specifically, RefDiff compares the specified commit with its parent commit, assuming the commit has only one parent. Commits with more than one parent (merges) and with no parent (first commit) will produce an empty list of refactorings.
 
-The last part o the code iterates in the list of refactorings and print their data in the console:
+The last part o the code iterates on the list of refactorings and print their data in the console, yielding the following output:
 
 ```
 Move Class  core-client/src/main/java/org.glassfish.jersey.client.HttpUrlConnector  core-client/src/main/java/org.glassfish.jersey.client.internal.HttpUrlConnector

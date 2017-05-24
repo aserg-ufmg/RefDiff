@@ -45,6 +45,9 @@ try (Repository repository = gitService.cloneIfNotExists("C:/tmp/clojure", "http
 }
 ```
 
+See more details in [this tutorial](doc/Tutorial1.md)
+
+
 ## Building from the source code
 
 RefDiff uses Gradle as the build system. If you would like to work with the source code of RefDiff, clone the repository and run the following command inside the folder:
