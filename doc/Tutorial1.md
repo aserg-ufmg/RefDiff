@@ -8,17 +8,9 @@ In this tutorial, we will walk through each step to use RefDiff to mine refactor
 
 ## 1. Create a new project
 
-In Eclipse, click in
-
-    File > New > Project ...
-
+In Eclipse, click in **File > New > Project ...**.
 Then, select *Maven Project* in the *New project wizard*.
-Proceed with the default options by clicking *Next*, until you are asked to enter a group and artifact Id. Fill the fields with the desired names, for example:
-
-**Group Id**: refdiff 
-**Artifact Id**: tutorial1
-
-and then click *Finish*.
+Proceed with the default options by clicking *Next*, until you are asked to enter a group and artifact Id. Fill the fields with the desired names (for example, **Group Id**: refdiff and **Artifact Id**: tutorial1) and then click *Finish*.
 
 Now, edit the `pom.xml` file in the root of the project and add the following entry to the `dependencies` tag:
 
@@ -30,7 +22,7 @@ Now, edit the `pom.xml` file in the root of the project and add the following en
 </dependency>
 ```
 
-When you save the file, all the necessary dependencies to run refdiff will be downloaded from the maven central and configured in the classpath automatically.
+When you save the file, all the necessary dependencies to run RefDiff will be downloaded from the Maven central repository and configured in the classpath automatically.
 
 Tha last step to configure the project is to define the compiler compliance level. Right click on the project you just created and click in *Properties*. Then, open the *Java Compiler* tab and set the value of the *Compiler compliance level* to 1.8.
 Now, you are ready to use RefDiff in your project.
