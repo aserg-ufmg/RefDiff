@@ -8,9 +8,9 @@ In this tutorial, we will walk through each step to use RefDiff to mine refactor
 
 ## 1. Create a new project
 
-In Eclipse, click in **File > New > Project ...**.
+In Eclipse, click in **File > New > Project**.
 Then, select *Maven Project* in the *New project wizard*.
-Proceed with the default options by clicking *Next*, until you are asked to enter a group and artifact Id. Fill the fields with the desired names (for example, **Group Id**: refdiff and **Artifact Id**: tutorial1) and then click *Finish*.
+Proceed with the default options by clicking **Next**, until you are asked to enter a group and artifact Id. Fill the fields with the desired names (for example, *Group Id*: refdiff and *Artifact Id*: tutorial1) and then click **Finish**.
 
 Now, edit the `pom.xml` file in the root of the project and add the following entry to the `dependencies` tag:
 
@@ -62,3 +62,35 @@ public class Example1 {
     }
 }
 ```
+
+In this code snippet, we first instantiate two objects: `RefDiff` and `GitServiceImpl`. The first one is the main entry point of RefDiff's API. While the second is a utility class to manipulate git repositories.
+Before detecting refactorings, we most create a local clone of the repository, which is done by the statement below:
+
+```java
+Repository repository = gitService.cloneIfNotExists("C:/tmp/jersey", "https://github.com/jersey/jersey.git")
+```
+
+Note that the first parameter to the method `cloneIfNotExists` is the path of a folder to store the local clone. If the folder already exists, it is assumed to be a git repository and the cloning process is skiped. The method returns a `Repository` object from the jgit API. Such object is instantiated in a `try` block to be automatically closed using the [try-with-resources](https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html) feature of Java 7.
+
+
+Later, we call `refDiff.detectAtCommit`, passing the repository and the ID of the commit as arguments, to get a list of the refactorings detected in such commit.
+
+```java
+List<SDRefactoring> refactorings = refDiff.detectAtCommit(repository, "d94ca2b27c9e8a5fa9fe19483d58d2f2ef024606");
+```
+
+This is the most straightforward way to use RefDiff's API, in which the source code is compared before and after the commit to find refactorings. Specifically, RefDiff compares the specified commit with its parent commit, assuming the commit has only one parent. Commits that with more than one parent (merges) and with no parent (first commit) will produce an empty list of refactorings.
+
+The last part o the code iterates in the list of refactorings and print their data in the console:
+
+```
+Move Class  core-client/src/main/java/org.glassfish.jersey.client.HttpUrlConnector  core-client/src/main/java/org.glassfish.jersey.client.internal.HttpUrlConnector
+Extract Method  core-client/src/main/java/org.glassfish.jersey.client.HttpUrlConnectorProvider#getConnector(Client, Configuration)  core-client/src/main/java/org.glassfish.jersey.client.HttpUrlConnectorProvider#createHttpUrlConnector(Client, ConnectionFactory, int, boolean, boolean)
+Extract Method  core-client/src/main/java/org.glassfish.jersey.client.HttpUrlConnector#_apply(ClientRequest)    core-client/src/main/java/org.glassfish.jersey.client.internal.HttpUrlConnector#secureConnection(Client, HttpURLConnection)
+```
+
+In this example, RefDiff finds that:
+
+* the class `HttpUrlConnector` is moved from `org.glassfish.jersey.client` to `org.glassfish.jersey.client.internal`;
+* the method `createHttpUrlConnector(Client, ConnectionFactory, int, boolean, boolean)` is extracted from `HttpUrlConnectorProvider#getConnector(Client, Configuration)`; and
+* the method `secureConnection(Client, HttpURLConnection)` is extracted from `HttpUrlConnector#_apply(ClientRequest)`.
