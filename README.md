@@ -47,6 +47,11 @@ try (Repository repository = gitService.cloneIfNotExists("C:/tmp/clojure", "http
 
 See more details in [this tutorial](doc/Tutorial1.md)
 
+## Example
+
+The following figure shows the number of refactorings detected by RefDiff when executed over all commits of [JUnit4](https://github.com/junit-team/junit4).
+
+![Junit4 results](https://github.com/aserg-ufmg/RefDiff/blob/master/junit4-refdiff.png)
 
 ## Building from the source code
 
