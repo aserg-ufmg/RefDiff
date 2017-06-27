@@ -1,8 +1,6 @@
 package refdiff.evaluation.benchmark;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,14 +12,15 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.jgit.api.errors.JGitInternalException;
 import org.eclipse.jgit.errors.MissingObjectException;
 import org.eclipse.jgit.lib.Repository;
+import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
 import refdiff.core.api.GitService;
+import refdiff.core.util.GitServiceImpl;
 import refdiff.evaluation.BenchmarkDataset;
 import refdiff.evaluation.utils.RefactoringDescriptionParser;
 import refdiff.evaluation.utils.RefactoringRelationship;
@@ -29,7 +28,7 @@ import refdiff.evaluation.utils.RefactoringSet;
 
 public class BuildBenchmarkDataset {
 
-	private static int min = 2;
+	private static int min = 10;
 	private static Random randomGen = new Random(1L);
 	private static Set<String> refactoringTypes = new LinkedHashSet<>(Arrays.asList(
 			"Move Class",
@@ -49,14 +48,18 @@ public class BuildBenchmarkDataset {
 			"Move Attribute"));
 
 	private static RefactoringDescriptionParser parser = new RefactoringDescriptionParser();
-	
-	public static void main(String[] args) throws Exception {
-		ObjectMapper om = new ObjectMapper();
-		om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		om.configure(SerializationFeature.INDENT_OUTPUT, true);
-		String baseDir = "d:/tmp/";
+	private static GitService gs = new GitServiceImpl();
+	private static String baseDir = "c:/tmp/";
 
-		List<JsonCommit> commits = new ArrayList<>(Arrays.asList(om.readValue(new File("data/fse/refactorings.json"), JsonCommit[].class)));
+	public static void main(String[] args) throws Exception {
+//		ObjectMapper om = new ObjectMapper();
+//		om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//		om.configure(SerializationFeature.INDENT_OUTPUT, true);
+
+		Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+		root.setLevel(Level.INFO);
+
+		List<RefactoringSet> commits = readFseData();
 		List<RefactoringSet> selectedCommits = new ArrayList<>();
 		BenchmarkDataset bds = new BenchmarkDataset();
 		for (RefactoringSet commit : bds.all()) {
@@ -66,8 +69,8 @@ public class BuildBenchmarkDataset {
 		
 		Set<String> missing = refactoringsMissing(selectedCommits);
 		while (!missing.isEmpty()) {
-			JsonCommit c = selectCommit(commits, missing);
-			selectedCommits.add(toRefactoringSet(c));
+			RefactoringSet c = selectCommit(commits, missing);
+			selectedCommits.add(c);
 			missing = refactoringsMissing(selectedCommits);
 		}
 
@@ -79,57 +82,62 @@ public class BuildBenchmarkDataset {
 //		}
 		//om.writeValue(new File("data/fse/refactorings2.json"), selectedCommits);
 		
-		System.out.println(selectedCommits.size());
+		System.out.println("Total commits: " + selectedCommits.size());
 		for (String refactoringType : refactoringTypes) {
-            long count = countRefactoringType(selectedCommits, refactoringType);
-            System.out.println(refactoringType + " " + count);
-        }
+			long count = countRefactoringType(selectedCommits, refactoringType);
+			System.out.println(refactoringType + " " + count);
+		}
+		System.out.println();
+		for (RefactoringSet commit : selectedCommits) {
+			System.out.println(String.format("%s\t%s", commit.getProject(), commit.getRevision()));
+			for (RefactoringRelationship rr : commit.getRefactorings()) {
+				System.out.println("  " + rr.toString());
+			}
+		}
 	}
 
-	private static void read() {
-	    try (BufferedReader br = new BufferedReader(new FileReader("data/fse/refactorings.txt"))) {
-	        String line = br.readLine();
-	        while (line != null && !line.isEmpty()) {
-	            String[] parts = line.split("\t");
-	            String repo = parts[0];
-	            String sha1 = parts[1];
-	            String description = parts[2];
-	            // TODO
-	            line = br.readLine();
-	        }
-	        
-	    } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+	private static List<RefactoringSet> readFseData() {
+		List<RefactoringSet> list = new ArrayList<>();
+		RefactoringSet rs = null;
+		try (BufferedReader br = new BufferedReader(new FileReader("data/fse/refactorings.txt"))) {
+			String line = br.readLine();
+			while (line != null && !line.isEmpty()) {
+				String[] parts = line.split("\t");
+				String repo = parts[0];
+				String sha1 = parts[1];
+				String description = parts[2];
+				if (rs == null || !rs.getProject().equals(repo) || !rs.getRevision().equals(sha1)) {
+					rs = new RefactoringSet(repo, sha1);
+					list.add(rs);
+				}
+				rs.add(parser.parse(description));
+				line = br.readLine();
+			}
+			return list;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
-	
-	private static RefactoringSet toRefactoringSet(JsonCommit c) {
-        RefactoringSet rs = new RefactoringSet(c.repository, c.sha1);
-        for (JsonRefactoring jr : c.refactorings) {
-            List<RefactoringRelationship> list = parser.parse(jr.description);
-            for (RefactoringRelationship rr : list) {
-                rs.add(rr);
-            }
-        }
-        return rs;
-    }
 
-    private static void remove(List<JsonCommit> commits, String repo, String sha1) {
+    private static void remove(List<RefactoringSet> commits, String repo, String sha1) {
 		for (int i = 0; i < commits.size(); i++) {
-			JsonCommit c = commits.get(i);
-			if (c.repository.equals(repo) && c.sha1.equals(sha1)) {
+			RefactoringSet c = commits.get(i);
+			if (c.getProject().equals(repo) && c.getRevision().equals(sha1)) {
 			    commits.remove(i);
 			    return;
 			}
 		}
 	}
 
-	private static JsonCommit selectCommit(List<JsonCommit> commits, Set<String> missing) {
+	private static RefactoringSet selectCommit(List<RefactoringSet> commits, Set<String> missing) {
 		while (!commits.isEmpty()) {
 			int i = randomGen.nextInt(commits.size());
-			JsonCommit c = commits.remove(i);
-			long neededRefactoringsCount = c.refactorings.stream().filter(r -> missing.contains(r.type)).collect(Collectors.counting());
+			RefactoringSet c = commits.remove(i);
+			long neededRefactoringsCount = c.getRefactorings().stream().filter(r -> missing.contains(r.getRefactoringType().getDisplayName())).collect(Collectors.counting());
 			if (neededRefactoringsCount == 0) {
+				continue;
+			}
+			if (!testCheckout(c.getProject(), c.getRevision())) {
 				continue;
 			}
 			return c;
@@ -151,14 +159,23 @@ public class BuildBenchmarkDataset {
 	private static long countRefactoringType(List<RefactoringSet> selectedCommits, String refactoringType) {
         return selectedCommits.stream().flatMap(c -> c.getRefactorings().stream().filter(r -> r.getRefactoringType().getDisplayName().equals(refactoringType))).collect(Collectors.counting());
     }
-	
-	private static boolean testCheckout(String baseDir, GitService gs, JsonCommit commit) throws Exception {
-		String folderName = baseDir + commit.repository.substring(commit.repository.lastIndexOf('/'), commit.repository.lastIndexOf('.'));
-		try (Repository repo = gs.cloneIfNotExists(folderName, commit.repository)) {
-			gs.checkout(repo, commit.sha1);
+
+	private static boolean testCheckout(String repository, String commitId) {
+		String folderName = baseDir + repository.substring(repository.lastIndexOf('/'), repository.lastIndexOf('.'));
+		try (Repository repo = gs.cloneIfNotExists(folderName, repository)) {
+			gs.checkout(repo, commitId);
 			return true;
 		} catch (MissingObjectException e) {
+			System.out.println(String.format("MissingObjectException %s %s", repository, commitId));
 			return false;
+		} catch (JGitInternalException e) {
+			if (e.getCause() instanceof MissingObjectException) {
+				System.out.println(String.format("MissingObjectException %s %s", repository, commitId));
+				return false;
+			}
+			throw new RuntimeException(e);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 

@@ -17,9 +17,9 @@ public class RefactoringDescriptionParser {
         new ParserDefinition(RefactoringType.EXTRACT_OPERATION, "Extract Method (.+) extracted from (.+) in class (.+)", method(2, 3), method(1, 3)),
         new ParserDefinition(RefactoringType.RENAME_METHOD, "Rename Method (.+) renamed to (.+) in class (.+)", method(1, 3), method(2, 3)),
         new ParserDefinition(RefactoringType.INLINE_OPERATION, "Inline Method (.+) inlined to (.+) in class (.+)", method(1, 3), method(2, 3)),
-        new ParserDefinition(RefactoringType.MOVE_OPERATION, "Move Method (.+) from class (.+) to (.+) from class (.+)", method(1, 2), method(3, 4)),
-        new ParserDefinition(RefactoringType.PULL_UP_OPERATION, "Pull Up Method (.+) from class (.+) to (.+) from class (.+)", method(1, 2), method(3, 4)),
-        new ParserDefinition(RefactoringType.PUSH_DOWN_OPERATION, "Push Down Method (.+) from class (.+) to (.+) from class (.+)", method(1, 2), method(3, 4)),
+        new ParserDefinition(RefactoringType.MOVE_OPERATION, "Move Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
+        new ParserDefinition(RefactoringType.PULL_UP_OPERATION, "Pull Up Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
+        new ParserDefinition(RefactoringType.PUSH_DOWN_OPERATION, "Push Down Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
         new ParserDefinition(RefactoringType.MOVE_ATTRIBUTE, "Move Attribute (.+) from class (.+) to class (.+)", attribute(1, 2), attribute(1, 3)),
         new ParserDefinition(RefactoringType.PULL_UP_ATTRIBUTE, "Pull Up Attribute (.+) from class (.+) to class (.+)", attribute(1, 2), attribute(1, 3)),
         new ParserDefinition(RefactoringType.PUSH_DOWN_ATTRIBUTE, "Push Down Attribute (.+) from class (.+) to class (.+)", attribute(1, 2), attribute(1, 3)),
@@ -108,21 +108,50 @@ public class RefactoringDescriptionParser {
     }
 
     private static String normalizeType(String type) {
-        // TODO Auto-generated method stub
         return type;
     }
 
     private static String normalizeMethod(String method) {
-        // TODO Auto-generated method stub
-        return method;
-    }
-    
-    private static String normalizeAttribute(String attribute) {
-        // TODO Auto-generated method stub
-        return attribute;
+    	String r = stripVisibilityModifier(method);
+    	r = stripReturnType(r);
+    	r = stripTypeParameters(r);
+    	r = stripParameterNames(r);
+        return r;
     }
 
-    /*
+	private static String stripParameterNames(String r) {
+		int openPar = r.indexOf('(');
+		String allArgs = r.substring(openPar + 1, r.lastIndexOf(')'));
+		if (!allArgs.isEmpty()) {
+			String[] eachArg = allArgs.split("\\s*,\\s*");
+			for (int i = 0; i < eachArg.length; i++) {
+				if (eachArg[i].indexOf(' ') != -1) {
+					eachArg[i] = eachArg[i].substring(eachArg[i].indexOf(' ') + 1);
+				}
+			}
+			return r.substring(0, openPar) + "(" + String.join(",", eachArg) + ")";
+		}
+		return r;
+	}
+
+    private static String stripReturnType(String r) {
+		int index = r.lastIndexOf(" : ");
+		if (index != -1) {
+			return r.substring(0, index);
+		}
+		return r;
+	}
+
+	private static String stripVisibilityModifier(String declaration) {
+		return declaration.replaceFirst("(public)|(private)|(protected)|(package) ", "");
+	}
+
+	private static String normalizeAttribute(String attribute) {
+		String r = stripVisibilityModifier(attribute);
+    	r = stripReturnType(r);
+        return r;
+    }
+
     private static String stripTypeParameters(String entityName) {
         StringBuilder sb = new StringBuilder();
         int openGenerics = 0;
@@ -139,5 +168,5 @@ public class RefactoringDescriptionParser {
             }
         }
         return sb.toString();
-    }*/
+    }
 }
