@@ -49,7 +49,7 @@ public class BuildBenchmarkDataset {
 
 	private static RefactoringDescriptionParser parser = new RefactoringDescriptionParser();
 	private static GitService gs = new GitServiceImpl();
-	private static String baseDir = "c:/tmp/";
+	private static String baseDir = "d:/tmp/repos";
 
 	public static void main(String[] args) throws Exception {
 //		ObjectMapper om = new ObjectMapper();
@@ -59,6 +59,7 @@ public class BuildBenchmarkDataset {
 		Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 		root.setLevel(Level.INFO);
 
+		//testCheckout("https://github.com/linkedin/rest.li.git", "54fa890a6af4ccf564fb481d3e1b6ad4d084de9e");
 		List<RefactoringSet> commits = readFseData();
 		List<RefactoringSet> selectedCommits = new ArrayList<>();
 		BenchmarkDataset bds = new BenchmarkDataset();
@@ -137,9 +138,9 @@ public class BuildBenchmarkDataset {
 			if (neededRefactoringsCount == 0) {
 				continue;
 			}
-			if (!testCheckout(c.getProject(), c.getRevision())) {
-				continue;
-			}
+//			if (!testCheckout(c.getProject(), c.getRevision())) {
+//				continue;
+//			}
 			return c;
 		}
 		throw new RuntimeException("No commits available: " + missing);
@@ -163,18 +164,9 @@ public class BuildBenchmarkDataset {
 	private static boolean testCheckout(String repository, String commitId) {
 		String folderName = baseDir + repository.substring(repository.lastIndexOf('/'), repository.lastIndexOf('.'));
 		try (Repository repo = gs.cloneIfNotExists(folderName, repository)) {
-			gs.checkout(repo, commitId);
-			return true;
-		} catch (MissingObjectException e) {
-			System.out.println(String.format("MissingObjectException %s %s", repository, commitId));
-			return false;
-		} catch (JGitInternalException e) {
-			if (e.getCause() instanceof MissingObjectException) {
-				System.out.println(String.format("MissingObjectException %s %s", repository, commitId));
-				return false;
-			}
-			throw new RuntimeException(e);
+			return gs.resolveCommit(repo, commitId) != null;
 		} catch (Exception e) {
+		    System.out.println(String.format("%s %s %s", e.getMessage(), repository, commitId));
 			throw new RuntimeException(e);
 		}
 	}

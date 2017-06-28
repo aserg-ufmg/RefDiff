@@ -117,6 +117,17 @@ public class GitServiceImpl implements GitService {
 //		File workingDir = repository.getDirectory().getParentFile();
 //		ExternalProcess.execute(workingDir, "git", "checkout", commitId);
 	}
+	
+	@Override
+	public RevCommit resolveCommit(Repository repository, String commitId) throws Exception {
+	    ObjectId oid = repository.resolve(commitId);
+	    if (oid == null) {
+	        return null;
+	    }
+	    try (RevWalk rw = new RevWalk(repository)) {
+	        return rw.parseCommit(oid);
+	    }
+    }
 
 	@Override
 	public int countCommits(Repository repository, String branch) throws Exception {
