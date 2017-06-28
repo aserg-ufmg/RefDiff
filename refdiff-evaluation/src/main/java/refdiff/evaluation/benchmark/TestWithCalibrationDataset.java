@@ -18,8 +18,9 @@ public class TestWithCalibrationDataset {
 		for (RefactoringSet commit : dataset.getCommits()) {
 			rc.compareWith("refdiff", ResultComparator.collectRmResult(refdiff, commit.getProject(), commit.getRevision()));
 		}
-		rc.printSummary(System.out, EnumSet.allOf(RefactoringType.class));
-		rc.printDetails(System.out, EnumSet.allOf(RefactoringType.class));
+		EnumSet<RefactoringType> types = EnumSet.complementOf(EnumSet.of(RefactoringType.RENAME_CLASS, RefactoringType.RENAME_METHOD));
+		rc.printSummary(System.out, types);
+		rc.printDetails(System.out, types);
 	}
 
 }
