@@ -1,8 +1,5 @@
 package refdiff.evaluation.benchmark;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,8 +9,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.jgit.api.errors.JGitInternalException;
-import org.eclipse.jgit.errors.MissingObjectException;
 import org.eclipse.jgit.lib.Repository;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +17,10 @@ import ch.qos.logback.classic.Logger;
 import refdiff.core.api.GitService;
 import refdiff.core.util.GitServiceImpl;
 import refdiff.evaluation.BenchmarkDataset;
-import refdiff.evaluation.utils.RefactoringDescriptionParser;
 import refdiff.evaluation.utils.RefactoringRelationship;
 import refdiff.evaluation.utils.RefactoringSet;
 
-public class BuildBenchmarkDataset {
+public class BuildCalibrationDataset {
 
 	private static int min = 10;
 	private static Random randomGen = new Random(1L);
@@ -47,9 +41,8 @@ public class BuildBenchmarkDataset {
 			"Push Down Attribute",
 			"Move Attribute"));
 
-	private static RefactoringDescriptionParser parser = new RefactoringDescriptionParser();
 	private static GitService gs = new GitServiceImpl();
-	private static String baseDir = "d:/tmp/repos";
+	private static String baseDir = "c:/tmp";
 
 	public static void main(String[] args) throws Exception {
 //		ObjectMapper om = new ObjectMapper();
@@ -59,18 +52,21 @@ public class BuildBenchmarkDataset {
 		Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 		root.setLevel(Level.INFO);
 
-		//testCheckout("https://github.com/linkedin/rest.li.git", "54fa890a6af4ccf564fb481d3e1b6ad4d084de9e");
-		List<RefactoringSet> commits = readFseData();
+		FseDataset fseDataset = new FseDataset();
 		List<RefactoringSet> selectedCommits = new ArrayList<>();
 		BenchmarkDataset bds = new BenchmarkDataset();
 		for (RefactoringSet commit : bds.all()) {
-		    remove(commits, commit.getProject(), commit.getRevision());
-		    selectedCommits.add(commit);
+			if (testCheckout(commit.getProject(), commit.getRevision())) {
+				selectedCommits.add(fseDataset.remove(commit.getProject(), commit.getRevision()));
+				System.out.println(String.format("Selected %s %s", commit.getProject(), commit.getRevision()));
+			} else {
+				System.out.println(String.format("MissingObject %s %s", commit.getProject(), commit.getRevision()));
+			}
 		}
 		
 		Set<String> missing = refactoringsMissing(selectedCommits);
 		while (!missing.isEmpty()) {
-			RefactoringSet c = selectCommit(commits, missing);
+			RefactoringSet c = selectCommit(fseDataset, missing);
 			selectedCommits.add(c);
 			missing = refactoringsMissing(selectedCommits);
 		}
@@ -83,6 +79,7 @@ public class BuildBenchmarkDataset {
 //		}
 		//om.writeValue(new File("data/fse/refactorings2.json"), selectedCommits);
 		
+		System.out.println();
 		System.out.println("Total commits: " + selectedCommits.size());
 		for (String refactoringType : refactoringTypes) {
 			long count = countRefactoringType(selectedCommits, refactoringType);
@@ -92,45 +89,13 @@ public class BuildBenchmarkDataset {
 		for (RefactoringSet commit : selectedCommits) {
 			System.out.println(String.format("%s\t%s", commit.getProject(), commit.getRevision()));
 			for (RefactoringRelationship rr : commit.getRefactorings()) {
-				System.out.println("  " + rr.toString());
+				System.out.println("\t" + rr.toString());
 			}
 		}
 	}
 
-	private static List<RefactoringSet> readFseData() {
-		List<RefactoringSet> list = new ArrayList<>();
-		RefactoringSet rs = null;
-		try (BufferedReader br = new BufferedReader(new FileReader("data/fse/refactorings.txt"))) {
-			String line = br.readLine();
-			while (line != null && !line.isEmpty()) {
-				String[] parts = line.split("\t");
-				String repo = parts[0];
-				String sha1 = parts[1];
-				String description = parts[2];
-				if (rs == null || !rs.getProject().equals(repo) || !rs.getRevision().equals(sha1)) {
-					rs = new RefactoringSet(repo, sha1);
-					list.add(rs);
-				}
-				rs.add(parser.parse(description));
-				line = br.readLine();
-			}
-			return list;
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-    private static void remove(List<RefactoringSet> commits, String repo, String sha1) {
-		for (int i = 0; i < commits.size(); i++) {
-			RefactoringSet c = commits.get(i);
-			if (c.getProject().equals(repo) && c.getRevision().equals(sha1)) {
-			    commits.remove(i);
-			    return;
-			}
-		}
-	}
-
-	private static RefactoringSet selectCommit(List<RefactoringSet> commits, Set<String> missing) {
+	private static RefactoringSet selectCommit(FseDataset dataset, Set<String> missing) {
+		List<RefactoringSet> commits = dataset.getCommits();
 		while (!commits.isEmpty()) {
 			int i = randomGen.nextInt(commits.size());
 			RefactoringSet c = commits.remove(i);
@@ -138,9 +103,11 @@ public class BuildBenchmarkDataset {
 			if (neededRefactoringsCount == 0) {
 				continue;
 			}
-//			if (!testCheckout(c.getProject(), c.getRevision())) {
-//				continue;
-//			}
+			if (!testCheckout(c.getProject(), c.getRevision())) {
+				System.out.println(String.format("MissingObject %s %s", c.getProject(), c.getRevision()));
+				continue;
+			}
+			System.out.println(String.format("Selected %s %s", c.getProject(), c.getRevision()));
 			return c;
 		}
 		throw new RuntimeException("No commits available: " + missing);
@@ -166,7 +133,6 @@ public class BuildBenchmarkDataset {
 		try (Repository repo = gs.cloneIfNotExists(folderName, repository)) {
 			return gs.resolveCommit(repo, commitId) != null;
 		} catch (Exception e) {
-		    System.out.println(String.format("%s %s %s", e.getMessage(), repository, commitId));
 			throw new RuntimeException(e);
 		}
 	}

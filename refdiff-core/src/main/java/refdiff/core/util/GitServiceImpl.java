@@ -12,6 +12,7 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.diff.DiffEntry;
 import org.eclipse.jgit.diff.DiffEntry.ChangeType;
 import org.eclipse.jgit.diff.RenameDetector;
+import org.eclipse.jgit.errors.MissingObjectException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Ref;
@@ -126,6 +127,8 @@ public class GitServiceImpl implements GitService {
 	    }
 	    try (RevWalk rw = new RevWalk(repository)) {
 	        return rw.parseCommit(oid);
+	    } catch (MissingObjectException e) {
+	    	return null;
 	    }
     }
 

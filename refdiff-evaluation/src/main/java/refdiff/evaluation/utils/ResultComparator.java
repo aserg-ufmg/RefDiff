@@ -52,6 +52,13 @@ public class ResultComparator {
         return this;
     }
 
+    public ResultComparator expect(Iterable<RefactoringSet> sets) {
+        for (RefactoringSet set : sets) {
+            expectedMap.put(getProjectRevisionId(set.getProject(), set.getRevision()), set);
+        }
+        return this;
+    }
+
     public ResultComparator dontExpect(RefactoringSet ... sets) {
         for (RefactoringSet set : sets) {
             notExpectedMap.put(getProjectRevisionId(set.getProject(), set.getRevision()), set);
@@ -61,11 +68,15 @@ public class ResultComparator {
 
     public ResultComparator compareWith(String groupId, RefactoringSet ... actualArray) {
         for (RefactoringSet actual : actualArray) {
-            groupIds.add(groupId);
-            resultMap.put(getResultId(actual.getProject(), actual.getRevision(), groupId), actual);
+            compareWith(groupId, actual);
         }
         return this;
     }
+
+	public void compareWith(String groupId, RefactoringSet actual) {
+		groupIds.add(groupId);
+		resultMap.put(getResultId(actual.getProject(), actual.getRevision(), groupId), actual);
+	}
 
     public int getExpectedCount(EnumSet<RefactoringType> refTypesToConsider) {
         int sum = 0;
