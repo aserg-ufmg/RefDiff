@@ -16,9 +16,8 @@ public class AbstractDataset {
     }
 
     public void add(RefactoringSet rs) {
-        CommitEntry entry = new CommitEntry(rs.getProject(), rs.getRevision());
+        CommitEntry entry = new CommitEntry(rs, new RefactoringSet(rs.getProject(), rs.getRevision()));
         commits.add(entry);
-        entry.expected.add(rs.getRefactorings());
     }
 
     public List<RefactoringSet> getExpected() {
@@ -54,8 +53,13 @@ public class AbstractDataset {
         private final RefactoringSet notExpected;
 
         public CommitEntry(String repo, String sha1) {
-            this.expected = new RefactoringSet(repo, sha1);
-            this.notExpected = new RefactoringSet(repo, sha1);
+        	this.expected = new RefactoringSet(repo, sha1);
+        	this.notExpected = new RefactoringSet(repo, sha1);
+        }
+
+        public CommitEntry(RefactoringSet expected, RefactoringSet notExpected) {
+            this.expected = expected;
+            this.notExpected = notExpected;
         }
 
         public CommitEntry addTP(String refType, String entityBefore, String entityAfter) {
