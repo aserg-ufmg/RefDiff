@@ -1,0 +1,7 @@
+Rename Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runIterations(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runInternalIteration()
+Rename Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalArnoldi(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalIteration()
+Extract Superclass	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase
+Extract Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runIterations(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.changeSignBasedOnFirstNoneZeroValue()
+Extract Superclass	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase
+Extract Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runIterations(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.incrementTotalIterations()
+Extract Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalArnoldi(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.incrementTotalIterations()

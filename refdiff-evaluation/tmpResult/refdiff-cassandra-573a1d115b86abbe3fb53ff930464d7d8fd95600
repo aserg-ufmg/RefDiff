@@ -1,0 +1,3 @@
+Extract Method	org.apache.cassandra.net.MessagingService.logDroppedMessages()	org.apache.cassandra.net.MessagingService.getDroppedMessagesLogs()
+Extract Method	org.apache.cassandra.net.MessagingService.incrementRejectedMessages(Verb)	org.apache.cassandra.net.MessagingService.incrementDroppedMessages(DroppedMessages,boolean)
+Extract Method	org.apache.cassandra.net.MessagingService.incrementDroppedMessages(Verb)	org.apache.cassandra.net.MessagingService.incrementDroppedMessages(Verb,boolean)

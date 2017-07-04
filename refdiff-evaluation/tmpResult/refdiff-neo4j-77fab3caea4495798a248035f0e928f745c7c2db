@@ -1,0 +1,4 @@
+Rename Method	org.neo4j.kernel.ha.lock.SlaveLocksClient.acquireShared(ResourceType,long[])	org.neo4j.kernel.ha.lock.SlaveLocksClient.acquireExclusive(ResourceType,long)
+Rename Method	org.neo4j.kernel.ha.lock.SlaveLocksClient.acquireExclusive(ResourceType,long[])	org.neo4j.kernel.ha.lock.SlaveLocksClient.acquireShared(ResourceType,long)
+Inline Method	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAllExclusive()	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAll()
+Inline Method	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAllShared()	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAll()
