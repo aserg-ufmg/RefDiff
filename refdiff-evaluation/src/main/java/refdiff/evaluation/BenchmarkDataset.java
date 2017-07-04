@@ -1,14 +1,10 @@
 package refdiff.evaluation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import refdiff.core.api.RefactoringType;
+import refdiff.evaluation.benchmark.AbstractDataset;
 import refdiff.evaluation.utils.RefactoringSet;
 
-public class BenchmarkDataset {
-
-    List<RefactoringSet> data = new ArrayList<>();
+public class BenchmarkDataset extends AbstractDataset {
 
     public BenchmarkDataset() {
         at("https://github.com/linkedin/rest.li.git", "54fa890a6af4ccf564fb481d3e1b6ad4d084de9e")
@@ -139,18 +135,14 @@ public class BenchmarkDataset {
             .add(RefactoringType.PULL_UP_OPERATION, "net.kuujo.copycat.raft.state.ActiveState.applyIndex(long)", "net.kuujo.copycat.raft.state.PassiveState.applyIndex(long)");
     }
 
-    public RefactoringSet[] all() {
-        return data.toArray(new RefactoringSet[data.size()]);
-    }
-
     private RefactoringSet at(String cloneUrl, String commit) {
         RefactoringSet rs = new RefactoringSet(cloneUrl, commit);
-        data.add(rs);
+        add(rs);
         return rs;
     }
 
     public void printSourceCode() {
-        for (RefactoringSet set : data) {
+        for (RefactoringSet set : getExpected()) {
             set.printSourceCode(System.out);
         }
     }

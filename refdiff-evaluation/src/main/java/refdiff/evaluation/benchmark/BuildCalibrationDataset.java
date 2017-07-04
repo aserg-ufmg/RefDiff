@@ -56,7 +56,7 @@ public class BuildCalibrationDataset {
 		FseDataset fseDataset = new FseDataset();
 		List<RefactoringSet> selectedCommits = new ArrayList<>();
 		BenchmarkDataset bds = new BenchmarkDataset();
-		for (RefactoringSet commit : bds.all()) {
+		for (RefactoringSet commit : bds.getExpected()) {
 			if (testCheckout(commit.getProject(), commit.getRevision())) {
 				selectedCommits.add(fseDataset.remove(commit.getProject(), commit.getRevision()));
 				System.out.println(String.format("Selected %s %s", commit.getProject(), commit.getRevision()));

@@ -10,58 +10,61 @@ import refdiff.core.api.RefactoringType;
 import refdiff.core.rm2.analysis.RefDiffConfigImpl;
 import refdiff.core.rm2.analysis.codesimilarity.CodeSimilarityStrategy;
 import refdiff.core.rm2.model.RelationshipType;
+import refdiff.evaluation.benchmark.AbstractDataset;
 import refdiff.evaluation.utils.ResultComparator;
 import refdiff.evaluation.utils.ResultComparator.CompareResult;
 
 public class TestWithBenchmark {
 
-    public static void main(String[] args) {
-        RefDiffConfigImpl config = new RefDiffConfigImpl();
-        BenchmarkDataset oracle = new BenchmarkDataset();
-        
-        config.setThreshold(RelationshipType.MOVE_TYPE, 0.9);
-        config.setThreshold(RelationshipType.RENAME_TYPE, 0.4);
-        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.8);
-        config.setThreshold(RelationshipType.MOVE_METHOD, 0.4);
-        config.setThreshold(RelationshipType.RENAME_METHOD, 0.3);
-        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.4);
-        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.6);
-        config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.1);
-        config.setThreshold(RelationshipType.INLINE_METHOD, 0.3);
+	private AbstractDataset oracle;
+
+	public static void main(String[] args) {
+		new TestWithBenchmark(new BenchmarkDataset()).calibrate();
+	}
+
+	public TestWithBenchmark(AbstractDataset oracle) {
+		this.oracle = oracle;
+	}
+
+	public void calibrate() {
+    	RefDiffConfigImpl config = new RefDiffConfigImpl();
+        config.setThreshold(RelationshipType.MOVE_TYPE, 0.5);
+        config.setThreshold(RelationshipType.RENAME_TYPE, 0.5);
+        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.5);
+        config.setThreshold(RelationshipType.MOVE_METHOD, 0.5);
+        config.setThreshold(RelationshipType.RENAME_METHOD, 0.5);
+        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.5);
+        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.5);
+        config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.5);
+        config.setThreshold(RelationshipType.INLINE_METHOD, 0.5);
         config.setThreshold(RelationshipType.MOVE_FIELD, 0.5);
         config.setThreshold(RelationshipType.PULL_UP_FIELD, 0.5);
-        config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.3);
+        config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.5);
+
+        config = calibrate(config, RelationshipType.MOVE_TYPE, RefactoringType.MOVE_CLASS);
+        config = calibrate(config, RelationshipType.RENAME_TYPE, RefactoringType.RENAME_CLASS);
+        config = calibrate(config, RelationshipType.EXTRACT_SUPERTYPE, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
         
-//        config = calibrate(oracle, config, RelationshipType.MOVE_TYPE, RefactoringType.MOVE_CLASS);
-//        config = calibrate(oracle, config, RelationshipType.RENAME_TYPE, RefactoringType.RENAME_CLASS);
-//        config = calibrate(oracle, config, RelationshipType.EXTRACT_SUPERTYPE, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
-//        
-//        config = calibrate(oracle, config, RelationshipType.MOVE_METHOD, RefactoringType.MOVE_OPERATION);
-//        config = calibrate(oracle, config, RelationshipType.RENAME_METHOD, RefactoringType.RENAME_METHOD);
-//        config = calibrate(oracle, config, RelationshipType.PULL_UP_METHOD, RefactoringType.PULL_UP_OPERATION);
-//        config = calibrate(oracle, config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
-//        config = calibrate(oracle, config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
-//        config = calibrate(oracle, config, RelationshipType.INLINE_METHOD, RefactoringType.INLINE_OPERATION);
-//        
-//        config = calibrate(oracle, config, RelationshipType.PULL_UP_FIELD, RefactoringType.PULL_UP_ATTRIBUTE);
-//        config = calibrate(oracle, config, RelationshipType.PUSH_DOWN_FIELD, RefactoringType.PUSH_DOWN_ATTRIBUTE);
-//        config = calibrate(oracle, config, RelationshipType.MOVE_FIELD, RefactoringType.MOVE_ATTRIBUTE);
+        config = calibrate(config, RelationshipType.MOVE_METHOD, RefactoringType.MOVE_OPERATION);
+        config = calibrate(config, RelationshipType.RENAME_METHOD, RefactoringType.RENAME_METHOD);
+        config = calibrate(config, RelationshipType.PULL_UP_METHOD, RefactoringType.PULL_UP_OPERATION);
+        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
+        config = calibrate(config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
+        config = calibrate(config, RelationshipType.INLINE_METHOD, RefactoringType.INLINE_OPERATION);
         
-//        config.setId("rm2-idf-default");
+        config = calibrate(config, RelationshipType.PULL_UP_FIELD, RefactoringType.PULL_UP_ATTRIBUTE);
+        config = calibrate(config, RelationshipType.PUSH_DOWN_FIELD, RefactoringType.PUSH_DOWN_ATTRIBUTE);
+        config = calibrate(config, RelationshipType.MOVE_FIELD, RefactoringType.MOVE_ATTRIBUTE);
+        
+        config.setId("refdiff-default");
 //
-//        ResultComparator rc1 = new ResultComparator();
-//        rc1.expect(oracle.all());
-//        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new GitHistoryRefactoringMiner2(config), oracle.all()));
-//        rc1.printSummary(System.out, EnumSet.allOf(RefactoringType.class));
-//        rc1.printDetails(System.out, EnumSet.allOf(RefactoringType.class));
-//        
-//        System.out.println(config.toString());
+        System.out.println(config.toString());
         printTable3();
     }
-
-    private static RefDiffConfigImpl calibrate(BenchmarkDataset oracle, RefDiffConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
+    
+    private RefDiffConfigImpl calibrate(RefDiffConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
         ResultComparator rc1 = new ResultComparator();
-        rc1.expect(oracle.all());
+        rc1.expect(oracle.getExpected());
         EnumSet<RefactoringType> refTypeSet = EnumSet.of(refType, refTypes);
         
         List<RefDiffConfigImpl> configurations = generateRmConfigurations(baseConfig, relType);
@@ -69,7 +72,7 @@ public class TestWithBenchmark {
         RefDiffConfigImpl maxConfig = configurations.get(0);
         
         for (RefDiffConfigImpl config : configurations) {
-            rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new RefDiff(config), oracle.all()));
+            rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new RefDiff(config), oracle.getExpected()));
             CompareResult result = rc1.getCompareResult(config.getId(), refTypeSet);
             double f1 = result.getF1();
             if (f1 >= maxF1) {
@@ -82,12 +85,12 @@ public class TestWithBenchmark {
         return maxConfig;
     }
 
-    public static List<RefDiffConfigImpl> generateRmConfigurations(RefDiffConfigImpl baseConfig, RelationshipType relationshipType) {
+    public List<RefDiffConfigImpl> generateRmConfigurations(RefDiffConfigImpl baseConfig, RelationshipType relationshipType) {
         List<RefDiffConfigImpl> list = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
             double t = 0.1 * i;
             RefDiffConfigImpl config = baseConfig.clone();
-            config.setId("rm2-idf-" + relationshipType + "-" + i);
+            config.setId("refdiff-" + relationshipType + "-" + i);
             config.setThreshold(relationshipType, t);
             config.setCodeSimilarityStrategy(CodeSimilarityStrategy.TFIDF);
             list.add(config);
@@ -95,13 +98,11 @@ public class TestWithBenchmark {
         return list;
     }
 
-    
-    private static void printTable3() {
+    private void printTable3() {
         ResultComparator rc1 = new ResultComparator();
-        BenchmarkDataset oracle = new BenchmarkDataset();
-        rc1.expect(oracle.all());
+        rc1.expect(oracle.getExpected());
         RefDiffConfigImpl config = new RefDiffConfigImpl();
-        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new RefDiff(config), oracle.all()));
+        rc1.compareWith(config.getId(), ResultComparator.collectRmResult(new RefDiff(config), oracle.getExpected()));
         CompareResult r = rc1.getCompareResult(config.getId(), EnumSet.allOf(RefactoringType.class));
         
         System.out.println("\\begin{tabular}{@{}lrrrrrcc@{}}");
@@ -126,8 +127,8 @@ public class TestWithBenchmark {
         System.out.println("\\bottomrule");
         System.out.println("\\end{tabular}");
     }
-    
-    private static void table3Row(CompareResult r, String name, double threshold, RefactoringType ... refactoringTypes) {
+
+    private void table3Row(CompareResult r, String name, double threshold, RefactoringType ... refactoringTypes) {
         System.out.print(String.format(Locale.US, "%s", name));
         CompareResult fr = r.filterBy(refactoringTypes);
         int expected = fr.getTPCount() + fr.getFNCount();

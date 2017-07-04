@@ -1,6 +1,6 @@
 package refdiff.evaluation.utils;
 
-import static refdiff.evaluation.utils.RefactoringRelationship.parentOf;
+import static refdiff.evaluation.utils.RefactoringRelationship.*;
 
 import java.io.File;
 import java.io.PrintStream;
@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -398,10 +399,10 @@ public class ResultComparator {
         }
     }
 
-    public static RefactoringSet[] collectRmResult(GitRefactoringDetector rm, RefactoringSet[] oracle) {
-        RefactoringSet[] result = new RefactoringSet[oracle.length];
+    public static RefactoringSet[] collectRmResult(GitRefactoringDetector rm, List<RefactoringSet> oracle) {
+        RefactoringSet[] result = new RefactoringSet[oracle.size()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = collectRmResult(rm, oracle[i].getProject(), oracle[i].getRevision());
+            result[i] = collectRmResult(rm, oracle.get(i).getProject(), oracle.get(i).getRevision());
         }
         return result;
     }
