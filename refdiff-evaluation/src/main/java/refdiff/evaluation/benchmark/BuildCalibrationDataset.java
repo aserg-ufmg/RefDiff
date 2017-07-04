@@ -17,6 +17,7 @@ import ch.qos.logback.classic.Logger;
 import refdiff.core.api.GitService;
 import refdiff.core.util.GitServiceImpl;
 import refdiff.evaluation.BenchmarkDataset;
+import refdiff.evaluation.benchmark.AbstractDataset.CommitEntry;
 import refdiff.evaluation.utils.RefactoringRelationship;
 import refdiff.evaluation.utils.RefactoringSet;
 
@@ -95,10 +96,11 @@ public class BuildCalibrationDataset {
 	}
 
 	private static RefactoringSet selectCommit(FseDataset dataset, Set<String> missing) {
-		List<RefactoringSet> commits = dataset.getCommits();
+		List<CommitEntry> commits = dataset.commits;
 		while (!commits.isEmpty()) {
 			int i = randomGen.nextInt(commits.size());
-			RefactoringSet c = commits.remove(i);
+			CommitEntry ce = commits.remove(i);
+			RefactoringSet c = ce.getExpected();
 			long neededRefactoringsCount = c.getRefactorings().stream().filter(r -> missing.contains(r.getRefactoringType().getDisplayName())).collect(Collectors.counting());
 			if (neededRefactoringsCount == 0) {
 				continue;

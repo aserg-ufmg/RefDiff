@@ -12,10 +12,11 @@ public class TestWithCalibrationDataset {
 	public static void main(String[] args) {
 		CalibrationDataset dataset = new CalibrationDataset();
 		ResultComparator rc = new ResultComparator();
-		rc.expect(dataset.getCommits());
+		rc.expect(dataset.getExpected());
+		rc.dontExpect(dataset.getNotExpected());
 		
 		RefDiff refdiff = new RefDiff();
-		for (RefactoringSet commit : dataset.getCommits()) {
+		for (RefactoringSet commit : dataset.getExpected()) {
 			rc.compareWith("refdiff", ResultComparator.collectRmResult(refdiff, commit.getProject(), commit.getRevision()));
 		}
 		EnumSet<RefactoringType> types = EnumSet.complementOf(EnumSet.of(RefactoringType.RENAME_CLASS, RefactoringType.RENAME_METHOD));

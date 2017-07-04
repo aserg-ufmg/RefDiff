@@ -66,6 +66,13 @@ public class ResultComparator {
         return this;
     }
 
+    public ResultComparator dontExpect(Iterable<RefactoringSet> sets) {
+        for (RefactoringSet set : sets) {
+            notExpectedMap.put(getProjectRevisionId(set.getProject(), set.getRevision()), set);
+        }
+        return this;
+    }
+
     public ResultComparator compareWith(String groupId, RefactoringSet ... actualArray) {
         for (RefactoringSet actual : actualArray) {
             compareWith(groupId, actual);
@@ -171,6 +178,9 @@ public class ResultComparator {
             Set<RefactoringRelationship> all = new HashSet<>();
             Set<RefactoringRelationship> expectedRefactorings = expected.ignoring(ignore).ignoringMethodParameters(ignoreMethodParams).getRefactorings();
             Set<RefactoringRelationship> expectedUnfiltered = expected.getRefactorings();
+            String id = getProjectRevisionId(expected.getProject(), expected.getRevision());
+            Set<RefactoringRelationship> notExpectedRefactorings = notExpectedMap.getOrDefault(id, new RefactoringSet(expected.getProject(), expected.getRevision())).getRefactorings();
+            
             all.addAll(expectedRefactorings); //
 
             StringBuilder header = new StringBuilder("Ref Type\tEntity before\tEntity after");
@@ -202,6 +212,9 @@ public class ResultComparator {
                             int found = actualRefactorings.contains(r) ? 1 : 0;
                             String label = labels[correct + found];
                             out.print(label);
+                            if (label == "FP" && !notExpectedRefactorings.contains(r)) {
+                                out.print("?");
+                            }
                             if (label == "FP" && isPullUpToExtractedSupertype(r, expectedUnfiltered)) {
                                 out.print("<ES>");
                             }
