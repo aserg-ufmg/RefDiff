@@ -137,7 +137,7 @@ public class GitHistoryStructuralDiffAnalyzer {
 		File folderBefore = new File(projectFolder.getParentFile(), "v0/" + projectFolder.getName() + "-" + commitId.substring(0, 7));
 		if (folderBefore.exists()) {
 		    logger.info(String.format("Analyzing code before (%s) ...", parentCommit));
-            builder.analyzeBefore(projectFolder, filesBefore);
+            builder.analyzeBefore(folderBefore, filesBefore);
 		} else {
 		    // Checkout and build model for parent commit
 		    gitService.checkout(repository, parentCommit);

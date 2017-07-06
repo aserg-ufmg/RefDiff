@@ -1,3 +1,0 @@
-Rename Method	com.squareup.javapoet.TypesTest.getElement(Class)	com.squareup.javapoet.TypesTest.getElements()
-Extract Superclass	com.squareup.javapoet.TypesTest	com.squareup.javapoet.AbstractTypesTest
-Move Class	com.squareup.javapoet.TypesTest.Parameterized	com.squareup.javapoet.AbstractTypesTest.Parameterized

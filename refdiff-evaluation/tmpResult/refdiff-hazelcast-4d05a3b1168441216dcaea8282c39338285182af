@@ -1,3 +1,0 @@
-Extract Method	com.hazelcast.spi.impl.operationservice.impl.InvocationBuilderImpl.invoke()	com.hazelcast.spi.InvocationBuilder.getTargetExecutionCallback()
-Rename Method	com.hazelcast.map.impl.proxy.MapProxySupport.MapExecutionCallbackAdapter.notify(Object)	com.hazelcast.map.impl.proxy.MapProxySupport.MapExecutionCallbackAdapter.onResponse(Object)
-Move Class	com.hazelcast.spi.impl.operationservice.impl.InvocationFuture.ExecutorCallbackAdapter	com.hazelcast.spi.InvocationBuilder.ExecutorCallbackAdapter

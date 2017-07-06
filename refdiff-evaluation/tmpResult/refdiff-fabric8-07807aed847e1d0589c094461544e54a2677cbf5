@@ -1,5 +1,0 @@
-Pull Up Attribute	io.fabric8.maven.ApplyMojo.DEFAULT_CONFIG_FILE_NAME	io.fabric8.maven.AbstractFabric8Mojo.DEFAULT_CONFIG_FILE_NAME
-Pull Up Attribute	io.fabric8.maven.JsonMojo.combineDependencies	io.fabric8.maven.AbstractFabric8Mojo.combineDependencies
-Pull Up Method	io.fabric8.maven.ApplyMojo.hasKubernetesJson(File)	io.fabric8.maven.AbstractFabric8Mojo.hasKubernetesJson(File)
-Pull Up Method	io.fabric8.maven.JsonMojo.isKubernetesJsonArtifact(String,String)	io.fabric8.maven.AbstractFabric8Mojo.isKubernetesJsonArtifact(String,String)
-Pull Up Method	io.fabric8.maven.ApplyMojo.getDependencies()	io.fabric8.maven.AbstractFabric8Mojo.getDependencies()

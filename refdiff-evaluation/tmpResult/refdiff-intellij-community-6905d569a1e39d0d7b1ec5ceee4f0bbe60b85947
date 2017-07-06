@@ -1,2 +1,0 @@
-Extract Interface	com.jetbrains.edu.courseFormat.Lesson	com.jetbrains.edu.courseFormat.Named
-Extract Interface	com.jetbrains.edu.courseFormat.Task	com.jetbrains.edu.courseFormat.Named
