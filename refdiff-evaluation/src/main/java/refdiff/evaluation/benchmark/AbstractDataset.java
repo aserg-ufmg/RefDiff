@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import refdiff.core.api.RefactoringType;
+import refdiff.evaluation.utils.RefactoringRelationship;
 import refdiff.evaluation.utils.RefactoringSet;
 
 public class AbstractDataset {
@@ -68,7 +69,9 @@ public class AbstractDataset {
         }
 
         public CommitEntry addFP(String refType, String entityBefore, String entityAfter) {
-            this.notExpected.add(RefactoringType.fromName(refType), entityBefore, entityAfter);
+            RefactoringRelationship rr = new RefactoringRelationship(RefactoringType.fromName(refType), entityBefore, entityAfter);
+            this.notExpected.add(rr);
+            this.expected.remove(rr);
             return this;
         }
 

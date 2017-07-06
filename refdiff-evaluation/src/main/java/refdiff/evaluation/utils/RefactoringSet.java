@@ -9,28 +9,25 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import refdiff.core.api.RefactoringType;
-import refdiff.evaluation.utils.RefactoringRelationship.GroupKey;
 
 public class RefactoringSet {
 
     private final String project;
     private final String revision;
     private final Set<RefactoringRelationship> refactorings;
-    private final Map<RefactoringRelationship.GroupKey, Set<RefactoringRelationship>> refactoringGroups;
+//    private final Map<RefactoringRelationship.GroupKey, Set<RefactoringRelationship>> refactoringGroups;
 
     public RefactoringSet(String project, String revision) {
         super();
         this.project = project;
         this.revision = revision;
         this.refactorings = new HashSet<>();
-        this.refactoringGroups = new HashMap<>();
+//        this.refactoringGroups = new HashMap<>();
     }
 
     public String getProject() {
@@ -45,23 +42,32 @@ public class RefactoringSet {
         return refactorings;
     }
 
-    public Set<RefactoringRelationship.GroupKey> getRefactoringsGroups() {
-        return refactoringGroups.keySet();
-    }
+//    public Set<RefactoringRelationship.GroupKey> getRefactoringsGroups() {
+//        return refactoringGroups.keySet();
+//    }
 
     public RefactoringSet add(RefactoringType type, String entityBefore, String entityAfter) {
         return add(new RefactoringRelationship(type, entityBefore, entityAfter));
     }
+    
+    public RefactoringSet remove(RefactoringType type, String entityBefore, String entityAfter) {
+        return remove(new RefactoringRelationship(type, entityBefore, entityAfter));
+    }
 
     public RefactoringSet add(RefactoringRelationship r) {
         this.refactorings.add(r);
-        GroupKey groupKey = r.getGroupKey();
-        Set<RefactoringRelationship> group = refactoringGroups.get(groupKey);
-        if (group == null) {
-            group = new HashSet<>();
-            refactoringGroups.put(groupKey, group);
-        }
-        group.add(r);
+//        GroupKey groupKey = r.getGroupKey();
+//        Set<RefactoringRelationship> group = refactoringGroups.get(groupKey);
+//        if (group == null) {
+//            group = new HashSet<>();
+//            refactoringGroups.put(groupKey, group);
+//        }
+//        group.add(r);
+        return this;
+    }
+    
+    public RefactoringSet remove(RefactoringRelationship r) {
+        this.refactorings.remove(r);
         return this;
     }
 
