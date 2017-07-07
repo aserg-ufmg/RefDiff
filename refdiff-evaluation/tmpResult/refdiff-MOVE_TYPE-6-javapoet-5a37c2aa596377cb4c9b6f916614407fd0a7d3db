@@ -1,0 +1,2 @@
+Extract Superclass	com.squareup.javapoet.TypesTest	com.squareup.javapoet.AbstractTypesTest
+Move Class	com.squareup.javapoet.TypesTest.Parameterized	com.squareup.javapoet.AbstractTypesTest.Parameterized

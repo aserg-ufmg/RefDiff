@@ -1,0 +1,1 @@
+Move Attribute	org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory.SCRIPT	org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject.SCRIPT

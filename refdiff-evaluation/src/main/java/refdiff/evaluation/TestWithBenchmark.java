@@ -42,24 +42,24 @@ public class TestWithBenchmark {
         config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.5);
 
         config = calibrate(config, RelationshipType.MOVE_TYPE, RefactoringType.MOVE_CLASS);
-        config = calibrate(config, RelationshipType.RENAME_TYPE, RefactoringType.RENAME_CLASS);
-        config = calibrate(config, RelationshipType.EXTRACT_SUPERTYPE, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
-        
-        config = calibrate(config, RelationshipType.MOVE_METHOD, RefactoringType.MOVE_OPERATION);
-        config = calibrate(config, RelationshipType.RENAME_METHOD, RefactoringType.RENAME_METHOD);
-        config = calibrate(config, RelationshipType.PULL_UP_METHOD, RefactoringType.PULL_UP_OPERATION);
-        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
-        config = calibrate(config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
-        config = calibrate(config, RelationshipType.INLINE_METHOD, RefactoringType.INLINE_OPERATION);
-        
-        config = calibrate(config, RelationshipType.PULL_UP_FIELD, RefactoringType.PULL_UP_ATTRIBUTE);
-        config = calibrate(config, RelationshipType.PUSH_DOWN_FIELD, RefactoringType.PUSH_DOWN_ATTRIBUTE);
-        config = calibrate(config, RelationshipType.MOVE_FIELD, RefactoringType.MOVE_ATTRIBUTE);
+//        config = calibrate(config, RelationshipType.RENAME_TYPE, RefactoringType.RENAME_CLASS);
+//        config = calibrate(config, RelationshipType.EXTRACT_SUPERTYPE, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
+//        
+//        config = calibrate(config, RelationshipType.MOVE_METHOD, RefactoringType.MOVE_OPERATION);
+//        config = calibrate(config, RelationshipType.RENAME_METHOD, RefactoringType.RENAME_METHOD);
+//        config = calibrate(config, RelationshipType.PULL_UP_METHOD, RefactoringType.PULL_UP_OPERATION);
+//        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
+//        config = calibrate(config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
+//        config = calibrate(config, RelationshipType.INLINE_METHOD, RefactoringType.INLINE_OPERATION);
+//        
+//        config = calibrate(config, RelationshipType.PULL_UP_FIELD, RefactoringType.PULL_UP_ATTRIBUTE);
+//        config = calibrate(config, RelationshipType.PUSH_DOWN_FIELD, RefactoringType.PUSH_DOWN_ATTRIBUTE);
+//        config = calibrate(config, RelationshipType.MOVE_FIELD, RefactoringType.MOVE_ATTRIBUTE);
         
         config.setId("refdiff-default");
 //
         System.out.println(config.toString());
-        printTable3();
+        //printTable3();
     }
     
     private RefDiffConfigImpl calibrate(RefDiffConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
