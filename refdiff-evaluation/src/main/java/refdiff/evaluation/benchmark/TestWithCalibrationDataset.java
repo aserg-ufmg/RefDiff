@@ -19,20 +19,35 @@ public class TestWithCalibrationDataset {
 	    Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
         root.setLevel(Level.INFO);
 	    
+//        RefDiffConfigImpl config = new RefDiffConfigImpl();
+//        config.setId("refdiff-init");
+//        config.setThreshold(RelationshipType.MOVE_TYPE, 0.5);
+//        config.setThreshold(RelationshipType.RENAME_TYPE, 0.5);
+//        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.5);
+//        config.setThreshold(RelationshipType.MOVE_METHOD, 0.5);
+//        config.setThreshold(RelationshipType.RENAME_METHOD, 0.5);
+//        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.5);
+//        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.5);
+//        config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.5);
+//        config.setThreshold(RelationshipType.INLINE_METHOD, 0.5);
+//        config.setThreshold(RelationshipType.MOVE_FIELD, 0.5);
+//        config.setThreshold(RelationshipType.PULL_UP_FIELD, 0.5);
+//        config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.5);
+        
         RefDiffConfigImpl config = new RefDiffConfigImpl();
-        config.setId("refdiff-init");
-        config.setThreshold(RelationshipType.MOVE_TYPE, 0.5);
-        config.setThreshold(RelationshipType.RENAME_TYPE, 0.5);
-        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.5);
-        config.setThreshold(RelationshipType.MOVE_METHOD, 0.5);
-        config.setThreshold(RelationshipType.RENAME_METHOD, 0.5);
-        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.5);
-        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.5);
-        config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.5);
-        config.setThreshold(RelationshipType.INLINE_METHOD, 0.5);
-        config.setThreshold(RelationshipType.MOVE_FIELD, 0.5);
-        config.setThreshold(RelationshipType.PULL_UP_FIELD, 0.5);
-        config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.5);
+        config.setId("xfinal");
+        config.setThreshold(RelationshipType.MOVE_TYPE, 0.1);
+        config.setThreshold(RelationshipType.RENAME_TYPE, 0.4);
+        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.3);
+        config.setThreshold(RelationshipType.MOVE_METHOD, 0.4);
+        config.setThreshold(RelationshipType.RENAME_METHOD, 0.3);
+        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.4);
+        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.6);
+    	config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.3);
+    	config.setThreshold(RelationshipType.INLINE_METHOD, 0.3);
+    	config.setThreshold(RelationshipType.MOVE_FIELD, 0.1);
+    	config.setThreshold(RelationshipType.PULL_UP_FIELD, 0.2);
+    	config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.3);
         
 		CalibrationDataset dataset = new CalibrationDataset();
 		ResultComparator rc = new ResultComparator();

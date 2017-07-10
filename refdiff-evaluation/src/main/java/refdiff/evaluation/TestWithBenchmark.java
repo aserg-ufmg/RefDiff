@@ -28,27 +28,27 @@ public class TestWithBenchmark {
 
 	public void calibrate() {
     	RefDiffConfigImpl config = new RefDiffConfigImpl();
-        config.setThreshold(RelationshipType.MOVE_TYPE, 0.5);
-        config.setThreshold(RelationshipType.RENAME_TYPE, 0.5);
-        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.5);
-        config.setThreshold(RelationshipType.MOVE_METHOD, 0.5);
-        config.setThreshold(RelationshipType.RENAME_METHOD, 0.5);
-        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.5);
-        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.5);
+        config.setThreshold(RelationshipType.MOVE_TYPE, 0.1);
+        config.setThreshold(RelationshipType.RENAME_TYPE, 0.4);
+        config.setThreshold(RelationshipType.EXTRACT_SUPERTYPE, 0.3);
+        config.setThreshold(RelationshipType.MOVE_METHOD, 0.4);
+        config.setThreshold(RelationshipType.RENAME_METHOD, 0.3);
+        config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.4);
+        config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.6);
         config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.5);
         config.setThreshold(RelationshipType.INLINE_METHOD, 0.5);
         config.setThreshold(RelationshipType.MOVE_FIELD, 0.5);
         config.setThreshold(RelationshipType.PULL_UP_FIELD, 0.5);
         config.setThreshold(RelationshipType.PUSH_DOWN_FIELD, 0.5);
 
-        config = calibrate(config, RelationshipType.MOVE_TYPE, RefactoringType.MOVE_CLASS);
+//        config = calibrate(config, RelationshipType.MOVE_TYPE, RefactoringType.MOVE_CLASS);
 //        config = calibrate(config, RelationshipType.RENAME_TYPE, RefactoringType.RENAME_CLASS);
 //        config = calibrate(config, RelationshipType.EXTRACT_SUPERTYPE, RefactoringType.EXTRACT_SUPERCLASS, RefactoringType.EXTRACT_INTERFACE);
 //        
 //        config = calibrate(config, RelationshipType.MOVE_METHOD, RefactoringType.MOVE_OPERATION);
 //        config = calibrate(config, RelationshipType.RENAME_METHOD, RefactoringType.RENAME_METHOD);
 //        config = calibrate(config, RelationshipType.PULL_UP_METHOD, RefactoringType.PULL_UP_OPERATION);
-//        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
+        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
 //        config = calibrate(config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
 //        config = calibrate(config, RelationshipType.INLINE_METHOD, RefactoringType.INLINE_OPERATION);
 //        
@@ -65,7 +65,9 @@ public class TestWithBenchmark {
     private RefDiffConfigImpl calibrate(RefDiffConfigImpl baseConfig, RelationshipType relType, RefactoringType refType, RefactoringType ... refTypes) {
         ResultComparator rc1 = new ResultComparator();
         rc1.expect(oracle.getExpected());
-        EnumSet<RefactoringType> refTypeSet = EnumSet.of(refType, refTypes);
+        rc1.dontExpect(oracle.getNotExpected());
+        //EnumSet<RefactoringType> refTypeSet = EnumSet.of(refType, refTypes);
+        EnumSet<RefactoringType> refTypeSet = EnumSet.allOf(RefactoringType.class);
         
         List<RefDiffConfigImpl> configurations = generateRmConfigurations(baseConfig, relType);
         double maxF1 = 0.0;

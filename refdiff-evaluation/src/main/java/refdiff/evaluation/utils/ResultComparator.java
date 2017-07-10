@@ -377,7 +377,7 @@ public class ResultComparator {
 
     public static RefactoringSet collectRmResult(GitRefactoringDetector rm, String cloneUrl, String commitId) {
         GitService git = new GitServiceImpl();
-        String tempDir = "d:/tmp";
+        String tempDir = "c:/tmp";
         String resultCacheDir = "tmpResult";
         String projectName = cloneUrl.substring(cloneUrl.lastIndexOf('/') + 1, cloneUrl.lastIndexOf('.'));
         File cachedResult = new File(resultCacheDir + "/" + rm.getConfigId() + "-" + projectName + "-" + commitId);
