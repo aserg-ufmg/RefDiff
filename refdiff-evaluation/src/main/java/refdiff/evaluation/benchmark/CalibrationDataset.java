@@ -100,7 +100,15 @@ public class CalibrationDataset extends AbstractDataset {
 			.addTP("Rename Method", "org.jbpm.query.jpa.data.QueryWhere.startGroup()", "org.jbpm.query.jpa.data.QueryWhere.newGroup()")
 			.addFP("Rename Method", "org.jbpm.services.task.commands.TaskQueryDataCommand.TaskQueryDataCommand(QueryData)", "org.jbpm.services.task.commands.TaskQueryWhereCommand.setQueryWhere(QueryWhere)")
 			.addFP("Rename Method", "org.jbpm.services.task.commands.TaskQueryDataCommand.getQueryData()", "org.jbpm.services.task.commands.TaskQueryWhereCommand.getQueryWhere()")
-			.addFP("Rename Method", "org.jbpm.services.task.commands.TaskQueryDataCommand.setQueryData(QueryData)", "org.jbpm.services.task.commands.TaskQueryWhereCommand.TaskQueryWhereCommand(QueryWhere)");
+			.addFP("Rename Method", "org.jbpm.services.task.commands.TaskQueryDataCommand.setQueryData(QueryData)", "org.jbpm.services.task.commands.TaskQueryWhereCommand.TaskQueryWhereCommand(QueryWhere)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.ascending()", "org.jbpm.executor.impl.jpa.ErrorInfoQueryBuilderImpl.ascending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.ascending()", "org.jbpm.executor.impl.jpa.RequestInfoQueryBuilderImpl.ascending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.ascending()", "org.jbpm.process.audit.query.AbstractAuditQueryBuilderImpl.ascending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.ascending()", "org.jbpm.services.task.impl.TaskQueryBuilderImpl.ascending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.descending()", "org.jbpm.executor.impl.jpa.ErrorInfoQueryBuilderImpl.descending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.descending()", "org.jbpm.executor.impl.jpa.RequestInfoQueryBuilderImpl.descending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.descending()", "org.jbpm.process.audit.query.AbstractAuditQueryBuilderImpl.descending(OrderBy)")
+			.addFP("Push Down Method", "org.jbpm.query.jpa.builder.impl.AbstractQueryBuilderImpl.descending()", "org.jbpm.services.task.impl.TaskQueryBuilderImpl.descending(OrderBy)");
 		
 		commit("https://github.com/BuildCraft/BuildCraft.git", "a5cdd8c4b10a738cb44819d7cc2fee5f5965d4a0")
 			.addTP("Push Down Method", "buildcraft.api.robots.ResourceId.equals(Object)", "buildcraft.api.robots.ResourceIdRequest.equals(Object)")
@@ -198,7 +206,8 @@ public class CalibrationDataset extends AbstractDataset {
 			.addFP("Move Method", "cascading.stats.tez.TezNodeStats.logInfo(String,Object[])", "cascading.stats.CascadingStats.logInfo(String,Object[])")
 			.addFP("Move Method", "cascading.stats.tez.TezNodeStats.logWarn(String,Object[])", "cascading.stats.CascadingStats.logWarn(String,Object[])")
 			.addTP("Pull Up Attribute", "cascading.stats.tez.TezNodeStats.prefixID", "cascading.stats.CascadingStats.prefixID")
-			.addFP("Move Attribute", "cascading.stats.tez.TezNodeStats.prefixID", "cascading.stats.CascadingStats.prefixID");
+			.addFP("Move Attribute", "cascading.stats.tez.TezNodeStats.prefixID", "cascading.stats.CascadingStats.prefixID")
+			.addTP("Extract Method", "cascading.stats.hadoop.BaseHadoopNodeStats.recordChildStats()", "cascading.stats.CascadingStats.logError(String,Throwable)");
 		
 		commit("https://github.com/elastic/elasticsearch.git", "f77804dad35c13d9ff96456e85737883cf7ddd99")
 			.addFP("Move And Rename Class", "org.elasticsearch.index.merge.policy.TieredMergePolicyProvider", "org.elasticsearch.index.shard.MergePolicyConfig")
@@ -218,7 +227,8 @@ public class CalibrationDataset extends AbstractDataset {
 			.addFP("Move Method", "org.elasticsearch.index.merge.policy.LogDocMergePolicyProvider.ApplySettings.onRefreshSettings(Settings)", "org.elasticsearch.index.shard.MergePolicyConfig.onRefreshSettings(Settings)");
 		
 		commit("https://github.com/facebook/facebook-android-sdk.git", "e813a0be86c87366157a0201e6c61662cadee586")
-			.addTP("Move Class", "com.facebook.iconicus.MainActivity", "com.example.iconicus.MainActivity");
+			.addTP("Move Class", "com.facebook.iconicus.MainActivity", "com.example.iconicus.MainActivity")
+			.addFP("Extract Method", "com.facebook.internal.AttributionIdentifiers.getAndroidId(Context)", "com.facebook.internal.AttributionIdentifiers.getAndroidIdViaService(Context)");
 		
 		commit("https://github.com/aws/aws-sdk-java.git", "4baf0a4de8d03022df48d696d210cc8b3117d38a")
 			.addFP("Move Method", "com.amazonaws.services.elasticfilesystem.model.transform.BadRequestExceptionUnmarshaller.match(String,JSONObject)", "com.amazonaws.services.cognitoidentity.model.transform.ConcurrentModificationExceptionUnmarshaller.match(String,JSONObject)")
@@ -280,7 +290,7 @@ public class CalibrationDataset extends AbstractDataset {
 			.addTP("Move Method", "com.amazonaws.util.EC2MetadataUtilsTest.outputInstanceInfo(PrintWriter)", "com.amazonaws.util.EC2MetadataUtilsServer.outputInstanceInfo(PrintWriter)")
 			.addTP("Extract Method", "com.amazonaws.util.EC2MetadataUtilsTest.outputInstanceInfo(PrintWriter)", "com.amazonaws.util.EC2MetadataUtilsServer.constructInstanceInfo()")
 			.addTP("Rename Method", "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper.callUntilCompletion(Map)", "com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper.doBatchWriteItemWithRetry(Map,BatchWriteRetryStrategy)")
-			;
+			.addFP("Extract Method", "com.amazonaws.services.elasticfilesystem.model.transform.CreateTagsRequestMarshaller.marshall(CreateTagsRequest)", "com.amazonaws.services.elasticfilesystem.model.transform.TagJsonMarshaller.getInstance()");
 		
 		commit("https://github.com/graphhopper/graphhopper.git", "7f80425b6a0af9bdfef12c8a873676e39e0a04a6")
 			.addTP("Rename Class", "com.graphhopper.storage.GraphExtension.NoExtendedStorage", "com.graphhopper.storage.GraphExtension.NoOpExtension")
@@ -338,7 +348,11 @@ public class CalibrationDataset extends AbstractDataset {
 			.addTP("Rename Method", "com.graphhopper.storage.index.AbstractLocationIndexTester.createGraph(EncodingManager)", "com.graphhopper.storage.index.AbstractLocationIndexTester.createGHStorage(EncodingManager)")
 			.addTP("Rename Method", "com.graphhopper.storage.index.LocationIndexTreeForLevelGraphTest.createGraph(Directory,EncodingManager,boolean)", "com.graphhopper.storage.index.LocationIndexTreeForLevelGraphTest.createGHStorage(Directory,EncodingManager,boolean)")
 			.addTP("Rename Method", "com.graphhopper.util.GHUtility.guessStorage(Graph,Directory,EncodingManager)", "com.graphhopper.util.GHUtility.newStorage(GraphHopperStorage)")
-			;
+			.addFP("Extract Method", "com.graphhopper.routing.AbstractRoutingAlgorithmTester.testTwoWeightsPerEdge2()", "com.graphhopper.routing.AbstractRoutingAlgorithmTester.getGraph(GraphHopperStorage)")
+			.addFP("Extract Method", "com.graphhopper.routing.AbstractRoutingAlgorithmTester.testWithCoordinates()", "com.graphhopper.routing.AbstractRoutingAlgorithmTester.getGraph(GraphHopperStorage)")
+			.addFP("Extract Method", "com.graphhopper.routing.ch.DijkstraBidirectionCHTest.createFactory(Graph,AlgorithmOptions)", "com.graphhopper.routing.ch.DijkstraBidirectionCHTest.getGraph(GraphHopperStorage)")
+			.addFP("Extract Method", "com.graphhopper.storage.GraphHopperStorage.toString()", "com.graphhopper.storage.GraphHopperStorage.isCHPossible()")
+			.addFP("Extract Method", "com.graphhopper.storage.GraphHopperStorage.toDetailsString()", "com.graphhopper.storage.LevelGraphImpl.toDetailsString()");
 		
 		commit("https://github.com/neo4j/neo4j.git", "b83e6a535cbca21d5ea764b0c49bfca8a9ff9db4")
 			.addTP("Rename Method", "org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newMatchAllQuery()", "org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newAllQuery()")
@@ -399,7 +413,10 @@ public class CalibrationDataset extends AbstractDataset {
 			.addTP("Rename Class", "org.drools.core.base.ClassFieldAccessorCache.ByteArrayClassLoader", "org.drools.core.base.ClassFieldAccessorCache.DefaultByteArrayClassLoader")
 			.addTP("Push Down Method", "org.drools.core.common.ProjectClassLoader.InternalTypesClassLoader.loadClass(String,boolean)", "org.drools.core.common.ProjectClassLoader.DefaultInternalTypesClassLoader.loadClass(String,boolean)")
 			.addTP("Push Down Attribute", "org.drools.core.common.ProjectClassLoader.InternalTypesClassLoader.projectClassLoader", "org.drools.core.common.ProjectClassLoader.DefaultInternalTypesClassLoader.projectClassLoader")
-			.addFP("Move Class", "org.drools.core.base.ClassFieldAccessorCache.ByteArrayClassLoader", "org.drools.core.util.ByteArrayClassLoader");
+			.addFP("Move Class", "org.drools.core.base.ClassFieldAccessorCache.ByteArrayClassLoader", "org.drools.core.util.ByteArrayClassLoader")
+			.addFP("Extract Method", "org.drools.core.common.ProjectClassLoader.defineType(String,byte[])", "org.drools.core.common.ProjectClassLoader.makeClassLoader()")
+			.addTP("Extract Method", "org.drools.core.rule.JavaDialectRuntimeData.onAdd(DialectRuntimeRegistry,ClassLoader)", "org.drools.core.rule.JavaDialectRuntimeData.makeClassLoader()")
+			.addTP("Extract Method", "org.drools.core.rule.JavaDialectRuntimeData.reload()", "org.drools.core.rule.JavaDialectRuntimeData.makeClassLoader()");
 		
 		commit("https://github.com/hazelcast/hazelcast.git", "c00275e7f85c8a9af5785f66cc0f75dc027b6cb6")
 			.addTP("Push Down Attribute", "com.hazelcast.jca.AbstractDeploymentTest.connectionFactory", "com.hazelcast.jca.XATransactionTest.connectionFactory")
@@ -410,7 +427,8 @@ public class CalibrationDataset extends AbstractDataset {
 			.addTP("Rename Method", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalArnoldi(int)", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalIteration()")
 			.addTP("Extract Method", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalArnoldi(int)", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.incrementTotalIterations()")
 			.addFP("Rename Method", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runIterations(int)", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runInternalIteration()")
-			.addFP("Extract Method", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runIterations(int)", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.incrementTotalIterations()");
+			.addFP("Extract Method", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower.runIterations(int)", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.incrementTotalIterations()")
+			.addFP("Extract Method", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runIterations(int)", "org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.changeSignBasedOnFirstNoneZeroValue()");
 		
 		commit("https://github.com/apache/drill.git", "c1b847acdc8cb90a1498b236b3bb5c81ca75c044")
 			.addTP("Pull Up Method", "org.apache.drill.exec.impersonation.TestImpersonationDisabledWithMiniDFS.addMiniDfsBasedStorage()", "org.apache.drill.exec.impersonation.BaseTestImpersonation.addMiniDfsBasedStorage(Map)")
@@ -428,7 +446,9 @@ public class CalibrationDataset extends AbstractDataset {
 			.addFP("Rename Method", "org.apache.drill.exec.impersonation.TestImpersonationQueries.addMiniDfsBasedStorageAndGenerateTestData()", "org.apache.drill.exec.impersonation.TestImpersonationQueries.createTestData()")
 			.addFP("Extract Method", "org.apache.drill.exec.impersonation.TestImpersonationDisabledWithMiniDFS.addMiniDfsBasedStorage()", "org.apache.drill.exec.impersonation.BaseTestImpersonation.addMiniDfsBasedStorage(Map)")
 			.addFP("Extract Method", "org.apache.drill.exec.impersonation.TestImpersonationMetadata.addMiniDfsBasedStorage()", "org.apache.drill.exec.impersonation.BaseTestImpersonation.addMiniDfsBasedStorage(Map)")
-			.addFP("Extract Method", "org.apache.drill.exec.impersonation.TestImpersonationDisabledWithMiniDFS.addMiniDfsBasedStorage()", "org.apache.drill.exec.impersonation.TestImpersonationDisabledWithMiniDFS.createTestData()");
+			.addFP("Extract Method", "org.apache.drill.exec.impersonation.TestImpersonationDisabledWithMiniDFS.addMiniDfsBasedStorage()", "org.apache.drill.exec.impersonation.TestImpersonationDisabledWithMiniDFS.createTestData()")
+			.addTP("Extract Method", "org.apache.drill.exec.store.hive.HiveTestDataGenerator.generateTestData()", "org.apache.drill.BaseTestQuery.getTempDir(String)")
+			.addFP("Extract Method", "org.apache.drill.exec.store.hive.schema.HiveSchemaFactory.HiveSchemaFactory(HiveStoragePlugin,String,Map)", "org.apache.drill.exec.store.hive.DrillHiveMetaStoreClient.createNonCloseableClientWithCaching(HiveConf,Map)");
 		
 		commit("https://github.com/facebook/presto.git", "364f50274d4b4b83d40930c0d2c4d0e57fb34589")
 			.addTP("Rename Method", "com.facebook.presto.operator.HashGenerator.getPartitionHashBucket(int,int,Page)", "com.facebook.presto.operator.HashGenerator.getPartitionBucket(int,int,Page)")
@@ -440,7 +460,8 @@ public class CalibrationDataset extends AbstractDataset {
 		commit("https://github.com/hazelcast/hazelcast.git", "4d05a3b1168441216dcaea8282c39338285182af")
 			.addTP("Extract Superclass", "com.hazelcast.cache.impl.client.CacheCreateConfigRequest$1", "com.hazelcast.spi.impl.SimpleExecutionCallback")
 			.addTP("Extract Superclass", "com.hazelcast.cache.impl.client.CacheDestroyRequest$1", "com.hazelcast.spi.impl.SimpleExecutionCallback")
-			.addTP("Rename Method", "com.hazelcast.map.impl.proxy.MapProxySupport.MapExecutionCallbackAdapter.notify(Object)", "com.hazelcast.map.impl.proxy.MapProxySupport.MapExecutionCallbackAdapter.onResponse(Object)");
+			.addTP("Rename Method", "com.hazelcast.map.impl.proxy.MapProxySupport.MapExecutionCallbackAdapter.notify(Object)", "com.hazelcast.map.impl.proxy.MapProxySupport.MapExecutionCallbackAdapter.onResponse(Object)")
+			.addFP("Extract Method", "com.hazelcast.spi.impl.operationservice.impl.InvocationBuilderImpl.invoke()", "com.hazelcast.spi.InvocationBuilder.getTargetExecutionCallback()");
 
 		commit("https://github.com/JetBrains/intellij-community.git", "6905d569a1e39d0d7b1ec5ceee4f0bbe60b85947")
 			.addFP("Move Method", "com.jetbrains.edu.coursecreator.actions.CCRenameLesson.processRename(Project,PsiDirectory,Course)", "com.jetbrains.edu.coursecreator.CCRenameHandler.processRename(Named,String,Project)")
@@ -453,6 +474,9 @@ public class CalibrationDataset extends AbstractDataset {
 		commit("https://github.com/square/javapoet.git", "5a37c2aa596377cb4c9b6f916614407fd0a7d3db")
 			.addFP("Rename Method", "com.squareup.javapoet.TypesTest.getElement(Class)", "com.squareup.javapoet.TypesTest.getElements()")
 			.addFP("Rename Method", "com.squareup.javapoet.TypesTest.getVoidTypeMirror()", "com.squareup.javapoet.TypesTest.getTypes()");
+		
+		commit("https://github.com/apache/cassandra.git", "573a1d115b86abbe3fb53ff930464d7d8fd95600")
+			.addFP("Extract Method", "org.apache.cassandra.net.MessagingService.incrementRejectedMessages(Verb)", "org.apache.cassandra.net.MessagingService.incrementDroppedMessages(DroppedMessages,boolean)");
 	}
 	
 }

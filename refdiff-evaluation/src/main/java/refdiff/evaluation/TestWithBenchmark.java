@@ -35,7 +35,7 @@ public class TestWithBenchmark {
         config.setThreshold(RelationshipType.RENAME_METHOD, 0.3);
         config.setThreshold(RelationshipType.PULL_UP_METHOD, 0.4);
         config.setThreshold(RelationshipType.PUSH_DOWN_METHOD, 0.6);
-        config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.5);
+        config.setThreshold(RelationshipType.EXTRACT_METHOD, 0.3);
         config.setThreshold(RelationshipType.INLINE_METHOD, 0.5);
         config.setThreshold(RelationshipType.MOVE_FIELD, 0.5);
         config.setThreshold(RelationshipType.PULL_UP_FIELD, 0.5);
@@ -48,8 +48,8 @@ public class TestWithBenchmark {
 //        config = calibrate(config, RelationshipType.MOVE_METHOD, RefactoringType.MOVE_OPERATION);
 //        config = calibrate(config, RelationshipType.RENAME_METHOD, RefactoringType.RENAME_METHOD);
 //        config = calibrate(config, RelationshipType.PULL_UP_METHOD, RefactoringType.PULL_UP_OPERATION);
-        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
-//        config = calibrate(config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
+//        config = calibrate(config, RelationshipType.PUSH_DOWN_METHOD, RefactoringType.PUSH_DOWN_OPERATION);
+        config = calibrate(config, RelationshipType.EXTRACT_METHOD, RefactoringType.EXTRACT_OPERATION);
 //        config = calibrate(config, RelationshipType.INLINE_METHOD, RefactoringType.INLINE_OPERATION);
 //        
 //        config = calibrate(config, RelationshipType.PULL_UP_FIELD, RefactoringType.PULL_UP_ATTRIBUTE);
