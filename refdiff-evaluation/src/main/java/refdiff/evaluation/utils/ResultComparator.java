@@ -80,6 +80,13 @@ public class ResultComparator {
         }
         return this;
     }
+    
+    public ResultComparator compareWith(String groupId, Iterable<RefactoringSet> actualArray) {
+        for (RefactoringSet actual : actualArray) {
+            compareWith(groupId, actual);
+        }
+        return this;
+    }
 
 	public void compareWith(String groupId, RefactoringSet actual) {
 		groupIds.add(groupId);
@@ -123,10 +130,10 @@ public class ResultComparator {
         
         for (RefactoringSet expected : expectedMap.values()) {
             RefactoringSet actual = resultMap.get(getResultId(expected.getProject(), expected.getRevision(), groupId));
+            Set<RefactoringRelationship> expectedRefactorings = expected.ignoring(ignore).ignoringMethodParameters(ignoreMethodParams).getRefactorings();
+            Set<RefactoringRelationship> expectedUnfiltered = expected.ignoringMethodParameters(ignoreMethodParams).getRefactorings();
             if (actual != null) {
-                Set<RefactoringRelationship> expectedRefactorings = expected.ignoring(ignore).ignoringMethodParameters(ignoreMethodParams).getRefactorings();
                 Set<RefactoringRelationship> actualRefactorings = actual.ignoring(ignore).ignoringMethodParameters(ignoreMethodParams).getRefactorings();
-                Set<RefactoringRelationship> expectedUnfiltered = expected.ignoringMethodParameters(ignoreMethodParams).getRefactorings();
                 for (RefactoringRelationship r : actualRefactorings) {
                     if (expectedRefactorings.contains(r)) {
                         truePositives.add(r);
@@ -141,9 +148,9 @@ public class ResultComparator {
                         }
                     }
                 }
-                for (Object r : expectedRefactorings) {
-                    falseNegatives.add(r);
-                }
+            }
+            for (Object r : expectedRefactorings) {
+            	falseNegatives.add(r);
             }
         }
         return new CompareResult(truePositives, falsePositives, falseNegatives);
@@ -295,11 +302,17 @@ public class ResultComparator {
     }
     
     private String getProjectRevisionId(String project, String revision) {
-        return project.substring(0, project.length() - 4) + "/commit/" + revision;
+    	if (project.endsWith(".git")) {
+    		return project.substring(0, project.length() - 4) + "/commit/" + revision;
+    	}
+    	return project + "/commit/" + revision;
     }
 
     private String getResultId(String project, String revision, String groupId) {
-        return project.substring(0, project.length() - 4) + "/commit/" + revision + ";" + groupId;
+    	if (project.endsWith(".git")) {
+    		return project.substring(0, project.length() - 4) + "/commit/" + revision + ";" + groupId;
+    	}
+    	return project + "/commit/" + revision + ";" + groupId;
     }
 
     public static class CompareResult {
