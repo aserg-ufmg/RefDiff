@@ -1,0 +1,13 @@
+plugins {
+  id 'java'
+  id 'eclipse'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  compile 'com.github.aserg-ufmg:refdiff-core:0.1.1'
+}
+
