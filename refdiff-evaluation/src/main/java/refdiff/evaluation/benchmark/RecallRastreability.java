@@ -25,6 +25,7 @@ public class RecallRastreability {
     
     public void run() {
     	readExpected(new File("C:/Users/m24063/RefDiff-data-icse/expected"));
+    	readActual2(new File("./data/recall/actual"));
     	
         File folder = new File("C:/Users/m24063/RefDiff-data-icse");
         for (File f : folder.listFiles()) {
@@ -38,6 +39,13 @@ public class RecallRastreability {
         rc.compareWith("RefDiff", mapActual.values());
         
         rc.printSummary(System.out, EnumSet.allOf(RefactoringType.class));
+        rc.printDetails(System.out, EnumSet.allOf(RefactoringType.class));
+        
+        System.out.println();
+        for (String keyExpected : mapExpected.keySet()) {
+        	boolean analyzed = mapActual.containsKey(keyExpected);
+        	System.out.println(String.format("%s %s", keyExpected, analyzed));
+        }
     }
     
     private RefactoringSet getActualRs(String project, String sha1) {
@@ -59,10 +67,10 @@ public class RecallRastreability {
                     String entityBefore = array[2].trim();
                     String entityAfter = array[3].trim();
                     String sha1 = array[4].trim();
+                    RefactoringSet rs = getActualRs(project, sha1);
                     if (refTypeString.startsWith("Same")) continue;
                     
                     RefactoringType refactoringType = findByNameCC(refTypeString);
-                    RefactoringSet rs = getActualRs(project, sha1);
                     rs.add(refactoringType, entityBefore, entityAfter);
                 }
             }
@@ -70,6 +78,26 @@ public class RecallRastreability {
             throw new RuntimeException(e);
         }
     }
+
+	public void readActual2(File file) {
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+				if (!line.trim().isEmpty()) {
+					String[] array = line.split("\t");
+					String project = array[0];
+					String sha1 = array[1];
+					RefactoringType refactoringType = RefactoringType.fromName(array[2].trim());
+					String entityBefore = array[3].trim();
+					String entityAfter = array[4].trim();
+					RefactoringSet rs = getActualRs(project, sha1);
+					rs.add(refactoringType, entityBefore, entityAfter);
+				}
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
     
     public void readExpected(File file) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
