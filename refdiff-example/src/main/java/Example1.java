@@ -26,13 +26,14 @@ public class Example1 {
 			{ "elastic/elasticsearch", "549ca3178bb6151b080a97eac6093bf8af459a99", "false" },
 			{ "elastic/elasticsearch", "867f056cf6370bfdc39790eac758ea0035644631", "false" },
 			{ "square/okhttp", "7c94c808de0e946180fbcfa187aacd8fca83c489", "false" },
-			{ "elastic/elasticsearch", "ddced5df1a924a90a3d8d549479941087859e111", "false" }
+			{ "elastic/elasticsearch", "ddced5df1a924a90a3d8d549479941087859e111", "false" },
+			{ "square/okhttp", "957537774b319bb0109819258a11af78a98bcb97", "false" }
 		};
 		
 		RefDiff refDiff = new RefDiff();
 		GitService gitService = new GitServiceImpl();
 		
-		File folder = new File("C:/Users/m24063/RefDiff-data-icse/repos");
+		File folder = new File("D:/tmp");
 		try (PrintStream pw = new PrintStream(new File(folder.getParentFile(), "actual"))) {
 			for (String[] i : todo) {
 				String project = i[0];

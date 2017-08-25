@@ -24,10 +24,11 @@ public class RecallRastreability {
     private Map<String, RefactoringSet> mapExpected = new HashMap<>(); 
     
     public void run() {
-    	readExpected(new File("C:/Users/m24063/RefDiff-data-icse/expected"));
+        File folder = new File("C:/Users/danilofs/RefDiff-data-icse");
+        
+    	readExpected(new File(folder, "expected"));
     	readActual2(new File("./data/recall/actual"));
     	
-        File folder = new File("C:/Users/m24063/RefDiff-data-icse");
         for (File f : folder.listFiles()) {
             if (f.getName().startsWith("model_")) {
             	readActual(f);
