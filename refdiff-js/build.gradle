@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.mozilla:rhino:1.7.7.2'
+}
