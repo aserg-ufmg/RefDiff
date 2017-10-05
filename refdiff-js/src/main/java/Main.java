@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.mozilla.javascript.CompilerEnvirons;
+import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Parser;
 import org.mozilla.javascript.ast.AstNode;
 import org.mozilla.javascript.ast.AstRoot;
@@ -13,6 +14,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         
         CompilerEnvirons compilerEnv = new CompilerEnvirons();
+        compilerEnv.setLanguageVersion(Context.VERSION_ES6);
+        
         Parser parser = new Parser(compilerEnv);
         
         try (FileReader reader = new FileReader(new File("hello.js"))) {
