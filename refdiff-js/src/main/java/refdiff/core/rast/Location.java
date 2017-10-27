@@ -1,4 +1,4 @@
-package refdiff.rast;
+package refdiff.core.rast;
 
 public class Location {
     public String file;

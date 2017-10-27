@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import refdiff.rast.RastNode;
-import refdiff.rast.Stereotype;
+import refdiff.core.rast.RastNode;
+import refdiff.core.rast.Stereotype;
 
 public abstract class EsprimaNodeHandler {
 

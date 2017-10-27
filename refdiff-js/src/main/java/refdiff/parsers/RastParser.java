@@ -2,10 +2,11 @@ package refdiff.parsers;
 
 import java.util.Set;
 
-import refdiff.rast.RastRoot;
+import refdiff.core.io.SourceReader;
+import refdiff.core.rast.RastRoot;
 
 public interface RastParser {
 
-    RastRoot parse(Set<String> filesOfInterest, FileContentReader reader) throws Exception;
+    RastRoot parse(Set<String> filesOfInterest, SourceReader reader) throws Exception;
 
 }

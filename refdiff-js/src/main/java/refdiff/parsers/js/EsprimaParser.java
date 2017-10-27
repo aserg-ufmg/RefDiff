@@ -1,6 +1,6 @@
 package refdiff.parsers.js;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -9,13 +9,14 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import refdiff.parsers.FileContentReader;
+import refdiff.core.io.SourceReader;
+import refdiff.core.rast.Location;
+import refdiff.core.rast.RastNode;
+import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
-import refdiff.rast.Location;
-import refdiff.rast.RastNode;
-import refdiff.rast.RastRoot;
+import refdiff.parsers.SourceTokenizer;
 
-public class EsprimaParser implements RastParser {
+public class EsprimaParser implements RastParser, SourceTokenizer {
 
     private Invocable invocableScript;
     private int nodeCounter = 0;
@@ -24,24 +25,12 @@ public class EsprimaParser implements RastParser {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval("load('classpath:esprima.js');");
         engine.eval("function parse(script) {return esprima.parseModule(script, {range: true});}");
+        engine.eval("function tokenize(source) {return esprima.tokenize(source, {comment: true});}");
         this.invocableScript = (Invocable) engine;
     }
 
-    public static void main(String[] args) throws Exception {
-        EsprimaParser parser = new EsprimaParser();
-        Set<String> files = Collections.singleton("hello.js");
-        FileContentReader contentReader = new FileContentReader();
-        RastRoot root = parser.parse(files, contentReader);
-
-        root.forEachNode((node, depth) -> {
-            for (int i = 0; i < depth; i++)
-                System.out.print("  ");
-            System.out.println(node);
-        });
-    }
-
     @Override
-    public RastRoot parse(Set<String> filesOfInterest, FileContentReader reader) throws Exception {
+    public RastRoot parse(Set<String> filesOfInterest, SourceReader reader) throws Exception {
         RastRoot root = new RastRoot();
         this.nodeCounter = 0;
         for (String path : filesOfInterest) {
@@ -49,6 +38,21 @@ public class EsprimaParser implements RastParser {
             getRast(root.nodes, path, content);
         }
         return root;
+    }
+
+    @Override
+    public List<String> tokenize(String source) {
+        try {
+            ScriptObjectMirror array = (ScriptObjectMirror) this.invocableScript.invokeFunction("tokenize", source);
+            List<String> tokens = new ArrayList<>(array.size());
+            for (int i = 0; i < array.size(); i++) {
+                String token = ((ScriptObjectMirror) array.getSlot(i)).getMember("value").toString();
+                tokens.add(token);
+            }
+            return tokens;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void getRast(List<RastNode> list, String path, String content) throws Exception {

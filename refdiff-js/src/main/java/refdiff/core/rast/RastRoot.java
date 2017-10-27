@@ -1,4 +1,4 @@
-package refdiff.rast;
+package refdiff.core.rast;
 
 import java.util.ArrayList;
 import java.util.List;
