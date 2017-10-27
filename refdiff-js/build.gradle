@@ -1,3 +1,5 @@
+import org.gradle.plugins.ide.eclipse.model.AccessRule
+
 plugins {
     id 'java'
     id 'eclipse'
@@ -8,5 +10,16 @@ repositories {
 }
 
 dependencies {
-    compile 'org.mozilla:rhino:1.7.7.2'
+	testCompile 'junit:junit:4.11'
+}
+
+eclipse {
+    classpath {
+        file {
+            whenMerged {
+                def jre = entries.find { it.path.contains 'org.eclipse.jdt.launching.JRE_CONTAINER' }
+                jre.accessRules.add(new AccessRule('accessible', 'jdk/nashorn/api/**'))
+            }
+        }
+    }
 }
