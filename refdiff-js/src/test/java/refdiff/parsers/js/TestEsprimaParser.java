@@ -5,8 +5,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.io.FileSystemReader;
-import refdiff.core.io.SourceReader;
+import refdiff.core.io.FileSystemSourceFile;
+import refdiff.core.io.SourceFile;
 import refdiff.core.rast.RastRoot;
 
 public class TestEsprimaParser {
@@ -14,9 +14,9 @@ public class TestEsprimaParser {
     @Test
     public void shouldParseSimpleFile() throws Exception {
         EsprimaParser parser = new EsprimaParser();
-        Set<String> files = Collections.singleton("src/test/java/refdiff/parsers/js/hello.js");
-        SourceReader contentReader = new FileSystemReader();
-        RastRoot root = parser.parse(files, contentReader);
+        String basePath = "src/test/resources/";
+        Set<SourceFile> sourceFiles = Collections.singleton(new FileSystemSourceFile(basePath, "hello.js"));
+        RastRoot root = parser.parse(sourceFiles);
 
         root.forEachNode((node, depth) -> {
             for (int i = 0; i < depth; i++) System.out.print("  ");

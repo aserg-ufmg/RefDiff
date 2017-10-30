@@ -9,7 +9,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import refdiff.core.io.SourceReader;
+import refdiff.core.io.SourceFile;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastRoot;
@@ -30,12 +30,12 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
     }
 
     @Override
-    public RastRoot parse(Set<String> filesOfInterest, SourceReader reader) throws Exception {
+    public RastRoot parse(Set<SourceFile> filesOfInterest) throws Exception {
         RastRoot root = new RastRoot();
         this.nodeCounter = 0;
-        for (String path : filesOfInterest) {
-            String content = reader.readAllContent(path);
-            getRast(root.nodes, path, content);
+        for (SourceFile sourceFile : filesOfInterest) {
+            String content = sourceFile.getContent();
+            getRast(root.nodes, sourceFile.getPath(), content);
         }
         return root;
     }

@@ -1,13 +1,31 @@
 package refdiff.core.diff;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import refdiff.core.rast.RastRoot;
 
 public class RastDiff {
 
-    public RastRoot before;
-    public RastRoot after;
-    public Set<Relationship> relationships;
+    private final RastRoot before;
+    private final RastRoot after;
+    private final Set<Relationship> relationships = new HashSet<>();
+    
+    public RastDiff(RastRoot before, RastRoot after) {
+        this.before = before;
+        this.after = after;
+    }
 
+    public RastRoot getBefore() {
+        return before;
+    }
+
+    public RastRoot getAfter() {
+        return after;
+    }
+
+    public Set<Relationship> getRelationships() {
+        return relationships;
+    }
+    
 }
