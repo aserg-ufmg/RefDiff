@@ -3,6 +3,8 @@ package refdiff.parsers.js;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Set;
 
@@ -19,8 +21,8 @@ public class TestEsprimaParser {
     @Test
     public void shouldParseSimpleFile() throws Exception {
         EsprimaParser parser = new EsprimaParser();
-        String basePath = "src/test/resources/parser/";
-        Set<SourceFile> sourceFiles = Collections.singleton(new FileSystemSourceFile(basePath, "ex1.js"));
+        Path basePath = Paths.get("src/test/resources/parser/");
+        Set<SourceFile> sourceFiles = Collections.singleton(new FileSystemSourceFile(basePath, Paths.get("ex1.js")));
         RastRoot root = parser.parse(sourceFiles);
 
         assertThat(root.getNodes().size(), is(1));

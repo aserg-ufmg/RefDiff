@@ -5,8 +5,13 @@ import static refdiff.test.util.RastDiffMatchers.containsOnly;
 import static refdiff.test.util.RastDiffMatchers.node;
 import static refdiff.test.util.RastDiffMatchers.relationship;
 
-import java.util.Collections;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -26,26 +31,36 @@ public class TestRastComparator {
     
     @Test
     public void shouldMatchWithSameNamePath() throws Exception {
-        assertThat(diff("diff1/"), containsOnly(
+        assertThat(diff("diff1"), containsOnly(
             relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
             relationship(RelationshipType.SAME, node("hello.js", "foo"), node("hello.js", "foo")),
             relationship(RelationshipType.SAME, node("hello.js", "bar"), node("hello.js", "bar"))
         ));
     }
 
+    @Test
+    public void shouldMatchRenameFile() throws Exception {
+        assertThat(diff("diff2"), containsOnly(
+            relationship(RelationshipType.RENAME, node("hello.js"), node("hello2.js")),
+            relationship(RelationshipType.SAME, node("hello.js", "foo"), node("hello2.js", "foo")),
+            relationship(RelationshipType.SAME, node("hello.js", "bar"), node("hello2.js", "bar"))
+        ));
+    }
+    
     private RastDiff diff(String folder) throws Exception {
         String basePath = "src/test/resources/" + folder;
-        
-        String basePathV0 = basePath + "v0/";
-        Set<SourceFile> sourceFilesBefore = Collections.singleton(new FileSystemSourceFile(basePathV0, "hello.js"));
-        
-        String basePathV1 = basePath + "v1/";
-        Set<SourceFile> sourceFilesAfter = Collections.singleton(new FileSystemSourceFile(basePathV1, "hello.js"));
-        
+        Set<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
+        Set<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
         RastComparator comparator = new RastComparator(this.parser, this.parser);
+        return comparator.compare(sourceFilesBefore, sourceFilesAfter);
+    }
 
-        RastDiff diff = comparator.compare(sourceFilesBefore, sourceFilesAfter);
-        return diff;
+    private Set<SourceFile> getSourceFiles(Path basePath) throws IOException {
+        try (Stream<Path> stream = Files.walk(basePath)) {
+            return stream.filter(path -> path.getFileName().toString().endsWith(".js"))
+            .map(path -> new FileSystemSourceFile(basePath, basePath.relativize(path)))
+            .collect(Collectors.toSet());
+        }
     }
     
 }
