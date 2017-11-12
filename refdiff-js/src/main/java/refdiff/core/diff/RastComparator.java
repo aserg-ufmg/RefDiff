@@ -1,7 +1,6 @@
 package refdiff.core.diff;
 
 import java.util.Set;
-import java.util.function.BiConsumer;
 
 import refdiff.core.io.SourceFile;
 import refdiff.core.rast.HasChildrenNodes;
@@ -31,27 +30,24 @@ public class RastComparator {
         }
         
         RastDiff computeDiff() {
-            matchByLogicalName(diff.getBefore(), diff.getAfter());
+            matchByName(diff.getBefore(), diff.getAfter());
             return diff;
         }
 
-        private void matchByLogicalName(HasChildrenNodes nodes1, HasChildrenNodes nodes2) {
-            forAllWithSameLogicalName(nodes1, nodes2, (n1, n2) -> {
-                diff.addRelationships(new Relationship(RelationshipType.SAME, n1, n2, 1.0));
-            });
-        }
-
-        private void forAllWithSameLogicalName(HasChildrenNodes nodes1, HasChildrenNodes nodes2, BiConsumer<RastNode, RastNode> function) {
+        private void matchByName(HasChildrenNodes nodes1, HasChildrenNodes nodes2) {
             for (RastNode n1 : nodes1.getNodes()) {
                 for (RastNode n2 : nodes2.getNodes()) {
-                    if (!n1.getLocalName().isEmpty() && n1.getLocalName().equals(n2.getLocalName())) {
-                        function.accept(n1, n2);
+                    if (sameName(n1, n2)) {
+                        diff.addRelationships(new Relationship(RelationshipType.SAME, n1, n2, 1.0));
+                        matchByName(n1, n2);
                     }
                 }
             }
         }
-        
-        
+
+        private boolean sameName(RastNode n1, RastNode n2) {
+            return !n1.getLocalName().isEmpty() && n1.getLocalName().equals(n2.getLocalName());
+        }
     }
     
 }
