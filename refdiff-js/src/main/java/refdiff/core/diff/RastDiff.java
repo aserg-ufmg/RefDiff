@@ -1,5 +1,6 @@
 package refdiff.core.diff;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,7 +26,11 @@ public class RastDiff {
     }
 
     public Set<Relationship> getRelationships() {
-        return relationships;
+        return Collections.unmodifiableSet(relationships);
+    }
+    
+    public void addRelationships(Relationship relationship) {
+        relationships.add(relationship);
     }
     
 }

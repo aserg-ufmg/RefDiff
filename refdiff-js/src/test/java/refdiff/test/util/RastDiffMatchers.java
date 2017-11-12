@@ -1,8 +1,11 @@
 package refdiff.test.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -16,47 +19,71 @@ import refdiff.core.rast.RastRoot;
 
 public class RastDiffMatchers {
 
-    public static RelationshipQuery relationship(RelationshipType type, String nameBefore, String nameAfter) {
-        return new RelationshipQuery(type, nameBefore, nameAfter);
+    public static RelationshipQuery relationship(RelationshipType type, NodeQuery nodeBefore, NodeQuery nodeAfter) {
+        return new RelationshipQuery(type, nodeBefore, nodeAfter);
+    }
+    
+    public static NodeQuery node(String... path) {
+        return new NodeQuery(path);
     }
 
     public static Matcher<RastDiff> contains(RelationshipQuery... queries) {
-        return new RastDiffMatcher(queries);
+        return new RastDiffMatcher(false, queries);
     }
 
+    public static Matcher<RastDiff> containsOnly(RelationshipQuery... queries) {
+        return new RastDiffMatcher(true, queries);
+    }
+    
+    public static class NodeQuery {
+        final String[] namePath;
+        public NodeQuery(String... namePath) {
+            this.namePath = namePath;
+        }
+        @Override
+        public String toString() {
+            return Arrays.toString(namePath);
+        }
+    }
+    
     public static class RelationshipQuery {
         final RelationshipType type;
-        final String nameBefore;
-        final String nameAfter;
+        final NodeQuery nodeQBefore;
+        final NodeQuery nodeQAfter;
 
-        public RelationshipQuery(RelationshipType type, String nameBefore, String nameAfter) {
+        public RelationshipQuery(RelationshipType type, NodeQuery nodeQBefore, NodeQuery nodeQAfter) {
             this.type = type;
-            this.nameBefore = nameBefore;
-            this.nameAfter = nameAfter;
+            this.nodeQBefore = nodeQBefore;
+            this.nodeQAfter = nodeQAfter;
         }
 
         @Override
         public String toString() {
-            return String.format("%s(%s, %s)", type, nameBefore, nameAfter);
+            return String.format("%s(%s, %s)", type, nodeQBefore, nodeQAfter);
         }
 
-        public boolean find(RastDiff diff) {
-            RastRoot before = diff.getAfter();
+        public Optional<Relationship> find(RastDiff diff) {
+            RastRoot before = diff.getBefore();
             RastRoot after = diff.getAfter();
-            Optional<RastNode> nodeBefore = before.findByName(nameBefore);
-            Optional<RastNode> nodeAfter = after.findByName(nameAfter);
-            if (nodeBefore.isPresent() && nodeAfter.isPresent()) {
-                return diff.getRelationships().contains(new Relationship(type, nodeBefore.get(), nodeAfter.get(), 0.0));
-            }
-            return false;
+            Optional<RastNode> oNodeBefore = before.findByNamePath(nodeQBefore.namePath);
+            Optional<RastNode> oNodeAfter = after.findByNamePath(nodeQAfter.namePath);
+            return oNodeBefore.flatMap(nodeBefore -> oNodeAfter.flatMap(nodeAfter -> {
+                Relationship r = new Relationship(type, nodeBefore, nodeAfter, 0.0);
+                if (diff.getRelationships().contains(r)) {
+                    return Optional.of(r);
+                }
+                return Optional.empty();
+            }));
         }
     }
 
     private static class RastDiffMatcher extends TypeSafeDiagnosingMatcher<RastDiff> {
 
         RelationshipQuery[] queries;
+        boolean computeFp;
 
-        public RastDiffMatcher(RelationshipQuery... queries) {
+        public RastDiffMatcher(boolean computeFp, RelationshipQuery... queries) {
+            this.computeFp = computeFp;
             this.queries = queries;
         }
 
@@ -67,20 +94,29 @@ public class RastDiffMatchers {
 
         @Override
         protected boolean matchesSafely(RastDiff diff, Description mismatchDescription) {
-            int tp = 0;
-            int fn = 0;
-            List<RelationshipQuery> notFound = new ArrayList<>();
+            List<RelationshipQuery> falseNegatives = new ArrayList<>();
+            Set<Relationship> truePositives = new HashSet<>();
+            Set<Relationship> falsePositives = new HashSet<>(diff.getRelationships());
             for (RelationshipQuery query : queries) {
-                if (query.find(diff)) {
-                    tp++;
+                Optional<Relationship> optional = query.find(diff);
+                if (optional.isPresent()) {
+                    truePositives.add(optional.get());
+                    falsePositives.remove(optional.get());
                 } else {
-                    fn++;
-                    notFound.add(query);
+                    falseNegatives.add(query);
                 }
             }
-            if (fn != 0) {
-                mismatchDescription.appendText(String.format("%d true positives, %d false negatives", tp, fn));
-                mismatchDescription.appendValueList("\n", "\n", "", notFound);
+            int tp = truePositives.size();
+            int fp = computeFp ? falsePositives.size() : 0;
+            int fn = falseNegatives.size();
+            if (fn != 0 || fp != 0) {
+                if (computeFp) {
+                    mismatchDescription.appendText(String.format("%d true positives, %d false positives, %d false negatives", tp, fp, fn));
+                } else {
+                    mismatchDescription.appendText(String.format("%d true positives, %d false negatives", tp, fn));
+                }
+                mismatchDescription.appendValueList("\nFalse negatives:\n", "\n", "", falseNegatives);
+                mismatchDescription.appendValueList("\nFalse positives:\n", "\n", "", falsePositives);
                 return false;
             }
             return true;

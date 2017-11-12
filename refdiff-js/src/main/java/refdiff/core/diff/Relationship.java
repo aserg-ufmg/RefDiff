@@ -44,9 +44,14 @@ public class Relationship {
         }
         return false;
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(this.type, this.nodeBefore, this.nodeAfter);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s(%s, %s)", this.type, this.nodeBefore, this.nodeAfter);
     }
 }

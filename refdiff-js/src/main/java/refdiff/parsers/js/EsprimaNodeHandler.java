@@ -11,7 +11,7 @@ import refdiff.core.rast.Stereotype;
 
 public abstract class EsprimaNodeHandler {
 
-    public abstract String getLogicalName(RastNode rastNode, ScriptObjectMirror esprimaNode);
+    public abstract String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode);
 
     public abstract Set<Stereotype> getStereotypes(RastNode rastNode, ScriptObjectMirror esprimaNode);
 
@@ -19,8 +19,8 @@ public abstract class EsprimaNodeHandler {
     
     static {
         HANDLERS.put("Program", new EsprimaNodeHandler() {
-            public String getLogicalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
-                return rastNode.location.file;
+            public String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
+                return rastNode.getLocation().getFile();
             }
             public Set<Stereotype> getStereotypes(RastNode rastNode, ScriptObjectMirror esprimaNode) {
                 return Collections.singleton(Stereotype.HAS_BODY);
@@ -28,7 +28,7 @@ public abstract class EsprimaNodeHandler {
         });
         
         HANDLERS.put("ArrowFunctionExpression", new EsprimaNodeHandler() {
-            public String getLogicalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
+            public String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
                 return "";
             }
             public Set<Stereotype> getStereotypes(RastNode rastNode, ScriptObjectMirror esprimaNode) {
@@ -37,7 +37,7 @@ public abstract class EsprimaNodeHandler {
         });
         
         HANDLERS.put("FunctionDeclaration", new EsprimaNodeHandler() {
-            public String getLogicalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
+            public String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
                 Object identifier = esprimaNode.getMember("id");
                 if (identifier instanceof ScriptObjectMirror) {
                     return ((ScriptObjectMirror) identifier).getMember("name").toString();

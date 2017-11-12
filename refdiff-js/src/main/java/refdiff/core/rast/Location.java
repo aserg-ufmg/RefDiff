@@ -1,9 +1,9 @@
 package refdiff.core.rast;
 
 public class Location {
-    public String file;
-    public int begin;
-    public int end;
+    private String file;
+    private int begin;
+    private int end;
 
     public Location() {
     }
@@ -18,4 +18,17 @@ public class Location {
     public String toString() {
         return String.format("%s:%d:%d", file, begin, end);
     }
+
+    public String getFile() {
+        return file;
+    }
+
+    public int getBegin() {
+        return begin;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
 }

@@ -35,7 +35,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
         this.nodeCounter = 0;
         for (SourceFile sourceFile : filesOfInterest) {
             String content = sourceFile.getContent();
-            getRast(root.nodes, sourceFile.getPath(), content);
+            getRast(root.getNodes(), sourceFile.getPath(), content);
         }
         return root;
     }
@@ -73,13 +73,13 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
         if (EsprimaNodeHandler.HANDLERS.containsKey(type)) {
             EsprimaNodeHandler handler = EsprimaNodeHandler.HANDLERS.get(type);
             RastNode rastNode = new RastNode();
-            rastNode.id = ++nodeCounter;
-            rastNode.type = type;
-            rastNode.location = new Location(path, begin, end);
-            rastNode.logicalName = handler.getLogicalName(rastNode, esprimaAst);
-            rastNode.stereotypes = handler.getStereotypes(rastNode, esprimaAst);
+            rastNode.setId(++nodeCounter);
+            rastNode.setType(type);
+            rastNode.setLocation(new Location(path, begin, end));
+            rastNode.setLocalName(handler.getLocalName(rastNode, esprimaAst));
+            rastNode.setStereotypes(handler.getStereotypes(rastNode, esprimaAst));
             list.add(rastNode);
-            list = rastNode.nodes;
+            list = rastNode.getNodes();
         }
 
         for (String key : esprimaAst.getOwnKeys(true)) {

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
-import java.util.function.Predicate;
 
-public class RastRoot {
-    public List<RastNode> nodes = new ArrayList<>();
+public class RastRoot implements HasChildrenNodes {
+    private List<RastNode> nodes = new ArrayList<>();
 
     public void forEachNode(BiConsumer<RastNode, Integer> consumer) {
         forEachNodeInList(nodes, consumer, 0);
@@ -16,24 +15,32 @@ public class RastRoot {
     private void forEachNodeInList(List<RastNode> list, BiConsumer<RastNode, Integer> consumer, int depth) {
         for (RastNode node : list) {
             consumer.accept(node, depth);
-            forEachNodeInList(node.nodes, consumer, depth + 1);
+            forEachNodeInList(node.getNodes(), consumer, depth + 1);
         }
     }
 
-    public Optional<RastNode> findByName(String nameBefore) {
-        return findBy(nodes, n -> n.logicalName.equals(nameBefore));
+    public Optional<RastNode> findByNamePath(String... namePath) {
+        return findByNamePathRecursive(nodes, 0, namePath);
     }
 
-    private Optional<RastNode> findBy(List<RastNode> list, Predicate<RastNode> predicate) {
+    private Optional<RastNode> findByNamePathRecursive(List<RastNode> list, int depth, String[] namePath) {
+        if (depth >= namePath.length) {
+            throw new IllegalArgumentException(String.format("depth should be less than namePath.length"));
+        }
+        String name = namePath[depth];
         for (RastNode node : list) {
-            if (predicate.test(node)) {
-                return Optional.of(node);
-            }
-            Optional<RastNode> n = findBy(node.nodes, predicate);
-            if (n.isPresent()) {
-                return n;
+            if (node.getLocalName().equals(name)) {
+                if (depth == namePath.length - 1) {
+                    return Optional.of(node);
+                } else {
+                    return findByNamePathRecursive(node.getNodes(), depth + 1, namePath);
+                }
             }
         }
         return Optional.empty();
+    }
+
+    public List<RastNode> getNodes() {
+        return nodes;
     }
 }

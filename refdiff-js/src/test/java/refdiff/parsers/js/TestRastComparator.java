@@ -1,7 +1,8 @@
 package refdiff.parsers.js;
 
 import static org.junit.Assert.assertThat;
-import static refdiff.test.util.RastDiffMatchers.contains;
+import static refdiff.test.util.RastDiffMatchers.containsOnly;
+import static refdiff.test.util.RastDiffMatchers.node;
 import static refdiff.test.util.RastDiffMatchers.relationship;
 
 import java.util.Collections;
@@ -31,11 +32,11 @@ public class TestRastComparator {
 
         RastDiff diff = comparator.compare(sourceFilesBefore, sourceFilesAfter);
         
-        assertThat(diff, contains(
-            relationship(RelationshipType.SAME, "hello.js#hello", "hello.js#hello")
+        assertThat(diff, containsOnly(
+            relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
+            relationship(RelationshipType.SAME, node("hello.js", "hello"), node("hello.js", "hello"))
         ));
         
     }
-    
     
 }
