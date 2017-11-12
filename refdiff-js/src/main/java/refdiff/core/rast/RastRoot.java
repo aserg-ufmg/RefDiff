@@ -8,6 +8,10 @@ import java.util.function.BiConsumer;
 public class RastRoot implements HasChildrenNodes {
     private List<RastNode> nodes = new ArrayList<>();
 
+    public List<RastNode> getNodes() {
+        return nodes;
+    }
+
     public void forEachNode(BiConsumer<RastNode, Integer> consumer) {
         forEachNodeInList(nodes, consumer, 0);
     }
@@ -40,7 +44,4 @@ public class RastRoot implements HasChildrenNodes {
         return Optional.empty();
     }
 
-    public List<RastNode> getNodes() {
-        return nodes;
-    }
 }

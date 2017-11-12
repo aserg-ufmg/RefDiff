@@ -18,25 +18,34 @@ import refdiff.core.io.SourceFile;
 
 public class TestRastComparator {
 
+    private EsprimaParser parser;
+    
+    public TestRastComparator() throws Exception {
+        this.parser = new EsprimaParser();
+    }
+    
     @Test
-    public void diffShouldContain() throws Exception {
-        EsprimaParser parser = new EsprimaParser();
+    public void shouldMatchWithSameNamePath() throws Exception {
+        assertThat(diff("diff1/"), containsOnly(
+            relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
+            relationship(RelationshipType.SAME, node("hello.js", "foo"), node("hello.js", "foo")),
+            relationship(RelationshipType.SAME, node("hello.js", "bar"), node("hello.js", "bar"))
+        ));
+    }
+
+    private RastDiff diff(String folder) throws Exception {
+        String basePath = "src/test/resources/" + folder;
         
-        String basePathV0 = "src/test/resources/diff1/v0/";
+        String basePathV0 = basePath + "v0/";
         Set<SourceFile> sourceFilesBefore = Collections.singleton(new FileSystemSourceFile(basePathV0, "hello.js"));
         
-        String basePathV1 = "src/test/resources/diff1/v1/";
+        String basePathV1 = basePath + "v1/";
         Set<SourceFile> sourceFilesAfter = Collections.singleton(new FileSystemSourceFile(basePathV1, "hello.js"));
         
-        RastComparator comparator = new RastComparator(parser, parser);
+        RastComparator comparator = new RastComparator(this.parser, this.parser);
 
         RastDiff diff = comparator.compare(sourceFilesBefore, sourceFilesAfter);
-        
-        assertThat(diff, containsOnly(
-            relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
-            relationship(RelationshipType.SAME, node("hello.js", "hello"), node("hello.js", "hello"))
-        ));
-        
+        return diff;
     }
     
 }
