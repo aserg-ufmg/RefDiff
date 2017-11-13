@@ -18,6 +18,8 @@ import org.junit.Test;
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
+import refdiff.core.diff.similarity.TfIdfSourceRepresentation;
+import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
 
@@ -51,7 +53,7 @@ public class TestRastComparator {
         String basePath = "src/test/resources/" + folder;
         Set<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
         Set<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
-        RastComparator comparator = new RastComparator(this.parser, this.parser);
+        RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(this.parser, this.parser, new TfIdfSourceRepresentationBuilder());
         return comparator.compare(sourceFilesBefore, sourceFilesAfter);
     }
 

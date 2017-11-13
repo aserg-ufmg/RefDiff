@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import refdiff.core.rast.RastNode;
 
-public class Relationship {
+public class Relationship implements Comparable<Relationship> {
 
     private final RelationshipType type;
     private final RastNode nodeBefore;
@@ -53,5 +53,10 @@ public class Relationship {
     @Override
     public String toString() {
         return String.format("%s(%s, %s)", this.type, this.nodeBefore, this.nodeAfter);
+    }
+
+    @Override
+    public int compareTo(Relationship o) {
+        return -Double.compare(score, o.score);
     }
 }
