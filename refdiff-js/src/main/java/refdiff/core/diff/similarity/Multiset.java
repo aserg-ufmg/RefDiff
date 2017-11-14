@@ -6,9 +6,8 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
-
 public class Multiset<E> implements Collection<E> {
-
+	
 	private HashMap<E, Integer> map;
 	private int count;
 	
@@ -20,9 +19,9 @@ public class Multiset<E> implements Collection<E> {
 	public E getFirst() {
 		return map.keySet().iterator().next();
 	}
-
+	
 	public Multiset<E> minus(Multiset<E> other) {
-		Multiset<E> result = new Multiset<E>(); 
+		Multiset<E> result = new Multiset<E>();
 		for (Entry<E, Integer> e : map.entrySet()) {
 			Integer thisCount = e.getValue();
 			Integer otherCount = other.map.get(e.getKey());
@@ -40,18 +39,18 @@ public class Multiset<E> implements Collection<E> {
 	}
 	
 	public Multiset<E> plus(Multiset<E> other) {
-        Multiset<E> result = new Multiset<E>();
-        for (Entry<E, Integer> e : other.map.entrySet()) {
-            E key = e.getKey();
-            if (map.containsKey(key)) {
-                result.add(key, map.get(key) + e.getValue());
-            } else {
-                result.add(key, e.getValue());
-            }
-        }
-        return result;
-    }
-
+		Multiset<E> result = new Multiset<E>();
+		for (Entry<E, Integer> e : other.map.entrySet()) {
+			E key = e.getKey();
+			if (map.containsKey(key)) {
+				result.add(key, map.get(key) + e.getValue());
+			} else {
+				result.add(key, e.getValue());
+			}
+		}
+		return result;
+	}
+	
 	public Multiset<E> minus(E entity) {
 		if (map.containsKey(entity)) {
 			Multiset<E> result = new Multiset<E>();
@@ -64,7 +63,7 @@ public class Multiset<E> implements Collection<E> {
 		}
 		return this;
 	}
-
+	
 	public boolean add(E e, int cardinality) {
 		Integer value = map.get(e);
 		this.count += cardinality;
@@ -85,65 +84,65 @@ public class Multiset<E> implements Collection<E> {
 	public int size() {
 		return count;
 	}
-
+	
 	public boolean isEmpty() {
 		return count == 0;
 	}
-
+	
 	public boolean contains(Object o) {
 		return map.containsKey(o);
 	}
-
+	
 	public Iterator<E> iterator() {
 		return map.keySet().iterator();
 	}
-
+	
 	public Object[] toArray() {
 		return map.keySet().toArray();
 	}
-
+	
 	public <T> T[] toArray(T[] a) {
 		return map.keySet().toArray(a);
 	}
-
+	
 	public boolean add(E e) {
 		return this.add(e, 1);
 	}
-
+	
 	public boolean remove(Object o) {
 		throw new UnsupportedOperationException();
 	}
-
+	
 	public boolean containsAll(Collection<?> c) {
 		return map.keySet().containsAll(c);
 	}
-
+	
 	public boolean addAll(Collection<? extends E> c) {
 		for (E e : c) {
 			this.add(e);
 		}
 		return true;
 	}
-
+	
 	public boolean retainAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
-
+	
 	public boolean removeAll(Collection<?> c) {
 		throw new UnsupportedOperationException();
 	}
-
+	
 	public void clear() {
 		map.clear();
 		count = 0;
 	}
-
+	
 	public String toString() {
 		return map.toString();
 	}
 	
 	public Set<E> asSet() {
-	    return map.keySet();
+		return map.keySet();
 	}
-
+	
 }
