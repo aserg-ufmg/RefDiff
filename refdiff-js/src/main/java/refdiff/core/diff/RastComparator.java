@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ import refdiff.core.io.SourceFile;
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
+import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
 
@@ -36,13 +38,20 @@ public class RastComparator<T> {
 	}
 	
 	private class DiffBuilder {
-		RastDiff diff;
-		Set<RastNode> removed;
-		Set<RastNode> added;
+		private RastDiff diff;
+		private Set<RastNode> removed;
+		private Set<RastNode> added;
+		private RastRootHelper<T> before;
+		private RastRootHelper<T> after;
 		private final Map<RastNode, T> srMap = new HashMap<>();
+		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
+		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
 		private final Map<RastNode, Integer> depthMap = new HashMap<>();
 		
 		DiffBuilder(Set<SourceFile> filesBefore, Set<SourceFile> filesAfter) throws Exception {
+			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
+			this.before = new RastRootHelper<T>(this.diff.getBefore());
+			this.after = new RastRootHelper<T>(this.diff.getAfter());
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.removed = new HashSet<>();
 			this.diff.getBefore().forEachNode((node, depth) -> {
@@ -75,11 +84,12 @@ public class RastComparator<T> {
 		
 		RastDiff computeDiff() {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
-			findRename();
+			matchMovesOrRenames();
+			matchExtract();
 			return diff;
 		}
 		
-		private void findRename() {
+		private void matchMovesOrRenames() {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
@@ -103,7 +113,28 @@ public class RastComparator<T> {
 				}
 			}
 		}
-		
+
+		private void matchExtract() {
+			for (RastNode n2 : added) {
+				for (RastNode n1After : after.findRelationships(RastNodeRelationshipType.USE, n2)) {
+					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
+					if (optMatchingNode.isPresent()) {
+						RastNode n1 = optMatchingNode.get();
+						if (sameType(n1, n2)) {
+							T sourceN1After = srMap.get(n1After);
+							T sourceN1Before = srMap.get(n1);
+							T removedSource = srb.minus(sourceN1Before, sourceN1After);
+							double score = srb.partialSimilarity(srMap.get(n2), removedSource);
+							if (score > 0.5) {
+								unmarkAdded(n2);
+								diff.addRelationships(new Relationship(RelationshipType.EXTRACT, n1, n2));
+							}
+						}
+					}
+				}
+			}
+		}
+
 		private void matchExactChildren(HasChildrenNodes node1, HasChildrenNodes node2) {
 			List<RastNode> removedChildren = children(node1, this::removed);
 			List<RastNode> addedChildren = children(node2, this::added);
@@ -121,12 +152,18 @@ public class RastComparator<T> {
 			RastNode nAfter = relationship.getNodeAfter();
 			if (removed(nBefore) && added(nAfter)) {
 				diff.addRelationships(relationship);
+				mapBeforeToAfter.put(nBefore, nAfter);
+				mapAfterToBefore.put(nAfter, nBefore);
 				unmarkRemoved(nBefore);
 				unmarkAdded(nAfter);
 				matchExactChildren(nBefore, nAfter);
 			}
 		}
-		
+
+		private Optional<RastNode> matchingNodeBefore(RastNode n2) {
+			return Optional.ofNullable(mapAfterToBefore.get(n2));
+		}
+
 		private boolean sameName(RastNode n1, RastNode n2) {
 			return !n1.getLocalName().isEmpty() && n1.getLocalName().equals(n2.getLocalName());
 		}

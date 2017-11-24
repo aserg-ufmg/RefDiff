@@ -117,8 +117,12 @@ public class RastDiffMatchers {
 				} else {
 					mismatchDescription.appendText(String.format("%d true positives, %d false negatives", tp, fn));
 				}
-				mismatchDescription.appendValueList("\nFalse negatives:\n", "\n", "", falseNegatives);
-				mismatchDescription.appendValueList("\nFalse positives:\n", "\n", "", falsePositives);
+				if (!falseNegatives.isEmpty()) {
+					mismatchDescription.appendValueList("\nFalse negatives:\n", "\n", "", falseNegatives);
+				}
+				if (!falsePositives.isEmpty()) {
+					mismatchDescription.appendValueList("\nFalse positives:\n", "\n", "", falsePositives);
+				}
 				return false;
 			}
 			return true;

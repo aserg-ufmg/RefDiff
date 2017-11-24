@@ -1,15 +1,24 @@
 package refdiff.core.rast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.BiConsumer;
 
 public class RastRoot implements HasChildrenNodes {
+	
 	private List<RastNode> nodes = new ArrayList<>();
+	
+	private Set<RastNodeRelationship> relationships = new HashSet<>();
 	
 	public List<RastNode> getNodes() {
 		return nodes;
+	}
+	
+	public Set<RastNodeRelationship> getRelationships() {
+		return relationships;
 	}
 	
 	public void forEachNode(BiConsumer<RastNode, Integer> consumer) {
@@ -43,5 +52,5 @@ public class RastRoot implements HasChildrenNodes {
 		}
 		return Optional.empty();
 	}
-	
+
 }

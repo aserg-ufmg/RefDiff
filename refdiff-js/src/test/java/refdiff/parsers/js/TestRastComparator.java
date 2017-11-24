@@ -47,6 +47,15 @@ public class TestRastComparator {
 		));
 	}
 	
+	@Test
+	public void shouldMatchExtractFunction() throws Exception {
+		assertThat(diff("diff3"), containsOnly(
+			relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
+			relationship(RelationshipType.SAME, node("hello.js", "bar"), node("hello.js", "bar")),
+			relationship(RelationshipType.EXTRACT, node("hello.js", "bar"), node("hello.js", "foo"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "src/test/resources/" + folder;
 		Set<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
