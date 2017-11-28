@@ -6,13 +6,17 @@ import java.util.List;
 import java.util.Set;
 
 public class RastNode implements HasChildrenNodes {
-	private int id;
+	private final int id;
 	private String type;
 	private Location location;
 	private String localName;
 	private List<RastNode> nodes = new ArrayList<>();
 	private Set<Stereotype> stereotypes = new HashSet<>();
 	
+	public RastNode(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s %s %s", location.toString(), type, localName);
@@ -20,10 +24,6 @@ public class RastNode implements HasChildrenNodes {
 	
 	public int getId() {
 		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
 	}
 	
 	public String getType() {

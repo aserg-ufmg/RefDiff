@@ -15,10 +15,10 @@ public abstract class EsprimaNodeHandler {
 	
 	public abstract Set<Stereotype> getStereotypes(RastNode rastNode, ScriptObjectMirror esprimaNode);
 	
-	static final Map<String, EsprimaNodeHandler> HANDLERS = new HashMap<>();
+	static final Map<String, EsprimaNodeHandler> RAST_NODE_HANDLERS = new HashMap<>();
 	
 	static {
-		HANDLERS.put("Program", new EsprimaNodeHandler() {
+		RAST_NODE_HANDLERS.put("Program", new EsprimaNodeHandler() {
 			public String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
 				return rastNode.getLocation().getFile();
 			}
@@ -28,7 +28,7 @@ public abstract class EsprimaNodeHandler {
 			}
 		});
 		
-		HANDLERS.put("ArrowFunctionExpression", new EsprimaNodeHandler() {
+		RAST_NODE_HANDLERS.put("ArrowFunctionExpression", new EsprimaNodeHandler() {
 			public String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
 				return "";
 			}
@@ -38,7 +38,7 @@ public abstract class EsprimaNodeHandler {
 			}
 		});
 		
-		HANDLERS.put("FunctionDeclaration", new EsprimaNodeHandler() {
+		RAST_NODE_HANDLERS.put("FunctionDeclaration", new EsprimaNodeHandler() {
 			public String getLocalName(RastNode rastNode, ScriptObjectMirror esprimaNode) {
 				Object identifier = esprimaNode.getMember("id");
 				if (identifier instanceof ScriptObjectMirror) {

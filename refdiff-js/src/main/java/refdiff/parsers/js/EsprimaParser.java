@@ -1,7 +1,9 @@
 package refdiff.parsers.js;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.script.Invocable;
@@ -10,8 +12,11 @@ import javax.script.ScriptEngineManager;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import refdiff.core.io.SourceFile;
+import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
+import refdiff.core.rast.RastNodeRelationship;
+import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
@@ -35,7 +40,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		this.nodeCounter = 0;
 		for (SourceFile sourceFile : filesOfInterest) {
 			String content = sourceFile.getContent();
-			getRast(root.getNodes(), sourceFile.getPath(), content);
+			getRast(root, sourceFile, content);
 		}
 		return root;
 	}
@@ -55,31 +60,43 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		}
 	}
 	
-	private void getRast(List<RastNode> list, String path, String content) throws Exception {
+	private void getRast(RastRoot root, SourceFile sourceFile, String content) throws Exception {
 		ScriptObjectMirror esprimaAst = (ScriptObjectMirror) this.invocableScript.invokeFunction("parse", content);
-		getRast(list, path, esprimaAst);
+		Map<String, Object> callerMap = new HashMap<>();
+		getRast(0, root, sourceFile, esprimaAst, callerMap);
+		root.forEachNode((calleeNode, depth) -> {
+			if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
+				RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
+				root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
+			}
+		});
 	}
 	
-	private void getRast(List<RastNode> list, String path, ScriptObjectMirror esprimaAst) throws Exception {
+	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, ScriptObjectMirror esprimaAst, Map<String, Object> callerMap) throws Exception {
 		if (!esprimaAst.hasMember("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
-		
+		String path = sourceFile.getPath();
 		String type = (String) esprimaAst.getMember("type");
 		ScriptObjectMirror range = (ScriptObjectMirror) esprimaAst.getMember("range");
 		int begin = ((Number) range.getSlot(0)).intValue();
 		int end = ((Number) range.getSlot(1)).intValue();
 		
-		if (EsprimaNodeHandler.HANDLERS.containsKey(type)) {
-			EsprimaNodeHandler handler = EsprimaNodeHandler.HANDLERS.get(type);
-			RastNode rastNode = new RastNode();
-			rastNode.setId(++nodeCounter);
+		if (EsprimaNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
+			EsprimaNodeHandler handler = EsprimaNodeHandler.RAST_NODE_HANDLERS.get(type);
+			RastNode rastNode = new RastNode(++nodeCounter);
 			rastNode.setType(type);
 			rastNode.setLocation(new Location(path, begin, end));
 			rastNode.setLocalName(handler.getLocalName(rastNode, esprimaAst));
 			rastNode.setStereotypes(handler.getStereotypes(rastNode, esprimaAst));
-			list.add(rastNode);
-			list = rastNode.getNodes();
+			container.getNodes().add(rastNode);
+			container = rastNode;
+		} else {
+			if ("CallExpression".equals(type)) {
+				Object identifier = esprimaAst.getMember("callee");
+				String calleeName = ((ScriptObjectMirror) identifier).getMember("name").toString();
+				callerMap.put(calleeName, container);
+			}
 		}
 		
 		for (String key : esprimaAst.getOwnKeys(true)) {
@@ -92,13 +109,13 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 						if (element instanceof ScriptObjectMirror) {
 							ScriptObjectMirror e = (ScriptObjectMirror) element;
 							if (e.hasMember("type")) {
-								getRast(list, path, e);
+								getRast(depth + 1, container, sourceFile, e, callerMap);
 							}
 						}
 					}
 				} else {
 					if (objectOrArray.hasMember("type")) {
-						getRast(list, path, objectOrArray);
+						getRast(depth + 1, container, sourceFile, objectOrArray, callerMap);
 					}
 				}
 			}

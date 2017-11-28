@@ -19,10 +19,12 @@ public class RastRootHelper<T> {
 	private final Map<Integer, RastNode> idMap = new HashMap<>();
 	private final Map<Integer, List<RastNodeRelationship>> edges = new HashMap<>();
 	private final Map<Integer, List<RastNodeRelationship>> reverseEdges = new HashMap<>();
+	private final Map<RastNode, Integer> depthMap = new HashMap<>();
 	
 	public RastRootHelper(RastRoot rastRoot) {
 		rastRoot.forEachNode((node, depth) -> {
 			idMap.put(node.getId(), node);
+			depthMap.put(node, depth);
 		});
 		
 		for (RastNodeRelationship relationship : rastRoot.getRelationships()) {
@@ -47,6 +49,10 @@ public class RastRootHelper<T> {
 				}
 			});
 		}
+	}
+	
+	public int depth(RastNode node) {
+		return depthMap.get(node);
 	}
 	
 	public Collection<RastNode> findRelationships(RastNodeRelationshipType type, RastNode node) {

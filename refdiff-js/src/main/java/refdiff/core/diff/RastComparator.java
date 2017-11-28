@@ -39,10 +39,10 @@ public class RastComparator<T> {
 	
 	private class DiffBuilder {
 		private RastDiff diff;
-		private Set<RastNode> removed;
-		private Set<RastNode> added;
 		private RastRootHelper<T> before;
 		private RastRootHelper<T> after;
+		private Set<RastNode> removed;
+		private Set<RastNode> added;
 		private final Map<RastNode, T> srMap = new HashMap<>();
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
@@ -52,18 +52,17 @@ public class RastComparator<T> {
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.before = new RastRootHelper<T>(this.diff.getBefore());
 			this.after = new RastRootHelper<T>(this.diff.getAfter());
-			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.removed = new HashSet<>();
 			this.diff.getBefore().forEachNode((node, depth) -> {
 				this.removed.add(node);
-				depthMap.put(node, depth);
 				computeSourceRepresentation(filesBefore, node);
+				depthMap.put(node, depth);
 			});
 			this.added = new HashSet<>();
 			this.diff.getAfter().forEachNode((node, depth) -> {
 				this.added.add(node);
-				depthMap.put(node, depth);
 				computeSourceRepresentation(filesAfter, node);
+				depthMap.put(node, depth);
 			});
 		}
 		
@@ -116,7 +115,7 @@ public class RastComparator<T> {
 
 		private void matchExtract() {
 			for (RastNode n2 : added) {
-				for (RastNode n1After : after.findRelationships(RastNodeRelationshipType.USE, n2)) {
+				for (RastNode n1After : after.findReverseRelationships(RastNodeRelationshipType.USE, n2)) {
 					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
 					if (optMatchingNode.isPresent()) {
 						RastNode n1 = optMatchingNode.get();
