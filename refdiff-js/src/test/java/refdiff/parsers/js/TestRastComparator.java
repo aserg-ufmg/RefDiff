@@ -56,6 +56,15 @@ public class TestRastComparator {
 		));
 	}
 	
+	@Test
+	public void shouldMatchInlineFunction() throws Exception {
+		assertThat(diff("diff4"), containsOnly(
+			relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
+			relationship(RelationshipType.SAME, node("hello.js", "bar"), node("hello.js", "bar")),
+			relationship(RelationshipType.INLINE, node("hello.js", "foo"), node("hello.js", "bar"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "src/test/resources/" + folder;
 		Set<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));

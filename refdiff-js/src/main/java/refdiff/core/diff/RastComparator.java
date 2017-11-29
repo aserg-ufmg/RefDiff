@@ -85,6 +85,7 @@ public class RastComparator<T> {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
 			matchMovesOrRenames();
 			matchExtract();
+			matchInline();
 			return diff;
 		}
 		
@@ -93,9 +94,9 @@ public class RastComparator<T> {
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2)) {
-						double score = srb.similarity(srMap.get(n1), srMap.get(n2));
+						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
 						if (score > 0.5) {
-							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depthMap.get(n1), depthMap.get(n2)), score);
+							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
 							candidates.add(candidate);
 						}
 					}
@@ -120,13 +121,35 @@ public class RastComparator<T> {
 					if (optMatchingNode.isPresent()) {
 						RastNode n1 = optMatchingNode.get();
 						if (sameType(n1, n2)) {
-							T sourceN1After = srMap.get(n1After);
-							T sourceN1Before = srMap.get(n1);
+							T sourceN1After = sourceRep(n1After);
+							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
-							double score = srb.partialSimilarity(srMap.get(n2), removedSource);
+							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
 							if (score > 0.5) {
 								unmarkAdded(n2);
 								diff.addRelationships(new Relationship(RelationshipType.EXTRACT, n1, n2));
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		private void matchInline() {
+			for (RastNode n1 : removed) {
+				for (RastNode n1Caller : before.findReverseRelationships(RastNodeRelationshipType.USE, n1)) {
+					Optional<RastNode> optMatchingNode = matchingNodeAfter(n1Caller);
+					if (optMatchingNode.isPresent()) {
+						RastNode n2 = optMatchingNode.get();
+						if (sameType(n1, n2)) {
+							T sourceN1 = sourceRep(n1);
+							T sourceN1Caller = sourceRep(n1Caller);
+							T sourceN1CallerAfter = sourceRep(n2);
+							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
+							double score = srb.partialSimilarity(sourceN1, addedCode);
+							if (score > 0.5) {
+								unmarkRemoved(n1);
+								diff.addRelationships(new Relationship(RelationshipType.INLINE, n1, n2));
 							}
 						}
 					}
@@ -159,8 +182,20 @@ public class RastComparator<T> {
 			}
 		}
 
+		private T sourceRep(RastNode n) {
+			return srMap.get(n);
+		}
+		
+		private int depth(RastNode n) {
+			return depthMap.get(n);
+		}
+		
 		private Optional<RastNode> matchingNodeBefore(RastNode n2) {
 			return Optional.ofNullable(mapAfterToBefore.get(n2));
+		}
+		
+		private Optional<RastNode> matchingNodeAfter(RastNode n1) {
+			return Optional.ofNullable(mapBeforeToAfter.get(n1));
 		}
 
 		private boolean sameName(RastNode n1, RastNode n2) {
