@@ -26,11 +26,13 @@ public class RastComparator<T> {
 	private final RastParser parser;
 	private final SourceTokenizer tokenizer;
 	private final SourceRepresentationBuilder<T> srb;
+	RastComparatorThresholds thresholds;
 	
-	public RastComparator(RastParser parser, SourceTokenizer tokenizer, SourceRepresentationBuilder<T> srb) {
+	public RastComparator(RastParser parser, SourceTokenizer tokenizer, SourceRepresentationBuilder<T> srb, RastComparatorThresholds thresholds) {
 		this.parser = parser;
 		this.tokenizer = tokenizer;
 		this.srb = srb;
+		this.thresholds = thresholds;
 	}
 	
 	public RastDiff compare(Set<SourceFile> filesBefore, Set<SourceFile> filesAfter) throws Exception {
@@ -95,7 +97,7 @@ public class RastComparator<T> {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2)) {
 						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
-						if (score > 0.5) {
+						if (score > thresholds.moveOrRename) {
 							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
 							candidates.add(candidate);
 						}
@@ -125,7 +127,7 @@ public class RastComparator<T> {
 							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
 							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
-							if (score > 0.5) {
+							if (score > thresholds.extract) {
 								unmarkAdded(n2);
 								diff.addRelationships(new Relationship(RelationshipType.EXTRACT, n1, n2));
 							}
@@ -147,7 +149,7 @@ public class RastComparator<T> {
 							T sourceN1CallerAfter = sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
-							if (score > 0.5) {
+							if (score > thresholds.inline) {
 								unmarkRemoved(n1);
 								diff.addRelationships(new Relationship(RelationshipType.INLINE, n1, n2));
 							}

@@ -18,12 +18,14 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
+import refdiff.test.util.EsprimaParserSingleton;
 
 public class TestEsprimaParser {
 	
+	private EsprimaParser parser = EsprimaParserSingleton.get();
+	
 	@Test
 	public void shouldParseSimpleFile() throws Exception {
-		EsprimaParser parser = new EsprimaParser();
 		Path basePath = Paths.get("src/test/resources/parser/");
 		Set<SourceFile> sourceFiles = Collections.singleton(new FileSystemSourceFile(basePath, Paths.get("ex1.js")));
 		RastRoot root = parser.parse(sourceFiles);
@@ -49,7 +51,6 @@ public class TestEsprimaParser {
 	
 	@Test
 	public void shouldParseFunctionCall() throws Exception {
-		EsprimaParser parser = new EsprimaParser();
 		Path basePath = Paths.get("src/test/resources/parser/");
 		Set<SourceFile> sourceFiles = Collections.singleton(new FileSystemSourceFile(basePath, Paths.get("ex2.js")));
 		RastRoot root = parser.parse(sourceFiles);
