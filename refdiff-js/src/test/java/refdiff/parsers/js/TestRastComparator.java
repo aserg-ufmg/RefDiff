@@ -1,9 +1,7 @@
 package refdiff.parsers.js;
 
-import static org.junit.Assert.assertThat;
-import static refdiff.test.util.RastDiffMatchers.containsOnly;
-import static refdiff.test.util.RastDiffMatchers.node;
-import static refdiff.test.util.RastDiffMatchers.relationship;
+import static org.junit.Assert.*;
+import static refdiff.test.util.RastDiffMatchers.*;
 
 import java.io.IOException;
 import java.nio.file.Files;

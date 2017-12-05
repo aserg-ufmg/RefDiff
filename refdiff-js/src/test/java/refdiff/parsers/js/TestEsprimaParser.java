@@ -1,8 +1,7 @@
 package refdiff.parsers.js;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -73,6 +72,38 @@ public class TestEsprimaParser {
 		Set<RastNodeRelationship> relationships = root.getRelationships();
 		assertThat(relationships.size(), is(1));
 		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, nodeF1, nodeF2)));
+	}
+	
+	@Test
+	public void shouldParseClassDeclaration() throws Exception {
+		Path basePath = Paths.get("src/test/resources/parser/");
+		Set<SourceFile> sourceFiles = Collections.singleton(new FileSystemSourceFile(basePath, Paths.get("ex3.js")));
+		RastRoot root = parser.parse(sourceFiles);
+		
+		assertThat(root.getNodes().size(), is(1));
+		
+		RastNode nodeScriptEx3 = root.getNodes().get(0);
+		assertThat(nodeScriptEx3.getType(), is("Program"));
+		
+		assertThat(nodeScriptEx3.getNodes().size(), is(1));
+		RastNode nodeRectangle = nodeScriptEx3.getNodes().get(0);
+		
+		assertThat(nodeRectangle.getType(), is("ClassDeclaration"));
+		assertThat(nodeRectangle.getLocalName(), is("Rectangle"));
+		
+		assertThat(nodeRectangle.getNodes().size(), is(3));
+		
+		RastNode contructor = nodeRectangle.getNodes().get(0);
+		assertThat(contructor.getType(), is("MethodDefinition"));
+		assertThat(contructor.getLocalName(), is("constructor"));
+		
+		RastNode methodGetArea = nodeRectangle.getNodes().get(1);
+		assertThat(methodGetArea.getType(), is("MethodDefinition"));
+		assertThat(methodGetArea.getLocalName(), is("area"));
+		
+		RastNode methodCalcArea = nodeRectangle.getNodes().get(2);
+		assertThat(methodCalcArea.getType(), is("MethodDefinition"));
+		assertThat(methodCalcArea.getLocalName(), is("calcArea"));
 	}
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {

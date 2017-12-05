@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import refdiff.core.io.SourceFile;
@@ -28,9 +29,11 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 	
 	public EsprimaParser() throws Exception {
 		ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+		
 		engine.eval("load('classpath:esprima.js');");
 		engine.eval("function parse(script) {return esprima.parseModule(script, {range: true});}");
 		engine.eval("function tokenize(source) {return esprima.tokenize(source, {comment: true});}");
+		engine.eval("function toJson(object) {return JSON.stringify(object);}");
 		this.invocableScript = (Invocable) engine;
 	}
 	
@@ -62,8 +65,9 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 	
 	private void getRast(RastRoot root, SourceFile sourceFile, String content) throws Exception {
 		ScriptObjectMirror esprimaAst = (ScriptObjectMirror) this.invocableScript.invokeFunction("parse", content);
+		JsValue astRoot = new JsValue(esprimaAst, this::toJson);
 		Map<String, Object> callerMap = new HashMap<>();
-		getRast(0, root, sourceFile, esprimaAst, callerMap);
+		getRast(0, root, sourceFile, astRoot, callerMap);
 		root.forEachNode((calleeNode, depth) -> {
 			if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
 				RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
@@ -72,15 +76,15 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		});
 	}
 	
-	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, ScriptObjectMirror esprimaAst, Map<String, Object> callerMap) throws Exception {
-		if (!esprimaAst.hasMember("type")) {
+	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValue esprimaAst, Map<String, Object> callerMap) throws Exception {
+		if (!esprimaAst.has("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
 		String path = sourceFile.getPath();
-		String type = (String) esprimaAst.getMember("type");
-		ScriptObjectMirror range = (ScriptObjectMirror) esprimaAst.getMember("range");
-		int begin = ((Number) range.getSlot(0)).intValue();
-		int end = ((Number) range.getSlot(1)).intValue();
+		String type = esprimaAst.get("type").asString();
+		JsValue range = esprimaAst.get("range");
+		int begin = range.get(0).asInt();
+		int end = range.get(1).asInt();
 		
 		if (EsprimaNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
 			EsprimaNodeHandler handler = EsprimaNodeHandler.RAST_NODE_HANDLERS.get(type);
@@ -93,33 +97,40 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 			container = rastNode;
 		} else {
 			if ("CallExpression".equals(type)) {
-				Object identifier = esprimaAst.getMember("callee");
-				String calleeName = ((ScriptObjectMirror) identifier).getMember("name").toString();
+				JsValue callee = esprimaAst.get("callee");
+				String calleeName;
+				if (callee.get("type").asString().equals("MemberExpression")) {
+					calleeName = callee.get("property").get("name").asString();
+				} else {
+					calleeName = callee.get("name").asString();
+				}
 				callerMap.put(calleeName, container);
 			}
 		}
 		
-		for (String key : esprimaAst.getOwnKeys(true)) {
-			Object obj = esprimaAst.getMember(key);
-			if (obj instanceof ScriptObjectMirror) {
-				ScriptObjectMirror objectOrArray = (ScriptObjectMirror) obj;
-				if (objectOrArray.isArray()) {
-					for (int i = 0; i < objectOrArray.size(); i++) {
-						Object element = objectOrArray.getSlot(i);
-						if (element instanceof ScriptObjectMirror) {
-							ScriptObjectMirror e = (ScriptObjectMirror) element;
-							if (e.hasMember("type")) {
-								getRast(depth + 1, container, sourceFile, e, callerMap);
-							}
-						}
-					}
-				} else {
-					if (objectOrArray.hasMember("type")) {
-						getRast(depth + 1, container, sourceFile, objectOrArray, callerMap);
+		for (String key : esprimaAst.getOwnKeys()) {
+			JsValue value = esprimaAst.get(key);
+			if (value.isObject()) {
+				if (value.has("type")) {
+					getRast(depth + 1, container, sourceFile, value, callerMap);
+				}
+			}
+			if (value.isArray()) {
+				for (int i = 0; i < value.size(); i++) {
+					JsValue element = value.get(i);
+					if (element.has("type")) {
+						getRast(depth + 1, container, sourceFile, element, callerMap);
 					}
 				}
 			}
 		}
 	}
 	
+	private String toJson(Object object) {
+		try {
+			return this.invocableScript.invokeFunction("toJson", object).toString();
+		} catch (NoSuchMethodException | ScriptException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
