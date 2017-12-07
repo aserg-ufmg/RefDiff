@@ -8,7 +8,7 @@ import java.util.Set;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.Stereotype;
 
-public abstract class EsprimaNodeHandler {
+abstract class EsprimaNodeHandler {
 	
 	public abstract String getLocalName(RastNode rastNode, JsValue esprimaNode);
 	

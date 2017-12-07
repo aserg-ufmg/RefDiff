@@ -1,5 +1,6 @@
 package refdiff.core.rast;
 
 public enum RastNodeRelationshipType {
-	USE;
+	USE,
+	SUBTYPE;
 }

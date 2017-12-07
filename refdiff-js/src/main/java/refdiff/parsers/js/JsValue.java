@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 
-public class JsValue {
+class JsValue {
 	
 	private final Object value;
 	private final ScriptObjectMirror o;

@@ -65,5 +65,9 @@ public class RastNode implements HasChildrenNodes {
 	public void setStereotypes(Set<Stereotype> stereotypes) {
 		this.stereotypes = stereotypes;
 	}
+
+	public void addStereotypes(Stereotype stereotype) {
+		this.stereotypes.add(stereotype);
+	}
 	
 }
