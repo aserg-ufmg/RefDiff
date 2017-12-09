@@ -35,7 +35,7 @@ public class RastComparator<T> {
 		this.thresholds = thresholds;
 	}
 	
-	public RastDiff compare(Set<SourceFile> filesBefore, Set<SourceFile> filesAfter) throws Exception {
+	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
 		return new DiffBuilder(filesBefore, filesAfter).computeDiff();
 	}
 	
@@ -50,7 +50,7 @@ public class RastComparator<T> {
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
 		private final Map<RastNode, Integer> depthMap = new HashMap<>();
 		
-		DiffBuilder(Set<SourceFile> filesBefore, Set<SourceFile> filesAfter) throws Exception {
+		DiffBuilder(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.before = new RastRootHelper<T>(this.diff.getBefore());
 			this.after = new RastRootHelper<T>(this.diff.getAfter());
@@ -68,7 +68,7 @@ public class RastComparator<T> {
 			});
 		}
 		
-		private void computeSourceRepresentation(Set<SourceFile> filesBefore, RastNode node) {
+		private void computeSourceRepresentation(List<SourceFile> filesBefore, RastNode node) {
 			try {
 				Location location = node.getLocation();
 				for (SourceFile file : filesBefore) {

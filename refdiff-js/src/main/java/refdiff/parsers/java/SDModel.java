@@ -18,8 +18,8 @@ import refdiff.core.rast.RastRoot;
 public class SDModel {
 
 	private int nodeCounter = 0;
-	RastRoot root = new RastRoot();
-	Map<String, RastNode> keyMap = new HashMap<>();
+	private RastRoot root = new RastRoot();
+	private Map<String, RastNode> keyMap = new HashMap<>();
 	
 	public Optional<RastNode> findByKey(String referencedKey) {
 		return Optional.ofNullable(keyMap.get(referencedKey));
@@ -77,6 +77,10 @@ public class SDModel {
 	public void addParameter(RastNode method, String identifier, String typeName) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public RastRoot getRoot() {
+		return root;
 	}
 	
 }

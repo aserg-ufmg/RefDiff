@@ -40,4 +40,8 @@ public class FileSystemSourceFile implements SourceFile {
 	public String toString() {
 		return basePath.resolve(path).toString();
 	}
+	
+	public Path getBasePath() {
+		return basePath;
+	}
 }

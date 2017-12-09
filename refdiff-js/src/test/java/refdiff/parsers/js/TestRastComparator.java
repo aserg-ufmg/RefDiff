@@ -1,13 +1,15 @@
 package refdiff.parsers.js;
 
-import static org.junit.Assert.*;
-import static refdiff.test.util.RastDiffMatchers.*;
+import static org.junit.Assert.assertThat;
+import static refdiff.test.util.RastDiffMatchers.containsOnly;
+import static refdiff.test.util.RastDiffMatchers.node;
+import static refdiff.test.util.RastDiffMatchers.relationship;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -65,17 +67,17 @@ public class TestRastComparator {
 	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "src/test/resources/" + folder;
-		Set<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
-		Set<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
+		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
+		List<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
 		RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, parser, new TfIdfSourceRepresentationBuilder(), RastComparatorThresholds.DEFAULT);
 		return comparator.compare(sourceFilesBefore, sourceFilesAfter);
 	}
 	
-	private Set<SourceFile> getSourceFiles(Path basePath) throws IOException {
+	private List<SourceFile> getSourceFiles(Path basePath) throws IOException {
 		try (Stream<Path> stream = Files.walk(basePath)) {
 			return stream.filter(path -> path.getFileName().toString().endsWith(".js"))
 				.map(path -> new FileSystemSourceFile(basePath, basePath.relativize(path)))
-				.collect(Collectors.toSet());
+				.collect(Collectors.toList());
 		}
 	}
 	

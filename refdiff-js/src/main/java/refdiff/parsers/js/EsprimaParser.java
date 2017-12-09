@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -38,7 +37,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 	}
 	
 	@Override
-	public RastRoot parse(Set<SourceFile> filesOfInterest) throws Exception {
+	public RastRoot parse(List<SourceFile> filesOfInterest) throws Exception {
 		RastRoot root = new RastRoot();
 		this.nodeCounter = 0;
 		for (SourceFile sourceFile : filesOfInterest) {
