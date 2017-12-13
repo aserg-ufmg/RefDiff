@@ -12,6 +12,7 @@ repositories {
 dependencies {
 	testCompile 'junit:junit:4.11'
 	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
+	compile 'org.eclipse.jgit:org.eclipse.jgit:4.7.0.201704051617-r'
 }
 
 eclipse {
