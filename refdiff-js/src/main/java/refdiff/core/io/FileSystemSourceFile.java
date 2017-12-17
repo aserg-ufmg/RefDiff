@@ -24,7 +24,7 @@ public class FileSystemSourceFile implements SourceFile {
 	}
 	
 	public String getPath() {
-		return path.toString();
+		return path.toString().replace('\\', '/');
 	}
 	
 	@Override
