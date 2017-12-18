@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -115,9 +116,11 @@ public class RastComparator<T> {
 				}
 			}
 		}
-
+		
 		private void matchExtract() {
-			for (RastNode n2 : added) {
+			for (Iterator<RastNode> iter = added.iterator(); iter.hasNext();) {
+				RastNode n2 = iter.next();
+				boolean extracted = false;
 				for (RastNode n1After : after.findReverseRelationships(RastNodeRelationshipType.USE, n2)) {
 					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
 					if (optMatchingNode.isPresent()) {
@@ -128,17 +131,22 @@ public class RastComparator<T> {
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
 							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
 							if (score > thresholds.extract) {
-								unmarkAdded(n2);
 								diff.addRelationships(new Relationship(RelationshipType.EXTRACT, n1, n2));
+								extracted = true;
 							}
 						}
 					}
+				}
+				if (extracted) {
+					iter.remove();
 				}
 			}
 		}
 		
 		private void matchInline() {
-			for (RastNode n1 : removed) {
+			for (Iterator<RastNode> iter = removed.iterator(); iter.hasNext();) {
+				RastNode n1 = iter.next();
+				boolean inlined = false;
 				for (RastNode n1Caller : before.findReverseRelationships(RastNodeRelationshipType.USE, n1)) {
 					Optional<RastNode> optMatchingNode = matchingNodeAfter(n1Caller);
 					if (optMatchingNode.isPresent()) {
@@ -150,15 +158,17 @@ public class RastComparator<T> {
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
 							if (score > thresholds.inline) {
-								unmarkRemoved(n1);
 								diff.addRelationships(new Relationship(RelationshipType.INLINE, n1, n2));
 							}
 						}
 					}
 				}
+				if (inlined) {
+					iter.remove();
+				}
 			}
 		}
-
+		
 		private void matchExactChildren(HasChildrenNodes node1, HasChildrenNodes node2) {
 			List<RastNode> removedChildren = children(node1, this::removed);
 			List<RastNode> addedChildren = children(node2, this::added);
@@ -183,7 +193,7 @@ public class RastComparator<T> {
 				matchExactChildren(nBefore, nAfter);
 			}
 		}
-
+		
 		private T sourceRep(RastNode n) {
 			return srMap.get(n);
 		}
@@ -199,7 +209,7 @@ public class RastComparator<T> {
 		private Optional<RastNode> matchingNodeAfter(RastNode n1) {
 			return Optional.ofNullable(mapBeforeToAfter.get(n1));
 		}
-
+		
 		private boolean sameName(RastNode n1, RastNode n2) {
 			return !n1.getSimpleName().isEmpty() && n1.getSimpleName().equals(n2.getSimpleName());
 		}
