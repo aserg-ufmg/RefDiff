@@ -49,6 +49,7 @@ public class SDModel {
 		rastNode.setLocalName(name);
 		rastNode.setSimpleName("");
 		parent.addNode(rastNode);
+		keyMap.put(JavaParser.getKey(rastNode), rastNode);
 		return rastNode;
 	}
 
@@ -67,6 +68,7 @@ public class SDModel {
 		rastNode.setLocalName(fullName);
 		rastNode.setSimpleName(typeName);
 		parent.addNode(rastNode);
+		keyMap.put(JavaParser.getKey(rastNode), rastNode);
 		return rastNode;
 	}
 
@@ -78,6 +80,7 @@ public class SDModel {
 		rastNode.setLocalName(methodSignature);
 		rastNode.setSimpleName(methodName);
 		parent.addNode(rastNode);
+		keyMap.put(JavaParser.getKey(rastNode), rastNode);
 		return rastNode;
 	}
 

@@ -22,7 +22,6 @@ import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFile;
-import refdiff.core.rast.RastNode;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.JavaSourceTokenizer;
 import refdiff.parsers.java.NodeTypes;
@@ -86,17 +85,12 @@ public class RunCalibration {
 				String nodeType = rel.getNodeAfter().getType();
 				Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
 				if (refType.isPresent()) {
-					rs.add(refType.get(), getKey(rel.getNodeBefore()), getKey(rel.getNodeAfter()));
+					rs.add(refType.get(), JavaParser.getKey(rel.getNodeBefore()), JavaParser.getKey(rel.getNodeAfter()));
 				}
 			}
 		}
 		
 		return rs;
-	}
-	
-	private String getKey(RastNode node) {
-		String parentName = node.getParent().map(n -> this.getKey(n) + ".").orElse("");
-		return parentName + node.getLocalName();
 	}
 	
 	private Optional<RefactoringType> getRefactoringType(RelationshipType relType, String nodeType) {

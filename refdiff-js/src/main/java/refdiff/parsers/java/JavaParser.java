@@ -6,6 +6,7 @@ import java.util.List;
 
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
+import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
 
@@ -31,4 +32,8 @@ public class JavaParser implements RastParser {
 		return sdModel.getRoot();
 	}
 
+	public static String getKey(RastNode node) {
+		String parentName = node.getParent().map(n -> getKey(n) + ".").orElse("");
+		return parentName + node.getLocalName();
+	}
 }

@@ -30,7 +30,7 @@ public class AstUtils {
 		StringBuilder sb = new StringBuilder();
 		String className = binding.getDeclaringClass().getErasure().getQualifiedName();
 		sb.append(className);
-		sb.append('#');
+		sb.append('.');
 		String methodName = binding.isConstructor() ? "" : binding.getName();
 		sb.append(methodName);
 		//if (methodName.equals("allObjectsSorted")) {
@@ -53,7 +53,7 @@ public class AstUtils {
 	    StringBuilder sb = new StringBuilder();
 	    String className = binding.getDeclaringClass().getErasure().getQualifiedName();
 	    sb.append(className);
-	    sb.append('#');
+	    sb.append('.');
 	    sb.append(binding.getName());
 	    return sb.toString();
 	}
