@@ -6,6 +6,7 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
@@ -21,8 +22,10 @@ import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFile;
+import refdiff.core.rast.RastNode;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.JavaSourceTokenizer;
+import refdiff.parsers.java.NodeTypes;
 
 public class RunCalibration {
 	
@@ -50,7 +53,7 @@ public class RunCalibration {
 		
 		rc.printSummary(System.out, refactoringTypes);
 	}
-
+	
 	private RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
@@ -76,18 +79,59 @@ public class RunCalibration {
 			
 			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
 			
-			System.out.println(project);
 			for (Relationship rel : diff.getRelationships()) {
-				if (rel.getType() != RelationshipType.SAME) {
-					System.out.println(rel);
+				RelationshipType relType = rel.getType();
+				String nodeType = rel.getNodeAfter().getType();
+				Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
+				if (refType.isPresent()) {
+					rs.add(refType.get(), getKey(rel.getNodeBefore()), getKey(rel.getNodeAfter()));
 				}
 			}
-			System.out.println();
 		}
 		
 		return rs;
 	}
-
+	
+	private String getKey(RastNode node) {
+		
+		return node.getLocalName();
+	}
+	
+	private Optional<RefactoringType> getRefactoringType(RelationshipType relType, String nodeType) {
+		boolean isType = nodeType.equals(NodeTypes.TYPE_DECLARATION) || nodeType.equals(NodeTypes.ENUM_DECLARATION);
+		boolean isMethod = nodeType.equals(NodeTypes.METHOD_DECLARATION);
+		
+		switch (relType) {
+		case MOVE:
+			if (isType) {
+				return Optional.of(RefactoringType.MOVE_CLASS);
+			} else if (isMethod) {
+				return Optional.of(RefactoringType.MOVE_OPERATION);
+			}
+			break;
+		case RENAME:
+			if (isType) {
+				return Optional.of(RefactoringType.RENAME_CLASS);
+			} else if (isMethod) {
+				return Optional.of(RefactoringType.RENAME_METHOD);
+			}
+			break;
+		case EXTRACT:
+			if (isMethod) {
+				return Optional.of(RefactoringType.EXTRACT_OPERATION);
+			}
+			break;
+		case INLINE:
+			if (isMethod) {
+				return Optional.of(RefactoringType.INLINE_OPERATION);
+			}
+			break;
+		case SAME:
+			return Optional.empty();
+		}
+		throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
+	}
+	
 	private List<SourceFile> getSourceFiles(String checkoutFolder, List<String> files) {
 		List<SourceFile> list = new ArrayList<>();
 		for (String file : files) {

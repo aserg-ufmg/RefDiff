@@ -12,6 +12,10 @@ abstract class EsprimaNodeHandler {
 	
 	public abstract String getLocalName(RastNode rastNode, JsValue esprimaNode);
 	
+	public String getSimpleName(RastNode rastNode, JsValue esprimaNode) {
+		return getLocalName(rastNode, esprimaNode);
+	}
+	
 	public abstract Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode);
 	
 	static final Map<String, EsprimaNodeHandler> RAST_NODE_HANDLERS = new HashMap<>();

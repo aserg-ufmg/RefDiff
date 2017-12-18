@@ -95,7 +95,7 @@ public class RastComparator<T> {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
-					if (sameType(n1, n2)) {
+					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
 						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
 						if (score > thresholds.moveOrRename) {
 							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
@@ -201,7 +201,11 @@ public class RastComparator<T> {
 		}
 
 		private boolean sameName(RastNode n1, RastNode n2) {
-			return !n1.getLocalName().isEmpty() && n1.getLocalName().equals(n2.getLocalName());
+			return !n1.getSimpleName().isEmpty() && n1.getSimpleName().equals(n2.getSimpleName());
+		}
+		
+		private boolean anonymous(RastNode n) {
+			return n.getSimpleName().isEmpty();
 		}
 		
 		private boolean sameType(RastNode n1, RastNode n2) {

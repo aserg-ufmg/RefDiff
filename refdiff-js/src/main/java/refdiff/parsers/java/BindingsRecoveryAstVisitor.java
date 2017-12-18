@@ -25,6 +25,7 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
+import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.Stereotype;
 
@@ -33,16 +34,18 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
     private final SDModel model;
     private final String sourceFilePath;
     private final char[] fileContent;
-    private final LinkedList<RastNode> containerStack;
+    private final String packageName;
+    private final LinkedList<HasChildrenNodes> containerStack;
     private final Map<RastNode, List<String>> postProcessReferences;
     private final Map<RastNode, List<String>> postProcessSupertypes;
 
-    public BindingsRecoveryAstVisitor(SDModel model, String sourceFilePath, char[] fileContent, RastNode sdPackage, Map<RastNode, List<String>> postProcessReferences, Map<RastNode, List<String>> postProcessSupertypes) {
+    public BindingsRecoveryAstVisitor(SDModel model, String sourceFilePath, char[] fileContent, String packageName, Map<RastNode, List<String>> postProcessReferences, Map<RastNode, List<String>> postProcessSupertypes) {
         this.model = model;
         this.sourceFilePath = sourceFilePath;
         this.fileContent = fileContent;
-        this.containerStack = new LinkedList<RastNode>();
-        this.containerStack.push(sdPackage);
+        this.packageName = packageName;
+        this.containerStack = new LinkedList<HasChildrenNodes>();
+        this.containerStack.push(model.getRoot());
         this.postProcessReferences = postProcessReferences;
         this.postProcessSupertypes = postProcessSupertypes;
     }
@@ -113,7 +116,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
         if (node.isLocalTypeDeclaration()) {
             type = model.createAnonymousType(containerStack.peek(), sourceFilePath, typeName, node);
         } else {
-            type = model.createType(typeName, containerStack.peek(), sourceFilePath, node);
+        	type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node);
         }
 
         Set<String> annotations = extractAnnotationTypes(node.modifiers());

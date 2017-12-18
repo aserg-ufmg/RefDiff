@@ -120,8 +120,8 @@ public class SDModelBuilder {
 		if (sourceFilePath.contains(packagePath)) {
 		  sourceFolder = sourceFilePath.substring(0, sourceFilePath.indexOf(packagePath));
 		}
-		RastNode nCompUnit = model.createCompilationUnit(packageName, sourceFolder, sourceFilePath, compilationUnit);
-		BindingsRecoveryAstVisitor visitor = new BindingsRecoveryAstVisitor(model, sourceFilePath, fileContent, nCompUnit, postProcessReferences, postProcessSupertypes);
+		//RastNode nCompUnit = model.createCompilationUnit(packageName, sourceFolder, sourceFilePath, compilationUnit);
+		BindingsRecoveryAstVisitor visitor = new BindingsRecoveryAstVisitor(model, sourceFilePath, fileContent, packageName, postProcessReferences, postProcessSupertypes);
 		compilationUnit.accept(visitor);
 	}
 

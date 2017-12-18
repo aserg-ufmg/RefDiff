@@ -9,6 +9,7 @@ public class RastNode implements HasChildrenNodes {
 	private final int id;
 	private String type;
 	private Location location;
+	private String simpleName;
 	private String localName;
 	private List<RastNode> nodes = new ArrayList<>();
 	private Set<Stereotype> stereotypes = new HashSet<>();
@@ -48,6 +49,14 @@ public class RastNode implements HasChildrenNodes {
 	
 	public void setLocalName(String logicalName) {
 		this.localName = logicalName;
+	}
+	
+	public String getSimpleName() {
+		return simpleName;
+	}
+	
+	public void setSimpleName(String simpleName) {
+		this.simpleName = simpleName;
 	}
 	
 	public List<RastNode> getNodes() {

@@ -6,9 +6,9 @@ import java.util.Optional;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
-import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
+import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
@@ -33,38 +33,43 @@ public class SDModel {
 		root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.SUBTYPE, type.getId(), supertype.getId()));
 	}
 
-	public RastNode createCompilationUnit(String packageName, String sourceFolder, String sourceFilePath, CompilationUnit compilationUnit) {
-		RastNode rastNode = new RastNode(++nodeCounter);
-		rastNode.setType("CompilationUnit");
-		rastNode.setLocation(new Location(sourceFilePath, 0, compilationUnit.getLength()));
-		rastNode.setLocalName(sourceFilePath);
-		root.getNodes().add(rastNode);
-		return rastNode;
-	}
+//	public RastNode createCompilationUnit(String packageName, String sourceFolder, String sourceFilePath, CompilationUnit compilationUnit) {
+//		RastNode rastNode = new RastNode(++nodeCounter);
+//		rastNode.setType("CompilationUnit");
+//		rastNode.setLocation(new Location(sourceFilePath, 0, compilationUnit.getLength()));
+//		rastNode.setLocalName(sourceFilePath);
+//		root.getNodes().add(rastNode);
+//		return rastNode;
+//	}
 
-	public RastNode createAnonymousType(RastNode parent, String sourceFilePath, String name, ASTNode ast) {
+	public RastNode createAnonymousType(HasChildrenNodes parent, String sourceFilePath, String name, ASTNode ast) {
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(name);
+		rastNode.setSimpleName(name);
 		parent.getNodes().add(rastNode);
 		return rastNode;
 	}
 
-	public RastNode createType(String typeName, RastNode parent, String sourceFilePath, AbstractTypeDeclaration ast) {
+	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast) {
+		String fullName = packageName.isEmpty() ? typeName : packageName + "." + typeName; 
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
-		rastNode.setLocalName(typeName);
+		rastNode.setLocalName(fullName);
+		rastNode.setSimpleName(typeName);
 		parent.getNodes().add(rastNode);
 		return rastNode;
 	}
 
-	public RastNode createMethod(String methodSignature, RastNode parent, String sourceFilePath, boolean constructor, MethodDeclaration ast) {
+	public RastNode createMethod(String methodSignature, HasChildrenNodes parent, String sourceFilePath, boolean constructor, MethodDeclaration ast) {
+		String methodName = ast.isConstructor() ? "" : ast.getName().getIdentifier();
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(methodSignature);
+		rastNode.setSimpleName(methodName);
 		parent.getNodes().add(rastNode);
 		return rastNode;
 	}

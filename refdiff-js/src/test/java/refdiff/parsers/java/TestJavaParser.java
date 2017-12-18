@@ -32,27 +32,24 @@ public class TestJavaParser {
 		
 		assertThat(root.getNodes().size(), is(2));
 		
-		RastNode cuFoo = root.getNodes().get(0);
-		assertThat(cuFoo.getType(), is("CompilationUnit"));
-		assertThat(cuFoo.getLocalName(), is("Foo.java"));
-		assertThat(cuFoo.getLocation(), is(new Location("Foo.java", 0, 66)));
-
-		assertThat(cuFoo.getNodes().size(), is(1));
-		RastNode classFoo = cuFoo.getNodes().get(0);
+		RastNode classFoo = root.getNodes().get(0);
 		assertThat(classFoo.getType(), is("TypeDeclaration"));
 		assertThat(classFoo.getLocalName(), is("Foo"));
+		assertThat(classFoo.getSimpleName(), is("Foo"));
 		assertThat(classFoo.getLocation(), is(new Location("Foo.java", 0, 66)));
 
 		assertThat(classFoo.getNodes().size(), is(1));
 		RastNode m1 = classFoo.getNodes().get(0);
 		assertThat(m1.getType(), is("MethodDeclaration"));
 		assertThat(m1.getLocalName(), is("m1(String)"));
+		assertThat(m1.getSimpleName(), is("m1"));
 		assertThat(m1.getLocation(), is(new Location("Foo.java", 24, 60)));
 
 		RastNode cuBar = root.getNodes().get(1);
-		assertThat(cuBar.getType(), is("CompilationUnit"));
-		assertThat(cuBar.getLocalName(), is("p1/Bar.java"));
-		assertThat(cuBar.getLocation(), is(new Location("p1/Bar.java", 0, 42)));
+		assertThat(cuBar.getType(), is("TypeDeclaration"));
+		assertThat(cuBar.getLocalName(), is("p1.Bar"));
+		assertThat(cuBar.getSimpleName(), is("Bar"));
+		assertThat(cuBar.getLocation(), is(new Location("p1/Bar.java", 15, 42)));
 	}
 	
 }
