@@ -110,7 +110,7 @@ public class RastComparator<T> {
 				RastNode n2 = candidate.getNodeAfter();
 				if (!sameName(n1, n2)) {
 					addMatch(new Relationship(RelationshipType.RENAME, n1, n2));
-				} else {
+				} else if (sameName(n1, n2)) {
 					addMatch(new Relationship(RelationshipType.MOVE, n1, n2));
 				}
 			}
