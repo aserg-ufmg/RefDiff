@@ -17,6 +17,11 @@ public class RastRoot implements HasChildrenNodes {
 		return nodes;
 	}
 	
+	@Override
+	public void addNode(RastNode node) {
+		nodes.add(node);
+	}
+	
 	public Set<RastNodeRelationship> getRelationships() {
 		return relationships;
 	}

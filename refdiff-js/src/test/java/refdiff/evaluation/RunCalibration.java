@@ -49,9 +49,11 @@ public class RunCalibration {
 			String commit = rs.getRevision();
 			rc.expect(rs);
 			rc.compareWith("RefDiff", runRefDiff(project, commit));
+			break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
+		rc.printDetails(System.out, refactoringTypes);
 	}
 	
 	private RefactoringSet runRefDiff(String project, String commit) throws Exception {
@@ -93,8 +95,8 @@ public class RunCalibration {
 	}
 	
 	private String getKey(RastNode node) {
-		
-		return node.getLocalName();
+		String parentName = node.getParent().map(n -> n.getLocalName() + ".").orElse("");
+		return parentName + node.getLocalName();
 	}
 	
 	private Optional<RefactoringType> getRefactoringType(RelationshipType relType, String nodeType) {

@@ -48,7 +48,7 @@ public class SDModel {
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(name);
 		rastNode.setSimpleName(name);
-		parent.getNodes().add(rastNode);
+		parent.addNode(rastNode);
 		return rastNode;
 	}
 
@@ -59,7 +59,7 @@ public class SDModel {
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(fullName);
 		rastNode.setSimpleName(typeName);
-		parent.getNodes().add(rastNode);
+		parent.addNode(rastNode);
 		return rastNode;
 	}
 
@@ -70,7 +70,7 @@ public class SDModel {
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(methodSignature);
 		rastNode.setSimpleName(methodName);
-		parent.getNodes().add(rastNode);
+		parent.addNode(rastNode);
 		return rastNode;
 	}
 

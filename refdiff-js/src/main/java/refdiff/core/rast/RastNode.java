@@ -3,6 +3,7 @@ package refdiff.core.rast;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class RastNode implements HasChildrenNodes {
@@ -11,13 +12,14 @@ public class RastNode implements HasChildrenNodes {
 	private Location location;
 	private String simpleName;
 	private String localName;
+	private Optional<RastNode> parent = Optional.empty();
 	private List<RastNode> nodes = new ArrayList<>();
 	private Set<Stereotype> stereotypes = new HashSet<>();
 	
 	public RastNode(int id) {
 		this.id = id;
 	}
-
+	
 	@Override
 	public String toString() {
 		return String.format("%s %s %s", location.toString(), type, localName);
@@ -63,6 +65,12 @@ public class RastNode implements HasChildrenNodes {
 		return nodes;
 	}
 	
+	@Override
+	public void addNode(RastNode node) {
+		nodes.add(node);
+		node.setParent(this);
+	}
+	
 	public void setNodes(List<RastNode> nodes) {
 		this.nodes = nodes;
 	}
@@ -74,9 +82,17 @@ public class RastNode implements HasChildrenNodes {
 	public void setStereotypes(Set<Stereotype> stereotypes) {
 		this.stereotypes = stereotypes;
 	}
-
+	
 	public void addStereotypes(Stereotype stereotype) {
 		this.stereotypes.add(stereotype);
+	}
+	
+	public void setParent(RastNode node) {
+		this.parent = Optional.ofNullable(node);
+	}
+
+	public Optional<RastNode> getParent() {
+		return parent;
 	}
 	
 }
