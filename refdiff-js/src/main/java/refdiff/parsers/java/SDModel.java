@@ -47,12 +47,19 @@ public class SDModel {
 		rastNode.setType(ast.getClass().getSimpleName());
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(name);
-		rastNode.setSimpleName(name);
+		rastNode.setSimpleName("");
 		parent.addNode(rastNode);
 		return rastNode;
 	}
 
+	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast) {
+		return createType(typeName, "", parent, sourceFilePath, ast);
+	}
+	
 	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast) {
+		if (typeName == null || typeName.isEmpty()) {
+			throw new RuntimeException("Type should have a name");
+		}
 		String fullName = packageName.isEmpty() ? typeName : packageName + "." + typeName; 
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());

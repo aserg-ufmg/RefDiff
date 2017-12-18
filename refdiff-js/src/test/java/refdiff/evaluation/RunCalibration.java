@@ -59,7 +59,7 @@ public class RunCalibration {
 	private RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
-		String basePath = "D:/tmp/";
+		String basePath = "C:/tmp/";
 		String repoFolder = project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
 		String checkoutFolder = repoFolder + "-" + commit.substring(0, 7) + "/";
 		String checkoutFolderV0 = basePath + "v0/" + checkoutFolder;
@@ -95,7 +95,7 @@ public class RunCalibration {
 	}
 	
 	private String getKey(RastNode node) {
-		String parentName = node.getParent().map(n -> n.getLocalName() + ".").orElse("");
+		String parentName = node.getParent().map(n -> this.getKey(n) + ".").orElse("");
 		return parentName + node.getLocalName();
 	}
 	

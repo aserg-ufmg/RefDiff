@@ -16,6 +16,7 @@ import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
 import org.eclipse.jdt.core.dom.AnonymousClassDeclaration;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.ClassInstanceCreation;
+import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.EnumDeclaration;
 import org.eclipse.jdt.core.dom.IMethodBinding;
 import org.eclipse.jdt.core.dom.ITypeBinding;
@@ -38,9 +39,11 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
     private final LinkedList<HasChildrenNodes> containerStack;
     private final Map<RastNode, List<String>> postProcessReferences;
     private final Map<RastNode, List<String>> postProcessSupertypes;
+    private final CompilationUnit compilationUnit;
 
-    public BindingsRecoveryAstVisitor(SDModel model, String sourceFilePath, char[] fileContent, String packageName, Map<RastNode, List<String>> postProcessReferences, Map<RastNode, List<String>> postProcessSupertypes) {
+    public BindingsRecoveryAstVisitor(SDModel model, CompilationUnit compilationUnit, String sourceFilePath, char[] fileContent, String packageName, Map<RastNode, List<String>> postProcessReferences, Map<RastNode, List<String>> postProcessSupertypes) {
         this.model = model;
+        this.compilationUnit = compilationUnit;
         this.sourceFilePath = sourceFilePath;
         this.fileContent = fileContent;
         this.packageName = packageName;
@@ -56,7 +59,8 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
             ClassInstanceCreation parent = (ClassInstanceCreation) node.getParent();
             ITypeBinding typeBinding = parent.getType().resolveBinding();
             if (typeBinding != null && typeBinding.isFromSource()) {
-            	RastNode type = model.createAnonymousType(containerStack.peek(), sourceFilePath, "", node);
+            	int line = compilationUnit.getLineNumber(node.getStartPosition());
+            	RastNode type = model.createAnonymousType(containerStack.peek(), sourceFilePath, "$" + line, node);
                 containerStack.push(type);
                 extractSupertypesForPostProcessing(type, typeBinding);
                 return true;
@@ -114,7 +118,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
     	RastNode type;
         String typeName = node.getName().getIdentifier();
         if (node.isLocalTypeDeclaration()) {
-            type = model.createAnonymousType(containerStack.peek(), sourceFilePath, typeName, node);
+            type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, node);
         } else {
         	type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node);
         }
