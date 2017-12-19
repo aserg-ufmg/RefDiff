@@ -61,12 +61,13 @@ public class SDModel {
 		if (typeName == null || typeName.isEmpty()) {
 			throw new RuntimeException("Type should have a name");
 		}
-		String fullName = packageName.isEmpty() ? typeName : packageName + "." + typeName; 
+		String namespace = packageName.isEmpty() ? "" : packageName + "."; 
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
-		rastNode.setLocalName(fullName);
+		rastNode.setLocalName(typeName);
 		rastNode.setSimpleName(typeName);
+		rastNode.setNamespace(namespace);
 		parent.addNode(rastNode);
 		keyMap.put(JavaParser.getKey(rastNode), rastNode);
 		return rastNode;

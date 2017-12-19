@@ -1,5 +1,7 @@
 package refdiff.core.diff;
 
+import static refdiff.core.diff.RastRootHelper.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -109,17 +111,17 @@ public class RastComparator<T> {
 			for (PotentialMatch candidate : candidates) {
 				RastNode n1 = candidate.getNodeBefore();
 				RastNode n2 = candidate.getNodeAfter();
-				if (sameParent(n1, n2)) {
+				if (sameLocation(n1, n2)) {
 					if (sameName(n1, n2)) {
 						// change signature
 					} else {
 						addMatch(new Relationship(RelationshipType.RENAME, n1, n2));
 					}
 				} else {
-					if (sameLocalName(n1, n2)) {
+					if (sameSignature(n1, n2)) {
 						addMatch(new Relationship(RelationshipType.MOVE, n1, n2));
 					} else {
-						// move and rename / move and rename and change signature 
+						// move and rename / move and rename and change signature
 					}
 				}
 			}
@@ -182,7 +184,7 @@ public class RastComparator<T> {
 			List<RastNode> addedChildren = children(node2, this::added);
 			for (RastNode n1 : removedChildren) {
 				for (RastNode n2 : addedChildren) {
-					if (sameLocalName(n1, n2) && sameType(n1, n2)) {
+					if (sameNamespace(n1, n2) && sameSignature(n1, n2) && sameType(n1, n2)) {
 						addMatch(new Relationship(RelationshipType.SAME, n1, n2));
 					}
 				}
@@ -218,31 +220,14 @@ public class RastComparator<T> {
 			return Optional.ofNullable(mapBeforeToAfter.get(n1));
 		}
 		
-		private boolean sameParent(RastNode n1, RastNode n2) {
-			if (n1.getParent().isPresent() && n1.getParent().isPresent()) {
+		private boolean sameLocation(RastNode n1, RastNode n2) {
+			if (n1.getParent().isPresent() && n2.getParent().isPresent()) {
 				return matchingNodeAfter(n1.getParent().get()).equals(n2.getParent());
 			} else if (!n1.getParent().isPresent() && !n1.getParent().isPresent()) {
-				// TODO how to deal with packages?
-				return false;
+				return sameNamespace(n1, n2);
 			} else {
 				return false;
 			}
-		}
-		
-		private boolean sameName(RastNode n1, RastNode n2) {
-			return !n1.getSimpleName().isEmpty() && n1.getSimpleName().equals(n2.getSimpleName());
-		}
-		
-		private boolean sameLocalName(RastNode n1, RastNode n2) {
-			return n1.getLocalName().equals(n2.getLocalName());
-		}
-		
-		private boolean anonymous(RastNode n) {
-			return n.getSimpleName().isEmpty();
-		}
-		
-		private boolean sameType(RastNode n1, RastNode n2) {
-			return n1.getType().equals(n2.getType());
 		}
 		
 		private boolean removed(RastNode n) {

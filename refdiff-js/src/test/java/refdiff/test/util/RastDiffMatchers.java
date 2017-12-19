@@ -12,6 +12,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
 import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.RastRootHelper;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.rast.RastNode;
@@ -67,8 +68,8 @@ public class RastDiffMatchers {
 		public Optional<Relationship> find(RastDiff diff) {
 			RastRoot before = diff.getBefore();
 			RastRoot after = diff.getAfter();
-			Optional<RastNode> oNodeBefore = before.findByNamePath(nodeQBefore.namePath);
-			Optional<RastNode> oNodeAfter = after.findByNamePath(nodeQAfter.namePath);
+			Optional<RastNode> oNodeBefore = RastRootHelper.findByNamePath(before, nodeQBefore.namePath);
+			Optional<RastNode> oNodeAfter = RastRootHelper.findByNamePath(after, nodeQAfter.namePath);
 			return oNodeBefore.flatMap(nodeBefore -> oNodeAfter.flatMap(nodeAfter -> {
 				Relationship r = new Relationship(type, nodeBefore, nodeAfter);
 				if (diff.getRelationships().contains(r)) {

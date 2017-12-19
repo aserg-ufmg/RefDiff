@@ -16,6 +16,10 @@ abstract class EsprimaNodeHandler {
 		return getLocalName(rastNode, esprimaNode);
 	}
 	
+	public String getNamespace(RastNode rastNode, JsValue esprimaNode) {
+		return null;
+	}
+	
 	public abstract Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode);
 	
 	static final Map<String, EsprimaNodeHandler> RAST_NODE_HANDLERS = new HashMap<>();
@@ -24,6 +28,15 @@ abstract class EsprimaNodeHandler {
 		RAST_NODE_HANDLERS.put("Program", new EsprimaNodeHandler() {
 			public String getLocalName(RastNode rastNode, JsValue esprimaNode) {
 				return rastNode.getLocation().getFile();
+			}
+			
+			public String getNamespace(RastNode rastNode, JsValue esprimaNode) {
+				String filePath = rastNode.getLocation().getFile();
+				if (filePath.lastIndexOf('/') != -1) {
+					return filePath.substring(0, filePath.lastIndexOf('/') + 1);
+				} else {
+					return "";
+				}
 			}
 			
 			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode) {

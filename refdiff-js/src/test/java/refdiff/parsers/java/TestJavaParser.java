@@ -36,6 +36,7 @@ public class TestJavaParser {
 		
 		RastNode classFoo = root.getNodes().get(0);
 		assertThat(classFoo.getType(), is("TypeDeclaration"));
+		assertThat(classFoo.getNamespace(), is(""));
 		assertThat(classFoo.getLocalName(), is("Foo"));
 		assertThat(classFoo.getSimpleName(), is("Foo"));
 		assertThat(classFoo.getLocation(), is(new Location("Foo.java", 0, 66)));
@@ -49,7 +50,8 @@ public class TestJavaParser {
 		
 		RastNode classBar = root.getNodes().get(1);
 		assertThat(classBar.getType(), is("TypeDeclaration"));
-		assertThat(classBar.getLocalName(), is("p1.Bar"));
+		assertThat(classBar.getNamespace(), is("p1."));
+		assertThat(classBar.getLocalName(), is("Bar"));
 		assertThat(classBar.getSimpleName(), is("Bar"));
 		assertThat(classBar.getLocation(), is(new Location("p1/Bar.java", 15, 152)));
 		

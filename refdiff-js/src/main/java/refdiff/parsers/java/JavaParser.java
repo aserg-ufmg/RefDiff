@@ -33,7 +33,14 @@ public class JavaParser implements RastParser {
 	}
 
 	public static String getKey(RastNode node) {
-		String parentName = node.getParent().map(n -> getKey(n) + ".").orElse("");
+		String parentName;
+		if (node.getParent().isPresent()) {
+			parentName = getKey(node.getParent().get()) + ".";
+		} else if (node.getNamespace() != null) {
+			parentName = node.getNamespace();
+		} else {
+			parentName = "";
+		}
 		return parentName + node.getLocalName();
 	}
 }

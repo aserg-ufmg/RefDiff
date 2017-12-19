@@ -58,7 +58,7 @@ public class RunCalibration {
 	private RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
-		String basePath = "C:/tmp/";
+		String basePath = "D:/tmp/";
 		String repoFolder = project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
 		String checkoutFolder = repoFolder + "-" + commit.substring(0, 7) + "/";
 		String checkoutFolderV0 = basePath + "v0/" + checkoutFolder;

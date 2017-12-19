@@ -92,6 +92,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 			rastNode.setLocation(new Location(path, begin, end));
 			rastNode.setLocalName(handler.getLocalName(rastNode, esprimaAst));
 			rastNode.setSimpleName(handler.getSimpleName(rastNode, esprimaAst));
+			rastNode.setNamespace(handler.getNamespace(rastNode, esprimaAst));
 			rastNode.setStereotypes(handler.getStereotypes(rastNode, esprimaAst));
 			container.addNode(rastNode);
 			container = rastNode;

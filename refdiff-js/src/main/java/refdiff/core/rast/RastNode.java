@@ -12,6 +12,7 @@ public class RastNode implements HasChildrenNodes {
 	private Location location;
 	private String simpleName;
 	private String localName;
+	private String namespace;
 	private Optional<RastNode> parent = Optional.empty();
 	private List<RastNode> nodes = new ArrayList<>();
 	private Set<Stereotype> stereotypes = new HashSet<>();
@@ -93,6 +94,14 @@ public class RastNode implements HasChildrenNodes {
 
 	public Optional<RastNode> getParent() {
 		return parent;
+	}
+
+	public String getNamespace() {
+		return namespace;
+	}
+
+	public void setNamespace(String namespace) {
+		this.namespace = namespace;
 	}
 	
 }

@@ -35,6 +35,7 @@ public class TestEsprimaParser {
 		
 		RastNode nodeScriptEx1 = root.getNodes().get(0);
 		assertThat(nodeScriptEx1.getType(), is("Program"));
+		assertThat(nodeScriptEx1.getNamespace(), is(""));
 		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 77)));
 		
 		assertThat(nodeScriptEx1.getNodes().size(), is(2));
