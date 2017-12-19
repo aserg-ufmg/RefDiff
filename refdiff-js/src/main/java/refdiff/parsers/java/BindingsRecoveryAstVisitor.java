@@ -53,6 +53,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
         this.postProcessSupertypes = postProcessSupertypes;
     }
 
+    /*
     @Override
     public boolean visit(AnonymousClassDeclaration node) {
         if (node.getParent() instanceof ClassInstanceCreation) {
@@ -79,6 +80,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
             }
         }
     }
+    */
 
     @Override
     public boolean visit(AnnotationTypeDeclaration node) {
@@ -117,10 +119,10 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
     private RastNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes) {
     	RastNode type;
         String typeName = node.getName().getIdentifier();
-        if (node.isLocalTypeDeclaration()) {
-            type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, node);
+        if (node.isPackageMemberTypeDeclaration()) {
+            type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node);
         } else {
-        	type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node);
+        	type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, node);
         }
 
         Set<String> annotations = extractAnnotationTypes(node.modifiers());

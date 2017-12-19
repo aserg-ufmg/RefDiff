@@ -1,6 +1,10 @@
 package refdiff.core.diff;
 
-import static refdiff.core.diff.RastRootHelper.*;
+import static refdiff.core.diff.RastRootHelper.anonymous;
+import static refdiff.core.diff.RastRootHelper.sameName;
+import static refdiff.core.diff.RastRootHelper.sameNamespace;
+import static refdiff.core.diff.RastRootHelper.sameSignature;
+import static refdiff.core.diff.RastRootHelper.sameType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -184,6 +188,9 @@ public class RastComparator<T> {
 			List<RastNode> addedChildren = children(node2, this::added);
 			for (RastNode n1 : removedChildren) {
 				for (RastNode n2 : addedChildren) {
+					if (!sameNamespace(n1, n2) && sameSignature(n1, n2)) {
+						System.out.println("Macaco");
+					}
 					if (sameNamespace(n1, n2) && sameSignature(n1, n2) && sameType(n1, n2)) {
 						addMatch(new Relationship(RelationshipType.SAME, n1, n2));
 					}

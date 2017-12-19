@@ -85,7 +85,9 @@ public class RunCalibration {
 				String nodeType = rel.getNodeAfter().getType();
 				Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
 				if (refType.isPresent()) {
-					rs.add(refType.get(), JavaParser.getKey(rel.getNodeBefore()), JavaParser.getKey(rel.getNodeAfter()));
+					String keyN1 = JavaParser.getKey(rel.getNodeBefore());
+					String keyN2 = JavaParser.getKey(rel.getNodeAfter());
+					rs.add(refType.get(), keyN1, keyN2);
 				}
 			}
 		}
