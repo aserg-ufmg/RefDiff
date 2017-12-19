@@ -188,9 +188,6 @@ public class RastComparator<T> {
 			List<RastNode> addedChildren = children(node2, this::added);
 			for (RastNode n1 : removedChildren) {
 				for (RastNode n2 : addedChildren) {
-					if (!sameNamespace(n1, n2) && sameSignature(n1, n2)) {
-						System.out.println("Macaco");
-					}
 					if (sameNamespace(n1, n2) && sameSignature(n1, n2) && sameType(n1, n2)) {
 						addMatch(new Relationship(RelationshipType.SAME, n1, n2));
 					}

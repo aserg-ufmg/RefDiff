@@ -11,6 +11,6 @@ public class RastComparatorThresholds {
 		this.inline = inline;
 	}
 	
-	public static final RastComparatorThresholds DEFAULT = new RastComparatorThresholds(0.5, 0.3, 0.3);
+	public static final RastComparatorThresholds DEFAULT = new RastComparatorThresholds(0.5, 0.2, 0.3);
 	
 }

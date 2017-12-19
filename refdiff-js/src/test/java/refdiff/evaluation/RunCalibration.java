@@ -43,12 +43,13 @@ public class RunCalibration {
 		
 		ResultComparator rc = new ResultComparator();
 		
+		int i = 0;
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			rc.expect(rs);
 			rc.compareWith("RefDiff", runRefDiff(project, commit));
-			break;
+			if (i++ > 4) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
@@ -127,7 +128,8 @@ public class RunCalibration {
 		case SAME:
 			return Optional.empty();
 		}
-		throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
+		return Optional.empty();
+		//throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
 	}
 	
 	private List<SourceFile> getSourceFiles(String checkoutFolder, List<String> files) {
