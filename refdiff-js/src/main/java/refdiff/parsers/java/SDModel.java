@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
+import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import refdiff.core.rast.HasChildrenNodes;
@@ -14,6 +15,7 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
+import refdiff.core.rast.Stereotype;
 
 public class SDModel {
 
@@ -42,16 +44,16 @@ public class SDModel {
 //		return rastNode;
 //	}
 
-	public RastNode createAnonymousType(HasChildrenNodes parent, String sourceFilePath, String name, ASTNode ast) {
-		RastNode rastNode = new RastNode(++nodeCounter);
-		rastNode.setType(ast.getClass().getSimpleName());
-		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
-		rastNode.setLocalName(name);
-		rastNode.setSimpleName("");
-		parent.addNode(rastNode);
-		keyMap.put(JavaParser.getKey(rastNode), rastNode);
-		return rastNode;
-	}
+//	public RastNode createAnonymousType(HasChildrenNodes parent, String sourceFilePath, String name, ASTNode ast) {
+//		RastNode rastNode = new RastNode(++nodeCounter);
+//		rastNode.setType(ast.getClass().getSimpleName());
+//		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
+//		rastNode.setLocalName(name);
+//		rastNode.setSimpleName("");
+//		parent.addNode(rastNode);
+//		keyMap.put(JavaParser.getKey(rastNode), rastNode);
+//		return rastNode;
+//	}
 
 	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast) {
 		return createType(typeName, "", parent, sourceFilePath, ast);
@@ -77,7 +79,19 @@ public class SDModel {
 		String methodName = ast.isConstructor() ? "" : ast.getName().getIdentifier();
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
-		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
+		
+		Block body = ast.getBody();
+		int bodyStart;
+		int bodyLength;
+        if (body == null) {
+            rastNode.addStereotypes(Stereotype.ABSTRACT);
+            bodyStart = ast.getStartPosition() + ast.getLength();
+            bodyLength = 0;
+        } else {
+        	bodyStart = body.getStartPosition();
+            bodyLength = body.getLength();
+        }
+        rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), bodyStart, bodyStart + bodyLength));
 		rastNode.setLocalName(methodSignature);
 		rastNode.setSimpleName(methodName);
 		parent.addNode(rastNode);

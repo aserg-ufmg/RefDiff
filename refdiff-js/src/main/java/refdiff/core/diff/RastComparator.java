@@ -80,7 +80,7 @@ public class RastComparator<T> {
 				Location location = node.getLocation();
 				for (SourceFile file : filesBefore) {
 					if (file.getPath().equals(location.getFile())) {
-						String sourceCode = file.getContent().substring(location.getBegin(), location.getEnd());
+						String sourceCode = file.getContent().substring(location.getBodyBegin(), location.getBodyEnd());
 						T sourceCodeRepresentation = srb.buildForNode(node, tokenizer.tokenize(sourceCode));
 						srMap.put(node, sourceCodeRepresentation);
 					}
