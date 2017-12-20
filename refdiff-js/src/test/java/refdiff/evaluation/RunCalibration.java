@@ -49,7 +49,7 @@ public class RunCalibration {
 			String commit = rs.getRevision();
 			rc.expect(rs);
 			rc.compareWith("RefDiff", runRefDiff(project, commit));
-			if (i++ > 4) break;
+			//if (i++ > 4) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
