@@ -94,6 +94,9 @@ public class RastComparator<T> {
 		
 		RastDiff computeDiff() {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
+			for (Map.Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
+				matchPullUpAndPushDownMembers(entry.getKey(), entry.getValue());
+			}
 			matchMovesOrRenames();
 			matchExtract();
 			matchInline();
@@ -233,7 +236,6 @@ public class RastComparator<T> {
 				unmarkRemoved(nBefore);
 				unmarkAdded(nAfter);
 				matchExactChildren(nBefore, nAfter);
-				matchPullUpAndPushDownMembers(nBefore, nAfter);
 			}
 		}
 		

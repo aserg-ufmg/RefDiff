@@ -125,7 +125,10 @@ public class CalibrationDataset extends AbstractDataset {
 			.addFP("Rename Method", "buildcraft.robotics.ai.AIRobotSearchStackRequest.getOrderFromRequestingAction(DockingStation)", "buildcraft.robotics.ai.AIRobotSearchStackRequest.getAvailableRequests(DockingStation)")
 			.addFP("Move Attribute", "buildcraft.api.robots.StackRequest.stack", "buildcraft.robotics.StackRequest.stack")
 			.addFP("Move Attribute", "buildcraft.api.robots.StackRequest.station", "buildcraft.robotics.StackRequest.station")
-			.addTP("Move Class", "buildcraft.api.robots.StackRequest", "buildcraft.robotics.StackRequest");
+			.addTP("Move Class", "buildcraft.api.robots.StackRequest", "buildcraft.robotics.StackRequest")
+			
+			.addTP("Push Down Method", "buildcraft.api.robots.ResourceId.hashCode()", "buildcraft.api.robots.ResourceIdBlock.hashCode()")
+			.addTP("Push Down Method", "buildcraft.api.robots.ResourceId.hashCode()", "buildcraft.api.robots.ResourceIdRequest.hashCode()");
 		
 		commit("https://github.com/droolsjbpm/drools.git", "1bf2875e9d73e2d1cd3b58200d5300485f890ff5")
 			.addFP("Extract Method", "org.drools.core.common.DefaultAgenda.fireUntilHalt(AgendaFilter)", "org.drools.core.common.DefaultAgenda.waitAndEnterExecutionState(ExecutionState)")

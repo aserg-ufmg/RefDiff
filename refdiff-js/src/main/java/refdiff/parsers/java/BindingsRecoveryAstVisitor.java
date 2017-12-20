@@ -15,7 +15,6 @@ import org.eclipse.jdt.core.dom.Annotation;
 import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
 import org.eclipse.jdt.core.dom.AnonymousClassDeclaration;
 import org.eclipse.jdt.core.dom.Block;
-import org.eclipse.jdt.core.dom.ClassInstanceCreation;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.EnumDeclaration;
 import org.eclipse.jdt.core.dom.IMethodBinding;
@@ -51,6 +50,11 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
         this.containerStack.push(model.getRoot());
         this.postProcessReferences = postProcessReferences;
         this.postProcessSupertypes = postProcessSupertypes;
+    }
+
+    @Override
+    public boolean visit(AnonymousClassDeclaration node) {
+        return false;
     }
 
     /*
