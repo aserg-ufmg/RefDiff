@@ -1,6 +1,8 @@
 package refdiff.core.diff;
 
 import static refdiff.core.diff.RastRootHelper.anonymous;
+import static refdiff.core.diff.RastRootHelper.findByFullName;
+import static refdiff.core.diff.RastRootHelper.fullName;
 import static refdiff.core.diff.RastRootHelper.sameName;
 import static refdiff.core.diff.RastRootHelper.sameNamespace;
 import static refdiff.core.diff.RastRootHelper.sameSignature;
@@ -194,6 +196,32 @@ public class RastComparator<T> {
 				}
 			}
 		}
+
+		private void matchPullUpAndPushDownMembers(RastNode nBefore, RastNode nAfter) {
+			// Pull up
+			for (RastNode addedMember : children(nAfter, this::added)) {
+				for (RastNode subtype : before.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nBefore)) {
+					Optional<RastNode> optNode = findByFullName(subtype, fullName(addedMember));
+					if (optNode.isPresent() && removed(optNode.get())) {
+						diff.addRelationships(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
+						unmarkRemoved(optNode.get());
+						unmarkAdded(addedMember);
+					}
+				}
+			}
+			
+			// Push down
+			for (RastNode removedMember : children(nBefore, this::removed)) {
+				for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
+					Optional<RastNode> optNode = findByFullName(subtype, fullName(removedMember));
+					if (optNode.isPresent() && added(optNode.get())) {
+						diff.addRelationships(new Relationship(RelationshipType.PUSH_DOWN, removedMember, optNode.get()));
+						unmarkRemoved(removedMember);
+						unmarkAdded(optNode.get());
+					}
+				}
+			}
+		}
 		
 		private void addMatch(Relationship relationship) {
 			RastNode nBefore = relationship.getNodeBefore();
@@ -205,9 +233,11 @@ public class RastComparator<T> {
 				unmarkRemoved(nBefore);
 				unmarkAdded(nAfter);
 				matchExactChildren(nBefore, nAfter);
+				matchPullUpAndPushDownMembers(nBefore, nAfter);
 			}
 		}
 		
+
 		private T sourceRep(RastNode n) {
 			return srMap.get(n);
 		}

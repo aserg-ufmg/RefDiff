@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
@@ -78,6 +79,15 @@ public class RastRootHelper<T> {
 	
 	public static Optional<RastNode> findByNamePath(RastRoot rastRoot, String... namePath) {
 		return findByNamePathRecursive(rastRoot.getNodes(), 0, namePath);
+	}
+	
+	public static Optional<RastNode> findByFullName(HasChildrenNodes parent, String name) {
+		for (RastNode node : parent.getNodes()) {
+			if (fullName(node).equals(name)) {
+				return Optional.of(node);
+			}
+		}
+		return Optional.empty();
 	}
 	
 	private static Optional<RastNode> findByNamePathRecursive(List<RastNode> list, int depth, String[] namePath) {

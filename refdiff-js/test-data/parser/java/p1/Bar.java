@@ -1,6 +1,8 @@
 package p1;
 
-public class Bar {
+import p2.Foo;
+
+public class Bar extends Foo {
 	
 	public void m1(String arg) {
 		m2();

@@ -6,7 +6,9 @@ public enum RelationshipType {
 	MOVE(false, false),
 	RENAME(false, false),
 	EXTRACT(true, false),
-	INLINE(false, true);
+	INLINE(false, true),
+	PULL_UP(true, false),
+	PUSH_DOWN(false, true);
 	
 	private final boolean multisource;
 	private final boolean multitarget;

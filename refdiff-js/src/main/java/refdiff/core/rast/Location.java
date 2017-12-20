@@ -64,7 +64,7 @@ public class Location {
 	
 	@Override
 	public String toString() {
-		return String.format("%s:%d:%d", file, begin, end);
+		return String.format("%s:%d:%d:%d:%d", file, begin, end, bodyBegin, bodyEnd);
 	}
 
 }

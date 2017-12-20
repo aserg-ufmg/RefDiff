@@ -125,6 +125,16 @@ public class RunCalibration {
 				return Optional.of(RefactoringType.INLINE_OPERATION);
 			}
 			break;
+		case PULL_UP:
+			if (isMethod) {
+				return Optional.of(RefactoringType.PULL_UP_OPERATION);
+			}
+			break;
+		case PUSH_DOWN:
+			if (isMethod) {
+				return Optional.of(RefactoringType.PUSH_DOWN_OPERATION);
+			}
+			break;
 		case SAME:
 			return Optional.empty();
 		}
