@@ -35,7 +35,7 @@ public class TestJavaParser {
 		assertThat(root.getNodes().size(), is(2));
 		
 		RastNode classFoo = root.getNodes().get(0);
-		assertThat(classFoo.getType(), is("TypeDeclaration"));
+		assertThat(classFoo.getType(), is(NodeTypes.CLASS_DECLARATION));
 		assertThat(classFoo.getNamespace(), is("p2."));
 		assertThat(classFoo.getLocalName(), is("Foo"));
 		assertThat(classFoo.getSimpleName(), is("Foo"));
@@ -43,25 +43,25 @@ public class TestJavaParser {
 		
 		assertThat(classFoo.getNodes().size(), is(1));
 		RastNode fooM1 = classFoo.getNodes().get(0);
-		assertThat(fooM1.getType(), is("MethodDeclaration"));
+		assertThat(fooM1.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(fooM1.getLocalName(), is("m1(String)"));
 		assertThat(fooM1.getSimpleName(), is("m1"));
 		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 39, 75, 66, 75)));
 		
 		RastNode classBar = root.getNodes().get(1);
-		assertThat(classBar.getType(), is("TypeDeclaration"));
+		assertThat(classBar.getType(), is(NodeTypes.CLASS_DECLARATION));
 		assertThat(classBar.getNamespace(), is("p1."));
 		assertThat(classBar.getLocalName(), is("Bar"));
 		assertThat(classBar.getSimpleName(), is("Bar"));
 		
 		assertThat(classBar.getNodes().size(), is(2));
 		RastNode barM1 = classBar.getNodes().get(0);
-		assertThat(barM1.getType(), is("MethodDeclaration"));
+		assertThat(barM1.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(barM1.getLocalName(), is("m1(String)"));
 		assertThat(barM1.getSimpleName(), is("m1"));
 		
 		RastNode barM2 = classBar.getNodes().get(1);
-		assertThat(barM2.getType(), is("MethodDeclaration"));
+		assertThat(barM2.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(barM2.getLocalName(), is("m2()"));
 		assertThat(barM2.getSimpleName(), is("m2"));
 		

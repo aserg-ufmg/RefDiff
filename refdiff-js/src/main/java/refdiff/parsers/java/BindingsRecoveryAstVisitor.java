@@ -93,7 +93,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 
     @Override
     public boolean visit(EnumDeclaration node) {
-        containerStack.push(visitTypeDeclaration(node, node.superInterfaceTypes()));
+        containerStack.push(visitTypeDeclaration(node, node.superInterfaceTypes(), NodeTypes.ENUM_DECLARATION));
         return true;
     }
 
@@ -108,7 +108,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
             supertypes.add(superclass);
         }
         supertypes.addAll(typeDeclaration.superInterfaceTypes());
-        RastNode sdType = visitTypeDeclaration(typeDeclaration, supertypes);
+        RastNode sdType = visitTypeDeclaration(typeDeclaration, supertypes, typeDeclaration.isInterface() ? NodeTypes.INTERFACE_DECLARATION : NodeTypes.CLASS_DECLARATION);
         containerStack.push(sdType);
         if (typeDeclaration.isInterface()) {
         	sdType.addStereotypes(Stereotype.ABSTRACT);
@@ -120,13 +120,13 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
         containerStack.pop();
     }
 
-    private RastNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes) {
+    private RastNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes, String nodeType) {
     	RastNode type;
         String typeName = node.getName().getIdentifier();
         if (node.isPackageMemberTypeDeclaration()) {
-            type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node);
+            type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node, nodeType);
         } else {
-        	type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, node);
+        	type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, node, nodeType);
         }
 
         Set<String> annotations = extractAnnotationTypes(node.modifiers());

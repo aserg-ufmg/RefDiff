@@ -59,7 +59,7 @@ public class RunCalibration {
 	private RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
-		String basePath = "D:/tmp/";
+		String basePath = "C:/tmp/";
 		String repoFolder = project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
 		String checkoutFolder = repoFolder + "-" + commit.substring(0, 7) + "/";
 		String checkoutFolderV0 = basePath + "v0/" + checkoutFolder;
@@ -97,7 +97,8 @@ public class RunCalibration {
 	}
 	
 	private Optional<RefactoringType> getRefactoringType(RelationshipType relType, String nodeType) {
-		boolean isType = nodeType.equals(NodeTypes.TYPE_DECLARATION) || nodeType.equals(NodeTypes.ENUM_DECLARATION);
+		boolean isType = nodeType.equals(NodeTypes.CLASS_DECLARATION) || nodeType.equals(NodeTypes.ENUM_DECLARATION) || nodeType.equals(NodeTypes.INTERFACE_DECLARATION);
+		boolean isInterface = nodeType.equals(NodeTypes.INTERFACE_DECLARATION);
 		boolean isMethod = nodeType.equals(NodeTypes.METHOD_DECLARATION);
 		
 		switch (relType) {
@@ -133,6 +134,13 @@ public class RunCalibration {
 		case PUSH_DOWN:
 			if (isMethod) {
 				return Optional.of(RefactoringType.PUSH_DOWN_OPERATION);
+			}
+			break;
+		case EXTRACT_SUPER:
+			if (isInterface) {
+				return Optional.of(RefactoringType.EXTRACT_INTERFACE);
+			} else if (isType) {
+				return Optional.of(RefactoringType.EXTRACT_SUPERCLASS);
 			}
 			break;
 		case SAME:

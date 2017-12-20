@@ -1,19 +1,13 @@
 package refdiff.core.diff;
 
-import static refdiff.core.diff.RastRootHelper.anonymous;
-import static refdiff.core.diff.RastRootHelper.findByFullName;
-import static refdiff.core.diff.RastRootHelper.fullName;
-import static refdiff.core.diff.RastRootHelper.sameName;
-import static refdiff.core.diff.RastRootHelper.sameNamespace;
-import static refdiff.core.diff.RastRootHelper.sameSignature;
-import static refdiff.core.diff.RastRootHelper.sameType;
+import static refdiff.core.diff.RastRootHelper.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -77,6 +71,22 @@ public class RastComparator<T> {
 			});
 		}
 		
+		private void apply(Set<Relationship> relationships) {
+			for (Relationship r : relationships) {
+				apply(r);
+			}
+		}
+
+		private void apply(Relationship r) {
+			diff.addRelationships(r);
+			if (r.getType().isUnmarkRemoved()) {
+				removed.remove(r.getNodeBefore());
+			}
+			if (r.getType().isUnmarkAdded()) {
+				added.remove(r.getNodeAfter());
+			}
+		}
+		
 		private void computeSourceRepresentation(List<SourceFile> filesBefore, RastNode node) {
 			try {
 				Location location = node.getLocation();
@@ -94,15 +104,22 @@ public class RastComparator<T> {
 		
 		RastDiff computeDiff() {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
-			for (Map.Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
-				matchPullUpAndPushDownMembers(entry.getKey(), entry.getValue());
-			}
+			matchPullUpAndPushDownMembers();
+			matchExtractSuper();
 			matchMovesOrRenames();
 			matchExtract();
 			matchInline();
 			return diff;
 		}
 		
+		private void matchExtractSuper() {
+			Set<Relationship> relationships = new HashSet<>();
+			for (RastNode potentialSupertype : added) {
+				relationships.addAll(findPullUpMembers(potentialSupertype));
+			}
+			apply(relationships);
+		}
+
 		private void matchMovesOrRenames() {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
@@ -137,9 +154,8 @@ public class RastComparator<T> {
 		}
 		
 		private void matchExtract() {
-			for (Iterator<RastNode> iter = added.iterator(); iter.hasNext();) {
-				RastNode n2 = iter.next();
-				boolean extracted = false;
+			Set<Relationship> relationships = new HashSet<>();
+			for (RastNode n2 : added) {
 				for (RastNode n1After : after.findReverseRelationships(RastNodeRelationshipType.USE, n2)) {
 					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
 					if (optMatchingNode.isPresent()) {
@@ -150,22 +166,18 @@ public class RastComparator<T> {
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
 							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
 							if (score > thresholds.extract) {
-								diff.addRelationships(new Relationship(RelationshipType.EXTRACT, n1, n2));
-								extracted = true;
+								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2));
 							}
 						}
 					}
 				}
-				if (extracted) {
-					iter.remove();
-				}
 			}
+			apply(relationships);
 		}
 		
 		private void matchInline() {
-			for (Iterator<RastNode> iter = removed.iterator(); iter.hasNext();) {
-				RastNode n1 = iter.next();
-				boolean inlined = false;
+			Set<Relationship> relationships = new HashSet<>();
+			for (RastNode n1 : removed) {
 				for (RastNode n1Caller : before.findReverseRelationships(RastNodeRelationshipType.USE, n1)) {
 					Optional<RastNode> optMatchingNode = matchingNodeAfter(n1Caller);
 					if (optMatchingNode.isPresent()) {
@@ -177,15 +189,13 @@ public class RastComparator<T> {
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
 							if (score > thresholds.inline) {
-								diff.addRelationships(new Relationship(RelationshipType.INLINE, n1, n2));
+								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2));
 							}
 						}
 					}
 				}
-				if (inlined) {
-					iter.remove();
-				}
 			}
+			apply(relationships);
 		}
 		
 		private void matchExactChildren(HasChildrenNodes node1, HasChildrenNodes node2) {
@@ -200,41 +210,63 @@ public class RastComparator<T> {
 			}
 		}
 
-		private void matchPullUpAndPushDownMembers(RastNode nBefore, RastNode nAfter) {
-			// Pull up
-			for (RastNode addedMember : children(nAfter, this::added)) {
-				for (RastNode subtype : before.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nBefore)) {
-					Optional<RastNode> optNode = findByFullName(subtype, fullName(addedMember));
-					if (optNode.isPresent() && removed(optNode.get())) {
-						diff.addRelationships(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
-						unmarkRemoved(optNode.get());
-						unmarkAdded(addedMember);
-					}
-				}
+		private void matchPullUpAndPushDownMembers() {
+			for (Map.Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
+				RastNode nBefore = entry.getKey();
+				RastNode nAfter = entry.getValue();
+				apply(findPullUpMembers(nAfter));
+				apply(findPushDownMembers(nBefore, nAfter));
 			}
-			
-			// Push down
+		}
+
+		private Set<Relationship> findPushDownMembers(RastNode nBefore, RastNode nAfter) {
+			Set<Relationship> relationships = new HashSet<>();
 			for (RastNode removedMember : children(nBefore, this::removed)) {
 				for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
 					Optional<RastNode> optNode = findByFullName(subtype, fullName(removedMember));
 					if (optNode.isPresent() && added(optNode.get())) {
-						diff.addRelationships(new Relationship(RelationshipType.PUSH_DOWN, removedMember, optNode.get()));
-						unmarkRemoved(removedMember);
-						unmarkAdded(optNode.get());
+						relationships.add(new Relationship(RelationshipType.PUSH_DOWN, removedMember, optNode.get()));
 					}
 				}
 			}
+			return relationships;
+		}
+
+		private Set<Relationship> findPullUpMembers(RastNode supertypeAfter) {
+			Collection<RastNode> subtypesAfter = after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, supertypeAfter);
+			if (subtypesAfter.isEmpty()) {
+				return Collections.emptySet();
+			}
+			Set<Relationship> relationships = new HashSet<>();
+			Set<RastNode> subtypesWithPulledUpMembers = new HashSet<>();
+			for (RastNode addedMember : children(supertypeAfter, this::added)) {
+				for (RastNode subtypeAfter : subtypesAfter) {
+					Optional<RastNode> optSubtypeBefore = matchingNodeBefore(subtypeAfter);
+					if (optSubtypeBefore.isPresent()) {
+						RastNode subtypeBefore = optSubtypeBefore.get();
+						Optional<RastNode> optNode = findByFullName(subtypeBefore, fullName(addedMember));
+						if (optNode.isPresent() && removed(optNode.get())) {
+							relationships.add(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
+							subtypesWithPulledUpMembers.add(subtypeBefore);
+						}
+					}
+				}
+			}
+			if (!subtypesWithPulledUpMembers.isEmpty() && added(supertypeAfter)) {
+				for (RastNode subtype : subtypesWithPulledUpMembers) {
+					relationships.add(new Relationship(RelationshipType.EXTRACT_SUPER, subtype, supertypeAfter));
+				}
+			}
+			return relationships;
 		}
 		
 		private void addMatch(Relationship relationship) {
 			RastNode nBefore = relationship.getNodeBefore();
 			RastNode nAfter = relationship.getNodeAfter();
 			if (removed(nBefore) && added(nAfter)) {
-				diff.addRelationships(relationship);
+				apply(relationship);
 				mapBeforeToAfter.put(nBefore, nAfter);
 				mapAfterToBefore.put(nAfter, nBefore);
-				unmarkRemoved(nBefore);
-				unmarkAdded(nAfter);
 				matchExactChildren(nBefore, nAfter);
 			}
 		}
@@ -272,14 +304,6 @@ public class RastComparator<T> {
 		
 		private boolean added(RastNode n) {
 			return this.added.contains(n);
-		}
-		
-		private boolean unmarkRemoved(RastNode n) {
-			return this.removed.remove(n);
-		}
-		
-		private boolean unmarkAdded(RastNode n) {
-			return this.added.remove(n);
 		}
 		
 		private List<RastNode> children(HasChildrenNodes nodeWithChildren, Predicate<RastNode> predicate) {

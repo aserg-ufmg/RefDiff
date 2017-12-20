@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
@@ -55,17 +54,17 @@ public class SDModel {
 //		return rastNode;
 //	}
 
-	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast) {
-		return createType(typeName, "", parent, sourceFilePath, ast);
+	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast, String nodeType) {
+		return createType(typeName, "", parent, sourceFilePath, ast, nodeType);
 	}
 	
-	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast) {
+	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast, String nodeType) {
 		if (typeName == null || typeName.isEmpty()) {
 			throw new RuntimeException("Type should have a name");
 		}
 		String namespace = packageName.isEmpty() ? "" : packageName + "."; 
 		RastNode rastNode = new RastNode(++nodeCounter);
-		rastNode.setType(ast.getClass().getSimpleName());
+		rastNode.setType(nodeType);
 		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
 		rastNode.setLocalName(typeName);
 		rastNode.setSimpleName(typeName);
