@@ -88,6 +88,10 @@ public class RastNode implements HasChildrenNodes {
 		this.stereotypes.add(stereotype);
 	}
 	
+	public boolean hasStereotype(Stereotype stereotype) {
+		return this.stereotypes.contains(stereotype);
+	}
+	
 	public void setParent(RastNode node) {
 		this.parent = Optional.ofNullable(node);
 	}

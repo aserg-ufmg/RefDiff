@@ -21,6 +21,7 @@ import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationshipType;
+import refdiff.core.rast.Stereotype;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
 
@@ -225,10 +226,10 @@ public class RastComparator<T> {
 
 		private Set<Relationship> findPushDownMembers(RastNode nBefore, RastNode nAfter) {
 			Set<Relationship> relationships = new HashSet<>();
-			for (RastNode removedMember : children(nBefore, this::removed)) {
+			for (RastNode removedMember : children(nBefore, m -> removed(m) && m.hasStereotype(Stereotype.TYPE_MEMBER))) {
 				for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
 					Optional<RastNode> optNode = findByFullName(subtype, fullName(removedMember));
-					if (optNode.isPresent() && added(optNode.get())) {
+					if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER) && added(optNode.get())) {
 						relationships.add(new Relationship(RelationshipType.PUSH_DOWN, removedMember, optNode.get()));
 					}
 				}
@@ -243,13 +244,13 @@ public class RastComparator<T> {
 			}
 			Set<Relationship> relationships = new HashSet<>();
 			Set<RastNode> subtypesWithPulledUpMembers = new HashSet<>();
-			for (RastNode addedMember : children(supertypeAfter, this::added)) {
+			for (RastNode addedMember : children(supertypeAfter, m -> added(m) && m.hasStereotype(Stereotype.TYPE_MEMBER))) {
 				for (RastNode subtypeAfter : subtypesAfter) {
 					Optional<RastNode> optSubtypeBefore = matchingNodeBefore(subtypeAfter);
 					if (optSubtypeBefore.isPresent()) {
 						RastNode subtypeBefore = optSubtypeBefore.get();
 						Optional<RastNode> optNode = findByFullName(subtypeBefore, fullName(addedMember));
-						if (optNode.isPresent() && removed(optNode.get())) {
+						if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER) && removed(optNode.get())) {
 							relationships.add(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
 							subtypesWithPulledUpMembers.add(subtypeBefore);
 						}
