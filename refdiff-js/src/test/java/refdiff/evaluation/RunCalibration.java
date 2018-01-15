@@ -79,6 +79,7 @@ public class RunCalibration {
 			
 			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false);
 			
+			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
 			
 			for (Relationship rel : diff.getRelationships()) {

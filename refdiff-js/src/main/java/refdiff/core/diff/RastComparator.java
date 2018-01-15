@@ -22,6 +22,7 @@ import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.Stereotype;
+import refdiff.core.util.Statistics;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
 
@@ -40,7 +41,10 @@ public class RastComparator<T> {
 	}
 	
 	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
-		return new DiffBuilder(filesBefore, filesAfter).computeDiff();
+		DiffBuilder diffBuilder = new DiffBuilder(filesBefore, filesAfter);
+		RastDiff diff = diffBuilder.computeDiff();
+		diffBuilder.reportSimilarity();
+		return diff;
 	}
 	
 	private class DiffBuilder {
@@ -49,6 +53,8 @@ public class RastComparator<T> {
 		private RastRootHelper<T> after;
 		private Set<RastNode> removed;
 		private Set<RastNode> added;
+		private ArrayList<Double> similaritySame = new ArrayList<>();
+		
 		private final Map<RastNode, T> srMap = new HashMap<>();
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
@@ -207,6 +213,7 @@ public class RastComparator<T> {
 					if (sameNamespace(n1, n2) && sameSignature(n1, n2)) {
 						if (sameType(n1, n2)) {
 							addMatch(new Relationship(RelationshipType.SAME, n1, n2));
+							recordSimilarity(n1, n2);
 						} else {
 							addMatch(new Relationship(RelationshipType.CONVERT_TYPE, n1, n2));
 						}
@@ -314,6 +321,27 @@ public class RastComparator<T> {
 		private List<RastNode> children(HasChildrenNodes nodeWithChildren, Predicate<RastNode> predicate) {
 			return nodeWithChildren.getNodes().stream().filter(predicate).collect(Collectors.toList());
 		}
+
+		public void recordSimilarity(RastNode n1, RastNode n2) {
+			if (!n1.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
+				similaritySame.add(srb.similarity(sourceRep(n1), sourceRep(n2)));
+			}
+		}
+		
+		public void reportSimilarity() {
+			if (similaritySame.isEmpty()) {
+				System.out.println("Empty");
+			} else {
+				Collections.sort(similaritySame);
+				double min = Statistics.min(similaritySame);
+				double q1 = Statistics.q1(similaritySame);
+				double q2 = Statistics.median(similaritySame);
+				double q3 = Statistics.q3(similaritySame);
+				double max = Statistics.max(similaritySame);
+				System.out.println(String.format("Size: %d, [%.3f, %.3f, %.3f, %.3f, %.3f]", similaritySame.size(), min, q1, q2, q3, max));
+			}
+		}
+		
 	}
-	
+
 }
