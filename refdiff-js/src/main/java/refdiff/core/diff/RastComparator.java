@@ -54,6 +54,7 @@ public class RastComparator<T> {
 		private Set<RastNode> removed;
 		private Set<RastNode> added;
 		private ArrayList<Double> similaritySame = new ArrayList<>();
+		private double mainThreshold = 0.5;
 		
 		private final Map<RastNode, T> srMap = new HashMap<>();
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
@@ -128,6 +129,9 @@ public class RastComparator<T> {
 		
 		RastDiff computeDiff() {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
+			Collections.sort(similaritySame);
+			//mainThreshold = Statistics.min(similaritySame);
+			mainThreshold = Statistics.q1(similaritySame); 
 			matchPullUpAndPushDownMembers();
 			matchExtractSuper();
 			matchMovesOrRenames();
@@ -150,7 +154,7 @@ public class RastComparator<T> {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
 						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
-						if (score > thresholds.moveOrRename) {
+						if (score > mainThreshold) {
 							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
 							candidates.add(candidate);
 						}
@@ -163,7 +167,7 @@ public class RastComparator<T> {
 				RastNode n2 = candidate.getNodeAfter();
 				if (sameLocation(n1, n2)) {
 					if (sameName(n1, n2)) {
-						// change signature
+						addMatch(new Relationship(RelationshipType.CHANGE_SIGNATURE, n1, n2));
 					} else {
 						addMatch(new Relationship(RelationshipType.RENAME, n1, n2));
 					}
@@ -350,7 +354,9 @@ public class RastComparator<T> {
 					srb.similarity(sourceRep(n1), sourceRep(n2));
 				}
 				*/
-				similaritySame.add(similarity);
+				if (similarity < 1.0) {
+					similaritySame.add(similarity);
+				}
 			}
 		}
 		

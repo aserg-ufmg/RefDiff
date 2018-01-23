@@ -4,6 +4,7 @@ public enum RelationshipType {
 	
 	SAME(true, true),
 	CONVERT_TYPE(true, true),
+	CHANGE_SIGNATURE(true, true),
 	MOVE(true, true),
 	RENAME(true, true),
 	EXTRACT(false, true),
