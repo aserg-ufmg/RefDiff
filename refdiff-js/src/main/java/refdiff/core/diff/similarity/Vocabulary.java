@@ -10,7 +10,7 @@ public class Vocabulary {
 	private Map<String, Integer> df = new HashMap<String, Integer>();
 	
 	public double idf(String key) {
-		return Math.log(((double) dc) / df.get(key));
+		return Math.log(1.0 + (((double) dc) / df.get(key)));
 	}
 	
 	public void count(Collection<String> occurrences) {

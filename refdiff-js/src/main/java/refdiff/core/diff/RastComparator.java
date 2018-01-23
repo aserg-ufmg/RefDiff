@@ -59,21 +59,29 @@ public class RastComparator<T> {
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
 		private final Map<RastNode, Integer> depthMap = new HashMap<>();
+		private final Map<String, SourceFile> fileMapBefore = new HashMap<>();
+		private final Map<String, SourceFile> fileMapAfter = new HashMap<>();
 		
 		DiffBuilder(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.before = new RastRootHelper<T>(this.diff.getBefore());
 			this.after = new RastRootHelper<T>(this.diff.getAfter());
 			this.removed = new HashSet<>();
+			for (SourceFile fileBefore : filesBefore) {
+				fileMapBefore.put(fileBefore.getPath(), fileBefore);
+			}
+			for (SourceFile fileAfter : filesAfter) {
+				fileMapAfter.put(fileAfter.getPath(), fileAfter);
+			}
 			this.diff.getBefore().forEachNode((node, depth) -> {
 				this.removed.add(node);
-				computeSourceRepresentation(filesBefore, node);
+				computeSourceRepresentation(fileMapBefore, node);
 				depthMap.put(node, depth);
 			});
 			this.added = new HashSet<>();
 			this.diff.getAfter().forEachNode((node, depth) -> {
 				this.added.add(node);
-				computeSourceRepresentation(filesAfter, node);
+				computeSourceRepresentation(fileMapAfter, node);
 				depthMap.put(node, depth);
 			});
 		}
@@ -94,16 +102,25 @@ public class RastComparator<T> {
 			}
 		}
 		
-		private void computeSourceRepresentation(List<SourceFile> filesBefore, RastNode node) {
+		private void computeSourceRepresentation(Map<String, SourceFile> fileMap, RastNode node) {
+			String sourceCode = retrieveSourceCode(fileMap, node);
+			T sourceCodeRepresentation = srb.buildForNode(node, tokenizer.tokenize(sourceCode));
+			srMap.put(node, sourceCodeRepresentation);
+		}
+		
+		private String retrieveSourceCodeBefore(RastNode node) {
+			return retrieveSourceCode(fileMapBefore, node);
+		}
+		
+		private String retrieveSourceCodeAfter(RastNode node) {
+			return retrieveSourceCode(fileMapAfter, node);
+		}
+		
+		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node) {
 			try {
 				Location location = node.getLocation();
-				for (SourceFile file : filesBefore) {
-					if (file.getPath().equals(location.getFile())) {
-						String sourceCode = file.getContent().substring(location.getBodyBegin(), location.getBodyEnd());
-						T sourceCodeRepresentation = srb.buildForNode(node, tokenizer.tokenize(sourceCode));
-						srMap.put(node, sourceCodeRepresentation);
-					}
-				}
+				SourceFile sourceFile = fileMap.get(location.getFile());
+				return sourceFile.getContent().substring(location.getBodyBegin(), location.getBodyEnd());
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -324,7 +341,16 @@ public class RastComparator<T> {
 
 		public void recordSimilarity(RastNode n1, RastNode n2) {
 			if (!n1.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
-				similaritySame.add(srb.similarity(sourceRep(n1), sourceRep(n2)));
+				double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
+				/*
+				if (Double.isNaN(similarity)) {
+					String sourceN1 = retrieveSourceCodeBefore(n1);
+					String sourceN2 = retrieveSourceCodeAfter(n2);
+					System.out.println("NaN");
+					srb.similarity(sourceRep(n1), sourceRep(n2));
+				}
+				*/
+				similaritySame.add(similarity);
 			}
 		}
 		
