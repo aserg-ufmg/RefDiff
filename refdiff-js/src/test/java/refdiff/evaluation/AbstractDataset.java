@@ -61,7 +61,7 @@ public class AbstractDataset {
         }
 
         public CommitEntry addTP(String refType, String entityBefore, String entityAfter) {
-            this.expected.add(RefactoringType.fromName(refType), entityBefore, entityAfter);
+            this.expected.add(RefactoringType.fromName(refType), entityBefore, entityAfter, null);
             return this;
         }
 

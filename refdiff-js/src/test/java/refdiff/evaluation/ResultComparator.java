@@ -180,7 +180,6 @@ public class ResultComparator {
             String id = getProjectRevisionId(expected.getProject(), expected.getRevision());
             Set<RefactoringRelationship> notExpectedRefactorings = notExpectedMap.getOrDefault(id, new RefactoringSet(expected.getProject(), expected.getRevision())).getRefactorings();
             
-            all.addAll(expectedRefactorings); //
 
             StringBuilder header = new StringBuilder("Ref Type\tEntity before\tEntity after");
             for (String groupId : groupIds) {
@@ -191,6 +190,9 @@ public class ResultComparator {
                     all.addAll(actual.ignoring(ignore).ignoringMethodParameters(ignoreMethodParams).getRefactorings()); //
                 }
             }
+            
+            all.addAll(expectedRefactorings); //
+            
             if (!headerPrinted) {
                 out.println(header.toString());
                 headerPrinted = true;
@@ -244,8 +246,11 @@ public class ResultComparator {
                                     out.print("<PDM>");
                                 }
                             }
+                            out.print('\t');
+                            out.print(r.getSimilarity() != null ? r.getSimilarity() : "");
                         }
                     }
+                    
                     out.println();
                 }
             }

@@ -9,11 +9,17 @@ public class Relationship {
 	private final RelationshipType type;
 	private final RastNode nodeBefore;
 	private final RastNode nodeAfter;
+	private final Double similarity;
 	
 	public Relationship(RelationshipType type, RastNode nodeBefore, RastNode nodeAfter) {
+		this(type, nodeBefore, nodeAfter, null);
+	}
+	
+	public Relationship(RelationshipType type, RastNode nodeBefore, RastNode nodeAfter, Double similarity) {
 		this.type = type;
 		this.nodeBefore = nodeBefore;
 		this.nodeAfter = nodeAfter;
+		this.similarity = similarity;
 	}
 	
 	public RelationshipType getType() {
@@ -26,6 +32,10 @@ public class Relationship {
 	
 	public RastNode getNodeAfter() {
 		return nodeAfter;
+	}
+	
+	public Double getSimilarity() {
+		return similarity;
 	}
 	
 	@Override

@@ -167,13 +167,13 @@ public class RastComparator<T> {
 				RastNode n2 = candidate.getNodeAfter();
 				if (sameLocation(n1, n2)) {
 					if (sameName(n1, n2)) {
-						addMatch(new Relationship(RelationshipType.CHANGE_SIGNATURE, n1, n2));
+						addMatch(new Relationship(RelationshipType.CHANGE_SIGNATURE, n1, n2, candidate.getScore()));
 					} else {
-						addMatch(new Relationship(RelationshipType.RENAME, n1, n2));
+						addMatch(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
 					}
 				} else {
 					if (sameSignature(n1, n2)) {
-						addMatch(new Relationship(RelationshipType.MOVE, n1, n2));
+						addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
 					} else {
 						// move and rename / move and rename and change signature
 					}
@@ -194,7 +194,7 @@ public class RastComparator<T> {
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
 							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
 							if (score > thresholds.extract) {
-								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2));
+								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 							}
 						}
 					}
@@ -217,7 +217,7 @@ public class RastComparator<T> {
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
 							if (score > thresholds.inline) {
-								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2));
+								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							}
 						}
 					}
@@ -233,8 +233,8 @@ public class RastComparator<T> {
 				for (RastNode n2 : addedChildren) {
 					if (sameNamespace(n1, n2) && sameSignature(n1, n2)) {
 						if (sameType(n1, n2)) {
-							addMatch(new Relationship(RelationshipType.SAME, n1, n2));
-							recordSimilarity(n1, n2);
+							Double similarity = recordSimilarity(n1, n2);
+							addMatch(new Relationship(RelationshipType.SAME, n1, n2, similarity));
 						} else {
 							addMatch(new Relationship(RelationshipType.CONVERT_TYPE, n1, n2));
 						}
@@ -343,7 +343,7 @@ public class RastComparator<T> {
 			return nodeWithChildren.getNodes().stream().filter(predicate).collect(Collectors.toList());
 		}
 
-		public void recordSimilarity(RastNode n1, RastNode n2) {
+		public Double recordSimilarity(RastNode n1, RastNode n2) {
 			if (!n1.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
 				double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
 				/*
@@ -357,7 +357,9 @@ public class RastComparator<T> {
 				if (similarity < 1.0) {
 					similaritySame.add(similarity);
 				}
+				return similarity;
 			}
+			return null;
 		}
 		
 		public void reportSimilarity() {

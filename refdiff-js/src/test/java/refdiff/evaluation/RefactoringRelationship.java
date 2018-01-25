@@ -17,14 +17,20 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
   private final RefactoringType refactoringType;
   private final String entityBefore;
   private final String entityAfter;
+  private final Double similarity;
 
   public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter) {
+	this(refactoringType, entityBefore, entityAfter, null);  
+  }
+  
+  public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter, Double similarity) {
     if (refactoringType == null || entityBefore == null || entityAfter == null) {
       throw new IllegalArgumentException("arguments should not be null");
     }
     this.refactoringType = refactoringType;
     this.entityBefore = normalize(entityBefore).trim();
     this.entityAfter = normalize(entityAfter).trim();
+    this.similarity = similarity;
   }
 
   public RefactoringType getRefactoringType() {
@@ -39,7 +45,11 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
     return entityAfter;
   }
 
-  @Override
+  public Double getSimilarity() {
+    return similarity;
+  }
+
+@Override
   public boolean equals(Object obj) {
     if (obj instanceof RefactoringRelationship) {
       RefactoringRelationship other = (RefactoringRelationship) obj;
