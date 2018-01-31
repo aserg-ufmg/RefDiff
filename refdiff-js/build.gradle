@@ -3,6 +3,7 @@ import org.gradle.plugins.ide.eclipse.model.AccessRule
 plugins {
     id 'java'
     id 'eclipse'
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
 }
 
 repositories {
@@ -13,6 +14,11 @@ dependencies {
 	testCompile 'junit:junit:4.11'
 	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
 	compile 'org.eclipse.jgit:org.eclipse.jgit:4.7.0.201704051617-r'
+	
+	compile 'com.github.wumpz:diffutils:2.2'
+	
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
 
 eclipse {
