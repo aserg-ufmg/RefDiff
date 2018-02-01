@@ -31,13 +31,13 @@ public class RastComparator<T> {
 	private final RastParser parser;
 	private final SourceTokenizer tokenizer;
 	private final SourceRepresentationBuilder<T> srb;
-	RastComparatorThresholds thresholds;
+	//RastComparatorThresholds thresholds;
 	
 	public RastComparator(RastParser parser, SourceTokenizer tokenizer, SourceRepresentationBuilder<T> srb, RastComparatorThresholds thresholds) {
 		this.parser = parser;
 		this.tokenizer = tokenizer;
 		this.srb = srb;
-		this.thresholds = thresholds;
+		//this.thresholds = thresholds;
 	}
 	
 	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
@@ -193,7 +193,7 @@ public class RastComparator<T> {
 							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
 							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
-							if (score > thresholds.extract) {
+							if (score > mainThreshold) {
 								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 							}
 						}
@@ -216,7 +216,7 @@ public class RastComparator<T> {
 							T sourceN1CallerAfter = sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
-							if (score > thresholds.inline) {
+							if (score > mainThreshold) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							}
 						}
