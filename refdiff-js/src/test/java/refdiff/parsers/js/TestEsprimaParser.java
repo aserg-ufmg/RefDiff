@@ -36,18 +36,18 @@ public class TestEsprimaParser {
 		RastNode nodeScriptEx1 = root.getNodes().get(0);
 		assertThat(nodeScriptEx1.getType(), is("Program"));
 		assertThat(nodeScriptEx1.getNamespace(), is(""));
-		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 77)));
+		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 71)));
 		
 		assertThat(nodeScriptEx1.getNodes().size(), is(2));
 		RastNode nodeArrowFn = nodeScriptEx1.getNodes().get(0);
 		RastNode nodeFnHello = nodeScriptEx1.getNodes().get(1);
 		
 		assertThat(nodeArrowFn.getType(), is("ArrowFunctionExpression"));
-		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 17, 24)));
+		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 16, 23, 22, 23)));
 		assertThat(nodeArrowFn.getLocalName(), is(""));
 		
 		assertThat(nodeFnHello.getType(), is("FunctionDeclaration"));
-		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 32, 77)));
+		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 71, 45, 71)));
 		assertThat(nodeFnHello.getLocalName(), is("hello"));
 	}
 	

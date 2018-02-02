@@ -9,10 +9,10 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 	Vocabulary vocabulary = new Vocabulary();
 	
 	@Override
-	public TfIdfSourceRepresentation buildForNode(RastNode node, List<String> tokenizedSourceCode) {
+	public TfIdfSourceRepresentation buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode) {
 		Multiset<String> multiset = new Multiset<String>();
 		multiset.addAll(tokenizedSourceCode);
-		vocabulary.count(multiset.asSet());
+		vocabulary.count(isBefore, multiset.asSet());
 		return new TfIdfSourceRepresentation(multiset, vocabulary);
 	}
 	
@@ -41,4 +41,8 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 		return arg1.partialSimilarity(arg2);
 	}
 	
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + "\n" + vocabulary.toString();
+	}
 }

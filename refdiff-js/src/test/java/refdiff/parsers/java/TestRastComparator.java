@@ -51,6 +51,16 @@ public class TestRastComparator {
 		));
 	}
 	
+	@Test
+	public void shouldCompareMethodSignature() throws Exception {
+		assertThat(diff("java3"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.CHANGE_SIGNATURE, node("p1.A", "m1(Integer)"), node("p1.A", "m1(Integer, boolean)")),
+			relationship(RelationshipType.CHANGE_SIGNATURE, node("p1.A", "m2(Long)"), node("p1.A", "m2(Long, boolean)")),
+			relationship(RelationshipType.CHANGE_SIGNATURE, node("p1.A", "m3(Double)"), node("p1.A", "m3(Double, boolean)"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "test-data/diff/" + folder;
 		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));

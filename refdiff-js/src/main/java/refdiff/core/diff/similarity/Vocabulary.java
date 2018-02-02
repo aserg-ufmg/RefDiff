@@ -6,18 +6,51 @@ import java.util.Map;
 
 public class Vocabulary {
 	
-	private int dc = 0;
-	private Map<String, Integer> df = new HashMap<String, Integer>();
+	private FreqCounter dc = new FreqCounter();
+	private Map<String, FreqCounter> df = new HashMap<String, FreqCounter>();
 	
 	public double idf(String key) {
-		return Math.log(1.0 + (((double) dc) / df.get(key)));
+		double documentCount = dc.getMax();
+		double documentFreq = getDf(key);
+		return Math.max(0.01, Math.log(documentCount / documentFreq));
 	}
 	
-	public void count(Collection<String> occurrences) {
-		dc++;
+	public void count(boolean isBefore, Collection<String> occurrences) {
+		dc.increment(isBefore);
 		for (String term : occurrences) {
-			df.merge(term, 1, (oldValue, newValue) -> oldValue + newValue);
+			count(isBefore, term);
 		}
 	}
+
+	private int getDf(String key) {
+		return df.get(key).getMax();
+	}
 	
+	private void count(boolean isBefore, String term) {
+		df.computeIfAbsent(term, key -> new FreqCounter()).increment(isBefore);
+	}
+	
+	private static class FreqCounter {
+		int freqBefore = 0;
+		int freqAfter = 0;
+
+		public FreqCounter increment(boolean isBefore) {
+			if (isBefore) freqBefore++;
+			else freqAfter++;
+			return this;
+		}
+		
+		public int getMax() {
+			return Math.max(freqBefore, freqAfter);
+		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (String term : df.keySet()) {
+			sb.append(String.format("%s\t%d\t%f\n", term, getDf(term), idf(term)));
+		}
+		return sb.toString();
+	}
 }

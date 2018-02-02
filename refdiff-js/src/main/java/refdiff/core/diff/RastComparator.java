@@ -54,9 +54,10 @@ public class RastComparator<T> {
 		private Set<RastNode> removed;
 		private Set<RastNode> added;
 		private ArrayList<Double> similaritySame = new ArrayList<>();
-		private double mainThreshold = 0.5;
+		private double mainThreshold = 0.75;
 		
 		private final Map<RastNode, T> srMap = new HashMap<>();
+		private final Map<RastNode, T> srBodyMap = new HashMap<>();
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
 		private final Map<RastNode, Integer> depthMap = new HashMap<>();
@@ -76,13 +77,13 @@ public class RastComparator<T> {
 			}
 			this.diff.getBefore().forEachNode((node, depth) -> {
 				this.removed.add(node);
-				computeSourceRepresentation(fileMapBefore, node);
+				computeSourceRepresentation(fileMapBefore, node, true);
 				depthMap.put(node, depth);
 			});
 			this.added = new HashSet<>();
 			this.diff.getAfter().forEachNode((node, depth) -> {
 				this.added.add(node);
-				computeSourceRepresentation(fileMapAfter, node);
+				computeSourceRepresentation(fileMapAfter, node, false);
 				depthMap.put(node, depth);
 			});
 		}
@@ -103,25 +104,28 @@ public class RastComparator<T> {
 			}
 		}
 		
-		private void computeSourceRepresentation(Map<String, SourceFile> fileMap, RastNode node) {
-			String sourceCode = retrieveSourceCode(fileMap, node);
-			T sourceCodeRepresentation = srb.buildForNode(node, tokenizer.tokenize(sourceCode));
-			srMap.put(node, sourceCodeRepresentation);
+		private void computeSourceRepresentation(Map<String, SourceFile> fileMap, RastNode node, boolean isBefore) {
+			srMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, false))));
+			srBodyMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, true))));
 		}
 		
-		private String retrieveSourceCodeBefore(RastNode node) {
-			return retrieveSourceCode(fileMapBefore, node);
+		private String retrieveSourceCodeBefore(RastNode node, boolean bodyOnly) {
+			return retrieveSourceCode(fileMapBefore, node, bodyOnly);
 		}
 		
-		private String retrieveSourceCodeAfter(RastNode node) {
-			return retrieveSourceCode(fileMapAfter, node);
+		private String retrieveSourceCodeAfter(RastNode node, boolean bodyOnly) {
+			return retrieveSourceCode(fileMapAfter, node, bodyOnly);
 		}
 		
-		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node) {
+		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node, boolean bodyOnly) {
 			try {
 				Location location = node.getLocation();
-				SourceFile sourceFile = fileMap.get(location.getFile());
-				return sourceFile.getContent().substring(location.getBodyBegin(), location.getBodyEnd());
+				String sourceCode = fileMap.get(location.getFile()).getContent();
+				if (bodyOnly) {
+					return sourceCode.substring(location.getBodyBegin(), location.getBodyEnd());
+				} else {
+					return sourceCode.substring(location.getBegin(), location.getEnd());
+				}
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -131,7 +135,10 @@ public class RastComparator<T> {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
 			Collections.sort(similaritySame);
 			//mainThreshold = Statistics.min(similaritySame);
-			mainThreshold = Statistics.q1(similaritySame); 
+			if (similaritySame.size() > 1) {
+				double q1 = Statistics.q1(similaritySame);
+				mainThreshold = Math.min(mainThreshold, q1);
+			}
 			matchPullUpAndPushDownMembers();
 			matchExtractSuper();
 			matchMovesOrRenames();
@@ -192,7 +199,7 @@ public class RastComparator<T> {
 							T sourceN1After = sourceRep(n1After);
 							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
-							double score = srb.partialSimilarity(sourceRep(n2), removedSource);
+							double score = srb.partialSimilarity(bodySourceRep(n2), removedSource);
 							if (score > mainThreshold) {
 								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 							}
@@ -211,7 +218,7 @@ public class RastComparator<T> {
 					if (optMatchingNode.isPresent()) {
 						RastNode n2 = optMatchingNode.get();
 						if (sameType(n1, n2)) {
-							T sourceN1 = sourceRep(n1);
+							T sourceN1 = bodySourceRep(n1);
 							T sourceN1Caller = sourceRep(n1Caller);
 							T sourceN1CallerAfter = sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
@@ -309,6 +316,10 @@ public class RastComparator<T> {
 			return srMap.get(n);
 		}
 		
+		private T bodySourceRep(RastNode n) {
+			return srBodyMap.get(n);
+		}
+		
 		private int depth(RastNode n) {
 			return depthMap.get(n);
 		}
@@ -363,8 +374,8 @@ public class RastComparator<T> {
 		}
 		
 		public void reportSimilarity() {
-			if (similaritySame.isEmpty()) {
-				System.out.println("Empty");
+			if (similaritySame.size() <= 1) {
+				System.out.println(similaritySame.size() + " values");
 			} else {
 				Collections.sort(similaritySame);
 				double min = Statistics.min(similaritySame);

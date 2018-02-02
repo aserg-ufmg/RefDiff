@@ -84,12 +84,22 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		JsValue range = esprimaAst.get("range");
 		int begin = range.get(0).asInt();
 		int end = range.get(1).asInt();
+		int bodyBegin = begin;
+		int bodyEnd = end;
+		if (esprimaAst.has("body")) {
+			JsValue body = esprimaAst.get("body");
+			if (body.has("range")) {
+				JsValue bodyRange = body.get("range");
+				bodyBegin = bodyRange.get(0).asInt();
+				bodyEnd = bodyRange.get(1).asInt();
+			}
+		}
 		
 		if (EsprimaNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
 			EsprimaNodeHandler handler = EsprimaNodeHandler.RAST_NODE_HANDLERS.get(type);
 			RastNode rastNode = new RastNode(++nodeCounter);
 			rastNode.setType(type);
-			rastNode.setLocation(new Location(path, begin, end));
+			rastNode.setLocation(new Location(path, begin, end, bodyBegin, bodyEnd));
 			rastNode.setLocalName(handler.getLocalName(rastNode, esprimaAst));
 			rastNode.setSimpleName(handler.getSimpleName(rastNode, esprimaAst));
 			rastNode.setNamespace(handler.getNamespace(rastNode, esprimaAst));
