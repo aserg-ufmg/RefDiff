@@ -8,7 +8,7 @@ public interface SourceRepresentationBuilder<T> {
 	
 	T buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode);
 	
-	T buildEmpty();
+	T buildForFragment(List<String> tokenizedSourceCode);
 	
 	T combine(T arg1, T arg2);
 	

@@ -48,14 +48,14 @@ public class TfIdfSourceRepresentation {
 		for (String key : keys) {
 			int c1 = tokens.getMultiplicity(key);
 			int c2 = tokens2.getMultiplicity(key);
-			idfu += Math.min(c1, c2) * vocabulary.idf(key);
-			idfd += Math.max(c1, c2) * vocabulary.idf(key);
+			idfu += Math.min(c1, c2) * vocabulary.getIdf(key);
+			idfd += Math.max(c1, c2) * vocabulary.getIdf(key);
 		}
 		if (partial) {
 			double idfp = 0.0;
 			for (String key : tokens.asSet()) {
 				int c1 = tokens.getMultiplicity(key);
-				idfp += c1 * vocabulary.idf(key);
+				idfp += c1 * vocabulary.getIdf(key);
 			}
 			return idfu / idfp;
 		}

@@ -106,7 +106,7 @@ public class RastComparator<T> {
 		
 		private void computeSourceRepresentation(Map<String, SourceFile> fileMap, RastNode node, boolean isBefore) {
 			srMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, false))));
-			srBodyMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, true))));
+			srBodyMap.put(node, srb.buildForFragment(tokenizer.tokenize(retrieveSourceCode(fileMap, node, true))));
 		}
 		
 		private String retrieveSourceCodeBefore(RastNode node, boolean bodyOnly) {
@@ -136,7 +136,7 @@ public class RastComparator<T> {
 			Collections.sort(similaritySame);
 			//mainThreshold = Statistics.min(similaritySame);
 			if (similaritySame.size() > 1) {
-				double q1 = Statistics.q1(similaritySame);
+				double q1 = Statistics.min(similaritySame);
 				mainThreshold = Math.min(mainThreshold, q1);
 			}
 			matchPullUpAndPushDownMembers();
