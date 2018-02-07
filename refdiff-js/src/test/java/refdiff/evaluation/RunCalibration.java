@@ -89,7 +89,7 @@ public class RunCalibration {
 				if (refType.isPresent()) {
 					String keyN1 = JavaParser.getKey(rel.getNodeBefore());
 					String keyN2 = JavaParser.getKey(rel.getNodeAfter());
-					rs.add(refType.get(), keyN1, keyN2);
+					rs.add(refType.get(), keyN1, keyN2, rel.getSimilarity());
 				}
 			}
 		}
