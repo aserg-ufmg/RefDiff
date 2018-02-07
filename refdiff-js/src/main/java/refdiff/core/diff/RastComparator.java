@@ -136,7 +136,7 @@ public class RastComparator<T> {
 			Collections.sort(similaritySame);
 			//mainThreshold = Statistics.min(similaritySame);
 			if (similaritySame.size() > 1) {
-				double q1 = Statistics.min(similaritySame);
+				double q1 = Statistics.q1(similaritySame);
 				mainThreshold = Math.min(mainThreshold, q1);
 			}
 			matchPullUpAndPushDownMembers();
@@ -261,11 +261,18 @@ public class RastComparator<T> {
 
 		private Set<Relationship> findPushDownMembers(RastNode nBefore, RastNode nAfter) {
 			Set<Relationship> relationships = new HashSet<>();
-			for (RastNode removedMember : children(nBefore, m -> removed(m) && m.hasStereotype(Stereotype.TYPE_MEMBER))) {
-				for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
-					Optional<RastNode> optNode = findByFullName(subtype, fullName(removedMember));
-					if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER) && added(optNode.get())) {
-						relationships.add(new Relationship(RelationshipType.PUSH_DOWN, removedMember, optNode.get()));
+			for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
+				for (RastNode n1Member : children(nBefore, m -> m.hasStereotype(Stereotype.TYPE_MEMBER))) {
+					Optional<RastNode> maybeN2Member = findByFullName(subtype, fullName(n1Member));
+					if (maybeN2Member.isPresent() && maybeN2Member.get().hasStereotype(Stereotype.TYPE_MEMBER) && added(maybeN2Member.get())) {
+						if (removed(n1Member)) {
+							relationships.add(new Relationship(RelationshipType.PUSH_DOWN, n1Member, maybeN2Member.get()));
+						} else {
+							Optional<RastNode> maybeN1MemberAfter = matchingNodeAfter(n1Member);
+							if (maybeN1MemberAfter.isPresent() && !n1Member.hasStereotype(Stereotype.ABSTRACT) && maybeN1MemberAfter.get().hasStereotype(Stereotype.ABSTRACT)) {
+								relationships.add(new Relationship(RelationshipType.PUSH_DOWN_IMPL, n1Member, maybeN2Member.get()));
+							}
+						}
 					}
 				}
 			}
@@ -285,9 +292,14 @@ public class RastComparator<T> {
 					if (optSubtypeBefore.isPresent()) {
 						RastNode subtypeBefore = optSubtypeBefore.get();
 						Optional<RastNode> optNode = findByFullName(subtypeBefore, fullName(addedMember));
-						if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER) && removed(optNode.get())) {
-							relationships.add(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
-							subtypesWithPulledUpMembers.add(subtypeBefore);
+						if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER)) {
+							if (removed(optNode.get())) {
+								relationships.add(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
+								subtypesWithPulledUpMembers.add(subtypeBefore);
+							} else if (addedMember.hasStereotype(Stereotype.ABSTRACT)) {
+								relationships.add(new Relationship(RelationshipType.PULL_UP_SIGNATURE, optNode.get(), addedMember));
+								subtypesWithPulledUpMembers.add(subtypeBefore);
+							}
 						}
 					}
 				}

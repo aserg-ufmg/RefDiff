@@ -11,7 +11,9 @@ public enum RelationshipType {
 	EXTRACT_SUPER(false, true),
 	INLINE(false, true),
 	PULL_UP(true, true),
-	PUSH_DOWN(true, true);
+	PUSH_DOWN(true, true),
+	PULL_UP_SIGNATURE(false, true),
+	PUSH_DOWN_IMPL(false, true);
 	
 	private final boolean unmarkRemoved;
 	private final boolean unmarkAdded;
