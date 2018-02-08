@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -31,20 +32,16 @@ public class RastComparator<T> {
 	private final RastParser parser;
 	private final SourceTokenizer tokenizer;
 	private final SourceRepresentationBuilder<T> srb;
-	//RastComparatorThresholds thresholds;
 	
-	public RastComparator(RastParser parser, SourceTokenizer tokenizer, SourceRepresentationBuilder<T> srb, RastComparatorThresholds thresholds) {
+	public RastComparator(RastParser parser, SourceTokenizer tokenizer, SourceRepresentationBuilder<T> srb) {
 		this.parser = parser;
 		this.tokenizer = tokenizer;
 		this.srb = srb;
-		//this.thresholds = thresholds;
 	}
 	
 	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
 		DiffBuilder diffBuilder = new DiffBuilder(filesBefore, filesAfter);
-		RastDiff diff = diffBuilder.computeDiff();
-		diffBuilder.reportSimilarity();
-		return diff;
+		return diffBuilder.computeDiff();
 	}
 	
 	private class DiffBuilder {
@@ -54,7 +51,7 @@ public class RastComparator<T> {
 		private Set<RastNode> removed;
 		private Set<RastNode> added;
 		private ArrayList<Double> similaritySame = new ArrayList<>();
-		private double mainThreshold = 0.75;
+		private ThresholdsProvider threshold = new ThresholdsProvider();
 		
 		private final Map<RastNode, T> srMap = new HashMap<>();
 		private final Map<RastNode, T> srBodyMap = new HashMap<>();
@@ -109,14 +106,6 @@ public class RastComparator<T> {
 			srBodyMap.put(node, srb.buildForFragment(tokenizer.tokenize(retrieveSourceCode(fileMap, node, true))));
 		}
 		
-		private String retrieveSourceCodeBefore(RastNode node, boolean bodyOnly) {
-			return retrieveSourceCode(fileMapBefore, node, bodyOnly);
-		}
-		
-		private String retrieveSourceCodeAfter(RastNode node, boolean bodyOnly) {
-			return retrieveSourceCode(fileMapAfter, node, bodyOnly);
-		}
-		
 		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node, boolean bodyOnly) {
 			try {
 				Location location = node.getLocation();
@@ -134,17 +123,42 @@ public class RastComparator<T> {
 		RastDiff computeDiff() {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
 			Collections.sort(similaritySame);
-			//mainThreshold = Statistics.min(similaritySame);
-			if (similaritySame.size() > 1) {
-				double q1 = Statistics.min(similaritySame);
-				mainThreshold = Math.min(mainThreshold, q1);
-			}
+			adjustThreshold();
 			matchPullUpAndPushDownMembers();
 			matchMovesOrRenames();
 			matchExtractSuper();
 			matchExtract();
 			matchInline();
 			return diff;
+		}
+		
+		private void adjustThreshold() {
+			ArrayList<Double> similaritySame = new ArrayList<>();
+			for (Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
+				RastNode n1 = entry.getKey();
+				RastNode n2 = entry.getValue();
+				if (!n1.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
+					double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
+					if (similarity < 1.0) {
+						similaritySame.add(similarity);
+					}
+				}
+			}/*
+			ArrayList<Double> similarityNotSame = new ArrayList<>();
+			Set<RastNode> nodesAfter = mapAfterToBefore.keySet();
+			for (Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
+				RastNode n1 = entry.getKey();
+				for (RastNode n2 : nodesAfter) {
+					if (n2 != entry.getValue() && n1.getType().equals(n2.getType()) && sameLocation(n1, n2)) {
+						double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
+						similarityNotSame.add(similarity);
+					}
+				}
+			}*/
+			
+			threshold.adjustTo(similaritySame);
+			reportSimilarity(similaritySame);
+			//reportSimilarity(similarityNotSame);
 		}
 		
 		private void matchExtractSuper() {
@@ -161,7 +175,7 @@ public class RastComparator<T> {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
 						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
-						if (score > mainThreshold) {
+						if (score > threshold.getValue()) {
 							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
 							candidates.add(candidate);
 						}
@@ -200,7 +214,7 @@ public class RastComparator<T> {
 							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
 							double score = srb.partialSimilarity(bodySourceRep(n2), removedSource);
-							if (score > mainThreshold) {
+							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 							}
 						}
@@ -223,7 +237,7 @@ public class RastComparator<T> {
 							T sourceN1CallerAfter = sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
-							if (score > mainThreshold) {
+							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							}
 						}
@@ -240,8 +254,7 @@ public class RastComparator<T> {
 				for (RastNode n2 : addedChildren) {
 					if (sameNamespace(n1, n2) && sameSignature(n1, n2)) {
 						if (sameType(n1, n2)) {
-							Double similarity = recordSimilarity(n1, n2);
-							addMatch(new Relationship(RelationshipType.SAME, n1, n2, similarity));
+							addMatch(new Relationship(RelationshipType.SAME, n1, n2));
 						} else {
 							addMatch(new Relationship(RelationshipType.CONVERT_TYPE, n1, n2));
 						}
@@ -366,26 +379,7 @@ public class RastComparator<T> {
 			return nodeWithChildren.getNodes().stream().filter(predicate).collect(Collectors.toList());
 		}
 
-		public Double recordSimilarity(RastNode n1, RastNode n2) {
-			if (!n1.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
-				double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
-				/*
-				if (Double.isNaN(similarity)) {
-					String sourceN1 = retrieveSourceCodeBefore(n1);
-					String sourceN2 = retrieveSourceCodeAfter(n2);
-					System.out.println("NaN");
-					srb.similarity(sourceRep(n1), sourceRep(n2));
-				}
-				*/
-				if (similarity < 1.0) {
-					similaritySame.add(similarity);
-				}
-				return similarity;
-			}
-			return null;
-		}
-		
-		public void reportSimilarity() {
+		private void reportSimilarity(List<Double> similaritySame) {
 			if (similaritySame.size() <= 1) {
 				System.out.println(similaritySame.size() + " values");
 			} else {

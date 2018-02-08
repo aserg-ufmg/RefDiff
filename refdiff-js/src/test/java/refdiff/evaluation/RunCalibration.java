@@ -2,6 +2,7 @@ package refdiff.evaluation;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,7 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
 import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastComparatorThresholds;
+import refdiff.core.diff.ThresholdsProvider;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
@@ -31,7 +32,7 @@ public class RunCalibration {
 	private EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
 	private JavaParser parser = new JavaParser();
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
-	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder(), RastComparatorThresholds.DEFAULT);
+	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
 	
 	public static void main(String[] args) throws Exception {
 		new RunCalibration().run();
