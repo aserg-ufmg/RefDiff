@@ -136,12 +136,12 @@ public class RastComparator<T> {
 			Collections.sort(similaritySame);
 			//mainThreshold = Statistics.min(similaritySame);
 			if (similaritySame.size() > 1) {
-				double q1 = Statistics.q1(similaritySame);
+				double q1 = Statistics.min(similaritySame);
 				mainThreshold = Math.min(mainThreshold, q1);
 			}
 			matchPullUpAndPushDownMembers();
-			matchExtractSuper();
 			matchMovesOrRenames();
+			matchExtractSuper();
 			matchExtract();
 			matchInline();
 			return diff;

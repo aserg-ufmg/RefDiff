@@ -80,7 +80,11 @@ abstract class EsprimaNodeHandler {
 			}
 			
 			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode) {
-				return Collections.singleton(Stereotype.TYPE_MEMBER);
+				if (esprimaNode.get("kind").asString().equals("method")) {
+					return Collections.singleton(Stereotype.TYPE_MEMBER);
+				} else {
+					return Collections.emptySet();
+				}
 			}
 		});
 	}

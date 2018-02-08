@@ -192,7 +192,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
         Visibility visibility = getVisibility(methodModifiers);
         boolean isStatic = (methodModifiers & Modifier.STATIC) != 0;
 		
-        if (!isStatic) {
+        if (!isStatic && !methodDeclaration.isConstructor()) {
         	method.addStereotypes(Stereotype.TYPE_MEMBER);
         }
         
