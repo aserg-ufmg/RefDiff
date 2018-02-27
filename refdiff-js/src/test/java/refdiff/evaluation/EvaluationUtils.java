@@ -49,11 +49,11 @@ public class EvaluationUtils {
 		File workingDir = fRepoFolder;
 		File fCheckoutFolderV0 = new File(checkoutFolderV0);
 		if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
-			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "-q"));
+			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", "."));
 		}
 		File fCheckoutFolderV1 = new File(checkoutFolderV1);
 		if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
-			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "-q"));
+			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", "."));
 		}
 		
 		try (

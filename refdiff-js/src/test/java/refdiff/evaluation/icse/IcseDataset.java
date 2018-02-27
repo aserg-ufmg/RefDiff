@@ -30,8 +30,8 @@ public class IcseDataset extends AbstractDataset {
 					} else if (refactoring.validation.equals("FP")) {
 						rsNotExpected.add(parser.parse(refactoring.description));
 					}
-					add(rs, rsNotExpected);
 				}
+				add(rs, rsNotExpected);
 			}
 		} catch(Exception e) {
 			throw new RuntimeException(e);
