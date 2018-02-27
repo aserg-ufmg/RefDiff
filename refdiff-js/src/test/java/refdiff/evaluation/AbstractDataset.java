@@ -18,6 +18,11 @@ public class AbstractDataset {
         commits.add(entry);
     }
 
+    public void add(RefactoringSet rs, RefactoringSet rsNotExpected) {
+        CommitEntry entry = new CommitEntry(rs, rsNotExpected);
+        commits.add(entry);
+    }
+    
     public List<RefactoringSet> getExpected() {
         return commits.stream().map(e -> e.expected).collect(Collectors.toList());
     }
