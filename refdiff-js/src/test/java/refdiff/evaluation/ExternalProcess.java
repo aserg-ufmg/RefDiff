@@ -25,7 +25,7 @@ class ExternalProcess {
 				if (p.exitValue() == 0) {
 					return outputGobbler.getOutput();
 				} else {
-					throw new RuntimeException("Error executing command " + commandAndArgs + ":\n" + outputGobbler.getOutput());
+					throw new RuntimeException("Error executing command " + String.join(" ", commandAndArgs) + ":\n" + outputGobbler.getOutput());
 				}
 			}
 			finally {
@@ -34,9 +34,9 @@ class ExternalProcess {
 				//p.destroy();
 			}
 		} catch (IOException e) {
-			throw new RuntimeException("Error executing command " + commandAndArgs, e);
+			throw new RuntimeException("Error executing command " + String.join(" ", commandAndArgs), e);
 		} catch (InterruptedException e) {
-			throw new RuntimeException("Error executing command " + commandAndArgs, e);
+			throw new RuntimeException("Error executing command " + String.join(" ", commandAndArgs), e);
 		}
 	}
 

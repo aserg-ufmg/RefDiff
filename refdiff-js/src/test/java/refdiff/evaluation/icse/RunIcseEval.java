@@ -30,7 +30,7 @@ public class RunIcseEval {
 			String commit = rs.getRevision();
 			rc.expect(rs);
 			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
-			if (i++ > 2) break;
+			if (i++ > 3) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);

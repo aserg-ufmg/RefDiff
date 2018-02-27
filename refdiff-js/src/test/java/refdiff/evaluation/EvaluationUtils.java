@@ -30,7 +30,7 @@ public class EvaluationUtils {
 	private JavaParser parser = new JavaParser();
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
-	private final String tempFolder = "D:/tmp/";
+	private final String tempFolder = "C:/tmp/";
 	
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
@@ -49,11 +49,11 @@ public class EvaluationUtils {
 		File workingDir = fRepoFolder;
 		File fCheckoutFolderV0 = new File(checkoutFolderV0);
 		if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
-			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "-- ."));
+			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "-q"));
 		}
 		File fCheckoutFolderV1 = new File(checkoutFolderV1);
 		if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
-			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "-- ."));
+			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "-q"));
 		}
 		
 		try (
