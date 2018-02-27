@@ -3,6 +3,7 @@ package refdiff.evaluation.icse;
 import java.util.EnumSet;
 import java.util.List;
 
+import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
@@ -10,6 +11,7 @@ import refdiff.evaluation.ResultComparator;
 public class RunIcseEval {
 	
 	private EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
+	private EvaluationUtils evalUtils = new EvaluationUtils();
 	
 	public static void main(String[] args) throws Exception {
 		new RunIcseEval().run();
@@ -27,8 +29,8 @@ public class RunIcseEval {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			rc.expect(rs);
-			rc.compareWith("RefDiff", new RefactoringSet(project, commit));
-			//if (i++ > 4) break;
+			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
+			if (i++ > 2) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);

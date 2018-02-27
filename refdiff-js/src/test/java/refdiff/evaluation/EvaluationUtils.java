@@ -1,5 +1,6 @@
 package refdiff.evaluation;
 
+import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class EvaluationUtils {
 	private JavaParser parser = new JavaParser();
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
-	private final String tempFolder = "C:/tmp/";
+	private final String tempFolder = "D:/tmp/";
 	
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
@@ -40,6 +41,21 @@ public class EvaluationUtils {
 		String checkoutFolderV1 = tempFolder + "v1/" + checkoutFolder;
 		
 		GitHelper gitHelper = new GitHelper();
+		
+		File fRepoFolder = new File(tempFolder + repoFolder);
+		if (!fRepoFolder.exists()) {
+			System.out.println(ExternalProcess.execute(new File(tempFolder), "git", "clone", project));
+		}
+		File workingDir = fRepoFolder;
+		File fCheckoutFolderV0 = new File(checkoutFolderV0);
+		if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
+			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "-- ."));
+		}
+		File fCheckoutFolderV1 = new File(checkoutFolderV1);
+		if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
+			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "-- ."));
+		}
+		
 		try (
 			Repository repo = gitHelper.openRepository(tempFolder + repoFolder);
 			RevWalk rw = new RevWalk(repo)) {
