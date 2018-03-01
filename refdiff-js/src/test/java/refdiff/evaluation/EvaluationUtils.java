@@ -35,27 +35,13 @@ public class EvaluationUtils {
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
-		String repoFolder = project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
-		String checkoutFolder = repoFolder + "-" + commit.substring(0, 7) + "/";
-		String checkoutFolderV0 = tempFolder + "v0/" + checkoutFolder;
-		String checkoutFolderV1 = tempFolder + "v1/" + checkoutFolder;
+		String repoFolder = repoFolder(project);
+		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
+		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
+		
+		prepareSourceCode(project, commit);
 		
 		GitHelper gitHelper = new GitHelper();
-		
-		File fRepoFolder = new File(tempFolder + repoFolder);
-		if (!fRepoFolder.exists()) {
-			System.out.println(ExternalProcess.execute(new File(tempFolder), "git", "clone", project));
-		}
-		File workingDir = fRepoFolder;
-		File fCheckoutFolderV0 = new File(checkoutFolderV0);
-		if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
-			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", "."));
-		}
-		File fCheckoutFolderV1 = new File(checkoutFolderV1);
-		if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
-			System.out.println(ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", "."));
-		}
-		
 		try (
 			Repository repo = gitHelper.openRepository(tempFolder + repoFolder);
 			RevWalk rw = new RevWalk(repo)) {
@@ -85,6 +71,38 @@ public class EvaluationUtils {
 		}
 		
 		return rs;
+	}
+
+	private String checkoutFolder(String tempFolder, String project, String commit, String prefixFolder) {
+		return tempFolder + prefixFolder + "/" + repoFolder(project) + "-" + commit.substring(0, 7) + "/";
+	}
+
+	private String repoFolder(String project) {
+		return project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
+	}
+
+	public void prepareSourceCode(String project, String commit) {
+		String repoFolder = repoFolder(project);
+		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
+		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
+		try {
+			File fRepoFolder = new File(tempFolder + repoFolder);
+			if (!fRepoFolder.exists()) {
+				ExternalProcess.execute(new File(tempFolder), "git", "clone", project);
+			}
+			File workingDir = fRepoFolder;
+			File fCheckoutFolderV0 = new File(checkoutFolderV0);
+			if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
+				ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", ".");
+			}
+			File fCheckoutFolderV1 = new File(checkoutFolderV1);
+			if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
+				ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
+			}
+			System.out.println("Checked out " + project + " " + commit);
+		} catch (RuntimeException e) {
+			System.err.println();
+		}
 	}
 	
 	private List<SourceFile> getSourceFiles(String checkoutFolder, List<String> files) {
