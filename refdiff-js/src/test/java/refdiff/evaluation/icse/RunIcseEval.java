@@ -24,14 +24,15 @@ public class RunIcseEval {
 		ResultComparator rc = new ResultComparator();
 		rc.dontExpect(data.getNotExpected());
 		
-		//int i = 0;
+		int i = 0;
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			rc.expect(rs);
 			//rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
+			if (commit.equals("219d6ddfd1db62c11efb57e0216436874e087834")) break;
 			evalUtils.prepareSourceCode(project, commit);
-			//if (i++ > 11) break;
+			//if (++i > 0) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);

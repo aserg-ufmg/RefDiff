@@ -30,7 +30,7 @@ public class EvaluationUtils {
 	private JavaParser parser = new JavaParser();
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
-	private final String tempFolder = "C:/tmp/";
+	private final String tempFolder = "D:/tmp/";
 	
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
@@ -88,20 +88,27 @@ public class EvaluationUtils {
 		try {
 			File fRepoFolder = new File(tempFolder + repoFolder);
 			if (!fRepoFolder.exists()) {
-				ExternalProcess.execute(new File(tempFolder), "git", "clone", project);
+				ExternalProcess.execute(new File(tempFolder), "git", "clone", "--bare", "--shallow-since=2015-05-01");
+//				fRepoFolder.mkdirs();
+//				ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
+//				ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
+			} else {
+				ExternalProcess.execute(fRepoFolder, "git", "fetch", "--all", "--shallow-since=2015-05-01");
 			}
-			File workingDir = fRepoFolder;
 			File fCheckoutFolderV0 = new File(checkoutFolderV0);
-			if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
-				ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", ".");
-			}
 			File fCheckoutFolderV1 = new File(checkoutFolderV1);
-			if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
-				ExternalProcess.execute(workingDir, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
+			if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
+//				ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", commit);
+				
+				if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
+					ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", ".");
+				}
+				if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
+					ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
+				}
 			}
-			System.out.println("Checked out " + project + " " + commit);
 		} catch (RuntimeException e) {
-			System.err.println();
+			System.err.println(e.getMessage());
 		}
 	}
 	

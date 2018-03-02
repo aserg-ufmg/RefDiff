@@ -11,6 +11,7 @@ class ExternalProcess {
 
 	public static String execute(File workingDir, String ... commandAndArgs) {
 		try {
+			System.out.println(String.join(" ", commandAndArgs));
 			Process p = new ProcessBuilder(commandAndArgs)
 			.directory(workingDir)
 			.redirectErrorStream(true)
