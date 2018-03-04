@@ -39,4 +39,5 @@ eclipse {
 task icseeval(type: JavaExec) {
   classpath sourceSets.main.runtimeClasspath
   main = "refdiff.evaluation.icse.RunIcseEval"
+  args = "~/repos/"
 }
