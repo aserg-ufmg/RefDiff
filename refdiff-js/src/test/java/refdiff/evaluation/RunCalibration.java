@@ -6,7 +6,7 @@ import java.util.List;
 public class RunCalibration {
 	
 	private EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
-	private EvaluationUtils evalUtils = new EvaluationUtils();
+	private EvaluationUtils evalUtils = new EvaluationUtils("D:/tmp/");
 	
 	public static void main(String[] args) throws Exception {
 		new RunCalibration().run();
