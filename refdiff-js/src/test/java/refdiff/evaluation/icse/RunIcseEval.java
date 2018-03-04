@@ -11,10 +11,14 @@ import refdiff.evaluation.ResultComparator;
 public class RunIcseEval {
 	
 	private EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
-	private EvaluationUtils evalUtils = new EvaluationUtils();
+	private EvaluationUtils evalUtils;
 	
+	public RunIcseEval(String tempFolder) {
+		evalUtils = new EvaluationUtils(tempFolder);
+	}
+
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval().run();
+		new RunIcseEval(args.length > 0 ? args[0] : "D:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -29,9 +33,8 @@ public class RunIcseEval {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			rc.expect(rs);
-			//rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
-			if (commit.equals("219d6ddfd1db62c11efb57e0216436874e087834")) break;
 			evalUtils.prepareSourceCode(project, commit);
+			//rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
 			//if (++i > 0) break;
 		}
 		
