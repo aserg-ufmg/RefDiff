@@ -92,7 +92,7 @@ public class EvaluationUtils {
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 			File fRepoFolder = new File(tempFolder + repoFolder + ".git");
 			if (!fRepoFolder.exists()) {
-				ExternalProcess.execute(new File(tempFolder), "git", "clone", "--bare", "--shallow-since=2015-05-01");
+				ExternalProcess.execute(new File(tempFolder), "git", "clone", project, "--bare", "--shallow-since=2015-05-01");
 //				fRepoFolder.mkdirs();
 //				ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
 //				ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
