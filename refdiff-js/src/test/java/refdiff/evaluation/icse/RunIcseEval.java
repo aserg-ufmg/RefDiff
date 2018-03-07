@@ -41,7 +41,7 @@ public class RunIcseEval {
 			}
 			rc.expect(rs);
 			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
-			if (++i > 0) break;
+			//if (++i > 0) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
