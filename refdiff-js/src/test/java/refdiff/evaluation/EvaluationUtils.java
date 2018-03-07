@@ -30,7 +30,7 @@ public class EvaluationUtils {
 	private JavaParser parser = new JavaParser();
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
-	private String tempFolder = "D:/tmp/";
+	private String tempFolder = "C:/tmp/";
 	
 	public EvaluationUtils(String tempFolder) {
 		this.tempFolder = tempFolder;
@@ -39,7 +39,7 @@ public class EvaluationUtils {
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
-		String repoFolder = repoFolder(project);
+		File repoFolder = repoFolder(project);
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		
@@ -47,7 +47,7 @@ public class EvaluationUtils {
 		
 		GitHelper gitHelper = new GitHelper();
 		try (
-			Repository repo = gitHelper.openRepository(tempFolder + repoFolder);
+			Repository repo = gitHelper.openRepository(repoFolder);
 			RevWalk rw = new RevWalk(repo)) {
 			
 			RevCommit revCommit = rw.parseCommit(repo.resolve(commit));
@@ -78,42 +78,45 @@ public class EvaluationUtils {
 	}
 
 	private String checkoutFolder(String tempFolder, String project, String commit, String prefixFolder) {
-		return tempFolder + prefixFolder + "/" + repoFolder(project) + "-" + commit.substring(0, 7) + "/";
+		return tempFolder + prefixFolder + "/" + repoName(project) + "-" + commit.substring(0, 7) + "/";
 	}
 
-	private String repoFolder(String project) {
+	private String repoName(String project) {
 		return project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
 	}
 
 	public void prepareSourceCode(String project, String commit) {
 		System.out.println(String.format("Preparing %s %s", project, commit));
-		String repoFolder = repoFolder(project);
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
-			File fRepoFolder = new File(tempFolder + repoFolder + ".git");
-			if (!fRepoFolder.exists()) {
-				ExternalProcess.execute(new File(tempFolder), "git", "clone", project, "--bare", "--shallow-since=2015-05-01");
-//				fRepoFolder.mkdirs();
-//				ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
-//				ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
-			}
-			File fCheckoutFolderV0 = new File(checkoutFolderV0);
-			File fCheckoutFolderV1 = new File(checkoutFolderV1);
-			if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
-//				ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", commit);
-				try {
+		File fRepoFolder = repoFolder(project);
+		if (!fRepoFolder.exists()) {
+			ExternalProcess.execute(new File(tempFolder), "git", "clone", project, "--bare", "--shallow-since=2015-05-01");
+			// fRepoFolder.mkdirs();
+			// ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
+			// ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
+		}
+		File fCheckoutFolderV0 = new File(checkoutFolderV0);
+		File fCheckoutFolderV1 = new File(checkoutFolderV1);
+		if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
+			// ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", commit);
+			try {
 				if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
 					ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", ".");
 				}
 				if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
 					ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
 				}
-				} catch (RuntimeException e) {
-					System.err.println(String.format("Error checking out %s %s:\n%s", project, commit, e.getMessage()));
-					fCheckoutFolderV0.delete();
-					fCheckoutFolderV1.delete();
-				}
+			} catch (RuntimeException e) {
+				fCheckoutFolderV0.delete();
+				fCheckoutFolderV1.delete();
+				throw new RuntimeException(String.format("Error checking out %s %s:\n%s", project, commit, e.getMessage()), e);
 			}
+		}
+	}
+
+	private File repoFolder(String project) {
+		return new File(tempFolder + repoName(project) + ".git");
 	}
 	
 	private List<SourceFile> getSourceFiles(String checkoutFolder, List<String> files) {

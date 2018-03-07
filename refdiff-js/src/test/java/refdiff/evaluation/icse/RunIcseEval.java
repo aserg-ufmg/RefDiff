@@ -18,7 +18,7 @@ public class RunIcseEval {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "D:/tmp/").run();
+		new RunIcseEval(args.length > 0 ? args[0] : "C:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -32,10 +32,16 @@ public class RunIcseEval {
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
+			try {
+				evalUtils.prepareSourceCode(project, commit);
+			} catch (RuntimeException e) {
+				System.out.println(String.format("Skipped %s %s", project, commit));
+				System.err.println(e.getMessage());
+				continue;
+			}
 			rc.expect(rs);
-			evalUtils.prepareSourceCode(project, commit);
-			//rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
-			//if (++i > 0) break;
+			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
+			if (++i > 0) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);

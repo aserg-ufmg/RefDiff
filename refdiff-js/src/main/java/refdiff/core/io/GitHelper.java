@@ -86,17 +86,20 @@ public class GitHelper {
 	}
 	
 	public Repository openRepository(String repositoryPath) throws Exception {
-		File folder = new File(repositoryPath);
+		return openRepository(new File(repositoryPath, ".git"));
+	}
+	
+	public Repository openRepository(File repositoryPath) throws Exception {
 		Repository repository;
-		if (folder.exists()) {
+		if (repositoryPath.exists()) {
 			RepositoryBuilder builder = new RepositoryBuilder();
 			repository = builder
-				.setGitDir(new File(folder, ".git"))
+				.setGitDir(repositoryPath)
 				.readEnvironment()
 				.findGitDir()
 				.build();
 		} else {
-			throw new FileNotFoundException(repositoryPath);
+			throw new FileNotFoundException(repositoryPath.getPath());
 		}
 		return repository;
 	}
