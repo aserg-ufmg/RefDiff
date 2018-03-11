@@ -21,7 +21,9 @@ public class RefactoringDescriptionParser {
 		new ParserDefinition(RefactoringType.PULL_UP_ATTRIBUTE, "Pull Up Attribute (.+) from class (.+) to class (.+)", attribute(1, 2), attribute(1, 3)),
 		new ParserDefinition(RefactoringType.PUSH_DOWN_ATTRIBUTE, "Push Down Attribute (.+) from class (.+) to class (.+)", attribute(1, 2), attribute(1, 3)),
 		new ParserDefinition(RefactoringType.EXTRACT_INTERFACE, "Extract Interface (.+) from classes \\[(.+)\\]", types(2), type(1)),
-		new ParserDefinition(RefactoringType.EXTRACT_SUPERCLASS, "Extract Superclass (.+) from classes \\[(.+)\\]", types(2), type(1))
+		new ParserDefinition(RefactoringType.EXTRACT_INTERFACE, "Extract Interface (.+) from class (.+)", type(2), type(1)),
+		new ParserDefinition(RefactoringType.EXTRACT_SUPERCLASS, "Extract Superclass (.+) from classes \\[(.+)\\]", types(2), type(1)),
+		new ParserDefinition(RefactoringType.EXTRACT_SUPERCLASS, "Extract Superclass (.+) from class (.+)", type(2), type(1))
 	};
 	
 	private static class ParserDefinition {
