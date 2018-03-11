@@ -17,6 +17,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import refdiff.core.diff.similarity.SourceRepresentationBuilder;
+import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.SourceFile;
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
@@ -27,24 +28,23 @@ import refdiff.core.util.Statistics;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
 
-public class RastComparator<T> {
+public class RastComparator {
 	
 	private final RastParser parser;
 	private final SourceTokenizer tokenizer;
-	private final SourceRepresentationBuilder<T> srb;
 	
-	public RastComparator(RastParser parser, SourceTokenizer tokenizer, SourceRepresentationBuilder<T> srb) {
+	public RastComparator(RastParser parser, SourceTokenizer tokenizer) {
 		this.parser = parser;
 		this.tokenizer = tokenizer;
-		this.srb = srb;
 	}
 	
 	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
-		DiffBuilder diffBuilder = new DiffBuilder(filesBefore, filesAfter);
+		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), filesBefore, filesAfter);
 		return diffBuilder.computeDiff();
 	}
 	
-	private class DiffBuilder {
+	private class DiffBuilder<T> {
+		private final SourceRepresentationBuilder<T> srb;
 		private RastDiff diff;
 		private RastRootHelper<T> before;
 		private RastRootHelper<T> after;
@@ -61,7 +61,8 @@ public class RastComparator<T> {
 		private final Map<String, SourceFile> fileMapBefore = new HashMap<>();
 		private final Map<String, SourceFile> fileMapAfter = new HashMap<>();
 		
-		DiffBuilder(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
+		DiffBuilder(SourceRepresentationBuilder<T> srb, List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
+			this.srb = srb;
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.before = new RastRootHelper<T>(this.diff.getBefore());
 			this.after = new RastRootHelper<T>(this.diff.getAfter());

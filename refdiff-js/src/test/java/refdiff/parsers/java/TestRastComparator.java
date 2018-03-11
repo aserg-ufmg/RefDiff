@@ -1,7 +1,9 @@
 package refdiff.parsers.java;
 
-import static org.junit.Assert.*;
-import static refdiff.test.util.RastDiffMatchers.*;
+import static org.junit.Assert.assertThat;
+import static refdiff.test.util.RastDiffMatchers.containsOnly;
+import static refdiff.test.util.RastDiffMatchers.node;
+import static refdiff.test.util.RastDiffMatchers.relationship;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,8 +18,6 @@ import org.junit.Test;
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
-import refdiff.core.diff.similarity.TfIdfSourceRepresentation;
-import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
 
@@ -83,7 +83,7 @@ public class TestRastComparator {
 		String basePath = "test-data/diff/" + folder;
 		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
 		List<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
-		RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
+		RastComparator comparator = new RastComparator(parser, tokenizer);
 		return comparator.compare(sourceFilesBefore, sourceFilesAfter);
 	}
 	

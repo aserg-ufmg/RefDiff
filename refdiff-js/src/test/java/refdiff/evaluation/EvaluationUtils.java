@@ -16,8 +16,6 @@ import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
-import refdiff.core.diff.similarity.TfIdfSourceRepresentation;
-import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFile;
@@ -29,7 +27,7 @@ public class EvaluationUtils {
 	
 	private JavaParser parser = new JavaParser();
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
-	private RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, tokenizer, new TfIdfSourceRepresentationBuilder());
+	private RastComparator comparator = new RastComparator(parser, tokenizer);
 	private String tempFolder = "C:/tmp/";
 	
 	public EvaluationUtils(String tempFolder) {

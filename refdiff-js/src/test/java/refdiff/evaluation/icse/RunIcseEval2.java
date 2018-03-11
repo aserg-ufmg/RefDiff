@@ -21,7 +21,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "C:/tmp/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "D:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -31,7 +31,14 @@ public class RunIcseEval2 {
 		ResultComparator rc = new ResultComparator();
 		rc.dontExpect(data.getNotExpected());
 		
-		Set<String> whitelist = new HashSet<>(Arrays.asList("abbf32571232db81a5343db17a933a9ce6923b44"));
+		Set<String> whitelist = new HashSet<>(Arrays.asList(
+			"abbf32571232db81a5343db17a933a9ce6923b44",
+			"18a7bd1fd1a83b3b8d1b245e32f78c0b4443b7a7",
+			"446e2537895c15b404a74107069a12f3fc404b15",
+			"d3533c1a0716ca114d294b3ea183504c9725698f",
+			"04bcfe98dbe7b05e508559930c21379ece845732",
+			"364f50274d4b4b83d40930c0d2c4d0e57fb34589"
+			));
 		
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();

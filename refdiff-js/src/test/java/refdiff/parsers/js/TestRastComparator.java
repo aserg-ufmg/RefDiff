@@ -69,7 +69,7 @@ public class TestRastComparator {
 		String basePath = "src/test/resources/" + folder;
 		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
 		List<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
-		RastComparator<TfIdfSourceRepresentation> comparator = new RastComparator<>(parser, parser, new TfIdfSourceRepresentationBuilder());
+		RastComparator comparator = new RastComparator(parser, parser);
 		return comparator.compare(sourceFilesBefore, sourceFilesAfter);
 	}
 	
