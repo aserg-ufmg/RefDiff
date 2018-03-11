@@ -42,8 +42,9 @@ public class RunIcseEval {
 			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
 		}
 		
-		rc.printSummary(System.out, refactoringTypes);
 		rc.printDetails(System.out, refactoringTypes);
+		System.out.println();
+		rc.printSummary(System.out, refactoringTypes);
 	}
 	
 }
