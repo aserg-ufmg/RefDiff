@@ -42,4 +42,8 @@ public class RastNodeRelationship {
 		return Objects.hash(this.type, this.n1, this.n2);
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("%d %s %d", n1, type, n2);
+	}
 }

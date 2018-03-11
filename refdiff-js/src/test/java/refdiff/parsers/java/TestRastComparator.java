@@ -61,6 +61,15 @@ public class TestRastComparator {
 		));
 	}
 	
+	@Test
+	public void shouldMatchExtractOverloadedMethod() throws Exception {
+		assertThat(diff("java4"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A", "fetch(Feed)"), node("p1.A", "fetch(Feed)")),
+			relationship(RelationshipType.EXTRACT, node("p1.A", "fetch(Feed)"), node("p1.A", "fetch(String)"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "test-data/diff/" + folder;
 		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
