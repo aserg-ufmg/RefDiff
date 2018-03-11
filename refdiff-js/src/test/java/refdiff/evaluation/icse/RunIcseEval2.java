@@ -1,24 +1,27 @@
 package refdiff.evaluation.icse;
 
+import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
 
-public class RunIcseEval {
+public class RunIcseEval2 {
 	
 	private EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
 	private EvaluationUtils evalUtils;
 	
-	public RunIcseEval(String tempFolder) {
+	public RunIcseEval2(String tempFolder) {
 		evalUtils = new EvaluationUtils(tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "C:/tmp/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "C:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -28,9 +31,12 @@ public class RunIcseEval {
 		ResultComparator rc = new ResultComparator();
 		rc.dontExpect(data.getNotExpected());
 		
+		Set<String> whitelist = new HashSet<>(Arrays.asList("abbf32571232db81a5343db17a933a9ce6923b44"));
+		
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
+			if (!whitelist.contains(commit)) continue;
 			try {
 				evalUtils.prepareSourceCode(project, commit);
 			} catch (RuntimeException e) {
