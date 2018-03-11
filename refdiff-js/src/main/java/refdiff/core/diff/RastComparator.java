@@ -125,8 +125,8 @@ public class RastComparator<T> {
 			Collections.sort(similaritySame);
 			adjustThreshold();
 			matchPullUpAndPushDownMembers();
-			matchMovesOrRenames();
 			matchExtractSuper();
+			matchMovesOrRenames();
 			matchExtract();
 			matchInline();
 			return diff;

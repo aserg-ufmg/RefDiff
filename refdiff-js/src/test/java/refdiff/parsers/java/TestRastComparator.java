@@ -14,7 +14,6 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.ThresholdsProvider;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.diff.similarity.TfIdfSourceRepresentation;
@@ -67,6 +66,16 @@ public class TestRastComparator {
 			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
 			relationship(RelationshipType.SAME, node("p1.A", "fetch(Feed)"), node("p1.A", "fetch(Feed)")),
 			relationship(RelationshipType.EXTRACT, node("p1.A", "fetch(Feed)"), node("p1.A", "fetch(String)"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchExtractSuperclass() throws Exception {
+		assertThat(diff("java5"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p1.A", "m1()")),
+			relationship(RelationshipType.PULL_UP, node("p1.A", "m2(int)"), node("p1.B", "m2(int)")),
+			relationship(RelationshipType.EXTRACT_SUPER, node("p1.A"), node("p1.B"))
 		));
 	}
 	
