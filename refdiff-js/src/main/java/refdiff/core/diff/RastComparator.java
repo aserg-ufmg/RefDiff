@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -126,8 +127,9 @@ public class RastComparator {
 			Collections.sort(similaritySame);
 			adjustThreshold();
 			matchPullUpAndPushDownMembers();
-			matchExtractSuper();
+			matchPullUpToAdded();
 			matchMovesOrRenames();
+			inferExtractSuper();
 			matchExtract();
 			matchInline();
 			return diff;
@@ -162,7 +164,7 @@ public class RastComparator {
 			//reportSimilarity(similarityNotSame);
 		}
 		
-		private void matchExtractSuper() {
+		private void matchPullUpToAdded() {
 			Set<Relationship> relationships = new HashSet<>();
 			for (RastNode potentialSupertype : added) {
 				relationships.addAll(findPullUpMembers(potentialSupertype));
@@ -318,13 +320,33 @@ public class RastComparator {
 					}
 				}
 			}
+			/*
 			if (!subtypesWithPulledUpMembers.isEmpty() && added(supertypeAfter)) {
 				for (RastNode subtype : subtypesWithPulledUpMembers) {
 					relationships.add(new Relationship(RelationshipType.EXTRACT_SUPER, subtype, supertypeAfter));
 				}
 			}
+			*/
 			return relationships;
 		}
+		
+		private void inferExtractSuper() {
+			Set<Relationship> relationships = new HashSet<>();
+			EnumSet<RelationshipType> pullUpLike = EnumSet.of(RelationshipType.PULL_UP, RelationshipType.PULL_UP_SIGNATURE);
+			
+			diff.getRelationships()
+				.stream()
+				.filter(r -> pullUpLike.contains(r.getType()))
+				.forEach(r -> {
+					RastNode supertypeAfter = r.getNodeAfter().getParent().get();
+					RastNode subtypeBefore = r.getNodeBefore().getParent().get();
+					if (added(supertypeAfter)) {
+						relationships.add(new Relationship(RelationshipType.EXTRACT_SUPER, subtypeBefore, supertypeAfter));
+					}
+				});
+			
+			apply(relationships);
+		} 
 		
 		private void addMatch(Relationship relationship) {
 			RastNode nBefore = relationship.getNodeBefore();
