@@ -79,6 +79,17 @@ public class TestRastComparator {
 		));
 	}
 	
+	@Test
+	public void shouldNotMatchPullUpWhenSuperclassIsRenamed() throws Exception {
+		assertThat(diff("java6"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p1.A", "m1()")),
+			relationship(RelationshipType.SAME, node("p1.A", "m2(int)"), node("p1.A", "m2(int)")),
+			relationship(RelationshipType.RENAME, node("p1.B"), node("p1.C")),
+			relationship(RelationshipType.SAME, node("p1.B", "m2(int)"), node("p1.C", "m2(int)"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "test-data/diff/" + folder;
 		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));

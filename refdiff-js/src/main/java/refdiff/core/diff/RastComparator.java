@@ -126,9 +126,10 @@ public class RastComparator {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
 			Collections.sort(similaritySame);
 			adjustThreshold();
+			matchMovesOrRenames(false);
 			matchPullUpAndPushDownMembers();
 			matchPullUpToAdded();
-			matchMovesOrRenames();
+			matchMovesOrRenames(true);
 			inferExtractSuper();
 			matchExtract();
 			matchInline();
@@ -172,15 +173,17 @@ public class RastComparator {
 			apply(relationships);
 		}
 
-		private void matchMovesOrRenames() {
+		private void matchMovesOrRenames(boolean includeLeaves) {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
-						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
-						if (score > threshold.getValue()) {
-							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
-							candidates.add(candidate);
+						if (includeLeaves || (!leaf(n1) && !leaf(n2))) {
+							double score = srb.similarity(sourceRep(n1), sourceRep(n2));
+							if (score > threshold.getValue()) {
+								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
+								candidates.add(candidate);
+							}
 						}
 					}
 				}

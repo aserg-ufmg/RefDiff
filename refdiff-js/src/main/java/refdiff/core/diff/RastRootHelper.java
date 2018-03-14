@@ -131,6 +131,10 @@ public class RastRootHelper<T> {
 		return n.getSimpleName().isEmpty();
 	}
 	
+	public static boolean leaf(RastNode n) {
+		return n.getNodes().isEmpty();
+	}
+	
 	public static boolean sameType(RastNode n1, RastNode n2) {
 		return n1.getType().equals(n2.getType());
 	}
