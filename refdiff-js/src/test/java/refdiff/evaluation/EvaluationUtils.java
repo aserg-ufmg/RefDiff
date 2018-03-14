@@ -65,6 +65,10 @@ public class EvaluationUtils {
 				String nodeType = rel.getNodeAfter().getType();
 				Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
 				if (refType.isPresent()) {
+					if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) && 
+						diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))) {
+						continue;
+					}
 					String keyN1 = JavaParser.getKey(rel.getNodeBefore());
 					String keyN2 = JavaParser.getKey(rel.getNodeAfter());
 					rs.add(refType.get(), keyN1, keyN2, rel.getSimilarity());
