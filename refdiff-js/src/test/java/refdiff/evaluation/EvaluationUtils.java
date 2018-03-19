@@ -90,7 +90,7 @@ public class EvaluationUtils {
 		return project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
 	}
 
-	public void prepareSourceCode(String project, String commit) {
+	public void prepareSourceCode2(String project, String commit) {
 		System.out.println(String.format("Preparing %s %s", project, commit));
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
@@ -117,7 +117,7 @@ public class EvaluationUtils {
 		}
 	}
 
-	public void prepareSourceCode2(String project, String commit) {
+	public void prepareSourceCode(String project, String commit) {
 		System.out.println(String.format("Preparing %s %s", project, commit));
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
