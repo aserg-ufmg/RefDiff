@@ -803,7 +803,7 @@
 }, {
     "id": 1105586,
     "repository": "https://github.com/SecUpwN/Android-IMSI-Catcher-Detector.git",
-    "mirrorRepository": "https://github.com/CellularPrivacy/Android-IMSI-Catcher-Detector.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/Android-IMSI-Catcher-Detector.git",
     "sha1": "e235f884f2e0bc258da77b9c80492ad33386fa86",
     "url": "https://github.com/SecUpwN/Android-IMSI-Catcher-Detector/commit/e235f884f2e0bc258da77b9c80492ad33386fa86",
     "author": "Marvin Arnold",
@@ -1700,7 +1700,7 @@
 }, {
     "id": 1108190,
     "repository": "https://github.com/kuujo/copycat.git",
-    "mirrorRepository": "https://github.com/atomix/atomix.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/atomix.git",
     "sha1": "19a49f8f36b2f6d82534dc13504d672e41a3a8d1",
     "url": "https://github.com/kuujo/copycat/commit/19a49f8f36b2f6d82534dc13504d672e41a3a8d1",
     "author": "Jordan Halterman",
@@ -2332,7 +2332,7 @@
 }, {
     "id": 1112091,
     "repository": "https://github.com/droolsjbpm/drools.git",
-    "mirrorRepository": "https://github.com/kiegroup/drools.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/drools.git",
     "sha1": "1bf2875e9d73e2d1cd3b58200d5300485f890ff5",
     "url": "https://github.com/droolsjbpm/drools/commit/1bf2875e9d73e2d1cd3b58200d5300485f890ff5",
     "author": "Mario Fusco",
@@ -8930,7 +8930,7 @@
 }, {
     "id": 1120803,
     "repository": "https://github.com/codefollower/Lealone.git",
-    "mirrorRepository": "https://github.com/lealone/Lealone.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/Lealone.git",
     "sha1": "7a2e0ae5f6172cbe34f9bc4a5cde666314ff75dd",
     "url": "https://github.com/codefollower/Lealone/commit/7a2e0ae5f6172cbe34f9bc4a5cde666314ff75dd",
     "author": "Honghua Zhu",
@@ -9217,7 +9217,7 @@
 }, {
     "id": 1121326,
     "repository": "https://github.com/droolsjbpm/drools.git",
-    "mirrorRepository": "https://github.com/kiegroup/drools.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/drools.git",
     "sha1": "c8e09e2056c54ead97bce4386a25b222154223b1",
     "url": "https://github.com/droolsjbpm/drools/commit/c8e09e2056c54ead97bce4386a25b222154223b1",
     "author": "kedzie",
@@ -9697,7 +9697,7 @@
 }, {
     "id": 1121720,
     "repository": "https://github.com/mrniko/redisson.git",
-    "mirrorRepository": "https://github.com/redisson/redisson.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/redisson.git",
     "sha1": "186357ac6c2da1a5a12c0287a08408ac5ec6683b",
     "url": "https://github.com/mrniko/redisson/commit/186357ac6c2da1a5a12c0287a08408ac5ec6683b",
     "author": "Nikita",
@@ -10044,7 +10044,7 @@
 }, {
     "id": 1122130,
     "repository": "https://github.com/facebook/presto.git",
-    "mirrorRepository": "https://github.com/prestodb/presto.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/presto.git",
     "sha1": "b7f4914d81a7a618acf2eba52af1093fc23cfba9",
     "url": "https://github.com/facebook/presto/commit/b7f4914d81a7a618acf2eba52af1093fc23cfba9",
     "author": "Nileema Shingte",
@@ -10562,7 +10562,7 @@
 }, {
     "id": 1122760,
     "repository": "https://github.com/openhab/openhab.git",
-    "mirrorRepository": "https://github.com/openhab/openhab1-addons.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/openhab1-addons.git",
     "sha1": "a9b1e5d67421ed98b49ae25c3bbd6e27a0ab1590",
     "url": "https://github.com/openhab/openhab/commit/a9b1e5d67421ed98b49ae25c3bbd6e27a0ab1590",
     "author": "Bernd Pfrommer",
@@ -11062,7 +11062,7 @@
 }, {
     "id": 1123651,
     "repository": "https://github.com/WhisperSystems/Signal-Android.git",
-    "mirrorRepository": "https://github.com/signalapp/Signal-Android.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/Signal-Android.git",
     "sha1": "99528dcc3b4a82b5e52a87d3e7aed5c6479028c7",
     "url": "https://github.com/WhisperSystems/Signal-Android/commit/99528dcc3b4a82b5e52a87d3e7aed5c6479028c7",
     "author": "Moxie Marlinspike",
@@ -14835,7 +14835,7 @@
 }, {
     "id": 1127907,
     "repository": "https://github.com/facebook/presto.git",
-    "mirrorRepository": "https://github.com/prestodb/presto.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/presto.git",
     "sha1": "364f50274d4b4b83d40930c0d2c4d0e57fb34589",
     "url": "https://github.com/facebook/presto/commit/364f50274d4b4b83d40930c0d2c4d0e57fb34589",
     "author": "Haozhun Jin",
@@ -14982,7 +14982,7 @@
 }, {
     "id": 1129517,
     "repository": "https://github.com/droolsjbpm/jbpm.git",
-    "mirrorRepository": "https://github.com/kiegroup/jbpm.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/jbpm.git",
     "sha1": "83cfa21578e63956bca0715eefee2860c3b6d39a",
     "url": "https://github.com/droolsjbpm/jbpm/commit/83cfa21578e63956bca0715eefee2860c3b6d39a",
     "author": "Tibor Zimanyi",
@@ -15006,7 +15006,7 @@
 }, {
     "id": 1129518,
     "repository": "https://github.com/droolsjbpm/jbpm.git",
-    "mirrorRepository": "https://github.com/kiegroup/jbpm.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/jbpm.git",
     "sha1": "a739d16d301f0e89ab0b9dfa56b4585bbad6b793",
     "url": "https://github.com/droolsjbpm/jbpm/commit/a739d16d301f0e89ab0b9dfa56b4585bbad6b793",
     "author": "Jan Hrcek",
@@ -16624,7 +16624,7 @@
 }, {
     "id": 1133054,
     "repository": "https://github.com/WhisperSystems/Signal-Android.git",
-    "mirrorRepository": "https://github.com/signalapp/Signal-Android.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/Signal-Android.git",
     "sha1": "fa62b9bde224341e0c2d43c0694fc10c4df7336f",
     "url": "https://github.com/WhisperSystems/Signal-Android/commit/fa62b9bde224341e0c2d43c0694fc10c4df7336f",
     "author": "Jake McGinty",
@@ -18282,7 +18282,7 @@
 }, {
     "id": 1136333,
     "repository": "https://github.com/WhisperSystems/Signal-Android.git",
-    "mirrorRepository": "https://github.com/signalapp/Signal-Android.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/Signal-Android.git",
     "sha1": "c4a37e38aba926c2bef27e4fc00e3a4848ce46bd",
     "url": "https://github.com/WhisperSystems/Signal-Android/commit/c4a37e38aba926c2bef27e4fc00e3a4848ce46bd",
     "author": "Calvin Hu",
@@ -18306,7 +18306,7 @@
 }, {
     "id": 1136335,
     "repository": "https://github.com/WhisperSystems/Signal-Android.git",
-    "mirrorRepository": "https://github.com/signalapp/Signal-Android.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/Signal-Android.git",
     "sha1": "f0b2cc559026871c1b4d8e008666afb590553004",
     "url": "https://github.com/WhisperSystems/Signal-Android/commit/f0b2cc559026871c1b4d8e008666afb590553004",
     "author": "Christoph Haefner",
@@ -18676,7 +18676,7 @@
 }, {
     "id": 1137049,
     "repository": "https://github.com/Jasig/cas.git",
-    "mirrorRepository": "https://github.com/apereo/cas.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/cas.git",
     "sha1": "7fb0d1ce3b6583013e81ac05eb9afb15d20eab7f",
     "url": "https://github.com/Jasig/cas/commit/7fb0d1ce3b6583013e81ac05eb9afb15d20eab7f",
     "author": "Misagh Moayyed",
@@ -18899,7 +18899,7 @@
 }, {
     "id": 1137389,
     "repository": "https://github.com/openhab/openhab.git",
-    "mirrorRepository": "https://github.com/openhab/openhab1-addons.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/openhab1-addons.git",
     "sha1": "cf1efb6d27a4037cdbe5a780afa6053859a60d4a",
     "url": "https://github.com/openhab/openhab/commit/cf1efb6d27a4037cdbe5a780afa6053859a60d4a",
     "author": "HelmutL",
@@ -19263,7 +19263,7 @@
 }, {
     "id": 1139092,
     "repository": "https://github.com/github/android.git",
-    "mirrorRepository": "https://github.com/pockethub/PocketHub.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/PocketHub.git",
     "sha1": "a7401e5091c06c68fae499ea1972b40143c66fa9",
     "url": "https://github.com/github/android/commit/a7401e5091c06c68fae499ea1972b40143c66fa9",
     "author": "Henrik",
@@ -21254,7 +21254,7 @@
 }, {
     "id": 1140131,
     "repository": "https://github.com/Netflix/feign.git",
-    "mirrorRepository": "https://github.com/OpenFeign/feign.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/feign.git",
     "sha1": "b2b4085348de32f10903970dded99fdf0376a43c",
     "url": "https://github.com/Netflix/feign/commit/b2b4085348de32f10903970dded99fdf0376a43c",
     "author": "Adrian Cole",
@@ -22226,7 +22226,7 @@
 }, {
     "id": 1140435,
     "repository": "https://github.com/droolsjbpm/drools.git",
-    "mirrorRepository": "https://github.com/kiegroup/drools.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/drools.git",
     "sha1": "7ffc62aa554f5884064b81ee80078e35e3833006",
     "url": "https://github.com/droolsjbpm/drools/commit/7ffc62aa554f5884064b81ee80078e35e3833006",
     "author": "Maciej Swiderski",
@@ -23014,7 +23014,7 @@
 }, {
     "id": 1141149,
     "repository": "https://github.com/facebook/presto.git",
-    "mirrorRepository": "https://github.com/prestodb/presto.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/presto.git",
     "sha1": "cb2deceea993128c22710b0f64f1b755c9d176f7",
     "url": "https://github.com/facebook/presto/commit/cb2deceea993128c22710b0f64f1b755c9d176f7",
     "author": "yuananf",
@@ -24574,7 +24574,7 @@
 }, {
     "id": 1142267,
     "repository": "https://github.com/facebook/presto.git",
-    "mirrorRepository": "https://github.com/prestodb/presto.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/presto.git",
     "sha1": "8b1f5ce432bd6f579c646705d79ff0c4690495ae",
     "url": "https://github.com/facebook/presto/commit/8b1f5ce432bd6f579c646705d79ff0c4690495ae",
     "author": "Xin Yao",
@@ -25548,7 +25548,7 @@
 }, {
     "id": 1144535,
     "repository": "https://github.com/facebook/presto.git",
-    "mirrorRepository": "https://github.com/prestodb/presto.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/presto.git",
     "sha1": "484b7cb0d20ec8f7c3b0d9eaf9e3f93468cec88c",
     "url": "https://github.com/facebook/presto/commit/484b7cb0d20ec8f7c3b0d9eaf9e3f93468cec88c",
     "author": "David Phillips",
@@ -26773,7 +26773,7 @@
 }, {
     "id": 1148739,
     "repository": "https://github.com/jenkinsci/workflow-plugin.git",
-    "mirrorRepository": "https://github.com/jenkinsci/pipeline-plugin.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/pipeline-plugin.git",
     "sha1": "d0e374ce8ecb687b4dc046d1edea9e52da17706f",
     "url": "https://github.com/jenkinsci/workflow-plugin/commit/d0e374ce8ecb687b4dc046d1edea9e52da17706f",
     "author": "Jesse Glick",
@@ -26949,7 +26949,7 @@
 }, {
     "id": 1149788,
     "repository": "https://github.com/facebook/presto.git",
-    "mirrorRepository": "https://github.com/prestodb/presto.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/presto.git",
     "sha1": "11048642b1e6b0e35efefab9e4e693b09c8753f5",
     "url": "https://github.com/facebook/presto/commit/11048642b1e6b0e35efefab9e4e693b09c8753f5",
     "author": "Dain Sundstrom",
@@ -27440,7 +27440,7 @@
 }, {
     "id": 1150588,
     "repository": "https://github.com/openhab/openhab.git",
-    "mirrorRepository": "https://github.com/openhab/openhab1-addons.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/openhab1-addons.git",
     "sha1": "f25fa3ae35e4a60a2b7f79a88f14d46ce6cebf55",
     "url": "https://github.com/openhab/openhab/commit/f25fa3ae35e4a60a2b7f79a88f14d46ce6cebf55",
     "author": "Thomas Eichstädt-Engelen",
@@ -30823,7 +30823,7 @@
 }, {
     "id": 1155451,
     "repository": "https://github.com/droolsjbpm/jbpm.git",
-    "mirrorRepository": "https://github.com/kiegroup/jbpm.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/jbpm.git",
     "sha1": "3815f293ba9338f423315d93a373608c95002b15",
     "url": "https://github.com/droolsjbpm/jbpm/commit/3815f293ba9338f423315d93a373608c95002b15",
     "author": "Marco Rietveld",
@@ -31557,7 +31557,7 @@
 }, {
     "id": 1157300,
     "repository": "https://github.com/github/android.git",
-    "mirrorRepository": "https://github.com/pockethub/PocketHub.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/PocketHub.git",
     "sha1": "c97659888126e43e95f0d52d22188bfe194a8439",
     "url": "https://github.com/github/android/commit/c97659888126e43e95f0d52d22188bfe194a8439",
     "author": "Henri Sweers",
@@ -33907,7 +33907,7 @@
 }, {
     "id": 1158457,
     "repository": "https://github.com/jayway/rest-assured.git",
-    "mirrorRepository": "https://github.com/rest-assured/rest-assured.git",
+    "mirrorRepository": "https://github.com/icse18-refactorings/rest-assured.git",
     "sha1": "7cac88b9a28efc05bdc60e585e3291862ffc9da1",
     "url": "https://github.com/jayway/rest-assured/commit/7cac88b9a28efc05bdc60e585e3291862ffc9da1",
     "author": "Johan Haleby",
