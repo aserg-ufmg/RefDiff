@@ -61,7 +61,7 @@ public class EvaluationUtils {
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
 			
-			new RastRootHelper(diff.getAfter()).printRelationships(System.out);
+//			new RastRootHelper(diff.getAfter()).printRelationships(System.out);
 			
 			for (Relationship rel : diff.getRelationships()) {
 				RelationshipType relType = rel.getType();
