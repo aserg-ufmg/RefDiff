@@ -159,7 +159,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
             postProcessSupertypes.put(type, supertypes);
         }
         while (superTypeBinding != null && superTypeBinding.isFromSource()) {
-            String superTypeName = superTypeBinding.getErasure().getQualifiedName();
+            String superTypeName = superTypeBinding.getErasure().getKey();
             supertypes.add(superTypeName);
             superTypeBinding = superTypeBinding.getSuperclass();
         }
@@ -207,7 +207,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
             body.accept(new DependenciesAstVisitor(true) {
                 @Override
                 protected void onMethodAccess(ASTNode node, IMethodBinding binding) {
-                    String methodKey = AstUtils.getKeyFromMethodBinding(binding);
+                    String methodKey = binding.getKey();
                     references.add(methodKey);
                 }
 

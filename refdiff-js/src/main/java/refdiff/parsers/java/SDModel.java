@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
 import org.eclipse.jdt.core.dom.Block;
+import org.eclipse.jdt.core.dom.IMethodBinding;
+import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import refdiff.core.rast.HasChildrenNodes;
@@ -70,7 +72,10 @@ public class SDModel {
 		rastNode.setSimpleName(typeName);
 		rastNode.setNamespace(namespace);
 		parent.addNode(rastNode);
-		keyMap.put(JavaParser.getKey(rastNode), rastNode);
+		ITypeBinding binding = ast.resolveBinding();
+		if (binding != null) {
+			keyMap.put(binding.getKey(), rastNode);
+		}
 		return rastNode;
 	}
 
@@ -94,7 +99,10 @@ public class SDModel {
 		rastNode.setLocalName(methodSignature);
 		rastNode.setSimpleName(methodName);
 		parent.addNode(rastNode);
-		keyMap.put(JavaParser.getKey(rastNode), rastNode);
+		IMethodBinding binding = ast.resolveBinding();
+		if (binding != null) {
+			keyMap.put(binding.getKey(), rastNode);
+		}
 		return rastNode;
 	}
 
