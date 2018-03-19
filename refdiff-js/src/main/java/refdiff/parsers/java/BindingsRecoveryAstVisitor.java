@@ -199,6 +199,12 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
         //method.setVisibility(visibility);
         extractParametersAndReturnType(model, methodDeclaration, method);
 
+        if (AstUtils.isGetter(methodDeclaration)) {
+        	method.addStereotypes(Stereotype.FIELD_ACCESSOR);
+        } else if (AstUtils.isSetter(methodDeclaration)) {
+        	method.addStereotypes(Stereotype.FIELD_MUTATOR);
+        }
+        
         Block body = methodDeclaration.getBody();
         if (body == null) {
             method.addStereotypes(Stereotype.ABSTRACT);

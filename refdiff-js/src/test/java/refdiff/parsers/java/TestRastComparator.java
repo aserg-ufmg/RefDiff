@@ -1,9 +1,7 @@
 package refdiff.parsers.java;
 
-import static org.junit.Assert.assertThat;
-import static refdiff.test.util.RastDiffMatchers.containsOnly;
-import static refdiff.test.util.RastDiffMatchers.node;
-import static refdiff.test.util.RastDiffMatchers.relationship;
+import static org.junit.Assert.*;
+import static refdiff.test.util.RastDiffMatchers.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -87,6 +85,17 @@ public class TestRastComparator {
 			relationship(RelationshipType.SAME, node("p1.A", "m2(int)"), node("p1.A", "m2(int)")),
 			relationship(RelationshipType.RENAME, node("p1.B"), node("p1.C")),
 			relationship(RelationshipType.SAME, node("p1.B", "m2(int)"), node("p1.C", "m2(int)"))
+		));
+	}
+	
+	@Test
+	public void shouldNotMatchExtractGetterAndSetter() throws Exception {
+		assertThat(diff("java7"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p1.A", "m1()")),
+			relationship(RelationshipType.SAME, node("p1.A", "m2()"), node("p1.A", "m2()")),
+			relationship(RelationshipType.SAME, node("p1.A", "m3()"), node("p1.A", "m3()")),
+			relationship(RelationshipType.SAME, node("p1.A", "m4()"), node("p1.A", "m4()"))
 		));
 	}
 	

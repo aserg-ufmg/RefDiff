@@ -230,4 +230,35 @@ public class AstUtils {
 	    } while (node != null);
 	    return null;
 	}
+	
+	public static boolean isGetter(MethodDeclaration methodDeclaration) {
+		String identifier = methodDeclaration.getName().getIdentifier();
+		if (!(identifier.startsWith("get") || identifier.startsWith("is"))) {
+			return false;
+		}
+		Block body = methodDeclaration.getBody();
+		if (body != null) {
+			List<?> statements = body.statements();
+			if (statements.size() > 1) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static boolean isSetter(MethodDeclaration methodDeclaration) {
+		String identifier = methodDeclaration.getName().getIdentifier();
+		if (!identifier.startsWith("set")) {
+			return false;
+		}
+		Block body = methodDeclaration.getBody();
+		if (body != null) {
+			List<?> statements = body.statements();
+			if (statements.size() > 1) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
