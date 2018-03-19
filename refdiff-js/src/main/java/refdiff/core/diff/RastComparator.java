@@ -47,8 +47,8 @@ public class RastComparator {
 	private class DiffBuilder<T> {
 		private final SourceRepresentationBuilder<T> srb;
 		private RastDiff diff;
-		private RastRootHelper<T> before;
-		private RastRootHelper<T> after;
+		private RastRootHelper before;
+		private RastRootHelper after;
 		private Set<RastNode> removed;
 		private Set<RastNode> added;
 		private ArrayList<Double> similaritySame = new ArrayList<>();
@@ -65,8 +65,8 @@ public class RastComparator {
 		DiffBuilder(SourceRepresentationBuilder<T> srb, List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
 			this.srb = srb;
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
-			this.before = new RastRootHelper<T>(this.diff.getBefore());
-			this.after = new RastRootHelper<T>(this.diff.getAfter());
+			this.before = new RastRootHelper(this.diff.getBefore());
+			this.after = new RastRootHelper(this.diff.getAfter());
 			this.removed = new HashSet<>();
 			for (SourceFile fileBefore : filesBefore) {
 				fileMapBefore.put(fileBefore.getPath(), fileBefore);

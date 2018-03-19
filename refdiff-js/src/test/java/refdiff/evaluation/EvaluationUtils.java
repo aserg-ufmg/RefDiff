@@ -14,6 +14,7 @@ import org.eclipse.jgit.revwalk.RevWalk;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.RastRootHelper;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.FileSystemSourceFile;
@@ -60,6 +61,8 @@ public class EvaluationUtils {
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
 			
+			new RastRootHelper(diff.getAfter()).printRelationships(System.out);
+			
 			for (Relationship rel : diff.getRelationships()) {
 				RelationshipType relType = rel.getType();
 				String nodeType = rel.getNodeAfter().getType();
@@ -93,6 +96,33 @@ public class EvaluationUtils {
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		File fRepoFolder = repoFolder(project);
 		if (!fRepoFolder.exists()) {
+			fRepoFolder.mkdirs();
+			ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
+			ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
+		}
+		File fCheckoutFolderV0 = new File(checkoutFolderV0);
+		File fCheckoutFolderV1 = new File(checkoutFolderV1);
+		
+		if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
+			String tagName = "refs/tags/r-" + commit.substring(0, 7);
+			
+			ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", tagName);
+			
+			if (fCheckoutFolderV0.mkdirs()) {
+				ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV0, "checkout", commit + "~", "--", ".");
+			}
+			if (fCheckoutFolderV1.mkdirs()) {
+				ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
+			}
+		}
+	}
+
+	public void prepareSourceCode2(String project, String commit) {
+		System.out.println(String.format("Preparing %s %s", project, commit));
+		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
+		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
+		File fRepoFolder = repoFolder(project);
+		if (!fRepoFolder.exists()) {
 			ExternalProcess.execute(new File(tempFolder), "git", "clone", project, "--bare", "--shallow-since=2015-05-01");
 			// fRepoFolder.mkdirs();
 			// ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
@@ -116,7 +146,7 @@ public class EvaluationUtils {
 			}
 		}
 	}
-
+	
 	private File repoFolder(String project) {
 		return new File(tempFolder + repoName(project) + ".git");
 	}

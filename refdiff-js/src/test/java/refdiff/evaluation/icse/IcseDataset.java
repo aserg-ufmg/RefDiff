@@ -22,8 +22,13 @@ public class IcseDataset extends AbstractDataset {
 		try {
 			IcseCommit[] commits = reader.readValue(new FileReader("data/icse/data.json"));
 			for (IcseCommit commit : commits) {
-				RefactoringSet rs = new RefactoringSet(commit.repository, commit.sha1);
-				RefactoringSet rsNotExpected = new RefactoringSet(commit.repository, commit.sha1);
+				String repoUrl = commit.mirrorRepository;
+				if (repoUrl == null) {
+					repoUrl = "https://github.com/icse18-refactorings/" + commit.repository.substring(commit.repository.lastIndexOf('/') + 1);
+				}
+				
+				RefactoringSet rs = new RefactoringSet(repoUrl, commit.sha1);
+				RefactoringSet rsNotExpected = new RefactoringSet(repoUrl, commit.sha1);
 				for (IcseRefactoring refactoring : commit.refactorings) {
 					if (refactoring.validation.equals("TP") || refactoring.validation.equals("CTP")) {
 						rs.add(parser.parse(refactoring.description));

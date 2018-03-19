@@ -1,5 +1,6 @@
 package refdiff.core.diff;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,7 +18,7 @@ import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 
-public class RastRootHelper<T> {
+public class RastRootHelper {
 	
 	private final RastRoot rastRoot;
 	private final Map<Integer, RastNode> idMap = new HashMap<>();
@@ -139,4 +140,12 @@ public class RastRootHelper<T> {
 		return n1.getType().equals(n2.getType());
 	}
 	
+	public void printRelationships(PrintStream out) {
+		out.print("Relationships:\n");
+		for (RastNodeRelationship rel : rastRoot.getRelationships()) {
+			RastNode n1 = idMap.get(rel.getN1());
+			RastNode n2 = idMap.get(rel.getN2());
+			out.print(String.format("%s %s %s\n", n1.getLocalName(), rel.getType(), n2.getLocalName()));
+		}
+	}
 }
