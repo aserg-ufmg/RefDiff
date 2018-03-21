@@ -21,7 +21,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "C:/tmp/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "D:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -34,11 +34,14 @@ public class RunIcseEval2 {
 		Set<String> whitelist = new HashSet<>(Arrays.asList(
 			"abbf32571232db81a5343db17a933a9ce6923b44",
 			"18a7bd1fd1a83b3b8d1b245e32f78c0b4443b7a7",
+			"04bcfe98dbe7b05e508559930c21379ece845732",
 			"446e2537895c15b404a74107069a12f3fc404b15",
 			"d3533c1a0716ca114d294b3ea183504c9725698f",
-			"04bcfe98dbe7b05e508559930c21379ece845732",
+			"9de5f0d408f861455716b8410fd53f62b360787d",
 			"364f50274d4b4b83d40930c0d2c4d0e57fb34589",
-			"9de5f0d408f861455716b8410fd53f62b360787d"
+			"e78cda0fcf23de3973b659bc54f58a4e9b1f3bd3",
+			"bf35b533f067b51d4c373c5e5124d88525db99f3",
+			"54fa890a6af4ccf564fb481d3e1b6ad4d084de9e"
 			));
 		
 		for (RefactoringSet rs : expected) {
