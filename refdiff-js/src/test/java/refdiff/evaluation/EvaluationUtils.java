@@ -45,7 +45,7 @@ public class EvaluationUtils {
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		
-		prepareSourceCode(project, commit);
+		prepareSourceCode2(project, commit);
 		
 		GitHelper gitHelper = new GitHelper();
 		try (
