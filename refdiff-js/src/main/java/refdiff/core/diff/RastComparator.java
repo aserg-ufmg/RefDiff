@@ -219,7 +219,10 @@ public class RastComparator {
 							T sourceN1After = sourceRep(n1After);
 							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, sourceN1After);
-							double score = srb.partialSimilarity(bodySourceRep(n2), removedSource);
+							T bodySourceN2 = bodySourceRep(n2);
+							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
+							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
+							double score = Math.max(score1, score2);
 							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 							}
@@ -242,7 +245,9 @@ public class RastComparator {
 							T sourceN1Caller = sourceRep(n1Caller);
 							T sourceN1CallerAfter = sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
-							double score = srb.partialSimilarity(sourceN1, addedCode);
+							double score1 = srb.partialSimilarity(sourceN1, addedCode);
+							double score2 = srb.partialSimilarity(addedCode, sourceN1);
+							double score = Math.max(score1, score2);
 							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							}
