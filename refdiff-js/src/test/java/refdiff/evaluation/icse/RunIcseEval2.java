@@ -21,7 +21,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "D:/tmp/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "C:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -41,7 +41,8 @@ public class RunIcseEval2 {
 			"364f50274d4b4b83d40930c0d2c4d0e57fb34589",
 			"e78cda0fcf23de3973b659bc54f58a4e9b1f3bd3",
 			"bf35b533f067b51d4c373c5e5124d88525db99f3",
-			"54fa890a6af4ccf564fb481d3e1b6ad4d084de9e"
+			"54fa890a6af4ccf564fb481d3e1b6ad4d084de9e",
+			"021d17c8234904dcb1d54596662352395927fe7b"
 			));
 		
 		for (RefactoringSet rs : expected) {

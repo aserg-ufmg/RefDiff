@@ -246,8 +246,8 @@ public class ResultComparator {
                                     out.print("<PDM>");
                                 }
                             }
-                            out.print('\t');
-                            out.print(r.getSimilarity() != null ? r.getSimilarity() : "");
+//                          out.print('\t');
+//                          out.print(r.getSimilarity() != null ? r.getSimilarity() : "");
                         }
                     }
                     

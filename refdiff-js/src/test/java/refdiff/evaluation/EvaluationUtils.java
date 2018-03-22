@@ -14,7 +14,6 @@ import org.eclipse.jgit.revwalk.RevWalk;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
-import refdiff.core.diff.RastRootHelper;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.FileSystemSourceFile;
@@ -30,6 +29,10 @@ public class EvaluationUtils {
 	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	private RastComparator comparator = new RastComparator(parser, tokenizer);
 	private String tempFolder = "C:/tmp/";
+	/**
+	 * The ICSE dataset don't describe the qualified name of the extracted/inlined method.
+	 */
+	private boolean workAroundExtractAndInlineInconsistencies = true;
 	
 	public EvaluationUtils(String tempFolder) {
 		this.tempFolder = tempFolder;
@@ -72,8 +75,16 @@ public class EvaluationUtils {
 						diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))) {
 						continue;
 					}
+					
 					String keyN1 = JavaParser.getKey(rel.getNodeBefore());
 					String keyN2 = JavaParser.getKey(rel.getNodeAfter());
+					if (workAroundExtractAndInlineInconsistencies) {
+						if (refType.get().equals(RefactoringType.EXTRACT_OPERATION)) {
+							keyN2 = keyN1.substring(0, keyN1.lastIndexOf('.') + 1) + keyN2.substring(keyN2.lastIndexOf('.') + 1);
+						} else if (refType.get().equals(RefactoringType.INLINE_OPERATION)) {
+							keyN1 = keyN2.substring(0, keyN2.lastIndexOf('.') + 1) + keyN1.substring(keyN1.lastIndexOf('.') + 1);
+						}
+					}
 					rs.add(refType.get(), keyN1, keyN2, rel.getSimilarity());
 				}
 			}
