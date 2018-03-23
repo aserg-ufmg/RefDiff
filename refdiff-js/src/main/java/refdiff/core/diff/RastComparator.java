@@ -201,8 +201,11 @@ public class RastComparator {
 				} else {
 					if (sameSignature(n1, n2)) {
 						addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
+					} else if (sameName(n1, n2)) {
+						addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
+						// move and change signature
 					} else {
-						// move and rename / move and rename and change signature
+						// move and rename
 					}
 				}
 			}
