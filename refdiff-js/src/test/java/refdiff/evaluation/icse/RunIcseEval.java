@@ -32,7 +32,7 @@ public class RunIcseEval {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			try {
-				evalUtils.prepareSourceCode(project, commit);
+				evalUtils.prepareSourceCode2(project, commit);
 			} catch (RuntimeException e) {
 				System.out.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());
