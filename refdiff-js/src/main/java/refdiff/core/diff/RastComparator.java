@@ -161,7 +161,7 @@ public class RastComparator {
 			}*/
 			
 			threshold.adjustTo(similaritySame);
-			reportSimilarity(similaritySame);
+			//reportSimilarity(similaritySame);
 			//reportSimilarity(similarityNotSame);
 		}
 		

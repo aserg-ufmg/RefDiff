@@ -28,23 +28,29 @@ public class RunIcseEval {
 		ResultComparator rc = new ResultComparator();
 		rc.dontExpect(data.getNotExpected());
 		
+		int count = 0;
+		int errorCount = 0;
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			try {
 				evalUtils.prepareSourceCode2(project, commit);
 			} catch (RuntimeException e) {
-				System.out.println(String.format("Skipped %s %s", project, commit));
+				errorCount++;
+				System.err.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());
 				continue;
 			}
 			rc.expect(rs);
 			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
+			count++;
 		}
 		
 		rc.printDetails(System.out, refactoringTypes);
 		System.out.println();
 		rc.printSummary(System.out, refactoringTypes);
+		
+		System.out.println(String.format("%d commits processed, %d commits skipped.", count, errorCount));
 	}
 	
 }
