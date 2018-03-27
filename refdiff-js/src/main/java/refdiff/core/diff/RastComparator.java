@@ -289,9 +289,9 @@ public class RastComparator {
 		private Set<Relationship> findPushDownMembers(RastNode nBefore, RastNode nAfter) {
 			Set<Relationship> relationships = new HashSet<>();
 			for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
-				for (RastNode n1Member : children(nBefore, m -> m.hasStereotype(Stereotype.TYPE_MEMBER))) {
+				for (RastNode n1Member : nBefore.getNodes()/*, m -> m.hasStereotype(Stereotype.TYPE_MEMBER)*/) {
 					Optional<RastNode> maybeN2Member = findByFullName(subtype, fullName(n1Member));
-					if (maybeN2Member.isPresent() && maybeN2Member.get().hasStereotype(Stereotype.TYPE_MEMBER) && added(maybeN2Member.get())) {
+					if (maybeN2Member.isPresent() /*&& maybeN2Member.get().hasStereotype(Stereotype.TYPE_MEMBER)*/ && added(maybeN2Member.get())) {
 						if (removed(n1Member)) {
 							relationships.add(new Relationship(RelationshipType.PUSH_DOWN, n1Member, maybeN2Member.get()));
 						} else {
@@ -313,13 +313,13 @@ public class RastComparator {
 			}
 			Set<Relationship> relationships = new HashSet<>();
 			Set<RastNode> subtypesWithPulledUpMembers = new HashSet<>();
-			for (RastNode addedMember : children(supertypeAfter, m -> added(m) && m.hasStereotype(Stereotype.TYPE_MEMBER))) {
+			for (RastNode addedMember : children(supertypeAfter, m -> added(m) /*&& m.hasStereotype(Stereotype.TYPE_MEMBER)*/)) {
 				for (RastNode subtypeAfter : subtypesAfter) {
 					Optional<RastNode> optSubtypeBefore = matchingNodeBefore(subtypeAfter);
 					if (optSubtypeBefore.isPresent()) {
 						RastNode subtypeBefore = optSubtypeBefore.get();
 						Optional<RastNode> optNode = findByFullName(subtypeBefore, fullName(addedMember));
-						if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER)) {
+						if (optNode.isPresent() /*&& optNode.get().hasStereotype(Stereotype.TYPE_MEMBER)*/) {
 							if (removed(optNode.get())) {
 								relationships.add(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
 								subtypesWithPulledUpMembers.add(subtypeBefore);
