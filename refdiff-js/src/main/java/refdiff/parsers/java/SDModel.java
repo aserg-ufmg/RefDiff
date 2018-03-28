@@ -92,8 +92,9 @@ public class SDModel {
             bodyStart = ast.getStartPosition() + ast.getLength();
             bodyLength = 0;
         } else {
-        	bodyStart = body.getStartPosition();
-            bodyLength = body.getLength();
+        	// Remove open and close brackets
+        	bodyStart = body.getStartPosition() + 1;
+        	bodyLength = body.getLength() - 2;
         }
         rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), bodyStart, bodyStart + bodyLength));
 		rastNode.setLocalName(methodSignature);

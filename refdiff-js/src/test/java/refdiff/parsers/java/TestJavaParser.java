@@ -46,7 +46,7 @@ public class TestJavaParser {
 		assertThat(fooM1.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(fooM1.getLocalName(), is("m1(String)"));
 		assertThat(fooM1.getSimpleName(), is("m1"));
-		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 39, 75, 66, 75)));
+		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 39, 75, 67, 74)));
 		
 		RastNode classBar = root.getNodes().get(1);
 		assertThat(classBar.getType(), is(NodeTypes.CLASS_DECLARATION));
