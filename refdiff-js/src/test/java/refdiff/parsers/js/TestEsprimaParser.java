@@ -1,8 +1,7 @@
 package refdiff.parsers.js;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,6 +48,7 @@ public class TestEsprimaParser {
 		assertThat(nodeFnHello.getType(), is("FunctionDeclaration"));
 		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 71, 45, 71)));
 		assertThat(nodeFnHello.getLocalName(), is("hello"));
+		assertThat(nodeFnHello.getParameters().size(), is(0));
 	}
 	
 	@Test
@@ -99,6 +99,9 @@ public class TestEsprimaParser {
 		RastNode contructor = nodeRectangle.getNodes().get(0);
 		assertThat(contructor.getType(), is("MethodDefinition"));
 		assertThat(contructor.getLocalName(), is("constructor"));
+		assertThat(contructor.getParameters().size(), is(2));
+		assertThat(contructor.getParameters().get(0).getName(), is("height"));
+		assertThat(contructor.getParameters().get(1).getName(), is("width"));
 		
 		RastNode methodGetArea = nodeRectangle.getNodes().get(1);
 		assertThat(methodGetArea.getType(), is("MethodDefinition"));

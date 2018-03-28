@@ -1,10 +1,13 @@
 package refdiff.parsers.js;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.Stereotype;
 
@@ -21,6 +24,23 @@ abstract class EsprimaNodeHandler {
 	}
 	
 	public abstract Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode);
+	
+	public List<Parameter> getParameters(RastNode rastNode, JsValue esprimaNode) {
+		return Collections.emptyList();
+	}
+	
+	protected List<Parameter> extractParameters(JsValue nodeWithParams) {
+		JsValue params = nodeWithParams.get("params");
+		if (params.isArray()) {
+			List<Parameter> parameters = new ArrayList<>(params.size());
+			for (int i = 0; i < params.size(); i++) {
+				JsValue param = params.get(i);
+				parameters.add(new Parameter(param.get("name").asString()));
+			}
+			return parameters;
+		}
+		return Collections.emptyList();
+	}
 	
 	static final Map<String, EsprimaNodeHandler> RAST_NODE_HANDLERS = new HashMap<>();
 	
@@ -52,6 +72,11 @@ abstract class EsprimaNodeHandler {
 			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode) {
 				return Collections.singleton(Stereotype.HAS_BODY);
 			}
+			
+			@Override
+			public List<Parameter> getParameters(RastNode rastNode, JsValue esprimaNode) {
+				return extractParameters(esprimaNode);
+			}
 		});
 		
 		RAST_NODE_HANDLERS.put("FunctionDeclaration", new EsprimaNodeHandler() {
@@ -61,6 +86,11 @@ abstract class EsprimaNodeHandler {
 			
 			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValue esprimaNode) {
 				return Collections.singleton(Stereotype.HAS_BODY);
+			}
+			
+			@Override
+			public List<Parameter> getParameters(RastNode rastNode, JsValue esprimaNode) {
+				return extractParameters(esprimaNode);
 			}
 		});
 		
@@ -86,6 +116,12 @@ abstract class EsprimaNodeHandler {
 					return Collections.emptySet();
 				}
 			}
+			
+			@Override
+			public List<Parameter> getParameters(RastNode rastNode, JsValue esprimaNode) {
+				return extractParameters(esprimaNode.get("value"));
+			}
+			
 		});
 	}
 }

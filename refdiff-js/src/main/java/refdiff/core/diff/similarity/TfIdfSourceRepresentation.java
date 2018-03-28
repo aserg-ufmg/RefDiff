@@ -1,6 +1,7 @@
 package refdiff.core.diff.similarity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class TfIdfSourceRepresentation {
@@ -15,6 +16,10 @@ public class TfIdfSourceRepresentation {
 	
 	public TfIdfSourceRepresentation minus(TfIdfSourceRepresentation other) {
 		return new TfIdfSourceRepresentation(tokens.minus((other).tokens), vocabulary);
+	}
+	
+	public TfIdfSourceRepresentation minus(List<String> tokensToRemove) {
+		return new TfIdfSourceRepresentation(tokens.minusElements(tokensToRemove), vocabulary);
 	}
 	
 	public String toString() {
@@ -61,5 +66,5 @@ public class TfIdfSourceRepresentation {
 		}
 		return idfu / idfd;
 	}
-	
+
 }

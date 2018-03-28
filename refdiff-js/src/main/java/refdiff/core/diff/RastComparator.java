@@ -22,6 +22,7 @@ import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.SourceFile;
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
+import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.Stereotype;
@@ -105,7 +106,14 @@ public class RastComparator {
 		
 		private void computeSourceRepresentation(Map<String, SourceFile> fileMap, RastNode node, boolean isBefore) {
 			srMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, false))));
-			srBodyMap.put(node, srb.buildForFragment(tokenizer.tokenize(retrieveSourceCode(fileMap, node, true))));
+			T body = srb.buildForFragment(tokenizer.tokenize(retrieveSourceCode(fileMap, node, true)));
+			List<String> tokensToIgnore = new ArrayList<>();
+			for (Parameter parameter : node.getParameters()) {
+				tokensToIgnore.add(parameter.getName());
+			}
+			//tokensToIgnore.add("return");
+			T normalizedBody = srb.minus(body, tokensToIgnore);
+			srBodyMap.put(node, normalizedBody);
 		}
 		
 		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node, boolean bodyOnly) {

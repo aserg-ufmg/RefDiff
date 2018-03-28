@@ -44,7 +44,13 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 	}
 	
 	@Override
+	public TfIdfSourceRepresentation minus(TfIdfSourceRepresentation arg1, List<String> tokensToRemove) {
+		return arg1.minus(tokensToRemove);
+	}
+	
+	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + "\n" + vocabulary.toString();
 	}
+
 }

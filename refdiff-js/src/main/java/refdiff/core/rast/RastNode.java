@@ -16,6 +16,7 @@ public class RastNode implements HasChildrenNodes {
 	private Optional<RastNode> parent = Optional.empty();
 	private List<RastNode> nodes = new ArrayList<>();
 	private Set<Stereotype> stereotypes = new HashSet<>();
+	private List<Parameter> parameters = new ArrayList<>();
 	
 	public RastNode(int id) {
 		this.id = id;
@@ -106,6 +107,14 @@ public class RastNode implements HasChildrenNodes {
 
 	public void setNamespace(String namespace) {
 		this.namespace = namespace;
+	}
+	
+	public List<Parameter> getParameters() {
+		return parameters;
+	}
+
+	public void setParameters(List<Parameter> parameters) {
+		this.parameters = parameters;
 	}
 	
 }

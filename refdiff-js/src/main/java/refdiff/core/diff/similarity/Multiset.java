@@ -2,6 +2,7 @@ package refdiff.core.diff.similarity;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -33,6 +34,17 @@ public class Multiset<E> implements Collection<E> {
 			}
 			if (diff > 0) {
 				result.add(e.getKey(), diff);
+			}
+		}
+		return result;
+	}
+	
+	public Multiset<E> minusElements(Collection<E> other) {
+		Multiset<E> result = new Multiset<E>();
+		Set<E> keysToIgnore = new HashSet<>(other);
+		for (Entry<E, Integer> e : map.entrySet()) {
+			if (!keysToIgnore.contains(e.getKey())) {
+				result.add(e.getKey(), e.getValue());
 			}
 		}
 		return result;

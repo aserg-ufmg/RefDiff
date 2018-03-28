@@ -12,6 +12,7 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
+import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
@@ -113,8 +114,7 @@ public class SDModel {
 	}
 
 	public void addParameter(RastNode method, String identifier, String typeName) {
-		// TODO Auto-generated method stub
-		
+		method.getParameters().add(new Parameter(identifier));
 	}
 
 	public RastRoot getRoot() {

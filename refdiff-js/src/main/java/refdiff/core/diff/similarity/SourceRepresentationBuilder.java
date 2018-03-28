@@ -14,6 +14,8 @@ public interface SourceRepresentationBuilder<T> {
 	
 	T minus(T arg1, T arg2);
 	
+	T minus(T arg1, List<String> tokensToRemove);
+	
 	double similarity(T arg1, T arg2);
 	
 	double partialSimilarity(T arg1, T arg2);
