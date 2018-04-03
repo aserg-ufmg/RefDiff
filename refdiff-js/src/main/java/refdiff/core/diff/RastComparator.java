@@ -236,6 +236,7 @@ public class RastComparator {
 						// move and change signature
 					} else {
 						// move and rename
+						addMatch(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
 					}
 				}
 			}

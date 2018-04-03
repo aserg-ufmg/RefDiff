@@ -190,6 +190,13 @@ public class EvaluationUtils {
 				return Optional.of(RefactoringType.RENAME_METHOD);
 			}
 			break;
+		case MOVE_RENAME:
+			if (isType) {
+				return Optional.of(RefactoringType.RENAME_CLASS);
+			} else if (isMethod) {
+				return Optional.empty();
+			}
+			break;
 		case EXTRACT:
 			if (isMethod) {
 				return Optional.of(RefactoringType.EXTRACT_OPERATION);
