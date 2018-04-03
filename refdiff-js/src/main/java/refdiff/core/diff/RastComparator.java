@@ -4,6 +4,7 @@ import static refdiff.core.diff.RastRootHelper.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -111,9 +112,27 @@ public class RastComparator {
 			for (Parameter parameter : node.getParameters()) {
 				tokensToIgnore.add(parameter.getName());
 			}
-			//tokensToIgnore.add("return");
+			tokensToIgnore.addAll(getTokensToIgnoreInNodeBody(node));
 			T normalizedBody = srb.minus(body, tokensToIgnore);
 			srBodyMap.put(node, normalizedBody);
+		}
+		
+		private Collection<String> getTokensToIgnoreInNodeBody(RastNode node) {
+			return Arrays.asList("return");
+		}
+		
+		private T getTokensToUseNode(RastNode node) {
+			return srb.buildForFragment(Collections.emptyList());
+//			List<String> tokens = new ArrayList<>();
+//			tokens.add(node.getSimpleName());
+//			tokens.add("(");
+//			tokens.add(")");
+//			if (node.getParameters() != null) {
+//				for (int i = 1; i < node.getParameters().size(); i++) {
+//					tokens.add(",");
+//				}
+//			}
+//			return srb.buildForFragment(tokens);
 		}
 		
 		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node, boolean bodyOnly) {
@@ -188,6 +207,9 @@ public class RastComparator {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
 						if (includeLeaves || (!leaf(n1) && !leaf(n2))) {
 							double score = srb.similarity(sourceRep(n1), sourceRep(n2));
+//							if (n1.getLocalName().equals("isNotifyingOnConnection()") && n2.getLocalName().equals("notifiesOnConnection()")) {
+//								n1.getLocalName();
+//							}
 							if (score > threshold.getValue()) {
 								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
 								candidates.add(candidate);
@@ -222,6 +244,9 @@ public class RastComparator {
 		private void matchExtract() {
 			Set<Relationship> relationships = new HashSet<>();
 			for (RastNode n2 : added) {
+//				if (n2.getLocalName().equals("has(NSString)") && n2.getParent().isPresent() && n2.getParent().get().getLocalName().equals("CBConnectPeripheralOptions")) {
+//					n2.getLocalName();
+//				}
 				for (RastNode n1After : after.findReverseRelationships(RastNodeRelationshipType.USE, n2)) {
 					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
 					if (optMatchingNode.isPresent()) {
@@ -229,7 +254,7 @@ public class RastComparator {
 						if (sameType(n1, n2) && !n2.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n2.hasStereotype(Stereotype.FIELD_MUTATOR)) {
 							T sourceN1After = sourceRep(n1After);
 							T sourceN1Before = sourceRep(n1);
-							T removedSource = srb.minus(sourceN1Before, sourceN1After);
+							T removedSource = srb.minus(sourceN1Before, srb.minus(sourceN1After, getTokensToUseNode(n2)));
 							T bodySourceN2 = bodySourceRep(n2);
 							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
 							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
@@ -255,7 +280,7 @@ public class RastComparator {
 							T sourceN1 = bodySourceRep(n1);
 							T sourceN1Caller = sourceRep(n1Caller);
 							T sourceN1CallerAfter = sourceRep(n2);
-							T addedCode = srb.minus(sourceN1CallerAfter, sourceN1Caller);
+							T addedCode = srb.minus(sourceN1CallerAfter, srb.minus(sourceN1Caller, getTokensToUseNode(n1)));
 							double score1 = srb.partialSimilarity(sourceN1, addedCode);
 							double score2 = srb.partialSimilarity(addedCode, sourceN1);
 							double score = Math.max(score1, score2);

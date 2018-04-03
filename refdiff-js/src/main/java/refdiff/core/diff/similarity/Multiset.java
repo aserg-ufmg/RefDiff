@@ -22,6 +22,9 @@ public class Multiset<E> implements Collection<E> {
 	}
 	
 	public Multiset<E> minus(Multiset<E> other) {
+		if (other.isEmpty()) {
+			return this;
+		}
 		Multiset<E> result = new Multiset<E>();
 		for (Entry<E, Integer> e : map.entrySet()) {
 			Integer thisCount = e.getValue();
