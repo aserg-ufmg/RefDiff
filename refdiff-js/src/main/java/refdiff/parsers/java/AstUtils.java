@@ -160,11 +160,13 @@ public class AstUtils {
         for (int i = 0; i < parameters.length; i++) {
             String parameter = parameters[i];
             int space = parameter.lastIndexOf(' ');
+            String parameterType;
             if (space == -1) {
-                sb.append(parameter);
+            	parameterType = parameter;
             } else {
-                sb.append(parameter.substring(space + 1));
+            	parameterType = parameter.substring(space + 1);
             }
+            sb.append(stripQualifiedTypeName(parameterType));
             if (i < parameters.length - 1) {
                 sb.append(',');
             }

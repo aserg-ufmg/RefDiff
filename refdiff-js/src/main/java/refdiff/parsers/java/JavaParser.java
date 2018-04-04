@@ -41,6 +41,9 @@ public class JavaParser implements RastParser {
 		} else {
 			parentName = "";
 		}
+		if (node.getType().equals(NodeTypes.METHOD_DECLARATION)) {
+			return parentName + AstUtils.normalizeMethodSignature(node.getLocalName());
+		}
 		return parentName + node.getLocalName();
 	}
 }
