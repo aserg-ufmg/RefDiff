@@ -48,7 +48,8 @@ public class RunIcseEval2 {
 //			"881baed894540031bd55e402933bcad28b74ca88",
 //			"b36ab386559d04db114db8edd87c8d4cbf850c12",
 //			"c753d2e41ba667f9b5a31451a16ecbaecdc65d80",
-			"c7b6a7aa878aabd6400d2df0490e1eb2b810c8f9"
+//			"c7b6a7aa878aabd6400d2df0490e1eb2b810c8f9",
+			"23c49d834d3859fc76a604da32d1789d2e863303"
 			));
 		
 		for (RefactoringSet rs : expected) {
@@ -56,7 +57,7 @@ public class RunIcseEval2 {
 			String commit = rs.getRevision();
 			if (!whitelist.contains(commit)) continue;
 			try {
-				evalUtils.prepareSourceCode(project, commit);
+				evalUtils.prepareSourceCode2(project, commit);
 			} catch (RuntimeException e) {
 				System.out.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());
