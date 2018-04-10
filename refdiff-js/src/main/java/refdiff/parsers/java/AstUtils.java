@@ -238,6 +238,9 @@ public class AstUtils {
 		if (!(identifier.startsWith("get") || identifier.startsWith("is"))) {
 			return false;
 		}
+		if (!methodDeclaration.parameters().isEmpty()) {
+			return false;
+		}
 		Block body = methodDeclaration.getBody();
 		if (body != null) {
 			List<?> statements = body.statements();
@@ -251,6 +254,9 @@ public class AstUtils {
 	public static boolean isSetter(MethodDeclaration methodDeclaration) {
 		String identifier = methodDeclaration.getName().getIdentifier();
 		if (!identifier.startsWith("set")) {
+			return false;
+		}
+		if (methodDeclaration.parameters().size() != 1) {
 			return false;
 		}
 		Block body = methodDeclaration.getBody();
