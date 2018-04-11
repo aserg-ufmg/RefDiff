@@ -81,10 +81,12 @@ public class SDModel {
 	}
 
 	public RastNode createMethod(String methodSignature, HasChildrenNodes parent, String sourceFilePath, boolean constructor, MethodDeclaration ast) {
-		String methodName = ast.isConstructor() ? "" : ast.getName().getIdentifier();
+		String methodName = ast.isConstructor() ? "new" : ast.getName().getIdentifier();
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
-		
+		if (constructor) {
+			rastNode.addStereotypes(Stereotype.TYPE_CONSTRUCTOR);
+		}
 		Block body = ast.getBody();
 		int bodyStart;
 		int bodyLength;

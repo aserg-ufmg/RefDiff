@@ -49,7 +49,8 @@ public class RunIcseEval2 {
 //			"b36ab386559d04db114db8edd87c8d4cbf850c12",
 //			"c753d2e41ba667f9b5a31451a16ecbaecdc65d80",
 //			"c7b6a7aa878aabd6400d2df0490e1eb2b810c8f9",
-			"23c49d834d3859fc76a604da32d1789d2e863303"
+//			"23c49d834d3859fc76a604da32d1789d2e863303",
+			"2b89553db5081fe4e55b7b34d636d0ea2acf71c5"
 			));
 		
 		for (RefactoringSet rs : expected) {

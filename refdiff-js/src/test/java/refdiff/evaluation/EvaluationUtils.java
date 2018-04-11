@@ -19,6 +19,7 @@ import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFile;
+import refdiff.core.rast.Stereotype;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.JavaSourceTokenizer;
 import refdiff.parsers.java.NodeTypes;
@@ -78,6 +79,15 @@ public class EvaluationUtils {
 					
 					String keyN1 = JavaParser.getKey(rel.getNodeBefore());
 					String keyN2 = JavaParser.getKey(rel.getNodeAfter());
+					
+					// convert org.MyClass.new() to org.MyClass.MyClass()
+					if (rel.getNodeBefore().hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
+						keyN1 = keyN1.replace(".new(", "." + rel.getNodeBefore().getParent().get().getSimpleName() + "(");
+					}
+					if (rel.getNodeAfter().hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
+						keyN2 = keyN2.replace(".new(", "." + rel.getNodeAfter().getParent().get().getSimpleName() + "(");
+					}
+					
 					if (workAroundExtractAndInlineInconsistencies) {
 						if (refType.get().equals(RefactoringType.EXTRACT_OPERATION)) {
 							keyN2 = keyN1.substring(0, keyN1.lastIndexOf('.') + 1) + keyN2.substring(keyN2.lastIndexOf('.') + 1);

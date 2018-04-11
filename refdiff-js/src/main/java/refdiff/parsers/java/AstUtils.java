@@ -31,7 +31,7 @@ public class AstUtils {
 		String className = binding.getDeclaringClass().getErasure().getQualifiedName();
 		sb.append(className);
 		sb.append('.');
-		String methodName = binding.isConstructor() ? "" : binding.getName();
+		String methodName = binding.isConstructor() ? "new" : binding.getName();
 		sb.append(methodName);
 		//if (methodName.equals("allObjectsSorted")) {
 		//	System.out.println();
@@ -59,7 +59,7 @@ public class AstUtils {
 	}
 	
 	public static String getSignatureFromMethodDeclaration(MethodDeclaration methodDeclaration) {
-		String methodName = methodDeclaration.isConstructor() ? "" : methodDeclaration.getName().getIdentifier();
+		String methodName = methodDeclaration.isConstructor() ? "new" : methodDeclaration.getName().getIdentifier();
 //		if (methodName.equals("allObjectsSorted")) {
 //			System.out.println();
 //		}
