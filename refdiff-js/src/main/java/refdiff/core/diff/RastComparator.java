@@ -255,7 +255,7 @@ public class RastComparator {
 					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
 					if (optMatchingNode.isPresent()) {
 						RastNode n1 = optMatchingNode.get();
-						if (sameType(n1, n2) && !n2.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n2.hasStereotype(Stereotype.FIELD_MUTATOR)) {
+						if (sameType(n1, n2)/* && !n2.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n2.hasStereotype(Stereotype.FIELD_MUTATOR)*/) {
 							T sourceN1After = sourceRep(n1After);
 							T sourceN1Before = sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, srb.minus(sourceN1After, getTokensToUseNode(n2)));
@@ -280,7 +280,7 @@ public class RastComparator {
 					Optional<RastNode> optMatchingNode = matchingNodeAfter(n1Caller);
 					if (optMatchingNode.isPresent()) {
 						RastNode n2 = optMatchingNode.get();
-						if (sameType(n1, n2) && !n1.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n1.hasStereotype(Stereotype.FIELD_MUTATOR)) {
+						if (sameType(n1, n2)/* && !n1.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n1.hasStereotype(Stereotype.FIELD_MUTATOR)*/) {
 							T sourceN1 = bodySourceRep(n1);
 							T sourceN1Caller = sourceRep(n1Caller);
 							T sourceN1CallerAfter = sourceRep(n2);
