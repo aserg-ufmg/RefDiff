@@ -15326,13 +15326,6 @@
         "validation": "TP",
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
-    }, {
-        "type": "Extract Method",
-        "description": "Extract Method protected getCountQuery(spec Specification<T>, mode QueryMode) : TypedQuery<Long> extracted from protected getCountQuery(spec Specification<T>) : TypedQuery<Long> in class org.springframework.data.jpa.repository.support.SimpleJpaRepository",
-        "comment": null,
-        "validation": "TP",
-        "detectionTools": "RefactoringMiner",
-        "validators": null
     }],
     "refDiffExecutionTime": 5726
 }, {
@@ -22503,7 +22496,6 @@
     "url": "https://github.com/JetBrains/intellij-community/commit/106d1d51754f454fa673976665e41f463316e084",
     "author": "Roman Shevchenko",
     "time": "7/14/15 10:55 AM",
-    "ignore": true,
     "refactorings": [{
         "type": "Extract Method",
         "description": "Extract Method private dummy(builder PsiBuilder) : void extracted from public parseTypeParameter(builder PsiBuilder) : PsiBuilder.Marker in class com.intellij.lang.java.parser.ReferenceParser",
@@ -22781,7 +22773,6 @@
     "url": "https://github.com/spring-projects/spring-security/commit/08b1b56e2cd5ad72126f4bbeb15a47d9b104dfff",
     "author": "Rob Winch",
     "time": "7/14/15 4:48 PM",
-    "ignore": true,
     "refactorings": [{
         "type": "Move Class",
         "description": "Move Class org.springframework.security.web.context.SaveContextOnUpdateOrErrorResponseWrapper.SaveContextServletOutputStream moved to org.springframework.security.web.context.OnCommittedResponseWrapper.SaveContextServletOutputStream",

@@ -4,12 +4,14 @@ import static refdiff.evaluation.RefactoringRelationship.parentOf;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -113,9 +115,9 @@ public class ResultComparator {
     }
 
     public CompareResult getCompareResult(String groupId, EnumSet<RefactoringType> refTypesToConsider) {
-        Set<Object> truePositives = new HashSet<>();
-        Set<Object> falsePositives = new HashSet<>();
-        Set<Object> falseNegatives = new HashSet<>();
+        List<Object> truePositives = new ArrayList<>();
+        List<Object> falsePositives = new ArrayList<>();
+        List<Object> falseNegatives = new ArrayList<>();
 
         EnumSet<RefactoringType> ignore = EnumSet.complementOf(refTypesToConsider);
         
@@ -312,11 +314,11 @@ public class ResultComparator {
     }
 
     public static class CompareResult {
-        private final Set<Object> truePositives;
-        private final Set<Object> falsePositives;
-        private final Set<Object> falseNegatives;
+        private final Collection<Object> truePositives;
+        private final Collection<Object> falsePositives;
+        private final Collection<Object> falseNegatives;
 
-        public CompareResult(Set<Object> truePositives, Set<Object> falsePositives, Set<Object> falseNegatives) {
+        public CompareResult(Collection<Object> truePositives, Collection<Object> falsePositives, Collection<Object> falseNegatives) {
             this.truePositives = truePositives;
             this.falsePositives = falsePositives;
             this.falseNegatives = falseNegatives;
