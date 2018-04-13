@@ -605,6 +605,7 @@
     "error": true,
     "author": "Teppo Kurki",
     "time": "6/8/15 4:19 AM",
+    "ignore": true,
     "refactorings": [{
         "type": "Inline Method",
         "description": "Inline Method private remove() : void inlined to public testColExpandRatioIsForgotten() : void in class com.vaadin.ui.GridLayoutExpandRatioTest",
@@ -9678,6 +9679,7 @@
     "error": true,
     "author": "Xin Jia",
     "time": "6/22/15 3:24 PM",
+    "ignore": true,
     "refactorings": [{
         "type": "Extract Method",
         "description": "Extract Method private isGroupbyMatchingIndex(matchingCase MatViewIndexMacthingGroupby, groupbyColRefs List<ColumnRef>, groupbyExprs List<AbstractExpression>, indexedColRefs List<ColumnRef>, indexedExprs List<AbstractExpression>, srcColumnArray List<Column>) : boolean extracted from private findBestMatchIndexForMatviewMinOrMax(matviewinfo MaterializedViewInfo, srcTable Table, groupbyExprs List<AbstractExpression>, singleUniqueMinMaxAggExpr AbstractExpression) : Index in class org.voltdb.compiler.DDLCompiler",
@@ -22501,6 +22503,7 @@
     "url": "https://github.com/JetBrains/intellij-community/commit/106d1d51754f454fa673976665e41f463316e084",
     "author": "Roman Shevchenko",
     "time": "7/14/15 10:55 AM",
+    "ignore": true,
     "refactorings": [{
         "type": "Extract Method",
         "description": "Extract Method private dummy(builder PsiBuilder) : void extracted from public parseTypeParameter(builder PsiBuilder) : PsiBuilder.Marker in class com.intellij.lang.java.parser.ReferenceParser",
@@ -22778,6 +22781,7 @@
     "url": "https://github.com/spring-projects/spring-security/commit/08b1b56e2cd5ad72126f4bbeb15a47d9b104dfff",
     "author": "Rob Winch",
     "time": "7/14/15 4:48 PM",
+    "ignore": true,
     "refactorings": [{
         "type": "Move Class",
         "description": "Move Class org.springframework.security.web.context.SaveContextOnUpdateOrErrorResponseWrapper.SaveContextServletOutputStream moved to org.springframework.security.web.context.OnCommittedResponseWrapper.SaveContextServletOutputStream",
@@ -23427,6 +23431,8 @@
     "url": "https://github.com/vaadin/vaadin/commit/0f9d0b0bf1cd5fb58f47f22bd6d52a9fac31c530",
     "author": "Johannes Dahlström",
     "time": "7/15/15 5:41 AM",
+    "error": true,
+    "ignore": true,
     "refactorings": [{
         "type": "Extract Method",
         "description": "Extract Method private getVisibleFrozenColumnCount() : int extracted from private updateFrozenColumns() : void in class com.vaadin.client.widgets.Grid",

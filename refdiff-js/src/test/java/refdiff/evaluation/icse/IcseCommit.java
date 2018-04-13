@@ -10,5 +10,6 @@ public class IcseCommit {
     public String url;
     public String author;
     public String time;
+    public boolean ignore;
     public List<IcseRefactoring> refactorings;
 }
