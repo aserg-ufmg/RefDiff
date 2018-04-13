@@ -24,7 +24,7 @@ public class ResultComparator {
     private boolean groupRefactorings;
     private boolean ignoreMethodParams;
 
-    private boolean ignorePullUpToExtractedSupertype = true;
+    private boolean ignorePullUpToExtractedSupertype = false;
     private boolean ignoreMoveToMovedType = false;
     private boolean ignoreMoveToRenamedType = false;
 
