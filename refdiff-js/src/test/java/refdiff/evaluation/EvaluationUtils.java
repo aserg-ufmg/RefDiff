@@ -219,13 +219,17 @@ public class EvaluationUtils {
 			break;
 		case PULL_UP:
 		case PULL_UP_SIGNATURE:
-			if (isMethod) {
+			if (isType) {
+				return Optional.of(RefactoringType.MOVE_CLASS);
+			} else if (isMethod) {
 				return Optional.of(RefactoringType.PULL_UP_OPERATION);
 			}
 			break;
 		case PUSH_DOWN:
 		case PUSH_DOWN_IMPL:
-			if (isMethod) {
+			if (isType) {
+				return Optional.of(RefactoringType.MOVE_CLASS);
+			} if (isMethod) {
 				return Optional.of(RefactoringType.PUSH_DOWN_OPERATION);
 			}
 			break;
