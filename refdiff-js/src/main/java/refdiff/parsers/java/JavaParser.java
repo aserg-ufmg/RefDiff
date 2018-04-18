@@ -8,6 +8,7 @@ import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastRoot;
+import refdiff.core.rast.Stereotype;
 import refdiff.parsers.RastParser;
 
 public class JavaParser implements RastParser {
@@ -42,8 +43,15 @@ public class JavaParser implements RastParser {
 			parentName = "";
 		}
 		if (node.getType().equals(NodeTypes.METHOD_DECLARATION)) {
-			return parentName + AstUtils.normalizeMethodSignature(node.getLocalName());
+			String key = parentName + AstUtils.normalizeMethodSignature(node.getLocalName());
+			
+			// convert org.MyClass.new() to org.MyClass.MyClass()
+			if (node.hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
+				key = key.replace(".new(", "." + node.getParent().get().getSimpleName() + "(");
+			}
+			return key;
 		}
+		
 		return parentName + node.getLocalName();
 	}
 }

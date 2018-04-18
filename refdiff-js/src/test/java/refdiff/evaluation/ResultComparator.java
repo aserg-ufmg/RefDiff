@@ -215,41 +215,16 @@ public class ResultComparator {
                             int found = actualRefactorings.contains(r) ? 1 : 0;
                             String label = labels[correct + found];
                             out.print(label);
-                            if (label == "FP" && !notExpectedRefactorings.contains(r)) {
-                                out.print("?");
+                            if (label == "FP") {
+                            	String fpCause = findFpCause(r, expectedUnfiltered);
+                            	if (fpCause == null && !notExpectedRefactorings.contains(r)) {
+                            		out.print("?");
+                            	}
+                            	if (fpCause != null) {
+                            		out.print('\t');
+                            		out.print(fpCause);
+                            	}
                             }
-                            if (label == "FP" && isPullUpToExtractedSupertype(r, expectedUnfiltered)) {
-                                out.print("<ES>");
-                            }
-                            if (label == "FP" && isMoveToRenamedType(r, expectedUnfiltered)) {
-                                out.print("<RT>");
-                            }
-                            if (label == "FP" && isMoveToMovedType(r, expectedUnfiltered)) {
-                                out.print("<MT>");
-                            }
-                            if (label == "FP" && (r.getRefactoringType() == RefactoringType.MOVE_ATTRIBUTE || r.getRefactoringType() == RefactoringType.MOVE_OPERATION)) {
-                                if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.EXTRACT_SUPERCLASS, parentOf(r.getEntityBefore()), parentOf(r.getEntityAfter())))) {
-                                    out.print("<ES>");
-                                }
-                                if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.EXTRACT_INTERFACE, parentOf(r.getEntityBefore()), parentOf(r.getEntityAfter())))) {
-                                    out.print("<ES>");
-                                }
-                                
-                                if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PULL_UP_ATTRIBUTE, (r.getEntityBefore()), (r.getEntityAfter())))) {
-                                    out.print("<PUF>");
-                                }
-                                if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PUSH_DOWN_ATTRIBUTE, (r.getEntityBefore()), (r.getEntityAfter())))) {
-                                    out.print("<PDF>");
-                                }
-                                if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PULL_UP_OPERATION, (r.getEntityBefore()), (r.getEntityAfter())))) {
-                                    out.print("<PUM>");
-                                }
-                                if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PUSH_DOWN_OPERATION, (r.getEntityBefore()), (r.getEntityAfter())))) {
-                                    out.print("<PDM>");
-                                }
-                            }
-//                          out.print('\t');
-//                          out.print(r.getSimilarity() != null ? r.getSimilarity() : "");
                         }
                     }
                     
@@ -259,6 +234,39 @@ public class ResultComparator {
         }
         out.println();
     }
+
+	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered) {
+		if (isPullUpToExtractedSupertype(r, expectedUnfiltered)) {
+		    return "<ES>";
+		}
+		if (isMoveToRenamedType(r, expectedUnfiltered)) {
+		    return "<RT>";
+		}
+		if (isMoveToMovedType(r, expectedUnfiltered)) {
+			return "<MT>";
+		}
+		if (r.getRefactoringType() == RefactoringType.MOVE_ATTRIBUTE || r.getRefactoringType() == RefactoringType.MOVE_OPERATION) {
+		    if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.EXTRACT_SUPERCLASS, parentOf(r.getEntityBefore()), parentOf(r.getEntityAfter())))) {
+		        return "<ES>";
+		    }
+		    if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.EXTRACT_INTERFACE, parentOf(r.getEntityBefore()), parentOf(r.getEntityAfter())))) {
+		    	return "<ES>";
+		    }
+		    if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PULL_UP_ATTRIBUTE, (r.getEntityBefore()), (r.getEntityAfter())))) {
+		    	return "<PUF>";
+		    }
+		    if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PUSH_DOWN_ATTRIBUTE, (r.getEntityBefore()), (r.getEntityAfter())))) {
+		    	return "<PDF>";
+		    }
+		    if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PULL_UP_OPERATION, (r.getEntityBefore()), (r.getEntityAfter())))) {
+		    	return "<PUM>";
+		    }
+		    if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PUSH_DOWN_OPERATION, (r.getEntityBefore()), (r.getEntityAfter())))) {
+		    	return "<PDM>";
+		    }
+		}
+		return null;
+	}
 
     private boolean isPullUpToExtractedSupertype(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered) {
         if (r.getRefactoringType() == RefactoringType.PULL_UP_ATTRIBUTE || r.getRefactoringType() == RefactoringType.PULL_UP_OPERATION) {

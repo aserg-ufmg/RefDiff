@@ -1,6 +1,13 @@
 package refdiff.core.diff;
 
-import static refdiff.core.diff.RastRootHelper.*;
+import static refdiff.core.diff.RastRootHelper.anonymous;
+import static refdiff.core.diff.RastRootHelper.findByFullName;
+import static refdiff.core.diff.RastRootHelper.fullName;
+import static refdiff.core.diff.RastRootHelper.leaf;
+import static refdiff.core.diff.RastRootHelper.sameName;
+import static refdiff.core.diff.RastRootHelper.sameNamespace;
+import static refdiff.core.diff.RastRootHelper.sameSignature;
+import static refdiff.core.diff.RastRootHelper.sameType;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +49,11 @@ public class RastComparator {
 	}
 	
 	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
-		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), filesBefore, filesAfter);
+		return compare(filesBefore, filesAfter, new RastComparatorMonitor() {});
+	}
+	
+	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter, RastComparatorMonitor monitor) throws Exception {
+		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), filesBefore, filesAfter, monitor);
 		return diffBuilder.computeDiff();
 	}
 	
@@ -55,6 +66,7 @@ public class RastComparator {
 		private Set<RastNode> added;
 		private ArrayList<Double> similaritySame = new ArrayList<>();
 		private ThresholdsProvider threshold = new ThresholdsProvider();
+		private RastComparatorMonitor monitor; 
 		
 		private final Map<RastNode, T> srMap = new HashMap<>();
 		private final Map<RastNode, T> srBodyMap = new HashMap<>();
@@ -64,12 +76,13 @@ public class RastComparator {
 		private final Map<String, SourceFile> fileMapBefore = new HashMap<>();
 		private final Map<String, SourceFile> fileMapAfter = new HashMap<>();
 		
-		DiffBuilder(SourceRepresentationBuilder<T> srb, List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
+		DiffBuilder(SourceRepresentationBuilder<T> srb, List<SourceFile> filesBefore, List<SourceFile> filesAfter, RastComparatorMonitor monitor) throws Exception {
 			this.srb = srb;
 			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
 			this.before = new RastRootHelper(this.diff.getBefore());
 			this.after = new RastRootHelper(this.diff.getAfter());
 			this.removed = new HashSet<>();
+			this.monitor = monitor;
 			for (SourceFile fileBefore : filesBefore) {
 				fileMapBefore.put(fileBefore.getPath(), fileBefore);
 			}
@@ -217,6 +230,8 @@ public class RastComparator {
 						if (score > threshold.getValue()) {
 							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
 							candidates.add(candidate);
+						} else {
+							monitor.reportDiscardedMatch(n1, n2, score);
 						}
 					}
 				}
@@ -231,7 +246,7 @@ public class RastComparator {
 					} else {
 						addMatch(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
 					}
-				} else {
+				} else if (!n1.hasStereotype(Stereotype.TYPE_CONSTRUCTOR) && !n2.hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
 					if (sameSignature(n1, n2)) {
 						addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
 					} else if (sameName(n1, n2)) {
@@ -265,6 +280,8 @@ public class RastComparator {
 							double score = Math.max(score1, score2);
 							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
+							} else {
+								monitor.reportDiscardedExtract(n1, n2, score);
 							}
 						}
 					}
@@ -290,6 +307,8 @@ public class RastComparator {
 							double score = Math.max(score1, score2);
 							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
+							} else {
+								monitor.reportDiscardedInline(n1, n2, score);
 							}
 						}
 					}
@@ -326,9 +345,9 @@ public class RastComparator {
 		private Set<Relationship> findPushDownMembers(RastNode nBefore, RastNode nAfter) {
 			Set<Relationship> relationships = new HashSet<>();
 			for (RastNode subtype : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, nAfter)) {
-				for (RastNode n1Member : nBefore.getNodes()/*, m -> m.hasStereotype(Stereotype.TYPE_MEMBER)*/) {
+				for (RastNode n1Member : nBefore.getNodes()) {
 					Optional<RastNode> maybeN2Member = findByFullName(subtype, fullName(n1Member));
-					if (maybeN2Member.isPresent() /*&& maybeN2Member.get().hasStereotype(Stereotype.TYPE_MEMBER)*/ && added(maybeN2Member.get())) {
+					if (maybeN2Member.isPresent() && n1Member.hasStereotype(Stereotype.TYPE_MEMBER) && maybeN2Member.get().hasStereotype(Stereotype.TYPE_MEMBER) && added(maybeN2Member.get())) {
 						if (removed(n1Member)) {
 							relationships.add(new Relationship(RelationshipType.PUSH_DOWN, n1Member, maybeN2Member.get()));
 						} else {
@@ -350,13 +369,13 @@ public class RastComparator {
 			}
 			Set<Relationship> relationships = new HashSet<>();
 			Set<RastNode> subtypesWithPulledUpMembers = new HashSet<>();
-			for (RastNode addedMember : children(supertypeAfter, m -> added(m) /*&& m.hasStereotype(Stereotype.TYPE_MEMBER)*/)) {
+			for (RastNode addedMember : children(supertypeAfter, m -> added(m) && m.hasStereotype(Stereotype.TYPE_MEMBER))) {
 				for (RastNode subtypeAfter : subtypesAfter) {
 					Optional<RastNode> optSubtypeBefore = matchingNodeBefore(subtypeAfter);
 					if (optSubtypeBefore.isPresent()) {
 						RastNode subtypeBefore = optSubtypeBefore.get();
 						Optional<RastNode> optNode = findByFullName(subtypeBefore, fullName(addedMember));
-						if (optNode.isPresent() /*&& optNode.get().hasStereotype(Stereotype.TYPE_MEMBER)*/) {
+						if (optNode.isPresent() && optNode.get().hasStereotype(Stereotype.TYPE_MEMBER)) {
 							if (removed(optNode.get())) {
 								relationships.add(new Relationship(RelationshipType.PULL_UP, optNode.get(), addedMember));
 								subtypesWithPulledUpMembers.add(subtypeBefore);
