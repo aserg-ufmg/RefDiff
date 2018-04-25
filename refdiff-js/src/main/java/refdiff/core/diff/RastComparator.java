@@ -423,6 +423,8 @@ public class RastComparator {
 				mapBeforeToAfter.put(nBefore, nAfter);
 				mapAfterToBefore.put(nAfter, nBefore);
 				matchExactChildren(nBefore, nAfter);
+			} else {
+				monitor.reportDiscardedConflictingMatch(nBefore, nAfter);
 			}
 		}
 		

@@ -21,7 +21,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "C:/tmp/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "D:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -32,25 +32,27 @@ public class RunIcseEval2 {
 		rc.dontExpect(data.getNotExpected());
 		
 		Set<String> whitelist = new HashSet<>(Arrays.asList(
-//			"abbf32571232db81a5343db17a933a9ce6923b44",
-//			"18a7bd1fd1a83b3b8d1b245e32f78c0b4443b7a7",
-//			"04bcfe98dbe7b05e508559930c21379ece845732",
-//			"446e2537895c15b404a74107069a12f3fc404b15",
-//			"d3533c1a0716ca114d294b3ea183504c9725698f",
-//			"9de5f0d408f861455716b8410fd53f62b360787d",
-//			"364f50274d4b4b83d40930c0d2c4d0e57fb34589",
-//			"e78cda0fcf23de3973b659bc54f58a4e9b1f3bd3",
-//			"bf35b533f067b51d4c373c5e5124d88525db99f3",
-//			"54fa890a6af4ccf564fb481d3e1b6ad4d084de9e",
-//			"021d17c8234904dcb1d54596662352395927fe7b",
-//			"cb98ee25ff52bf97faebe3f45cdef0ced9b4416e",
-//			"bf5ee44b3b576e01ab09cae9f50300417b01dc07",
-//			"881baed894540031bd55e402933bcad28b74ca88",
-//			"b36ab386559d04db114db8edd87c8d4cbf850c12",
-//			"c753d2e41ba667f9b5a31451a16ecbaecdc65d80",
-//			"c7b6a7aa878aabd6400d2df0490e1eb2b810c8f9",
-//			"23c49d834d3859fc76a604da32d1789d2e863303",
-			"2b89553db5081fe4e55b7b34d636d0ea2acf71c5"
+			"abbf32571232db81a5343db17a933a9ce6923b44",
+			"18a7bd1fd1a83b3b8d1b245e32f78c0b4443b7a7",
+			"04bcfe98dbe7b05e508559930c21379ece845732",
+			"446e2537895c15b404a74107069a12f3fc404b15",
+			"d3533c1a0716ca114d294b3ea183504c9725698f",
+			"9de5f0d408f861455716b8410fd53f62b360787d",
+			"364f50274d4b4b83d40930c0d2c4d0e57fb34589",
+			"e78cda0fcf23de3973b659bc54f58a4e9b1f3bd3",
+			"bf35b533f067b51d4c373c5e5124d88525db99f3",
+			"54fa890a6af4ccf564fb481d3e1b6ad4d084de9e",
+			"021d17c8234904dcb1d54596662352395927fe7b",
+			"cb98ee25ff52bf97faebe3f45cdef0ced9b4416e",
+			"bf5ee44b3b576e01ab09cae9f50300417b01dc07",
+			"881baed894540031bd55e402933bcad28b74ca88",
+			"b36ab386559d04db114db8edd87c8d4cbf850c12",
+			"c753d2e41ba667f9b5a31451a16ecbaecdc65d80",
+			"c7b6a7aa878aabd6400d2df0490e1eb2b810c8f9",
+			"23c49d834d3859fc76a604da32d1789d2e863303",
+			"2b89553db5081fe4e55b7b34d636d0ea2acf71c5",
+			"69dd55c93fc99c5f7a1e2c21f10e671e311be49e",
+			"5a37c2aa596377cb4c9b6f916614407fd0a7d3db"
 			));
 		
 		for (RefactoringSet rs : expected) {
