@@ -13,12 +13,14 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
 import refdiff.core.diff.RastComparator;
+import refdiff.core.diff.RastComparatorMonitor;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFile;
+import refdiff.core.rast.RastNode;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.JavaSourceTokenizer;
 import refdiff.parsers.java.NodeTypes;
@@ -39,6 +41,10 @@ public class EvaluationUtils {
 	}
 
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
+		return runRefDiff(project, commit, new HashMap<>());
+	}
+	
+	public RefactoringSet runRefDiff(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		
 		File repoFolder = repoFolder(project);
@@ -62,7 +68,9 @@ public class EvaluationUtils {
 			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false);
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
-			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
+			FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
+			
+			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1), fnExplainer);
 			
 //			new RastRootHelper(diff.getAfter()).printRelationships(System.out);
 			
@@ -76,17 +84,9 @@ public class EvaluationUtils {
 						continue;
 					}
 					
-					String keyN1 = JavaParser.getKey(rel.getNodeBefore());
-					String keyN2 = JavaParser.getKey(rel.getNodeAfter());
+					KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), refType.get().equals(RefactoringType.EXTRACT_OPERATION), refType.get().equals(RefactoringType.INLINE_OPERATION));
 					
-					if (workAroundExtractAndInlineInconsistencies) {
-						if (refType.get().equals(RefactoringType.EXTRACT_OPERATION)) {
-							keyN2 = keyN1.substring(0, keyN1.lastIndexOf('.') + 1) + keyN2.substring(keyN2.lastIndexOf('.') + 1);
-						} else if (refType.get().equals(RefactoringType.INLINE_OPERATION)) {
-							keyN1 = keyN2.substring(0, keyN2.lastIndexOf('.') + 1) + keyN1.substring(keyN1.lastIndexOf('.') + 1);
-						}
-					}
-					rs.add(refType.get(), keyN1, keyN2, rel.getSimilarity());
+					rs.add(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel.getSimilarity());
 				}
 			}
 		}
@@ -94,6 +94,20 @@ public class EvaluationUtils {
 		return rs;
 	}
 
+	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean isExtract, boolean isInline) {
+		String keyN1 = JavaParser.getKey(n1);
+		String keyN2 = JavaParser.getKey(n2);
+		
+		if (workAroundExtractAndInlineInconsistencies) {
+			if (isExtract) {
+				keyN2 = keyN1.substring(0, keyN1.lastIndexOf('.') + 1) + keyN2.substring(keyN2.lastIndexOf('.') + 1);
+			} else if (isInline) {
+				keyN1 = keyN2.substring(0, keyN2.lastIndexOf('.') + 1) + keyN1.substring(keyN1.lastIndexOf('.') + 1);
+			}
+		}
+		return new KeyPair(keyN1, keyN2);
+	}
+	
 	private String checkoutFolder(String tempFolder, String project, String commit, String prefixFolder) {
 		return tempFolder + prefixFolder + "/" + repoName(project) + "-" + commit.substring(0, 7) + "/";
 	}
@@ -237,4 +251,34 @@ public class EvaluationUtils {
 		return Optional.empty();
 		//throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
 	}
+	
+	private class FalseNegativeExplainer implements RastComparatorMonitor {
+		
+		private final Map<KeyPair, String> explanation;
+		
+		public FalseNegativeExplainer(Map<KeyPair, String> explanation) {
+			this.explanation = explanation;
+		}
+
+		public void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
+			explanation.put(keyPair, String.format("Threshold %.3f", score));
+		}
+		
+		public void reportDiscardedConflictingMatch(RastNode n1, RastNode n2) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
+			explanation.put(keyPair, "Conflicting match");
+		}
+		
+		public void reportDiscardedExtract(RastNode n1, RastNode n2, double score) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, true, false);
+			explanation.put(keyPair, String.format("Threshold %.3f", score));
+		}
+		
+		public void reportDiscardedInline(RastNode n1, RastNode n2, double score) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, true);
+			explanation.put(keyPair, String.format("Threshold %.3f", score));
+		}
+	}
+	
 }

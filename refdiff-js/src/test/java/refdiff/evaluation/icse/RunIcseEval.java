@@ -1,9 +1,12 @@
 package refdiff.evaluation.icse;
 
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import refdiff.evaluation.EvaluationUtils;
+import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
@@ -42,11 +45,12 @@ public class RunIcseEval {
 				continue;
 			}
 			rc.expect(rs);
-			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
+			Map<KeyPair, String> explanations = new HashMap<>();
+			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
 			count++;
 		}
 		
-		rc.printDetails(System.out, refactoringTypes);
+		rc.printDetails(System.out, refactoringTypes, "RefDiff");
 		System.out.println();
 		rc.printSummary(System.out, refactoringTypes);
 		

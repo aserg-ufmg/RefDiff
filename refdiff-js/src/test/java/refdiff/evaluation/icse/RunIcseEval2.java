@@ -2,11 +2,14 @@ package refdiff.evaluation.icse;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import refdiff.evaluation.EvaluationUtils;
+import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
@@ -21,7 +24,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "D:/tmp/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "C:/tmp/").run();
 	}
 	
 	public void run() throws Exception {
@@ -67,11 +70,12 @@ public class RunIcseEval2 {
 				continue;
 			}
 			rc.expect(rs);
-			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
+			Map<KeyPair, String> explanations = new HashMap<>();
+			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
-		rc.printDetails(System.out, refactoringTypes);
+		rc.printDetails(System.out, refactoringTypes, "RefDiff");
 	}
 	
 }

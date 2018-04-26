@@ -28,7 +28,7 @@ public class RunCalibration {
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
-		rc.printDetails(System.out, refactoringTypes);
+		rc.printDetails(System.out, refactoringTypes, "RefDiff");
 	}
 	
 }
