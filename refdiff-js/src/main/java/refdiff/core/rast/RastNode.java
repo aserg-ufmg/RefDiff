@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 public class RastNode implements HasChildrenNodes {
 	private final int id;
 	private String type;
@@ -97,10 +101,12 @@ public class RastNode implements HasChildrenNodes {
 		this.parent = Optional.ofNullable(node);
 	}
 
+	@JsonIgnore
 	public Optional<RastNode> getParent() {
 		return parent;
 	}
 
+	@JsonInclude(Include.NON_NULL)
 	public String getNamespace() {
 		return namespace;
 	}
