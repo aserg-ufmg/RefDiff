@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+dependencies {
+    compile project(':refdiff-core')
+    
+	testCompile 'junit:junit:4.11'
+	testCompile project(path: ':refdiff-core', configuration: 'testArtifacts')
+}
