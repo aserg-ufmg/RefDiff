@@ -5,7 +5,8 @@ plugins {
 
 dependencies {
     compile project(':refdiff-core')
-    
-	testCompile 'junit:junit:4.11'
 	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
+	
+	testCompile 'junit:junit:4.11'
+	testCompile project(path: ':refdiff-core', configuration: 'testArtifacts')
 }
