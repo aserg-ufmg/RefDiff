@@ -1,4 +1,0 @@
-Extract Superclass	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityPower	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase
-Extract Superclass	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase
-Rename Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalArnoldi(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalIteration()
-Extract Method	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityArnoldi.runInternalArnoldi(int)	org.neo4j.graphalgo.impl.centrality.EigenvectorCentralityBase.incrementTotalIterations()

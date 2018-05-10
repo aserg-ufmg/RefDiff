@@ -1,5 +1,0 @@
-Pull Up Method	cascading.stats.tez.TezNodeStats.logInfo(String,Object[])	cascading.stats.CascadingStats.logInfo(String,Object[])
-Pull Up Attribute	cascading.stats.tez.TezNodeStats.prefixID	cascading.stats.CascadingStats.prefixID
-Pull Up Method	cascading.stats.tez.TezNodeStats.logDebug(String,Object[])	cascading.stats.CascadingStats.logDebug(String,Object[])
-Pull Up Method	cascading.stats.tez.TezNodeStats.getPrefix()	cascading.stats.CascadingStats.getPrefix()
-Pull Up Method	cascading.stats.tez.TezNodeStats.logWarn(String,Object[])	cascading.stats.CascadingStats.logWarn(String,Object[])

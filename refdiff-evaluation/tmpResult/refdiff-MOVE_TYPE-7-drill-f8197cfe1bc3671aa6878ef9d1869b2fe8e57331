@@ -1,2 +1,0 @@
-Extract Interface	org.apache.drill.exec.expr.fn.FunctionImplementationRegistry	org.apache.drill.exec.expr.fn.FunctionLookupContext
-Extract Interface	org.apache.drill.exec.ops.QueryContext	org.apache.drill.exec.ops.OptimizerRulesContext

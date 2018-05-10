@@ -1,1 +1,0 @@
-Pull Up Attribute	org.hibernate.test.cache.infinispan.entity.EntityRegionImplTestCase.MUTABLE_NON_VERSIONED	org.hibernate.test.cache.infinispan.AbstractEntityCollectionRegionTestCase.MUTABLE_NON_VERSIONED

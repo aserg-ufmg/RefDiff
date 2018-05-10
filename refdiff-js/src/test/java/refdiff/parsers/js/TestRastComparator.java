@@ -1,9 +1,7 @@
 package refdiff.parsers.js;
 
-import static org.junit.Assert.assertThat;
-import static refdiff.test.util.RastDiffMatchers.containsOnly;
-import static refdiff.test.util.RastDiffMatchers.node;
-import static refdiff.test.util.RastDiffMatchers.relationship;
+import static org.junit.Assert.*;
+import static refdiff.test.util.RastDiffMatchers.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,11 +14,8 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.ThresholdsProvider;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
-import refdiff.core.diff.similarity.TfIdfSourceRepresentation;
-import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
 import refdiff.test.util.EsprimaParserSingleton;

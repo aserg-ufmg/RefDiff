@@ -1,9 +1,0 @@
-Rename Method	buildcraft.robotics.TileRequester.getNumberOfRequests()	buildcraft.robotics.TileRequester.getRequestsCount()
-Push Down Method	buildcraft.api.robots.ResourceId.equals(Object)	buildcraft.api.robots.ResourceIdRequest.equals(Object)
-Rename Method	buildcraft.builders.TileBuilder.getNumberOfRequests()	buildcraft.builders.TileBuilder.getRequestsCount()
-Push Down Method	buildcraft.api.robots.ResourceId.equals(Object)	buildcraft.api.robots.ResourceIdBlock.equals(Object)
-Rename Method	buildcraft.builders.TileBuilder.provideItemsForRequest(int,ItemStack)	buildcraft.builders.TileBuilder.offerItem(int,ItemStack)
-Push Down Attribute	buildcraft.api.robots.ResourceId.side	buildcraft.api.robots.ResourceIdBlock.side
-Rename Method	buildcraft.builders.TileBuilder.getAvailableRequest(int)	buildcraft.builders.TileBuilder.getRequest(int)
-Rename Method	buildcraft.robotics.TileRequester.provideItemsForRequest(int,ItemStack)	buildcraft.robotics.TileRequester.offerItem(int,ItemStack)
-Push Down Attribute	buildcraft.api.robots.ResourceId.side	buildcraft.api.robots.ResourceIdRequest.side

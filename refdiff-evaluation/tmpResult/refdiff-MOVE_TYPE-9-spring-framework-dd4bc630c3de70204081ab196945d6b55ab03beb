@@ -1,3 +1,0 @@
-Move Class	org.springframework.aop.interceptor.AsyncExecutionInterceptor.CompletableFutureDelegate	org.springframework.aop.interceptor.AsyncExecutionAspectSupport.CompletableFutureDelegate
-Extract Method	org.springframework.aop.interceptor.AsyncExecutionInterceptor.invoke(MethodInvocation)	org.springframework.aop.interceptor.AsyncExecutionAspectSupport.doSubmit(Callable,AsyncTaskExecutor,Class)
-Pull Up Attribute	org.springframework.aop.interceptor.AsyncExecutionInterceptor.completableFuturePresent	org.springframework.aop.interceptor.AsyncExecutionAspectSupport.completableFuturePresent

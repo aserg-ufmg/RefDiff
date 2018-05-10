@@ -1,6 +1,0 @@
-Pull Up Method	net.kuujo.copycat.raft.state.ActiveState.applyIndex(long)	net.kuujo.copycat.raft.state.PassiveState.applyIndex(long)
-Pull Up Method	net.kuujo.copycat.raft.state.ActiveState.handleAppend(AppendRequest)	net.kuujo.copycat.raft.state.PassiveState.handleAppend(AppendRequest)
-Pull Up Attribute	net.kuujo.copycat.raft.state.ActiveState.transition	net.kuujo.copycat.raft.state.PassiveState.transition
-Pull Up Method	net.kuujo.copycat.raft.state.ActiveState.doCheckPreviousEntry(AppendRequest)	net.kuujo.copycat.raft.state.PassiveState.doCheckPreviousEntry(AppendRequest)
-Pull Up Method	net.kuujo.copycat.raft.state.ActiveState.doAppendEntries(AppendRequest)	net.kuujo.copycat.raft.state.PassiveState.doAppendEntries(AppendRequest)
-Pull Up Method	net.kuujo.copycat.raft.state.ActiveState.applyCommits(long)	net.kuujo.copycat.raft.state.PassiveState.applyCommits(long)

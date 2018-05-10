@@ -1,2 +1,0 @@
-Inline Method	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAllExclusive()	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAll()
-Inline Method	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAllShared()	org.neo4j.kernel.impl.locking.community.CommunityLockClient.releaseAll()

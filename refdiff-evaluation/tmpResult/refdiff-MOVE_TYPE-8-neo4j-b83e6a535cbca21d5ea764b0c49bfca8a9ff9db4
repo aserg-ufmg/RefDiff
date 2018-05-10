@@ -1,8 +1,0 @@
-Rename Method	org.neo4j.kernel.api.index.IndexAccessorCompatibility.getAllNodes(String)	org.neo4j.kernel.api.index.IndexAccessorCompatibility.getAllNodesWithProperty(String)
-Extract Superclass	org.neo4j.kernel.api.impl.index.LuceneIndexAccessorReaderTest	org.neo4j.kernel.api.impl.index.AbstractLuceneIndexAccessorReaderTest
-Extract Method	org.neo4j.kernel.api.impl.index.LuceneIndexAccessorReader.lookup(Object)	org.neo4j.kernel.api.impl.index.LuceneIndexAccessorReader.query(Query)
-Extract Method	org.neo4j.kernel.api.impl.index.LuceneIndexAccessorReader.scan()	org.neo4j.kernel.api.impl.index.LuceneIndexAccessorReader.query(Query)
-Rename Method	org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newMatchAllQuery()	org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newAllQuery()
-Rename Method	org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newQuery(Object)	org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newValueQuery(Object)
-Pull Up Attribute	org.neo4j.kernel.api.impl.index.LuceneUniqueIndexAccessorReaderTest.reader	org.neo4j.kernel.api.impl.index.AbstractLuceneIndexAccessorReaderTest.reader
-Rename Method	org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newQueryForChangeOrRemove(long)	org.neo4j.kernel.api.impl.index.LuceneDocumentStructure.newTermForChangeOrRemove(long)

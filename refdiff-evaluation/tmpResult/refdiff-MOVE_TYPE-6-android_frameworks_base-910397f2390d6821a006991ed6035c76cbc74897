@@ -1,4 +1,0 @@
-Move Class	com.android.systemui.statusbar.policy.BatteryController.BatteryStateChangeCallback	com.android.systemui.statusbar.policy.BatteryStateRegistar.BatteryStateChangeCallback
-Extract Interface	com.android.systemui.statusbar.policy.BatteryController	com.android.systemui.statusbar.policy.BatteryStateRegistar
-Extract Method	com.android.internal.os.BatteryStatsHelper.storeStatsHistoryInFile(String)	com.android.internal.os.BatteryStatsHelper.internalStoreStatsHistoryInFile(BatteryStats,String)
-Rename Method	com.android.internal.os.BatteryStatsHelper.load()	com.android.internal.os.BatteryStatsHelper.loadStats()

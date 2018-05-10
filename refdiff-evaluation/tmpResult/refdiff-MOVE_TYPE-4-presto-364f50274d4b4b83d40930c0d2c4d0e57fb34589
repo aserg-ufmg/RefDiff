@@ -1,3 +1,0 @@
-Rename Method	com.facebook.presto.operator.HashGenerator.getPartitionHashBucket(int,int,Page)	com.facebook.presto.operator.HashGenerator.getPartitionBucket(int,int,Page)
-Extract Superclass	com.facebook.presto.HashPagePartitionFunction	com.facebook.presto.PartitionedPagePartitionFunction
-Rename Method	com.facebook.presto.sql.planner.PlanFragmenter.FragmentProperties.setHashPartitionedOutput(List,Optional)	com.facebook.presto.sql.planner.PlanFragmenter.FragmentProperties.setPartitionedOutput(Optional,Optional)

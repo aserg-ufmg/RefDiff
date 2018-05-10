@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.github.aserg-ufmg'
-version = '0.1.1'
+version = '0.2.0'
 description = 'An automated tool to detect refactorings in version histories'
 
 signing {
@@ -63,9 +63,13 @@ nexusStaging {
 }
 
 dependencies {
-	compile 'org.eclipse.jgit:org.eclipse.jgit:4.7.0.201704051617-r'
-	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
-	testCompile 'junit:junit:4.11'
+    compile 'org.eclipse.jgit:org.eclipse.jgit:4.7.0.201704051617-r'
+    
+    compile 'com.fasterxml.jackson.core:jackson-core:2.8.9'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.9'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+    
+    testCompile 'junit:junit:4.11'
 }
 
 task javadocJar(type: Jar) {

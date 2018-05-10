@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+dependencies {
+    compile project(':refdiff-core')
+    
+	testCompile 'junit:junit:4.11'
+	compile 'org.eclipse.jdt:org.eclipse.jdt.core:3.12.3'
+}

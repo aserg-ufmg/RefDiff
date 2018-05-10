@@ -1,4 +1,0 @@
-Push Down Attribute	org.gradle.testkit.functional.GradleRunner.workingDirectory	org.gradle.testkit.functional.internal.DefaultGradleRunner.workingDirectory
-Push Down Attribute	org.gradle.testkit.functional.GradleRunner.gradleUserHomeDir	org.gradle.testkit.functional.internal.DefaultGradleRunner.gradleUserHomeDir
-Push Down Attribute	org.gradle.testkit.functional.GradleRunner.arguments	org.gradle.testkit.functional.internal.DefaultGradleRunner.arguments
-Push Down Attribute	org.gradle.testkit.functional.GradleRunner.taskNames	org.gradle.testkit.functional.internal.DefaultGradleRunner.taskNames

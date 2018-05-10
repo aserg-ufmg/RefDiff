@@ -1,4 +1,0 @@
-Inline Method	com.puppycrawl.tools.checkstyle.checks.coding.NestedIfDepthCheck.leaveLiteralIf(DetailAST)	com.puppycrawl.tools.checkstyle.checks.coding.NestedIfDepthCheck.leaveToken(DetailAST)
-Inline Method	com.puppycrawl.tools.checkstyle.checks.coding.NestedTryDepthCheck.leaveLiteralTry()	com.puppycrawl.tools.checkstyle.checks.coding.NestedTryDepthCheck.leaveToken(DetailAST)
-Inline Method	com.puppycrawl.tools.checkstyle.checks.coding.NestedTryDepthCheck.visitLiteralTry(DetailAST)	com.puppycrawl.tools.checkstyle.checks.coding.NestedTryDepthCheck.visitToken(DetailAST)
-Inline Method	com.puppycrawl.tools.checkstyle.checks.coding.NestedIfDepthCheck.visitLiteralIf(DetailAST)	com.puppycrawl.tools.checkstyle.checks.coding.NestedIfDepthCheck.visitToken(DetailAST)

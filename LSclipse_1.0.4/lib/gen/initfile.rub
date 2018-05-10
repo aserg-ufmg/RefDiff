@@ -1,5 +1,0 @@
-#include "java.rub"
-#include "filegenerator.rub"
-#include "javafilegenerator.rub"
-#include "javagenerator.rub"
-//#include "javagenerator_extras.rub"

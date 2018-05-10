@@ -1,2 +1,0 @@
-Push Down Method	com.hazelcast.jca.AbstractDeploymentTest.getConnection()	com.hazelcast.jca.XATransactionTest.getConnection()
-Push Down Attribute	com.hazelcast.jca.AbstractDeploymentTest.connectionFactory	com.hazelcast.jca.XATransactionTest.connectionFactory

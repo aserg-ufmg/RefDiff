@@ -1,1 +1,0 @@
-Extract Interface	org.gradle.api.internal.file.FileResolver	org.gradle.internal.file.RelativeFilePathResolver

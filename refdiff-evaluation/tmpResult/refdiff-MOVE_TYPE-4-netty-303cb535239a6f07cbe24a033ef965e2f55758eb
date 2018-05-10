@@ -1,2 +1,0 @@
-Inline Method	io.netty.handler.ssl.OpenSslEngine.OpenSslSession.principal(Certificate[])	io.netty.handler.ssl.OpenSslEngine.OpenSslSession.getLocalPrincipal()
-Inline Method	io.netty.handler.ssl.OpenSslEngine.OpenSslSession.principal(Certificate[])	io.netty.handler.ssl.OpenSslEngine.OpenSslSession.getPeerPrincipal()

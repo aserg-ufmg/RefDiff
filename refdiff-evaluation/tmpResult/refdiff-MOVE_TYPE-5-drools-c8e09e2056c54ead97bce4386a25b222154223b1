@@ -1,5 +1,0 @@
-Extract Interface	org.drools.core.base.ClassFieldAccessorCache.DefaultByteArrayClassLoader	org.drools.core.util.ByteArrayClassLoader
-Rename Class	org.drools.core.base.ClassFieldAccessorCache.ByteArrayClassLoader	org.drools.core.base.ClassFieldAccessorCache.DefaultByteArrayClassLoader
-Push Down Method	org.drools.core.common.ProjectClassLoader.InternalTypesClassLoader.loadClass(String,boolean)	org.drools.core.common.ProjectClassLoader.DefaultInternalTypesClassLoader.loadClass(String,boolean)
-Push Down Attribute	org.drools.core.common.ProjectClassLoader.InternalTypesClassLoader.projectClassLoader	org.drools.core.common.ProjectClassLoader.DefaultInternalTypesClassLoader.projectClassLoader
-Extract Method	org.drools.core.util.ClassUtils.instantiateObject(String,ClassLoader)	org.drools.core.util.ClassUtils.loadClass(String,ClassLoader)

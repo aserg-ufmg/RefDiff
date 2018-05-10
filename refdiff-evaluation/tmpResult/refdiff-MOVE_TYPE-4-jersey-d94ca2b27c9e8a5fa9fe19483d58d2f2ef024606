@@ -1,2 +1,0 @@
-Extract Method	org.glassfish.jersey.client.HttpUrlConnector._apply(ClientRequest)	org.glassfish.jersey.client.internal.HttpUrlConnector.secureConnection(Client,HttpURLConnection)
-Move Class	org.glassfish.jersey.client.HttpUrlConnector	org.glassfish.jersey.client.internal.HttpUrlConnector

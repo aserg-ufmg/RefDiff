@@ -1,2 +1,0 @@
-Pull Up Attribute	org.springframework.roo.classpath.details.MethodMetadataBuilder.genericDefinition	org.springframework.roo.classpath.details.AbstractInvocableMemberMetadataBuilder.genericDefinition
-Pull Up Method	org.springframework.roo.classpath.details.MethodMetadataBuilder.getGenericDefinition()	org.springframework.roo.classpath.details.AbstractInvocableMemberMetadataBuilder.getGenericDefinition()
