@@ -20,10 +20,10 @@ uploadArchives {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
             // Target repository
             repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-                authentication(userName: ossrhUser, password: ossrhPassword)
+                authentication(userName: findProperty('ossrhUser'), password: findProperty('ossrhPassword'))
             }
             snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
-                authentication(userName: ossrhUser, password: ossrhPassword)
+                authentication(userName: findProperty('ossrhUser'), password: findProperty('ossrhPassword'))
             }
             pom.project {
                 name project.name
@@ -58,8 +58,8 @@ uploadArchives {
 }
 
 nexusStaging {  
-    username = ossrhUser
-    password = ossrhPassword
+    username = findProperty('ossrhUser')
+    password = findProperty('ossrhPassword')
 }
 
 dependencies {
