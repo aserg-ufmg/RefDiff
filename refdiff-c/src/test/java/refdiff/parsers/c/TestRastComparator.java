@@ -25,11 +25,42 @@ public class TestRastComparator {
 	
 	@Test
 	public void shouldMatchWithSameNamePath() throws Exception {
-		assertThat(diff("diff1"), containsOnly(
+		assertThat(diff("same"), containsOnly(
 			relationship(RelationshipType.SAME, node("hello.c"), node("hello.c")),
 			relationship(RelationshipType.SAME, node("hello.c", "f1()"), node("hello.c", "f1()")),
 			relationship(RelationshipType.SAME, node("hello.c", "f2(int)"), node("hello.c", "f2(int)")),
 			relationship(RelationshipType.SAME, node("hello.c", "main()"), node("hello.c", "main()"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchExtractMethod() throws Exception {
+		assertThat(diff("extract"), containsOnly(
+			relationship(RelationshipType.SAME, node("hello.c"), node("hello.c")),
+			relationship(RelationshipType.SAME, node("hello.c", "f1()"), node("hello.c", "f1()")),
+			relationship(RelationshipType.SAME, node("hello.c", "f3()"), node("hello.c", "f3()")),
+			relationship(RelationshipType.SAME, node("hello.c", "main()"), node("hello.c", "main()")), 
+			relationship(RelationshipType.EXTRACT, node("hello.c", "f1()"), node("hello.c", "f2()")),
+			relationship(RelationshipType.EXTRACT, node("hello.c", "f3()"), node("hello.c", "f2()")) 
+		));
+	}
+	
+	@Test
+	public void shouldMatchRenameMethod() throws Exception {
+		assertThat(diff("rename"), containsOnly(
+			relationship(RelationshipType.SAME, node("hello.c"), node("hello.c")),
+			relationship(RelationshipType.SAME, node("hello.c", "f1()"), node("hello.c", "f1()")),
+			relationship(RelationshipType.SAME, node("hello.c", "main()"), node("hello.c", "main()")), 
+			relationship(RelationshipType.RENAME, node("hello.c", "f2()"), node("hello.c", "f3()"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchChangeMethodSignature() throws Exception {
+		assertThat(diff("changeSignature"), containsOnly(
+			relationship(RelationshipType.SAME, node("hello.c"), node("hello.c")),
+			relationship(RelationshipType.SAME, node("hello.c", "main()"), node("hello.c", "main()")), 
+			relationship(RelationshipType.CHANGE_SIGNATURE, node("hello.c", "f1(char, int)"), node("hello.c", "f1(int, char)"))
 		));
 	}
 	
@@ -43,7 +74,7 @@ public class TestRastComparator {
 	
 	private List<SourceFile> getSourceFiles(Path basePath) throws IOException {
 		try (Stream<Path> stream = Files.walk(basePath)) {
-			return stream.filter(path -> path.getFileName().toString().endsWith(".js"))
+			return stream.filter(path -> path.getFileName().toString().endsWith(".c"))
 				.map(path -> new FileSystemSourceFile(basePath, basePath.relativize(path)))
 				.collect(Collectors.toList());
 		}

@@ -33,19 +33,27 @@ public class TestCParser {
 		RastNode nodeScriptEx2 = root.getNodes().get(0);
 		assertThat(nodeScriptEx2.getType(), is("Program"));
 		
-		assertThat(nodeScriptEx2.getNodes().size(), is(2));
+		assertThat(nodeScriptEx2.getNodes().size(), is(3));
 		RastNode nodeF1 = nodeScriptEx2.getNodes().get(0);
 		RastNode nodeF2 = nodeScriptEx2.getNodes().get(1);
+		RastNode nodeMain = nodeScriptEx2.getNodes().get(2);
 		
 		assertThat(nodeF1.getType(), is("FunctionDeclaration"));
-		assertThat(nodeF1.getLocalName(), is("f1"));
+		assertThat(nodeF1.getLocalName(), is("f1()"));
+		assertThat(nodeF1.getSimpleName(), is("f1"));
 		
 		assertThat(nodeF2.getType(), is("FunctionDeclaration"));
-		assertThat(nodeF2.getLocalName(), is("f2"));
+		assertThat(nodeF2.getLocalName(), is("f2(int)"));
+		assertThat(nodeF2.getSimpleName(), is("f2"));
+		
+		assertThat(nodeMain.getType(), is("FunctionDeclaration"));
+		assertThat(nodeMain.getLocalName(), is("main()"));
+		assertThat(nodeMain.getSimpleName(), is("main"));
 		
 		Set<RastNodeRelationship> relationships = root.getRelationships();
-		assertThat(relationships.size(), is(1));
-		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, nodeF1, nodeF2)));
+		assertThat(relationships.size(), is(2));
+		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, nodeF2, nodeF1)));
+		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, nodeMain, nodeF2)));
 	}
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {

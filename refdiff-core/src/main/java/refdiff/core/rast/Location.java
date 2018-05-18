@@ -26,23 +26,43 @@ public class Location {
 	public String getFile() {
 		return file;
 	}
-	
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
 	public int getBegin() {
 		return begin;
 	}
-	
+
+	public void setBegin(int begin) {
+		this.begin = begin;
+	}
+
 	public int getEnd() {
 		return end;
 	}
-	
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
+
 	public int getBodyBegin() {
 		return bodyBegin;
 	}
 
+	public void setBodyBegin(int bodyBegin) {
+		this.bodyBegin = bodyBegin;
+	}
+
 	public int getBodyEnd() {
 		return bodyEnd;
-	}	
-	
+	}
+
+	public void setBodyEnd(int bodyEnd) {
+		this.bodyEnd = bodyEnd;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Location) {
