@@ -18,6 +18,9 @@ import org.eclipse.cdt.core.parser.IncludeFileContentProvider;
 import org.eclipse.cdt.core.parser.ScannerInfo;
 import org.eclipse.core.runtime.CoreException;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
 import refdiff.core.io.SourceFile;
 import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
@@ -38,6 +41,11 @@ public class CParser implements RastParser, SourceTokenizer {
 			
 			translationUnit.accept(cRastVisitor);
 		}
+		
+		ObjectMapper jacksonObjectMapper = new ObjectMapper();
+		
+		String jsonInString = jacksonObjectMapper.writeValueAsString(root);
+		System.out.println(jsonInString);
 		
 		return root;
 	}

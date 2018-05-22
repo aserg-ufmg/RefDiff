@@ -36,6 +36,10 @@ public class RastDiffMatchers {
 		return new RastDiffMatcher(true, queries);
 	}
 	
+	public static Matcher<RastDiff> doesntContain(RelationshipQuery... queries) {
+		return new RastDiffMatcherDoesntContain(queries);
+	}
+	
 	public static class NodeQuery {
 		final String[] namePath;
 		
@@ -129,6 +133,42 @@ public class RastDiffMatchers {
 			return true;
 		}
 		
+	}
+	
+	private static class RastDiffMatcherDoesntContain extends TypeSafeDiagnosingMatcher<RastDiff> {
+		
+		RelationshipQuery[] queries;
+		
+		public RastDiffMatcherDoesntContain(RelationshipQuery... queries) {
+			this.queries = queries;
+		}
+
+		@Override
+		public void describeTo(Description description) {
+			description.appendText(queries.length + " true positives");
+		}
+
+		@Override
+		protected boolean matchesSafely(RastDiff diff, Description mismatchDescription) {
+			int truePositives = 0;
+			int falsePositives = 0;
+			
+			for (RelationshipQuery query : queries) {
+				Optional<Relationship> optional = query.find(diff);
+				if (optional.isPresent()) {
+					falsePositives++;
+				} else {
+					truePositives++;
+				}
+			}
+			
+			if (falsePositives != 0) {
+				mismatchDescription.appendText(String.format(
+						"%d true positives, %d false positives", truePositives, falsePositives));
+				return false;
+			}
+			return true;
+		}
 	}
 	
 }

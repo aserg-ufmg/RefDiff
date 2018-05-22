@@ -16,6 +16,7 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTBinaryExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarationStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarator;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTEqualsInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTExpressionStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionCallExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDeclarator;
@@ -232,7 +233,8 @@ public class CRastVisitor extends ASTGenericVisitor {
 				|| iastNode instanceof CASTUnaryExpression
 				|| iastNode instanceof CASTBinaryExpression
 				|| iastNode instanceof CASTArrayDeclarator 
-				|| iastNode instanceof CASTArraySubscriptExpression;
+				|| iastNode instanceof CASTArraySubscriptExpression
+				|| iastNode instanceof CASTEqualsInitializer;
 	}
 	
 	private HasChildrenNodes getRASTParent(IASTNode iastNode) {
