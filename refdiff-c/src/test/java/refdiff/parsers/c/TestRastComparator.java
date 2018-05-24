@@ -123,7 +123,7 @@ public class TestRastComparator {
 	public void shouldMatchMoveRenameFile() throws Exception {
 		assertThat(diff("moveRenameFile"), containsOnly(
 			relationship(RelationshipType.SAME, node("folder1/file1.c", "main()"), node("folder2/file2.c", "main()")), 
-			relationship(RelationshipType.MOVE, node("folder1/file1.c"), node("folder2/file2.c")) 
+			relationship(RelationshipType.MOVE_RENAME, node("folder1/file1.c"), node("folder2/file2.c")) 
 		));
 	}
 	
