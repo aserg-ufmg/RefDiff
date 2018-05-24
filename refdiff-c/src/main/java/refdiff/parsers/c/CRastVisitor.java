@@ -163,7 +163,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 
 				HasChildrenNodes parentNode = this.getRASTParent(iastNode);
 				
-				parentNode.getNodes().add(node);
+				parentNode.addNode(node);
 
 				this.nodesHash.put(iastNode.hashCode(), node);
 				
