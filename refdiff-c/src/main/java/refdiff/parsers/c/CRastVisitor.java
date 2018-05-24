@@ -1,5 +1,6 @@
 package refdiff.parsers.c;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -181,8 +182,18 @@ public class CRastVisitor extends ASTGenericVisitor {
 		RastNode rastNode = new RastNode(this.id);
 		
 		if (astNode instanceof CASTTranslationUnit) {
-			rastNode.setSimpleName(this.fileName);
-			rastNode.setLocalName(this.fileName);	
+			int lastSeparatorIndex = this.fileName.lastIndexOf(File.separator);
+			
+			String path = null;
+			if (lastSeparatorIndex != -1) {
+				path = this.fileName.substring(0, lastSeparatorIndex + 1);	
+			}
+			
+			String fileNameWithoutPath = this.fileName.substring(lastSeparatorIndex + 1);
+
+			rastNode.setNamespace(path);
+			rastNode.setSimpleName(fileNameWithoutPath);
+			rastNode.setLocalName(fileNameWithoutPath);	
 		}
 		
 		rastNode.setType(this.getRASTType(astNode));
