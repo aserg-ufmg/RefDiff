@@ -25,13 +25,16 @@ public class TestCParser {
 	@Test
 	public void shouldParseSimpleFile() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("hello.c")));
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("dir1/hello.c")));
 		RastRoot root = parser.parse(sourceFiles);
 		
 		assertThat(root.getNodes().size(), is(1));
 		
 		RastNode nodeScriptEx2 = root.getNodes().get(0);
 		assertThat(nodeScriptEx2.getType(), is("Program"));
+		assertThat(nodeScriptEx2.getLocalName(), is("hello.c"));
+		assertThat(nodeScriptEx2.getSimpleName(), is("hello.c"));
+		assertThat(nodeScriptEx2.getNamespace(), is("dir1/"));
 		
 		assertThat(nodeScriptEx2.getNodes().size(), is(3));
 		RastNode nodeF1 = nodeScriptEx2.getNodes().get(0);
@@ -41,6 +44,7 @@ public class TestCParser {
 		assertThat(nodeF1.getType(), is("FunctionDeclaration"));
 		assertThat(nodeF1.getLocalName(), is("f1()"));
 		assertThat(nodeF1.getSimpleName(), is("f1"));
+		assertThat(nodeF1.getNamespace(), is(nullValue()));
 		
 		assertThat(nodeF2.getType(), is("FunctionDeclaration"));
 		assertThat(nodeF2.getLocalName(), is("f2(int)"));
