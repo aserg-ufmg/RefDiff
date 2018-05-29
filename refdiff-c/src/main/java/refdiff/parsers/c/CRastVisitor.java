@@ -1,6 +1,5 @@
 package refdiff.parsers.c;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +40,7 @@ import refdiff.core.rast.RastRoot;
 
 public class CRastVisitor extends ASTGenericVisitor {
 
+	private static final char FOLDER_SEPARATOR = '/';
 	private int id = 1;
 	private RastNode currentNode;
 	private RastNode currentRelationshipN1;
@@ -182,7 +182,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 		RastNode rastNode = new RastNode(this.id);
 		
 		if (astNode instanceof CASTTranslationUnit) {
-			int lastSeparatorIndex = this.fileName.lastIndexOf(File.separator);
+			int lastSeparatorIndex = this.fileName.lastIndexOf(FOLDER_SEPARATOR);
 			
 			String path = null;
 			if (lastSeparatorIndex != -1) {
