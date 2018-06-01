@@ -231,7 +231,7 @@ public class GitHelper {
 		}
 	}
 	
-	public void fileTreeDiff(Repository repository, RevCommit current, List<String> javaFilesBefore, List<String> javaFilesCurrent, Map<String, String> renamedFilesHint, boolean detectRenames) throws Exception {
+	public void fileTreeDiff(Repository repository, RevCommit current, List<String> javaFilesBefore, List<String> javaFilesCurrent, Map<String, String> renamedFilesHint, boolean detectRenames, List<String> fileExtensions) throws Exception {
 		ObjectId oldHead = current.getParent(0).getTree();
 		ObjectId head = current.getTree();
 		
@@ -258,13 +258,13 @@ public class GitHelper {
 				ChangeType changeType = entry.getChangeType();
 				if (changeType != ChangeType.ADD) {
 					String oldPath = entry.getOldPath();
-					if (isJavafile(oldPath)) {
+					if (isFileAllowed(oldPath, fileExtensions)) {
 						javaFilesBefore.add(oldPath);
 					}
 				}
 				if (changeType != ChangeType.DELETE) {
 					String newPath = entry.getNewPath();
-					if (isJavafile(newPath)) {
+					if (isFileAllowed(newPath, fileExtensions)) {
 						javaFilesCurrent.add(newPath);
 						if (changeType == ChangeType.RENAME) {
 							String oldPath = entry.getOldPath();
@@ -276,7 +276,12 @@ public class GitHelper {
 		}
 	}
 	
-	private boolean isJavafile(String path) {
-		return path.endsWith(".java");
+	private boolean isFileAllowed(String path, List<String> fileExtensions) {
+		for (String fileExtension : fileExtensions) {
+			if (path.endsWith(fileExtension)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

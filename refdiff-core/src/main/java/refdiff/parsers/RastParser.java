@@ -8,5 +8,7 @@ import refdiff.core.rast.RastRoot;
 public interface RastParser {
 	
 	RastRoot parse(List<SourceFile> sourceFiles) throws Exception;
+
+	List<String> getAllowedFileExtensions();
 	
 }

@@ -27,10 +27,8 @@ import refdiff.parsers.java.NodeTypes;
 
 public class EvaluationUtils {
 	
-	private JavaParser parser = new JavaParser();
-	private JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
-	private RastComparator comparator = new RastComparator(parser, tokenizer);
-	private String tempFolder = "C:/tmp/";
+	private RastComparator comparator = new RastComparator(new JavaParser(), new JavaSourceTokenizer());
+	private String tempFolder = "D:/tmp/";
 	/**
 	 * The ICSE dataset don't describe the qualified name of the extracted/inlined method.
 	 */
@@ -40,12 +38,43 @@ public class EvaluationUtils {
 		this.tempFolder = tempFolder;
 	}
 
+	public EvaluationUtils(RastComparator comparator, String tempFolder) {
+		this.comparator = comparator;
+		this.tempFolder = tempFolder;
+	}
+
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		return runRefDiff(project, commit, new HashMap<>());
 	}
 	
+	public RastDiff computeDiff(String project, String commit) throws Exception {
+		File repoFolder = repoFolder(project);
+		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
+		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
+		
+		prepareSourceCode(project, commit);
+		
+		GitHelper gitHelper = new GitHelper();
+		try (
+			Repository repo = gitHelper.openRepository(repoFolder);
+			RevWalk rw = new RevWalk(repo)) {
+			
+			RevCommit revCommit = rw.parseCommit(repo.resolve(commit));
+			rw.parseCommit(revCommit.getParent(0));
+			
+			List<String> filesV0 = new ArrayList<>();
+			List<String> filesV1 = new ArrayList<>();
+			Map<String, String> renamedFilesHint = new HashMap<>();
+			
+			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getAllowedFileExtensions());
+			
+			System.out.println(String.format("Computing diff for %s %s", project, commit));
+			
+			return comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
+		}
+	}
+	
 	public RefactoringSet runRefDiff(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
-		RefactoringSet rs = new RefactoringSet(project, commit);
 		
 		File repoFolder = repoFolder(project);
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
@@ -65,7 +94,7 @@ public class EvaluationUtils {
 			List<String> filesV1 = new ArrayList<>();
 			Map<String, String> renamedFilesHint = new HashMap<>();
 			
-			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false);
+			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getAllowedFileExtensions());
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
@@ -74,6 +103,7 @@ public class EvaluationUtils {
 			
 //			new RastRootHelper(diff.getAfter()).printRelationships(System.out);
 			
+			RefactoringSet rs = new RefactoringSet(project, commit);
 			for (Relationship rel : diff.getRelationships()) {
 				RelationshipType relType = rel.getType();
 				String nodeType = rel.getNodeAfter().getType();
@@ -89,9 +119,8 @@ public class EvaluationUtils {
 					rs.add(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel.getSimilarity());
 				}
 			}
+			return rs;
 		}
-		
-		return rs;
 	}
 
 	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean isExtract, boolean isInline) {
@@ -109,7 +138,7 @@ public class EvaluationUtils {
 	}
 	
 	private String checkoutFolder(String tempFolder, String project, String commit, String prefixFolder) {
-		return tempFolder + prefixFolder + "/" + repoName(project) + "-" + commit.substring(0, 7) + "/";
+		return tempFolder + "checkout/" + repoName(project) + "-" + commit.substring(0, 7) + "/" + prefixFolder + "/";
 	}
 
 	private String repoName(String project) {

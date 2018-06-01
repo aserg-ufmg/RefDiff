@@ -2,6 +2,7 @@ package refdiff.parsers.java;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import refdiff.core.io.FileSystemSourceFile;
@@ -53,5 +54,10 @@ public class JavaParser implements RastParser {
 		}
 		
 		return parentName + node.getLocalName();
+	}
+	
+	@Override
+	public List<String> getAllowedFileExtensions() {
+		return Arrays.asList(".java");
 	}
 }

@@ -1,6 +1,7 @@
 package refdiff.parsers.js;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -144,5 +145,10 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		} catch (NoSuchMethodException | ScriptException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	@Override
+	public List<String> getAllowedFileExtensions() {
+		return Arrays.asList(".js");
 	}
 }

@@ -1,13 +1,6 @@
 package refdiff.core.diff;
 
-import static refdiff.core.diff.RastRootHelper.anonymous;
-import static refdiff.core.diff.RastRootHelper.findByFullName;
-import static refdiff.core.diff.RastRootHelper.fullName;
-import static refdiff.core.diff.RastRootHelper.leaf;
-import static refdiff.core.diff.RastRootHelper.sameName;
-import static refdiff.core.diff.RastRootHelper.sameNamespace;
-import static refdiff.core.diff.RastRootHelper.sameSignature;
-import static refdiff.core.diff.RastRootHelper.sameType;
+import static refdiff.core.diff.RastRootHelper.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -485,6 +478,10 @@ public class RastComparator {
 			}
 		}
 		*/
+	}
+
+	public List<String> getAllowedFileExtensions() {
+		return parser.getAllowedFileExtensions();
 	}
 
 }
