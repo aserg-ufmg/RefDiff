@@ -78,7 +78,7 @@ public class CParser implements RastParser, SourceTokenizer {
 
 	@Override
 	public List<String> getAllowedFileExtensions() {
-		return Arrays.asList(".c");
+		return Arrays.asList(".c", ".h");
 	}
 
 }
