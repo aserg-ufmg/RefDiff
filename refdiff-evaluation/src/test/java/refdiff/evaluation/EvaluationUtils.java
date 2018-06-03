@@ -70,7 +70,11 @@ public class EvaluationUtils {
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			
-			return comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
+			RastDiff rastDiff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
+			
+			System.out.println("Done computing");
+			
+			return rastDiff;
 		}
 	}
 	
