@@ -9,6 +9,9 @@ dependencies {
 	testCompile 'junit:junit:4.11'
 	testCompile project(path: ':refdiff-core', configuration: 'testArtifacts')
 
-	compile "com.github.bdwashbu:cengine_2.11:0.0.5"
 	compile "com.fasterxml.jackson.core:jackson-databind:2.6.3"
+	
+	compile fileTree(dir: 'lib', include: ['*.jar'])
+	
+	compile "org.osgi:org.osgi.service.prefs:1.1.1"
 }
