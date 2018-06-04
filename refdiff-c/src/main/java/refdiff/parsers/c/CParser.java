@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.cdt.core.dom.ast.ASTVisitor;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
 import org.eclipse.cdt.core.dom.ast.gnu.c.GCCLanguage;
 import org.eclipse.cdt.core.index.IIndex;
-import org.eclipse.cdt.core.model.ILanguage;
 import org.eclipse.cdt.core.parser.DefaultLogService;
 import org.eclipse.cdt.core.parser.FileContent;
 import org.eclipse.cdt.core.parser.IParserLogService;
@@ -30,13 +30,16 @@ public class CParser implements RastParser, SourceTokenizer {
 	public RastRoot parse(List<SourceFile> filesOfInterest) throws Exception {
 		RastRoot root = new RastRoot();
 		
+		AtomicInteger id = new AtomicInteger(1);
+		
 		for (SourceFile sourceFile : filesOfInterest) {
 			FileContent fileContent = FileContent.create("temp.source", sourceFile.getContent().toCharArray());
-			ASTVisitor cRastVisitor = new CRastVisitor(root, sourceFile.getPath());
-			IASTTranslationUnit translationUnit = parseAST(fileContent);	
+			IASTTranslationUnit translationUnit = parseAST(fileContent);
 			
+//			System.out.println(sourceFile.getPath());
 //			ASTPrinter.print(translationUnit);
-			
+
+			ASTVisitor cRastVisitor = new CRastVisitor(root, sourceFile.getPath(), id);
 			translationUnit.accept(cRastVisitor);
 		}
 		
@@ -54,7 +57,7 @@ public class CParser implements RastParser, SourceTokenizer {
 		IScannerInfo si = new ScannerInfo(macroDefinitions, includeSearchPaths);
 		IncludeFileContentProvider ifcp = IncludeFileContentProvider.getEmptyFilesProvider();
 		IIndex idx = null;
-		int options = ILanguage.OPTION_IS_SOURCE_UNIT;
+		int options = 0;
 		IParserLogService log = new DefaultLogService();
 		return gccLanguage.getASTTranslationUnit(fileContent, si, ifcp, idx, options, log);
 	}
@@ -69,7 +72,7 @@ public class CParser implements RastParser, SourceTokenizer {
 		try {
 			translationUnit = parseAST(fileContent);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		translationUnit.accept(tokenVisitor);
 		

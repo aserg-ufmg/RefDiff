@@ -3,6 +3,7 @@ package refdiff.parsers.c;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.cdt.core.dom.ast.ASTGenericVisitor;
 import org.eclipse.cdt.core.dom.ast.IASTName;
@@ -13,22 +14,43 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayDeclarator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayModifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArraySubscriptExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTBinaryExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTBreakStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTCastExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompositeTypeSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTConditionalExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTContinueStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarationStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarator;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTElaboratedTypeSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTEqualsInitializer;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTExpressionList;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTExpressionStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTFieldReference;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTForStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionCallExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDeclarator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDefinition;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTGotoStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTIdExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTIfStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTInitializerList;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTLabelStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTLiteralExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTNullStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTParameterDeclaration;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTPointer;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblem;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTReturnStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTranslationUnit;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypeId;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypeIdExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypedefNameSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTUnaryExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTWhileStatement;
 
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
@@ -41,22 +63,24 @@ import refdiff.core.rast.RastRoot;
 public class CRastVisitor extends ASTGenericVisitor {
 
 	private static final char FOLDER_SEPARATOR = '/';
-	private int id = 1;
+	private AtomicInteger id;
 	private RastNode currentNode;
 	private RastNode currentRelationshipN1;
 	private Map<Integer, RastNode> nodesHash = new HashMap<Integer, RastNode>();
 	private RastRoot rastRoot;
 	private RastNode programNode;
 	private String waitingName;
-	private String waitingBodyLocation;
+	private String waitingBodyLocation = "";
 	private String waitingType;
 	private String maybeWaitingArray;
 	private String fileName;
+	private String temporaryName = "";
 
-	public CRastVisitor(RastRoot rastRoot, String fileName) {
+	public CRastVisitor(RastRoot rastRoot, String fileName, AtomicInteger id) {
 		super(true);
 		this.rastRoot = rastRoot;
 		this.fileName = fileName;
+		this.id = id;
 	}
 	
 	@Override
@@ -72,37 +96,19 @@ public class CRastVisitor extends ASTGenericVisitor {
 			}
 			else if (iastNode instanceof CASTCompoundStatement) {
 				if (this.waitingBodyLocation.equals("FunctionDeclaration")) {
-					int offset = ((CASTCompoundStatement) iastNode).getOffset();
-					int length = ((CASTCompoundStatement) iastNode).getLength();
+					int offset = ((CASTCompoundStatement) iastNode).getFileLocation().getNodeOffset();
+					int length = ((CASTCompoundStatement) iastNode).getRawSignature().length();
 					
 					Location location = this.currentNode.getLocation();
 					location.setBodyBegin(offset);
 					location.setBodyEnd(offset + length);
 					
-					this.waitingBodyLocation = null;
+					this.waitingBodyLocation = "";
 				}
 			}
 			else if (iastNode instanceof CASTSimpleDeclSpecifier) {
 				if (this.waitingType != null && this.waitingType.equals("Parameter")) {
-					String type = this.getType((CASTSimpleDeclSpecifier) iastNode);
-					
-					String localName = this.currentNode.getLocalName();
-					
-					int closingParenthesisIndex = localName.indexOf(")");
-					
-					if (localName.charAt(closingParenthesisIndex - 1) != '(') {
-						type = ", " + type;
-					}
-					
-					StringBuilder newLocalNameBuilder = new StringBuilder();
-					newLocalNameBuilder.append(localName.substring(0, closingParenthesisIndex));
-					newLocalNameBuilder.append(type);
-					newLocalNameBuilder.append(")");
-					
-					this.currentNode.setLocalName(newLocalNameBuilder.toString());
-					
-					this.waitingType = null;
-					this.maybeWaitingArray = null;
+					this.appendParameterType(this.getType((CASTSimpleDeclSpecifier) iastNode));
 				}
 			}
 			else if (iastNode instanceof CASTArrayModifier) {
@@ -117,17 +123,23 @@ public class CRastVisitor extends ASTGenericVisitor {
 				
 				this.maybeWaitingArray = null;
 			}
+			else if (iastNode instanceof CASTPointer) {
+				this.temporaryName = "*";
+			}
 			else if (iastNode instanceof IASTName) {
-				if (this.waitingName != null) {
+				if (iastNode.getParent() instanceof CASTTypedefNameSpecifier && this.waitingType != null && this.waitingType.equals("Parameter")) {
+					this.appendParameterType(((IASTName) iastNode).toString());
+				}
+				else if (this.waitingName != null) {
 					String name = ((IASTName) iastNode).toString();
-					
+
 					if (this.waitingName.equals("FunctionDeclaration")) {
 						this.currentNode.setSimpleName(name);
 						this.currentNode.setLocalName(name + "()");	
 					}
 					else if (this.waitingName.equals("Parameter")) {
 						Parameter parameter = new Parameter();
-						parameter.setName(name);
+						parameter.setName(this.temporaryName + name);
 						
 						RastNode parentNode = (RastNode) this.getRASTParent(iastNode);
 						parentNode.getParameters().add(parameter);
@@ -135,7 +147,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 						this.maybeWaitingArray = "Parameter";
 					}
 					else if (this.waitingName.equals("Relationship")) {
-						RastNode n2 = this.getBySimpleName(name);
+						RastNode n2 = this.getBySimpleName(this.temporaryName + name);
 						if (n2 != null) {
 							if (!this.hasRelationship(
 									this.rastRoot, this.currentRelationshipN1, n2, RastNodeRelationshipType.USE)) {
@@ -151,26 +163,32 @@ public class CRastVisitor extends ASTGenericVisitor {
 					}
 					
 					this.waitingName = null;
+					this.temporaryName = "";
 				}
 			}
 			else {
+				boolean createNode = true;
+				
 				if (iastNode instanceof CASTFunctionDefinition) {
 					this.waitingName = "FunctionDeclaration";
 					this.waitingBodyLocation = "FunctionDeclaration";
 				}
+				else if (iastNode instanceof CASTFunctionDeclarator) {
+					if (iastNode.getParent() instanceof CASTFunctionDefinition) {
+						createNode = false;
+					}
+					else {
+						this.waitingName = "FunctionDeclaration";
+						this.waitingBodyLocation = "";
+					}
+				}
 				
-				RastNode node = this.createNode((ASTNode) iastNode);
-
-				HasChildrenNodes parentNode = this.getRASTParent(iastNode);
-				
-				parentNode.addNode(node);
-
-				this.nodesHash.put(iastNode.hashCode(), node);
-				
-				this.currentNode = node;
-				
-				if (iastNode instanceof CASTTranslationUnit) {
-					this.programNode = node;
+				if (createNode) {
+					RastNode node = this.createNode((ASTNode) iastNode);
+					this.currentNode = node;
+					if (iastNode instanceof CASTTranslationUnit) {
+						this.programNode = node;
+					}					
 				}
 			}				
 		}
@@ -178,13 +196,36 @@ public class CRastVisitor extends ASTGenericVisitor {
 		return PROCESS_CONTINUE;
 	}
 	
+	private void appendParameterType(String type) {
+		String localName = this.currentNode.getLocalName();
+		
+		int closingParenthesisIndex = localName.indexOf(")");
+		
+		if (localName.charAt(closingParenthesisIndex - 1) != '(') {
+			type = ", " + type;
+		}
+		
+		StringBuilder newLocalNameBuilder = new StringBuilder();
+		newLocalNameBuilder.append(localName.substring(0, closingParenthesisIndex));
+		newLocalNameBuilder.append(type);
+		newLocalNameBuilder.append(")");
+		
+		this.currentNode.setLocalName(newLocalNameBuilder.toString());
+		
+		this.waitingType = null;
+		this.maybeWaitingArray = null;
+	}
+	
 	private RastNode createNode(ASTNode astNode) {
-		RastNode rastNode = new RastNode(this.id);
+		RastNode rastNode = new RastNode(this.id.get());
+		
+		int offset = astNode.getFileLocation().getNodeOffset();
+		int length = astNode.getRawSignature().length();
 		
 		if (astNode instanceof CASTTranslationUnit) {
 			int lastSeparatorIndex = this.fileName.lastIndexOf(FOLDER_SEPARATOR);
 			
-			String path = null;
+			String path = "";
 			if (lastSeparatorIndex != -1) {
 				path = this.fileName.substring(0, lastSeparatorIndex + 1);	
 			}
@@ -193,14 +234,11 @@ public class CRastVisitor extends ASTGenericVisitor {
 
 			rastNode.setNamespace(path);
 			rastNode.setSimpleName(fileNameWithoutPath);
-			rastNode.setLocalName(fileNameWithoutPath);	
+			rastNode.setLocalName(fileNameWithoutPath);
 		}
 		
 		rastNode.setType(this.getRASTType(astNode));
 		
-		int offset = astNode.getOffset();
-		int length = astNode.getLength();
-
 		Location location = new Location();
 		location.setBegin(offset);
 		location.setEnd(offset + length);
@@ -210,10 +248,20 @@ public class CRastVisitor extends ASTGenericVisitor {
 			location.setBodyBegin(offset);
 			location.setBodyEnd(offset + length);
 		}
+		else if (astNode instanceof CASTFunctionDeclarator) {
+			location.setBodyBegin(offset + length);
+			location.setBodyEnd(offset + length);
+		}
 		
 		rastNode.setLocation(location);
 		
-		this.id++;
+		this.id.incrementAndGet();
+		
+		HasChildrenNodes parentNode = this.getRASTParent(astNode);
+		
+		parentNode.addNode(rastNode);
+
+		this.nodesHash.put(astNode.hashCode(), rastNode);
 		
 		return rastNode;
 	}
@@ -222,22 +270,23 @@ public class CRastVisitor extends ASTGenericVisitor {
 		if (astNode instanceof CASTTranslationUnit) {
 			return "Program";
 		}
-		else if (astNode instanceof CASTFunctionDefinition) {
+		else if (astNode instanceof CASTFunctionDefinition || astNode instanceof CASTFunctionDeclarator) {
 			return "FunctionDeclaration";
 		}
 		else if (astNode instanceof CASTParameterDeclaration) {
 			return "Parameter";
 		}
 		
-		return astNode.getClass().getName();
+		throw new RuntimeException("Not predicted type: " + astNode.getClass().getName());
 	}
 	
 	private boolean shouldSkip(IASTNode iastNode) {
-		return iastNode instanceof CASTFunctionDeclarator
-				|| iastNode instanceof CASTExpressionStatement
+		return iastNode instanceof CASTExpressionStatement
 				|| iastNode instanceof CASTIdExpression 
 				|| iastNode instanceof CASTLiteralExpression
-				|| iastNode instanceof CASTDeclarator
+				|| iastNode instanceof CASTTypedefNameSpecifier
+				|| (iastNode instanceof CASTDeclarator && 
+						!iastNode.getClass().getSimpleName().equals("CASTFunctionDeclarator"))
 				|| iastNode instanceof CASTReturnStatement
 				|| iastNode instanceof CASTDeclarationStatement
 				|| iastNode instanceof CASTSimpleDeclaration
@@ -245,7 +294,26 @@ public class CRastVisitor extends ASTGenericVisitor {
 				|| iastNode instanceof CASTBinaryExpression
 				|| iastNode instanceof CASTArrayDeclarator 
 				|| iastNode instanceof CASTArraySubscriptExpression
-				|| iastNode instanceof CASTEqualsInitializer;
+				|| iastNode instanceof CASTEqualsInitializer
+				|| iastNode instanceof CASTIfStatement
+				|| iastNode instanceof CASTTypeIdExpression
+				|| iastNode instanceof CASTTypeId
+				|| iastNode instanceof CASTFieldReference
+				|| iastNode instanceof CASTElaboratedTypeSpecifier
+				|| iastNode instanceof CASTCastExpression
+				|| iastNode instanceof CASTCompositeTypeSpecifier
+				|| iastNode instanceof CASTInitializerList
+				|| iastNode instanceof CASTForStatement
+				|| iastNode instanceof CASTWhileStatement
+				|| iastNode instanceof CASTGotoStatement
+				|| iastNode instanceof CASTConditionalExpression
+				|| iastNode instanceof CASTContinueStatement
+				|| iastNode instanceof CASTProblemStatement
+				|| iastNode instanceof CASTProblem
+				|| iastNode instanceof CASTBreakStatement
+				|| iastNode instanceof CASTLabelStatement
+				|| iastNode instanceof CASTExpressionList
+				|| iastNode instanceof CASTNullStatement;
 	}
 	
 	private HasChildrenNodes getRASTParent(IASTNode iastNode) {
@@ -253,7 +321,13 @@ public class CRastVisitor extends ASTGenericVisitor {
 			return this.rastRoot;
 		}
 		
-		RastNode rastParent = this.nodesHash.get(iastNode.getParent().hashCode());
+		RastNode rastParent = null;
+		iastNode = iastNode.getParent();
+		
+		while (rastParent == null && iastNode != null) {
+			rastParent = this.nodesHash.get(iastNode.hashCode());
+			iastNode = iastNode.getParent();
+		}
 		
 		if (rastParent == null) {
 			rastParent = this.currentNode;

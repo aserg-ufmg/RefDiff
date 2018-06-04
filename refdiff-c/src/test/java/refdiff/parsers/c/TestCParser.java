@@ -1,7 +1,9 @@
 package refdiff.parsers.c;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,6 +15,7 @@ import org.junit.Test;
 
 import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
+import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
@@ -62,5 +65,100 @@ public class TestCParser {
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {
 		return new RastNodeRelationship(type, n1.getId(), n2.getId());
+	}
+	
+	@Test
+	public void shouldParseParameters() throws Exception {
+		Path basePath = Paths.get("test-data/c/parser");
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("file1.c")));
+		
+		RastRoot root = parser.parse(sourceFiles);
+		
+		assertThat(root.getNodes().size(), is(1));
+		
+		RastNode programNode = root.getNodes().get(0);
+		assertThat(programNode.getType(), is("Program"));
+		assertThat(programNode.getLocalName(), is("file1.c"));
+		assertThat(programNode.getSimpleName(), is("file1.c"));
+		assertThat(programNode.getNamespace(), is(""));
+		
+		assertThat(programNode.getNodes().size(), is(2));
+		
+		RastNode nodeAddItem = programNode.getNodes().get(0);
+		
+		assertThat(nodeAddItem.getType(), is("FunctionDeclaration"));
+		assertThat(nodeAddItem.getLocalName(), is("add_item(HTree, HTree, HTree)"));
+		assertThat(nodeAddItem.getSimpleName(), is("add_item"));
+		assertThat(nodeAddItem.getNamespace(), is((String) null));
+		
+		List<Parameter> nodeAddItemParams = nodeAddItem.getParameters();
+		
+		assertThat(nodeAddItemParams.size(), is(3));
+		assertThat(nodeAddItemParams.get(0).getName(), is("param1"));
+		assertThat(nodeAddItemParams.get(1).getName(), is("param2[]"));
+		assertThat(nodeAddItemParams.get(2).getName(), is("*param3"));
+		
+		RastNode nodeRemoveItem = programNode.getNodes().get(1);
+		
+		assertThat(nodeRemoveItem.getType(), is("FunctionDeclaration"));
+		assertThat(nodeRemoveItem.getLocalName(), is("remove_item(HTree)"));
+		assertThat(nodeRemoveItem.getSimpleName(), is("remove_item"));
+		assertThat(nodeRemoveItem.getNamespace(), is((String) null));
+		
+		List<Parameter> nodeRemoveItemParams = nodeRemoveItem.getParameters();
+		
+		assertThat(nodeRemoveItemParams.size(), is(1));
+		assertThat(nodeRemoveItemParams.get(0).getName(), is("param4"));
+	}
+	
+	@Test
+	public void shouldParseLocation() throws Exception {
+		Path basePath = Paths.get("test-data/c/parser");
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("locationIssue.c")));
+		
+		RastRoot root = parser.parse(sourceFiles);
+		
+		assertThat(root.getNodes().size(), is(1));
+		
+		RastNode program = root.getNodes().get(0);
+		
+		assertThat(program.getLocation().getBegin(), is(0));
+		assertThat(program.getLocation().getEnd(), is(631));
+		
+		RastNode nodeF1 = program.getNodes().get(0);
+		
+		assertThat(nodeF1.getLocation().getBegin(), is(479));
+		assertThat(nodeF1.getLocation().getEnd(), is(528));
+		assertThat(nodeF1.getLocation().getBodyBegin(), is(488));
+		assertThat(nodeF1.getLocation().getBodyEnd(), is(528));
+		
+		RastNode nodeF2 = program.getNodes().get(1);
+		
+		assertThat(nodeF2.getLocation().getBegin(), is(530));
+		assertThat(nodeF2.getLocation().getEnd(), is(579));
+		assertThat(nodeF2.getLocation().getBodyBegin(), is(539));
+		assertThat(nodeF2.getLocation().getBodyEnd(), is(579));
+		
+		RastNode nodeF3 = program.getNodes().get(2);
+		
+		assertThat(nodeF3.getLocation().getBegin(), is(581));
+		assertThat(nodeF3.getLocation().getEnd(), is(630));
+		assertThat(nodeF3.getLocation().getBodyBegin(), is(590));
+		assertThat(nodeF3.getLocation().getBodyEnd(), is(630));
+	}
+	
+	@Test
+	public void shouldParseLocation2() throws Exception {
+		Path basePath = Paths.get("test-data/c/parser");
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("locationIssue2.c")));
+		
+		RastRoot root = parser.parse(sourceFiles);
+		
+		assertThat(root.getNodes().size(), is(1));
+		
+		RastNode program = root.getNodes().get(0);
+		
+		assertThat(program.getLocation().getBegin(), is(0));
+		assertThat(program.getLocation().getEnd(), is(1979));
 	}
 }

@@ -6,6 +6,7 @@ import org.eclipse.cdt.core.dom.ast.ASTGenericVisitor;
 import org.eclipse.cdt.core.dom.ast.ExpansionOverlapsBoundaryException;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.parser.IToken;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTBinaryExpression;
 
 public class TokenVisitor extends ASTGenericVisitor {
 
@@ -18,13 +19,17 @@ public class TokenVisitor extends ASTGenericVisitor {
 	
 	@Override
 	protected int genericVisit(IASTNode iastNode) {
+		if (!this.tokenList.isEmpty()) {
+			return PROCESS_ABORT;
+		}
+		
 		IToken token = null;
 		try {
 			token = iastNode.getSyntax();
 		} catch (UnsupportedOperationException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (ExpansionOverlapsBoundaryException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 		if (this.tokenList.isEmpty() && token != null) {
