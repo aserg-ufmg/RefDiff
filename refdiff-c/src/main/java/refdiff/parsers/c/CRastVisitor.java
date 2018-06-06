@@ -11,21 +11,30 @@ import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayDeclarator;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayModifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArraySubscriptExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTBinaryExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTBreakStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTCaseStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCastExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompositeTypeSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatementExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTConditionalExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTContinueStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarationStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarator;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTDefaultStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTDesignatedInitializer;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTDoStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTElaboratedTypeSpecifier;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTEnumerationSpecifier;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTEnumerator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTEqualsInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTExpressionList;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTExpressionStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTFieldDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFieldReference;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTForStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionCallExpression;
@@ -41,16 +50,21 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTNullStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTParameterDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTPointer;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblem;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemDeclaration;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTReturnStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTSwitchStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTranslationUnit;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypeId;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypeIdExpression;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypeIdInitializerExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypedefNameSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTUnaryExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTWhileStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.GNUCASTGotoStatement;
 
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
@@ -74,7 +88,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 	private String waitingType;
 	private String maybeWaitingArray;
 	private String fileName;
-	private String temporaryName = "";
+	private String maybePointer = "";
 
 	public CRastVisitor(RastRoot rastRoot, String fileName, AtomicInteger id) {
 		super(true);
@@ -86,6 +100,14 @@ public class CRastVisitor extends ASTGenericVisitor {
 	@Override
 	protected int genericVisit(IASTNode iastNode) {
 		if (!this.shouldSkip(iastNode)) {
+			if (this.maybeWaitingArray != null && !(iastNode instanceof CASTArrayModifier)) {
+				this.maybeWaitingArray = null;
+			}
+			
+			if (this.maybePointer != null && !(iastNode instanceof IASTName)) {
+				this.maybePointer = "";
+			}
+			
 			if (iastNode instanceof CASTFunctionCallExpression) {
 				this.currentRelationshipN1 = (RastNode) this.getRASTParent(iastNode);
 				this.waitingName = "Relationship";
@@ -124,10 +146,11 @@ public class CRastVisitor extends ASTGenericVisitor {
 				this.maybeWaitingArray = null;
 			}
 			else if (iastNode instanceof CASTPointer) {
-				this.temporaryName = "*";
+				this.maybePointer = "*";
 			}
 			else if (iastNode instanceof IASTName) {
-				if (iastNode.getParent() instanceof CASTTypedefNameSpecifier && this.waitingType != null && this.waitingType.equals("Parameter")) {
+				if (((iastNode.getParent() instanceof CASTTypedefNameSpecifier) || (iastNode.getParent() instanceof CASTElaboratedTypeSpecifier)) 
+						&& this.waitingType != null && this.waitingType.equals("Parameter")) {
 					this.appendParameterType(((IASTName) iastNode).toString());
 				}
 				else if (this.waitingName != null) {
@@ -139,15 +162,15 @@ public class CRastVisitor extends ASTGenericVisitor {
 					}
 					else if (this.waitingName.equals("Parameter")) {
 						Parameter parameter = new Parameter();
-						parameter.setName(this.temporaryName + name);
+						parameter.setName(this.maybePointer + name);
 						
 						RastNode parentNode = (RastNode) this.getRASTParent(iastNode);
 						parentNode.getParameters().add(parameter);
-						
+												
 						this.maybeWaitingArray = "Parameter";
 					}
 					else if (this.waitingName.equals("Relationship")) {
-						RastNode n2 = this.getBySimpleName(this.temporaryName + name);
+						RastNode n2 = this.getBySimpleName(this.maybePointer + name);
 						if (n2 != null) {
 							if (!this.hasRelationship(
 									this.rastRoot, this.currentRelationshipN1, n2, RastNodeRelationshipType.USE)) {
@@ -163,7 +186,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 					}
 					
 					this.waitingName = null;
-					this.temporaryName = "";
+					this.maybePointer = "";
 				}
 			}
 			else {
@@ -188,7 +211,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 					this.currentNode = node;
 					if (iastNode instanceof CASTTranslationUnit) {
 						this.programNode = node;
-					}					
+					}
 				}
 			}				
 		}
@@ -199,18 +222,20 @@ public class CRastVisitor extends ASTGenericVisitor {
 	private void appendParameterType(String type) {
 		String localName = this.currentNode.getLocalName();
 		
-		int closingParenthesisIndex = localName.indexOf(")");
-		
-		if (localName.charAt(closingParenthesisIndex - 1) != '(') {
-			type = ", " + type;
+		if (localName != null) {
+			int closingParenthesisIndex = localName.indexOf(")");
+			
+			if (localName.charAt(closingParenthesisIndex - 1) != '(') {
+				type = ", " + type;
+			}
+			
+			StringBuilder newLocalNameBuilder = new StringBuilder();
+			newLocalNameBuilder.append(localName.substring(0, closingParenthesisIndex));
+			newLocalNameBuilder.append(type);
+			newLocalNameBuilder.append(")");
+			
+			this.currentNode.setLocalName(newLocalNameBuilder.toString());			
 		}
-		
-		StringBuilder newLocalNameBuilder = new StringBuilder();
-		newLocalNameBuilder.append(localName.substring(0, closingParenthesisIndex));
-		newLocalNameBuilder.append(type);
-		newLocalNameBuilder.append(")");
-		
-		this.currentNode.setLocalName(newLocalNameBuilder.toString());
 		
 		this.waitingType = null;
 		this.maybeWaitingArray = null;
@@ -254,6 +279,12 @@ public class CRastVisitor extends ASTGenericVisitor {
 		}
 		
 		rastNode.setLocation(location);
+		
+		if (astNode instanceof CASTFunctionDefinition
+				|| astNode instanceof CASTFunctionDeclarator) {
+			rastNode.setSimpleName("");
+			rastNode.setLocalName("()");			
+		}
 		
 		this.id.incrementAndGet();
 		
@@ -313,7 +344,21 @@ public class CRastVisitor extends ASTGenericVisitor {
 				|| iastNode instanceof CASTBreakStatement
 				|| iastNode instanceof CASTLabelStatement
 				|| iastNode instanceof CASTExpressionList
-				|| iastNode instanceof CASTNullStatement;
+				|| iastNode instanceof CASTNullStatement
+				|| iastNode instanceof CASTDoStatement
+				|| iastNode instanceof CASTEnumerationSpecifier
+				|| iastNode instanceof CASTEnumerator
+				|| iastNode instanceof CASTSwitchStatement
+				|| iastNode instanceof CASTCaseStatement
+				|| iastNode instanceof CASTDesignatedInitializer
+				|| iastNode instanceof CASTFieldDesignator
+				|| iastNode instanceof CASTDefaultStatement
+				|| iastNode instanceof CASTProblemDeclaration
+				|| iastNode instanceof CASTArrayDesignator
+				|| iastNode instanceof CASTProblemExpression
+				|| iastNode instanceof CASTTypeIdInitializerExpression
+				|| iastNode instanceof GNUCASTGotoStatement
+				|| iastNode instanceof CASTCompoundStatementExpression;
 	}
 	
 	private HasChildrenNodes getRASTParent(IASTNode iastNode) {

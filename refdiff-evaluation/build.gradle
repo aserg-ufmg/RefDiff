@@ -22,6 +22,9 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.9'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.9'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+    
+    compile 'com.jcabi:jcabi-github:0.39'
+	compile 'org.eclipse.jgit:org.eclipse.jgit:5.0.0.201805151920-m7'
 }
 
 task icseeval(type: JavaExec) {

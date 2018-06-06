@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -160,5 +161,57 @@ public class TestCParser {
 		
 		assertThat(program.getLocation().getBegin(), is(0));
 		assertThat(program.getLocation().getEnd(), is(1979));
+	}
+	
+	@Test
+	public void shouldParseStructParams() throws Exception {
+		Path basePath = Paths.get("test-data/c/parser");
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("structParams.c")));
+		
+		RastRoot root = parser.parse(sourceFiles);
+		
+		assertThat(root.getNodes().size(), is(1));
+		
+		RastNode program = root.getNodes().get(0);
+		
+		RastNode functionNode = program.getNodes().get(0);
+		
+		assertThat(functionNode.getSimpleName(), is("__init_swait_queue_head"));
+		assertThat(functionNode.getLocalName(), is("__init_swait_queue_head(swait_queue_head, char, lock_class_key)"));
+		
+		List<Parameter> parameters = functionNode.getParameters();
+		
+		assertThat(parameters.size(), is(3));
+		assertThat(parameters.get(0).getName(), is("*q"));
+		assertThat(parameters.get(1).getName(), is("*name"));
+		assertThat(parameters.get(2).getName(), is("*key"));
+	}
+	
+	@Test
+	public void shouldParseArrayModifier() throws Exception {
+		Path basePath = Paths.get("test-data/c/parser");
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("arrayModifier.c")));
+		
+		try {
+			parser.parse(sourceFiles);	
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			fail("Should have not thrown exception");
+		}
+	}
+
+	@Test
+	public void shouldParseFunctionWithNoName() throws Exception {
+		Path basePath = Paths.get("test-data/c/parser");
+		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("functionWithNoName.c")));
+		
+		try {
+			parser.parse(sourceFiles);	
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			fail("Should have not thrown exception");
+		}
 	}
 }
