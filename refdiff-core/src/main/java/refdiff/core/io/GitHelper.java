@@ -26,6 +26,8 @@ import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.TrackingRefUpdate;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
 
+import refdiff.core.util.PairBeforeAfter;
+
 public class GitHelper {
 	
 	private static final String REMOTE_REFS_PREFIX = "refs/remotes/origin/";
@@ -122,6 +124,24 @@ public class GitHelper {
 			return rw.parseCommit(oid);
 		} catch (MissingObjectException e) {
 			return null;
+		}
+	}
+	
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId) throws Exception {
+		ObjectId oid = repository.resolve(commitId);
+		try (RevWalk rw = new RevWalk(repository)) {
+			RevCommit commit = rw.parseCommit(oid);
+			if (commit.getParentCount() != 1) {
+				throw new RuntimeException("Commit should have one parent");
+			}
+			RevCommit parentCommit = commit.getParent(0);
+			
+			//List<String>
+			//fileTreeDiff(repository, commit, javaFilesBefore, javaFilesCurrent, renamedFilesHint, false, fileExtensions);
+			
+			//new GitSourceTree(repository, commit.getId().name(), sourceFiles);
+			return null;
+			// TODO continue
 		}
 	}
 	
