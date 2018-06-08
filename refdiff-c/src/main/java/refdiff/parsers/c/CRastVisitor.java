@@ -10,6 +10,7 @@ import org.eclipse.cdt.core.dom.ast.IASTName;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTASMDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayDeclarator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTArrayModifier;
@@ -155,10 +156,18 @@ public class CRastVisitor extends ASTGenericVisitor {
 				}
 				else if (this.waitingName != null) {
 					String name = ((IASTName) iastNode).toString();
+					
+					boolean shouldClear = true;
 
 					if (this.waitingName.equals("FunctionDeclaration")) {
-						this.currentNode.setSimpleName(name);
-						this.currentNode.setLocalName(name + "()");	
+						if (iastNode.getParent() instanceof CASTTypedefNameSpecifier 
+								|| iastNode.getParent() instanceof CASTElaboratedTypeSpecifier) {
+							shouldClear = false;
+						}
+						else {
+							this.currentNode.setSimpleName(name);
+							this.currentNode.setLocalName(name + "()");							
+						}
 					}
 					else if (this.waitingName.equals("Parameter")) {
 						Parameter parameter = new Parameter();
@@ -185,8 +194,10 @@ public class CRastVisitor extends ASTGenericVisitor {
 						this.currentRelationshipN1 = null;
 					}
 					
-					this.waitingName = null;
-					this.maybePointer = "";
+					if (shouldClear) {
+						this.waitingName = null;
+						this.maybePointer = "";						
+					}
 				}
 			}
 			else {
@@ -358,7 +369,8 @@ public class CRastVisitor extends ASTGenericVisitor {
 				|| iastNode instanceof CASTProblemExpression
 				|| iastNode instanceof CASTTypeIdInitializerExpression
 				|| iastNode instanceof GNUCASTGotoStatement
-				|| iastNode instanceof CASTCompoundStatementExpression;
+				|| iastNode instanceof CASTCompoundStatementExpression
+				|| iastNode instanceof CASTASMDeclaration;
 	}
 	
 	private HasChildrenNodes getRASTParent(IASTNode iastNode) {

@@ -68,6 +68,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.8.9'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.9'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+    compile 'com.ibm.icu:icu4j:61.1'
     
     testCompile 'junit:junit:4.11'
 }

@@ -1,9 +1,7 @@
 package refdiff.evaluation.c;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ import refdiff.parsers.c.CParser;
 
 public class PrecisionCalculation {
 
-	private static final String OAUTH_TOKEN = "7047316bae22649368f9bba89fd5016d96f46217";
+	private static final String OAUTH_TOKEN = "";
 
 	private static final String BASE_DIRECTORY = "data" + File.separator + "c-evaluation";
 	private static final String CSV_DIRECTORY = BASE_DIRECTORY + File.separator + "csv";
@@ -55,6 +53,11 @@ public class PrecisionCalculation {
 	private static final String ORGANIZATION_NAME = "refdiff-study";
 	
 	public static void main(String[] args) throws IOException {
+		if (OAUTH_TOKEN.equals("")) {
+			System.err.println("You need to set the OAUTH_TOKEN (hard coded) on the code.");
+			return;
+		}
+		
 		final Github github = new RtGithub(OAUTH_TOKEN);
 		final Repos repos = github.repos();
 
@@ -181,110 +184,115 @@ public class PrecisionCalculation {
 			
 			String repositoryUrl = repositoryParts[0];
 			String repositoryName = repositoryParts[1];
+		
+			findRefactoringsOnRepository(repositoryName, repositoryUrl, i + 1, repositories.size());
+		}
+	}
+	
+	private static void findRefactoringsOnRepository(String repositoryName, String repositoryUrl, int repositoryOrder, int totalRepositories) {
+		String tempFolder = System.getProperty("java.io.tmpdir");
+		String repoFolderPath = tempFolder + repositoryName + ".git";
+		File repoFolder = new File(tempFolder, repositoryName + ".git");
+		
+		if (!repoFolder.exists()) {
+			System.out.println("Cloning " + repositoryUrl + " into " + repoFolderPath);
+			ExternalProcess.execute(new File(tempFolder), "git", "clone", repositoryUrl, "--bare", "--shallow-since=2017-01-01");
+		}
+		
+		String fileName = RESULTS_DIRECTORY + File.separator + repositoryName + ".csv";
+		
+		System.out.println(repositoryOrder + "/" + totalRepositories + 
+				" Analysing " + repositoryName + " and printing refactorings to " + fileName);
+		
+		int commitsCount = 0;
+		Map<String, Integer> relationshipCounts = new HashMap<String, Integer>();
+		
+		try (
+			PrintWriter writer = new PrintWriter(new File(fileName));
+			Repository repository = new RepositoryBuilder()
+				.setGitDir(repoFolder)
+				.readEnvironment()
+				.build();
+			RevWalk revWalk = new RevWalk(repository)) {
 			
-			String tempFolder = System.getProperty("java.io.tmpdir");
-			String repoFolderPath = tempFolder + repositoryName + ".git";
-			File repoFolder = new File(tempFolder, repositoryName + ".git");
+			RevCommit head = revWalk.parseCommit(repository.resolve("HEAD"));
+			revWalk.markStart(head);
+			revWalk.setRevFilter(RevFilter.NO_MERGES);
 			
-			if (!repoFolder.exists()) {
-				System.out.println("Cloning " + repositoryUrl + " into " + repoFolderPath);
-				ExternalProcess.execute(new File(tempFolder), "git", "clone", repositoryUrl, "--bare", "--shallow-since=2017-01-01");
+			for (RevCommit commit : revWalk) {
+				System.out.println("Commit " + (commitsCount + 1) + "/" + NUMBER_OF_COMMITS_TO_CONSIDER);
+				
+				String sha = commit.getName();
+				
+				Set<Relationship> relationships = getRelationships(tempFolder, repoFolderPath, sha);
+				
+				Map<String, Integer> thisCommitsRelationshipCounts = new HashMap<String, Integer>();
+			    
+			    for (Relationship relationship : relationships) {
+			    	String relationshipString = relationship.getType().toString();
+			    	
+			    	String before = nodeRepresentation(relationship.getNodeBefore());
+	    			String after = nodeRepresentation(relationship.getNodeAfter());
+			    	
+			    	writer.println(
+			    			sha + COMMA + 
+			    			relationshipString + COMMA + 
+			    			before + COMMA + 
+			    			after + COMMA + 
+			    			QUOTES + commit.getShortMessage() + QUOTES);
+			    	
+			    	countRelationship(thisCommitsRelationshipCounts, relationshipString);
+			    	countRelationship(relationshipCounts, relationshipString);
+			    }
+			    
+			    System.out.print("Found " + relationships.size() + " relationships");
+			    
+			    String separator = " - ";
+			    
+			    for (Entry<String, Integer> relationshipCount : thisCommitsRelationshipCounts.entrySet()) {
+			    	String relationship = relationshipCount.getKey();
+			    	Integer count = relationshipCount.getValue();
+			    	
+			    	System.out.print(separator + count + " " + relationship);
+			    	separator = ", ";
+			    }
+			    
+			    System.out.println();
+			    
+			    commitsCount++;
+			    if (commitsCount == NUMBER_OF_COMMITS_TO_CONSIDER) {
+			    	break;
+			    }
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		finally {
+			System.out.print("Done printing " + fileName + ". " + commitsCount + " commits considered");
+			
+			String separator = ". ";
+			int countRelationships = 0;
+			for (Entry<String, Integer> countsEntry : relationshipCounts.entrySet()) {
+				String relationship = countsEntry.getKey();
+				int count = countsEntry.getValue();
+				
+				countRelationships += count;
+				
+				System.out.print(separator + count + " " + relationship + " relationships");
+				
+				separator = "; ";
 			}
 			
-			String fileName = RESULTS_DIRECTORY + File.separator + repositoryName + ".csv";
-			
-			System.out.println((i + 1) + "/" + repositories.size() + 
-					" Analysing " + repositoryName + " and printing refactorings to " + fileName);
-			
-			int commitsCount = 0;
-			Map<String, Integer> relationshipCounts = new HashMap<String, Integer>();
-			
-			try (
-				PrintWriter writer = new PrintWriter(new File(fileName));
-				Repository repository = new RepositoryBuilder()
-					.setGitDir(repoFolder)
-					.readEnvironment()
-					.build();
-				RevWalk revWalk = new RevWalk(repository)) {
-				
-				RevCommit head = revWalk.parseCommit(repository.resolve("HEAD"));
-				revWalk.markStart(head);
-				revWalk.setRevFilter(RevFilter.NO_MERGES);
-				
-				for (RevCommit commit : revWalk) {
-					System.out.println("Commit " + (commitsCount + 1) + "/" + NUMBER_OF_COMMITS_TO_CONSIDER);
-					
-					String sha = commit.getName();
-					
-					Set<Relationship> relationships = getRelationships(tempFolder, repoFolderPath, sha);
-					
-					Map<String, Integer> thisCommitsRelationshipCounts = new HashMap<String, Integer>();
-				    
-				    for (Relationship relationship : relationships) {
-				    	String relationshipString = relationship.getType().toString();
-				    	
-				    	String before = nodeRepresentation(relationship.getNodeBefore());
-		    			String after = nodeRepresentation(relationship.getNodeAfter());
-				    	
-				    	writer.println(
-				    			sha + COMMA + 
-				    			relationshipString + COMMA + 
-				    			before + COMMA + 
-				    			after + COMMA + 
-				    			QUOTES + commit.getShortMessage() + QUOTES);
-				    	
-				    	countRelationship(thisCommitsRelationshipCounts, relationshipString);
-				    	countRelationship(relationshipCounts, relationshipString);
-				    }
-				    
-				    System.out.print("Found " + relationships.size() + " relationships");
-				    
-				    String separator = " - ";
-				    
-				    for (Entry<String, Integer> relationshipCount : thisCommitsRelationshipCounts.entrySet()) {
-				    	String relationship = relationshipCount.getKey();
-				    	Integer count = relationshipCount.getValue();
-				    	
-				    	System.out.print(separator + count + " " + relationship);
-				    	separator = ", ";
-				    }
-				    
-				    System.out.println();
-				    
-				    commitsCount++;
-				    if (commitsCount == NUMBER_OF_COMMITS_TO_CONSIDER) {
-				    	break;
-				    }
-				}
-			} 
-			catch (Exception e) {
-				e.printStackTrace();
-				return;
-			}
-			finally {
-				System.out.print("Done printing " + fileName + ". " + commitsCount + " commits considered");
-				
-				String separator = ". ";
-				int countRelationships = 0;
-				for (Entry<String, Integer> countsEntry : relationshipCounts.entrySet()) {
-					String relationship = countsEntry.getKey();
-					int count = countsEntry.getValue();
-					
-					countRelationships += count;
-					
-					System.out.print(separator + count + " " + relationship + " relationships");
-					
-					separator = "; ";
-				}
-				
-				System.out.print(". Total relationships found " + countRelationships + ".");
-				System.out.println();
-			}
+			System.out.print(". Total relationships found " + countRelationships + ".");
+			System.out.println();
 		}
 	}
 	
 	private static String nodeRepresentation(RastNode node) {
-		return node.getLocation().getFile() + ":" + node.getSimpleName() + ":" + node.getLocation().getBegin() + "-" + node.getLocation().getEnd();
+		return QUOTES + node.getLocation().getFile() + ":" + node.getLocalName() + ":" + 
+				node.getLocation().getBegin() + "-" + node.getLocation().getEnd() + QUOTES;
 	}
 	
 	private static void countRelationship(Map<String, Integer> counters, String relationship) {
