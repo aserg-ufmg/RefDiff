@@ -3,21 +3,14 @@ package refdiff.parsers.js;
 import static org.junit.Assert.*;
 import static refdiff.test.util.RastDiffMatchers.*;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.junit.Test;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
-import refdiff.core.io.FileSystemSourceFile;
-import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFolder;
 import refdiff.test.util.EsprimaParserSingleton;
 
 public class TestRastComparator {
@@ -62,18 +55,10 @@ public class TestRastComparator {
 	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "src/test/resources/" + folder;
-		List<SourceFile> sourceFilesBefore = getSourceFiles(Paths.get(basePath, "v0"));
-		List<SourceFile> sourceFilesAfter = getSourceFiles(Paths.get(basePath, "v1"));
+		SourceFolder sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".js");
+		SourceFolder sourcesAfter = SourceFolder.from(Paths.get(basePath, "v1"), ".js");
 		RastComparator comparator = new RastComparator(parser, parser);
-		return comparator.compare(sourceFilesBefore, sourceFilesAfter);
-	}
-	
-	private List<SourceFile> getSourceFiles(Path basePath) throws IOException {
-		try (Stream<Path> stream = Files.walk(basePath)) {
-			return stream.filter(path -> path.getFileName().toString().endsWith(".js"))
-				.map(path -> new FileSystemSourceFile(basePath, basePath.relativize(path)))
-				.collect(Collectors.toList());
-		}
+		return comparator.compare(sourcesBefore, sourcesAfter);
 	}
 	
 }

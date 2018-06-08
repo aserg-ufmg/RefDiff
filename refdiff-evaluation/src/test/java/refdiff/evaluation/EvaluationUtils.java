@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
@@ -17,9 +18,8 @@ import refdiff.core.diff.RastComparatorMonitor;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
-import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.GitHelper;
-import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.RastNode;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.JavaSourceTokenizer;
@@ -37,12 +37,12 @@ public class EvaluationUtils {
 	public EvaluationUtils(String tempFolder) {
 		this.tempFolder = tempFolder;
 	}
-
+	
 	public EvaluationUtils(RastComparator comparator, String tempFolder) {
 		this.comparator = comparator;
 		this.tempFolder = tempFolder;
 	}
-
+	
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
 		return runRefDiff(project, commit, new HashMap<>());
 	}
@@ -105,7 +105,7 @@ public class EvaluationUtils {
 			
 			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1), fnExplainer);
 			
-//			new RastRootHelper(diff.getAfter()).printRelationships(System.out);
+			// new RastRootHelper(diff.getAfter()).printRelationships(System.out);
 			
 			RefactoringSet rs = new RefactoringSet(project, commit);
 			for (Relationship rel : diff.getRelationships()) {
@@ -113,7 +113,7 @@ public class EvaluationUtils {
 				String nodeType = rel.getNodeAfter().getType();
 				Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
 				if (refType.isPresent()) {
-					if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) && 
+					if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) &&
 						diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))) {
 						continue;
 					}
@@ -126,7 +126,7 @@ public class EvaluationUtils {
 			return rs;
 		}
 	}
-
+	
 	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean isExtract, boolean isInline) {
 		String keyN1 = JavaParser.getKey(n1);
 		String keyN2 = JavaParser.getKey(n2);
@@ -144,11 +144,11 @@ public class EvaluationUtils {
 	private String checkoutFolder(String tempFolder, String project, String commit, String prefixFolder) {
 		return tempFolder + "checkout/" + repoName(project) + "-" + commit.substring(0, 7) + "/" + prefixFolder + "/";
 	}
-
+	
 	private String repoName(String project) {
 		return project.substring(project.lastIndexOf('/') + 1, project.lastIndexOf('.'));
 	}
-
+	
 	public void prepareSourceCode2(String project, String commit) {
 		System.out.println(String.format("Preparing %s %s", project, commit));
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
@@ -175,7 +175,7 @@ public class EvaluationUtils {
 			}
 		}
 	}
-
+	
 	public void prepareSourceCode(String project, String commit) {
 		System.out.println(String.format("Preparing %s %s", project, commit));
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
@@ -210,12 +210,8 @@ public class EvaluationUtils {
 		return new File(tempFolder + repoName(project) + ".git");
 	}
 	
-	private List<SourceFile> getSourceFiles(String checkoutFolder, List<String> files) {
-		List<SourceFile> list = new ArrayList<>();
-		for (String file : files) {
-			list.add(new FileSystemSourceFile(Paths.get(checkoutFolder), Paths.get(file)));
-		}
-		return list;
+	private SourceFolder getSourceFiles(String checkoutFolder, List<String> files) {
+		return SourceFolder.from(Paths.get(checkoutFolder), files.stream().map(file -> Paths.get(file)).collect(Collectors.toList()));
 	}
 	
 	private Optional<RefactoringType> getRefactoringType(RelationshipType relType, String nodeType) {
@@ -267,7 +263,8 @@ public class EvaluationUtils {
 		case PUSH_DOWN_IMPL:
 			if (isType) {
 				return Optional.of(RefactoringType.MOVE_CLASS);
-			} if (isMethod) {
+			}
+			if (isMethod) {
 				return Optional.of(RefactoringType.PUSH_DOWN_OPERATION);
 			}
 			break;
@@ -282,7 +279,7 @@ public class EvaluationUtils {
 			return Optional.empty();
 		}
 		return Optional.empty();
-		//throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
+		// throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
 	}
 	
 	private class FalseNegativeExplainer implements RastComparatorMonitor {
@@ -292,7 +289,7 @@ public class EvaluationUtils {
 		public FalseNegativeExplainer(Map<KeyPair, String> explanation) {
 			this.explanation = explanation;
 		}
-
+		
 		public void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));

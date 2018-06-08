@@ -1,12 +1,14 @@
 package refdiff.parsers.java;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import refdiff.core.io.FileSystemSourceFile;
 import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
@@ -15,17 +17,17 @@ import refdiff.parsers.RastParser;
 public class JavaParser implements RastParser {
 
 	@Override
-	public RastRoot parse(List<SourceFile> sourceFiles) throws Exception {
+	public RastRoot parse(SourceFileSet sources) throws Exception {
 		List<String> javaFiles = new ArrayList<>();
-		for (SourceFile sourceFile : sourceFiles) {
-			sourceFile.getPath();
-			if (sourceFile instanceof FileSystemSourceFile) {
-				javaFiles.add(sourceFile.getPath());
-			} else {
-				throw new RuntimeException("The Java parser only works with FileSystemSourceFile");
-			}
+		Optional<Path> optBasePath = sources.getBasePath();
+		if (!optBasePath.isPresent()) {
+			throw new RuntimeException("The Java parser requires a SourceFileSet that support a basePath");
 		}
-		File rootFolder = ((FileSystemSourceFile) sourceFiles.stream().findFirst().get()).getBasePath().toFile();
+		for (SourceFile sourceFile : sources.getSourceFiles()) {
+			javaFiles.add(sourceFile.getPath());
+		}
+		
+		File rootFolder = optBasePath.get().toFile();
 		
 		SDModel sdModel = new SDModel();
 		SDModelBuilder mb = new SDModelBuilder();

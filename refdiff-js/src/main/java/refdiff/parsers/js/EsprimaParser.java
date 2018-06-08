@@ -13,6 +13,7 @@ import javax.script.ScriptException;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
@@ -38,11 +39,11 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 	}
 	
 	@Override
-	public RastRoot parse(List<SourceFile> filesOfInterest) throws Exception {
+	public RastRoot parse(SourceFileSet sources) throws Exception {
 		RastRoot root = new RastRoot();
 		this.nodeCounter = 0;
-		for (SourceFile sourceFile : filesOfInterest) {
-			String content = sourceFile.getContent();
+		for (SourceFile sourceFile : sources.getSourceFiles()) {
+			String content = sources.readContent(sourceFile);
 			getRast(root, sourceFile, content);
 		}
 		return root;
