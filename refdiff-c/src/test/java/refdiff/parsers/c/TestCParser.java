@@ -8,14 +8,12 @@ import static org.junit.Assert.fail;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.io.FileSystemSourceFile;
-import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
@@ -29,8 +27,8 @@ public class TestCParser {
 	@Test
 	public void shouldParseSimpleFile() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("dir1/hello.c")));
-		RastRoot root = parser.parse(sourceFiles);
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("dir1/hello.c"));
+		RastRoot root = parser.parse(sources);
 
 		assertThat(root.getNodes().size(), is(1));
 
@@ -71,10 +69,10 @@ public class TestCParser {
 	@Test
 	public void shouldParseParameters() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("file1.c")));
-
-		RastRoot root = parser.parse(sourceFiles);
-
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("file1.c"));
+		
+		RastRoot root = parser.parse(sources);
+		
 		assertThat(root.getNodes().size(), is(1));
 
 		RastNode programNode = root.getNodes().get(0);
@@ -115,10 +113,10 @@ public class TestCParser {
 	@Test
 	public void shouldParseLocation() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("locationIssue.c")));
-
-		RastRoot root = parser.parse(sourceFiles);
-
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("locationIssue.c"));
+		
+		RastRoot root = parser.parse(sources);
+		
 		assertThat(root.getNodes().size(), is(1));
 
 		RastNode program = root.getNodes().get(0);
@@ -151,10 +149,10 @@ public class TestCParser {
 	@Test
 	public void shouldParseLocation2() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("locationIssue2.c")));
-
-		RastRoot root = parser.parse(sourceFiles);
-
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("locationIssue2.c"));
+		
+		RastRoot root = parser.parse(sources);
+		
 		assertThat(root.getNodes().size(), is(1));
 
 		RastNode program = root.getNodes().get(0);
@@ -166,10 +164,10 @@ public class TestCParser {
 	@Test
 	public void shouldParseStructParams() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("structParams.c")));
-
-		RastRoot root = parser.parse(sourceFiles);
-
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("structParams.c"));
+		
+		RastRoot root = parser.parse(sources);
+		
 		assertThat(root.getNodes().size(), is(1));
 
 		RastNode program = root.getNodes().get(0);
@@ -190,10 +188,10 @@ public class TestCParser {
 	@Test
 	public void shouldParseArrayModifier() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("arrayModifier.c")));
-
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("arrayModifier.c"));
+		
 		try {
-			parser.parse(sourceFiles);	
+			parser.parse(sources);	
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -204,10 +202,10 @@ public class TestCParser {
 	@Test
 	public void shouldParseFunctionWithNoName() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("functionWithNoName.c")));
-
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("functionWithNoName.c"));
+		
 		try {
-			parser.parse(sourceFiles);	
+			parser.parse(sources);	
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -218,9 +216,9 @@ public class TestCParser {
 	@Test
 	public void shouldParseFunctionWithStructReturn() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("functionWithStructReturn.c")));
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("functionWithStructReturn.c"));
 
-		RastRoot root = parser.parse(sourceFiles);
+		RastRoot root = parser.parse(sources);
 
 		assertThat(root.getNodes().size(), is(1));
 		
@@ -233,10 +231,9 @@ public class TestCParser {
 	@Test
 	public void shouldParseFunctionWithStructAndPointerReturn() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
-		List<SourceFile> sourceFiles = Collections.singletonList(
-				new FileSystemSourceFile(basePath, Paths.get("functionWithStructAndPointerReturn.c")));
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("functionWithStructAndPointerReturn.c"));
 
-		RastRoot root = parser.parse(sourceFiles);
+		RastRoot root = parser.parse(sources);
 
 		assertThat(root.getNodes().size(), is(1));
 		

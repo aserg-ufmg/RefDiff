@@ -5,14 +5,11 @@ import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.io.FileSystemSourceFile;
-import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
@@ -26,11 +23,9 @@ public class TestJavaParser {
 	@Test
 	public void shouldParseFiles() throws Exception {
 		Path basePath = Paths.get("test-data/parser/java");
-		List<SourceFile> sourceFiles = new ArrayList<>();
-		sourceFiles.add(new FileSystemSourceFile(basePath, Paths.get("p2/Foo.java")));
-		sourceFiles.add(new FileSystemSourceFile(basePath, Paths.get("p1/Bar.java")));
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("p2/Foo.java"), Paths.get("p1/Bar.java"));
 		
-		RastRoot root = parser.parse(sourceFiles);
+		RastRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(2));
 		

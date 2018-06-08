@@ -20,6 +20,7 @@ import org.eclipse.cdt.core.parser.ScannerInfo;
 import org.eclipse.core.runtime.CoreException;
 
 import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
@@ -27,13 +28,13 @@ import refdiff.parsers.SourceTokenizer;
 public class CParser implements RastParser, SourceTokenizer {
 	
 	@Override
-	public RastRoot parse(List<SourceFile> filesOfInterest) throws Exception {
+	public RastRoot parse(SourceFileSet sources) throws Exception {
 		RastRoot root = new RastRoot();
 		
 		AtomicInteger id = new AtomicInteger(1);
 		
-		for (SourceFile sourceFile : filesOfInterest) {
-			FileContent fileContent = FileContent.create("temp.source", sourceFile.getContent().toCharArray());
+		for (SourceFile sourceFile : sources.getSourceFiles()) {
+			FileContent fileContent = FileContent.create("temp.source", sources.readContent(sourceFile).toCharArray());
 			IASTTranslationUnit translationUnit = parseAST(fileContent);
 			
 //			System.out.println(sourceFile.getPath());

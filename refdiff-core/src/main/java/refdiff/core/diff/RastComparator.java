@@ -2,7 +2,6 @@ package refdiff.core.diff;
 
 import static refdiff.core.diff.RastRootHelper.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,6 +20,7 @@ import java.util.stream.Collectors;
 import refdiff.core.diff.similarity.SourceRepresentationBuilder;
 import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.HasChildrenNodes;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.Parameter;
@@ -40,12 +40,12 @@ public class RastComparator {
 		this.tokenizer = tokenizer;
 	}
 	
-	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter) throws Exception {
-		return compare(filesBefore, filesAfter, new RastComparatorMonitor() {});
+	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter) throws Exception {
+		return compare(sourcesBefore, sourcesAfter, new RastComparatorMonitor() {});
 	}
 	
-	public RastDiff compare(List<SourceFile> filesBefore, List<SourceFile> filesAfter, RastComparatorMonitor monitor) throws Exception {
-		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), filesBefore, filesAfter, monitor);
+	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) throws Exception {
+		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), sourcesBefore, sourcesAfter, monitor);
 		return diffBuilder.computeDiff();
 	}
 	
@@ -65,21 +65,23 @@ public class RastComparator {
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
 		private final Map<RastNode, Integer> depthMap = new HashMap<>();
-		private final Map<String, SourceFile> fileMapBefore = new HashMap<>();
-		private final Map<String, SourceFile> fileMapAfter = new HashMap<>();
 		
-		DiffBuilder(SourceRepresentationBuilder<T> srb, List<SourceFile> filesBefore, List<SourceFile> filesAfter, RastComparatorMonitor monitor) throws Exception {
+		DiffBuilder(SourceRepresentationBuilder<T> srb, SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) throws Exception {
 			this.srb = srb;
-			this.diff = new RastDiff(parser.parse(filesBefore), parser.parse(filesAfter));
+			this.diff = new RastDiff(parser.parse(sourcesBefore), parser.parse(sourcesAfter));
 			this.before = new RastRootHelper(this.diff.getBefore());
 			this.after = new RastRootHelper(this.diff.getAfter());
 			this.removed = new HashSet<>();
 			this.monitor = monitor;
-			for (SourceFile fileBefore : filesBefore) {
-				fileMapBefore.put(fileBefore.getPath(), fileBefore);
+			
+			Map<String, String> fileMapBefore = new HashMap<>();
+			Map<String, String> fileMapAfter = new HashMap<>();
+			
+			for (SourceFile fileBefore : sourcesBefore.getSourceFiles()) {
+				fileMapBefore.put(fileBefore.getPath(), sourcesBefore.readContent(fileBefore));
 			}
-			for (SourceFile fileAfter : filesAfter) {
-				fileMapAfter.put(fileAfter.getPath(), fileAfter);
+			for (SourceFile fileAfter : sourcesAfter.getSourceFiles()) {
+				fileMapAfter.put(fileAfter.getPath(), sourcesAfter.readContent(fileAfter));
 			}
 			this.diff.getBefore().forEachNode((node, depth) -> {
 				this.removed.add(node);
@@ -110,7 +112,7 @@ public class RastComparator {
 			}
 		}
 		
-		private void computeSourceRepresentation(Map<String, SourceFile> fileMap, RastNode node, boolean isBefore) {
+		private void computeSourceRepresentation(Map<String, String> fileMap, RastNode node, boolean isBefore) {
 			srMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, false))));
 			T body = srb.buildForFragment(tokenizer.tokenize(retrieveSourceCode(fileMap, node, true)));
 			List<String> tokensToIgnore = new ArrayList<>();
@@ -140,17 +142,13 @@ public class RastComparator {
 //			return srb.buildForFragment(tokens);
 		}
 		
-		private String retrieveSourceCode(Map<String, SourceFile> fileMap, RastNode node, boolean bodyOnly) {
-			try {
-				Location location = node.getLocation();
-				String sourceCode = fileMap.get(location.getFile()).getContent();
-				if (bodyOnly) {
-					return sourceCode.substring(location.getBodyBegin(), location.getBodyEnd());
-				} else {
-					return sourceCode.substring(location.getBegin(), location.getEnd());
-				}
-			} catch (IOException e) {
-				throw new RuntimeException(e);
+		private String retrieveSourceCode(Map<String, String> fileMap, RastNode node, boolean bodyOnly) {
+			Location location = node.getLocation();
+			String sourceCode = fileMap.get(location.getFile());
+			if (bodyOnly) {
+				return sourceCode.substring(location.getBodyBegin(), location.getBodyEnd());
+			} else {
+				return sourceCode.substring(location.getBegin(), location.getEnd());
 			}
 		}
 		

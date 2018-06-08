@@ -1,10 +1,22 @@
 package refdiff.core.io;
 
-import java.io.IOException;
+import java.nio.file.Path;
 
-public interface SourceFile {
+public final class SourceFile {
 	
-	String getPath();
+	private final Path path;
 	
-	String getContent() throws IOException;
+	public SourceFile(Path path) {
+		this.path = path;
+	}
+	
+	public String getPath() {
+		return path.toString().replace('\\', '/');
+	}
+	
+	@Override
+	public String toString() {
+		return getPath();
+	}
+	
 }

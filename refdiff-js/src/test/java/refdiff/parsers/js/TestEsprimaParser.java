@@ -5,14 +5,11 @@ import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.io.FileSystemSourceFile;
-import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
@@ -27,8 +24,8 @@ public class TestEsprimaParser {
 	@Test
 	public void shouldParseSimpleFile() throws Exception {
 		Path basePath = Paths.get("src/test/resources/parser/");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("ex1.js")));
-		RastRoot root = parser.parse(sourceFiles);
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex1.js"));
+		RastRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 		
@@ -54,8 +51,8 @@ public class TestEsprimaParser {
 	@Test
 	public void shouldParseFunctionCall() throws Exception {
 		Path basePath = Paths.get("src/test/resources/parser/");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("ex2.js")));
-		RastRoot root = parser.parse(sourceFiles);
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex2.js"));
+		RastRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 		
@@ -80,8 +77,8 @@ public class TestEsprimaParser {
 	@Test
 	public void shouldParseClassDeclaration() throws Exception {
 		Path basePath = Paths.get("src/test/resources/parser/");
-		List<SourceFile> sourceFiles = Collections.singletonList(new FileSystemSourceFile(basePath, Paths.get("ex3.js")));
-		RastRoot root = parser.parse(sourceFiles);
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex3.js"));
+		RastRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 		
