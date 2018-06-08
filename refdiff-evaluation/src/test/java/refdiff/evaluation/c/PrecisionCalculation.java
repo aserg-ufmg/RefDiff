@@ -37,8 +37,6 @@ import refdiff.parsers.c.CParser;
 
 public class PrecisionCalculation {
 
-	private static final String OAUTH_TOKEN = "";
-
 	private static final String BASE_DIRECTORY = "data" + File.separator + "c-evaluation";
 	private static final String CSV_DIRECTORY = BASE_DIRECTORY + File.separator + "csv";
 	private static final String REPOSITORIES_FILE_NAME = CSV_DIRECTORY + File.separator + "1.1-repositories.csv";
@@ -53,12 +51,12 @@ public class PrecisionCalculation {
 	private static final String ORGANIZATION_NAME = "refdiff-study";
 	
 	public static void main(String[] args) throws IOException {
-		if (OAUTH_TOKEN.equals("")) {
-			System.err.println("You need to set the OAUTH_TOKEN (hard coded) on the code.");
+		if (args.length != 1) {
+			System.err.println("You need enter an OAuth token as the only input to the app.");
 			return;
 		}
 		
-		final Github github = new RtGithub(OAUTH_TOKEN);
+		final Github github = new RtGithub(args[0]);
 		final Repos repos = github.repos();
 
 		List<String[]> originalRepositories = new ArrayList<String[]>();
