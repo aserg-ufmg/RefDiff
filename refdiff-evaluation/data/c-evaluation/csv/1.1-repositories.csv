@@ -4,11 +4,9 @@ https://github.com/antirez/redis,antirez,redis
 https://github.com/git/git,git,git
 https://github.com/Bilibili/ijkplayer,Bilibili,ijkplayer
 https://github.com/php/php-src,php,php-src
-https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System,SamyPesse,How-to-Make-a-Computer-Operating-System
 https://github.com/wg/wrk,wg,wrk
 https://github.com/ggreer/the_silver_searcher,ggreer,the_silver_searcher
 https://github.com/kripken/emscripten,kripken,emscripten
-https://github.com/julycoding/The-Art-Of-Programming-By-July,julycoding,The-Art-Of-Programming-By-July
 https://github.com/vim/vim,vim,vim
 https://github.com/stedolan/jq,stedolan,jq
 https://github.com/FFmpeg/FFmpeg,FFmpeg,FFmpeg
@@ -18,3 +16,5 @@ https://github.com/obsproject/obs-studio,obsproject,obs-studio
 https://github.com/libuv/libuv,libuv,libuv
 https://github.com/swoole/swoole-src,swoole,swoole-src
 https://github.com/curl/curl,curl,curl
+https://github.com/irungentoo/toxcore,irungentoo,toxcore
+https://github.com/pjreddie/darknet,pjreddie,darknet

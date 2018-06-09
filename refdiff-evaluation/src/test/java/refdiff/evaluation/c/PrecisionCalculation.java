@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -77,6 +78,10 @@ public class PrecisionCalculation {
 	}
 
 	private static void getTopRepositories(final Github github, List<String[]> originalRepositories) throws IOException {
+		Set<String> repositoriesToSkip = new HashSet<String>();
+		repositoriesToSkip.add("The-Art-Of-Programming-By-July");
+		repositoriesToSkip.add("How-to-Make-a-Computer-Operating-System");
+		
 		System.out.println();
 		System.out.println("1.1) Top " + REPOSITORIES_QUANTITY + " repositories");
 
@@ -94,7 +99,7 @@ public class PrecisionCalculation {
 		final List<JsonObject> repositories = response.json().readObject()
 				.getJsonArray("items")
 				.getValuesAs(JsonObject.class)
-				.subList(0, REPOSITORIES_QUANTITY);
+				.subList(0, REPOSITORIES_QUANTITY + repositoriesToSkip.size());
 
 		File directory = new File(CSV_DIRECTORY);
 		if (!directory.exists()) {
@@ -111,6 +116,10 @@ public class PrecisionCalculation {
 				String url = repository.getString("html_url");
 				String owner = repository.getJsonObject("owner").getString("login");
 				String repositoryName = repository.getString("name");
+				
+				if (repositoriesToSkip.contains(repositoryName)) {
+					continue;
+				}
 				
 				writer.println(url + COMMA + owner + COMMA + repositoryName);
 				
