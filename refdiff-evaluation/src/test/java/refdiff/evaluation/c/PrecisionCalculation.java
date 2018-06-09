@@ -51,12 +51,21 @@ public class PrecisionCalculation {
 	private static final String ORGANIZATION_NAME = "refdiff-study";
 	
 	public static void main(String[] args) throws IOException {
-		if (args.length != 1) {
-			System.err.println("You need enter an OAuth token as the only input to the app.");
+		if (args.length == 0) {
+			System.err.println("You need enter at least an OAuth token as an argument to the app.");
+			return;
+		}
+		else if (args.length > 1) {
+			for (int i = 1; i < args.length; i++) {
+				findRefactoringsOnRepository(args[i], "https://github.com/refdiff-study/" + args[i], i, args.length - 1);	
+			}
+			
 			return;
 		}
 		
-		final Github github = new RtGithub(args[0]);
+		String oAuthToken = args[0];
+		
+		final Github github = new RtGithub(oAuthToken);
 		final Repos repos = github.repos();
 
 		List<String[]> originalRepositories = new ArrayList<String[]>();
@@ -255,7 +264,12 @@ public class PrecisionCalculation {
 			    	separator = ", ";
 			    }
 			    
-			    System.out.println();
+			    int countTotal = 0;
+				for (Entry<String, Integer> countsEntry : relationshipCounts.entrySet()) {
+					countTotal += countsEntry.getValue();
+				}
+			    
+			    System.out.println(" (total " + countTotal + ")");
 			    
 			    commitsCount++;
 			    if (commitsCount == NUMBER_OF_COMMITS_TO_CONSIDER) {
