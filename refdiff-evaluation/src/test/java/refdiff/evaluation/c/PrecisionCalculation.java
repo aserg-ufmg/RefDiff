@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 import javax.json.JsonObject;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.RepositoryBuilder;
 import org.eclipse.jgit.revwalk.RevCommit;
@@ -45,7 +46,6 @@ public class PrecisionCalculation {
 	private static final String RESULTS_DIRECTORY = CSV_DIRECTORY + File.separator + "results";
 
 	private static final String COMMA = ",";
-	private static final String QUOTES = "\"";
 	private static final int REPOSITORIES_QUANTITY = 20;
 	private static final int NUMBER_OF_COMMITS_TO_CONSIDER = 500;
 
@@ -250,12 +250,17 @@ public class PrecisionCalculation {
 			    	String before = nodeRepresentation(relationship.getNodeBefore());
 	    			String after = nodeRepresentation(relationship.getNodeAfter());
 			    	
-			    	writer.println(
-			    			sha + COMMA + 
-			    			relationshipString + COMMA + 
-			    			before + COMMA + 
-			    			after + COMMA + 
-			    			QUOTES + commit.getShortMessage() + QUOTES);
+	    			String[] fields = new String[] {
+	    				csvField(repositoryName),
+    					csvField(sha), 
+    					csvField(relationshipString), 
+    					csvField(before), 
+    					csvField(after), 
+    					csvField(commit.getShortMessage()), 
+    					Double.toString(Math.random())
+	    			};
+	    			
+			    	writer.println(String.join(COMMA, fields));
 			    	
 			    	countRelationship(thisCommitsRelationshipCounts, relationshipString);
 			    	countRelationship(relationshipCounts, relationshipString);
@@ -311,9 +316,12 @@ public class PrecisionCalculation {
 		}
 	}
 	
+	private static String csvField(String field) {
+		return StringEscapeUtils.escapeCsv(field);
+	}
+	
 	private static String nodeRepresentation(RastNode node) {
-		return QUOTES + node.getLocation().getFile() + ":" + node.getLocalName() + ":" + 
-				node.getLocation().getBegin() + "-" + node.getLocation().getEnd() + QUOTES;
+		return node.getLocation().getFile() + ":" + node.getLocalName() + ":" + node.getLocation().getBegin() + "-" + node.getLocation().getEnd();
 	}
 	
 	private static void countRelationship(Map<String, Integer> counters, String relationship) {
