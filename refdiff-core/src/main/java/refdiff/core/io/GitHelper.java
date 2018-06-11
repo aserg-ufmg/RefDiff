@@ -2,10 +2,13 @@ package refdiff.core.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 import org.eclipse.jgit.api.CheckoutCommand;
 import org.eclipse.jgit.api.Git;
@@ -91,19 +94,38 @@ public class GitHelper {
 		return openRepository(new File(repositoryPath, ".git"));
 	}
 	
-	public Repository openRepository(File repositoryPath) throws Exception {
-		Repository repository;
-		if (repositoryPath.exists()) {
-			RepositoryBuilder builder = new RepositoryBuilder();
-			repository = builder
-				.setGitDir(repositoryPath)
-				.readEnvironment()
-				.findGitDir()
-				.build();
-		} else {
-			throw new FileNotFoundException(repositoryPath.getPath());
+	public Repository openRepository(File repositoryPath) {
+		try {
+			if (repositoryPath.exists()) {
+				RepositoryBuilder builder = new RepositoryBuilder();
+				Repository repository = builder
+					.setGitDir(repositoryPath)
+					.readEnvironment()
+					.findGitDir()
+					.build();
+				return repository;
+			} else {
+				throw new FileNotFoundException(repositoryPath.getPath());
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
-		return repository;
+	}
+	
+	public void forEachNonMergeCommit(Repository repo, int maxDepth, BiConsumer<RevCommit, RevCommit> function) throws Exception {
+		try (RevWalk revWalk = new RevWalk(repo)) {
+			RevCommit head = revWalk.parseCommit(repo.resolve("HEAD"));
+			revWalk.markStart(head);
+			revWalk.setRevFilter(RevFilter.NO_MERGES);
+			
+			int count = 0;
+			for (RevCommit commit : revWalk) {
+				if (commit.getParentCount() == 1) {
+					function.accept(commit.getParent(0), commit);
+				}
+				if (count++ >= maxDepth) break;
+			}
+		}
 	}
 	
 	public void checkout(Repository repository, String commitId) throws Exception {
@@ -127,21 +149,32 @@ public class GitHelper {
 		}
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId) throws Exception {
-		ObjectId oid = repository.resolve(commitId);
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<String> fileExtensions) throws Exception {
+		List<SourceFile> filesBefore = new ArrayList<>();
+		List<SourceFile> filesAfter = new ArrayList<>();
+		fileTreeDiff(repository, commitBefore, commitAfter, filesBefore, filesAfter, fileExtensions);
+		
+		return new PairBeforeAfter<>(
+			new GitSourceTree(repository, commitBefore.getId(), filesBefore),
+			new GitSourceTree(repository, commitAfter.getId(), filesAfter));
+	}
+	
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId, List<String> fileExtensions) throws Exception {
 		try (RevWalk rw = new RevWalk(repository)) {
-			RevCommit commit = rw.parseCommit(oid);
-			if (commit.getParentCount() != 1) {
+			RevCommit commitAfter = rw.parseCommit(repository.resolve(commitId));
+			if (commitAfter.getParentCount() != 1) {
 				throw new RuntimeException("Commit should have one parent");
 			}
-			RevCommit parentCommit = commit.getParent(0);
-			
-			//List<String>
-			//fileTreeDiff(repository, commit, javaFilesBefore, javaFilesCurrent, renamedFilesHint, false, fileExtensions);
-			
-			//new GitSourceTree(repository, commit.getId().name(), sourceFiles);
-			return null;
-			// TODO continue
+			RevCommit commitBefore = commitAfter.getParent(0);
+			return getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, fileExtensions);
+		}
+	}
+	
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitIdBefore, String commitIdAfter, List<String> fileExtensions) throws Exception {
+		try (RevWalk rw = new RevWalk(repository)) {
+			RevCommit commitBefore = rw.parseCommit(repository.resolve(commitIdBefore));
+			RevCommit commitAfter = rw.parseCommit(repository.resolve(commitIdAfter));
+			return getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, fileExtensions);
 		}
 	}
 	
@@ -290,6 +323,41 @@ public class GitHelper {
 							String oldPath = entry.getOldPath();
 							renamedFilesHint.put(oldPath, newPath);
 						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void fileTreeDiff(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<SourceFile> filesBefore, List<SourceFile> filesAfter, List<String> fileExtensions) throws Exception {
+		ObjectId oldHead = commitBefore.getTree();
+		ObjectId head = commitAfter.getTree();
+		
+		// prepare the two iterators to compute the diff between
+		ObjectReader reader = repository.newObjectReader();
+		CanonicalTreeParser oldTreeIter = new CanonicalTreeParser();
+		oldTreeIter.reset(reader, oldHead);
+		CanonicalTreeParser newTreeIter = new CanonicalTreeParser();
+		newTreeIter.reset(reader, head);
+		// finally get the list of changed files
+		try (Git git = new Git(repository)) {
+			List<DiffEntry> diffs = git.diff()
+				.setNewTree(newTreeIter)
+				.setOldTree(oldTreeIter)
+				.setShowNameAndStatusOnly(true)
+				.call();
+			for (DiffEntry entry : diffs) {
+				ChangeType changeType = entry.getChangeType();
+				if (changeType != ChangeType.ADD) {
+					String oldPath = entry.getOldPath();
+					if (isFileAllowed(oldPath, fileExtensions)) {
+						filesBefore.add(new SourceFile(Paths.get(oldPath)));
+					}
+				}
+				if (changeType != ChangeType.DELETE) {
+					String newPath = entry.getNewPath();
+					if (isFileAllowed(newPath, fileExtensions)) {
+						filesAfter.add(new SourceFile(Paths.get(newPath)));
 					}
 				}
 			}
