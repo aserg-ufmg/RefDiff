@@ -123,7 +123,10 @@ public class GitHelper {
 				if (commit.getParentCount() == 1) {
 					function.accept(commit.getParent(0), commit);
 				}
-				if (count++ >= maxDepth) break;
+				
+				count++;
+				
+				if (count >= maxDepth) break;
 			}
 		}
 	}
