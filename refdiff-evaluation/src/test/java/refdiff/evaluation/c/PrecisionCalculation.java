@@ -246,8 +246,8 @@ public class PrecisionCalculation {
 				Map<String, Integer> thisCommitsRelationshipCounts = new HashMap<String, Integer>();
 			    
 			    for (Relationship relationship : relationships) {
-			    	String relationshipString = relationship.getType().toString();
-			    	
+			    	String relationshipString = getRelationshipType(relationship);
+			    			
 			    	String before = nodeRepresentation(relationship.getNodeBefore());
 	    			String after = nodeRepresentation(relationship.getNodeAfter());
 			    	
@@ -316,6 +316,35 @@ public class PrecisionCalculation {
 		}
 	}
 	
+	private static String getRelationshipType(Relationship relationship) {
+		RelationshipType relationshipType = relationship.getType();
+		
+		String relationshipString = relationshipType.toString();
+		
+		if (relationshipType.equals(RelationshipType.MOVE)
+				|| relationshipType.equals(RelationshipType.MOVE_RENAME) 
+				|| relationshipType.equals(RelationshipType.RENAME)) {
+			RastNode nodeBefore = relationship.getNodeBefore();
+			RastNode nodeAfter = relationship.getNodeAfter();
+			
+			String nodeTypeBefore = nodeBefore.getType();
+			String nodeTypeAfter = nodeAfter.getType();
+			
+			if (!nodeTypeBefore.equalsIgnoreCase(nodeTypeAfter)) {
+				throw new RuntimeException("Before and After nodes should be of the same type");
+			}
+			
+			if (nodeTypeBefore.equals("Program")) {
+				relationshipString += "_FILE";
+			}
+			else {
+				relationshipString += "_FUNCTION";
+			}
+		}
+		
+		return relationshipString;
+	}
+
 	private static String csvField(String field) {
 		return StringEscapeUtils.escapeCsv(field);
 	}
