@@ -123,8 +123,10 @@ public class CRastVisitor extends ASTGenericVisitor {
 					int length = ((CASTCompoundStatement) iastNode).getRawSignature().length();
 					
 					Location location = this.currentNode.getLocation();
-					location.setBodyBegin(offset);
-					location.setBodyEnd(offset + length);
+					
+					// Ignore opening e closing brackets
+					location.setBodyBegin(offset + 1);
+					location.setBodyEnd(offset + length - 1);
 					
 					this.waitingBodyLocation = "";
 				}

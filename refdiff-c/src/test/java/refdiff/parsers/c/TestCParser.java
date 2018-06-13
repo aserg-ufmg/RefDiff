@@ -128,22 +128,22 @@ public class TestCParser {
 
 		assertThat(nodeF1.getLocation().getBegin(), is(479));
 		assertThat(nodeF1.getLocation().getEnd(), is(528));
-		assertThat(nodeF1.getLocation().getBodyBegin(), is(488));
-		assertThat(nodeF1.getLocation().getBodyEnd(), is(528));
+		assertThat(nodeF1.getLocation().getBodyBegin(), is(489));
+		assertThat(nodeF1.getLocation().getBodyEnd(), is(527));
 
 		RastNode nodeF2 = program.getNodes().get(1);
 
 		assertThat(nodeF2.getLocation().getBegin(), is(530));
 		assertThat(nodeF2.getLocation().getEnd(), is(579));
-		assertThat(nodeF2.getLocation().getBodyBegin(), is(539));
-		assertThat(nodeF2.getLocation().getBodyEnd(), is(579));
+		assertThat(nodeF2.getLocation().getBodyBegin(), is(540));
+		assertThat(nodeF2.getLocation().getBodyEnd(), is(578));
 
 		RastNode nodeF3 = program.getNodes().get(2);
 
 		assertThat(nodeF3.getLocation().getBegin(), is(581));
 		assertThat(nodeF3.getLocation().getEnd(), is(630));
-		assertThat(nodeF3.getLocation().getBodyBegin(), is(590));
-		assertThat(nodeF3.getLocation().getBodyEnd(), is(630));
+		assertThat(nodeF3.getLocation().getBodyBegin(), is(591));
+		assertThat(nodeF3.getLocation().getBodyEnd(), is(629));
 	}
 
 	@Test
