@@ -168,7 +168,7 @@ public class GitHelper {
 			if (commitAfter.getParentCount() != 1) {
 				throw new RuntimeException("Commit should have one parent");
 			}
-			RevCommit commitBefore = commitAfter.getParent(0);
+			RevCommit commitBefore = rw.parseCommit(commitAfter.getParent(0));
 			return getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, fileExtensions);
 		}
 	}
