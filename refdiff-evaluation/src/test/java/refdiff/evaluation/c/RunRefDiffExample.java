@@ -1,13 +1,19 @@
 package refdiff.evaluation.c;
 
+import java.io.File;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.eclipse.jgit.lib.Repository;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
-import refdiff.evaluation.EvaluationUtils;
+import refdiff.core.io.GitHelper;
+import refdiff.core.io.SourceFileSet;
+import refdiff.core.util.PairBeforeAfter;
+import refdiff.evaluation.ExternalProcess;
 import refdiff.parsers.c.CParser;
 
 public class RunRefDiffExample {
@@ -16,18 +22,31 @@ public class RunRefDiffExample {
 		
 		CParser parser = new CParser();
 		RastComparator rastComparator = new RastComparator(parser, parser);
-		EvaluationUtils evaluationUtils = new EvaluationUtils(rastComparator, System.getProperty("java.io.tmpdir"));
 		
-		RastDiff diff = evaluationUtils.computeDiff("https://github.com/douban/beansdb.git", "e670a421928cfc5a842b355d096eb660d53743ea");
+		String tempFolder = "D:/tmp";
+		String cloneUrl = "https://github.com/torvalds/linux.git";
+		File repoFolder = new File(tempFolder, "linux.git");
 		
-		Set<Relationship> relationships = diff.getRelationships().stream()
+		if (!repoFolder.exists()) {
+			ExternalProcess.execute(new File(tempFolder), "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
+		}
+		
+		GitHelper gh = new GitHelper();
+		try (Repository repo = gh.openRepository(repoFolder)) {
+			
+			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "f72c3ab791ac0b2b75b5b5d4d51d8eb89ea1e515", parser.getAllowedFileExtensions());
+			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
+			
+			Set<Relationship> relationships = diff.getRelationships().stream()
 				.filter(relationship -> !relationship.getType().equals(RelationshipType.SAME))
 				.collect(Collectors.toSet());
+			
+			relationships.stream()
+				.forEach(relationship -> {
+					System.out.println(relationship.toString());
+				});
+		}
 		
-		System.out.println("Number of relationships found which are not of type SAME: " + relationships.size());
-		
-		relationships.stream()
-			.forEach(relationship -> {System.out.println(relationship.toString());});
 	}
 	
 }
