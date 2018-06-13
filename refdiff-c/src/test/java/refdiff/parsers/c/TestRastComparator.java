@@ -1,7 +1,12 @@
 package refdiff.parsers.c;
 
-import static org.junit.Assert.*;
-import static refdiff.test.util.RastDiffMatchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static refdiff.test.util.RastDiffMatchers.contains;
+import static refdiff.test.util.RastDiffMatchers.containsOnly;
+import static refdiff.test.util.RastDiffMatchers.doesntContain;
+import static refdiff.test.util.RastDiffMatchers.node;
+import static refdiff.test.util.RastDiffMatchers.relationship;
 
 import java.nio.file.Paths;
 
@@ -9,9 +14,11 @@ import org.junit.Test;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
+import refdiff.core.rast.RastNode;
 
 public class TestRastComparator {
 	
@@ -106,19 +113,45 @@ public class TestRastComparator {
 	
 	@Test
 	public void shouldMatchMoveRenameFunction() throws Exception {
-		assertThat(diff("moveRenameFunction"), containsOnly(
+		RastDiff diff = diff("moveRenameFunction");
+		
+		assertThat(diff, containsOnly(
 			relationship(RelationshipType.SAME, node("file.c"), node("file.c")),
 			relationship(RelationshipType.SAME, node("file.c", "main()"), node("file.c", "main()")),
 			relationship(RelationshipType.MOVE_RENAME, node("file.c", "f1(int, int)"), node("function.h", "f2(int, int)"))
 		));
+		
+		Relationship relationship = diff.getRelationships().stream()
+				.filter(r -> r.getType().equals(RelationshipType.MOVE_RENAME))
+				.findFirst()
+				.get();
+		
+		RastNode nodeBefore = relationship.getNodeBefore();
+		RastNode nodeAfter = relationship.getNodeAfter();
+		
+		assertEquals(nodeBefore.getType(), "FunctionDeclaration");
+		assertEquals(nodeAfter.getType(), "FunctionDeclaration");
 	}
 	
 	@Test
 	public void shouldMatchMoveRenameFile() throws Exception {
-		assertThat(diff("moveRenameFile"), containsOnly(
+		RastDiff diff = diff("moveRenameFile");
+		
+		assertThat(diff, containsOnly(
 			relationship(RelationshipType.SAME, node("folder1/file1.c", "main()"), node("folder2/file2.c", "main()")),
 			relationship(RelationshipType.MOVE_RENAME, node("folder1/file1.c"), node("folder2/file2.c"))
 		));
+		
+		Relationship relationship = diff.getRelationships().stream()
+				.filter(r -> r.getType().equals(RelationshipType.MOVE_RENAME))
+				.findFirst()
+				.get();
+		
+		RastNode nodeBefore = relationship.getNodeBefore();
+		RastNode nodeAfter = relationship.getNodeAfter();
+		
+		assertEquals(nodeBefore.getType(), "Program");
+		assertEquals(nodeAfter.getType(), "Program");
 	}
 	
 	private RastDiff diff(String folder) throws Exception {
