@@ -26,6 +26,7 @@ import refdiff.core.rast.Location;
 import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationshipType;
+import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
@@ -68,7 +69,9 @@ public class RastComparator {
 		
 		DiffBuilder(SourceRepresentationBuilder<T> srb, SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) throws Exception {
 			this.srb = srb;
-			this.diff = new RastDiff(parser.parse(sourcesBefore), parser.parse(sourcesAfter));
+			RastRoot rastRootBefore = parser.parse(sourcesBefore);
+			RastRoot rastRootAfter = parser.parse(sourcesAfter);
+			this.diff = new RastDiff(rastRootBefore, rastRootAfter);
 			this.before = new RastRootHelper(this.diff.getBefore());
 			this.after = new RastRootHelper(this.diff.getAfter());
 			this.removed = new HashSet<>();
@@ -113,8 +116,16 @@ public class RastComparator {
 		}
 		
 		private void computeSourceRepresentation(Map<String, String> fileMap, RastNode node, boolean isBefore) {
-			srMap.put(node, srb.buildForNode(node, isBefore, tokenizer.tokenize(retrieveSourceCode(fileMap, node, false))));
-			T body = srb.buildForFragment(tokenizer.tokenize(retrieveSourceCode(fileMap, node, true)));
+			String nodeSource = retrieveSourceCode(fileMap, node, false);
+			List<String> nodeTokens = tokenizer.tokenize(nodeSource);
+			srMap.put(node, srb.buildForNode(node, isBefore, nodeTokens));
+			
+			if (node.getLocation().getBodyBegin() != node.getLocation().getBodyBegin()) {
+				
+			}
+			String nodeBodySource = retrieveSourceCode(fileMap, node, true);
+			List<String> nodeBodyTokens = tokenizer.tokenize(nodeBodySource);
+			T body = srb.buildForFragment(nodeBodyTokens);
 			List<String> tokensToIgnore = new ArrayList<>();
 			for (Parameter parameter : node.getParameters()) {
 				tokensToIgnore.add(parameter.getName());

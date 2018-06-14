@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
@@ -107,6 +108,24 @@ public class TestEsprimaParser {
 		RastNode methodCalcArea = nodeRectangle.getNodes().get(2);
 		assertThat(methodCalcArea.getType(), is("MethodDefinition"));
 		assertThat(methodCalcArea.getLocalName(), is("calcArea"));
+	}
+	
+	@Test
+	public void shouldParseLargeFile() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));
+		RastRoot root = parser.parse(sources);
+		
+		assertThat(root.getNodes().size(), is(1));
+	}
+	
+	@Test
+	public void shouldTokenizeLargeFile() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));
+		for (SourceFile file : sources.getSourceFiles()) {
+			parser.tokenize(sources.readContent(file));
+		}
 	}
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {

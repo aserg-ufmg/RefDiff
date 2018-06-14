@@ -41,4 +41,8 @@ public class GitSourceTree extends SourceFileSet {
 		}
 	}
 	
+	@Override
+	public String describeLocation(SourceFile sourceFile) {
+		return String.format("%s:%s:%s", repo.getDirectory().getName(), sha1.abbreviate(7).name(), sourceFile.getPath());
+	}
 }

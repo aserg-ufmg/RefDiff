@@ -67,4 +67,9 @@ public class SourceFolder extends SourceFileSet {
 	public Optional<Path> getBasePath() {
 		return Optional.of(basePath);
 	}
+
+	@Override
+	public String describeLocation(SourceFile sourceFile) {
+		return basePath.resolve(sourceFile.getPath()).toString();
+	}
 }

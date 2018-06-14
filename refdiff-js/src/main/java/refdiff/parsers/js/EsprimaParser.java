@@ -32,7 +32,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 		
 		engine.eval("load('classpath:esprima.js');");
-		engine.eval("function parse(script) {return esprima.parseModule(script, {range: true});}");
+		engine.eval("function parse(script) {return esprima.parseModule(script, {range: true, jsx: true});}");
 		engine.eval("function tokenize(source) {return esprima.tokenize(source, {comment: true});}");
 		engine.eval("function toJson(object) {return JSON.stringify(object);}");
 		this.invocableScript = (Invocable) engine;
@@ -44,7 +44,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		this.nodeCounter = 0;
 		for (SourceFile sourceFile : sources.getSourceFiles()) {
 			String content = sources.readContent(sourceFile);
-			getRast(root, sourceFile, content);
+			getRast(root, sourceFile, content, sources);
 		}
 		return root;
 	}
@@ -64,17 +64,24 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		}
 	}
 	
-	private void getRast(RastRoot root, SourceFile sourceFile, String content) throws Exception {
-		ScriptObjectMirror esprimaAst = (ScriptObjectMirror) this.invocableScript.invokeFunction("parse", content);
-		JsValue astRoot = new JsValue(esprimaAst, this::toJson);
-		Map<String, Object> callerMap = new HashMap<>();
-		getRast(0, root, sourceFile, astRoot, callerMap);
-		root.forEachNode((calleeNode, depth) -> {
-			if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
-				RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
-				root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
-			}
-		});
+	private void getRast(RastRoot root, SourceFile sourceFile, String content, SourceFileSet sources) throws Exception {
+		try {
+//			System.out.print(String.format("Parsing %s ... ", sources.describeLocation(sourceFile)));
+//			long timestamp = System.currentTimeMillis();
+			ScriptObjectMirror esprimaAst = (ScriptObjectMirror) this.invocableScript.invokeFunction("parse", content);
+//			System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
+			JsValue astRoot = new JsValue(esprimaAst, this::toJson);
+			Map<String, Object> callerMap = new HashMap<>();
+			getRast(0, root, sourceFile, astRoot, callerMap);
+			root.forEachNode((calleeNode, depth) -> {
+				if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
+					RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
+					root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
+				}
+			});
+		} catch (ScriptException e) {
+			throw new RuntimeException(String.format("Error parsing %s: %s", sources.describeLocation(sourceFile), e.getMessage()));
+		}
 	}
 	
 	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValue esprimaAst, Map<String, Object> callerMap) throws Exception {
@@ -112,13 +119,15 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 		} else {
 			if ("CallExpression".equals(type)) {
 				JsValue callee = esprimaAst.get("callee");
-				String calleeName;
 				if (callee.get("type").asString().equals("MemberExpression")) {
-					calleeName = callee.get("property").get("name").asString();
+					String calleeName = callee.get("property").get("name").asString();
+					callerMap.put(calleeName, container);
+				} else if (callee.get("type").asString().equals("Identifier")) {
+					String calleeName = callee.get("name").asString();
+					callerMap.put(calleeName, container);
 				} else {
-					calleeName = callee.get("name").asString();
+					// callee is a complex expression, not an identifier
 				}
-				callerMap.put(calleeName, container);
 			}
 		}
 		
