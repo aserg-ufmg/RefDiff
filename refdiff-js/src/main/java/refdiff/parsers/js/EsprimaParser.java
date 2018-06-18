@@ -118,16 +118,7 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 			container = rastNode;
 		} else {
 			if ("CallExpression".equals(type)) {
-				JsValue callee = esprimaAst.get("callee");
-				if (callee.get("type").asString().equals("MemberExpression")) {
-					String calleeName = callee.get("property").get("name").asString();
-					callerMap.put(calleeName, container);
-				} else if (callee.get("type").asString().equals("Identifier")) {
-					String calleeName = callee.get("name").asString();
-					callerMap.put(calleeName, container);
-				} else {
-					// callee is a complex expression, not an identifier
-				}
+				extractCalleeNameFromCallExpression(esprimaAst, callerMap, container);
 			}
 		}
 		
@@ -146,6 +137,24 @@ public class EsprimaParser implements RastParser, SourceTokenizer {
 					}
 				}
 			}
+		}
+	}
+
+	private void extractCalleeNameFromCallExpression(JsValue callExpresionNode, Map<String, Object> callerMap, HasChildrenNodes container) {
+		JsValue callee = callExpresionNode.get("callee");
+		if (callee.get("type").asString().equals("MemberExpression")) {
+			JsValue property = callee.get("property");
+			if (property.get("type").asString().equals("Identifier")) {
+				String calleeName = property.get("name").asString();
+				callerMap.put(calleeName, container);
+			} else {
+				// callee is a complex expression, not an identifier
+			}
+		} else if (callee.get("type").asString().equals("Identifier")) {
+			String calleeName = callee.get("name").asString();
+			callerMap.put(calleeName, container);
+		} else {
+			// callee is a complex expression, not an identifier
 		}
 	}
 	

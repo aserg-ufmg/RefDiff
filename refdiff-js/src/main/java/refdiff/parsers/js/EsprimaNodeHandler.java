@@ -35,7 +35,13 @@ abstract class EsprimaNodeHandler {
 			List<Parameter> parameters = new ArrayList<>(params.size());
 			for (int i = 0; i < params.size(); i++) {
 				JsValue param = params.get(i);
-				parameters.add(new Parameter(param.get("name").asString()));
+				if (param.get("type").asString().equals("Identifier")) {
+					parameters.add(new Parameter(param.get("name").asString()));
+				} else if (param.get("type").asString().equals("AssignmentPattern")) {
+					//
+				} else if (param.get("type").asString().equals("BindingPattern")) {
+					//
+				}
 			}
 			return parameters;
 		}

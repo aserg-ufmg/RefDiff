@@ -23,9 +23,9 @@ public class MineRefactoringsFromRepoJs {
 		tempFolder.mkdirs();
 		
 		//mineRepository(tempFolder, "https://github.com/refdiff-data/react.git");
-		//mineRepository(tempFolder, "https://github.com/refdiff-data/vue.git");
-		//mineRepository(tempFolder, "https://github.com/d3/d3.git");
-		mineRepository(tempFolder, "https://github.com/angular/angular.js.git");
+		mineRepository(tempFolder, "https://github.com/refdiff-data/vue.git");
+//		mineRepository(tempFolder, "https://github.com/d3/d3.git");
+		//mineRepository(tempFolder, "https://github.com/angular/angular.js.git");
 	}
 
 	private static void mineRepository(File tempFolder, String cloneUrl) throws Exception {
@@ -43,7 +43,7 @@ public class MineRefactoringsFromRepoJs {
 		
 		try (Repository repository = gh.openRepository(repoFolder)) {
 			
-			gh.forEachNonMergeCommit(repository, 300, (RevCommit commitBefore, RevCommit commitAfter) -> {
+			gh.forEachNonMergeCommit(repository, 200, (RevCommit commitBefore, RevCommit commitAfter) -> {
 				System.out.println(commitAfter.getId().getName());
 				
 				try {
@@ -56,7 +56,7 @@ public class MineRefactoringsFromRepoJs {
 						}
 					}
 				} catch (Exception e) {
-					throw new RuntimeException(e);
+					System.err.println(e.getMessage());
 				}
 				
 			});

@@ -26,8 +26,8 @@ public class RunRefDiffExampleJs {
 		File tempFolder = new File("tmp");
 		tempFolder.mkdirs();
 		
-		String cloneUrl = "https://github.com/angular/angular.js.git";
-		File repoFolder = new File(tempFolder, "angular.js.git");
+		String cloneUrl = "https://github.com/refdiff-data/vue.git";
+		File repoFolder = new File(tempFolder, "vue.git");
 		
 		if (!repoFolder.exists()) {
 			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
@@ -36,7 +36,7 @@ public class RunRefDiffExampleJs {
 		GitHelper gh = new GitHelper();
 		try (Repository repo = gh.openRepository(repoFolder)) {
 			
-			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "83f7980e2f2e9ea6a373a5e1e301edfc90c8daa8", parser.getAllowedFileExtensions());
+			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "ef0b25097957ae9ef9970be732d6e65cc78902e9", parser.getAllowedFileExtensions());
 			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 			
 			Set<Relationship> relationships = diff.getRelationships();

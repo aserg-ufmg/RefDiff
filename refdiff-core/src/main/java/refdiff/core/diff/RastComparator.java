@@ -3,7 +3,6 @@ package refdiff.core.diff;
 import static refdiff.core.diff.RastRootHelper.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -22,8 +21,6 @@ import refdiff.core.diff.similarity.TfIdfSourceRepresentationBuilder;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.Location;
-import refdiff.core.rast.Parameter;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
@@ -53,27 +50,24 @@ public class RastComparator {
 	private class DiffBuilder<T> {
 		private final SourceRepresentationBuilder<T> srb;
 		private RastDiff diff;
-		private RastRootHelper before;
-		private RastRootHelper after;
+		private RastRootHelper<T> before;
+		private RastRootHelper<T> after;
 		private Set<RastNode> removed;
 		private Set<RastNode> added;
 		private ArrayList<Double> similaritySame = new ArrayList<>();
 		private ThresholdsProvider threshold = new ThresholdsProvider();
-		private RastComparatorMonitor monitor; 
+		private RastComparatorMonitor monitor;
 		
-		private final Map<RastNode, T> srMap = new HashMap<>();
-		private final Map<RastNode, T> srBodyMap = new HashMap<>();
 		private final Map<RastNode, RastNode> mapBeforeToAfter = new HashMap<>();
 		private final Map<RastNode, RastNode> mapAfterToBefore = new HashMap<>();
-		private final Map<RastNode, Integer> depthMap = new HashMap<>();
 		
 		DiffBuilder(SourceRepresentationBuilder<T> srb, SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) throws Exception {
 			this.srb = srb;
 			RastRoot rastRootBefore = parser.parse(sourcesBefore);
 			RastRoot rastRootAfter = parser.parse(sourcesAfter);
 			this.diff = new RastDiff(rastRootBefore, rastRootAfter);
-			this.before = new RastRootHelper(this.diff.getBefore());
-			this.after = new RastRootHelper(this.diff.getAfter());
+			this.before = new RastRootHelper<>(this.diff.getBefore(), sourcesBefore, srb, tokenizer, true);
+			this.after = new RastRootHelper<>(this.diff.getAfter(), sourcesAfter, srb, tokenizer, false);
 			this.removed = new HashSet<>();
 			this.monitor = monitor;
 			
@@ -88,14 +82,10 @@ public class RastComparator {
 			}
 			this.diff.getBefore().forEachNode((node, depth) -> {
 				this.removed.add(node);
-				computeSourceRepresentation(fileMapBefore, node, true);
-				depthMap.put(node, depth);
 			});
 			this.added = new HashSet<>();
 			this.diff.getAfter().forEachNode((node, depth) -> {
 				this.added.add(node);
-				computeSourceRepresentation(fileMapAfter, node, false);
-				depthMap.put(node, depth);
 			});
 		}
 		
@@ -115,30 +105,6 @@ public class RastComparator {
 			}
 		}
 		
-		private void computeSourceRepresentation(Map<String, String> fileMap, RastNode node, boolean isBefore) {
-			String nodeSource = retrieveSourceCode(fileMap, node, false);
-			List<String> nodeTokens = tokenizer.tokenize(nodeSource);
-			srMap.put(node, srb.buildForNode(node, isBefore, nodeTokens));
-			
-			if (node.getLocation().getBodyBegin() != node.getLocation().getBodyBegin()) {
-				
-			}
-			String nodeBodySource = retrieveSourceCode(fileMap, node, true);
-			List<String> nodeBodyTokens = tokenizer.tokenize(nodeBodySource);
-			T body = srb.buildForFragment(nodeBodyTokens);
-			List<String> tokensToIgnore = new ArrayList<>();
-			for (Parameter parameter : node.getParameters()) {
-				tokensToIgnore.add(parameter.getName());
-			}
-			tokensToIgnore.addAll(getTokensToIgnoreInNodeBody(node));
-			T normalizedBody = srb.minus(body, tokensToIgnore);
-			srBodyMap.put(node, normalizedBody);
-		}
-		
-		private Collection<String> getTokensToIgnoreInNodeBody(RastNode node) {
-			return Arrays.asList("return");
-		}
-		
 		private T getTokensToUseNode(RastNode node) {
 			return srb.buildForFragment(Collections.emptyList());
 //			List<String> tokens = new ArrayList<>();
@@ -153,20 +119,10 @@ public class RastComparator {
 //			return srb.buildForFragment(tokens);
 		}
 		
-		private String retrieveSourceCode(Map<String, String> fileMap, RastNode node, boolean bodyOnly) {
-			Location location = node.getLocation();
-			String sourceCode = fileMap.get(location.getFile());
-			if (bodyOnly) {
-				return sourceCode.substring(location.getBodyBegin(), location.getBodyEnd());
-			} else {
-				return sourceCode.substring(location.getBegin(), location.getEnd());
-			}
-		}
-		
 		RastDiff computeDiff() {
 			matchExactChildren(diff.getBefore(), diff.getAfter());
 			Collections.sort(similaritySame);
-			adjustThreshold();
+			//adjustThreshold();
 			matchMovesOrRenames(false, false);
 			matchMovesOrRenames(false, true);
 			matchPullUpAndPushDownMembers();
@@ -185,7 +141,7 @@ public class RastComparator {
 				RastNode n1 = entry.getKey();
 				RastNode n2 = entry.getValue();
 				if (!n1.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
-					double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
+					double similarity = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
 					if (similarity < 1.0) {
 						similaritySame.add(similarity);
 					}
@@ -227,9 +183,9 @@ public class RastComparator {
 						if (!includeLeaves && !(!leaf(n1) && !leaf(n2))) {
 							continue;
 						}
-						double score = srb.similarity(sourceRep(n1), sourceRep(n2));
+						double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
 						if (score > threshold.getValue()) {
-							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(depth(n1), depth(n2)), score);
+							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 							candidates.add(candidate);
 						} else {
 							monitor.reportDiscardedMatch(n1, n2, score);
@@ -272,10 +228,10 @@ public class RastComparator {
 					if (optMatchingNode.isPresent()) {
 						RastNode n1 = optMatchingNode.get();
 						if (sameType(n1, n2)/* && !n2.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n2.hasStereotype(Stereotype.FIELD_MUTATOR)*/) {
-							T sourceN1After = sourceRep(n1After);
-							T sourceN1Before = sourceRep(n1);
+							T sourceN1After = after.sourceRep(n1After);
+							T sourceN1Before = before.sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, srb.minus(sourceN1After, getTokensToUseNode(n2)));
-							T bodySourceN2 = bodySourceRep(n2);
+							T bodySourceN2 = after.bodySourceRep(n2);
 							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
 							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
 							double score = Math.max(score1, score2);
@@ -299,9 +255,9 @@ public class RastComparator {
 					if (optMatchingNode.isPresent()) {
 						RastNode n2 = optMatchingNode.get();
 						if (sameType(n1, n2)/* && !n1.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n1.hasStereotype(Stereotype.FIELD_MUTATOR)*/) {
-							T sourceN1 = bodySourceRep(n1);
-							T sourceN1Caller = sourceRep(n1Caller);
-							T sourceN1CallerAfter = sourceRep(n2);
+							T sourceN1 = before.bodySourceRep(n1);
+							T sourceN1Caller = before.sourceRep(n1Caller);
+							T sourceN1CallerAfter = after.sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, srb.minus(sourceN1Caller, getTokensToUseNode(n1)));
 							double score1 = srb.partialSimilarity(sourceN1, addedCode);
 							double score2 = srb.partialSimilarity(addedCode, sourceN1);
@@ -427,19 +383,6 @@ public class RastComparator {
 			} else {
 				monitor.reportDiscardedConflictingMatch(nBefore, nAfter);
 			}
-		}
-		
-
-		private T sourceRep(RastNode n) {
-			return srMap.get(n);
-		}
-		
-		private T bodySourceRep(RastNode n) {
-			return srBodyMap.get(n);
-		}
-		
-		private int depth(RastNode n) {
-			return depthMap.get(n);
 		}
 		
 		private Optional<RastNode> matchingNodeBefore(RastNode n2) {
