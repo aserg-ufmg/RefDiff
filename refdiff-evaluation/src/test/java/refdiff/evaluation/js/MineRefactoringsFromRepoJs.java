@@ -2,6 +2,7 @@ package refdiff.evaluation.js;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.util.Random;
 
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
@@ -21,6 +22,8 @@ public class MineRefactoringsFromRepoJs {
 	
 	private static final int MAX_COMMITS = 10;
 
+	private static Random random = new Random(44L);
+	
 	public static void main(String[] args) throws Exception {
 		
 		File tempFolder = new File("tmp");
@@ -79,7 +82,7 @@ public class MineRefactoringsFromRepoJs {
 						if (relationship.getType() != RelationshipType.SAME) {
 							RastNode n1 = relationship.getNodeBefore();
 							RastNode n2 = relationship.getNodeAfter();
-							csv.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", projectName, commitSha1, relationship.getType(), n1.getType(), n1.getLocation().format(), n1.getLocalName(), n2.getLocation().format(), n2.getLocalName());
+							csv.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n", projectName, commitSha1, relationship.getType(), n1.getType(), n1.getLocation().format(), n1.getLocalName(), n2.getLocation().format(), n2.getLocalName(), random.nextInt());
 						}
 					}
 				} catch (Exception e) {
