@@ -13,7 +13,7 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.EsprimaParser;
+import refdiff.parsers.js.JsParser;
 
 public class MineRefactoringsFromRepoJs {
 	
@@ -37,7 +37,7 @@ public class MineRefactoringsFromRepoJs {
 			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, projectName, "--bare", "--depth=1000");
 		}
 		
-		EsprimaParser parser = new EsprimaParser();
+		JsParser parser = new JsParser();
 		RastComparator rastComparator = new RastComparator(parser, parser);
 		GitHelper gh = new GitHelper();
 		

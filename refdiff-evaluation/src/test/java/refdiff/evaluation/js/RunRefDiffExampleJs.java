@@ -14,13 +14,13 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.EsprimaParser;
+import refdiff.parsers.js.JsParser;
 
 public class RunRefDiffExampleJs {
 	
 	public static void main(String[] args) throws Exception {
 		
-		EsprimaParser parser = new EsprimaParser();
+		JsParser parser = new JsParser();
 		RastComparator rastComparator = new RastComparator(parser, parser);
 		
 		File tempFolder = new File("tmp");

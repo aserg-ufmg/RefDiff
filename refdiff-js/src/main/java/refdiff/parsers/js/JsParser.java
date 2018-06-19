@@ -23,12 +23,12 @@ import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
 
-public class EsprimaParser implements RastParser, SourceTokenizer {
+public class JsParser implements RastParser, SourceTokenizer {
 	
 	private Invocable invocableScript;
 	private int nodeCounter = 0;
 	
-	public EsprimaParser() throws Exception {
+	public JsParser() throws Exception {
 		ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 		
 		engine.eval("load('classpath:esprima.js');");

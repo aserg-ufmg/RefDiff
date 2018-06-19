@@ -11,11 +11,11 @@ import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.SourceFolder;
-import refdiff.test.util.EsprimaParserSingleton;
+import refdiff.test.util.JsParserSingleton;
 
-public class TestRastComparator {
+public class TestRastComparatorJsParser {
 	
-	private EsprimaParser parser = EsprimaParserSingleton.get();
+	private JsParser parser = JsParserSingleton.get();
 	
 	@Test
 	public void shouldMatchWithSameNamePath() throws Exception {

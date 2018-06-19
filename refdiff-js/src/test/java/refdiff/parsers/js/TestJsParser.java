@@ -16,11 +16,11 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
-import refdiff.test.util.EsprimaParserSingleton;
+import refdiff.test.util.JsParserSingleton;
 
-public class TestEsprimaParser {
+public class TestJsParser {
 	
-	private EsprimaParser parser = EsprimaParserSingleton.get();
+	private JsParser parser = JsParserSingleton.get();
 	
 	@Test
 	public void shouldParseSimpleFile() throws Exception {
