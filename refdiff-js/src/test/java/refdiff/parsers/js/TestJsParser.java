@@ -24,7 +24,7 @@ public class TestJsParser {
 	
 	@Test
 	public void shouldParseSimpleFile() throws Exception {
-		Path basePath = Paths.get("src/test/resources/parser/");
+		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex1.js"));
 		RastRoot root = parser.parse(sources);
 		
@@ -51,7 +51,7 @@ public class TestJsParser {
 	
 	@Test
 	public void shouldParseFunctionCall() throws Exception {
-		Path basePath = Paths.get("src/test/resources/parser/");
+		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex2.js"));
 		RastRoot root = parser.parse(sources);
 		
@@ -77,7 +77,7 @@ public class TestJsParser {
 	
 	@Test
 	public void shouldParseClassDeclaration() throws Exception {
-		Path basePath = Paths.get("src/test/resources/parser/");
+		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex3.js"));
 		RastRoot root = parser.parse(sources);
 		

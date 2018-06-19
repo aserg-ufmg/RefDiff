@@ -54,7 +54,7 @@ public class TestRastComparatorJsParser {
 	}
 	
 	private RastDiff diff(String folder) throws Exception {
-		String basePath = "src/test/resources/" + folder;
+		String basePath = "test-data/diff/" + folder;
 		SourceFolder sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".js");
 		SourceFolder sourcesAfter = SourceFolder.from(Paths.get(basePath, "v1"), ".js");
 		RastComparator comparator = new RastComparator(parser, parser);
