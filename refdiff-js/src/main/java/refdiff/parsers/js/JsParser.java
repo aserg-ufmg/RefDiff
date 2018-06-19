@@ -101,6 +101,10 @@ public class JsParser implements RastParser, SourceTokenizer {
 				JsValue bodyRange = body.get("range");
 				bodyBegin = bodyRange.get(0).asInt();
 				bodyEnd = bodyRange.get(1).asInt();
+				if (body.get("type").asString().equals("BlockStatement")) {
+					bodyBegin = bodyBegin + 1;
+					bodyEnd = bodyEnd - 1;
+				}
 			}
 		}
 		

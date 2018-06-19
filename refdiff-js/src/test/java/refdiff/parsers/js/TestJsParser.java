@@ -44,7 +44,7 @@ public class TestJsParser {
 		assertThat(nodeArrowFn.getLocalName(), is(""));
 		
 		assertThat(nodeFnHello.getType(), is("FunctionDeclaration"));
-		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 71, 45, 71)));
+		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 71, 46, 70)));
 		assertThat(nodeFnHello.getLocalName(), is("hello"));
 		assertThat(nodeFnHello.getParameters().size(), is(0));
 	}
