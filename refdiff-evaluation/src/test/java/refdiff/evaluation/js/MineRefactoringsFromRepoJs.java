@@ -20,7 +20,7 @@ import refdiff.parsers.js.JsParser;
 
 public class MineRefactoringsFromRepoJs {
 	
-	private static final int MAX_COMMITS = 10;
+	private static final int MAX_COMMITS = 500;
 
 	private static Random random = new Random(44L);
 	
