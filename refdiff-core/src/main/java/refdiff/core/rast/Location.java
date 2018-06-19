@@ -87,4 +87,7 @@ public class Location {
 		return String.format("%s:%d:%d:%d:%d", file, begin, end, bodyBegin, bodyEnd);
 	}
 
+	public String format() {
+		return String.format("%s:%d-%d", file, begin, end);
+	}
 }
