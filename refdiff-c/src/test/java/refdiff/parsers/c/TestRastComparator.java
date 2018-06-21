@@ -58,18 +58,6 @@ public class TestRastComparator {
 	}
 	
 	@Test
-	public void shouldMatchExtractFunction2() throws Exception {
-		assertThat(diff("extractFunction2"), containsOnly(
-			relationship(RelationshipType.SAME, node("file.c"), node("file.c")),
-			relationship(RelationshipType.SAME, node("file.c", "f1()"), node("file.c", "f1()")),
-			relationship(RelationshipType.SAME, node("file.c", "f3()"), node("file.c", "f3()")),
-			relationship(RelationshipType.SAME, node("file.c", "main()"), node("file.c", "main()")),
-			relationship(RelationshipType.EXTRACT, node("file.c", "f1()"), node("header.h", "f2()")),
-			relationship(RelationshipType.EXTRACT, node("file.c", "f3()"), node("header.h", "f2()"))
-		));
-	}
-	
-	@Test
 	public void shouldMatchRenameFile() throws Exception {
 		assertThat(diff("renameFile"), containsOnly(
 			relationship(RelationshipType.SAME, node("file.c", "f1()"), node("file2.c", "f1()")),
@@ -103,6 +91,17 @@ public class TestRastComparator {
 			relationship(RelationshipType.SAME, node("file.c"), node("file.c")),
 			relationship(RelationshipType.SAME, node("file.c", "main()"), node("file.c", "main()")),
 			relationship(RelationshipType.INLINE, node("file.c", "f1()"), node("file.c", "main()"))
+		));
+	}
+	
+	@Test
+	// Indirection
+	public void shouldMatchInlineFunction2() throws Exception {
+		assertThat(diff("inlineFunction2"), containsOnly(
+			relationship(RelationshipType.SAME, node("file.c"), node("file.c")),
+			relationship(RelationshipType.SAME, node("file.c", "main()"), node("file.c", "main()")),
+			relationship(RelationshipType.SAME, node("file.c", "f1()"), node("file.c", "f1()")),
+			relationship(RelationshipType.INLINE, node("file.c", "f2()"), node("file.c", "main()"))
 		));
 	}
 	
