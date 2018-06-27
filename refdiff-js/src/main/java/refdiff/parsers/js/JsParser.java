@@ -12,6 +12,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
+import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.HasChildrenNodes;
@@ -171,7 +172,7 @@ public class JsParser implements RastParser, SourceTokenizer {
 	}
 	
 	@Override
-	public List<String> getAllowedFileExtensions() {
-		return Arrays.asList(".js");
+	public FilePathFilter getAllowedFilesFilter() {
+		return new FilePathFilter(Arrays.asList(".js", ".jsx"), Arrays.asList(".min.js"));
 	}
 }

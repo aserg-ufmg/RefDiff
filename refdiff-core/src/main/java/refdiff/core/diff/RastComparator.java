@@ -432,8 +432,8 @@ public class RastComparator {
 		*/
 	}
 
-	public List<String> getAllowedFileExtensions() {
-		return parser.getAllowedFileExtensions();
+	public RastParser getParser() {
+		return parser;
 	}
 
 }

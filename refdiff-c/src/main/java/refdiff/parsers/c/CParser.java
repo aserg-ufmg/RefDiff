@@ -19,6 +19,7 @@ import org.eclipse.cdt.core.parser.IncludeFileContentProvider;
 import org.eclipse.cdt.core.parser.ScannerInfo;
 import org.eclipse.core.runtime.CoreException;
 
+import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastRoot;
@@ -81,8 +82,8 @@ public class CParser implements RastParser, SourceTokenizer {
 	}
 
 	@Override
-	public List<String> getAllowedFileExtensions() {
-		return Arrays.asList(".c", ".h");
+	public FilePathFilter getAllowedFilesFilter() {
+		return new FilePathFilter(Arrays.asList(".c", ".h"));
 	}
 
 }

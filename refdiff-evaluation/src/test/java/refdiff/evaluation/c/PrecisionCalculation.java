@@ -368,7 +368,7 @@ public class PrecisionCalculation {
 		RastComparator rastComparator = new RastComparator(parser, parser);
 		
 		PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(
-				repository, commitBefore, commitAfter, parser.getAllowedFileExtensions());
+				repository, commitBefore, commitAfter, parser.getAllowedFilesFilter());
 		RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 		
 		Set<Relationship> relationships = diff.getRelationships().stream()

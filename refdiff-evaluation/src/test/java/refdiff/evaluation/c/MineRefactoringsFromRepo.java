@@ -37,7 +37,7 @@ public class MineRefactoringsFromRepo {
 				System.out.println(commitAfter.getId().getName());
 				
 				try {
-					PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, parser.getAllowedFileExtensions());
+					PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, parser.getAllowedFilesFilter());
 					RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 					
 					for (Relationship relationship : diff.getRelationships()) {

@@ -66,7 +66,7 @@ public class EvaluationUtils {
 			List<String> filesV1 = new ArrayList<>();
 			Map<String, String> renamedFilesHint = new HashMap<>();
 			
-			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getAllowedFileExtensions());
+			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getParser().getAllowedFilesFilter());
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			
@@ -98,7 +98,7 @@ public class EvaluationUtils {
 			List<String> filesV1 = new ArrayList<>();
 			Map<String, String> renamedFilesHint = new HashMap<>();
 			
-			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getAllowedFileExtensions());
+			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getParser().getAllowedFilesFilter());
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);

@@ -51,7 +51,7 @@ public class ListRefactoringsOnCommit {
 		try (Repository repo = gh.openRepository(repoFolder)) {
 			
 			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(
-					repo, commitSHA, parser.getAllowedFileExtensions());
+					repo, commitSHA, parser.getAllowedFilesFilter());
 			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 			
 			Set<Relationship> relationships = diff.getRelationships().stream()

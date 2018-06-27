@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastNode;
@@ -59,7 +60,7 @@ public class JavaParser implements RastParser {
 	}
 	
 	@Override
-	public List<String> getAllowedFileExtensions() {
-		return Arrays.asList(".java");
+	public FilePathFilter getAllowedFilesFilter() {
+		return new FilePathFilter(Arrays.asList(".java"));
 	}
 }

@@ -34,7 +34,7 @@ public class RunRefDiffExample {
 		GitHelper gh = new GitHelper();
 		try (Repository repo = gh.openRepository(repoFolder)) {
 			
-			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "f72c3ab791ac0b2b75b5b5d4d51d8eb89ea1e515", parser.getAllowedFileExtensions());
+			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "f72c3ab791ac0b2b75b5b5d4d51d8eb89ea1e515", parser.getAllowedFilesFilter());
 			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 			
 			Set<Relationship> relationships = diff.getRelationships().stream()

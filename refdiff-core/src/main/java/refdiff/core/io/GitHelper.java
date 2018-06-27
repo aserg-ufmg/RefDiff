@@ -126,7 +126,8 @@ public class GitHelper {
 				
 				count++;
 				
-				if (count >= maxDepth) break;
+				if (count >= maxDepth)
+					break;
 			}
 		}
 	}
@@ -152,7 +153,7 @@ public class GitHelper {
 		}
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<String> fileExtensions) throws Exception {
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, RevCommit commitBefore, RevCommit commitAfter, FilePathFilter fileExtensions) throws Exception {
 		List<SourceFile> filesBefore = new ArrayList<>();
 		List<SourceFile> filesAfter = new ArrayList<>();
 		fileTreeDiff(repository, commitBefore, commitAfter, filesBefore, filesAfter, fileExtensions);
@@ -162,7 +163,7 @@ public class GitHelper {
 			new GitSourceTree(repository, commitAfter.getId(), filesAfter));
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId, List<String> fileExtensions) throws Exception {
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId, FilePathFilter fileExtensions) throws Exception {
 		try (RevWalk rw = new RevWalk(repository)) {
 			RevCommit commitAfter = rw.parseCommit(repository.resolve(commitId));
 			if (commitAfter.getParentCount() != 1) {
@@ -173,7 +174,7 @@ public class GitHelper {
 		}
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitIdBefore, String commitIdAfter, List<String> fileExtensions) throws Exception {
+	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitIdBefore, String commitIdAfter, FilePathFilter fileExtensions) throws Exception {
 		try (RevWalk rw = new RevWalk(repository)) {
 			RevCommit commitBefore = rw.parseCommit(repository.resolve(commitIdBefore));
 			RevCommit commitAfter = rw.parseCommit(repository.resolve(commitIdAfter));
@@ -287,7 +288,7 @@ public class GitHelper {
 		}
 	}
 	
-	public void fileTreeDiff(Repository repository, RevCommit current, List<String> javaFilesBefore, List<String> javaFilesCurrent, Map<String, String> renamedFilesHint, boolean detectRenames, List<String> fileExtensions) throws Exception {
+	public void fileTreeDiff(Repository repository, RevCommit current, List<String> javaFilesBefore, List<String> javaFilesCurrent, Map<String, String> renamedFilesHint, boolean detectRenames, FilePathFilter fileExtensions) throws Exception {
 		ObjectId oldHead = current.getParent(0).getTree();
 		ObjectId head = current.getTree();
 		
@@ -314,13 +315,13 @@ public class GitHelper {
 				ChangeType changeType = entry.getChangeType();
 				if (changeType != ChangeType.ADD) {
 					String oldPath = entry.getOldPath();
-					if (isFileAllowed(oldPath, fileExtensions)) {
+					if (fileExtensions.isAllowed(oldPath)) {
 						javaFilesBefore.add(oldPath);
 					}
 				}
 				if (changeType != ChangeType.DELETE) {
 					String newPath = entry.getNewPath();
-					if (isFileAllowed(newPath, fileExtensions)) {
+					if (fileExtensions.isAllowed(newPath)) {
 						javaFilesCurrent.add(newPath);
 						if (changeType == ChangeType.RENAME) {
 							String oldPath = entry.getOldPath();
@@ -332,7 +333,7 @@ public class GitHelper {
 		}
 	}
 	
-	public void fileTreeDiff(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<SourceFile> filesBefore, List<SourceFile> filesAfter, List<String> fileExtensions) throws Exception {
+	public void fileTreeDiff(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<SourceFile> filesBefore, List<SourceFile> filesAfter, FilePathFilter fileExtensions) throws Exception {
 		ObjectId oldHead = commitBefore.getTree();
 		ObjectId head = commitAfter.getTree();
 		
@@ -353,13 +354,13 @@ public class GitHelper {
 				ChangeType changeType = entry.getChangeType();
 				if (changeType != ChangeType.ADD) {
 					String oldPath = entry.getOldPath();
-					if (isFileAllowed(oldPath, fileExtensions)) {
+					if (fileExtensions.isAllowed(oldPath)) {
 						filesBefore.add(new SourceFile(Paths.get(oldPath)));
 					}
 				}
 				if (changeType != ChangeType.DELETE) {
 					String newPath = entry.getNewPath();
-					if (isFileAllowed(newPath, fileExtensions)) {
+					if (fileExtensions.isAllowed(newPath)) {
 						filesAfter.add(new SourceFile(Paths.get(newPath)));
 					}
 				}
@@ -367,12 +368,4 @@ public class GitHelper {
 		}
 	}
 	
-	private boolean isFileAllowed(String path, List<String> fileExtensions) {
-		for (String fileExtension : fileExtensions) {
-			if (path.endsWith(fileExtension)) {
-				return true;
-			}
-		}
-		return false;
-	}
 }
