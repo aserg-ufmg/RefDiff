@@ -1,17 +1,17 @@
 package refdiff.parsers.js;
 
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import com.eclipsesource.v8.NodeJS;
+import com.eclipsesource.v8.V8Object;
 
-import jdk.nashorn.api.scripting.ScriptObjectMirror;
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
@@ -24,20 +24,22 @@ import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
 import refdiff.parsers.SourceTokenizer;
 
-public class BabelParser implements RastParser, SourceTokenizer {
+public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 	
-	private Invocable invocableScript;
+	private NodeJS nodeJs;
 	private int nodeCounter = 0;
+	private File nodeModules = new File("node_modules");
+	private V8Object babel;
 	
 	public BabelParser() throws Exception {
-		ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+		this.nodeJs = NodeJS.createNodeJS();
+		this.babel = this.nodeJs.require(new File(nodeModules, "@babel/parser"));
 		
-		engine.eval("load('classpath:jvm-npm.js');");
-		engine.eval("var babelParser = require('@babel/parser');");
-		engine.eval("function parse(script) {return babelParser.parse(script, {ranges: true, sourceType: 'unambiguous'});}");
-		engine.eval("function tokenize(source) {return babelParser.parse(source, {tokens: true}).tokens;}");
-		engine.eval("function toJson(object) {return JSON.stringify(object);}");
-		this.invocableScript = (Invocable) engine;
+		this.nodeJs.getRuntime().add("babelParser", this.babel);
+		
+		this.nodeJs.getRuntime().executeVoidScript("function parse(script) {return babelParser.parse(script, {ranges: true, sourceType: 'unambiguous'});}"
+			+ "function tokenize(source) {return babelParser.parse(source, {tokens: true}).tokens;}"
+			+ "function toJson(object) {return JSON.stringify(object);}");
 	}
 	
 	@Override
@@ -54,12 +56,15 @@ public class BabelParser implements RastParser, SourceTokenizer {
 	@Override
 	public List<String> tokenize(String source) {
 		try {
-			ScriptObjectMirror array = (ScriptObjectMirror) this.invocableScript.invokeFunction("tokenize", source);
-			List<String> tokens = new ArrayList<>(array.size());
-			for (int i = 0; i < array.size(); i++) {
-				String token = ((ScriptObjectMirror) array.getSlot(i)).getMember("value").toString();
-				tokens.add(token);
-			}
+			
+			JsValueV8 babelAst = new JsValueV8(this.nodeJs.getRuntime().executeJSFunction("tokenize", source), this::toJson);
+			
+			//ScriptObjectMirror array = (ScriptObjectMirror) 
+			List<String> tokens = new ArrayList<>();
+//			for (int i = 0; i < array.size(); i++) {
+//				String token = ((ScriptObjectMirror) array.getSlot(i)).getMember("value").toString();
+//				tokens.add(token);
+//			}
 			return tokens;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -70,9 +75,9 @@ public class BabelParser implements RastParser, SourceTokenizer {
 		try {
 //			System.out.print(String.format("Parsing %s ... ", sources.describeLocation(sourceFile)));
 //			long timestamp = System.currentTimeMillis();
-			ScriptObjectMirror esprimaAst = (ScriptObjectMirror) this.invocableScript.invokeFunction("parse", content);
+			V8Object babelAst = (V8Object) this.nodeJs.getRuntime().executeJSFunction("parse", content);
 //			System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
-			JsValue astRoot = new JsValue(esprimaAst, this::toJson);
+			JsValueV8 astRoot = new JsValueV8(babelAst, this::toJson);
 			Map<String, Object> callerMap = new HashMap<>();
 			getRast(0, root, sourceFile, astRoot, callerMap);
 			root.forEachNode((calleeNode, depth) -> {
@@ -81,28 +86,26 @@ public class BabelParser implements RastParser, SourceTokenizer {
 					root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
 				}
 			});
-		} catch (ScriptException e) {
-			throw new RuntimeException(String.format("Error parsing %s: %s", sources.describeLocation(sourceFile), e.getMessage()));
+		} catch (Exception e) {
+			throw new RuntimeException(String.format("Error parsing %s: %s", sources.describeLocation(sourceFile), e.getMessage()), e);
 		}
 	}
 	
-	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValue esprimaAst, Map<String, Object> callerMap) throws Exception {
-		if (!esprimaAst.has("type")) {
+	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, Object> callerMap) throws Exception {
+		if (!babelAst.has("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
 		String path = sourceFile.getPath();
-		String type = esprimaAst.get("type").asString();
-		JsValue range = esprimaAst.get("range");
-		int begin = range.get(0).asInt();
-		int end = range.get(1).asInt();
+		String type = babelAst.get("type").asString();
+		int begin = babelAst.get("start").asInt();
+		int end = babelAst.get("end").asInt();
 		int bodyBegin = begin;
 		int bodyEnd = end;
-		if (esprimaAst.has("body")) {
-			JsValue body = esprimaAst.get("body");
+		if (babelAst.has("body")) {
+			JsValueV8 body = babelAst.get("body");
 			if (body.has("range")) {
-				JsValue bodyRange = body.get("range");
-				bodyBegin = bodyRange.get(0).asInt();
-				bodyEnd = bodyRange.get(1).asInt();
+				bodyBegin = body.get("start").asInt();
+				bodyEnd = body.get("end").asInt();
 				if (body.get("type").asString().equals("BlockStatement")) {
 					bodyBegin = bodyBegin + 1;
 					bodyEnd = bodyEnd - 1;
@@ -110,26 +113,26 @@ public class BabelParser implements RastParser, SourceTokenizer {
 			}
 		}
 		
-		if (EsprimaNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
-			EsprimaNodeHandler handler = EsprimaNodeHandler.RAST_NODE_HANDLERS.get(type);
+		if (BabelNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
+			BabelNodeHandler handler = BabelNodeHandler.RAST_NODE_HANDLERS.get(type);
 			RastNode rastNode = new RastNode(++nodeCounter);
 			rastNode.setType(type);
 			rastNode.setLocation(new Location(path, begin, end, bodyBegin, bodyEnd));
-			rastNode.setLocalName(handler.getLocalName(rastNode, esprimaAst));
-			rastNode.setSimpleName(handler.getSimpleName(rastNode, esprimaAst));
-			rastNode.setNamespace(handler.getNamespace(rastNode, esprimaAst));
-			rastNode.setStereotypes(handler.getStereotypes(rastNode, esprimaAst));
-			rastNode.setParameters(handler.getParameters(rastNode, esprimaAst));
+			rastNode.setLocalName(handler.getLocalName(rastNode, babelAst));
+			rastNode.setSimpleName(handler.getSimpleName(rastNode, babelAst));
+			rastNode.setNamespace(handler.getNamespace(rastNode, babelAst));
+			rastNode.setStereotypes(handler.getStereotypes(rastNode, babelAst));
+			rastNode.setParameters(handler.getParameters(rastNode, babelAst));
 			container.addNode(rastNode);
 			container = rastNode;
 		} else {
 			if ("CallExpression".equals(type)) {
-				extractCalleeNameFromCallExpression(esprimaAst, callerMap, container);
+				extractCalleeNameFromCallExpression(babelAst, callerMap, container);
 			}
 		}
 		
-		for (String key : esprimaAst.getOwnKeys()) {
-			JsValue value = esprimaAst.get(key);
+		for (String key : babelAst.getOwnKeys()) {
+			JsValueV8 value = babelAst.get(key);
 			if (value.isObject()) {
 				if (value.has("type")) {
 					getRast(depth + 1, container, sourceFile, value, callerMap);
@@ -137,7 +140,7 @@ public class BabelParser implements RastParser, SourceTokenizer {
 			}
 			if (value.isArray()) {
 				for (int i = 0; i < value.size(); i++) {
-					JsValue element = value.get(i);
+					JsValueV8 element = value.get(i);
 					if (element.has("type")) {
 						getRast(depth + 1, container, sourceFile, element, callerMap);
 					}
@@ -146,10 +149,10 @@ public class BabelParser implements RastParser, SourceTokenizer {
 		}
 	}
 
-	private void extractCalleeNameFromCallExpression(JsValue callExpresionNode, Map<String, Object> callerMap, HasChildrenNodes container) {
-		JsValue callee = callExpresionNode.get("callee");
+	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, Object> callerMap, HasChildrenNodes container) {
+		JsValueV8 callee = callExpresionNode.get("callee");
 		if (callee.get("type").asString().equals("MemberExpression")) {
-			JsValue property = callee.get("property");
+			JsValueV8 property = callee.get("property");
 			if (property.get("type").asString().equals("Identifier")) {
 				String calleeName = property.get("name").asString();
 				callerMap.put(calleeName, container);
@@ -165,15 +168,19 @@ public class BabelParser implements RastParser, SourceTokenizer {
 	}
 	
 	private String toJson(Object object) {
-		try {
-			return this.invocableScript.invokeFunction("toJson", object).toString();
-		} catch (NoSuchMethodException | ScriptException e) {
-			throw new RuntimeException(e);
-		}
+		return this.nodeJs.getRuntime().executeJSFunction("toJson", object).toString();
 	}
 	
 	@Override
 	public FilePathFilter getAllowedFilesFilter() {
 		return new FilePathFilter(Arrays.asList(".js", ".jsx"), Arrays.asList(".min.js"));
+	}
+
+	@Override
+	public void close() throws IOException {
+		this.babel.release();
+		this.babel = null;
+		this.nodeJs.release();
+		this.nodeJs = null;
 	}
 }
