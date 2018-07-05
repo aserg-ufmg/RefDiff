@@ -2,6 +2,6 @@ var x = {
 	fn : () => 1
 };
 
-function hello() {
-	console.log('hello');
+function hello(name) {
+	console.log('hello ' + name);
 }

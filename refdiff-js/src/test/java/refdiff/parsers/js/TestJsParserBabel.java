@@ -16,6 +16,7 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
+import refdiff.core.rast.Stereotype;
 import refdiff.test.util.JsParserSingletonBabel;
 
 public class TestJsParserBabel {
@@ -33,7 +34,7 @@ public class TestJsParserBabel {
 		RastNode nodeScriptEx1 = root.getNodes().get(0);
 		assertThat(nodeScriptEx1.getType(), is("Program"));
 		assertThat(nodeScriptEx1.getNamespace(), is(""));
-		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 71)));
+		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 83)));
 		
 		assertThat(nodeScriptEx1.getNodes().size(), is(2));
 		RastNode nodeArrowFn = nodeScriptEx1.getNodes().get(0);
@@ -44,9 +45,10 @@ public class TestJsParserBabel {
 		assertThat(nodeArrowFn.getLocalName(), is(""));
 		
 		assertThat(nodeFnHello.getType(), is("FunctionDeclaration"));
-		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 71, 46, 70)));
+		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 83, 50, 82)));
 		assertThat(nodeFnHello.getLocalName(), is("hello"));
-		assertThat(nodeFnHello.getParameters().size(), is(0));
+		assertThat(nodeFnHello.getParameters().size(), is(1));
+		assertThat(nodeFnHello.getParameters().get(0).getName(), is("name"));
 	}
 	
 	@Test
@@ -95,18 +97,19 @@ public class TestJsParserBabel {
 		assertThat(nodeRectangle.getNodes().size(), is(3));
 		
 		RastNode contructor = nodeRectangle.getNodes().get(0);
-		assertThat(contructor.getType(), is("MethodDefinition"));
+		assertThat(contructor.getType(), is("ClassMethod"));
 		assertThat(contructor.getLocalName(), is("constructor"));
 		assertThat(contructor.getParameters().size(), is(2));
 		assertThat(contructor.getParameters().get(0).getName(), is("height"));
 		assertThat(contructor.getParameters().get(1).getName(), is("width"));
+		assertTrue(contructor.hasStereotype(Stereotype.TYPE_CONSTRUCTOR));
 		
 		RastNode methodGetArea = nodeRectangle.getNodes().get(1);
-		assertThat(methodGetArea.getType(), is("MethodDefinition"));
+		assertThat(methodGetArea.getType(), is("ClassMethod"));
 		assertThat(methodGetArea.getLocalName(), is("area"));
 		
 		RastNode methodCalcArea = nodeRectangle.getNodes().get(2);
-		assertThat(methodCalcArea.getType(), is("MethodDefinition"));
+		assertThat(methodCalcArea.getType(), is("ClassMethod"));
 		assertThat(methodCalcArea.getLocalName(), is("calcArea"));
 	}
 	
@@ -123,6 +126,15 @@ public class TestJsParserBabel {
 	public void shouldTokenizeLargeFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));
+		for (SourceFile file : sources.getSourceFiles()) {
+			parser.tokenize(sources.readContent(file));
+		}
+	}
+	
+	@Test
+	public void shouldTokenizeSimpleFile() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex1.js"));
 		for (SourceFile file : sources.getSourceFiles()) {
 			parser.tokenize(sources.readContent(file));
 		}

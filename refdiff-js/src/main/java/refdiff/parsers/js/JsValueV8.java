@@ -19,7 +19,12 @@ class JsValueV8 implements Closeable {
 	public JsValueV8(Object value, Function<Object, String> toJsonFunction) {
 		this.value = value;
 		if (value instanceof V8Object) {
-			this.o = (V8Object) value;
+			V8Object v8Object = (V8Object) value;
+			if (!v8Object.isUndefined()) {
+				this.o = v8Object;
+			} else {
+				this.o = null;
+			}
 		} else {
 			this.o = null;
 		}
