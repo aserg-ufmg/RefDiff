@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
@@ -135,9 +137,12 @@ public class TestJsParserBabel {
 	public void shouldTokenizeSimpleFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex1.js"));
-		for (SourceFile file : sources.getSourceFiles()) {
-			parser.tokenize(sources.readContent(file));
-		}
+		SourceFile file = sources.getSourceFiles().get(0);
+		
+		List<String> expected = Arrays.asList("var", "x", "=", "{", "fn", ":", "(", ")", "=>", "1", "}", ";", "function", "hello", "(", "name", ")", "{", "console", ".", "log", "(", "'hello '", "+", "name", ")", ";", "}");
+		
+		List<String> actual = parser.tokenize(sources.readContent(file));
+		assertThat(actual, is(expected));
 	}
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {

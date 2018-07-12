@@ -55,16 +55,17 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 	
 	@Override
 	public List<String> tokenize(String source) {
-		try {
-			
-			JsValueV8 babelAst = new JsValueV8(this.nodeJs.getRuntime().executeJSFunction("tokenize", source), this::toJson);
-			
-			//ScriptObjectMirror array = (ScriptObjectMirror) 
+		try (JsValueV8 babelAst = new JsValueV8(this.nodeJs.getRuntime().executeJSFunction("tokenize", source), this::toJson)) {
 			List<String> tokens = new ArrayList<>();
-//			for (int i = 0; i < array.size(); i++) {
-//				String token = ((ScriptObjectMirror) array.getSlot(i)).getMember("value").toString();
-//				tokens.add(token);
-//			}
+			for (int i = 0; i < babelAst.size(); i++) {
+				JsValueV8 tokenObj = babelAst.get(i);
+				int start = tokenObj.get("start").asInt();
+				int end = tokenObj.get("end").asInt();
+				String token = source.substring(start, end).trim();
+				if (!token.isEmpty()) {
+					tokens.add(token);
+				}
+			}
 			return tokens;
 		} catch (Exception e) {
 			throw new RuntimeException(e);

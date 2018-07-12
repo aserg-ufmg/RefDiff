@@ -13,6 +13,7 @@ class JsValueV8 implements Closeable {
 	
 	private final Object value;
 	private final V8Object o;
+	private final boolean defined;
 	private final Function<Object, String> toJsonFunction;
 	private final Set<V8Object> children = new HashSet<>();
 	
@@ -22,17 +23,20 @@ class JsValueV8 implements Closeable {
 			V8Object v8Object = (V8Object) value;
 			if (!v8Object.isUndefined()) {
 				this.o = v8Object;
+				this.defined = true;
 			} else {
 				this.o = null;
+				this.defined = false;
 			}
 		} else {
+			this.defined = value != null;
 			this.o = null;
 		}
 		this.toJsonFunction = toJsonFunction;
 	}
 	
 	public boolean has(String member) {
-		return o != null && o.contains(member);
+		return o != null && o.contains(member) && get(member).isDefined();
 	}
 	
 	public JsValueV8 get(String member) {
@@ -115,7 +119,7 @@ class JsValueV8 implements Closeable {
 		}
 		return o;
 	}
-
+	
 	@Override
 	public void close() throws IOException {
 		for (V8Object child : children) {
@@ -125,4 +129,9 @@ class JsValueV8 implements Closeable {
 			o.release();
 		}
 	}
+	
+	public boolean isDefined() {
+		return defined;
+	}
+	
 }
