@@ -16,7 +16,7 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.JsParser;
+import refdiff.parsers.js.BabelParser;
 
 public class MineRefactoringsFromRepoJs {
 	
@@ -63,7 +63,7 @@ public class MineRefactoringsFromRepoJs {
 			ExternalProcess.execute(tempFolder, "git", "clone", "https://github.com/refdiff-study/" + projectName, projectName, "--bare", "--depth=1000");
 		}
 		
-		JsParser parser = new JsParser();
+		BabelParser parser = new BabelParser();
 		RastComparator rastComparator = new RastComparator(parser, parser);
 		GitHelper gh = new GitHelper();
 		

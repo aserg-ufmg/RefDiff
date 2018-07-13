@@ -37,20 +37,26 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 		
 		this.nodeJs.getRuntime().add("babelParser", this.babel);
 		
-		this.nodeJs.getRuntime().executeVoidScript("function parse(script) {return babelParser.parse(script, {ranges: true, sourceType: 'unambiguous'});}"
-			+ "function tokenize(source) {return babelParser.parse(source, {tokens: true}).tokens;}"
+		String plugins = "['jsx', 'objectRestSpread', 'exportDefaultFrom', 'classProperties', 'flow']";
+		
+		this.nodeJs.getRuntime().executeVoidScript("function parse(script) {return babelParser.parse(script, {ranges: true, sourceType: 'unambiguous', plugins: " + plugins + " });}"
+			+ "function tokenize(source) {return babelParser.parse(source, {tokens: true, plugins: " + plugins + "}).tokens;}"
 			+ "function toJson(object) {return JSON.stringify(object);}");
 	}
 	
 	@Override
 	public RastRoot parse(SourceFileSet sources) throws Exception {
-		RastRoot root = new RastRoot();
-		this.nodeCounter = 0;
-		for (SourceFile sourceFile : sources.getSourceFiles()) {
-			String content = sources.readContent(sourceFile);
-			getRast(root, sourceFile, content, sources);
+		try {
+			RastRoot root = new RastRoot();
+			this.nodeCounter = 0;
+			for (SourceFile sourceFile : sources.getSourceFiles()) {
+				String content = sources.readContent(sourceFile);
+				getRast(root, sourceFile, content, sources);
+			}
+			return root;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
-		return root;
 	}
 	
 	@Override
