@@ -365,7 +365,7 @@ public class PrecisionCalculation {
 	private static Set<Relationship> getRelationships(GitHelper gh, Repository repository, RevCommit commitBefore, RevCommit commitAfter) 
 			throws Exception {
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser, parser);
+		RastComparator rastComparator = new RastComparator(parser);
 		
 		PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(
 				repository, commitBefore, commitAfter, parser.getAllowedFilesFilter());

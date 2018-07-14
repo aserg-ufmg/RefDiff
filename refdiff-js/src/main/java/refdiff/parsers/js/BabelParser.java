@@ -21,10 +21,11 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
+import refdiff.core.rast.TokenPosition;
+import refdiff.core.rast.TokenizedSource;
 import refdiff.parsers.RastParser;
-import refdiff.parsers.SourceTokenizer;
 
-public class BabelParser implements RastParser, SourceTokenizer, Closeable {
+public class BabelParser implements RastParser, Closeable {
 	
 	private NodeJS nodeJs;
 	private int nodeCounter = 0;
@@ -39,9 +40,8 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 		
 		String plugins = "['jsx', 'objectRestSpread', 'exportDefaultFrom', 'classProperties', 'flow']";
 		
-		this.nodeJs.getRuntime().executeVoidScript("function parse(script) {return babelParser.parse(script, {ranges: true, sourceType: 'unambiguous', plugins: " + plugins + " });}"
-			+ "function tokenize(source) {return babelParser.parse(source, {tokens: true, plugins: " + plugins + "}).tokens;}"
-			+ "function toJson(object) {return JSON.stringify(object);}");
+		this.nodeJs.getRuntime().executeVoidScript("function parse(script) {return babelParser.parse(script, {ranges: true, tokens: true, sourceType: 'unambiguous', plugins: " + plugins + " });}");
+		this.nodeJs.getRuntime().executeVoidScript("function toJson(object) {return JSON.stringify(object);}");
 	}
 	
 	@Override
@@ -59,43 +59,47 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 		}
 	}
 	
-	@Override
-	public List<String> tokenize(String source) {
-		try (JsValueV8 babelAst = new JsValueV8(this.nodeJs.getRuntime().executeJSFunction("tokenize", source), this::toJson)) {
-			List<String> tokens = new ArrayList<>();
-			for (int i = 0; i < babelAst.size(); i++) {
-				JsValueV8 tokenObj = babelAst.get(i);
-				int start = tokenObj.get("start").asInt();
-				int end = tokenObj.get("end").asInt();
-				String token = source.substring(start, end).trim();
-				if (!token.isEmpty()) {
-					tokens.add(token);
-				}
-			}
-			return tokens;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
 	private void getRast(RastRoot root, SourceFile sourceFile, String content, SourceFileSet sources) throws Exception {
 		try {
-//			System.out.print(String.format("Parsing %s ... ", sources.describeLocation(sourceFile)));
-//			long timestamp = System.currentTimeMillis();
 			V8Object babelAst = (V8Object) this.nodeJs.getRuntime().executeJSFunction("parse", content);
-//			System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
-			JsValueV8 astRoot = new JsValueV8(babelAst, this::toJson);
-			Map<String, Object> callerMap = new HashMap<>();
-			getRast(0, root, sourceFile, astRoot, callerMap);
-			root.forEachNode((calleeNode, depth) -> {
-				if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
-					RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
-					root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
-				}
-			});
+			
+			// System.out.print(String.format("Parsing %s ... ", sources.describeLocation(sourceFile)));
+			// long timestamp = System.currentTimeMillis();
+			try (JsValueV8 astRoot = new JsValueV8(babelAst, this::toJson)) {
+				
+				TokenizedSource tokenizedSource = buildTokenizedSourceFromAst(sourceFile, astRoot);
+				root.addTokenizedFile(tokenizedSource);
+				
+				// System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
+				Map<String, Object> callerMap = new HashMap<>();
+				getRast(0, root, sourceFile, astRoot, callerMap);
+				root.forEachNode((calleeNode, depth) -> {
+					if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
+						RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
+						root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
+					}
+				});
+			}
+			
 		} catch (Exception e) {
 			throw new RuntimeException(String.format("Error parsing %s: %s", sources.describeLocation(sourceFile), e.getMessage()), e);
 		}
+	}
+	
+	private TokenizedSource buildTokenizedSourceFromAst(SourceFile sourceFile, JsValueV8 astRoot) {
+		JsValueV8 tokensArray = astRoot.get("tokens");
+		
+		List<TokenPosition> tokens = new ArrayList<>();
+		for (int i = 0; i < tokensArray.size(); i++) {
+			JsValueV8 tokenObj = tokensArray.get(i);
+			int start = tokenObj.get("start").asInt();
+			int end = tokenObj.get("end").asInt();
+			if (end > start) {
+				tokens.add(new TokenPosition(start, end));
+			}
+		}
+		TokenizedSource tokenizedSource = new TokenizedSource(sourceFile.getPath(), tokens);
+		return tokenizedSource;
 	}
 	
 	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, Object> callerMap) throws Exception {
@@ -139,6 +143,9 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 		}
 		
 		for (String key : babelAst.getOwnKeys()) {
+			if (key.equals("tokens")) {
+				continue;
+			}
 			JsValueV8 value = babelAst.get(key);
 			if (value.isObject()) {
 				if (value.has("type")) {
@@ -155,7 +162,7 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 			}
 		}
 	}
-
+	
 	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, Object> callerMap, HasChildrenNodes container) {
 		JsValueV8 callee = callExpresionNode.get("callee");
 		if (callee.get("type").asString().equals("MemberExpression")) {
@@ -182,7 +189,7 @@ public class BabelParser implements RastParser, SourceTokenizer, Closeable {
 	public FilePathFilter getAllowedFilesFilter() {
 		return new FilePathFilter(Arrays.asList(".js", ".jsx"), Arrays.asList(".min.js"));
 	}
-
+	
 	@Override
 	public void close() throws IOException {
 		this.babel.release();

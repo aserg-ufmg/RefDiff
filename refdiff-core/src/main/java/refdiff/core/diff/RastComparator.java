@@ -26,16 +26,13 @@ import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
 import refdiff.parsers.RastParser;
-import refdiff.parsers.SourceTokenizer;
 
 public class RastComparator {
 	
 	private final RastParser parser;
-	private final SourceTokenizer tokenizer;
 	
-	public RastComparator(RastParser parser, SourceTokenizer tokenizer) {
+	public RastComparator(RastParser parser) {
 		this.parser = parser;
-		this.tokenizer = tokenizer;
 	}
 	
 	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter) throws Exception {
@@ -66,8 +63,8 @@ public class RastComparator {
 			RastRoot rastRootBefore = parser.parse(sourcesBefore);
 			RastRoot rastRootAfter = parser.parse(sourcesAfter);
 			this.diff = new RastDiff(rastRootBefore, rastRootAfter);
-			this.before = new RastRootHelper<>(this.diff.getBefore(), sourcesBefore, srb, tokenizer, true);
-			this.after = new RastRootHelper<>(this.diff.getAfter(), sourcesAfter, srb, tokenizer, false);
+			this.before = new RastRootHelper<>(this.diff.getBefore(), sourcesBefore, srb, true);
+			this.after = new RastRootHelper<>(this.diff.getAfter(), sourcesAfter, srb, false);
 			this.removed = new HashSet<>();
 			this.monitor = monitor;
 			

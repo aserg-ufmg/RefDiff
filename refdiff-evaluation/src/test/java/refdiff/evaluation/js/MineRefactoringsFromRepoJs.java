@@ -64,7 +64,7 @@ public class MineRefactoringsFromRepoJs {
 		}
 		
 		BabelParser parser = new BabelParser();
-		RastComparator rastComparator = new RastComparator(parser, parser);
+		RastComparator rastComparator = new RastComparator(parser);
 		GitHelper gh = new GitHelper();
 		
 		System.out.println("Mining " + cloneUrl);

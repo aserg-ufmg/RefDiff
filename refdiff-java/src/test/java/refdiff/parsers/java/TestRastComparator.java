@@ -15,7 +15,6 @@ import refdiff.core.io.SourceFolder;
 public class TestRastComparator {
 	
 	private static JavaParser parser = new JavaParser();
-	private static JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	
 	@Test
 	public void shouldMatchExtractMethod() throws Exception {
@@ -96,7 +95,7 @@ public class TestRastComparator {
 		String basePath = "test-data/diff/" + folder;
 		SourceFolder sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".java");
 		SourceFolder sourcesAfter = SourceFolder.from(Paths.get(basePath, "v1"), ".java");
-		RastComparator comparator = new RastComparator(parser, tokenizer);
+		RastComparator comparator = new RastComparator(parser);
 		return comparator.compare(sourcesBefore, sourcesAfter);
 	}
 	

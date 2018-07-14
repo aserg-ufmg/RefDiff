@@ -28,7 +28,7 @@ public class MineRefactoringsFromRepo {
 		}
 		
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser, parser);
+		RastComparator rastComparator = new RastComparator(parser);
 		GitHelper gh = new GitHelper();
 		
 		try (Repository repository = gh.openRepository(repoFolder)) {

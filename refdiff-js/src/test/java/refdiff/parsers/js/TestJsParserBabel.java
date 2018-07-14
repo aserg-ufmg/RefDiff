@@ -11,7 +11,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.io.SourceFile;
+import refdiff.core.diff.RastRootHelper;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
@@ -128,20 +128,21 @@ public class TestJsParserBabel {
 	public void shouldTokenizeLargeFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));
-		for (SourceFile file : sources.getSourceFiles()) {
-			parser.tokenize(sources.readContent(file));
-		}
+		parser.parse(sources);
 	}
 	
 	@Test
 	public void shouldTokenizeSimpleFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex1.js"));
-		SourceFile file = sources.getSourceFiles().get(0);
 		
+		RastRoot rastRoot = parser.parse(sources);
+		RastNode fileNode = rastRoot.getNodes().get(0);
+		String sourceCode = sources.readContent(sources.getSourceFiles().get(0));
+		
+		List<String> actual = RastRootHelper.retrieveTokens(rastRoot, sourceCode, fileNode, false);
 		List<String> expected = Arrays.asList("var", "x", "=", "{", "fn", ":", "(", ")", "=>", "1", "}", ";", "function", "hello", "(", "name", ")", "{", "console", ".", "log", "(", "'hello '", "+", "name", ")", ";", "}");
 		
-		List<String> actual = parser.tokenize(sources.readContent(file));
 		assertThat(actual, is(expected));
 	}
 	

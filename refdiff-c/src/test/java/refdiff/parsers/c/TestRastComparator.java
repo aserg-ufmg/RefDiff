@@ -1,12 +1,7 @@
 package refdiff.parsers.c;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static refdiff.test.util.RastDiffMatchers.contains;
-import static refdiff.test.util.RastDiffMatchers.containsOnly;
-import static refdiff.test.util.RastDiffMatchers.doesntContain;
-import static refdiff.test.util.RastDiffMatchers.node;
-import static refdiff.test.util.RastDiffMatchers.relationship;
+import static org.junit.Assert.*;
+import static refdiff.test.util.RastDiffMatchers.*;
 
 import java.nio.file.Paths;
 
@@ -169,7 +164,7 @@ public class TestRastComparator {
 		String basePath = "test-data/c/" + folder;
 		SourceFileSet sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".c", ".h");
 		SourceFileSet sourcesAfter = SourceFolder.from(Paths.get(basePath, "v1"), ".c", ".h");
-		RastComparator comparator = new RastComparator(parser, parser);
+		RastComparator comparator = new RastComparator(parser);
 		return comparator.compare(sourcesBefore, sourcesAfter);
 	}
 	

@@ -21,7 +21,7 @@ public class RunRefDiffExample {
 	public static void main(String[] args) throws Exception {
 		
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser, parser);
+		RastComparator rastComparator = new RastComparator(parser);
 		
 		String tempFolder = "D:/tmp";
 		String cloneUrl = "https://github.com/torvalds/linux.git";

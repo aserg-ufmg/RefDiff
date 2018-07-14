@@ -2,26 +2,24 @@ package refdiff.evaluation.js;
 
 import java.io.File;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
-import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.JsParser;
+import refdiff.parsers.js.BabelParser;
 
 public class RunRefDiffExampleJs {
 	
 	public static void main(String[] args) throws Exception {
 		
-		JsParser parser = new JsParser();
-		RastComparator rastComparator = new RastComparator(parser, parser);
+		BabelParser parser = new BabelParser();
+		RastComparator rastComparator = new RastComparator(parser);
 		
 		File tempFolder = new File("tmp");
 		tempFolder.mkdirs();

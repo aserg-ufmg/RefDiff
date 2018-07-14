@@ -24,7 +24,7 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
-import refdiff.parsers.SourceTokenizer;
+import refdiff.core.rast.TokenizedSource;
 
 public class RastRootHelper<T> {
 	
@@ -37,13 +37,11 @@ public class RastRootHelper<T> {
 	private final SourceRepresentationBuilder<T> srb;
 	private final Map<RastNode, T> srMap = new HashMap<>();
 	private final Map<RastNode, T> srBodyMap = new HashMap<>();
-	private final SourceTokenizer tokenizer;
 	private final boolean isBefore;
 	
-	public RastRootHelper(RastRoot rastRoot, SourceFileSet sources, SourceRepresentationBuilder<T> srb, SourceTokenizer tokenizer, boolean isBefore) throws IOException {
+	public RastRootHelper(RastRoot rastRoot, SourceFileSet sources, SourceRepresentationBuilder<T> srb, boolean isBefore) throws IOException {
 		this.rastRoot = rastRoot;
 		this.srb = srb;
-		this.tokenizer = tokenizer;
 		this.isBefore = isBefore;
 		
 		rastRoot.forEachNode((node, depth) -> {
@@ -172,13 +170,12 @@ public class RastRootHelper<T> {
 	
 	private void computeSourceRepresentation(RastNode node) {
 		if (!srMap.containsKey(node)) {
-			String nodeSource = retrieveSourceCode(fileMap, node, false);
-			List<String> nodeTokens = tokenizer.tokenize(nodeSource);
+			String sourceCode = fileMap.get(node.getLocation().getFile());
+			List<String> nodeTokens = retrieveTokens(sourceCode, node, false);
 			srMap.put(node, srb.buildForNode(node, isBefore, nodeTokens));
 			
 			if (node.getLocation().getBegin() != node.getLocation().getBodyBegin()) {
-				String nodeBodySource = retrieveSourceCode(fileMap, node, true);
-				List<String> nodeBodyTokens = tokenizer.tokenize(nodeBodySource);
+				List<String> nodeBodyTokens = retrieveTokens(sourceCode, node, true);
 				T body = srb.buildForFragment(nodeBodyTokens);
 				List<String> tokensToIgnore = new ArrayList<>();
 				for (Parameter parameter : node.getParameters()) {
@@ -194,14 +191,35 @@ public class RastRootHelper<T> {
 		}
 	}
 	
-	private String retrieveSourceCode(Map<String, String> fileMap, RastNode node, boolean bodyOnly) {
+	private List<String> retrieveTokens(String sourceCode, RastNode node, boolean bodyOnly) {
+		return retrieveTokens(rastRoot, sourceCode, node, bodyOnly);
+	}
+	
+	public static List<String> retrieveTokens(RastRoot rastRoot, String sourceCode, RastNode node, boolean bodyOnly) {
 		Location location = node.getLocation();
-		String sourceCode = fileMap.get(location.getFile());
+		int nodeStart;
+		int nodeEnd;
 		if (bodyOnly) {
-			return sourceCode.substring(location.getBodyBegin(), location.getBodyEnd());
+			nodeStart = location.getBodyBegin();
+			nodeEnd = location.getBodyEnd();
 		} else {
-			return sourceCode.substring(location.getBegin(), location.getEnd());
+			nodeStart = location.getBegin();
+			nodeEnd = location.getEnd();
 		}
+		TokenizedSource tokenizedSourceCode = rastRoot.getTokenizedSource().get(location.getFile());
+		List<String> tokens = new ArrayList<>();
+		for (int[] tokenPositon : tokenizedSourceCode.getTokens()) {
+			int tokenStart = tokenPositon[TokenizedSource.START];
+			int tokenEnd = tokenPositon[TokenizedSource.END];
+			if (tokenStart < nodeStart) {
+				continue;
+			}
+			if (tokenStart >= nodeEnd) {
+				break;
+			}
+			tokens.add(sourceCode.substring(tokenStart, tokenEnd));
+		}
+		return tokens;
 	}
 	
 	private Collection<String> getTokensToIgnoreInNodeBody(RastNode node) {

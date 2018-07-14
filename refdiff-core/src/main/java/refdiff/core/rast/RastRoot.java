@@ -1,8 +1,10 @@
 package refdiff.core.rast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
@@ -12,6 +14,8 @@ public class RastRoot implements HasChildrenNodes {
 	
 	private Set<RastNodeRelationship> relationships = new HashSet<>();
 	
+	private Map<String, TokenizedSource> tokenizedSource = new HashMap<>();
+	
 	public List<RastNode> getNodes() {
 		return nodes;
 	}
@@ -19,6 +23,10 @@ public class RastRoot implements HasChildrenNodes {
 	@Override
 	public void addNode(RastNode node) {
 		nodes.add(node);
+	}
+	
+	public void addTokenizedFile(TokenizedSource tokenizedSource) {
+		this.tokenizedSource.put(tokenizedSource.getFile(), tokenizedSource);
 	}
 	
 	public Set<RastNodeRelationship> getRelationships() {
@@ -34,6 +42,10 @@ public class RastRoot implements HasChildrenNodes {
 			consumer.accept(node, depth);
 			forEachNodeInList(node.getNodes(), consumer, depth + 1);
 		}
+	}
+
+	public Map<String, TokenizedSource> getTokenizedSource() {
+		return tokenizedSource;
 	}
 
 }

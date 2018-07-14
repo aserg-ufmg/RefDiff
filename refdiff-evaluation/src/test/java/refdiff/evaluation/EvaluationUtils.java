@@ -22,12 +22,11 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.RastNode;
 import refdiff.parsers.java.JavaParser;
-import refdiff.parsers.java.JavaSourceTokenizer;
 import refdiff.parsers.java.NodeTypes;
 
 public class EvaluationUtils {
 	
-	private RastComparator comparator = new RastComparator(new JavaParser(), new JavaSourceTokenizer());
+	private RastComparator comparator = new RastComparator(new JavaParser());
 	private String tempFolder = "D:/tmp/";
 	/**
 	 * The ICSE dataset don't describe the qualified name of the extracted/inlined method.

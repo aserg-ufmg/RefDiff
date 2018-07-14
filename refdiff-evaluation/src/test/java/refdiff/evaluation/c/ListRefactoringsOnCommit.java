@@ -45,7 +45,7 @@ public class ListRefactoringsOnCommit {
 		}
 		
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser, parser);
+		RastComparator rastComparator = new RastComparator(parser);
 		GitHelper gh = new GitHelper();
 		
 		try (Repository repo = gh.openRepository(repoFolder)) {
