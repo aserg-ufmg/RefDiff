@@ -63,12 +63,14 @@ public class MineRefactoringsFromRepoJs {
 			ExternalProcess.execute(tempFolder, "git", "clone", "https://github.com/refdiff-study/" + projectName, projectName, "--bare", "--depth=1000");
 		}
 		
-		BabelParser parser = new BabelParser();
-		RastComparator rastComparator = new RastComparator(parser);
 		GitHelper gh = new GitHelper();
 		
 		System.out.println("Mining " + cloneUrl);
-		try (Repository repository = gh.openRepository(repoFolder)) {
+		try (
+			BabelParser parser = new BabelParser();
+			Repository repository = gh.openRepository(repoFolder)) {
+			
+			RastComparator rastComparator = new RastComparator(parser);
 			
 			gh.forEachNonMergeCommit(repository, MAX_COMMITS, (RevCommit commitBefore, RevCommit commitAfter) -> {
 				String commitSha1 = commitAfter.getId().getName();

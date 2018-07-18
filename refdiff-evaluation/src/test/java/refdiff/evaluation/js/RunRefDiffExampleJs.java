@@ -17,24 +17,22 @@ import refdiff.parsers.js.BabelParser;
 public class RunRefDiffExampleJs {
 	
 	public static void main(String[] args) throws Exception {
-		
-		BabelParser parser = new BabelParser();
-		RastComparator rastComparator = new RastComparator(parser);
-		
 		File tempFolder = new File("tmp");
 		tempFolder.mkdirs();
 		
-		String cloneUrl = "https://github.com/refdiff-data/vue.git";
-		File repoFolder = new File(tempFolder, "vue.git");
+		String cloneUrl = "https://github.com/refdiff-data/react.git";
+		File repoFolder = new File(tempFolder, "react.git");
 		
 		if (!repoFolder.exists()) {
 			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
 		}
 		
 		GitHelper gh = new GitHelper();
-		try (Repository repo = gh.openRepository(repoFolder)) {
+		try (BabelParser parser = new BabelParser();
+			Repository repo = gh.openRepository(repoFolder)) {
+			RastComparator rastComparator = new RastComparator(parser);
 			
-			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "ef0b25097957ae9ef9970be732d6e65cc78902e9", parser.getAllowedFilesFilter());
+			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "2ace49362adc63bc0bedd5df363bf471adb71b94", parser.getAllowedFilesFilter());
 			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 			
 			Set<Relationship> relationships = diff.getRelationships();

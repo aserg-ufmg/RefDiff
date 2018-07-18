@@ -2,8 +2,8 @@ package refdiff.parsers.js;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 import com.eclipsesource.v8.V8Array;
@@ -15,7 +15,7 @@ class JsValueV8 implements Closeable {
 	private final V8Object o;
 	private final boolean defined;
 	private final Function<Object, String> toJsonFunction;
-	private final Set<V8Object> children = new HashSet<>();
+	private final List<JsValueV8> children = new ArrayList<>();
 	
 	public JsValueV8(Object value, Function<Object, String> toJsonFunction) {
 		this.value = value;
@@ -42,7 +42,7 @@ class JsValueV8 implements Closeable {
 	public JsValueV8 get(String member) {
 		if (o != null) {
 			if (o.contains(member)) {
-				return new JsValueV8(addChild(o.get(member)), toJsonFunction);
+				return addChild(new JsValueV8(o.get(member), toJsonFunction));
 			} else {
 				throw error("Object has no member '" + member + "'");
 			}
@@ -55,7 +55,7 @@ class JsValueV8 implements Closeable {
 		if (o != null) {
 			if (o instanceof V8Array) {
 				V8Array array = (V8Array) o;
-				return new JsValueV8(addChild(array.get(pos)), toJsonFunction);
+				return addChild(new JsValueV8(array.get(pos), toJsonFunction));
 			} else {
 				throw error("Not an array");
 			}
@@ -113,17 +113,17 @@ class JsValueV8 implements Closeable {
 		return new RuntimeException(string + ":\n" + toString());
 	}
 	
-	private Object addChild(Object o) {
-		if (o instanceof V8Object) {
-			this.children.add((V8Object) o);
+	private JsValueV8 addChild(JsValueV8 value) {
+		if (value.o != null) {
+			this.children.add(value);
 		}
-		return o;
+		return value;
 	}
 	
 	@Override
 	public void close() throws IOException {
-		for (V8Object child : children) {
-			child.release();
+		for (JsValueV8 child : children) {
+			child.close();
 		}
 		if (o != null) {
 			o.release();

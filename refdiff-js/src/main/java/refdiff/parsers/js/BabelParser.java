@@ -38,7 +38,7 @@ public class BabelParser implements RastParser, Closeable {
 		
 		this.nodeJs.getRuntime().add("babelParser", this.babel);
 		
-		String plugins = "['jsx', 'objectRestSpread', 'exportDefaultFrom', 'classProperties', 'flow']";
+		String plugins = "['jsx', 'objectRestSpread', 'exportDefaultFrom', 'exportNamespaceFrom', 'classProperties', 'flow', 'dynamicImport', 'decorators', 'optionalCatchBinding']";
 		
 		this.nodeJs.getRuntime().executeVoidScript("function parse(script) {return babelParser.parse(script, {ranges: true, tokens: true, sourceType: 'unambiguous', plugins: " + plugins + " });}");
 		this.nodeJs.getRuntime().executeVoidScript("function toJson(object) {return JSON.stringify(object);}");
@@ -193,8 +193,7 @@ public class BabelParser implements RastParser, Closeable {
 	@Override
 	public void close() throws IOException {
 		this.babel.release();
-		this.babel = null;
+		//this.nodeJs.getRuntime().release(true);
 		this.nodeJs.release();
-		this.nodeJs = null;
 	}
 }
