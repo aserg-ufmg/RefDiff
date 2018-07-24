@@ -17,6 +17,8 @@ import refdiff.parsers.RastParser;
 
 public class JavaParser implements RastParser {
 
+	private final JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
+	
 	@Override
 	public RastRoot parse(SourceFileSet sources) throws Exception {
 		List<String> javaFiles = new ArrayList<>();
@@ -32,7 +34,7 @@ public class JavaParser implements RastParser {
 		
 		SDModel sdModel = new SDModel();
 		SDModelBuilder mb = new SDModelBuilder();
-		mb.analyze(rootFolder, javaFiles, sdModel);
+		mb.analyze(rootFolder, javaFiles, sdModel, tokenizer);
 		
 		return sdModel.getRoot();
 	}

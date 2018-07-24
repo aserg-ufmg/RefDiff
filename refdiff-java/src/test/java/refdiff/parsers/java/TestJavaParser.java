@@ -5,10 +5,12 @@ import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Set;
 
 import org.junit.Test;
 
+import refdiff.core.diff.RastRootHelper;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
@@ -66,6 +68,18 @@ public class TestJavaParser {
 		assertThat(relationships.size(), is(2));
 		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, barM1, barM2)));
 		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.SUBTYPE, classBar, classFoo)));
+		
+		RastRoot rastRoot = parser.parse(sources);
+		String sourceCode = sources.readContent(sources.getSourceFiles().get(1));
+		assertThat(
+			RastRootHelper.retrieveTokens(rastRoot, sourceCode, barM1, false),
+			is(Arrays.asList("public", "void", "m1", "(", "String", "arg", ")", "{", "m2", "(", ")", ";", "}"))
+		);
+		
+		assertThat(
+			RastRootHelper.retrieveTokens(rastRoot, sourceCode, barM1, true),
+			is(Arrays.asList("m2", "(", ")", ";"))
+		);
 	}
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {

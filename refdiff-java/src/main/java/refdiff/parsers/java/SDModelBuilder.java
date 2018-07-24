@@ -21,6 +21,7 @@ import org.eclipse.jdt.core.dom.PackageDeclaration;
 import org.eclipse.jdt.internal.compiler.util.Util;
 
 import refdiff.core.rast.RastNode;
+import refdiff.core.rast.TokenizedSource;
 
 public class SDModelBuilder {
 	
@@ -55,7 +56,7 @@ public class SDModelBuilder {
 		}
 	}
 	
-	public void analyze(File rootFolder, List<String> javaFiles, final SDModel model) {
+	public void analyze(File rootFolder, List<String> javaFiles, final SDModel model, JavaSourceTokenizer tokenizer) {
 		postProcessReferences = new HashMap<RastNode, List<String>>();
 		postProcessSupertypes = new HashMap<RastNode, List<String>>();
 		final String projectRoot = rootFolder.getPath();
@@ -80,6 +81,9 @@ public class SDModelBuilder {
 				try {
 					char[] charArray = Util.getFileCharContent(new File(sourceFilePath), null);
 					processCompilationUnit(relativePath, charArray, ast, model);
+					TokenizedSource tokenizedSource = new TokenizedSource(relativePath, tokenizer.tokenize(charArray));
+					model.getRoot().addTokenizedFile(tokenizedSource);
+					
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 				}
