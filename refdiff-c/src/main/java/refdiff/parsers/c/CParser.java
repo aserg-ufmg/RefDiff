@@ -23,10 +23,11 @@ import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastRoot;
+import refdiff.core.rast.TokenPosition;
+import refdiff.core.rast.TokenizedSource;
 import refdiff.parsers.RastParser;
-import refdiff.parsers.SourceTokenizer;
 
-public class CParser implements RastParser, SourceTokenizer {
+public class CParser implements RastParser {
 	
 	@Override
 	public RastRoot parse(SourceFileSet sources) throws Exception {
@@ -35,7 +36,8 @@ public class CParser implements RastParser, SourceTokenizer {
 		AtomicInteger id = new AtomicInteger(1);
 		
 		for (SourceFile sourceFile : sources.getSourceFiles()) {
-			FileContent fileContent = FileContent.create("temp.source", sources.readContent(sourceFile).toCharArray());
+			String sourceCode = sources.readContent(sourceFile);
+			FileContent fileContent = FileContent.create("temp.source", sourceCode.toCharArray());
 			IASTTranslationUnit translationUnit = parseAST(fileContent);
 			
 //			System.out.println(sourceFile.getPath());
@@ -43,6 +45,8 @@ public class CParser implements RastParser, SourceTokenizer {
 
 			ASTVisitor cRastVisitor = new CRastVisitor(root, sourceFile.getPath(), id);
 			translationUnit.accept(cRastVisitor);
+			
+			root.addTokenizedFile(new TokenizedSource(sourceFile.getPath(), tokenize(sourceCode)));
 		}
 		
 //		ObjectMapper jacksonObjectMapper = new ObjectMapper();
@@ -64,9 +68,8 @@ public class CParser implements RastParser, SourceTokenizer {
 		return gccLanguage.getASTTranslationUnit(fileContent, si, ifcp, idx, options, log);
 	}
 	
-	@Override
-	public List<String> tokenize(String source) {
-		List<String> tokens = new ArrayList<>();
+	public List<TokenPosition> tokenize(String source) {
+		List<TokenPosition> tokens = new ArrayList<>();
 		
 		ASTVisitor tokenVisitor = new TokenVisitor(tokens);
 		FileContent fileContent = FileContent.create("temp.source", source.toCharArray());

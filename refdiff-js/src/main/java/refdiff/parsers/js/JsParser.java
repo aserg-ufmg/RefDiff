@@ -22,9 +22,8 @@ import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 import refdiff.parsers.RastParser;
-import refdiff.parsers.SourceTokenizer;
 
-public class JsParser implements RastParser, SourceTokenizer {
+public class JsParser implements RastParser {
 	
 	private Invocable invocableScript;
 	private int nodeCounter = 0;
@@ -50,7 +49,6 @@ public class JsParser implements RastParser, SourceTokenizer {
 		return root;
 	}
 	
-	@Override
 	public List<String> tokenize(String source) {
 		try {
 			ScriptObjectMirror array = (ScriptObjectMirror) this.invocableScript.invokeFunction("tokenize", source);

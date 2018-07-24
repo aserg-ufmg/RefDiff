@@ -6,13 +6,14 @@ import org.eclipse.cdt.core.dom.ast.ASTGenericVisitor;
 import org.eclipse.cdt.core.dom.ast.ExpansionOverlapsBoundaryException;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.parser.IToken;
-import org.eclipse.cdt.internal.core.dom.parser.c.CASTBinaryExpression;
+
+import refdiff.core.rast.TokenPosition;
 
 public class TokenVisitor extends ASTGenericVisitor {
 
-	private List<String> tokenList;
+	private List<TokenPosition> tokenList;
 	
-	public TokenVisitor(List<String> tokenList) {
+	public TokenVisitor(List<TokenPosition> tokenList) {
 		super(true);
 		this.tokenList = tokenList;
 	}
@@ -34,7 +35,7 @@ public class TokenVisitor extends ASTGenericVisitor {
 		
 		if (this.tokenList.isEmpty() && token != null) {
 			while (token != null) {
-				this.tokenList.add(token.getImage());
+				this.tokenList.add(new TokenPosition(token.getOffset(), token.getEndOffset()));
 				token = token.getNext();
 			}
 		}
