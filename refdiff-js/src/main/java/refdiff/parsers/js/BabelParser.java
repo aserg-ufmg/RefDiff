@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,45 +109,56 @@ public class BabelParser implements RastParser, Closeable {
 		}
 		String path = sourceFile.getPath();
 		String type = babelAst.get("type").asString();
-		int begin = babelAst.get("start").asInt();
-		int end = babelAst.get("end").asInt();
-		int bodyBegin = begin;
-		int bodyEnd = end;
-		if (babelAst.has("body")) {
-			JsValueV8 body = babelAst.get("body");
-			if (body.has("range")) {
-				bodyBegin = body.get("start").asInt();
-				bodyEnd = body.get("end").asInt();
-				if (body.get("type").asString().equals("BlockStatement")) {
-					bodyBegin = bodyBegin + 1;
-					bodyEnd = bodyEnd - 1;
+		List<JsValueV8> children = null;
+		
+		if (BabelNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
+			BabelNodeHandler handler = BabelNodeHandler.RAST_NODE_HANDLERS.get(type);
+			
+			if (handler.isRastNode(babelAst)) {
+				int begin = babelAst.get("start").asInt();
+				int end = babelAst.get("end").asInt();
+				int bodyBegin = begin;
+				int bodyEnd = end;
+				
+				RastNode rastNode = new RastNode(++nodeCounter);
+				rastNode.setType(handler.getType(babelAst));
+				JsValueV8 bodyNode = handler.getBodyNode(babelAst);
+				if (bodyNode.isDefined()) {
+					if (bodyNode.has("range")) {
+						bodyBegin = bodyNode.get("start").asInt();
+						bodyEnd = bodyNode.get("end").asInt();
+						if (bodyNode.get("type").asString().equals("BlockStatement")) {
+							bodyBegin = bodyBegin + 1;
+							bodyEnd = bodyEnd - 1;
+						}
+					}
+				}
+				
+				rastNode.setLocation(new Location(path, begin, end, bodyBegin, bodyEnd));
+				rastNode.setLocalName(handler.getLocalName(rastNode, babelAst));
+				rastNode.setSimpleName(handler.getSimpleName(rastNode, babelAst));
+				rastNode.setNamespace(handler.getNamespace(rastNode, babelAst));
+				rastNode.setStereotypes(handler.getStereotypes(rastNode, babelAst));
+				rastNode.setParameters(handler.getParameters(rastNode, babelAst));
+				container.addNode(rastNode);
+				container = rastNode;
+				children = Collections.singletonList(bodyNode);
+			}
+		}
+		if ("CallExpression".equals(type)) {
+			extractCalleeNameFromCallExpression(babelAst, callerMap, container);
+		}
+		
+		if (children == null) {
+			children = new ArrayList<>();
+			for (String key : babelAst.getOwnKeys()) {
+				if (!key.equals("tokens")) {
+					children.add(babelAst.get(key));
 				}
 			}
 		}
 		
-		if (BabelNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
-			BabelNodeHandler handler = BabelNodeHandler.RAST_NODE_HANDLERS.get(type);
-			RastNode rastNode = new RastNode(++nodeCounter);
-			rastNode.setType(type);
-			rastNode.setLocation(new Location(path, begin, end, bodyBegin, bodyEnd));
-			rastNode.setLocalName(handler.getLocalName(rastNode, babelAst));
-			rastNode.setSimpleName(handler.getSimpleName(rastNode, babelAst));
-			rastNode.setNamespace(handler.getNamespace(rastNode, babelAst));
-			rastNode.setStereotypes(handler.getStereotypes(rastNode, babelAst));
-			rastNode.setParameters(handler.getParameters(rastNode, babelAst));
-			container.addNode(rastNode);
-			container = rastNode;
-		} else {
-			if ("CallExpression".equals(type)) {
-				extractCalleeNameFromCallExpression(babelAst, callerMap, container);
-			}
-		}
-		
-		for (String key : babelAst.getOwnKeys()) {
-			if (key.equals("tokens")) {
-				continue;
-			}
-			JsValueV8 value = babelAst.get(key);
+		for (JsValueV8 value : children) {
 			if (value.isObject()) {
 				if (value.has("type")) {
 					getRast(depth + 1, container, sourceFile, value, callerMap);

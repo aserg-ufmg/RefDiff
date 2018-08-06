@@ -116,6 +116,41 @@ public class TestJsParserBabel {
 	}
 	
 	@Test
+	public void shouldParseFunctionVar() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex4.js"));
+		RastRoot root = parser.parse(sources);
+		
+		assertThat(root.getNodes().size(), is(1));
+		RastNode script = root.getNodes().get(0);
+		assertThat(script.getType(), is("Program"));
+		
+		RastNode f1 = script.getNodes().get(0);
+		assertThat(f1.getLocalName(), is("f1"));
+		assertThat(f1.getType(), is("Function"));
+		assertThat(f1.getParameters().size(), is(1));
+		assertThat(f1.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f2 = script.getNodes().get(1);
+		assertThat(f2.getLocalName(), is("f2"));
+		assertThat(f2.getType(), is("Function"));
+		assertThat(f2.getParameters().size(), is(1));
+		assertThat(f2.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f3 = script.getNodes().get(2);
+		assertThat(f3.getLocalName(), is("f3"));
+		assertThat(f3.getType(), is("Function"));
+		assertThat(f3.getParameters().size(), is(1));
+		assertThat(f3.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f4 = script.getNodes().get(3);
+		assertThat(f4.getLocalName(), is("f4"));
+		assertThat(f4.getType(), is("Function"));
+		assertThat(f4.getParameters().size(), is(1));
+		assertThat(f4.getParameters().get(0).getName(), is("x"));
+	}
+	
+	@Test
 	public void shouldParseLargeFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));

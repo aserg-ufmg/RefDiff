@@ -14,25 +14,27 @@ import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
 import refdiff.parsers.js.BabelParser;
 
-public class RunRefDiffExampleJs {
+public class ComputeRecallJs {
 	
 	public static void main(String[] args) throws Exception {
 		File tempFolder = new File("tmp");
 		tempFolder.mkdirs();
 		
 		String cloneUrl = "https://github.com/refdiff-data/webpack.git";
-		File repoFolder = new File(tempFolder, "react.git");
+		String commit = "b50d4cf7c370dc0f9fa2c39ea0e73e28ca8918ac";
+		File repoFolder = new File(tempFolder, "webpack.git");
 		
 		if (!repoFolder.exists()) {
 			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
 		}
+		ExternalProcess.execute(repoFolder, "git", "fetch", "--depth=5000");
 		
 		GitHelper gh = new GitHelper();
 		try (BabelParser parser = new BabelParser();
 			Repository repo = gh.openRepository(repoFolder)) {
 			RastComparator rastComparator = new RastComparator(parser);
 			
-			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "b50d4cf7c370dc0f9fa2c39ea0e73e28ca8918ac", parser.getAllowedFilesFilter());
+			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, commit, parser.getAllowedFilesFilter());
 			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
 			
 			Set<Relationship> relationships = diff.getRelationships();
