@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -234,5 +235,24 @@ public class RastRootHelper<T> {
 	public T bodySourceRep(RastNode n) {
 		computeSourceRepresentation(n);
 		return srBodyMap.get(n);
+	}
+	
+	public static List<String> getNodePath(RastNode node) {
+		LinkedList<String> path = new LinkedList<>();
+		computeNodePath(path, node);
+		return path;
+	}
+	
+	private static void computeNodePath(LinkedList<String> path, RastNode node) {
+		String nodeName;
+		if (node.getNamespace() != null) {
+			nodeName = node.getNamespace() + node.getLocalName();
+		} else {
+			nodeName = node.getLocalName();
+		}
+		path.addFirst(nodeName);
+		if (node.getParent().isPresent()) {
+			computeNodePath(path, node.getParent().get());
+		}
 	}
 }

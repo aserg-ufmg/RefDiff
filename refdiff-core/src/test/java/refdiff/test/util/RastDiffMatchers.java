@@ -28,11 +28,11 @@ public class RastDiffMatchers {
 		return new NodeQuery(path);
 	}
 	
-	public static Matcher<RastDiff> contains(RelationshipQuery... queries) {
+	public static RastDiffMatcher contains(RelationshipQuery... queries) {
 		return new RastDiffMatcher(false, queries);
 	}
 	
-	public static Matcher<RastDiff> containsOnly(RelationshipQuery... queries) {
+	public static RastDiffMatcher containsOnly(RelationshipQuery... queries) {
 		return new RastDiffMatcher(true, queries);
 	}
 	
