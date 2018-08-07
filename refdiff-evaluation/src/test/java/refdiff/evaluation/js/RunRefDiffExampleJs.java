@@ -12,7 +12,7 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.BabelParser;
+import refdiff.parsers.js.JsParser;
 
 public class RunRefDiffExampleJs {
 	
@@ -28,7 +28,7 @@ public class RunRefDiffExampleJs {
 		}
 		
 		GitHelper gh = new GitHelper();
-		try (BabelParser parser = new BabelParser();
+		try (JsParser parser = new JsParser();
 			Repository repo = gh.openRepository(repoFolder)) {
 			RastComparator rastComparator = new RastComparator(parser);
 			

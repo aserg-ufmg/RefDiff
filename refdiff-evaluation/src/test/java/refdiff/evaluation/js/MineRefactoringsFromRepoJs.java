@@ -16,7 +16,7 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.BabelParser;
+import refdiff.parsers.js.JsParser;
 
 public class MineRefactoringsFromRepoJs {
 	
@@ -67,7 +67,7 @@ public class MineRefactoringsFromRepoJs {
 		
 		System.out.println("Mining " + cloneUrl);
 		try (
-			BabelParser parser = new BabelParser();
+			JsParser parser = new JsParser();
 			Repository repository = gh.openRepository(repoFolder)) {
 			
 			RastComparator rastComparator = new RastComparator(parser);

@@ -5,17 +5,20 @@ import static org.junit.Assert.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.io.SourceFile;
+import refdiff.core.diff.RastRootHelper;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.Location;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
+import refdiff.core.rast.Stereotype;
 import refdiff.test.util.JsParserSingleton;
 
 public class TestJsParser {
@@ -96,19 +99,55 @@ public class TestJsParser {
 		assertThat(nodeRectangle.getNodes().size(), is(3));
 		
 		RastNode contructor = nodeRectangle.getNodes().get(0);
-		assertThat(contructor.getType(), is("MethodDefinition"));
+		assertThat(contructor.getType(), is("ClassMethod"));
 		assertThat(contructor.getLocalName(), is("constructor"));
 		assertThat(contructor.getParameters().size(), is(2));
 		assertThat(contructor.getParameters().get(0).getName(), is("height"));
 		assertThat(contructor.getParameters().get(1).getName(), is("width"));
+		assertTrue(contructor.hasStereotype(Stereotype.TYPE_CONSTRUCTOR));
 		
 		RastNode methodGetArea = nodeRectangle.getNodes().get(1);
-		assertThat(methodGetArea.getType(), is("MethodDefinition"));
+		assertThat(methodGetArea.getType(), is("ClassMethod"));
 		assertThat(methodGetArea.getLocalName(), is("area"));
 		
 		RastNode methodCalcArea = nodeRectangle.getNodes().get(2);
-		assertThat(methodCalcArea.getType(), is("MethodDefinition"));
+		assertThat(methodCalcArea.getType(), is("ClassMethod"));
 		assertThat(methodCalcArea.getLocalName(), is("calcArea"));
+	}
+	
+	@Test
+	public void shouldParseFunctionVar() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex4.js"));
+		RastRoot root = parser.parse(sources);
+		
+		assertThat(root.getNodes().size(), is(1));
+		RastNode script = root.getNodes().get(0);
+		assertThat(script.getType(), is("Program"));
+		
+		RastNode f1 = script.getNodes().get(0);
+		assertThat(f1.getLocalName(), is("f1"));
+		assertThat(f1.getType(), is("Function"));
+		assertThat(f1.getParameters().size(), is(1));
+		assertThat(f1.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f2 = script.getNodes().get(1);
+		assertThat(f2.getLocalName(), is("f2"));
+		assertThat(f2.getType(), is("Function"));
+		assertThat(f2.getParameters().size(), is(1));
+		assertThat(f2.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f3 = script.getNodes().get(2);
+		assertThat(f3.getLocalName(), is("f3"));
+		assertThat(f3.getType(), is("Function"));
+		assertThat(f3.getParameters().size(), is(1));
+		assertThat(f3.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f4 = script.getNodes().get(3);
+		assertThat(f4.getLocalName(), is("f4"));
+		assertThat(f4.getType(), is("Function"));
+		assertThat(f4.getParameters().size(), is(1));
+		assertThat(f4.getParameters().get(0).getName(), is("x"));
 	}
 	
 	@Test
@@ -124,9 +163,22 @@ public class TestJsParser {
 	public void shouldTokenizeLargeFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));
-		for (SourceFile file : sources.getSourceFiles()) {
-			parser.tokenize(sources.readContent(file));
-		}
+		parser.parse(sources);
+	}
+	
+	@Test
+	public void shouldTokenizeSimpleFile() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex1.js"));
+		
+		RastRoot rastRoot = parser.parse(sources);
+		RastNode fileNode = rastRoot.getNodes().get(0);
+		String sourceCode = sources.readContent(sources.getSourceFiles().get(0));
+		
+		List<String> actual = RastRootHelper.retrieveTokens(rastRoot, sourceCode, fileNode, false);
+		List<String> expected = Arrays.asList("var", "x", "=", "{", "fn", ":", "(", ")", "=>", "1", "}", ";", "function", "hello", "(", "name", ")", "{", "console", ".", "log", "(", "'hello '", "+", "name", ")", ";", "}");
+		
+		assertThat(actual, is(expected));
 	}
 	
 	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {
