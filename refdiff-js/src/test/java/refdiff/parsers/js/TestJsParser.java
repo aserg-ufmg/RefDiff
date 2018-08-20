@@ -151,6 +151,21 @@ public class TestJsParser {
 	}
 	
 	@Test
+	public void shouldParseSubfolder() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("dir1/ex5.js"));
+		RastRoot root = parser.parse(sources);
+		
+		assertThat(root.getNodes().size(), is(1));
+		RastNode script = root.getNodes().get(0);
+		assertThat(script.getType(), is("Program"));
+		assertThat(script.getNamespace(), is("dir1/"));
+		assertThat(script.getLocalName(), is("ex5.js"));
+		assertThat(script.getSimpleName(), is("ex5.js"));
+		
+	}
+	
+	@Test
 	public void shouldParseLargeFile() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("input.js"));

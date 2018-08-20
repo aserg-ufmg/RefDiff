@@ -61,7 +61,12 @@ abstract class BabelNodeHandler {
 	static {
 		RAST_NODE_HANDLERS.put("Program", new BabelNodeHandler() {
 			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
-				return rastNode.getLocation().getFile();
+				String filePath = rastNode.getLocation().getFile();
+				if (filePath.lastIndexOf('/') != -1) {
+					return filePath.substring(filePath.lastIndexOf('/') + 1);
+				} else {
+					return filePath;
+				}
 			}
 			
 			public String getNamespace(RastNode rastNode, JsValueV8 esprimaNode) {
