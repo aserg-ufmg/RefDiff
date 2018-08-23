@@ -158,10 +158,10 @@ public class ComputeRecallJs {
 		String commit = url[1];
 		String project = url[0].substring(url[0].lastIndexOf("/") + 1);
 		File repoFolder = new File(tempFolder, project + ".git");
-		String cloneUrl = "https://github.com/refdiff-data/" + project + ".git";
+		String cloneUrl = "https://github.com/refdiff-study/" + project + ".git";
 		
 		if (!repoFolder.exists()) {
-			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
+			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, repoFolder.getName(), "--bare");
 		}
 		//ExternalProcess.execute(repoFolder, "git", "fetch", "--depth=5000");
 		
