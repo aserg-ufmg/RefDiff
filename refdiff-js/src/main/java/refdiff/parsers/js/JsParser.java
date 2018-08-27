@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.eclipsesource.v8.NodeJS;
 import com.eclipsesource.v8.V8Object;
@@ -72,13 +74,15 @@ public class JsParser implements RastParser, Closeable {
 				root.addTokenizedFile(tokenizedSource);
 				
 				// System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
-				Map<String, RastNode> callerMap = new HashMap<>();
+				Map<String, Set<RastNode>> callerMap = new HashMap<>();
 				getRast(0, root, sourceFile, astRoot, callerMap);
 				
 				root.forEachNode((calleeNode, depth) -> {
 					if (calleeNode.getType().equals(JsNodeType.FUNCTION) && callerMap.containsKey(calleeNode.getLocalName())) {
-						RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
-						root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
+						Set<RastNode> callerNodes = callerMap.get(calleeNode.getLocalName());
+						for (RastNode callerNode : callerNodes) {
+							root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
+						}
 					}
 				});
 			}
@@ -104,7 +108,7 @@ public class JsParser implements RastParser, Closeable {
 		return tokenizedSource;
 	}
 	
-	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, RastNode> callerMap) throws Exception {
+	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, Set<RastNode>> callerMap) throws Exception {
 		if (!babelAst.has("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
@@ -175,19 +179,19 @@ public class JsParser implements RastParser, Closeable {
 		}
 	}
 	
-	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, RastNode> callerMap, RastNode container) {
+	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, Set<RastNode>> callerMap, RastNode container) {
 		JsValueV8 callee = callExpresionNode.get("callee");
 		if (callee.get("type").asString().equals("MemberExpression")) {
 			JsValueV8 property = callee.get("property");
 			if (property.get("type").asString().equals("Identifier")) {
 				String calleeName = property.get("name").asString();
-				callerMap.put(calleeName, container);
+				callerMap.computeIfAbsent(calleeName, key -> new HashSet<>()).add(container);
 			} else {
 				// callee is a complex expression, not an identifier
 			}
 		} else if (callee.get("type").asString().equals("Identifier")) {
 			String calleeName = callee.get("name").asString();
-			callerMap.put(calleeName, container);
+			callerMap.computeIfAbsent(calleeName, key -> new HashSet<>()).add(container);
 		} else {
 			// callee is a complex expression, not an identifier
 		}
