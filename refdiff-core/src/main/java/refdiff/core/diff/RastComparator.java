@@ -84,6 +84,7 @@ public class RastComparator {
 			this.diff.getAfter().forEachNode((node, depth) -> {
 				this.added.add(node);
 			});
+			monitor.beforeCompare(before, after);
 		}
 		
 		private void apply(Set<Relationship> relationships) {

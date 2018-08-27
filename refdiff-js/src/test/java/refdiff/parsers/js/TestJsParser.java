@@ -34,7 +34,7 @@ public class TestJsParser {
 		assertThat(root.getNodes().size(), is(1));
 		
 		RastNode nodeScriptEx1 = root.getNodes().get(0);
-		assertThat(nodeScriptEx1.getType(), is("Program"));
+		assertThat(nodeScriptEx1.getType(), is("File"));
 		assertThat(nodeScriptEx1.getNamespace(), is(""));
 		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 83)));
 		
@@ -42,11 +42,11 @@ public class TestJsParser {
 		RastNode nodeArrowFn = nodeScriptEx1.getNodes().get(0);
 		RastNode nodeFnHello = nodeScriptEx1.getNodes().get(1);
 		
-		assertThat(nodeArrowFn.getType(), is("ArrowFunctionExpression"));
+		assertThat(nodeArrowFn.getType(), is("Function"));
 		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 16, 23, 22, 23)));
 		assertThat(nodeArrowFn.getLocalName(), is(""));
 		
-		assertThat(nodeFnHello.getType(), is("FunctionDeclaration"));
+		assertThat(nodeFnHello.getType(), is("Function"));
 		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 83, 50, 82)));
 		assertThat(nodeFnHello.getLocalName(), is("hello"));
 		assertThat(nodeFnHello.getParameters().size(), is(1));
@@ -62,16 +62,16 @@ public class TestJsParser {
 		assertThat(root.getNodes().size(), is(1));
 		
 		RastNode nodeScriptEx2 = root.getNodes().get(0);
-		assertThat(nodeScriptEx2.getType(), is("Program"));
+		assertThat(nodeScriptEx2.getType(), is("File"));
 		
 		assertThat(nodeScriptEx2.getNodes().size(), is(2));
 		RastNode nodeF1 = nodeScriptEx2.getNodes().get(0);
 		RastNode nodeF2 = nodeScriptEx2.getNodes().get(1);
 		
-		assertThat(nodeF1.getType(), is("FunctionDeclaration"));
+		assertThat(nodeF1.getType(), is("Function"));
 		assertThat(nodeF1.getLocalName(), is("f1"));
 		
-		assertThat(nodeF2.getType(), is("FunctionDeclaration"));
+		assertThat(nodeF2.getType(), is("Function"));
 		assertThat(nodeF2.getLocalName(), is("f2"));
 		
 		Set<RastNodeRelationship> relationships = root.getRelationships();
@@ -88,18 +88,18 @@ public class TestJsParser {
 		assertThat(root.getNodes().size(), is(1));
 		
 		RastNode nodeScriptEx3 = root.getNodes().get(0);
-		assertThat(nodeScriptEx3.getType(), is("Program"));
+		assertThat(nodeScriptEx3.getType(), is("File"));
 		
 		assertThat(nodeScriptEx3.getNodes().size(), is(1));
 		RastNode nodeRectangle = nodeScriptEx3.getNodes().get(0);
 		
-		assertThat(nodeRectangle.getType(), is("ClassDeclaration"));
+		assertThat(nodeRectangle.getType(), is("Class"));
 		assertThat(nodeRectangle.getLocalName(), is("Rectangle"));
 		
 		assertThat(nodeRectangle.getNodes().size(), is(3));
 		
 		RastNode contructor = nodeRectangle.getNodes().get(0);
-		assertThat(contructor.getType(), is("ClassMethod"));
+		assertThat(contructor.getType(), is("Function"));
 		assertThat(contructor.getLocalName(), is("constructor"));
 		assertThat(contructor.getParameters().size(), is(2));
 		assertThat(contructor.getParameters().get(0).getName(), is("height"));
@@ -107,11 +107,11 @@ public class TestJsParser {
 		assertTrue(contructor.hasStereotype(Stereotype.TYPE_CONSTRUCTOR));
 		
 		RastNode methodGetArea = nodeRectangle.getNodes().get(1);
-		assertThat(methodGetArea.getType(), is("ClassMethod"));
+		assertThat(methodGetArea.getType(), is("Function"));
 		assertThat(methodGetArea.getLocalName(), is("area"));
 		
 		RastNode methodCalcArea = nodeRectangle.getNodes().get(2);
-		assertThat(methodCalcArea.getType(), is("ClassMethod"));
+		assertThat(methodCalcArea.getType(), is("Function"));
 		assertThat(methodCalcArea.getLocalName(), is("calcArea"));
 	}
 	
@@ -123,7 +123,7 @@ public class TestJsParser {
 		
 		assertThat(root.getNodes().size(), is(1));
 		RastNode script = root.getNodes().get(0);
-		assertThat(script.getType(), is("Program"));
+		assertThat(script.getType(), is("File"));
 		
 		RastNode f1 = script.getNodes().get(0);
 		assertThat(f1.getLocalName(), is("f1"));
@@ -158,7 +158,7 @@ public class TestJsParser {
 		
 		assertThat(root.getNodes().size(), is(1));
 		RastNode script = root.getNodes().get(0);
-		assertThat(script.getType(), is("Program"));
+		assertThat(script.getType(), is("File"));
 		assertThat(script.getNamespace(), is("dir1/"));
 		assertThat(script.getLocalName(), is("ex5.js"));
 		assertThat(script.getSimpleName(), is("ex5.js"));

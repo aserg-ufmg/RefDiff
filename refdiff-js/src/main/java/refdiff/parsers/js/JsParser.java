@@ -72,10 +72,11 @@ public class JsParser implements RastParser, Closeable {
 				root.addTokenizedFile(tokenizedSource);
 				
 				// System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
-				Map<String, Object> callerMap = new HashMap<>();
+				Map<String, RastNode> callerMap = new HashMap<>();
 				getRast(0, root, sourceFile, astRoot, callerMap);
+				
 				root.forEachNode((calleeNode, depth) -> {
-					if (calleeNode.getType().equals("FunctionDeclaration") && callerMap.containsKey(calleeNode.getLocalName())) {
+					if (calleeNode.getType().equals(JsNodeType.FUNCTION) && callerMap.containsKey(calleeNode.getLocalName())) {
 						RastNode callerNode = (RastNode) callerMap.get(calleeNode.getLocalName());
 						root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
 					}
@@ -103,7 +104,7 @@ public class JsParser implements RastParser, Closeable {
 		return tokenizedSource;
 	}
 	
-	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, Object> callerMap) throws Exception {
+	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, RastNode> callerMap) throws Exception {
 		if (!babelAst.has("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
@@ -144,9 +145,8 @@ public class JsParser implements RastParser, Closeable {
 				container = rastNode;
 				children = Collections.singletonList(bodyNode);
 			}
-		}
-		if ("CallExpression".equals(type)) {
-			extractCalleeNameFromCallExpression(babelAst, callerMap, container);
+		} else if ("CallExpression".equals(type)) {
+			extractCalleeNameFromCallExpression(babelAst, callerMap, (RastNode) container);
 		}
 		
 		if (children == null) {
@@ -175,7 +175,7 @@ public class JsParser implements RastParser, Closeable {
 		}
 	}
 	
-	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, Object> callerMap, HasChildrenNodes container) {
+	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, RastNode> callerMap, RastNode container) {
 		JsValueV8 callee = callExpresionNode.get("callee");
 		if (callee.get("type").asString().equals("MemberExpression")) {
 			JsValueV8 property = callee.get("property");

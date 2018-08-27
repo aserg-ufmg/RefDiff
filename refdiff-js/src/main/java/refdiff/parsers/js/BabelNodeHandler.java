@@ -19,9 +19,7 @@ abstract class BabelNodeHandler {
 		return true;
 	}
 	
-	public String getType(JsValueV8 babelAst) {
-		return babelAst.get("type").asString();
-	}
+	public abstract String getType(JsValueV8 babelAst);
 	
 	public abstract JsValueV8 getBodyNode(JsValueV8 babelAst);
 	
@@ -86,6 +84,11 @@ abstract class BabelNodeHandler {
 			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
 				return esprimaNode.get("body");
 			}
+
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.FILE;
+			}
 		});
 		
 		RAST_NODE_HANDLERS.put("ArrowFunctionExpression", new BabelNodeHandler() {
@@ -105,6 +108,11 @@ abstract class BabelNodeHandler {
 			@Override
 			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
 				return esprimaNode.get("body");
+			}
+
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.FUNCTION;
 			}
 		});
 		
@@ -126,6 +134,11 @@ abstract class BabelNodeHandler {
 			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
 				return esprimaNode.get("body");
 			}
+			
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.FUNCTION;
+			}
 		});
 		
 		RAST_NODE_HANDLERS.put("VariableDeclarator", new BabelNodeHandler() {
@@ -140,7 +153,7 @@ abstract class BabelNodeHandler {
 			
 			@Override
 			public String getType(JsValueV8 babelAst) {
-				return "Function";
+				return JsNodeType.FUNCTION;
 			}
 			
 			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
@@ -175,6 +188,11 @@ abstract class BabelNodeHandler {
 			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
 				return esprimaNode.get("body");
 			}
+			
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.CLASS;
+			}
 		});
 		
 		RAST_NODE_HANDLERS.put("ClassMethod", new BabelNodeHandler() {
@@ -201,6 +219,11 @@ abstract class BabelNodeHandler {
 			@Override
 			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
 				return esprimaNode.get("body");
+			}
+			
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.FUNCTION;
 			}
 		});
 	}

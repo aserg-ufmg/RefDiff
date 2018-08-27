@@ -4,6 +4,8 @@ import refdiff.core.rast.RastNode;
 
 public interface RastComparatorMonitor {
 	
+	default void beforeCompare(RastRootHelper<?> before, RastRootHelper<?> after) {}
+	
 	default void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {}
 	
 	default void reportDiscardedConflictingMatch(RastNode nBefore, RastNode nAfter) {}
