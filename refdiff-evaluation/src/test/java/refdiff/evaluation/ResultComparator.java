@@ -253,11 +253,12 @@ public class ResultComparator {
 	}
 	
 	private String format(RefactoringRelationship r) {
+		String result = String.format("%s\t%s\t%s", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
 		Relationship rr = r.getRastRelationship();
 		if (rr != null) {
-			return r.toString();
+			return result + "\t" + rr.toString();
 		} else {
-			return r.toString();
+			return result + "\t";
 		}
 	}
 

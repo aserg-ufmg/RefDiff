@@ -56,10 +56,10 @@ public class Relationship {
 	
 	@Override
 	public String toString() {
-		return String.format("%s(%s, %s)", this.type, format(this.nodeBefore), format(this.nodeAfter));
+		return String.format("%s({%s}, {%s})", this.type, format(this.nodeBefore), format(this.nodeAfter));
 	}
 	
 	public String format(RastNode node) {
-		return RastRootHelper.getNodePath(node).toString();
+		return String.join(" ", RastRootHelper.getNodePath(node));
 	}
 }
