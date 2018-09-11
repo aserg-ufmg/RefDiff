@@ -8,30 +8,29 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class ExternalProcess {
-
-	public static String execute(File workingDir, String ... commandAndArgs) {
+	
+	public static String execute(File workingDir, String... commandAndArgs) {
 		try {
 			Process p = new ProcessBuilder(commandAndArgs)
-			.directory(workingDir)
-			.redirectErrorStream(true)
-			.start();
+				.directory(workingDir)
+				.redirectErrorStream(true)
+				.start();
 			try {
 				StreamGobbler outputGobbler = new StreamGobbler(p.getInputStream());
 				outputGobbler.run();
-				//Thread outputGobblerThread = new Thread(outputGobbler);
-				//outputGobblerThread.start();
+				// Thread outputGobblerThread = new Thread(outputGobbler);
+				// outputGobblerThread.start();
 				p.waitFor();
-
+				
 				if (p.exitValue() == 0) {
 					return outputGobbler.getOutput();
 				} else {
 					throw new RuntimeException("Error executing command " + String.join(" ", commandAndArgs) + ":\n" + outputGobbler.getOutput());
 				}
-			}
-			finally {
+			} finally {
 				close(p.getInputStream());
 				close(p.getOutputStream());
-				//p.destroy();
+				// p.destroy();
 			}
 		} catch (IOException e) {
 			throw new RuntimeException("Error executing command " + String.join(" ", commandAndArgs), e);
@@ -39,7 +38,7 @@ public class ExternalProcess {
 			throw new RuntimeException("Error executing command " + String.join(" ", commandAndArgs), e);
 		}
 	}
-
+	
 	private static void close(Closeable closeable) throws IOException {
 		if (closeable != null) {
 			closeable.close();
@@ -62,7 +61,7 @@ public class ExternalProcess {
 					output.append(line + '\n');
 				}
 			} catch (IOException e) {
-				throw new RuntimeException(e); 
+				throw new RuntimeException(e);
 			}
 		}
 		
@@ -71,4 +70,3 @@ public class ExternalProcess {
 		}
 	}
 }
-

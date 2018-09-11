@@ -28,11 +28,11 @@ public class KeyPair {
 	public int hashCode() {
 		return Objects.hash(key1, key2);
 	}
-
+	
 	public String getKey1() {
 		return key1;
 	}
-
+	
 	public String getKey2() {
 		return key2;
 	}

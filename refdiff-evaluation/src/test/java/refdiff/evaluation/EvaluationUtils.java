@@ -277,9 +277,10 @@ public class EvaluationUtils {
 			break;
 		case SAME:
 			return Optional.empty();
+		default:
+			//
 		}
 		return Optional.empty();
-		// throw new RuntimeException(String.format("Cannot convert to refactoring: %s %s", relType, nodeType));
 	}
 	
 	private class FalseNegativeExplainer implements RastComparatorMonitor {

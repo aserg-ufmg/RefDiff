@@ -120,9 +120,9 @@ public class ComputeRecallJs {
 		System.out.println(String.format("%s\tTP: %d, FN: %d, Recall: %.3f", title, tp, fn, recall));
 	}
 	
-	private static boolean debugCommit(String commit, RelationshipType relType, String n1, String n2) throws Exception {
-		return commit(true, commit, relType, n1, n2);
-	}
+//	private static boolean debugCommit(String commit, RelationshipType relType, String n1, String n2) throws Exception {
+//		return commit(true, commit, relType, n1, n2);
+//	}
 	private static boolean commit(String commit, RelationshipType relType, String n1, String n2) throws Exception {
 		return commit(false, commit, relType, n1, n2);
 	}

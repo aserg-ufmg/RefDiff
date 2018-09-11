@@ -18,13 +18,13 @@ public class RunCalibration {
 		
 		ResultComparator rc = new ResultComparator();
 		
-		int i = 0;
+		// int i = 0;
 		for (RefactoringSet rs : expected) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
 			rc.expect(rs);
 			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit));
-			//if (i++ > 4) break;
+			// if (i++ > 4) break;
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
