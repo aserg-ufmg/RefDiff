@@ -241,6 +241,7 @@ public class EvaluationUtils {
 			}
 			break;
 		case EXTRACT:
+		case EXTRACT_MOVE:
 			if (isMethod) {
 				return Optional.of(RefactoringType.EXTRACT_OPERATION);
 			}

@@ -234,7 +234,11 @@ public class RastComparator {
 							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
 							double score = Math.max(score1, score2);
 							if (score > threshold.getValue()) {
-								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
+								if (sameLocation(n1, n2)) {
+									relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
+								} else {
+									relationships.add(new Relationship(RelationshipType.EXTRACT_MOVE, n1, n2, score));
+								}
 							} else {
 								monitor.reportDiscardedExtract(n1, n2, score);
 							}

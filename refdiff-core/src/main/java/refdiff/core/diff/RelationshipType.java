@@ -9,6 +9,7 @@ public enum RelationshipType {
 	MOVE_RENAME(true, true),
 	RENAME(true, true),
 	EXTRACT(false, true),
+	EXTRACT_MOVE(false, true),
 	EXTRACT_SUPER(false, true),
 	INLINE(false, true),
 	PULL_UP(true, true),
