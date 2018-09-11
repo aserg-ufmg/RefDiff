@@ -133,6 +133,7 @@ public class RastComparator {
 			return diff;
 		}
 		
+		@SuppressWarnings("unused")
 		private void adjustThreshold() {
 			ArrayList<Double> similaritySame = new ArrayList<>();
 			for (Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
@@ -144,18 +145,7 @@ public class RastComparator {
 						similaritySame.add(similarity);
 					}
 				}
-			}/*
-			ArrayList<Double> similarityNotSame = new ArrayList<>();
-			Set<RastNode> nodesAfter = mapAfterToBefore.keySet();
-			for (Entry<RastNode, RastNode> entry : mapBeforeToAfter.entrySet()) {
-				RastNode n1 = entry.getKey();
-				for (RastNode n2 : nodesAfter) {
-					if (n2 != entry.getValue() && n1.getType().equals(n2.getType()) && sameLocation(n1, n2)) {
-						double similarity = srb.similarity(sourceRep(n1), sourceRep(n2));
-						similarityNotSame.add(similarity);
-					}
-				}
-			}*/
+			}
 			
 			threshold.adjustTo(similaritySame);
 			//reportSimilarity(similaritySame);
