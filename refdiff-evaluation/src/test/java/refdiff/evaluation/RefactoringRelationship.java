@@ -2,6 +2,8 @@ package refdiff.evaluation;
 
 import java.util.EnumSet;
 
+import refdiff.core.diff.Relationship;
+
 public class RefactoringRelationship implements Comparable<RefactoringRelationship> {
 	
 	private static final EnumSet<RefactoringType> typesWithMainEntityAfter = EnumSet.of(
@@ -16,14 +18,20 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	private final RefactoringType refactoringType;
 	private final String entityBefore;
 	private final String entityAfter;
+	private final Relationship rastRelationship;
 	
 	public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter) {
+		this(refactoringType, entityBefore, entityAfter, null);
+	}
+	
+	public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter, Relationship rastRelationship) {
 		if (refactoringType == null || entityBefore == null || entityAfter == null) {
 			throw new IllegalArgumentException("arguments should not be null");
 		}
 		this.refactoringType = refactoringType;
 		this.entityBefore = normalize(entityBefore).trim();
 		this.entityAfter = normalize(entityAfter).trim();
+		this.rastRelationship = rastRelationship;
 	}
 	
 	public RefactoringType getRefactoringType() {
@@ -36,6 +44,10 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	
 	public String getEntityAfter() {
 		return entityAfter;
+	}
+	
+	public Relationship getRastRelationship() {
+		return rastRelationship;
 	}
 	
 	@Override
@@ -179,4 +191,5 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 			return String.format("%s\t%s", refactoringType.getDisplayName(), mainEntity);
 		}
 	}
+
 }

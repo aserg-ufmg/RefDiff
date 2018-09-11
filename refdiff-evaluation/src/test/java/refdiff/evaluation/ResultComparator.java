@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import refdiff.core.diff.Relationship;
+
 public class ResultComparator {
 	
 	Set<String> groupIds = new LinkedHashSet<>();
@@ -205,9 +207,12 @@ public class ResultComparator {
 			
 			CompareResult result = resultMap.get(getResultId(expected.getProject(), expected.getRevision(), groupId)).filterBy(refTypesToConsider);
 			if (result != null) {
-				all.addAll(result.getFalsePositives()); //
+				all.addAll(result.getTruePositives());
+				all.addAll(result.getFalsePositives());
+				all.addAll(result.getFalseNegatives());
+			} else {
+				all.addAll(expectedRefactorings); //
 			}
-			all.addAll(expectedRefactorings); //
 			
 			if (!headerPrinted) {
 				out.println(header);
@@ -219,7 +224,7 @@ public class ResultComparator {
 				allList.addAll(all);
 				Collections.sort(allList);
 				for (RefactoringRelationship r : allList) {
-					out.print(r.toString());
+					out.print(format(r));
 					out.print('\t');
 					if (result != null) {
 						Set<RefactoringRelationship> actualRefactorings = new HashSet<>();
@@ -247,6 +252,15 @@ public class ResultComparator {
 		out.println();
 	}
 	
+	private String format(RefactoringRelationship r) {
+		Relationship rr = r.getRastRelationship();
+		if (rr != null) {
+			return r.toString();
+		} else {
+			return r.toString();
+		}
+	}
+
 	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered) {
 		if (isPullUpToExtractedSupertype(r, expectedUnfiltered)) {
 			return "<ES>";

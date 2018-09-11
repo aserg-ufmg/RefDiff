@@ -119,7 +119,7 @@ public class EvaluationUtils {
 					
 					KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), refType.get().equals(RefactoringType.EXTRACT_OPERATION), refType.get().equals(RefactoringType.INLINE_OPERATION));
 					
-					rs.add(refType.get(), keyPair.getKey1(), keyPair.getKey2());
+					rs.add(new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel));
 				}
 			}
 			return rs;
