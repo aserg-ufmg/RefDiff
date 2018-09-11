@@ -103,7 +103,7 @@ public class SDModelBuilder {
 	private static ASTParser buildAstParser(String[] sourceFolders) {
 		ASTParser parser = ASTParser.newParser(AST.JLS8);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
-		Map options = JavaCore.getOptions();
+		Map<String, String> options = JavaCore.getOptions();
 		JavaCore.setComplianceOptions(JavaCore.VERSION_1_8, options);
 		parser.setCompilerOptions(options);
 		parser.setResolveBindings(true);
@@ -119,12 +119,6 @@ public class SDModelBuilder {
 		if (packageDeclaration != null) {
 			packageName = packageDeclaration.getName().getFullyQualifiedName();
 		}
-		String packagePath = packageName.replace('.', '/');
-		String sourceFolder = "/";
-		if (sourceFilePath.contains(packagePath)) {
-			sourceFolder = sourceFilePath.substring(0, sourceFilePath.indexOf(packagePath));
-		}
-		// RastNode nCompUnit = model.createCompilationUnit(packageName, sourceFolder, sourceFilePath, compilationUnit);
 		BindingsRecoveryAstVisitor visitor = new BindingsRecoveryAstVisitor(model, compilationUnit, sourceFilePath, fileContent, packageName, postProcessReferences, postProcessSupertypes);
 		compilationUnit.accept(visitor);
 	}

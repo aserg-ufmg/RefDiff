@@ -20,60 +20,59 @@ import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.QualifiedName;
 import org.eclipse.jdt.core.dom.SimpleName;
-import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 import org.eclipse.jdt.core.dom.SuperFieldAccess;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeLiteral;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
 public abstract class DependenciesAstVisitor extends ASTVisitor {
-
-    private boolean onlyFromSource = false;
-    
+	
+	private boolean onlyFromSource = false;
+	
 	public DependenciesAstVisitor(boolean onlyFromSource) {
-        this.onlyFromSource = onlyFromSource;
-    }
-
-    @Override
+		this.onlyFromSource = onlyFromSource;
+	}
+	
+	@Override
 	public final boolean visit(MethodInvocation node) {
 		IMethodBinding methodBinding = node.resolveMethodBinding();
 		if (methodBinding != null) {
-		    handleTypeBinding(node, methodBinding.getDeclaringClass(), false);
-		    handleMethodBinding(node, methodBinding);
+			handleTypeBinding(node, methodBinding.getDeclaringClass(), false);
+			handleMethodBinding(node, methodBinding);
 		}
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(FieldAccess node) {
 		IVariableBinding fieldBinding = node.resolveFieldBinding();
 		if (fieldBinding != null) {
-		    handleTypeBinding(node, fieldBinding.getDeclaringClass(), false);
-		    handleFieldBinding(node, fieldBinding);
+			handleTypeBinding(node, fieldBinding.getDeclaringClass(), false);
+			handleFieldBinding(node, fieldBinding);
 		}
 		return true;
 	}
-
+	
 	@Override
 	public boolean visit(SuperFieldAccess node) {
-	    IVariableBinding fieldBinding = node.resolveFieldBinding();
-	    if (fieldBinding != null) {
-    	    handleTypeBinding(node, fieldBinding.getDeclaringClass(), false);
-            handleFieldBinding(node, fieldBinding);
-	    }
-        return true;
+		IVariableBinding fieldBinding = node.resolveFieldBinding();
+		if (fieldBinding != null) {
+			handleTypeBinding(node, fieldBinding.getDeclaringClass(), false);
+			handleFieldBinding(node, fieldBinding);
+		}
+		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(SimpleName node) {
 		return visitNameNode(node);
 	}
-
+	
 	@Override
 	public final boolean visit(QualifiedName node) {
 		return visitNameNode(node);
 	}
-
+	
 	private boolean visitNameNode(Name node) {
 		IBinding binding = node.resolveBinding();
 		if (binding instanceof IVariableBinding) {
@@ -88,71 +87,71 @@ public abstract class DependenciesAstVisitor extends ASTVisitor {
 		}
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(ClassInstanceCreation node) {
 		ITypeBinding typeBinding = node.getType().resolveBinding();
 		handleTypeBinding(node, typeBinding, true);
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(VariableDeclarationStatement node) {
 		ITypeBinding typeBinding = node.getType().resolveBinding();
 		handleTypeBinding(node, typeBinding, true);
-		//typeBinding.get
-		//supertypes
+		// typeBinding.get
+		// supertypes
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(CatchClause node) {
 		ITypeBinding typeBinding = node.getException().getType().resolveBinding();
 		handleTypeBinding(node, typeBinding, true);
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(MarkerAnnotation node) {
 		ITypeBinding typeBinding = node.getTypeName().resolveTypeBinding();
 		handleTypeBinding(node, typeBinding, true);
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(CastExpression node) {
 		Type type = node.getType();
 		handleTypeBinding(node, type.resolveBinding(), true);
 		return true;
 	}
-
+	
 	@Override
 	public final boolean visit(TypeLiteral node) {
 		Type type = node.getType();
 		handleTypeBinding(node, type.resolveBinding(), true);
 		return true;
 	}
-
+	
 	protected void onTypeAccess(ASTNode node, ITypeBinding binding) {
 		// override
 	}
-
+	
 	protected void onVariableAccess(ASTNode node, IVariableBinding binding) {
 		// override
 	}
-
+	
 	protected void onFieldAccess(ASTNode node, IVariableBinding binding) {
-	    // override
+		// override
 	}
-
+	
 	protected void onMethodAccess(ASTNode node, IMethodBinding binding) {
 		// override
 	}
-
+	
 	private void handleTypeBinding(ASTNode node, ITypeBinding typeBinding, boolean includeTypeParameters) {
 		if (typeBinding == null) {
-			StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
-			//System.out.println(locationInParent.getId() + " has no type binding");
+			// StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
+			// System.out.println(locationInParent.getId() + " has no type binding");
 		} else {
 			List<ITypeBinding> rawTypes = new ArrayList<ITypeBinding>();
 			Set<String> dejavu = new HashSet<String>();
@@ -165,7 +164,7 @@ public abstract class DependenciesAstVisitor extends ASTVisitor {
 			
 		}
 	}
-
+	
 	private void appendRawTypes(List<ITypeBinding> rawTypes, Set<String> dejavu, ITypeBinding typeBinding, boolean includeTypeParameters) {
 		String key = typeBinding.getKey();
 		if (dejavu.contains(key)) {
@@ -197,21 +196,21 @@ public abstract class DependenciesAstVisitor extends ASTVisitor {
 				this.appendRawTypes(rawTypes, dejavu, typeBound, includeTypeParameters);
 			}
 		}
-    }
-
+	}
+	
 	private void handleVariableBinding(ASTNode node, IVariableBinding variableBindig) {
 		if (variableBindig == null) {
-			StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
-			//System.out.println(locationInParent.getId() + " has no variable binding");
+			// StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
+			// System.out.println(locationInParent.getId() + " has no variable binding");
 		} else {
 			this.onVariableAccess(node, variableBindig);
 		}
 	}
-
+	
 	private void handleFieldBinding(ASTNode node, IVariableBinding variableBindig) {
 		if (variableBindig == null) {
-			StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
-			//System.out.println(locationInParent.getId() + " has no field binding");
+			// StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
+			// System.out.println(locationInParent.getId() + " has no field binding");
 		} else {
 			ITypeBinding declaringClass = variableBindig.getDeclaringClass();
 			if (declaringClass != null && !this.ignoreType(declaringClass)) {
@@ -219,11 +218,11 @@ public abstract class DependenciesAstVisitor extends ASTVisitor {
 			}
 		}
 	}
-
+	
 	private void handleMethodBinding(ASTNode node, IMethodBinding methodBinding) {
 		if (methodBinding == null) {
-			StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
-			//System.out.println(locationInParent.getId() + " has no method binding");
+			// StructuralPropertyDescriptor locationInParent = node.getLocationInParent();
+			// System.out.println(locationInParent.getId() + " has no method binding");
 		} else {
 			ITypeBinding declaringClass = methodBinding.getDeclaringClass();
 			if (declaringClass != null && !this.ignoreType(declaringClass)) {
@@ -231,9 +230,9 @@ public abstract class DependenciesAstVisitor extends ASTVisitor {
 			}
 		}
 	}
-
+	
 	protected boolean ignoreType(ITypeBinding typeBinding) {
 		return this.onlyFromSource && !typeBinding.isFromSource();
 	}
-
+	
 }
