@@ -38,12 +38,12 @@ public class RefactoringSet {
 		return refactorings;
 	}
 	
-	public RefactoringSet add(RefactoringType type, String entityBefore, String entityAfter, Double similarity) {
-		return add(new RefactoringRelationship(type, entityBefore, entityAfter, similarity));
+	public RefactoringSet add(RefactoringType type, String entityBefore, String entityAfter) {
+		return add(new RefactoringRelationship(type, entityBefore, entityAfter));
 	}
 	
 	public RefactoringSet remove(RefactoringType type, String entityBefore, String entityAfter) {
-		return remove(new RefactoringRelationship(type, entityBefore, entityAfter, null));
+		return remove(new RefactoringRelationship(type, entityBefore, entityAfter));
 	}
 	
 	public RefactoringSet add(RefactoringRelationship r) {
@@ -77,7 +77,7 @@ public class RefactoringSet {
 		}
 		RefactoringSet newSet = new RefactoringSet(project, revision);
 		newSet.add(refactorings.stream()
-			.map(r -> new RefactoringRelationship(r.getRefactoringType(), stripParameters(r.getEntityBefore()), stripParameters(r.getEntityAfter()), r.getSimilarity()))
+			.map(r -> new RefactoringRelationship(r.getRefactoringType(), stripParameters(r.getEntityBefore()), stripParameters(r.getEntityAfter())))
 			.collect(Collectors.toList()));
 		return newSet;
 	}
@@ -123,7 +123,7 @@ public class RefactoringSet {
 					RefactoringType refactoringType = RefactoringType.fromName(array[0].trim());
 					String entityBefore = array[1].trim();
 					String entityAfter = array[2].trim();
-					add(refactoringType, entityBefore, entityAfter, null);
+					add(refactoringType, entityBefore, entityAfter);
 				}
 			}
 		} catch (IOException e) {

@@ -50,7 +50,7 @@ public class RefactoringDescriptionParser {
 				List<EntityKey> entitiesAfter = parser.entityAfterParser.parse(matcher);
 				for (EntityKey entityBefore : entitiesBefore) {
 					for (EntityKey entityAfter : entitiesAfter) {
-						list.add(new RefactoringRelationship(parser.type, entityBefore.toString(), entityAfter.toString(), null));
+						list.add(new RefactoringRelationship(parser.type, entityBefore.toString(), entityAfter.toString()));
 					}
 				}
 			}
