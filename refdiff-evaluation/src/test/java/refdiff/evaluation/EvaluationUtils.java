@@ -117,7 +117,10 @@ public class EvaluationUtils {
 						continue;
 					}
 					
-					KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), refType.get().equals(RefactoringType.EXTRACT_OPERATION), refType.get().equals(RefactoringType.INLINE_OPERATION));
+					boolean copyN1Parent = refType.get().equals(RefactoringType.EXTRACT_OPERATION);
+					boolean copyN2Parent = refType.get().equals(RefactoringType.INLINE_OPERATION) || refType.get().equals(RefactoringType.RENAME_METHOD);
+					
+					KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), copyN1Parent, copyN2Parent);
 					
 					rs.add(new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel));
 				}
@@ -126,14 +129,14 @@ public class EvaluationUtils {
 		}
 	}
 	
-	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean isExtract, boolean isInline) {
+	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean copyN1Parent, boolean copyN2Parent) {
 		String keyN1 = JavaParser.getKey(n1);
 		String keyN2 = JavaParser.getKey(n2);
 		
 		if (workAroundExtractAndInlineInconsistencies) {
-			if (isExtract) {
+			if (copyN1Parent) {
 				keyN2 = keyN1.substring(0, keyN1.lastIndexOf('.') + 1) + keyN2.substring(keyN2.lastIndexOf('.') + 1);
-			} else if (isInline) {
+			} else if (copyN2Parent) {
 				keyN1 = keyN2.substring(0, keyN2.lastIndexOf('.') + 1) + keyN1.substring(keyN1.lastIndexOf('.') + 1);
 			}
 		}
