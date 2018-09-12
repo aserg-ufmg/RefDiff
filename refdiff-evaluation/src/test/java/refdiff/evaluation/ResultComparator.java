@@ -26,21 +26,9 @@ public class ResultComparator {
 	Map<String, RefactoringSet> notExpectedMap = new LinkedHashMap<>();
 	Map<String, CompareResult> resultMap = new HashMap<>();
 	
-	private boolean groupRefactorings;
-	private boolean ignoreMethodParams;
-	
 	private boolean ignorePullUpToExtractedSupertype = false;
 	private boolean ignoreMoveToMovedType = false;
 	private boolean ignoreMoveToRenamedType = false;
-	
-	public ResultComparator(boolean groupRefactorings, boolean ignoreMethodParams) {
-		this.groupRefactorings = groupRefactorings;
-		this.ignoreMethodParams = ignoreMethodParams;
-	}
-	
-	public ResultComparator() {
-		this(false, false);
-	}
 	
 	public ResultComparator expect(RefactoringSet... sets) {
 		for (RefactoringSet set : sets) {
@@ -100,9 +88,9 @@ public class ResultComparator {
 		Map<RefactoringRelationship, String> details = new HashMap<>();
 		
 		RefactoringSet expected = expectedMap.get(getProjectRevisionId(actual.getProject(), actual.getRevision()));
-		Set<RefactoringRelationship> expectedRefactorings = new HashSet<>(expected.ignoringMethodParameters(ignoreMethodParams).getRefactorings());
+		Set<RefactoringRelationship> expectedRefactorings = new HashSet<>(expected.getRefactorings());
 		Set<RefactoringRelationship> expectedUnfiltered = expectedRefactorings;
-		Set<RefactoringRelationship> actualRefactorings = actual.ignoringMethodParameters(ignoreMethodParams).getRefactorings();
+		Set<RefactoringRelationship> actualRefactorings = actual.getRefactorings();
 		for (RefactoringRelationship r : actualRefactorings) {
 			if (expectedRefactorings.contains(r)) {
 				truePositives.add(r);
@@ -199,7 +187,7 @@ public class ResultComparator {
 		boolean headerPrinted = false;
 		for (RefactoringSet expected : expectedMap.values()) {
 			Set<RefactoringRelationship> all = new HashSet<>();
-			Set<RefactoringRelationship> expectedRefactorings = expected.ignoring(ignore).ignoringMethodParameters(ignoreMethodParams).getRefactorings();
+			Set<RefactoringRelationship> expectedRefactorings = expected.ignoring(ignore).getRefactorings();
 			String id = getProjectRevisionId(expected.getProject(), expected.getRevision());
 			Set<RefactoringRelationship> notExpectedRefactorings = notExpectedMap.getOrDefault(id, new RefactoringSet(expected.getProject(), expected.getRevision())).getRefactorings();
 			
@@ -438,22 +426,6 @@ public class ResultComparator {
 		public Collection<RefactoringRelationship> getFalseNegatives() {
 			return falseNegatives;
 		}
-	}
-	
-	public boolean isGroupRefactorings() {
-		return groupRefactorings;
-	}
-	
-	public void setGroupRefactorings(boolean groupRefactorings) {
-		this.groupRefactorings = groupRefactorings;
-	}
-	
-	public boolean isIgnoreMethodParams() {
-		return ignoreMethodParams;
-	}
-	
-	public void setIgnoreMethodParams(boolean ignoreMethodParams) {
-		this.ignoreMethodParams = ignoreMethodParams;
 	}
 	
 	public boolean isIgnorePullUpToExtractedSupertype() {

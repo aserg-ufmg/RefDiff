@@ -63,22 +63,6 @@ public class RefactoringSet {
 		return newSet;
 	}
 	
-	public RefactoringSet ignoringMethodParameters(boolean active) {
-		if (!active) {
-			return this;
-		}
-		RefactoringSet newSet = new RefactoringSet(project, revision);
-		newSet.add(refactorings.stream()
-			.map(r -> new RefactoringRelationship(r.getRefactoringType(), stripParameters(r.getEntityBefore()), stripParameters(r.getEntityAfter()), r.getRastRelationship()))
-			.collect(Collectors.toList()));
-		return newSet;
-	}
-	
-	private static String stripParameters(String entity) {
-		int openPar = entity.indexOf('(');
-		return openPar != -1 ? entity.substring(0, openPar + 1) + ")" : entity;
-	}
-	
 	public void printSourceCode(PrintStream pw) {
 		pw.printf("new RefactoringSet(\"%s\", \"%s\")", project, revision);
 		for (RefactoringRelationship r : refactorings) {
