@@ -3,6 +3,7 @@ package refdiff.core.diff.similarity;
 import java.util.List;
 
 import refdiff.core.rast.RastNode;
+import refdiff.core.util.IdentifierSplitter;
 
 public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBuilder<TfIdfSourceRepresentation> {
 	
@@ -11,9 +12,30 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 	@Override
 	public TfIdfSourceRepresentation buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode) {
 		Multiset<String> multiset = new Multiset<String>();
+		
+		// Add tokens from node name and from its parents
+		collectTokensOfSimpleName(multiset, node);
+		
 		multiset.addAll(tokenizedSourceCode);
 		vocabulary.count(isBefore, multiset.asSet());
 		return new TfIdfSourceRepresentation(multiset, vocabulary);
+	}
+	
+	private static void collectTokensOfSimpleName(Multiset<String> multiset, RastNode node) {
+		String nodeName;
+		if (node.getNamespace() != null) {
+			nodeName = node.getNamespace() + node.getSimpleName();
+		} else {
+			nodeName = node.getSimpleName();
+		}
+		List<String> tokens = IdentifierSplitter.split(nodeName);
+		multiset.add(nodeName);
+		if (tokens.size() > 1) {
+			multiset.addAll(tokens);
+		}
+		if (node.getParent().isPresent()) {
+			collectTokensOfSimpleName(multiset, node.getParent().get());
+		}
 	}
 	
 	@Override
