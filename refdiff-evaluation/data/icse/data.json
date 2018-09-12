@@ -3174,7 +3174,7 @@
         "validators": null
     }, {
         "type": "Move Method",
-        "description": "Move Method public public rightMergeNode() : MergeNode from class io.crate.planner.node.dql.join.NestedLoop to public rightMergeNode() : MergeNode from class io.crate.planner.node.dql.join.NestedLoopNode",
+        "description": "Move Method public rightMergeNode() : MergeNode from class io.crate.planner.node.dql.join.NestedLoop to public rightMergeNode() : MergeNode from class io.crate.planner.node.dql.join.NestedLoopNode",
         "comment": null,
         "validation": "TP",
         "detectionTools": "RefactoringMiner",
