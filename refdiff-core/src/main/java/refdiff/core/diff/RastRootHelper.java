@@ -169,7 +169,7 @@ public class RastRootHelper<T> {
 		}
 	}
 	
-	private void computeSourceRepresentation(RastNode node) {
+	public void computeSourceRepresentation(RastNode node) {
 		if (!srMap.containsKey(node)) {
 			String sourceCode = fileMap.get(node.getLocation().getFile());
 			List<String> nodeTokens = retrieveTokens(sourceCode, node, false);
@@ -228,12 +228,16 @@ public class RastRootHelper<T> {
 	}
 	
 	public T sourceRep(RastNode n) {
-		computeSourceRepresentation(n);
+		if (!srMap.containsKey(n)) {
+			throw new RuntimeException("Source representation not computed");
+		}
 		return srMap.get(n);
 	}
 	
 	public T bodySourceRep(RastNode n) {
-		computeSourceRepresentation(n);
+		if (!srBodyMap.containsKey(n)) {
+			throw new RuntimeException("Source representation not computed");
+		}
 		return srBodyMap.get(n);
 	}
 	

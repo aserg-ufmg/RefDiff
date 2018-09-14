@@ -7,10 +7,14 @@ import refdiff.core.util.IdentifierSplitter;
 
 public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBuilder<TfIdfSourceRepresentation> {
 	
-	Vocabulary vocabulary = new Vocabulary();
+	private final Vocabulary vocabulary = new Vocabulary();
+	private boolean initialized = false;
 	
 	@Override
 	public TfIdfSourceRepresentation buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode) {
+		if (initialized) {
+			throw new RuntimeException("Initialization phase terminated");
+		}
 		Multiset<String> multiset = new Multiset<String>();
 		
 		// Add tokens from node name and from its parents
@@ -57,11 +61,13 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 	
 	@Override
 	public double similarity(TfIdfSourceRepresentation arg1, TfIdfSourceRepresentation arg2) {
+		initialized = true;
 		return arg1.similarity(arg2);
 	}
 	
 	@Override
 	public double partialSimilarity(TfIdfSourceRepresentation arg1, TfIdfSourceRepresentation arg2) {
+		initialized = true;
 		return arg1.partialSimilarity(arg2);
 	}
 	

@@ -118,6 +118,7 @@ public class RastComparator {
 		}
 		
 		RastDiff computeDiff() {
+			computeSourceRepresentationForRemovedAndAdded();
 			matchExactChildren(diff.getBefore(), diff.getAfter());
 			Collections.sort(similaritySame);
 			//adjustThreshold();
@@ -131,6 +132,15 @@ public class RastComparator {
 			matchExtract();
 			matchInline();
 			return diff;
+		}
+		
+		private void computeSourceRepresentationForRemovedAndAdded() {
+			for (RastNode node : removed) {
+				before.computeSourceRepresentation(node);
+			}
+			for (RastNode node : added) {
+				after.computeSourceRepresentation(node);
+			}
 		}
 		
 		@SuppressWarnings("unused")
