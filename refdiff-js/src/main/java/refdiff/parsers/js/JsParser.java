@@ -120,8 +120,10 @@ public class JsParser implements RastParser, Closeable {
 			BabelNodeHandler handler = BabelNodeHandler.RAST_NODE_HANDLERS.get(type);
 			
 			if (handler.isRastNode(babelAst)) {
-				int begin = babelAst.get("start").asInt();
-				int end = babelAst.get("end").asInt();
+				JsValueV8 mainNode = handler.getMainNode(babelAst);
+				
+				int begin = mainNode.get("start").asInt();
+				int end = mainNode.get("end").asInt();
 				int bodyBegin = begin;
 				int bodyEnd = end;
 				

@@ -21,7 +21,12 @@ abstract class BabelNodeHandler {
 	
 	public abstract String getType(JsValueV8 babelAst);
 	
+	public JsValueV8 getMainNode(JsValueV8 babelAst) {
+		return babelAst;
+	}
+	
 	public abstract JsValueV8 getBodyNode(JsValueV8 babelAst);
+	
 	
 	public String getSimpleName(RastNode rastNode, JsValueV8 babelAst) {
 		return getLocalName(rastNode, babelAst);
@@ -170,6 +175,11 @@ abstract class BabelNodeHandler {
 			}
 			
 			@Override
+			public JsValueV8 getMainNode(JsValueV8 babelAst) {
+				return babelAst.get("init");
+			}
+			
+			@Override
 			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
 				return esprimaNode.get("init").get("body");
 			}
@@ -256,8 +266,58 @@ abstract class BabelNodeHandler {
 			}
 			
 			@Override
+			public JsValueV8 getMainNode(JsValueV8 babelAst) {
+				return babelAst.get("value");
+			}
+			
+			@Override
 			public JsValueV8 getBodyNode(JsValueV8 babelAst) {
 				return babelAst.get("value").get("body");
+			}
+		});
+		
+		RAST_NODE_HANDLERS.put("AssignmentExpression", new BabelNodeHandler() {
+			@Override
+			public boolean isRastNode(JsValueV8 babelAst) {
+				String leftNodeType = babelAst.get("left").get("type").asString();
+				String rightNodeType = babelAst.get("right").get("type").asString();
+				boolean isIdentifier = "Identifier".equals(leftNodeType);
+				boolean isMemberIdentifier = "MemberExpression".equals(leftNodeType) && "Identifier".equals(babelAst.get("left").get("property").get("type").asString());
+				boolean hasFunctionExpression = "FunctionExpression".equals(rightNodeType) || "ArrowFunctionExpression".equals(rightNodeType);
+				return (isIdentifier || isMemberIdentifier) && hasFunctionExpression;
+			}
+			
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.FUNCTION;
+			}
+			
+			public String getLocalName(RastNode rastNode, JsValueV8 babelAst) {
+				JsValueV8 leftNode = babelAst.get("left");
+				String leftNodetype = leftNode.get("type").asString();
+				if ("MemberExpression".equals(leftNodetype)) {
+					return leftNode.get("property").get("name").asString();
+				}
+				return leftNode.get("name").asString();
+			}
+			
+			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 babelAst) {
+				return Collections.singleton(Stereotype.HAS_BODY);
+			}
+			
+			@Override
+			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 babelAst) {
+				return extractParameters(babelAst.get("right"));
+			}
+			
+			@Override
+			public JsValueV8 getMainNode(JsValueV8 babelAst) {
+				return babelAst.get("right");
+			}
+			
+			@Override
+			public JsValueV8 getBodyNode(JsValueV8 babelAst) {
+				return babelAst.get("right").get("body");
 			}
 		});
 	}
