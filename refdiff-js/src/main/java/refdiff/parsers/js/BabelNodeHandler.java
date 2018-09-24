@@ -226,5 +226,39 @@ abstract class BabelNodeHandler {
 				return JsNodeType.FUNCTION;
 			}
 		});
+		
+		RAST_NODE_HANDLERS.put("ObjectProperty", new BabelNodeHandler() {
+			@Override
+			public boolean isRastNode(JsValueV8 babelAst) {
+				String keyNodeType = babelAst.get("key").get("type").asString();
+				String valueNodeType = babelAst.get("value").get("type").asString();
+				boolean hasIdentifier = "Identifier".equals(keyNodeType);
+				boolean hasFunctionExpression = "FunctionExpression".equals(valueNodeType) || "ArrowFunctionExpression".equals(valueNodeType);
+				return hasIdentifier && hasFunctionExpression;
+			}
+			
+			@Override
+			public String getType(JsValueV8 babelAst) {
+				return JsNodeType.FUNCTION;
+			}
+			
+			public String getLocalName(RastNode rastNode, JsValueV8 babelAst) {
+				return babelAst.get("key").get("name").asString();
+			}
+			
+			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 babelAst) {
+				return Collections.singleton(Stereotype.HAS_BODY);
+			}
+			
+			@Override
+			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 babelAst) {
+				return extractParameters(babelAst.get("value"));
+			}
+			
+			@Override
+			public JsValueV8 getBodyNode(JsValueV8 babelAst) {
+				return babelAst.get("value").get("body");
+			}
+		});
 	}
 }

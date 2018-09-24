@@ -43,8 +43,8 @@ public class TestJsParser {
 		RastNode nodeFnHello = nodeScriptEx1.getNodes().get(1);
 		
 		assertThat(nodeArrowFn.getType(), is("Function"));
-		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 16, 23, 22, 23)));
-		assertThat(nodeArrowFn.getLocalName(), is(""));
+		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 11, 23, 22, 23)));
+		assertThat(nodeArrowFn.getLocalName(), is("fn"));
 		
 		assertThat(nodeFnHello.getType(), is("Function"));
 		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 83, 50, 82)));
@@ -148,6 +148,34 @@ public class TestJsParser {
 		assertThat(f4.getType(), is("Function"));
 		assertThat(f4.getParameters().size(), is(1));
 		assertThat(f4.getParameters().get(0).getName(), is("x"));
+	}
+	
+	@Test
+	public void shouldParseObjectLiteralFunctionProperty() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex5.js"));
+		RastRoot root = parser.parse(sources);
+		
+		assertThat(root.getNodes().size(), is(1));
+		RastNode script = root.getNodes().get(0);
+		assertThat(script.getType(), is("File"));
+		
+		RastNode f1 = script.getNodes().get(0);
+		assertThat(f1.getLocalName(), is("f1"));
+		assertThat(f1.getType(), is("Function"));
+		assertThat(f1.getParameters().size(), is(1));
+		assertThat(f1.getParameters().get(0).getName(), is("x"));
+		
+		RastNode f2 = script.getNodes().get(1);
+		assertThat(f2.getLocalName(), is("f2"));
+		assertThat(f2.getType(), is("Function"));
+		assertThat(f2.getParameters().size(), is(1));
+		assertThat(f2.getParameters().get(0).getName(), is("y"));
+		
+		String sourceCode = sources.readContent(sources.getSourceFiles().get(0));
+		assertThat(
+			RastRootHelper.retrieveTokens(root, sourceCode, f2, false),
+			is(Arrays.asList("f2", ":", "(", "y", ")", "=>", "y", "+", "2")));
 	}
 	
 	@Test
