@@ -12,6 +12,7 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
+import refdiff.evaluation.RastComparatorDebbuger;
 import refdiff.parsers.js.JsParser;
 
 public class RunRefDiffExampleJs {
@@ -20,25 +21,24 @@ public class RunRefDiffExampleJs {
 		File tempFolder = new File("tmp");
 		tempFolder.mkdirs();
 		
-		String cloneUrl = "https://github.com/refdiff-data/webpack.git";
-		File repoFolder = new File(tempFolder, "react.git");
+		String cloneUrl = "https://github.com/mrdoob/three.js.git";
+		File repoFolder = new File(tempFolder, "three.js.git");
 		
 		if (!repoFolder.exists()) {
 			ExternalProcess.execute(tempFolder, "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
 		}
 		
+		// https://github.com/mrdoob/three.js/commit/f0e7bdc1de54a1b896089d819872111a86aa4185
+		
 		GitHelper gh = new GitHelper();
 		try (JsParser parser = new JsParser();
 			Repository repo = gh.openRepository(repoFolder)) {
 			RastComparator rastComparator = new RastComparator(parser);
-			
-			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "b50d4cf7c370dc0f9fa2c39ea0e73e28ca8918ac", parser.getAllowedFilesFilter());
-			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
+			RastComparatorDebbuger debbuger = new RastComparatorDebbuger();
+			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "f0e7bdc1de54a1b896089d819872111a86aa4185", parser.getAllowedFilesFilter());
+			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter(), debbuger);
 			
 			Set<Relationship> relationships = diff.getRelationships();
-//			.stream()
-//				.filter(relationship -> !relationship.getType().equals(RelationshipType.SAME))
-//				.collect(Collectors.toSet());
 			
 			relationships.stream()
 				.forEach(relationship -> {
