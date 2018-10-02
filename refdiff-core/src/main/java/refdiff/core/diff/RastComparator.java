@@ -202,11 +202,12 @@ public class RastComparator {
 						addMatch(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
 					}
 				} else if (!n1.hasStereotype(Stereotype.TYPE_CONSTRUCTOR) && !n2.hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
-					if (sameSignature(n1, n2)) {
-						addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
-					} else if (sameName(n1, n2)) {
-						addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
-						// move and change signature
+					if (sameSignature(n1, n2) || sameName(n1, n2)) {
+						if (sameRootNode(n1, n2)) {
+							addMatch(new Relationship(RelationshipType.INTERNAL_MOVE, n1, n2, candidate.getScore()));
+						} else {
+							addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
+						}
 					} else {
 						// move and rename
 						addMatch(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
@@ -400,6 +401,16 @@ public class RastComparator {
 				return matchingNodeAfter(n1.getParent().get()).equals(n2.getParent());
 			} else if (!n1.getParent().isPresent() && !n1.getParent().isPresent()) {
 				return sameNamespace(n1, n2);
+			} else {
+				return false;
+			}
+		}
+		
+		private boolean sameRootNode(RastNode n1, RastNode n2) {
+			Optional<RastNode> n1Root = n1.getRootParent();
+			Optional<RastNode> n2Root = n2.getRootParent();
+			if (n1Root.isPresent() && n2Root.isPresent()) {
+				return matchingNodeAfter(n1Root.get()).equals(n2Root);
 			} else {
 				return false;
 			}

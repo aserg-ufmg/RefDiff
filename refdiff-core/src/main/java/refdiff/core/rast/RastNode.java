@@ -106,6 +106,20 @@ public class RastNode implements HasChildrenNodes {
 		return parent;
 	}
 
+	@JsonIgnore
+	public Optional<RastNode> getRootParent() {
+		if (!parent.isPresent()) {
+			return Optional.empty();
+		} else {
+			RastNode parentNode = parent.get();
+			if (parentNode.getParent().isPresent()) {
+				return parentNode.getRootParent();
+			} else {
+				return parent;
+			}
+		}
+	}
+	
 	@JsonInclude(Include.NON_NULL)
 	public String getNamespace() {
 		return namespace;

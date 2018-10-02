@@ -207,6 +207,24 @@ public class TestJsParser {
 	}
 	
 	@Test
+	public void shouldNotHandleAnonymousFunctionsAsRastNodes() throws Exception {
+		Path basePath = Paths.get("test-data/parser/js/");
+		SourceFolder sources = SourceFolder.from(basePath, Paths.get("ex7.js"));
+		RastRoot root = parser.parse(sources);
+		
+		assertThat(root.getNodes().size(), is(1));
+		RastNode script = root.getNodes().get(0);
+		assertThat(script.getType(), is("File"));
+		
+		RastNode bar = script.getNodes().get(0);
+		assertThat(bar.getLocalName(), is("bar"));
+		assertThat(bar.getType(), is("Function"));
+		assertThat(bar.getParameters().size(), is(2));
+		assertThat(bar.getParameters().get(0).getName(), is("x"));
+		assertThat(bar.getParameters().get(1).getName(), is("y"));
+	}
+	
+	@Test
 	public void shouldParseSubfolder() throws Exception {
 		Path basePath = Paths.get("test-data/parser/js/");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("dir1/ex5.js"));

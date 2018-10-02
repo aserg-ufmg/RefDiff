@@ -223,6 +223,7 @@ public class EvaluationUtils {
 		
 		switch (relType) {
 		case MOVE:
+		case INTERNAL_MOVE:
 			if (isType) {
 				return Optional.of(RefactoringType.MOVE_CLASS);
 			} else if (isMethod) {

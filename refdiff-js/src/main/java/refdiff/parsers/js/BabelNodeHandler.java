@@ -96,31 +96,6 @@ abstract class BabelNodeHandler {
 			}
 		});
 		
-		RAST_NODE_HANDLERS.put("ArrowFunctionExpression", new BabelNodeHandler() {
-			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
-				return "";
-			}
-			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 esprimaNode) {
-				return Collections.singleton(Stereotype.HAS_BODY);
-			}
-			
-			@Override
-			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 esprimaNode) {
-				return extractParameters(esprimaNode);
-			}
-			
-			@Override
-			public JsValueV8 getBodyNode(JsValueV8 esprimaNode) {
-				return esprimaNode.get("body");
-			}
-
-			@Override
-			public String getType(JsValueV8 babelAst) {
-				return JsNodeType.FUNCTION;
-			}
-		});
-		
 		RAST_NODE_HANDLERS.put("FunctionDeclaration", new BabelNodeHandler() {
 			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
 				return esprimaNode.get("id").get("name").asString();
