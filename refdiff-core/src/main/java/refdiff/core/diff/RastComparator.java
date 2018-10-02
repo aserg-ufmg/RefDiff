@@ -209,8 +209,11 @@ public class RastComparator {
 							addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
 						}
 					} else {
-						// move and rename
-						addMatch(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
+						if (sameRootNode(n1, n2)) {
+							addMatch(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
+						} else {
+							addMatch(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
+						}
 					}
 				}
 			}
