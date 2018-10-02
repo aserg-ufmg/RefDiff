@@ -53,6 +53,17 @@ public class TestRastComparatorJsParser {
 		));
 	}
 	
+	@Test
+	public void shouldMatchMoveFunction() throws Exception {
+		assertThat(diff("diff5"), containsOnly(
+			relationship(RelationshipType.SAME, node("hello.js"), node("hello.js")),
+			relationship(RelationshipType.SAME, node("hello2.js"), node("hello2.js")),
+			relationship(RelationshipType.SAME, node("hello.js", "foo"), node("hello.js", "foo")),
+			relationship(RelationshipType.INTERNAL_MOVE, node("hello.js", "foo", "bar"), node("hello.js", "bar")),
+			relationship(RelationshipType.MOVE, node("hello.js", "baz"), node("hello2.js", "baz"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "test-data/diff/" + folder;
 		SourceFolder sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".js");
