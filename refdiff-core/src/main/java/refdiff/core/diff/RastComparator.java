@@ -265,9 +265,10 @@ public class RastComparator {
 							T sourceN1Caller = before.sourceRep(n1Caller);
 							T sourceN1CallerAfter = after.sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, srb.minus(sourceN1Caller, getTokensToUseNode(n1)));
-							double score1 = srb.partialSimilarity(sourceN1, addedCode);
-							double score2 = srb.partialSimilarity(addedCode, sourceN1);
-							double score = Math.max(score1, score2);
+							double score = srb.partialSimilarity(sourceN1, addedCode);
+							//double score1 = srb.partialSimilarity(sourceN1, addedCode);
+							//double score2 = srb.partialSimilarity(addedCode, sourceN1);
+							//double score = Math.max(score1, score2);
 							if (score > threshold.getValue()) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							} else {
