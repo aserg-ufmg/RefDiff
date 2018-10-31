@@ -210,7 +210,7 @@ public class RastComparator {
 						}
 					} else {
 						if (sameRootNode(n1, n2)) {
-							addMatch(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
+							addMatch(new Relationship(RelationshipType.INTERNAL_MOVE_RENAME, n1, n2, candidate.getScore()));
 						} else {
 							addMatch(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
 						}

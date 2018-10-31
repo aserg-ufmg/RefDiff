@@ -238,6 +238,7 @@ public class EvaluationUtils {
 			}
 			break;
 		case MOVE_RENAME:
+		case INTERNAL_MOVE_RENAME:
 			if (isType) {
 				return Optional.of(RefactoringType.RENAME_CLASS);
 			} else if (isMethod) {

@@ -8,6 +8,7 @@ public enum RelationshipType {
 	MOVE(true, true),
 	INTERNAL_MOVE(true, true),
 	MOVE_RENAME(true, true),
+	INTERNAL_MOVE_RENAME(true, true),
 	RENAME(true, true),
 	EXTRACT(false, true),
 	EXTRACT_MOVE(false, true),

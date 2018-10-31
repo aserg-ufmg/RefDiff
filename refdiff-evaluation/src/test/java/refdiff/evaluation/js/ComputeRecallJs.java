@@ -27,18 +27,23 @@ public class ComputeRecallJs {
 	public static void main(String[] args) throws Exception {
 		tempFolder.mkdirs();
 		
+		
 		computeRecall("Move Function",
 			commit("https://github.com/webpack/webpack/commit/b50d4cf7c370dc0f9fa2c39ea0e73e28ca8918ac", RelationshipType.MOVE, node("lib/WebpackOptionsValidationError.js", "getSchemaPartText"), node("lib/util/getSchemaPartText.js", "getSchemaPartText")),
-			commit("https://github.com/atom/atom/commit/fc620b9e80d67ca99f962431461b8fc4d085d9df", RelationshipType.MOVE, node("spec/tooltip-manager-spec.js", "createElement"), node("spec/tooltip-manager-spec.js", "createElement")),
-			commit("https://github.com/webpack/webpack/commit/8b3772d47fc94fe3c3175602bba5eef6605fad86", RelationshipType.MOVE, node("lib/EntryOptionPlugin.js", "itemToPlugin"), node("lib/EntryOptionPlugin.js", "itemToPlugin")),
-			commit("https://github.com/atom/atom/commit/44a2be7c9dc99a091fb3fb8c207b8c4bce7a609b", RelationshipType.MOVE, node("spec/workspace-spec.js", "simulateReload"), node("spec/workspace-spec.js", "simulateReload")),
+			// SAME
+			// commit("https://github.com/atom/atom/commit/fc620b9e80d67ca99f962431461b8fc4d085d9df", RelationshipType.MOVE, node("spec/tooltip-manager-spec.js", "createElement"), node("spec/tooltip-manager-spec.js", "createElement")),
+			commit("https://github.com/webpack/webpack/commit/8b3772d47fc94fe3c3175602bba5eef6605fad86", RelationshipType.INTERNAL_MOVE, node("lib/EntryOptionPlugin.js", "itemToPlugin"), node("lib/EntryOptionPlugin.js", "itemToPlugin")),
+			// SAME
+			// commit("https://github.com/atom/atom/commit/44a2be7c9dc99a091fb3fb8c207b8c4bce7a609b", RelationshipType.MOVE, node("spec/workspace-spec.js", "simulateReload"), node("spec/workspace-spec.js", "simulateReload")),
 			commit("https://github.com/facebook/create-react-app/commit/fbdff9d722d6ce669a090138022c4d3536ae95bb", RelationshipType.MOVE, node("packages/react-scripts/scripts/build.js", "getDifferenceLabel"), node("packages/react-dev-utils/FileSizeReporter.js", "getDifferenceLabel")),
 			commit("https://github.com/facebook/react/commit/8fbcd499bd07c8a8206f23fe0b2a1cbbc1ffaf0a", RelationshipType.MOVE, node("src/renderers/shared/stack/reconciler/ReactUpdateQueue.js", "validateCallback"), node("src/renderers/shared/utils/validateCallback.js", "validateCallback")),
-			commit("https://github.com/d3/d3/commit/959da21882ad7ea5f35f851adb629ae7a29d5a38", RelationshipType.MOVE, node("d3.js", "start"), node("d3.js", "start")),
+			commit("https://github.com/d3/d3/commit/959da21882ad7ea5f35f851adb629ae7a29d5a38", RelationshipType.INTERNAL_MOVE, node("d3.js", "start"), node("d3.js", "start")),
 			//commit("https://github.com/mui-org/material-ui/commit/b869605290595bce27c50ee81ffa3f596a3b8b9b", RelationshipType.MOVE, node("src/mixins/controllable.js", "getValueLink"), node("src/menus/menu.jsx", "getValueLink")),
 			commit("https://github.com/facebook/react/commit/63aa7259b9f48886af545afcc06c29acf225b05f", RelationshipType.MOVE, node("src/browser/ui/getReactRootElementInContainer.js", "getReactRootElementInContainer"), node("src/browser/ui/ReactMount.js", "getReactRootElementInContainer")),
 			commit("https://github.com/chartjs/Chart.js/commit/ec7b87d69c6168d25166784796f8026b2cb5715e", RelationshipType.MOVE, node("src/charts/chart.bar.js", "calculateBarWidth"), node("src/scales/scale.category.js", "calculateBarWidth")),
-			commit("https://github.com/angular/angular.js/commit/560951e9881b5f772262804384b4da9f673b925e", RelationshipType.MOVE, node("src/ng/interpolate.js", "stringify"), node("src/ng/interpolate.js", "stringify"))
+			commit("https://github.com/angular/angular.js/commit/560951e9881b5f772262804384b4da9f673b925e", RelationshipType.INTERNAL_MOVE, node("src/ng/interpolate.js", "stringify"), node("src/ng/interpolate.js", "stringify")),
+			commit("https://github.com/angular/angular.js/commit/2636105c5e363f14cda890f19ac9c3bc57556dd2", RelationshipType.MOVE, node("test/testabilityPatch.js", "toEqualError"), node("test/matchers.js", "toEqualError")),
+			commit("https://github.com/mrdoob/three.js/commit/ca803d97c0e4fab6eadd3f745f3068443e8ca1f4", RelationshipType.MOVE, node("src/extras/core/NURBSCurve.js", "findSpan"), node("src/extras/core/NURBSUtils.js", "findSpan"))
 		);
 		
 		computeRecall("Move And Rename Function",
@@ -47,7 +52,7 @@ public class ComputeRecallJs {
 			commit("https://github.com/webpack/webpack/commit/5da9d8c7ef29f954a37f58f5138f116579c6efe8", RelationshipType.MOVE_RENAME, node("lib/Entrypoint.js", "getSize"), node("lib/SizeFormatHelpers.js", "getEntrypointSize")),
 			commit("https://github.com/webpack/webpack/commit/86c00207bdc9cb1ef60441d1ec836624a162c9ab", RelationshipType.MOVE_RENAME, node("lib/ModuleParserHelpers.js", "addParsedVariable"), node("lib/ParserHelpers.js", "addParsedVariableToModule")),
 			commit("https://github.com/meteor/meteor/commit/b5286b941a77a1bdd57abb1ea01385eeaa62f7ea", RelationshipType.MOVE_RENAME, node("packages/browser-policy/browser-policy.js", "disallowAllContent"), node("packages/browser-policy-content/browser-policy-content.js", "disallowAll")),
-			commit("https://github.com/meteor/meteor/commit/91a4a46ea1d687de1f929e3b9f0bae9c2db0c83d", RelationshipType.MOVE_RENAME, node("packages/liveui/liveui.js", "patch"), node("packages/liveui/liveui.js", "_patch")),
+			commit("https://github.com/meteor/meteor/commit/91a4a46ea1d687de1f929e3b9f0bae9c2db0c83d", RelationshipType.INTERNAL_MOVE_RENAME, node("packages/liveui/liveui.js", "patch"), node("packages/liveui/liveui.js", "_patch")),
 			// MOVE_RENAME browser-policy.js -> browser-policy-content.js induces SAME relationship on children
 			commit("https://github.com/angular/angular.js/commit/af0ad6561c0d75c4f155b07e9cfc36a983af55bd", RelationshipType.MOVE_RENAME, node("src/JSON.js", "jsonReplacer"), node("src/Angular.js", "toJsonReplacer"))
 		);
@@ -89,7 +94,7 @@ public class ComputeRecallJs {
 			commit("https://github.com/facebook/react/commit/6144212a8634948faf18cce8211c71e6f9d0667e", RelationshipType.RENAME, node("src/renderers/shared/fiber/ReactFiberScheduler.js", "performLowPriWork"), node("src/renderers/shared/fiber/ReactFiberScheduler.js", "performDeferredWork")),
 			commit("https://github.com/angular/angular.js/commit/e9bf93d510a6a0c105d8f5d036ec35c7ce08a588", RelationshipType.RENAME, node("src/Angular.js", "int"), node("src/Angular.js", "toInt")),
 			commit("https://github.com/angular/angular.js/commit/097947fd3bd280fcf621e36154a9d4f82896ff01", RelationshipType.RENAME, node("src/Angular.js", "resumeBootstrapInternal"), node("src/Angular.js", "doBootstrap")),
-			commit("https://github.com/meteor/meteor/commit/9d65f9269982e066de112ccf7e22dfeb2528ba58", RelationshipType.RENAME, node("packages/accounts-ui-unstyled/login_buttons_dialogs.js", "onEnrollAccountLink"), node("packages/accounts-ui-unstyled/login_buttons_dialogs.js", "onEnrollmentLink"))
+			commit("https://github.com/meteor/meteor/commit/9d65f9269982e066de112ccf7e22dfeb2528ba58", RelationshipType.RENAME, node("packages/accounts-base/url_client.js", "onEnrollAccountLink"), node("packages/accounts-base/url_client.js", "onEnrollmentLink"))
 		);
 		
 		computeRecall("Rename File",
