@@ -13,7 +13,7 @@ public enum RelationshipType {
 	EXTRACT(false, true),
 	EXTRACT_MOVE(false, true),
 	EXTRACT_SUPER(false, true),
-	INLINE(false, true),
+	INLINE(true, false),
 	PULL_UP(true, true),
 	PUSH_DOWN(true, true),
 	PULL_UP_SIGNATURE(false, true),
