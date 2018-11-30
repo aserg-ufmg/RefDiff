@@ -30,7 +30,7 @@ public class TestRastComparator {
 	
 	@Test
 	public void shouldMatchPullUpAndPushDown() throws Exception {
-		assertThat(diff("java2"), containsOnly(
+		assertThat(diff("pullUpAndPushDown"), containsOnly(
 			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
 			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
 			relationship(RelationshipType.SAME, node("p1.A2"), node("p1.A2")),
@@ -42,7 +42,73 @@ public class TestRastComparator {
 	}
 	
 	@Test
-	public void shouldCompareMethodSignature() throws Exception {
+	public void shouldMatchPullUpToAdded() throws Exception {
+		assertThat(diff("pullUpToAdded"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
+			relationship(RelationshipType.SAME, node("p1.A1", "m1()"), node("p1.A1", "m1()")),
+			relationship(RelationshipType.PULL_UP, node("p1.A1", "m2(String)"), node("p1.A", "m2(String)")),
+			relationship(RelationshipType.EXTRACT_SUPER, node("p1.A1"), node("p1.A"))
+		));
+	}
+	
+	@Ignore
+	@Test
+	public void shouldMatchPullUpFromRemoved() throws Exception {
+		assertThat(diff("pullUpFromRemoved"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.PULL_UP, node("p1.A1", "m1()"), node("p1.A", "m1()")),
+			relationship(RelationshipType.PULL_UP, node("p1.A1", "m2(String)"), node("p1.A", "m2(String)"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchPushDownToAdded() throws Exception {
+		assertThat(diff("pushDownToAdded"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.PUSH_DOWN, node("p1.A", "m2(String)"), node("p1.A1", "m2(String)"))
+		));
+	}
+	
+	@Ignore
+	@Test
+	public void shouldMatchPushDownFromRemoved() throws Exception {
+		assertThat(diff("pushDownFromRemoved"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
+			relationship(RelationshipType.PUSH_DOWN, node("p1.A", "m2(String)"), node("p1.A1", "m2(String)"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchPullUpSignature() throws Exception {
+		assertThat(diff("pullUpSignature"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
+			relationship(RelationshipType.SAME, node("p1.A1", "m1()"), node("p1.A1", "m1()")),
+			relationship(RelationshipType.PULL_UP_SIGNATURE, node("p1.A1", "m1()"), node("p1.A", "m1()"))
+		));
+	}
+	
+	@Test
+	public void shouldNotFindFalsePullUp() throws Exception {
+		assertThat(diff("falsePullUp"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p1.A", "m1()"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchPushDownImpl() throws Exception {
+		assertThat(diff("pushDownImpl"), containsOnly(
+			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
+			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p1.A", "m1()")),
+			relationship(RelationshipType.PUSH_DOWN_IMPL, node("p1.A", "m1()"), node("p1.A1", "m1()"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchChangeSignature() throws Exception {
 		assertThat(diff("java3"), containsOnly(
 			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
 			relationship(RelationshipType.CHANGE_SIGNATURE, node("p1.A", "m1(Integer)"), node("p1.A", "m1(Integer, boolean)")),
@@ -90,6 +156,16 @@ public class TestRastComparator {
 			relationship(RelationshipType.SAME, node("p1.A", "m2()"), node("p1.A", "m2()")),
 			relationship(RelationshipType.SAME, node("p1.A", "m3()"), node("p1.A", "m3()")),
 			relationship(RelationshipType.SAME, node("p1.A", "m4()"), node("p1.A", "m4()"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchNestedRename() throws Exception {
+		assertThat(diff("nestedRename"), containsOnly(
+			relationship(RelationshipType.RENAME, node("p1.A"), node("p1.B")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1(String)"), node("p1.B", "m1(String)")),
+			relationship(RelationshipType.SAME, node("p1.A", "m2(String)"), node("p1.B", "m2(String)")),
+			relationship(RelationshipType.RENAME, node("p1.A", "m3(String)"), node("p1.B", "m3x(String)"))
 		));
 	}
 	

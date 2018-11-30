@@ -91,7 +91,9 @@ public class RastRootHelper<T> {
 	}
 	
 	private Collection<RastNode> findRelationships(Map<Integer, List<RastNodeRelationship>> map, RastNodeRelationshipType type, RastNode node, Function<RastNodeRelationship, RastNode> mappingFn) {
-		return map.getOrDefault(node.getId(), Collections.emptyList()).stream().map(mappingFn).collect(Collectors.toList());
+		return map.getOrDefault(node.getId(), Collections.emptyList()).stream()
+			.filter(rel -> rel.getType().equals(type))
+			.map(mappingFn).collect(Collectors.toList());
 	}
 	
 	public Optional<RastNode> findByNamePath(String... namePath) {
