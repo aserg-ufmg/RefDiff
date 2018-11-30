@@ -89,7 +89,7 @@ public class RastComparator {
 		
 		private void apply(Set<Relationship> relationships) {
 			for (Relationship r : relationships) {
-				apply(r);
+				addRelationship(r);
 			}
 		}
 
@@ -120,13 +120,13 @@ public class RastComparator {
 		RastDiff computeDiff() {
 			computeSourceRepresentationForRemovedAndAdded();
 			matchExactChildren(diff.getBefore(), diff.getAfter());
-			Collections.sort(similaritySame);
+			//Collections.sort(similaritySame);
 			//adjustThreshold();
-			matchMovesOrRenames(false, false);
-			matchMovesOrRenames(false, true);
-			matchPullUpAndPushDownMembers();
-			matchPullUpToAdded();
-			matchMovesOrRenames(true, false);
+			//matchMovesOrRenames(false, false);
+			//matchMovesOrRenames(false, true);
+			//matchPullUpAndPushDownMembers();
+			//matchPullUpToAdded();
+			//matchMovesOrRenames(true, false);
 			matchMovesOrRenames(true, true);
 			inferExtractSuper();
 			matchExtract();
@@ -184,7 +184,10 @@ public class RastComparator {
 						double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
 						if (score > threshold.getValue()) {
 							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
-							candidates.add(candidate);
+							Optional<Relationship> optRelationship = findRelationshipForCandidate(candidate);
+							if (optRelationship.isPresent()) {
+								candidates.add(candidate);
+							}
 						} else {
 							monitor.reportDiscardedMatch(n1, n2, score);
 						}
@@ -193,31 +196,40 @@ public class RastComparator {
 			}
 			Collections.sort(candidates);
 			for (PotentialMatch candidate : candidates) {
-				RastNode n1 = candidate.getNodeBefore();
-				RastNode n2 = candidate.getNodeAfter();
-				if (sameLocation(n1, n2)) {
-					if (sameName(n1, n2)) {
-						addMatch(new Relationship(RelationshipType.CHANGE_SIGNATURE, n1, n2, candidate.getScore()));
-					} else {
-						addMatch(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
-					}
-				} else if (!n1.hasStereotype(Stereotype.TYPE_CONSTRUCTOR) && !n2.hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
-					if (sameSignature(n1, n2) || sameName(n1, n2)) {
-						if (sameRootNode(n1, n2)) {
-							addMatch(new Relationship(RelationshipType.INTERNAL_MOVE, n1, n2, candidate.getScore()));
-						} else {
-							addMatch(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
-						}
-					} else {
-						if (sameRootNode(n1, n2)) {
-							addMatch(new Relationship(RelationshipType.INTERNAL_MOVE_RENAME, n1, n2, candidate.getScore()));
-						} else {
-							addMatch(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
-						}
-					}
+				Optional<Relationship> optRelationship = findRelationshipForCandidate(candidate);
+				if (optRelationship.isPresent()) {
+					addRelationship(optRelationship.get());
 				}
 			}
 		}
+		
+		private Optional<Relationship> findRelationshipForCandidate(PotentialMatch candidate) {
+			RastNode n1 = candidate.getNodeBefore();
+			RastNode n2 = candidate.getNodeAfter();
+			if (sameLocation(n1, n2)) {
+				if (sameName(n1, n2)) {
+					return Optional.of(new Relationship(RelationshipType.CHANGE_SIGNATURE, n1, n2, candidate.getScore()));
+				} else {
+					return Optional.of(new Relationship(RelationshipType.RENAME, n1, n2, candidate.getScore()));
+				}
+			} else if (!n1.hasStereotype(Stereotype.TYPE_CONSTRUCTOR) && !n2.hasStereotype(Stereotype.TYPE_CONSTRUCTOR)) {
+				if (sameSignature(n1, n2) || sameName(n1, n2)) {
+					if (sameRootNode(n1, n2)) {
+						return Optional.of(new Relationship(RelationshipType.INTERNAL_MOVE, n1, n2, candidate.getScore()));
+					} else {
+						return Optional.of(new Relationship(RelationshipType.MOVE, n1, n2, candidate.getScore()));
+					}
+				} else {
+					if (sameRootNode(n1, n2)) {
+						return Optional.of(new Relationship(RelationshipType.INTERNAL_MOVE_RENAME, n1, n2, candidate.getScore()));
+					} else {
+						return Optional.of(new Relationship(RelationshipType.MOVE_RENAME, n1, n2, candidate.getScore()));
+					}
+				}
+			}
+			return Optional.empty();
+		}
+		
 		
 		private void matchExtract() {
 			Set<Relationship> relationships = new HashSet<>();
@@ -281,20 +293,108 @@ public class RastComparator {
 			apply(relationships);
 		}
 		
-		private void matchExactChildren(HasChildrenNodes node1, HasChildrenNodes node2) {
-			List<RastNode> removedChildren = children(node1, this::removed);
-			List<RastNode> addedChildren = children(node2, this::added);
-			for (RastNode n1 : removedChildren) {
-				for (RastNode n2 : addedChildren) {
+		private void matchExactChildren(HasChildrenNodes parentBefore, HasChildrenNodes parentAfter) {
+			for (RastNode n1 : children(parentBefore, this::removed)) {
+				for (RastNode n2 : children(parentAfter, this::added)) {
 					if (sameNamespace(n1, n2) && sameSignature(n1, n2)) {
 						if (sameType(n1, n2)) {
-							addMatch(new Relationship(RelationshipType.SAME, n1, n2));
+							addRelationship(new Relationship(RelationshipType.SAME, n1, n2));
 						} else {
-							addMatch(new Relationship(RelationshipType.CONVERT_TYPE, n1, n2));
+							addRelationship(new Relationship(RelationshipType.CONVERT_TYPE, n1, n2));
 						}
 					}
 				}
 			}
+		}
+
+		private void findPullUpAndPushOnMatch(RastNode parentBefore, RastNode parentAfter) {
+			// Find Pull Up
+			{
+				RastNode subtypeAfter = (RastNode) parentAfter;
+				for (RastNode supertypeAfter : after.findRelationships(RastNodeRelationshipType.SUBTYPE, subtypeAfter)) {
+					for (RastNode n1 : parentBefore.getNodes()) {
+						for (RastNode n2 : children(supertypeAfter, this::added)) {
+							if (n1.hasStereotype(Stereotype.TYPE_MEMBER) && sameSignature(n1, n2)) {
+								Optional<RastNode> optN1After = matchingNodeAfter(n1);
+								if (!optN1After.isPresent()) {
+									addRelationship(new Relationship(RelationshipType.PULL_UP, n1, n2));
+								} else {
+									if (n2.hasStereotype(Stereotype.ABSTRACT)) {
+										addRelationship(new Relationship(RelationshipType.PULL_UP_SIGNATURE, n1, n2));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			// Find Pull Up from removed
+			/*
+			{
+				RastNode supertypeBefore = (RastNode) parentBefore;
+				for (RastNode subtypeBefore : before.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, supertypeBefore)) {
+					for (RastNode n1 : subtypeBefore.getNodes()) {
+						for (RastNode n2 : parentAfter.getNodes()) {
+							if (n1.hasStereotype(Stereotype.TYPE_MEMBER) && sameSignature(n1, n2)) {
+								Optional<RastNode> optN1After = matchingNodeAfter(n1);
+								if (!optN1After.isPresent()) {
+									apply(new Relationship(RelationshipType.PULL_UP, n1, n2));
+								} else {
+									if (n2.hasStereotype(Stereotype.ABSTRACT)) {
+										apply(new Relationship(RelationshipType.PULL_UP_SIGNATURE, n1, n2));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			*/
+			
+			// Find Push Down
+			{
+				RastNode supertypeAfter = (RastNode) parentAfter;
+				for (RastNode subtypeAfter : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, supertypeAfter)) {
+					for (RastNode n1 : parentBefore.getNodes()) {
+						for (RastNode n2 : children(subtypeAfter, this::added)) {
+							if (n1.hasStereotype(Stereotype.TYPE_MEMBER) && sameSignature(n1, n2)) {
+								Optional<RastNode> optN1After = matchingNodeAfter(n1);
+								if (!optN1After.isPresent()) {
+									addRelationship(new Relationship(RelationshipType.PUSH_DOWN, n1, n2));
+								} else {
+									RastNode n1After = optN1After.get();
+									if (n1After.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
+										addRelationship(new Relationship(RelationshipType.PUSH_DOWN_IMPL, n1, n2));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			// Find Push Down from removed
+			/*
+			{
+				RastNode subtypeBefore = (RastNode) parentBefore;
+				for (RastNode supertypeBefore : before.findRelationships(RastNodeRelationshipType.SUBTYPE, subtypeBefore)) {
+					for (RastNode n1 : supertypeBefore.getNodes()) {
+						for (RastNode n2 : parentAfter.getNodes()) {
+							if (n1.hasStereotype(Stereotype.TYPE_MEMBER) && sameSignature(n1, n2)) {
+								Optional<RastNode> optN1After = matchingNodeAfter(n1);
+								if (!optN1After.isPresent()) {
+									apply(new Relationship(RelationshipType.PUSH_DOWN, n1, n2));
+								} else {
+									RastNode n1After = optN1After.get();
+									if (n1After.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
+										apply(new Relationship(RelationshipType.PUSH_DOWN_IMPL, n1, n2));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			*/
 		}
 
 		private void matchPullUpAndPushDownMembers() {
@@ -379,16 +479,21 @@ public class RastComparator {
 			apply(relationships);
 		} 
 		
-		private void addMatch(Relationship relationship) {
+		private void addRelationship(Relationship relationship) {
 			RastNode nBefore = relationship.getNodeBefore();
 			RastNode nAfter = relationship.getNodeAfter();
-			if (removed(nBefore) && added(nAfter)) {
-				apply(relationship);
-				mapBeforeToAfter.put(nBefore, nAfter);
-				mapAfterToBefore.put(nAfter, nBefore);
-				matchExactChildren(nBefore, nAfter);
+			if (relationship.getType().isMatching()) {
+				if (removed(nBefore) && added(nAfter)) {
+					apply(relationship);
+					mapBeforeToAfter.put(nBefore, nAfter);
+					mapAfterToBefore.put(nAfter, nBefore);
+					matchExactChildren(nBefore, nAfter);
+					findPullUpAndPushOnMatch(nBefore, nAfter);
+				} else {
+					monitor.reportDiscardedConflictingMatch(nBefore, nAfter);
+				}
 			} else {
-				monitor.reportDiscardedConflictingMatch(nBefore, nAfter);
+				apply(relationship);
 			}
 		}
 		
