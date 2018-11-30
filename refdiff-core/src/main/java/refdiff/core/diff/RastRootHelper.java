@@ -86,6 +86,21 @@ public class RastRootHelper<T> {
 		return this.findRelationships(edges, type, node, rel -> idMap.get(rel.getN2()));
 	}
 	
+	public boolean hasRelationship(RastNodeRelationshipType type, Optional<RastNode> optN1, RastNode n2) {
+		return hasRelationship(type, optN1, Optional.of(n2));
+	}
+	
+	public boolean hasRelationship(RastNodeRelationshipType type, Optional<RastNode> optN1, Optional<RastNode> optN2) {
+		if (optN1.isPresent() && optN2.isPresent()) {
+			RastNode n1 = optN1.get();
+			RastNode n2 = optN2.get();
+			return edges.getOrDefault(n1.getId(), Collections.emptyList()).stream()
+				.filter(rel -> rel.getType().equals(type) && idMap.get(rel.getN2()).equals(n2))
+				.findFirst().isPresent();
+		}
+		return false;
+	}
+	
 	public Collection<RastNode> findReverseRelationships(RastNodeRelationshipType type, RastNode node) {
 		return this.findRelationships(reverseEdges, type, node, rel -> idMap.get(rel.getN1()));
 	}

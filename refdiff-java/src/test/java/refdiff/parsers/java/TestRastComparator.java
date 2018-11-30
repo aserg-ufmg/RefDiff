@@ -34,10 +34,8 @@ public class TestRastComparator {
 			relationship(RelationshipType.SAME, node("p1.A"), node("p1.A")),
 			relationship(RelationshipType.SAME, node("p1.A1"), node("p1.A1")),
 			relationship(RelationshipType.SAME, node("p1.A2"), node("p1.A2")),
-			relationship(RelationshipType.PUSH_DOWN, node("p1.A", "m1()"), node("p1.A1", "m1()")),
 			relationship(RelationshipType.PUSH_DOWN, node("p1.A", "m1()"), node("p1.A2", "m1()")),
-			relationship(RelationshipType.PULL_UP, node("p1.A1", "m2(String)"), node("p1.A", "m2(String)")),
-			relationship(RelationshipType.PULL_UP, node("p1.A2", "m2(String)"), node("p1.A", "m2(String)"))
+			relationship(RelationshipType.PULL_UP, node("p1.A1", "m2(String)"), node("p1.A", "m2(String)"))
 		));
 	}
 	
