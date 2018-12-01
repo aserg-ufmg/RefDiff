@@ -14,5 +14,6 @@ public interface RastComparatorMonitor {
 	
 	default void reportDiscardedInline(RastNode n1, RastNode n2, double score) {}
 
+	default void afterCompare(long elapsedTime) {}
 	
 }

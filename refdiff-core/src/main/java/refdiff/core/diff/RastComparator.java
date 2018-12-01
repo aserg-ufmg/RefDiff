@@ -39,8 +39,12 @@ public class RastComparator {
 	}
 	
 	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) throws Exception {
+		long start = System.currentTimeMillis();
 		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), sourcesBefore, sourcesAfter, monitor);
-		return diffBuilder.computeDiff();
+		RastDiff diff = diffBuilder.computeDiff();
+		long end = System.currentTimeMillis();
+		monitor.afterCompare(end - start);
+		return diff;
 	}
 	
 	private class DiffBuilder<T> {
@@ -108,8 +112,9 @@ public class RastComparator {
 		
 		RastDiff computeDiff() {
 			computeSourceRepresentationForRemovedAndAdded();
-			findMatchesById(diff.getBefore(), diff.getAfter());
-			findMatchesBySimilarity();
+			findMatchesById();
+			findMatchesBySimilarity(false);
+			findMatchesBySimilarity(true);
 			findPullPushDownAbstract();
 			inferExtractSuper();
 			matchExtract();
@@ -145,22 +150,25 @@ public class RastComparator {
 //			//reportSimilarity(similarityNotSame);
 //		}
 		
-		private void findMatchesBySimilarity() {
+		private void findMatchesBySimilarity(boolean onlySafe) {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
-						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
-						if (optRelationshipType.isPresent()) {
-							RelationshipType type = optRelationshipType.get();
-							double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
-							if (type.isById() || score > threshold.getValue()) {
-								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
-								candidates.add(candidate);
-							} else {
-								monitor.reportDiscardedMatch(n1, n2, score);
+						if (!onlySafe || (sameName(n1, n2) || sameLocation(n1, n2))) {
+							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
+							if (optRelationshipType.isPresent()) {
+								RelationshipType type = optRelationshipType.get();
+								double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+								if (type.isById() || score > threshold.getValue()) {
+									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+									candidates.add(candidate);
+								} else {
+									monitor.reportDiscardedMatch(n1, n2, score);
+								}
 							}
 						}
+						
 					}
 				}
 			}
@@ -268,6 +276,10 @@ public class RastComparator {
 			apply(relationships);
 		}
 		
+		private void findMatchesById() {
+			findMatchesById(diff.getBefore(), diff.getAfter());
+		}
+
 		private void findMatchesById(HasChildrenNodes parentBefore, HasChildrenNodes parentAfter) {
 			for (RastNode n1 : children(parentBefore, this::removed)) {
 				for (RastNode n2 : children(parentAfter, this::added)) {
