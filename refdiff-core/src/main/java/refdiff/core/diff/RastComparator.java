@@ -116,6 +116,7 @@ public class RastComparator {
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
 			findPullPushDownAbstract();
+			findAdditionalPullUpAndPushDown();
 			inferExtractSuper();
 			matchExtract();
 			matchInline();
@@ -290,6 +291,47 @@ public class RastComparator {
 			}
 		}
 
+		private void findAdditionalPullUpAndPushDown() {
+			List<Relationship> relationships = new ArrayList<>();
+			
+			diff.getRelationships()
+				.stream()
+				.filter(r -> r.getType().equals(RelationshipType.PULL_UP))
+				.forEach(r -> {
+					RastNode n2 = r.getNodeAfter();
+					RastNode supertypeAfter = n2.getParent().get();
+					for (RastNode n1ParentAfter : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, supertypeAfter)) {
+						Optional<RastNode> n1ParentBefore = matchingNodeBefore(n1ParentAfter);
+						if (n1ParentBefore.isPresent()) {
+							for (RastNode n1 : children(n1ParentBefore.get(), this::removed)) {
+								if (n1.hasStereotype(Stereotype.TYPE_MEMBER) && sameSignature(n1, n2)) {
+									relationships.add(new Relationship(RelationshipType.PULL_UP, n1, n2));
+								}
+							}
+						}
+					}
+				});
+			
+			diff.getRelationships()
+				.stream()
+				.filter(r -> r.getType().equals(RelationshipType.PUSH_DOWN))
+				.forEach(r -> {
+					RastNode n1 = r.getNodeBefore();
+					RastNode n1ParentAfter = matchingNodeAfter(n1.getParent()).get();
+					for (RastNode n2ParentAfter : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, n1ParentAfter)) {
+						for (RastNode n2 : children(n2ParentAfter, this::added)) {
+							if (n2.hasStereotype(Stereotype.TYPE_MEMBER) && sameSignature(n1, n2)) {
+								relationships.add(new Relationship(RelationshipType.PUSH_DOWN, n1, n2));
+							}
+						}
+					}
+				});
+			
+			for (Relationship relationship : relationships) {
+				diff.addRelationships(relationship);
+			}
+		}
+
 		private void findPullUpAndPushOnMatch(RastNode parentBefore, RastNode parentAfter) {
 			// Find Pull Up
 			{
@@ -342,7 +384,7 @@ public class RastComparator {
 								Optional<RastNode> optN1After = matchingNodeAfter(n1);
 								if (optN1After.isPresent()) {
 									RastNode n1After = optN1After.get();
-									if (n1After.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
+									if (!n1.hasStereotype(Stereotype.ABSTRACT) && n1After.hasStereotype(Stereotype.ABSTRACT) && !n2.hasStereotype(Stereotype.ABSTRACT)) {
 										addRelationship(new Relationship(RelationshipType.PUSH_DOWN_IMPL, n1, n2));
 									}
 								}
