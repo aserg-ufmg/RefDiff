@@ -1,7 +1,10 @@
 package refdiff.parsers.java;
 
+import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.jdt.core.ToolFactory;
 import org.eclipse.jdt.core.compiler.IScanner;
@@ -12,7 +15,7 @@ import refdiff.core.rast.TokenPosition;
 
 public class JavaSourceTokenizer {
 	
-	private IScanner scanner = ToolFactory.createScanner(false, true, false, "1.8");
+	private IScanner scanner = ToolFactory.createScanner(true, true, false, "1.8");
 	
 	public List<TokenPosition> tokenize(char[] charArray) {
 		try {
@@ -22,7 +25,9 @@ public class JavaSourceTokenizer {
 			while ((token = scanner.getNextToken()) != ITerminalSymbols.TokenNameEOF) {
 				int tokenStart = scanner.getCurrentTokenStartPosition();
 				int tokenEnd = scanner.getCurrentTokenEndPosition();
-				if (token != ITerminalSymbols.TokenNameWHITESPACE) {
+				if (token == ITerminalSymbols.TokenNameCOMMENT_LINE || token == ITerminalSymbols.TokenNameCOMMENT_BLOCK || token == ITerminalSymbols.TokenNameCOMMENT_JAVADOC) {
+					tokenizeComment(charArray, tokenStart, tokenEnd + 1, tokens);
+				} else if (token != ITerminalSymbols.TokenNameWHITESPACE) {
 					tokens.add(new TokenPosition(tokenStart, tokenEnd + 1));
 				}
 			}
@@ -32,4 +37,17 @@ public class JavaSourceTokenizer {
 		}
 	}
 	
+	private static Pattern pattern = Pattern.compile("\\S+");
+	
+	private static void tokenizeComment(char[] charArray, int start, int end, List<TokenPosition> tokens) {
+		CharBuffer comment = CharBuffer.wrap(charArray, start, end - start + 1);
+		Matcher matcher = pattern.matcher(comment);
+		
+		while (matcher.find()) {
+			String token = matcher.group();
+			if (!token.equals("*")) {
+				tokens.add(new TokenPosition(start + matcher.start(), start + matcher.end()));
+			}
+		}
+	}
 }

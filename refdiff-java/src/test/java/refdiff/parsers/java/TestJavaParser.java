@@ -36,7 +36,7 @@ public class TestJavaParser {
 		assertThat(classFoo.getNamespace(), is("p2."));
 		assertThat(classFoo.getLocalName(), is("Foo"));
 		assertThat(classFoo.getSimpleName(), is("Foo"));
-		assertThat(classFoo.getLocation(), is(new Location("p2/Foo.java", 13, 73)));
+		assertThat(classFoo.getLocation(), is(new Location("p2/Foo.java", 13, 121)));
 		
 		assertThat(classFoo.getNodes().size(), is(1));
 		RastNode fooM1 = classFoo.getNodes().get(0);
@@ -45,7 +45,7 @@ public class TestJavaParser {
 		assertThat(fooM1.getParameters().size(), is(1));
 		assertThat(fooM1.getParameters().get(0).getName(), is("arg"));
 		assertThat(fooM1.getSimpleName(), is("m1"));
-		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 35, 69, 63, 68)));
+		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 35, 117, 111, 116)));
 		
 		RastNode classBar = root.getNodes().get(1);
 		assertThat(classBar.getType(), is(NodeTypes.CLASS_DECLARATION));
@@ -69,15 +69,20 @@ public class TestJavaParser {
 		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, barM1, barM2)));
 		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.SUBTYPE, classBar, classFoo)));
 		
-		RastRoot rastRoot = parser.parse(sources);
-		String sourceCode = sources.readContent(sources.getSourceFiles().get(1));
+		String fooSourceCode = sources.readContent(sources.getSourceFiles().get(0));
 		assertThat(
-			RastRootHelper.retrieveTokens(rastRoot, sourceCode, barM1, false),
+			RastRootHelper.retrieveTokens(root, fooSourceCode, fooM1, false),
+			is(Arrays.asList("/**", "A", "javadoc", "comment.", "@param", "arg", "*/", "public", "void", "m1", "(", "String", "arg", ")", "{", "}"))
+		);
+		
+		String barSourceCode = sources.readContent(sources.getSourceFiles().get(1));
+		assertThat(
+			RastRootHelper.retrieveTokens(root, barSourceCode, barM1, false),
 			is(Arrays.asList("public", "void", "m1", "(", "String", "arg", ")", "{", "m2", "(", ")", ";", "}"))
 		);
 		
 		assertThat(
-			RastRootHelper.retrieveTokens(rastRoot, sourceCode, barM1, true),
+			RastRootHelper.retrieveTokens(root, barSourceCode, barM1, true),
 			is(Arrays.asList("m2", "(", ")", ";"))
 		);
 	}
