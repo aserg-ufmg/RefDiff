@@ -189,8 +189,6 @@ public class RastComparator {
 						PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), 1.0);
 						if (sameName(n1, n2)) {
 							candidates.add(candidate);
-						} else if (sameLocation(n1, n2)) {
-							candidates.add(candidate);
 						}
 					}
 				}
