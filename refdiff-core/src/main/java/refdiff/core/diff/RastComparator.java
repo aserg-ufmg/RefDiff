@@ -115,6 +115,8 @@ public class RastComparator {
 			findMatchesById();
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
+			findMatchesByChildren();
+			createRelationshipsForMatchings();
 			findPullPushDownAbstract();
 			findAdditionalPullUpAndPushDown();
 			inferExtractSuper();
@@ -177,8 +179,25 @@ public class RastComparator {
 			for (PotentialMatch candidate : candidates) {
 				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
 			}
-			
-			createRelationshipsForMatchings();
+		}
+		
+		private void findMatchesByChildren() {
+			List<PotentialMatch> candidates = new ArrayList<>();
+			for (RastNode n1 : removed) {
+				for (RastNode n2 : added) {
+					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && existsMatchingChild(n1, n2)) {
+						PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), 1.0);
+						if (sameName(n1, n2)) {
+							candidates.add(candidate);
+						} else if (sameLocation(n1, n2)) {
+							candidates.add(candidate);
+						}
+					}
+				}
+			}
+			for (PotentialMatch candidate : candidates) {
+				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
+			}
 		}
 		
 		private Optional<RelationshipType> findRelationshipForCandidate(RastNode n1, RastNode n2) {
@@ -520,6 +539,45 @@ public class RastComparator {
 		
 		private boolean added(RastNode n) {
 			return this.added.contains(n);
+		}
+		
+		private boolean childrenMatch(RastNode n1, RastNode n2) {
+			boolean existsChildMatch = false;
+			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
+				return false;
+			}
+			for (RastNode n1Child : n1.getNodes()) {
+				Optional<RastNode> maybeN2Child = matchingNodeAfter(n1Child);
+				if (maybeN2Child.isPresent()) {
+					if (childOf(maybeN2Child.get(), n2)) {
+						existsChildMatch = true;
+					} else {
+						return false;
+					}
+				}
+			}
+			for (RastNode n2Child : n2.getNodes()) {
+				Optional<RastNode> maybeN1Child = matchingNodeBefore(n2Child);
+				if (maybeN1Child.isPresent() && !childOf(maybeN1Child.get(), n1)) {
+					return false;
+				}
+			}
+			return existsChildMatch;
+		}
+		
+		private boolean existsMatchingChild(RastNode n1, RastNode n2) {
+			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
+				return false;
+			}
+			for (RastNode n1Child : n1.getNodes()) {
+				Optional<RastNode> maybeN2Child = matchingNodeAfter(n1Child);
+				if (maybeN2Child.isPresent()) {
+					if (childOf(maybeN2Child.get(), n2)) {
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 		
 		private List<RastNode> children(HasChildrenNodes nodeWithChildren, Predicate<RastNode> predicate) {

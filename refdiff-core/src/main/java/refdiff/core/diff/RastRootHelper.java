@@ -177,6 +177,10 @@ public class RastRootHelper<T> {
 		return n1.getType().equals(n2.getType());
 	}
 	
+	public static boolean childOf(RastNode n1, RastNode n2) {
+		return n1.getParent().isPresent() && n1.getParent().get().equals(n2);
+	}
+	
 	public void printRelationships(PrintStream out) {
 		out.print("Relationships:\n");
 		for (RastNodeRelationship rel : rastRoot.getRelationships()) {

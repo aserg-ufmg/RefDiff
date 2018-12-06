@@ -177,6 +177,22 @@ public class TestRastComparator {
 		));
 	}
 	
+	@Test
+	public void shouldMatchMoveByMatchingChildren() throws Exception {
+		assertThat(diff("moveByMatchingChildren"), containsOnly(
+			relationship(RelationshipType.MOVE, node("p1.A"), node("p2.A")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p2.A", "m1()"))
+		));
+	}
+	
+	@Test
+	public void shouldMatchRenameByMatchingChildren() throws Exception {
+		assertThat(diff("renameByMatchingChildren"), containsOnly(
+			relationship(RelationshipType.RENAME, node("p1.A"), node("p1.B")),
+			relationship(RelationshipType.SAME, node("p1.A", "m1()"), node("p1.B", "m1()"))
+		));
+	}
+	
 	private RastDiff diff(String folder) throws Exception {
 		String basePath = "test-data/diff/" + folder;
 		SourceFolder sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".java");
