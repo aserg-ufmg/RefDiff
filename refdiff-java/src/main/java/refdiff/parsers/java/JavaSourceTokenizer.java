@@ -12,7 +12,7 @@ import refdiff.core.rast.TokenPosition;
 
 public class JavaSourceTokenizer {
 	
-	private IScanner scanner = ToolFactory.createScanner(true, true, false, "1.8");
+	private IScanner scanner = ToolFactory.createScanner(false, true, false, "1.8");
 	
 	public List<TokenPosition> tokenize(char[] charArray) {
 		try {
