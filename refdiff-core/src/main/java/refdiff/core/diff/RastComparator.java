@@ -115,7 +115,7 @@ public class RastComparator {
 			findMatchesById();
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
-			findMatchesByChildren();
+			//findMatchesByChildren();
 			createRelationshipsForMatchings();
 			findPullPushDownAbstract();
 			findAdditionalPullUpAndPushDown();
