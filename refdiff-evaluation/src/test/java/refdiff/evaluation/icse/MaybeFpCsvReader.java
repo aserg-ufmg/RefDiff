@@ -31,8 +31,19 @@ public class MaybeFpCsvReader {
 					String key = commitUrl + " " + desc;
 					MaybeFpRow row = map.get(key);
 						if (row != null) {
+							
 							String fResult = row.resultA.equals(row.resultB) ? row.resultA : "FP?";
-							System.out.printf("\t%s\t%s\t%s\t%s\t%s", row.resultA, row.commentA, row.resultB, row.commentB, fResult);
+							System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s", row.resultA, row.commentA, row.resultB, row.commentB, fResult, row.resultC, row.commentC);
+							
+							/*
+							boolean extractGetterSetter = refType.equals("Extract Method") && (n2.contains(".get") || n2.contains(".set")); 
+							boolean inlineGetterSetter = refType.equals("Inline Method") && (n1.contains(".get") || n1.contains(".set"));
+							if (extractGetterSetter) {
+								System.out.print("\t\tExtract getter/setter");
+							} else if (inlineGetterSetter) {
+								System.out.print("\t\tInline getter/setter");
+							}
+							*/
 						} else {
 							System.out.printf("\t\t\t\t\t%s", result);
 						}
@@ -67,6 +78,8 @@ public class MaybeFpCsvReader {
 						row.commentA = parts[6];
 						row.resultB = parts[7];
 						row.commentB = parts[8];
+						row.resultC = parts[10];
+						row.commentC = parts[11];
 						map.put(row.commitUrl + " " + row.description, row);
 					}
 				}
@@ -82,6 +95,8 @@ public class MaybeFpCsvReader {
 		public String commentA;
 		public String resultB;
 		public String commentB;
+		public String resultC;
+		public String commentC;
 		
 		@Override
 		public String toString() {
