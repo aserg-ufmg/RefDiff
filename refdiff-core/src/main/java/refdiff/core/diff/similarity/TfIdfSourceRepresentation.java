@@ -51,20 +51,26 @@ public class TfIdfSourceRepresentation {
 		double idfu = 0.0;
 		double idfd = 0.0;
 		for (String key : keys) {
-			int c1 = tokens.getMultiplicity(key);
-			int c2 = tokens2.getMultiplicity(key);
-			idfu += Math.min(c1, c2) * vocabulary.getIdf(key);
-			idfd += Math.max(c1, c2) * vocabulary.getIdf(key);
+			double c1 = tf(tokens.getMultiplicity(key));
+			double c2 = tf(tokens2.getMultiplicity(key));
+			double idf = vocabulary.getIdf(key);
+			idfu += Math.min(c1 * idf, c2 * idf);
+			idfd += Math.max(c1 * idf, c2 * idf);
 		}
 		if (partial) {
 			double idfp = 0.0;
 			for (String key : tokens.asSet()) {
-				int c1 = tokens.getMultiplicity(key);
-				idfp += c1 * vocabulary.getIdf(key);
+				double idf = vocabulary.getIdf(key);
+				double c1 = tf(tokens.getMultiplicity(key));
+				idfp += c1 * idf;
 			}
 			return idfu / idfp;
 		}
 		return idfu / idfd;
+	}
+	
+	private double tf(int multiplicity) {
+		return Math.log(1.0 + multiplicity);
 	}
 
 }
