@@ -70,7 +70,8 @@ public class TfIdfSourceRepresentation {
 	}
 	
 	private double tf(int multiplicity) {
-		return Math.log(1.0 + multiplicity);
+		//return Math.log(1.0 + multiplicity);
+		return multiplicity;
 	}
 
 }
