@@ -240,7 +240,7 @@ public class ResultComparator {
 		out.println();
 	}
 	
-	private String format(RefactoringRelationship r) {
+	public static String format(RefactoringRelationship r) {
 		String result = String.format("%s\t%s\t%s", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
 		Relationship rr = r.getRastRelationship();
 		if (rr != null) {

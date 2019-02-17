@@ -28,7 +28,7 @@ public class RunIcseEval2 {
 	}
 	
 	public void run() throws Exception {
-		IcseDataset data = new IcseDataset();
+		IcseDataset data = new IcseDataset(false);
 		List<RefactoringSet> expected = data.getExpected();
 		
 		ResultComparator rc = new ResultComparator();
@@ -59,7 +59,7 @@ public class RunIcseEval2 {
 //			"e813a0be86c87366157a0201e6c61662cadee586",
 //			"72b5348307d86b1a118e546c24d97f1ac1895bdb",
 //			"46b0d84de9c309bca48a99e572e6611693ed5236",
-			"669b96c8aa4ed5134617932118de563bd4c34066"
+			"8f446b6ddf540e1b1fefca34dd10f45ba7256095"
 			//"b0938501f1014cf663e33b44ed5bb9b24d19a358"
 			));
 		

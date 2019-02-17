@@ -2430,49 +2430,49 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public add(handle EventFactHandle) : void extracted from public assertFact(context Object, fact InternalFactHandle, pctx PropagationContext, workingMemory InternalWorkingMemory) : boolean in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "It is extract and move since the method is moved to the inner class",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public peek() : EventFactHandle extracted from public assertFact(context Object, fact InternalFactHandle, pctx PropagationContext, workingMemory InternalWorkingMemory) : boolean in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "It is extract and move since the method is moved to the inner class",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public peek() : EventFactHandle extracted from public retractFact(context Object, fact InternalFactHandle, pctx PropagationContext, workingMemory InternalWorkingMemory) : void in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "It is extract and move since the method is moved to the inner class",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public peek() : EventFactHandle extracted from public expireFacts(context Object, pctx PropagationContext, workingMemory InternalWorkingMemory) : void in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "<p>Extract and Move to the inner class.</p><p>Since RefDiff does not detect 'Extract and Move refactoring' we accept it as CTP.</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public poll() : EventFactHandle extracted from public retractFact(context Object, fact InternalFactHandle, pctx PropagationContext, workingMemory InternalWorkingMemory) : void in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "It is extract and move since the method is moved to the inner class",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public remove() : EventFactHandle extracted from public expireFacts(context Object, pctx PropagationContext, workingMemory InternalWorkingMemory) : void in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "It is extract and move since the method is moved to the inner class",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public remove(handle EventFactHandle) : void extracted from public retractFact(context Object, fact InternalFactHandle, pctx PropagationContext, workingMemory InternalWorkingMemory) : void in class org.drools.core.rule.SlidingTimeWindow",
         "comment": "It is extract and move since the method is moved to the inner class",
         "validation": "CTP",
@@ -4496,7 +4496,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": "Matin, Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setAdditionalEdgeField(edgePointer long, value int) : void extracted from public setAdditionalEdgeField(edgePointer long, value int) : void in class com.graphhopper.storage.GraphHopperStorage",
         "comment": "It is extract and move refactoring, since it is moved to class BaseGraph.java. Since RefDiff does not detect extract and move we accept it conditinally",
         "validation": "CTP",
@@ -4684,7 +4684,7 @@
         "detectionTools": "RefactoringMiner",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public SyncAsync() : IBusConfiguration extracted from public testHandleMethodAccessEL() : void in class net.engio.mbassy.ConditionalHandlers",
         "comment": "<p>Ex and move method</p>",
         "validation": "CTP",
@@ -4698,28 +4698,28 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public SyncAsync() : IBusConfiguration extracted from public testSimpleStringCondition() : void in class net.engio.mbassy.ConditionalHandlers",
         "comment": "<p>ex N move</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public SyncAsync() : IBusConfiguration extracted from public testNotMatchingAnyCondition() : void in class net.engio.mbassy.ConditionalHandlers",
         "comment": "<p>ex and Move</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public SyncAsync() : IBusConfiguration extracted from public testHandleCombinedEL() : void in class net.engio.mbassy.ConditionalHandlers",
         "comment": "<p>Extract and move</p><p>&nbsp;</p><p>&nbsp;</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public SyncAsync() : IBusConfiguration extracted from public testSimpleNumberCondition() : void in class net.engio.mbassy.ConditionalHandlers",
         "comment": "<p>added</p><p>Extract and move to other class. Since RefdDiff does not detect extract and move we consider it as CTP.</p>",
         "validation": "CTP",
@@ -5061,7 +5061,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getBackgroundCompactionTaskSubmitter() : Runnable extracted from protected setup() : void in class org.apache.cassandra.service.CassandraDaemon",
         "comment": "<p>Extract and Move to other class.</p><p>Since RefDiff does not support 'Extract and Move' refactoring we consider it as CTP.</p>",
         "validation": "CTP",
@@ -6662,7 +6662,7 @@
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public stopScanner() : void extracted from public restartWebApp(reconfigureScanner boolean) : void in class org.eclipse.jetty.maven.plugin.JettyRunMojo",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
@@ -6752,7 +6752,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setValue(value boolean) : void extracted from public init(widget AceEditorWidget, position Position) : void in class org.rstudio.studio.client.workbench.views.source.editors.text.ChunkOptionsPopupPanel",
         "comment": "<p>Extract and Move to the other class.</p>",
         "validation": "CTP",
@@ -7210,112 +7210,112 @@
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getActionKey() : String extracted from public getActionKey() : String in class com.jfinal.core.ActionInvocation",
         "comment": "<p>Extract and Move to other class</p><p>Same as: <small> http://refactoring.encs.concordia.ca/oracle/refactoring-details/1118473/935</small></p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getControllerKey() : String extracted from public getControllerKey() : String in class com.jfinal.core.ActionInvocation",
         "comment": "<p>Extract and Move to other class.</p><p>Same as <small>: http://refactoring.encs.concordia.ca/oracle/refactoring-details/1118473/935</small></p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getMethod() : Method extracted from public getMethod() : Method in class com.jfinal.core.ActionInvocation",
         "comment": "<p>Extract and Move to other class.</p><p>Same case as: Same as : http://refactoring.encs.concordia.ca/oracle/refactoring-details/1118473/935</p><p>&nbsp;</p><p>&nbsp;</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getMethodName() : String extracted from public getMethodName() : String in class com.jfinal.core.ActionInvocation",
         "comment": "<p>Extract and Move to the inner class.</p><p>Same as : http://refactoring.encs.concordia.ca/oracle/refactoring-details/1118473/935</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getViewPath() : String extracted from public getViewPath() : String in class com.jfinal.core.ActionInvocation",
         "comment": "<p>Extract and Move to the inner class.</p><p>The class ActionInvocation is renamed to Invocation which is TP. However, this extract method is FP.</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected isPrimaryKey(colName String, pKeys String[]) : boolean extracted from public forDbUpdate(tableName String, primaryKey String, id Object, record Record, sql StringBuilder, paras List) : void in class com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect",
         "comment": "<p>Extract and Move to other class.</p><p>The method 'protected isPrimaryKey(colName String, pKeys String[]) : boolean' is added to superclass&nbsp; of AnsiSqlDialect.</p><p>&nbsp;</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected isPrimaryKey(colName String, pKeys String[]) : boolean extracted from public forDbUpdate(tableName String, primaryKey String, id Object, record Record, sql StringBuilder, paras List) : void in class com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect",
         "comment": "<p>Extract and Move to other class.</p><p>The method 'protected isPrimaryKey(colName String, pKeys String[]) : boolean'&nbsp; is added to the superClass PostgreSqlDialect.</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected isPrimaryKey(colName String, pKeys String[]) : boolean extracted from public forDbUpdate(tableName String, primaryKey String, id Object, record Record, sql StringBuilder, paras List) : void in class com.jfinal.plugin.activerecord.dialect.OracleDialect",
         "comment": "<p>Extract and Move to the other class.</p><p>The method 'protected isPrimaryKey(colName String, pKeys String[]) : boolean' is moved to the superClass&nbsp; of OracleDialect.</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected isPrimaryKey(colName String, pKeys String[]) : boolean extracted from public forDbUpdate(tableName String, primaryKey String, id Object, record Record, sql StringBuilder, paras List) : void in class com.jfinal.plugin.activerecord.dialect.MysqlDialect",
         "comment": "<p>Extract and Move to other class.</p><p>&nbsp;The method 'protected isPrimaryKey(colName String, pKeys String[]) : boolean'&nbsp;&nbsp; is added to the superclass of MysqlDialect.</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected isPrimaryKey(colName String, pKeys String[]) : boolean extracted from public forDbUpdate(tableName String, primaryKey String, id Object, record Record, sql StringBuilder, paras List) : void in class com.jfinal.plugin.activerecord.dialect.Sqlite3Dialect",
         "comment": "<p>Extract and Move to&nbsp; other class.</p><p>The method 'protected isPrimaryKey(colName String, pKeys String[]) : boolean' is added to the superclass of Sqlite3Dialect</p><p>&nbsp;</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected isPrimaryKey(colName String, pKeys String[]) : boolean extracted from public forModelSave(table Table, attrs Map, sql StringBuilder, paras List) : void in class com.jfinal.plugin.activerecord.dialect.OracleDialect",
         "comment": "<p>Extract and Move to other class.</p><p>The method 'protected isPrimaryKey(colName String, pKeys String[]) : boolean' is added in superClass of com.jfinal.plugin.activerecord.dialect.OracleDialect .java</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected trimPrimaryKeys(pKeys String[]) : void extracted from public forDbFindById(tableName String, primaryKey String, columns String) : String in class com.jfinal.plugin.activerecord.dialect.MysqlDialect",
         "comment": "<p>Extract and Move to other class.</p><p>Same as refactoring with ID= 946.</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected trimPrimaryKeys(pKeys String[]) : void extracted from public forDbFindById(tableName String, primaryKey String, columns String) : String in class com.jfinal.plugin.activerecord.dialect.OracleDialect",
         "comment": "<p>Extract and Move to other class.</p><p>Same as refactoring with ID = 946.</p><p>&nbsp;</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected trimPrimaryKeys(pKeys String[]) : void extracted from public forDbFindById(tableName String, primaryKey String, columns String) : String in class com.jfinal.plugin.activerecord.dialect.Sqlite3Dialect",
         "comment": "<p>Extract and Move to other class.</p><p>Same as refactoring with ID =946.</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected trimPrimaryKeys(pKeys String[]) : void extracted from public forDbFindById(tableName String, primaryKey String, columns String) : String in class com.jfinal.plugin.activerecord.dialect.AnsiSqlDialect",
         "comment": "<p>Extract and Move to the other class.</p><p>Same as refactoring with ID = 946.</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected trimPrimaryKeys(pKeys String[]) : void extracted from public forDbFindById(tableName String, primaryKey String, columns String) : String in class com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect",
         "comment": "<p>Extract and Move to the other class.</p><p>We cannot even consider it as Extract and Move.</p><p>&nbsp;</p><p>&nbsp;</p>",
         "validation": "FP",
@@ -7886,7 +7886,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected createPrepareRpcOptions() : RpcOptions extracted from protected prepareOnAffectedNodes(ctx TxInvocationContext, command PrepareCommand, recipients Collection, ignored boolean) : void in class org.infinispan.interceptors.distribution.VersionedDistributionInterceptor",
         "comment": "<p>Extract and Move to the other class.</p><p>Moved to class <span class='blob-code-inner'><span class='pl-smi'>org.infinispan.interceptors.distribution</span>.<a class='link-gray-dark' title='core/src/main/java/org/infinispan/interceptors/distribution/TxDistributionInterceptor.java' href='https://github.com/infinispan/infinispan/commit/ce4f6292d6350a2c6b82d995352fdf6d07042c9c#diff-1f89fae5cdc8e35ed85504c05f20d66e'>TxDistributionInterceptor.java</a></span></p>",
         "validation": "CTP",
@@ -8958,14 +8958,14 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method package setPassword(user User, session Session, password Expression) : void extracted from public update() : int in class org.lealone.command.ddl.AlterUser",
         "comment": "<p>Extract and Move to other&nbsp; class.</p><p>&nbsp;setPassword is in class <span class='blob-code-inner'><span class='pl-smi'>CreateUser.</span></span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method package setSaltAndHash(user User, session Session, salt Expression, hash Expression) : void extracted from public update() : int in class org.lealone.command.ddl.AlterUser",
         "comment": "<p>Extract and Move to other&nbsp; class.</p><p>setSaltAndHash(..) is in class <span class='blob-code-inner'><span class='pl-smi'>CreateUser.</span></span></p>",
         "validation": "CTP",
@@ -8988,7 +8988,7 @@
         "detectionTools": "RefactoringMiner",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public matches(stacks Collection) : RecipeMatch.Match extracted from public matches(stacks ItemStack[]) : RecipeMatch.Match in class tconstruct.library.modifiers.Modifier",
         "comment": "<p>For me, it is an 'extract class' refactoring. Class RecipeMatchRegistry is extracted from Modifier.</p><p>See that RecipeMatchRegistry is an attribute of class Modifier in the refactored version, and the 3 addItem(..) methods in the refactored version of Modifier are now delegating to the 3 addItem(..) in RecipeMatchRegistry.</p><p>Nikos: This method has been extracted and moved to newly added class <span class='blob-code-inner'><span class='pl-en'>RecipeMatchRegistry. Consider as CTP<br /></span></span></p>",
         "validation": "CTP",
@@ -9023,14 +9023,14 @@
         "detectionTools": "RefDiff",
         "validators": "Laleh"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public addItem(oredictItem String) : void extracted from public addItem(oredictItem String) : void in class tconstruct.library.modifiers.Modifier",
         "comment": "<p>For me, it is an 'extract class' refactoring. Class&nbsp;<span class='blob-code-inner'><span class='pl-en'>RecipeMatchRegistry</span></span> is extracted from Modifier.</p><p>See that <span class='blob-code-inner'><span class='pl-smi x x-first x-last'>RecipeMatchRegistry is an attribute of class&nbsp; Modifier in the refactored version, and the&nbsp; 3 </span></span><span class='blob-code-inner'><span class='pl-en'>addItem(..)</span></span><span class='blob-code-inner'><span class='pl-smi x x-first x-last'><span class='pl-en'> methods in the refactored version of Modifier are now </span></span></span><span class='blob-code-inner'><span class='pl-smi x x-first x-last'><span class='pl-en'>delegating to the 3 addItem(..) in RecipeMatchRegistry.</span></span></span></p><p><span class='blob-code-inner'><span class='pl-smi x x-first x-last'><span class='pl-en'>Nikos: This method has been extracted and moved to newly added class RecipeMatchRegistry. Consider as CTP</span></span></span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Davood, Nikos"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public addItem(block Block, amountMatched int) : void extracted from public addItem(block Block, count int) : void in class tconstruct.library.modifiers.Modifier",
         "comment": "<p>For me, it is an 'extract class' refactoring. Class&nbsp;<span class='blob-code-inner'><span class='pl-en'>RecipeMatchRegistry</span></span> is extracted from Modifier.</p><p>See that <span class='blob-code-inner'><span class='pl-smi x x-first x-last'>RecipeMatchRegistry is an attribute of class&nbsp; Modifier in the refactored version, and the&nbsp; 3 </span></span><span class='blob-code-inner'><span class='pl-en'>addItem(..)</span></span><span class='blob-code-inner'><span class='pl-smi x x-first x-last'><span class='pl-en'> methods in the refactored version of Modifier are now </span></span></span><span class='blob-code-inner'><span class='pl-smi x x-first x-last'><span class='pl-en'>delegating to the 3 addItem(..) in RecipeMatchRegistry.</span></span></span></p><p><span class='blob-code-inner'><span class='pl-smi x x-first x-last'><span class='pl-en'>Nikos: This method has been extracted and moved to newly added class RecipeMatchRegistry. Consider as CTP</span></span></span></p>",
         "validation": "CTP",
@@ -9354,7 +9354,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public hasTextGen(node SNode) : boolean extracted from public appendNode(node SNode) : void in class jetbrains.mps.text.impl.TextGenSupport",
         "comment": "<p>Extract and Move to other class.</p><p>Laleh: The body of 'public appendNode(node SNode) : void' in base version is identical to the new method '<span class='blob-code-inner'><span class='pl-k'>private</span> <span class='pl-en'>doAppendNode</span>(<span class='pl-smi'>SNode</span> <span class='pl-v'>node</span>): void</span>' in the refactored version.</p><p>The body of 'public appendNode(node SNode) : void' in the refactored version is completely changed and there is a call to&nbsp; <span class='blob-code-inner'><span class='pl-en'>doAppendNode</span>(<span class='pl-smi'>SNode</span> <span class='pl-v'>node</span>)</span><span class='blob-code-inner'><span class='pl-en'>.</span></span></p><p>For me the body of appendNode is first modifed (code added to it) and then part of its code is refactored to <span class='blob-code-inner'><span class='pl-en'>doAppendNode and not to hasTextGen(node SNode). So i am for a FP.<br /></span></span></p><p>&nbsp;</p>",
         "validation": "FP",
@@ -9751,14 +9751,14 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected convertToDrel(relNode RelNode) : DrillRel extracted from private convertToDrel(relNode RelNode, schema AbstractSchema, tableName String, partitionColumns List) : DrillRel in class org.apache.drill.exec.planner.sql.handlers.CreateTableHandler",
         "comment": "<p>Extract and Move to other class.</p><p>The convertToDrel(relNode RelNode)&nbsp; in the parent class (<span class='pl-e'>DefaultSqlHandler</span>) is extratced form convertToDrel(relNode RelNode, schema AbstractSchema, tableName String, partitionColumns List) .</p><p>See refacoting: http://refactoring.encs.concordia.ca/oracle/refactoring-details/1121732/1073</p><p>So for this class consider it as CTP since it is 'extratc and move to other class'</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected validateAndConvert(sqlNode SqlNode) : ConvertedRelNode extracted from public getPlan(node SqlNode) : PhysicalPlan in class org.apache.drill.exec.planner.sql.handlers.ExplainHandler",
         "comment": "<p>Extratc and Move to other class.</p><p>The validateAndConvert(sqlNode SqlNode) in the parent class (DefaultSqlHandler) is extracted from getPlan(node SqlNode).</p><p>See refactroing:&nbsp;http://refactoring.encs.concordia.ca/oracle/refactoring-details/1121732/1072</p><p>So for this class we should consider it as Extract and move to other (here parent) class.</p>",
         "validation": "CTP",
@@ -10203,14 +10203,14 @@
         "detectionTools": "RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public close() : void extracted from public close() : void in class org.neo4j.kernel.impl.transaction.log.PhysicalTransactionCursor",
         "comment": "<p>Extract and Move to other inner class.</p><p>Statement in method close() is extracted and moved to method close() in class LogEntryCursor.java (is an added class).</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public next() : boolean extracted from public next() : boolean in class org.neo4j.kernel.impl.transaction.log.PhysicalTransactionCursor",
         "comment": "<p>Extract and Move to other inner class.</p><p>Statements in method next() are extracted and move to method next() in class LogEntryCursor.java (is an added class).</p>",
         "validation": "CTP",
@@ -10231,7 +10231,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": "Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public start(logVersion long) : LogPosition extracted from private buildTransactionLogs(storeDir File, config Config, logProvider LogProvider, labelScanStore LabelScanStore, fileSystemAbstraction FileSystemAbstraction, neoStore NeoStore, cacheAccess CacheAccessBackDoor, indexingService IndexingService, indexProviders Iterable) : TransactionLogModule in class org.neo4j.kernel.NeoStoreDataSource",
         "comment": "<p>Extract and Move to other class</p><p>Since RefDiff does not detect&nbsp; 'Extract and Move' we consider it as CTP.</p><p>The method start(logVersion long) is extratced and moved to LogPosition.</p>",
         "validation": "CTP",
@@ -10635,7 +10635,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected getTargetExecutionCallback() : ExecutionCallback extracted from public invoke() : InternalCompletableFuture in class com.hazelcast.spi.impl.operationservice.impl.InvocationBuilderImpl",
         "comment": "<p>Extract and Move to the parent class</p><p>Since RefDiff does not detects 'Extract and Move', we consider it as CTP. </p>",
         "validation": "CTP",
@@ -11369,14 +11369,14 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method package updatedChannel(channel StoredClientChannel) : void extracted from private updateChannelInWallet() : void in class org.bitcoinj.protocols.channels.PaymentChannelClientState",
         "comment": "<p>Extract and Move to other&nbsp; class.</p><p>Move to class StoredPaymentChannelServerStates</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public updatedChannel(channel StoredServerChannel) : void extracted from private updateChannelInWallet() : void in class org.bitcoinj.protocols.channels.PaymentChannelServerState",
         "comment": "<p>Extract and Move to other&nbsp; class.</p><p>Moved to class StoredPaymentChannelServerStates</p>",
         "validation": "CTP",
@@ -11415,35 +11415,35 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public newSha256Digest() : MessageDigest extracted from public hash(contents byte[]) : Sha256Hash in class org.bitcoinj.core.Sha256Hash",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public newSha256Digest() : MessageDigest extracted from private readBinary(inputStream InputStream) : Sha256Hash in class org.bitcoinj.core.CheckpointManager",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public newSha256Digest() : MessageDigest extracted from public executeScript(txContainingThis Transaction, index long, script Script, stack LinkedList, enforceNullDummy boolean) : void in class org.bitcoinj.script.Script",
         "comment": "<p>Extract and Move to other&nbsp; class</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public newSha256Digest() : MessageDigest extracted from public MnemonicCode(wordstream InputStream, wordListDigest String) in class org.bitcoinj.crypto.MnemonicCode",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public newSha256Digest() : MessageDigest extracted from private writeBinaryCheckpoints(checkpoints TreeMap, file File) : void in class org.bitcoinj.tools.BuildCheckpoints",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "CTP",
@@ -12114,7 +12114,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood, Nikos"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public requestNames() : List extracted from public metadata() : List in class org.apache.cassandra.cql3.UntypedResultSet.FromResultSet",
         "comment": "<p>Extract and Move to other&nbsp; class</p><p>Moved to class&nbsp; ResultSet.<span class='pl-en'>Metadata</span></p>",
         "validation": "CTP",
@@ -13098,7 +13098,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public describe() : String extracted from private applyPrintSettings(matchers List, printSettings PrintSettings) : Iterator in class org.mockito.internal.matchers.MatchersPrinter",
         "comment": "<p>RefDiff detetcedit as Extartc Method but if it was TP it should have been under Extratc and move since method describe() is added in class <span class='blob-code-inner'><span class='pl-en'>MockitoMatcher.</span></span></p><p><span class='blob-code-inner'><span class='pl-en'>Davood: This is FP not because it is moved to another class, but because the functionality in the extracted method does not have anything to do with the original code. Basically, nothing can be extracted:</span></span></p><p><span class='blob-code-inner'><span class='pl-en'><code>out<span class='pl-k'>.</span>add(matcher)</code> =&gt;&nbsp;<code>out<span class='pl-k'>.</span>add(<span class='pl-k x x-first'>new</span> <span class='pl-smi x'>FormattedText</span><span class='x x-last'>(</span>matcher<span class='pl-k x x-first'>.</span><span class='x x-last'>describe())</span>);</code></span></span></p>",
         "validation": "FP",
@@ -13438,35 +13438,35 @@
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public addException(siteClass Class, desc String, exceptionClass Class, nSkip int, nFire int) : Builder extracted from public checkedInjection() : void in class org.apache.drill.exec.testing.TestExceptionInjection",
         "comment": "<p>Extract and Move to other&nbsp; class</p><p>Moved to class <span class='blob-code-inner'><span class='pl-en'>Controls.<span class='pl-smi'>Builder</span> (it as an added class)</span></span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public addException(siteClass Class, desc String, exceptionClass Class, nSkip int, nFire int) : Builder extracted from public skipAndLimit() : void in class org.apache.drill.exec.testing.TestExceptionInjection",
         "comment": "<p>Extract and Move to other&nbsp; class</p><p>Moved to class <span class='blob-code-inner'><span class='pl-en'>Controls.<span class='pl-smi'>Builder</span> (it as an added class)</span></span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public addExceptionOnBit(siteClass Class, desc String, exceptionClass Class, endpoint DrillbitEndpoint, nSkip int, nFire int) : Builder extracted from public injectionOnSpecificBit() : void in class org.apache.drill.exec.testing.TestExceptionInjection",
         "comment": "<p>Extract and Move to other class.</p><p>Moved to class <span class='blob-code-inner'><span class='pl-en'>Controls.<span class='pl-smi'>Builder</span> (it is an added class)</span></span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setSessionOption(drillClient DrillClient, option String, value String) : void extracted from private setSessionOption(option String, value String) : void in class org.apache.drill.exec.server.TestDrillbitResilience",
         "comment": "<p>Detected&nbsp; as Extract and Move to other class.&nbsp;</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public validateControlsString(jsonString String) : void extracted from private validateControlsString(controls String) : void in class org.apache.drill.exec.testing.ControlsInjectionUtil",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "CTP",
@@ -13902,14 +13902,14 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getTempDir(dirName String) : String extracted from private generateTestData() : void in class org.apache.drill.exec.store.hive.HiveTestDataGenerator",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to BaseTestQuery</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public createNonCloseableClientWithCaching(hiveConf HiveConf, hiveConfigOverride Map) : DrillHiveMetaStoreClient extracted from public HiveSchemaFactory(plugin HiveStoragePlugin, name String, hiveConfigOverride Map) in class org.apache.drill.exec.store.hive.schema.HiveSchemaFactory",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
@@ -14603,7 +14603,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private tokenizeCmd(cmd String) : String[] extracted from private cliToBeelineCmd(cmd String) : String in class org.apache.hive.beeline.BeeLine",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
@@ -15655,7 +15655,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public contains(name String) : boolean extracted from protected createViews() : void in class org.apache.cordova.CordovaActivity",
         "comment": "<p>Extract and Move to other&nbsp; class</p>",
         "validation": "FP",
@@ -16308,42 +16308,42 @@
         "detectionTools": "RefDiff",
         "validators": "Matin"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public clearCachePointer() : void extracted from private clearCacheContent() : void in class com.orientechnologies.orient.core.index.hashindex.local.cache.O2QCache",
         "comment": "<p>Extract and Move to the inner class</p><p><span class='pl-en'>Extract and Move to OCacheEntry</span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public clearCachePointer() : void extracted from private clearPinnedPages() : void in class com.orientechnologies.orient.core.index.hashindex.local.cache.O2QCache",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to <span class='pl-en'>OCacheEntry</span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public clearCachePointer() : void extracted from private clearFile(fileId long) : void in class com.orientechnologies.orient.core.index.hashindex.local.cache.O2QCache",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to class <span class='pl-smi'>OCacheEntry</span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public clearCachePointer() : void extracted from private removeColdPagesWithCacheLock() : void in class com.orientechnologies.orient.core.index.hashindex.local.cache.O2QCache",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to <span class='blob-code-inner'><span class='pl-smi'>OCacheEntry</span></span></p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public clearCachePointer() : void extracted from private removeColdPagesWithoutCacheLock() : void in class com.orientechnologies.orient.core.index.hashindex.local.cache.O2QCache",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to class OCacheEntry</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public clearDirty() : void extracted from public release(cacheEntry OCacheEntry, writeCache OWriteCache) : void in class com.orientechnologies.orient.core.index.hashindex.local.cache.O2QCache",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to class OCacheEntry</p><p>&nbsp;</p><p>&nbsp;</p>",
         "validation": "CTP",
@@ -16646,7 +16646,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private hideEmojiPopup(expectingKeyboard boolean) : void extracted from public onClick(v View) : void in class org.thoughtcrime.securesms.ConversationActivity.ComposeKeyPressedListener",
         "comment": "<p>Extract and Move to the outer class</p>",
         "validation": "FP",
@@ -16660,7 +16660,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private hideEmojiPopup(expectingKeyboard boolean) : void extracted from public onFocusChange(v View, hasFocus boolean) : void in class org.thoughtcrime.securesms.ConversationActivity.ComposeKeyPressedListener",
         "comment": "<p>Extract and Move to the outer class</p>",
         "validation": "FP",
@@ -16841,7 +16841,7 @@
         "detectionTools": "RefactoringMiner",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected loadCode(data String, fileName String) : void extracted from public onResultReady(result LoaderResult) : void in class com.gh4a.activities.GistViewerActivity$1",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
@@ -16919,7 +16919,7 @@
         "detectionTools": "RefactoringMiner",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public onStatusMessage(termId int, termOffset int, receiverWindowLength int, srcAddress InetSocketAddress) : void extracted from private onStatusMessage(statusMsg StatusMessageFlyweight, srcAddress InetSocketAddress) : void in class uk.co.real_logic.aeron.driver.media.SendChannelEndpoint",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move class NetworkPublication</p>",
         "validation": "CTP",
@@ -19502,7 +19502,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": "Matin"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public readSettings() : MavenSettings extracted from public apply(session DefaultRepositorySystemSession, repositorySystem RepositorySystem) : void in class org.springframework.boot.cli.compiler.grape.SettingsXmlRepositorySystemSessionAutoConfiguration",
         "comment": "<p>Extract and Move to other class</p><p>Extract and Move to <span class='blob-code-inner'><span class='pl-en'>MavenSettingsReader</span></span></p>",
         "validation": "CTP",
@@ -23372,7 +23372,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public hasOverridingErrorResponseFormat() : boolean extracted from public buildErrorResponse(result RestLiServiceException) : ErrorResponse in class com.linkedin.restli.internal.server.methods.response.ErrorResponseBuilder",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
@@ -24015,7 +24015,7 @@
         "detectionTools": "RefDiff",
         "validators": "Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public createDescribeOperation(address PathAddress) : ModelNode extracted from public testDescribeHandler() : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemTestCase",
         "comment": "<p>Extract and Move to the inner class</p><p>What is being done in the extracted method is different than in the original code. I think this should be FP. This also relates to&nbsp;http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2841, since we did not accept it, this goes for FP.</p>",
         "validation": "FP",
@@ -24036,28 +24036,28 @@
         "detectionTools": "RefDiff",
         "validators": "Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public pathElement(name String) : PathElement extracted from private parseProperty(reader XMLExtendedStreamReader, address PathAddress, operations List) : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemXMLReader_7_0",
         "comment": "<p>Extract and Move to the inner class</p><p>I don't see any use of pathElement&nbsp;in the parseProperty method in&nbsp;JGroupsSubsystemXMLReader (to which the&nbsp;JGroupsSubsystemXMLReader_7_0 is renamed)</p><p>&nbsp;</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private parseProtocolAttribute(reader XMLExtendedStreamReader, index int, operation ModelNode) : void extracted from private parseTransport(reader XMLExtendedStreamReader, stackAddress PathAddress, operations List) : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemXMLReader_1_1",
         "comment": "<p>Extract and Move to the inner class</p><p>This is TP if we accept the move method&nbsp;http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2844</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private parseProtocolElement(reader XMLExtendedStreamReader, address PathAddress, operations Map) : void extracted from private parseTransport(reader XMLExtendedStreamReader, stackAddress PathAddress, operations List) : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemXMLReader_1_1",
         "comment": "<p>Extract and Move to the inner class</p><p>This is TP if we accept the move method as TP http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2844</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private parseStack(reader XMLExtendedStreamReader, subsystemAddress PathAddress, operations Map) : void extracted from private parseProtocol(reader XMLExtendedStreamReader, stackAddress PathAddress, operations List) : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemXMLReader_7_0",
         "comment": "<p>Extract and Move to the inner class</p><p>JGroupsSubsystemXMLReader_7_0 is renamed to&nbsp;JGroupsSubsystemXMLReader. In the target class,&nbsp;parseProtocol&nbsp;does not call&nbsp;parseStack&nbsp;so this should be FP</p>",
         "validation": "FP",
@@ -24085,7 +24085,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private require(reader XMLExtendedStreamReader, attribute Attribute) : String extracted from private parseTransport(reader XMLExtendedStreamReader, stackAddress PathAddress, operations List) : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemXMLReader_1_1",
         "comment": "<p>Extract and Move to the inner class</p>",
         "validation": "FP",
@@ -24162,14 +24162,14 @@
         "detectionTools": "RefDiff",
         "validators": "Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private buildKernelServices() : KernelServices extracted from public testParseAndMarshalModel() : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemTestCase",
         "comment": "<p>Extract and Move to the inner class</p><p>The method testParseAndMarshalModel() was detected by RefDiff to be moved from&nbsp;JGroupsSubsystemTestCase to SubsystemParsingTestCase (http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2850). That was marked as FP since the two classes are similar so there could be a move/rename class. to be found as move/rename. If we accept this, this can be TP similar to&nbsp;http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2876</p>",
         "validation": "CTP",
         "detectionTools": "RefDiff",
         "validators": "Davood, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method private buildKernelServices() : KernelServices extracted from public testDescribeHandler() : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemTestCase",
         "comment": "<p>Extract and Move to the inner class</p><p>The method testParseAndMarshalModel() was detected by RefDiff to be moved from&nbsp;JGroupsSubsystemTestCase to SubsystemParsingTestCase (http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2850). That was marked as FP since the two classes are similar so there could be a move/rename class. to be found as move/rename. If we accept this, this can be TP similar to&nbsp;http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2876</p>",
         "validation": "CTP",
@@ -24183,7 +24183,7 @@
         "detectionTools": "RefDiff",
         "validators": "Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method package pathElement(name String) : PathElement extracted from private parseTransport(reader XMLExtendedStreamReader, stackAddress PathAddress, operations List) : void in class org.jboss.as.clustering.jgroups.subsystem.JGroupsSubsystemXMLReader_1_1",
         "comment": "<p>Extract and Move to the inner class</p><p>If we accept&nbsp;http://refactoring.encs.concordia.ca/oracle/refactoring-details/1142116/2844 as TP, this can be TP</p>",
         "validation": "FP",
@@ -24530,7 +24530,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setUpProject(project Project) : ProjectInfo extracted from private initProject(descriptor LightProjectDescriptor) : void in class com.intellij.testFramework.LightPlatformTestCase",
         "comment": "<p>It is extracted and move to class <span class='blob-code-inner'><span class='pl-en'>LightProjectDescriptor. </span></span></p><p><span class='blob-code-inner'><span class='pl-en'>Since RefDiff does not detect <br /></span></span></p>",
         "validation": "CTP",
@@ -25129,7 +25129,7 @@
         "detectionTools": "RefactoringMiner",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setRequestTag(TAG Object) : AsyncHttpRequest extracted from public setTag(tag Object) : RequestHandle in class com.loopj.android.http.RequestHandle",
         "comment": "<p>Extract and Move to the inner class</p><p>&nbsp;</p><p>I could not find a compelling reason for this</p>",
         "validation": "FP",
@@ -25433,7 +25433,7 @@
         "detectionTools": "RefactoringMiner",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public channelHandlerContext(ctx ChannelHandlerContext) : void extracted from public setup() : void in class io.netty.handler.codec.http2.DefaultHttp2RemoteFlowControllerTest",
         "comment": "<p>Extract and Move to the inner class</p><p>No statement has been removed from setup()</p>",
         "validation": "FP",
@@ -28266,7 +28266,7 @@
         "detectionTools": "RefDiff",
         "validators": "Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public getMemberAddresses() : Collection extracted from public searchForOtherClusters() : void in class com.hazelcast.cluster.impl.TcpIpJoiner",
         "comment": "<p>Extract and Move to the inner class</p><p>This would be Extract and Move. The called method is not doing the same thing as the original code though</p>",
         "validation": "FP",
@@ -30294,7 +30294,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Nikos"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected logError(message String, throwable Throwable) : void extracted from public recordChildStats() : void in class cascading.stats.hadoop.BaseHadoopNodeStats",
         "comment": "<p>Extract and Move to the parent class</p><p>Moved to the class <span class='pl-en'>CascadingStats (which is parent of&nbsp; FlowNodeStats)</span></p>",
         "validation": "CTP",
@@ -30931,21 +30931,21 @@
         "detectionTools": "RefDiff",
         "validators": "Laleh, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setAscending(listId String) : void extracted from public clear() : TaskQueryBuilder in class org.jbpm.services.task.impl.TaskQueryBuilderImpl",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setAscending(listId String) : void extracted from public TaskQueryBuilderImpl(userId String, taskCmdService CommandService) in class org.jbpm.services.task.impl.TaskQueryBuilderImpl",
         "comment": "<p>Extract and Move to other class</p><p>When I consider only the moved statements, I conclude that it is FP. However, it might be TP if we semantically evaluate the statements before and after the move.</p><p>Unfortunately, Q<span class='blob-code-inner'><span class='x x-first x-last'>ueryData and QueryContex are external resources and I am not able to do such semantic analysis.</span></span></p><p>&nbsp;</p>",
         "validation": "FP",
         "detectionTools": "RefDiff",
         "validators": "Laleh, Automatic"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public setAscending(listId String) : void extracted from public getTasksByVariousFields(userId String, parameters Map, union boolean) : List in class org.jbpm.services.task.impl.TaskQueryServiceImpl",
         "comment": "<p>Extract and Move to other class</p>",
         "validation": "FP",
@@ -31315,7 +31315,7 @@
         "detectionTools": "RefactoringMiner, RefDiff",
         "validators": null
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method public assertUdfsEnabled(language String) : void extracted from public validate(state ClientState) : void in class org.apache.cassandra.cql3.statements.CreateFunctionStatement",
         "comment": "<p>Extract and Move to other class</p><p>Extract and move to UDFunction</p><p>&nbsp;</p>",
         "validation": "CTP",
@@ -34061,7 +34061,7 @@
         "detectionTools": "RefDiff",
         "validators": "Matin, Laleh, Davood"
     }, {
-        "type": "Extract and Move Method",
+        "type": "Extract And Move Method",
         "description": "Extract Method protected setInputOutput(cmd List, inputData File, outputDirectory File, typeName String, format Format) : String extracted from public convert(inputData File, outputDirectory File, typeName String, format OgrFormat, crs CoordinateReferenceSystem) : File in class org.geoserver.wfs.response.OGRWrapper",
         "comment": "<p>Extract and Move to other class</p><p>The actual scenario is:</p><p>1- we have an Extrract superclass org.geoserver.ogr.core.AbstractToolWrapper from class org.geoserver.wfs.response.OGRWrapper</p><p>see(http://refactoring.encs.concordia.ca/oracle/refactoring-details/1158913/4182)</p><p>2- then&nbsp; method public convert(inputData File, outputDirectory File, typeName String, format OgrFormat, crs CoordinateReferenceSystem) : File from class org.geoserver.wfs.response.OGRWrapper is pull up to public convert(inputData File, outputDirectory File, typeName String, format Format, crs CoordinateReferenceSystem) : File from class org.geoserver.ogr.core.AbstractToolWrapper</p><p>3- then in the after pull up refactoring we have the current extartc method refactoing. We consider it as CTP</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>",
         "validation": "CTP",

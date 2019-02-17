@@ -10,11 +10,17 @@ public class RefactoringDescriptionParser {
 	
 	private static ParserDefinition[] parsers = {
 		new ParserDefinition(RefactoringType.RENAME_CLASS, "Rename Class (.+) renamed to (.+)", type(1), type(2)),
+		// new
+		new ParserDefinition(RefactoringType.RENAME_CLASS, "Move And Rename Class (.+) moved to (.+)", type(1), type(2)),
 		new ParserDefinition(RefactoringType.MOVE_CLASS, "Move Class (.+) moved to (.+)", type(1), type(2)),
 		new ParserDefinition(RefactoringType.EXTRACT_OPERATION, "Extract Method (.+) extracted from (.+) in class (.+)", method(2, 3), method(1, 3)),
+		// new
+		new ParserDefinition(RefactoringType.EXTRACT_AND_MOVE_OPERATION, "Extract And Move Method (.+) extracted from (.+) in class (.+) & moved to class (.+)", method(2, 3), method(1, 4)),
 		new ParserDefinition(RefactoringType.RENAME_METHOD, "Rename Method (.+) renamed to (.+) in class (.+)", method(1, 3), method(2, 3)),
 		new ParserDefinition(RefactoringType.INLINE_OPERATION, "Inline Method (.+) inlined to (.+) in class (.+)", method(1, 3), method(2, 3)),
 		new ParserDefinition(RefactoringType.MOVE_OPERATION, "Move Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
+		// new 
+		new ParserDefinition(RefactoringType.MOVE_OPERATION, "Move Method (.+) from class ([^ ]+) to class ([^ ]+)", method(1, 2), method(1, 3)),
 		new ParserDefinition(RefactoringType.PULL_UP_OPERATION, "Pull Up Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
 		new ParserDefinition(RefactoringType.PUSH_DOWN_OPERATION, "Push Down Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
 		new ParserDefinition(RefactoringType.MOVE_ATTRIBUTE, "Move Attribute (.+) from class (.+) to class (.+)", attribute(1, 2), attribute(1, 3)),
@@ -54,6 +60,9 @@ public class RefactoringDescriptionParser {
 					}
 				}
 			}
+		}
+		if (list.isEmpty()) {
+			throw new RuntimeException("Unable to parse: " + refactoringDescription);
 		}
 		return list;
 	}
