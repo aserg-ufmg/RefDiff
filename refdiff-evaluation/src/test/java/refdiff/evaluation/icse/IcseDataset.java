@@ -27,6 +27,7 @@ public class IcseDataset extends AbstractDataset {
 			IcseCommit[] commits = reader.readValue(new FileReader("data/icse/data.json"));
 			int ignoredCount = 0;
 			int addedCount = 0;
+			int refCount = 0;
 			for (IcseCommit commit : commits) {
 				if (commit.ignore) {
 					ignoredCount += commit.refactorings.size();
@@ -47,6 +48,7 @@ public class IcseDataset extends AbstractDataset {
 						addedCount++;
 					}
 					List<RefactoringRelationship> refs = parser.parse(refactoring.description);
+					refCount += refs.size();
 					if (segregateExtractMove && refactoring.type.equals("Extract And Move Method")) {
 						refs = refs.stream()
 						.map(r -> new RefactoringRelationship(RefactoringType.EXTRACT_AND_MOVE_OPERATION, r.getEntityBefore(), r.getEntityAfter()))
@@ -62,6 +64,7 @@ public class IcseDataset extends AbstractDataset {
 			}
 			//System.out.println("Ignored: " + ignoredCount);
 			//System.out.println("Added: " + addedCount);
+			//System.out.println("Added refs: " + refCount);
 		} catch(Exception e) {
 			throw new RuntimeException(e);
 		}
