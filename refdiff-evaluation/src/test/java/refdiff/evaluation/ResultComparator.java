@@ -182,6 +182,13 @@ public class ResultComparator {
 	}
 	
 	public void printDetails(PrintStream out, EnumSet<RefactoringType> refTypesToConsider, String groupId) {
+		printDetails(out, refTypesToConsider, groupId, (RefactoringSet rs, RefactoringRelationship r, String label, String cause) -> {
+			out.print('\t');
+			out.print(label);
+		});
+	}
+	
+	public void printDetails(PrintStream out, EnumSet<RefactoringType> refTypesToConsider, String groupId, ResultRowPrinter rowPrinter) {
 		String[] labels = { "TN", "FP", "FN", "TP" };
 		EnumSet<RefactoringType> ignore = EnumSet.complementOf(refTypesToConsider);
 		boolean headerPrinted = false;
@@ -193,11 +200,12 @@ public class ResultComparator {
 			
 			String header = String.format("Ref Type\tEntity before\tEntity after\t%s\tDetails", groupId);
 			
-			CompareResult result = resultMap.get(getResultId(expected.getProject(), expected.getRevision(), groupId)).filterBy(refTypesToConsider);
+			CompareResult result = resultMap.get(getResultId(expected.getProject(), expected.getRevision(), groupId));
 			if (result != null) {
-				all.addAll(result.getTruePositives());
-				all.addAll(result.getFalsePositives());
-				all.addAll(result.getFalseNegatives());
+				CompareResult resultFiltered = result.filterBy(refTypesToConsider);
+				all.addAll(resultFiltered.getTruePositives());
+				all.addAll(resultFiltered.getFalsePositives());
+				all.addAll(resultFiltered.getFalseNegatives());
 			} else {
 				all.addAll(expectedRefactorings); //
 			}
@@ -213,7 +221,7 @@ public class ResultComparator {
 				Collections.sort(allList);
 				for (RefactoringRelationship r : allList) {
 					out.print(format(r));
-					out.print('\t');
+					//out.print('\t');
 					if (result != null) {
 						Set<RefactoringRelationship> actualRefactorings = new HashSet<>();
 						actualRefactorings.addAll(result.getTruePositives());
@@ -221,17 +229,20 @@ public class ResultComparator {
 						int correct = expectedRefactorings.contains(r) ? 2 : 0;
 						int found = actualRefactorings.contains(r) ? 1 : 0;
 						String label = labels[correct + found];
-						out.print(label);
 						String cause = result.getDetails(r);
 						if (label == "FP" && cause == null && !notExpectedRefactorings.contains(r)) {
-							out.print("?");
+							label = label + "?";
 						}
+						//out.print(label);
+						rowPrinter.printDetails(expected, r, label, cause);
+						/*
 						if (label.equals("FP") || label.equals("FN")) {
 							if (cause != null) {
 								out.print('\t');
 								out.print(cause);
 							}
 						}
+						*/
 					}
 					out.println();
 				}
@@ -241,13 +252,7 @@ public class ResultComparator {
 	}
 	
 	public static String format(RefactoringRelationship r) {
-		String result = String.format("%s\t%s\t%s", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
-		Relationship rr = r.getRastRelationship();
-		if (rr != null) {
-			return result + "\t" + rr.toString();
-		} else {
-			return result + "\t";
-		}
+		return String.format("%s\t%s\t%s", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
 	}
 
 	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered) {

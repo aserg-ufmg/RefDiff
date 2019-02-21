@@ -250,9 +250,9 @@ Move Method	io.undertow.server.handlers.builder.HandlerParser.tokenize(String)	i
 Move Method	io.undertow.util.PredicateTokeniser.error(String,int,String)	io.undertow.server.handlers.builder.PredicatedHandlersParser.error(String,int,String)
 Move Method	io.undertow.util.PredicateTokeniser.tokenize(String)	io.undertow.server.handlers.builder.PredicatedHandlersParser.tokenize(String)
 Extract Method	io.undertow.predicate.PredicateParser.parse(String,Deque,Map,ExchangeAttributeParser)	io.undertow.predicate.PredicateParser.handleLineEnd(String,Deque,Deque,List)
-Extract And Move Method	io.undertow.predicate.PredicateParser.parse(String,ClassLoader)	io.undertow.predicate.PredicateParser.parsePredicate(String,ClassLoader)
+Extract Method	io.undertow.predicate.PredicateParser.parse(String,ClassLoader)	io.undertow.predicate.PredicateParser.parsePredicate(String,ClassLoader)
 Extract Method	io.undertow.predicate.PredicatesHandler.addPredicatedHandler(Predicate,HandlerWrapper)	io.undertow.predicate.PredicatesHandler.addPredicatedHandler(Predicate,HandlerWrapper,HandlerWrapper)
-Extract And Move Method	io.undertow.server.handlers.builder.HandlerParser.parse(String,ClassLoader)	io.undertow.server.handlers.builder.HandlerParser.parseHandler(String,ClassLoader)
+Extract Method	io.undertow.server.handlers.builder.HandlerParser.parse(String,ClassLoader)	io.undertow.server.handlers.builder.HandlerParser.parseHandler(String,ClassLoader)
 Extract Method	io.undertow.server.handlers.builder.PredicatedHandlersParser.parse(String,ClassLoader)	io.undertow.server.handlers.builder.PredicatedHandlersParser.parse(String,Deque)
 Inline Method	io.undertow.server.handlers.builder.PredicatedHandlersParser.parse(String,Deque,ClassLoader)	io.undertow.server.handlers.builder.PredicatedHandlersParser.parse(String,ClassLoader)
 Inline Method	io.undertow.server.handlers.builder.PredicatedHandlersParser.precedence(String)	io.undertow.server.handlers.builder.PredicatedHandlersParser.parse(String,Deque,boolean)
@@ -467,16 +467,16 @@ Move Method	com.graphhopper.storage.GraphHopperStorage.writeEdge(int,int,int,int
 Extract Method	com.graphhopper.routing.AbstractRoutingAlgorithmTester.testTwoWeightsPerEdge2()	com.graphhopper.routing.AbstractRoutingAlgorithmTester.getGraph(GraphHopperStorage)
 Extract Method	com.graphhopper.routing.AbstractRoutingAlgorithmTester.testWithCoordinates()	com.graphhopper.routing.AbstractRoutingAlgorithmTester.getGraph(GraphHopperStorage)
 Extract Method	com.graphhopper.routing.ch.DijkstraBidirectionCHTest.createFactory(Graph,AlgorithmOptions)	com.graphhopper.routing.ch.DijkstraBidirectionCHTest.getGraph(GraphHopperStorage)
-Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.close()	com.graphhopper.storage.GraphHopperStorage.close()
-Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.create(long)	com.graphhopper.storage.GraphHopperStorage.create(long)
-Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.flush()	com.graphhopper.storage.GraphHopperStorage.flush()
+Extract Method	com.graphhopper.storage.GraphHopperStorage.close()	com.graphhopper.storage.GraphHopperStorage.close()
+Extract Method	com.graphhopper.storage.GraphHopperStorage.create(long)	com.graphhopper.storage.GraphHopperStorage.create(long)
+Extract Method	com.graphhopper.storage.GraphHopperStorage.flush()	com.graphhopper.storage.GraphHopperStorage.flush()
 Extract Method	com.graphhopper.storage.GraphHopperStorage.getCapacity()	com.graphhopper.storage.GraphHopperStorage.getCapacity()
 Extract Method	com.graphhopper.storage.GraphHopperStorage._copyTo(GraphHopperStorage)	com.graphhopper.storage.GraphHopperStorage.isCHPossible()
 Extract Method	com.graphhopper.storage.GraphHopperStorage.loadExisting()	com.graphhopper.storage.GraphHopperStorage.loadExisting()
-Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.loadExisting()	com.graphhopper.storage.GraphHopperStorage.loadExisting(String)
+Extract Method	com.graphhopper.storage.GraphHopperStorage.loadExisting()	com.graphhopper.storage.GraphHopperStorage.loadExisting(String)
 Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.setAdditionalEdgeField(long,int)	com.graphhopper.storage.GraphHopperStorage.setAdditionalEdgeField(long,int)
-Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.setSegmentSize(int)	com.graphhopper.storage.GraphHopperStorage.setSegmentSize(int)
-Extract And Move Method	com.graphhopper.storage.GraphHopperStorage.toDetailsString()	com.graphhopper.storage.GraphHopperStorage.toDetailsString()
+Extract Method	com.graphhopper.storage.GraphHopperStorage.setSegmentSize(int)	com.graphhopper.storage.GraphHopperStorage.setSegmentSize(int)
+Extract Method	com.graphhopper.storage.GraphHopperStorage.toDetailsString()	com.graphhopper.storage.GraphHopperStorage.toDetailsString()
 https://github.com/icse18-refactorings/sonarqube/commit/5ff305abb3068e420d8e54a796591d75acc8b8be		
 Extract Interface	org.sonar.api.utils.internal.DefaultTempFolder	org.sonar.api.utils.ProjectTempFolder
 Extract Interface	org.sonar.api.utils.internal.JUnitTempFolder	org.sonar.api.utils.ProjectTempFolder
@@ -520,9 +520,9 @@ Rename Method	melnorme.lang.ide.ui.editor.actions.AbstractOpenElementOperation.g
 Extract Method	melnorme.lang.tooling.ast.SourceRange.inclusiveContains(SourceRange)	melnorme.lang.tooling.ast.SourceRange.contains(SourceRange)
 Extract Method	melnorme.lang.tooling.ast.SourceRange.inclusiveContains(int)	melnorme.lang.tooling.ast.SourceRange.contains(int)
 https://github.com/icse18-refactorings/jackson-databind/commit/da29a040ebae664274b28117b157044af0f525fa		
-Extract And Move Method	com.fasterxml.jackson.databind.ObjectWriter._configAndWriteValue(JsonGenerator,Object)	com.fasterxml.jackson.databind.ObjectWriter.serialize(JsonGenerator,Object,DefaultSerializerProvider)
-Extract And Move Method	com.fasterxml.jackson.databind.ObjectWriter._writeCloseable(JsonGenerator,Object,SerializationConfig)	com.fasterxml.jackson.databind.ObjectWriter.serialize(JsonGenerator,Object,DefaultSerializerProvider)
-Extract And Move Method	com.fasterxml.jackson.databind.ObjectWriter.writeValue(JsonGenerator,Object)	com.fasterxml.jackson.databind.ObjectWriter.serialize(JsonGenerator,Object,DefaultSerializerProvider)
+Extract Method	com.fasterxml.jackson.databind.ObjectWriter._configAndWriteValue(JsonGenerator,Object)	com.fasterxml.jackson.databind.ObjectWriter.serialize(JsonGenerator,Object,DefaultSerializerProvider)
+Extract Method	com.fasterxml.jackson.databind.ObjectWriter._writeCloseable(JsonGenerator,Object,SerializationConfig)	com.fasterxml.jackson.databind.ObjectWriter.serialize(JsonGenerator,Object,DefaultSerializerProvider)
+Extract Method	com.fasterxml.jackson.databind.ObjectWriter.writeValue(JsonGenerator,Object)	com.fasterxml.jackson.databind.ObjectWriter.serialize(JsonGenerator,Object,DefaultSerializerProvider)
 Extract Method	com.fasterxml.jackson.databind.SequenceWriter.SequenceWriter(DefaultSerializerProvider,JsonGenerator,boolean,Prefetch)	com.fasterxml.jackson.databind.SequenceWriter.getTypeSerializer()
 Extract Method	com.fasterxml.jackson.databind.SequenceWriter.SequenceWriter(DefaultSerializerProvider,JsonGenerator,boolean,Prefetch)	com.fasterxml.jackson.databind.SequenceWriter.getValueSerializer()
 Inline Method	com.fasterxml.jackson.databind.ObjectWriter._writeCloseableValue(JsonGenerator,Object,SerializationConfig)	com.fasterxml.jackson.databind.ObjectWriter.writeValue(JsonGenerator,Object)
@@ -1101,7 +1101,7 @@ Extract Method	org.languagetool.tagging.uk.UkrainianTagger.guessCompoundTag(Stri
 Extract Method	org.languagetool.tagging.uk.UkrainianTagger.additionalTags(String,WordTagger)	org.languagetool.tagging.uk.UkrainianTagger.guessCompoundTag(String)
 https://github.com/icse18-refactorings/spring-framework/commit/dd4bc630c3de70204081ab196945d6b55ab03beb		
 Move Class	org.springframework.aop.interceptor.AsyncExecutionInterceptor.CompletableFutureDelegate	org.springframework.aop.interceptor.AsyncExecutionAspectSupport.CompletableFutureDelegate
-Extract And Move Method	org.springframework.aop.interceptor.AsyncExecutionInterceptor.invoke(MethodInvocation)	org.springframework.aop.interceptor.AsyncExecutionInterceptor.doSubmit(Callable,AsyncTaskExecutor,Class)
+Extract Method	org.springframework.aop.interceptor.AsyncExecutionInterceptor.invoke(MethodInvocation)	org.springframework.aop.interceptor.AsyncExecutionInterceptor.doSubmit(Callable,AsyncTaskExecutor,Class)
 https://github.com/icse18-refactorings/OpenTripPlanner/commit/e32f161fc023d1ee153c49df312ae10b06941465		
 Move Class	org.opentripplanner.analyst.qbroker.Broker	org.opentripplanner.analyst.broker.Broker
 Move Class	org.opentripplanner.analyst.qbroker.BrokerHttpHandler	org.opentripplanner.analyst.broker.BrokerHttpHandler
@@ -1178,10 +1178,10 @@ Rename Method	synchronization.TestConcurrentRotation.rotateDone()	synchronizatio
 Push Down Method	org.neo4j.kernel.impl.transaction.log.pruning.LogPruning.LogPruning(LogPruneStrategy,LogProvider)	org.neo4j.kernel.impl.transaction.log.pruning.LogPruningImpl.LogPruningImpl(LogPruneStrategy,LogProvider)
 Push Down Method	org.neo4j.kernel.impl.transaction.log.pruning.LogPruning.finishedRotating(long)	org.neo4j.kernel.impl.transaction.log.pruning.LogPruningImpl.pruneLogs(long)
 Move Method	org.neo4j.kernel.impl.transaction.log.rotation.LogRotationControl.awaitAllTransactionsClosed()	org.neo4j.kernel.NeoStoreDataSource.awaitAllTransactionsClosed()
-Extract And Move Method	org.neo4j.index.impl.lucene.IndexCreationTest.verifyThatIndexCreationTransactionIsTheFirstOne()	org.neo4j.index.impl.lucene.IndexCreationTest.start(long)
+Extract Method	org.neo4j.index.impl.lucene.IndexCreationTest.verifyThatIndexCreationTransactionIsTheFirstOne()	org.neo4j.index.impl.lucene.IndexCreationTest.start(long)
 Extract Method	org.neo4j.kernel.NeoStoreDataSource$10.getTimestampForVersion(long)	org.neo4j.kernel.NeoStoreDataSource$10.start(long)
 Extract And Move Method	org.neo4j.kernel.NeoStoreDataSource.buildTransactionLogs(File,Config,LogProvider,LabelScanStore,FileSystemAbstraction,NeoStore,CacheAccessBackDoor,IndexingService,Iterable)	org.neo4j.kernel.NeoStoreDataSource.start(long)
-Extract And Move Method	org.neo4j.kernel.impl.transaction.log.PhysicalLogFile.accept(LogHeaderVisitor)	org.neo4j.kernel.impl.transaction.log.PhysicalLogFile.start(long)
+Extract Method	org.neo4j.kernel.impl.transaction.log.PhysicalLogFile.accept(LogHeaderVisitor)	org.neo4j.kernel.impl.transaction.log.PhysicalLogFile.start(long)
 Extract And Move Method	org.neo4j.kernel.impl.transaction.log.PhysicalTransactionCursor.close()	org.neo4j.kernel.impl.transaction.log.PhysicalTransactionCursor.close()
 Extract And Move Method	org.neo4j.kernel.impl.transaction.log.PhysicalTransactionCursor.next()	org.neo4j.kernel.impl.transaction.log.PhysicalTransactionCursor.next()
 Extract Method	org.neo4j.kernel.impl.util.ArrayQueueOutOfOrderSequence.get()	org.neo4j.kernel.impl.util.ArrayQueueOutOfOrderSequence.createResult(long,long[])
@@ -1233,7 +1233,7 @@ Pull Up Method	com.goide.psi.impl.GoVarReference.getVariants()	com.goide.psi.imp
 Extract Method	com.goide.psi.impl.GoVarReference.resolveInner()	com.goide.psi.impl.GoVarReference.processResolveVariants(GoScopeProcessor)
 https://github.com/icse18-refactorings/go-lang-idea-plugin/commit/b8929ccb4057c74ac64679216487a4abcd3ae1c3		
 Extract Method	com.goide.runconfig.testing.GoTestRunConfigurationProducerBase.setupConfigurationFromContext(GoTestRunConfigurationBase,ConfigurationContext,Ref)	com.goide.runconfig.testing.GoTestRunConfigurationProducerBase.isAvailableInModule(Module)
-Extract And Move Method	com.goide.runconfig.testing.frameworks.gocheck.GocheckRunConfiguration.checkConfiguration()	com.goide.runconfig.testing.frameworks.gocheck.GocheckRunConfiguration.hasGoCheckSupport(Module)
+Extract Method	com.goide.runconfig.testing.frameworks.gocheck.GocheckRunConfiguration.checkConfiguration()	com.goide.runconfig.testing.frameworks.gocheck.GocheckRunConfiguration.hasGoCheckSupport(Module)
 https://github.com/icse18-refactorings/drill/commit/8815eb7d947be6d2a0281c15a3a60d8ba040db95		
 Move Method	org.apache.drill.exec.vector.complex.impl.Mode.ListWriter()	org.apache.drill.exec.vector.complex.impl.$.ListWriter()
 Move Method	org.apache.drill.exec.vector.complex.impl.Mode.ListWriter(String)	org.apache.drill.exec.vector.complex.impl.$.ListWriter(String)
@@ -1529,7 +1529,7 @@ Move Method	org.apache.drill.exec.testing.TestExceptionInjection.createException
 Extract Method	org.apache.drill.exec.server.TestDrillbitResilience.setSessionOption(String,String)	org.apache.drill.exec.server.TestDrillbitResilience.setSessionOption(DrillClient,String,String)
 Extract Method	org.apache.drill.exec.testing.ControlsInjectionUtil.setControls(DrillClient,String)	org.apache.drill.exec.testing.ControlsInjectionUtil.setSessionOption(DrillClient,String,String)
 Extract And Move Method	org.apache.drill.exec.testing.ControlsInjectionUtil.validateControlsString(String)	org.apache.drill.exec.testing.ControlsInjectionUtil.validateControlsString(String)
-Extract And Move Method	org.apache.drill.exec.testing.ExecutionControls.ControlsOptionValidator.validate(OptionValue)	org.apache.drill.exec.testing.ExecutionControls.ControlsOptionValidator.validateControlsString(String)
+Extract Method	org.apache.drill.exec.testing.ExecutionControls.ControlsOptionValidator.validate(OptionValue)	org.apache.drill.exec.testing.ExecutionControls.ControlsOptionValidator.validateControlsString(String)
 Extract And Move Method	org.apache.drill.exec.testing.TestExceptionInjection.checkedInjection()	org.apache.drill.exec.testing.TestExceptionInjection.addException(Class,String,Class,int,int)
 Extract And Move Method	org.apache.drill.exec.testing.TestExceptionInjection.skipAndLimit()	org.apache.drill.exec.testing.TestExceptionInjection.addException(Class,String,Class,int,int)
 Extract And Move Method	org.apache.drill.exec.testing.TestExceptionInjection.injectionOnSpecificBit()	org.apache.drill.exec.testing.TestExceptionInjection.addExceptionOnBit(Class,String,Class,DrillbitEndpoint,int,int)
@@ -1589,7 +1589,7 @@ Extract Method	org.apache.drill.exec.impersonation.TestImpersonationQueries.addM
 Extract Method	org.apache.drill.exec.store.hive.HiveScan.HiveScan(String,HiveReadEntry,HiveStoragePlugin,List)	org.apache.drill.exec.store.hive.HiveScan.getSplitsWithUGI()
 Extract Method	org.apache.drill.exec.store.hive.HiveScan.HiveScan(String,HiveReadEntry,String,List,StoragePluginRegistry)	org.apache.drill.exec.store.hive.HiveScan.getSplitsWithUGI()
 Extract And Move Method	org.apache.drill.exec.store.hive.HiveTestDataGenerator.generateTestData()	org.apache.drill.exec.store.hive.HiveTestDataGenerator.getTempDir(String)
-Extract And Move Method	org.apache.drill.exec.store.hive.HiveTestDataGenerator.getInstance()	org.apache.drill.exec.store.hive.HiveTestDataGenerator.getTempDir(String)
+Extract Method	org.apache.drill.exec.store.hive.HiveTestDataGenerator.getInstance()	org.apache.drill.exec.store.hive.HiveTestDataGenerator.getTempDir(String)
 Inline Method	org.apache.drill.exec.util.ImpersonationUtil.createFileSystem(String,Configuration,OperatorStats)	org.apache.drill.exec.util.ImpersonationUtil.createFileSystem(String,Configuration)
 https://github.com/icse18-refactorings/BroadleafCommerce/commit/abba5d83602c7ae23901bd579ba9fbb7dc36adc0		
 Extract Superclass	org.broadleafcommerce.openadmin.dto.override.FieldMetadataOverride	org.broadleafcommerce.openadmin.dto.override.MetadataOverride
@@ -1753,15 +1753,15 @@ Extract Method	org.jbpm.services.task.wih.HTWorkItemHandlerBaseTest.testTaskWith
 https://github.com/icse18-refactorings/jbpm/commit/a739d16d301f0e89ab0b9dfa56b4585bbad6b793		
 Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testActivateFromIncorrectStatus()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
 Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testCompleteWithComments()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testDelegateFromReady()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testDelegateFromReserved()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testDelegateFromReservedWithIncorrectUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testForwardFromReserved()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testForwardFromReservedWithIncorrectUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testNominateOnOtherThanCreated()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testDelegateFromReady()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testDelegateFromReserved()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testDelegateFromReservedWithIncorrectUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testForwardFromReserved()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testForwardFromReservedWithIncorrectUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testNominateOnOtherThanCreated()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
 Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testNominateToUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testNominateWithIncorrectUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
-Extract And Move Method	org.jbpm.services.task.LifeCycleBaseTest.testRemoveNotInRecipientList()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testNominateWithIncorrectUser()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
+Extract Method	org.jbpm.services.task.LifeCycleBaseTest.testRemoveNotInRecipientList()	org.jbpm.services.task.LifeCycleBaseTest.createUser(String)
 https://github.com/icse18-refactorings/cassandra/commit/35668435090eb47cf8c5e704243510b6cee35a7b		
 Rename Class	org.apache.cassandra.cql3.functions.Functions	org.apache.cassandra.cql3.functions.FunctionResolver
 Move Method	org.apache.cassandra.cql3.functions.Functions.get(String,FunctionName,List,String,String,AbstractType)	org.apache.cassandra.cql3.functions.FunctionResolver.get(String,FunctionName,List,String,String,AbstractType)
@@ -1780,7 +1780,7 @@ Extract Method	org.apache.cassandra.cql3.statements.CreateAggregateStatement.val
 Extract Method	org.apache.cassandra.cql3.statements.CreateFunctionStatement.checkAccess(ClientState)	org.apache.cassandra.cql3.statements.CreateFunctionStatement.findFunction(FunctionName,List)
 Extract Method	org.apache.cassandra.schema.LegacySchemaTables.createFunctionFromFunctionRow(Row)	org.apache.cassandra.schema.LegacySchemaTables.findFunction(FunctionName,List)
 https://github.com/icse18-refactorings/gradle/commit/527ac38334000e105daacb2aca25cb345d77c01e		
-Extract And Move Method	org.gradle.play.internal.run.PlayApplicationDeploymentHandle.isRunning()	org.gradle.play.internal.run.PlayApplicationDeploymentHandle.isRunning()
+Extract Method	org.gradle.play.internal.run.PlayApplicationDeploymentHandle.isRunning()	org.gradle.play.internal.run.PlayApplicationDeploymentHandle.isRunning()
 https://github.com/icse18-refactorings/WordPress-Android/commit/9dc3cbd59a20f03406f295a4a8f3b8676dbc939e		
 Move Class	org.wordpress.android.ui.prefs.NotificationsPreference	org.wordpress.android.ui.prefs.notifications.NotificationsPreference
 Move Class	org.wordpress.android.ui.prefs.NotificationsSettingsActivity	org.wordpress.android.ui.prefs.notifications.NotificationsSettingsActivity
@@ -3277,8 +3277,8 @@ Extract Method	org.bitcoinj.core.BitcoinSerializer.makeMessage(String,int,byte[]
 Extract Method	org.bitcoinj.core.BitcoinSerializer.makeMessage(String,int,byte[],byte[],byte[])	org.bitcoinj.core.BitcoinSerializer.makeFilteredBlock(byte[])
 Extract Method	org.bitcoinj.core.BitcoinSerializer.makeMessage(String,int,byte[],byte[],byte[])	org.bitcoinj.core.BitcoinSerializer.makeInventoryMessage(byte[],int)
 Extract Method	org.bitcoinj.core.BitcoinSerializer.makeMessage(String,int,byte[],byte[],byte[])	org.bitcoinj.core.BitcoinSerializer.makeTransaction(byte[],int,int,byte[])
-Extract And Move Method	org.bitcoinj.core.BitcoinSerializerTest.testCachedParsing(boolean)	org.bitcoinj.core.BitcoinSerializerTest.getSerializer(boolean,boolean)
-Extract And Move Method	org.bitcoinj.core.BitcoinSerializerTest.testLazyParsing()	org.bitcoinj.core.BitcoinSerializerTest.getSerializer(boolean,boolean)
+Extract Method	org.bitcoinj.core.BitcoinSerializerTest.testCachedParsing(boolean)	org.bitcoinj.core.BitcoinSerializerTest.getSerializer(boolean,boolean)
+Extract Method	org.bitcoinj.core.BitcoinSerializerTest.testLazyParsing()	org.bitcoinj.core.BitcoinSerializerTest.getSerializer(boolean,boolean)
 Extract Method	org.bitcoinj.core.Block.parseTransactions()	org.bitcoinj.core.Block.parseTransactions(int)
 Extract Method	org.bitcoinj.core.FullBlockTestGenerator.getBlocksToTest(boolean,boolean,File)	org.bitcoinj.core.FullBlockTestGenerator.makeBlock(byte[],int)
 Extract Method	org.bitcoinj.core.HeadersMessage.parse()	org.bitcoinj.core.HeadersMessage.makeBlock(byte[],int)

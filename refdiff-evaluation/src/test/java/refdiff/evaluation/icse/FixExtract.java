@@ -17,7 +17,7 @@ import refdiff.evaluation.ResultComparator;
 public class FixExtract {
 	
 	public static void main(String[] args) throws IOException {
-		IcseDataset data = new IcseDataset(true);
+		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
 		
 		Set<String> extractAndMove = new HashSet<>();

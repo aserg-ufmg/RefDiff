@@ -152,7 +152,7 @@ public class EvaluationUtils {
 	}
 	
 	public void prepareSourceCode2(String project, String commit) {
-		System.out.println(String.format("Preparing %s %s", project, commit));
+		System.out.print(String.format("Preparing %s %s ...", project, commit));
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		File fRepoFolder = repoFolder(project);
@@ -176,6 +176,7 @@ public class EvaluationUtils {
 				ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
 			}
 		}
+		System.out.println(" done.");
 	}
 	
 	public void prepareSourceCode(String project, String commit) {

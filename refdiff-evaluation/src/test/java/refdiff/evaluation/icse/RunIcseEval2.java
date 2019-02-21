@@ -28,7 +28,7 @@ public class RunIcseEval2 {
 	}
 	
 	public void run() throws Exception {
-		IcseDataset data = new IcseDataset(false);
+		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
 		
 		ResultComparator rc = new ResultComparator();

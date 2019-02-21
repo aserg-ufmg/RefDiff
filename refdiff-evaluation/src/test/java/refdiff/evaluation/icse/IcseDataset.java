@@ -16,7 +16,7 @@ import refdiff.evaluation.RefactoringType;
 
 public class IcseDataset extends AbstractDataset {
 	
-	public IcseDataset(boolean segregateExtractMove) {
+	public IcseDataset() {
 		RefactoringDescriptionParser parser = new RefactoringDescriptionParser();
 		
 		ObjectMapper om = new ObjectMapper();
@@ -47,11 +47,11 @@ public class IcseDataset extends AbstractDataset {
 						addedCount++;
 					}
 					List<RefactoringRelationship> refs = parser.parse(refactoring.description);
-					if (segregateExtractMove && refactoring.type.equals("Extract And Move Method")) {
-						refs = refs.stream()
-						.map(r -> new RefactoringRelationship(RefactoringType.EXTRACT_AND_MOVE_OPERATION, r.getEntityBefore(), r.getEntityAfter()))
-						.collect(Collectors.toList());
-					}
+//					if (refactoring.type.equals("Extract And Move Method")) {
+//						refs = refs.stream()
+//						.map(r -> new RefactoringRelationship(RefactoringType.EXTRACT_AND_MOVE_OPERATION, r.getEntityBefore(), r.getEntityAfter()))
+//						.collect(Collectors.toList());
+//					}
 					if (refactoring.validation.equals("TP") || refactoring.validation.equals("CTP")) {
 						rs.add(refs);
 					} else if (refactoring.validation.equals("FP")) {

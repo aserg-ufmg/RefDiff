@@ -15,7 +15,7 @@ public class RefactoringDescriptionParser {
 		new ParserDefinition(RefactoringType.MOVE_CLASS, "Move Class (.+) moved to (.+)", type(1), type(2)),
 		new ParserDefinition(RefactoringType.EXTRACT_OPERATION, "Extract Method (.+) extracted from (.+) in class (.+)", method(2, 3), method(1, 3)),
 		// new
-		new ParserDefinition(RefactoringType.EXTRACT_AND_MOVE_OPERATION, "Extract And Move Method (.+) extracted from (.+) in class (.+) & moved to class (.+)", method(2, 3), method(1, 4)),
+		new ParserDefinition(RefactoringType.EXTRACT_OPERATION, "Extract And Move Method (.+) extracted from (.+) in class (.+) & moved to class (.+)", method(2, 3), method(1, 3)),
 		new ParserDefinition(RefactoringType.RENAME_METHOD, "Rename Method (.+) renamed to (.+) in class (.+)", method(1, 3), method(2, 3)),
 		new ParserDefinition(RefactoringType.INLINE_OPERATION, "Inline Method (.+) inlined to (.+) in class (.+)", method(1, 3), method(2, 3)),
 		new ParserDefinition(RefactoringType.MOVE_OPERATION, "Move Method (.+) from class ([^ ]+) to (.+) from class ([^ ]+)", method(1, 2), method(3, 4)),
