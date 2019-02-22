@@ -40,7 +40,7 @@ public class JavaSourceTokenizer {
 	private static Pattern pattern = Pattern.compile("\\S+");
 	
 	private static void tokenizeComment(char[] charArray, int start, int end, List<TokenPosition> tokens) {
-		CharBuffer comment = CharBuffer.wrap(charArray, start, end - start + 1);
+		CharBuffer comment = CharBuffer.wrap(charArray, start, end - start);
 		Matcher matcher = pattern.matcher(comment);
 		
 		while (matcher.find()) {
