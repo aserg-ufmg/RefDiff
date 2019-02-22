@@ -48,16 +48,16 @@ public class EvaluationCsvReader {
 				if (!row.description.isEmpty()) {
 					RefactoringType refType = RefactoringType.fromName(row.refType);
 					rs.add(new RefactoringRelationship(refType, row.n1, row.n2));
-					map.put(getKey(commit, row.n1, row.n2), row);
+					map.put(getKey(commit, refType, row.n1, row.n2), row);
 				}
 			}
 			rc.compareWith("RefDiff", rs);
 		}
 		
 		rc.printDetails(System.out, RunIcseEval.refactoringTypes, "RefDiff", (RefactoringSet expected, RefactoringRelationship r, String label, String cause) -> {
-			ResultRow row = map.get(getKey(expected.getRevision(), r.getEntityBefore(), r.getEntityAfter()));
+			ResultRow row = map.get(getKey(expected.getRevision(), r.getRefactoringType(), r.getEntityBefore(), r.getEntityAfter()));
 			if (row != null) {
-				System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", row.description, label, row.resultA, row.commentA, row.resultB, row.commentB, row.getResult2(label), row.resultC, row.commentC, row.resultFinal, row.commentFinal, row.getResult3(label));
+				System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", row.description, label, row.resultA, row.commentA, row.resultB, row.commentB, row.getResult2(label), row.resultC, row.commentC, row.resultFinal, cause != null ? cause : row.commentFinal, row.getResult3(label));
 			} else {
 				System.out.printf("\t\t%s\t\t\t\t\t%s\t\t\t\t\t%s", label, label, label);
 			}
@@ -66,8 +66,8 @@ public class EvaluationCsvReader {
 		rc.printSummary(System.out, RunIcseEval.refactoringTypes);
 	}
 	
-	private static String getKey(String commit, String n1, String n2) {
-		return commit + " " + n1 + " " + n2;
+	private static String getKey(String commit, RefactoringType refType, String n1, String n2) {
+		return commit + " " + refType.name() + " " + n1 + " " + n2;
 	}
 
 	private static List<ResultCommit> readRefDiffResults() throws IOException, FileNotFoundException {
