@@ -79,7 +79,11 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	}
 	
 	public static String parentOf(String entity) {
-		return entity.substring(0, entity.lastIndexOf('.'));
+		int idx = entity.lastIndexOf('.');
+		if (idx == -1) {
+			return "";
+		}
+		return entity.substring(0, idx);
 	}
 	
 	private static String normalizeParameters(String r) {

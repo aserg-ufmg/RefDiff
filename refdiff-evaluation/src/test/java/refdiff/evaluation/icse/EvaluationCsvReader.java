@@ -24,12 +24,19 @@ public class EvaluationCsvReader {
 		IcseDataset data = new IcseDataset();
 		
 		ResultComparator rc = new ResultComparator();
+		ResultComparator rc2 = new ResultComparator();
 		
+		Map<String, RefactoringSet> mapRs = new HashMap<>();
 		for (RefactoringSet rs : data.getExpected()) {
 			String project = rs.getProject();
 			String commit = rs.getRevision();
+			RefactoringSet rs2 = new RefactoringSet(rs.getProject(), rs.getRevision());
+			mapRs.put(rs.getRevision(), rs2);
+			rs2.add(rs.getRefactorings());
 			rc.expect(rs);
+			rc2.expect(rs2);
 			rc.compareWith("RefDiff", new RefactoringSet(project, commit));
+			rc2.compareWith("RefDiff", new RefactoringSet(project, commit));
 		}
 		rc.dontExpect(data.getNotExpected());
 		
@@ -41,6 +48,7 @@ public class EvaluationCsvReader {
 			String commit = url.substring(url.lastIndexOf("/") + 1);
 			
 			RefactoringSet rs = new RefactoringSet(project, commit);
+			RefactoringSet expectedRefactorings = mapRs.get(commit);
 			
 			//System.out.println(commitResult.commitUrl);
 			for (ResultRow row : commitResult.rows) {
@@ -50,9 +58,17 @@ public class EvaluationCsvReader {
 					rs.add(new RefactoringRelationship(refType, row.n1, row.n2));
 					map.put(getKey(commit, refType, row.n1, row.n2), row);
 				}
+				if ((row.resultA.equals("TP") && row.resultB.equals("TP")) || row.resultFinal.equals("TP")) {
+					RefactoringType refType = RefactoringType.fromName(row.refType);
+					expectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
+				}
 			}
+			
 			rc.compareWith("RefDiff", rs);
+			rc2.compareWith("RefDiff", rs);
 		}
+		
+		rc2.compareWith("RMiner", data.getrMinerRefactorings());
 		
 		rc.printDetails(System.out, RunIcseEval.refactoringTypes, "RefDiff", (RefactoringSet expected, RefactoringRelationship r, String label, String cause) -> {
 			ResultRow row = map.get(getKey(expected.getRevision(), r.getRefactoringType(), r.getEntityBefore(), r.getEntityAfter()));
@@ -64,6 +80,8 @@ public class EvaluationCsvReader {
 		});
 		System.out.println();
 		rc.printSummary(System.out, RunIcseEval.refactoringTypes);
+		
+		rc2.printSummary(System.out, RunIcseEval.refactoringTypes);
 	}
 	
 	private static String getKey(String commit, RefactoringType refType, String n1, String n2) {

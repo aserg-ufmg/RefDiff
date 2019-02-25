@@ -1,6 +1,7 @@
 package refdiff.evaluation.icse;
 
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,6 +14,8 @@ import refdiff.evaluation.RefactoringRelationship;
 import refdiff.evaluation.RefactoringSet;
 
 public class IcseDataset extends AbstractDataset {
+	
+	protected final List<RefactoringSet> rMinerRefactorings = new ArrayList<>();
 	
 	public IcseDataset() {
 		RefactoringDescriptionParser parser = new RefactoringDescriptionParser();
@@ -37,6 +40,7 @@ public class IcseDataset extends AbstractDataset {
 				}
 				
 				RefactoringSet rs = new RefactoringSet(repoUrl, commit.sha1);
+				RefactoringSet rsRMiner = new RefactoringSet(repoUrl, commit.sha1);
 				RefactoringSet rsNotExpected = new RefactoringSet(repoUrl, commit.sha1);
 				for (IcseRefactoring refactoring : commit.refactorings) {
 					if (refactoring.type.equals("Change Package")) {
@@ -53,8 +57,12 @@ public class IcseDataset extends AbstractDataset {
 					} else if (refactoring.validation.equals("FP")) {
 						rsNotExpected.add(refs);
 					}
+					if (refactoring.detectionTools.contains("RefactoringMiner")) {
+						rsRMiner.add(refs);
+					}
 				}
 				add(rs, rsNotExpected);
+				rMinerRefactorings.add(rsRMiner);
 			}
 			//System.out.println("Ignored: " + ignoredCount);
 			//System.out.println("Added: " + addedCount);
@@ -63,5 +71,8 @@ public class IcseDataset extends AbstractDataset {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
+	public List<RefactoringSet> getrMinerRefactorings() {
+		return rMinerRefactorings;
+	}
 }
