@@ -5,17 +5,17 @@ import java.util.regex.Pattern;
 
 public enum RefactoringType {
 
-	RENAME_CLASS("Rename Class", "Rename Class (.+) renamed to (.+)"),
 	MOVE_CLASS("Move Class", "Move Class (.+) moved to (.+)"),
+	MOVE_OPERATION("Move Method", "Move Method (.+) from class (.+) to (.+) from class (.+)"),
 	MOVE_RENAME_CLASS("Move And Rename Class", ".+"),
+	RENAME_CLASS("Rename Class", "Rename Class (.+) renamed to (.+)"),
+	RENAME_METHOD("Rename Method", "Rename Method (.+) renamed to (.+) in class (.+)"),
 	EXTRACT_INTERFACE("Extract Interface", "Extract Interface (.+) from classes \\[(.+)\\]", 2),
 	EXTRACT_SUPERCLASS("Extract Superclass", "Extract Superclass (.+) from classes \\[(.+)\\]", 2),
 
-	RENAME_METHOD("Rename Method", "Rename Method (.+) renamed to (.+) in class (.+)"),
 	CHANGE_METHOD_SIGNATURE("Change Method Signature", "Change Method Signature (.+) to (.+) in class (.+)"),
 	PULL_UP_OPERATION("Pull Up Method", "Pull Up Method (.+) from class (.+) to (.+) from class (.+)", 1, 2),
 	PUSH_DOWN_OPERATION("Push Down Method", "Push Down Method (.+) from class (.+) to (.+) from class (.+)", 3, 4),
-	MOVE_OPERATION("Move Method", "Move Method (.+) from class (.+) to (.+) from class (.+)"),
 	EXTRACT_OPERATION("Extract Method", "Extract Method (.+) extracted from (.+) in class (.+)", 2),
 	INLINE_OPERATION("Inline Method", "Inline Method (.+) inlined to (.+) in class (.+)", 2),
 
