@@ -12,10 +12,11 @@ import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.SourceFolder;
+import refdiff.parsers.RastParser;
 
 public class TestRastComparator {
 	
-	private static JavaParser parser = new JavaParser();
+	private static RastParser parser = new JavaParserNoBindings();
 	
 	@Test
 	public void shouldMatchExtractMethod() throws Exception {
