@@ -19,28 +19,48 @@ public class EvaluationCsvReader {
 		eval();
 	}
 	
-	public static void eval() throws Exception {
-		
-		IcseDataset data = new IcseDataset();
-		
-		ResultComparator rc = new ResultComparator();
+	public static ResultComparator buildResultComparator(IcseDataset data, List<ResultCommit> list) throws FileNotFoundException, IOException {
 		ResultComparator rc2 = new ResultComparator();
-		
 		Map<String, RefactoringSet> mapRs = new HashMap<>();
 		for (RefactoringSet rs : data.getExpected()) {
-			String project = rs.getProject();
-			String commit = rs.getRevision();
 			RefactoringSet rs2 = new RefactoringSet(rs.getProject(), rs.getRevision());
 			mapRs.put(rs.getRevision(), rs2);
 			rs2.add(rs.getRefactorings());
-			rc.expect(rs);
 			rc2.expect(rs2);
+		}
+		rc2.dontExpect(data.getNotExpected());
+		if (list != null) {
+			for (ResultCommit commitResult : list) {
+				String url = commitResult.commitUrl;
+				String commit = url.substring(url.lastIndexOf("/") + 1);
+				
+				RefactoringSet expectedRefactorings = mapRs.get(commit);
+				for (ResultRow row : commitResult.rows) {
+					if ((row.resultA.equals("TP") && row.resultB.equals("TP")) || row.resultFinal.equals("TP")) {
+						RefactoringType refType = RefactoringType.fromName(row.refType);
+						expectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
+					}
+				}
+			}
+		}
+		return rc2;
+	}
+	
+	public static void eval() throws Exception {
+		
+		IcseDataset data = new IcseDataset();
+		List<ResultCommit> list = readRefDiffResults();
+		
+		ResultComparator rc = buildResultComparator(data, null);
+		ResultComparator rc2 = buildResultComparator(data, list);
+		
+		for (RefactoringSet rs : data.getExpected()) {
+			String project = rs.getProject();
+			String commit = rs.getRevision();
 			rc.compareWith("RefDiff", new RefactoringSet(project, commit));
 			rc2.compareWith("RefDiff", new RefactoringSet(project, commit));
 		}
-		rc.dontExpect(data.getNotExpected());
 		
-		List<ResultCommit> list = readRefDiffResults();
 		Map<String, ResultRow> map = new HashMap<>();
 		for (ResultCommit commitResult : list) {
 			String url = commitResult.commitUrl;
@@ -48,19 +68,14 @@ public class EvaluationCsvReader {
 			String commit = url.substring(url.lastIndexOf("/") + 1);
 			
 			RefactoringSet rs = new RefactoringSet(project, commit);
-			RefactoringSet expectedRefactorings = mapRs.get(commit);
 			
-			//System.out.println(commitResult.commitUrl);
+			// System.out.println(commitResult.commitUrl);
 			for (ResultRow row : commitResult.rows) {
-				//System.out.println(row);
+				// System.out.println(row);
 				if (!row.description.isEmpty()) {
 					RefactoringType refType = RefactoringType.fromName(row.refType);
 					rs.add(new RefactoringRelationship(refType, row.n1, row.n2));
 					map.put(getKey(commit, refType, row.n1, row.n2), row);
-				}
-				if ((row.resultA.equals("TP") && row.resultB.equals("TP")) || row.resultFinal.equals("TP")) {
-					RefactoringType refType = RefactoringType.fromName(row.refType);
-					expectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
 				}
 			}
 			
@@ -87,7 +102,7 @@ public class EvaluationCsvReader {
 	private static String getKey(String commit, RefactoringType refType, String n1, String n2) {
 		return commit + " " + refType.name() + " " + n1 + " " + n2;
 	}
-
+	
 	private static List<ResultCommit> readRefDiffResults() throws IOException, FileNotFoundException {
 		List<ResultCommit> list = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader("data/java-evaluation/FixExtractBefore.txt"))) {
