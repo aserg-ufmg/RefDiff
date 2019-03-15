@@ -103,7 +103,7 @@ public class EvaluationCsvReader {
 		return commit + " " + refType.name() + " " + n1 + " " + n2;
 	}
 	
-	private static List<ResultCommit> readRefDiffResults() throws IOException, FileNotFoundException {
+	public static List<ResultCommit> readRefDiffResults() throws IOException, FileNotFoundException {
 		List<ResultCommit> list = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader("data/java-evaluation/FixExtractBefore.txt"))) {
 			String line;

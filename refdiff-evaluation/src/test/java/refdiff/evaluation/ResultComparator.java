@@ -17,8 +17,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import refdiff.core.diff.Relationship;
-
 public class ResultComparator {
 	
 	Set<String> groupIds = new LinkedHashSet<>();
@@ -49,6 +47,12 @@ public class ResultComparator {
 			notExpectedMap.put(getProjectRevisionId(set.getProject(), set.getRevision()), set);
 		}
 		return this;
+	}
+	
+	public void remove(String project, String revision) {
+		String id = getProjectRevisionId(project, revision);
+		expectedMap.remove(id);
+		notExpectedMap.remove(id);
 	}
 	
 	public ResultComparator dontExpect(Iterable<RefactoringSet> sets) {

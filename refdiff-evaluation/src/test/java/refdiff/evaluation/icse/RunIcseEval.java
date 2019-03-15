@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import refdiff.core.diff.RastComparator;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
+import refdiff.parsers.java.JavaParserNoBindings;
 
 public class RunIcseEval {
 	
@@ -17,7 +19,7 @@ public class RunIcseEval {
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval(String tempFolder) {
-		evalUtils = new EvaluationUtils(tempFolder);
+		evalUtils = new EvaluationUtils(new RastComparator(new JavaParserNoBindings()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -28,8 +30,7 @@ public class RunIcseEval {
 		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
 		
-		ResultComparator rc = new ResultComparator();
-		rc.dontExpect(data.getNotExpected());
+		ResultComparator rc = EvaluationCsvReader.buildResultComparator(data, EvaluationCsvReader.readRefDiffResults());
 		
 		int count = 0;
 		int errorCount = 0;
@@ -39,16 +40,15 @@ public class RunIcseEval {
 			String commit = rs.getRevision();
 			try {
 				System.out.printf("%d/%d - ", i + 1, expected.size());
-				evalUtils.prepareSourceCode2(project, commit);
+				//evalUtils.prepareSourceCode2(project, commit);
 			} catch (RuntimeException e) {
 				errorCount++;
 				System.err.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());
 				continue;
 			}
-			rc.expect(rs);
 			Map<KeyPair, String> explanations = new HashMap<>();
-			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
+			rc.compareWith("RefDiff", evalUtils.runRefDiffGit(project, commit, explanations), explanations);
 			count++;
 		}
 		
