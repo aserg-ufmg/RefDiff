@@ -70,7 +70,7 @@ public class RunIcseEval2 {
 			String commit = rs.getRevision();
 			if (!whitelist.contains(commit)) continue;
 			try {
-				evalUtils.prepareSourceCodeNoCheckout(project, commit);
+				//evalUtils.prepareSourceCodeNoCheckout(project, commit);
 			} catch (RuntimeException e) {
 				System.out.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());

@@ -115,7 +115,7 @@ public class RastComparator {
 			findMatchesById();
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
-			//findMatchesByChildren();
+			findMatchesByChildren();
 			createRelationshipsForMatchings();
 			findPullPushDownAbstract();
 			findAdditionalPullUpAndPushDown();
@@ -186,13 +186,15 @@ public class RastComparator {
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && existsMatchingChild(n1, n2)) {
-						PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), 1.0);
 						if (sameName(n1, n2)) {
+							double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 							candidates.add(candidate);
 						}
 					}
 				}
 			}
+			Collections.sort(candidates);
 			for (PotentialMatch candidate : candidates) {
 				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
 			}
