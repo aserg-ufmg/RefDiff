@@ -19,8 +19,10 @@ import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
+import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.rast.RastNode;
+import refdiff.core.util.PairBeforeAfter;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.NodeTypes;
 
@@ -104,29 +106,45 @@ public class EvaluationUtils {
 			
 			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1), fnExplainer);
 			
-			// new RastRootHelper(diff.getAfter()).printRelationships(System.out);
-			
-			RefactoringSet rs = new RefactoringSet(project, commit);
-			for (Relationship rel : diff.getRelationships()) {
-				RelationshipType relType = rel.getType();
-				String nodeType = rel.getNodeAfter().getType();
-				Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
-				if (refType.isPresent()) {
-					if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) &&
-						diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))) {
-						continue;
-					}
-					
-					boolean copyN1Parent = refType.get().equals(RefactoringType.EXTRACT_OPERATION);
-					boolean copyN2Parent = refType.get().equals(RefactoringType.INLINE_OPERATION) || refType.get().equals(RefactoringType.RENAME_METHOD);
-					
-					KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), copyN1Parent, copyN2Parent);
-					
-					rs.add(new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel));
-				}
-			}
-			return rs;
+			return buildRefactoringSet(project, commit, diff);
 		}
+	}
+
+	public RefactoringSet runRefDiffGit(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
+		File repoFolder = repoFolder(project);
+		GitHelper gitHelper = new GitHelper();
+		try (Repository repo = gitHelper.openRepository(repoFolder)) {
+			PairBeforeAfter<SourceFileSet> sourcesBeforeAfter = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, comparator.getParser().getAllowedFilesFilter());
+			System.out.println(String.format("Computing diff for %s %s", project, commit));
+			FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
+			
+			RastDiff diff = comparator.compare(sourcesBeforeAfter.getBefore(), sourcesBeforeAfter.getAfter(), fnExplainer);
+			
+			return buildRefactoringSet(project, commit, diff);
+		}
+	}
+	
+	private RefactoringSet buildRefactoringSet(String project, String commit, RastDiff diff) {
+		RefactoringSet rs = new RefactoringSet(project, commit);
+		for (Relationship rel : diff.getRelationships()) {
+			RelationshipType relType = rel.getType();
+			String nodeType = rel.getNodeAfter().getType();
+			Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
+			if (refType.isPresent()) {
+				if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) &&
+					diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))) {
+					continue;
+				}
+				
+				boolean copyN1Parent = refType.get().equals(RefactoringType.EXTRACT_OPERATION);
+				boolean copyN2Parent = refType.get().equals(RefactoringType.INLINE_OPERATION) || refType.get().equals(RefactoringType.RENAME_METHOD);
+				
+				KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), copyN1Parent, copyN2Parent);
+				
+				rs.add(new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel));
+			}
+		}
+		return rs;
 	}
 	
 	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean copyN1Parent, boolean copyN2Parent) {
@@ -176,6 +194,20 @@ public class EvaluationUtils {
 				ExternalProcess.execute(fRepoFolder, "git", "--work-tree=" + checkoutFolderV1, "checkout", commit, "--", ".");
 			}
 		}
+		System.out.println(" done.");
+	}
+	
+	public void prepareSourceCodeNoCheckout(String project, String commit) {
+		System.out.print(String.format("Preparing %s %s ...", project, commit));
+		File fRepoFolder = repoFolder(project);
+		if (!fRepoFolder.exists()) {
+			fRepoFolder.mkdirs();
+			ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
+			ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
+		}
+		String tagName = "refs/tags/r-" + commit.substring(0, 7);
+		
+		ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", tagName);
 		System.out.println(" done.");
 	}
 	

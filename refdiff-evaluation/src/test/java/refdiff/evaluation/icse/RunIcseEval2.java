@@ -8,11 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import refdiff.core.diff.RastComparator;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
+import refdiff.parsers.java.JavaParserNoBindings;
 
 public class RunIcseEval2 {
 	
@@ -20,7 +22,7 @@ public class RunIcseEval2 {
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval2(String tempFolder) {
-		evalUtils = new EvaluationUtils(tempFolder);
+		evalUtils = new EvaluationUtils(new RastComparator(new JavaParserNoBindings()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -59,7 +61,7 @@ public class RunIcseEval2 {
 //			"e813a0be86c87366157a0201e6c61662cadee586",
 //			"72b5348307d86b1a118e546c24d97f1ac1895bdb",
 //			"46b0d84de9c309bca48a99e572e6611693ed5236",
-			"8f446b6ddf540e1b1fefca34dd10f45ba7256095"
+			"03ade425dd5a65d3a713d5e7d85aa7605956fbd2"
 			//"b0938501f1014cf663e33b44ed5bb9b24d19a358"
 			));
 		
@@ -68,7 +70,7 @@ public class RunIcseEval2 {
 			String commit = rs.getRevision();
 			if (!whitelist.contains(commit)) continue;
 			try {
-				evalUtils.prepareSourceCode2(project, commit);
+				evalUtils.prepareSourceCodeNoCheckout(project, commit);
 			} catch (RuntimeException e) {
 				System.out.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());
@@ -76,7 +78,7 @@ public class RunIcseEval2 {
 			}
 			rc.expect(rs);
 			Map<KeyPair, String> explanations = new HashMap<>();
-			rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
+			rc.compareWith("RefDiff", evalUtils.runRefDiffGit(project, commit, explanations), explanations);
 		}
 		
 		rc.printSummary(System.out, refactoringTypes);
