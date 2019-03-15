@@ -1,9 +1,7 @@
 package refdiff.parsers.java;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;
@@ -13,38 +11,11 @@ import org.eclipse.jdt.core.dom.PackageDeclaration;
 
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastNode;
 import refdiff.core.rast.TokenizedSource;
 
 public class SDModelBuilderNoBindings {
 	
 	private BindingResolver bindingResolver;
-	
-	private void postProcessReferences(SDModel model) {
-		for (Map.Entry<RastNode, List<String>> entry : bindingResolver.getReferencesMap().entrySet()) {
-			final RastNode entity = entry.getKey();
-			List<String> references = entry.getValue();
-			for (String referencedKey : references) {
-				Optional<RastNode> referenced = model.findByKey(referencedKey);
-				if (referenced.isPresent()) {
-					model.addReference(entity, referenced.get());
-				}
-			}
-		}
-	}
-	
-	private void postProcessSupertypes(SDModel model) {
-		for (Map.Entry<RastNode, List<String>> entry : bindingResolver.getSupertypesMap().entrySet()) {
-			final RastNode type = entry.getKey();
-			List<String> supertypes = entry.getValue();
-			for (String supertypeKey : supertypes) {
-				Optional<RastNode> supertype = model.findByKey(supertypeKey);
-				if (supertype.isPresent()) {
-					model.addSubtype(supertype.get(), type);
-				}
-			}
-		}
-	}
 	
 	public void analyze(SourceFileSet sources, final SDModel model, JavaSourceTokenizer tokenizer) {
 		bindingResolver = new BindingResolver();
@@ -66,8 +37,7 @@ public class SDModelBuilderNoBindings {
 			throw new RuntimeException(e);
 		}
 		
-		postProcessReferences(model);
-		postProcessSupertypes(model);
+		bindingResolver.resolveBindings(model);
 		bindingResolver = null;
 	}
 	
