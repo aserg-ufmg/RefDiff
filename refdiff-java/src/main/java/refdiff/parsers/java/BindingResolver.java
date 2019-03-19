@@ -3,6 +3,7 @@ package refdiff.parsers.java;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import refdiff.core.rast.RastNode;
 
 public class BindingResolver {
 	
-	private Map<String, Set<RastNode>> invokedByIndex = new HashMap<>();
+	private Map<String, Set<MethodInvocationToResolve>> invokedByIndex = new HashMap<>();
 	private Map<String, Set<RastNode>> supertypeOfIndex = new HashMap<>();
 	
 	public void addSupertypeToResolve(RastNode type, Type superType) {
@@ -38,15 +39,17 @@ public class BindingResolver {
 	
 	public void addMethodInvocationToResolve(RastNode method, MethodInvocation methodInvocation) {
 		String methodName = methodInvocation.getName().getIdentifier();
-		invokedByIndex.computeIfAbsent(methodName, key -> new HashSet<>()).add(method);
+		invokedByIndex.computeIfAbsent(methodName, key -> new HashSet<>()).add(new MethodInvocationToResolve(method, methodInvocation));
 	}
 	
 	public void resolveBindings(SDModel model) {
 		model.getRoot().forEachNode((node, depth) -> {
 			if (node.getType().equals(NodeTypes.METHOD_DECLARATION)) {
-				Set<RastNode> invokers = invokedByIndex.getOrDefault(node.getSimpleName(), Collections.emptySet());
-				for (RastNode invoker : invokers) {
-					model.addReference(invoker, node);
+				Set<MethodInvocationToResolve> invokers = invokedByIndex.getOrDefault(node.getSimpleName(), Collections.emptySet());
+				for (MethodInvocationToResolve invoker : invokers) {
+					if (isCompatible(invoker, node)) {
+						model.addReference(invoker.getCaller(), node);
+					}
 				}
 			} else if (node.getType().equals(NodeTypes.CLASS_DECLARATION) || node.getType().equals(NodeTypes.INTERFACE_DECLARATION)) {
 				Set<RastNode> subtypes = supertypeOfIndex.getOrDefault(node.getSimpleName(), Collections.emptySet());
@@ -55,5 +58,11 @@ public class BindingResolver {
 				}
 			}
 		});
+	}
+
+	private boolean isCompatible(MethodInvocationToResolve invocation, RastNode node) {
+		MethodInvocation invocationNode = invocation.getInvocation();
+		List arguments = invocationNode.arguments();
+		return arguments.size() == node.getParameters().size();
 	}
 }
