@@ -24,7 +24,7 @@ public class JavaParser implements RastParser {
 		List<String> javaFiles = new ArrayList<>();
 		Optional<Path> optBasePath = sources.getBasePath();
 		if (!optBasePath.isPresent()) {
-			throw new RuntimeException("The Java parser requires a SourceFileSet that support a basePath");
+			throw new RuntimeException("The JavaParser requires a SourceFileSet that is materialized on the file system");
 		}
 		for (SourceFile sourceFile : sources.getSourceFiles()) {
 			javaFiles.add(sourceFile.getPath());

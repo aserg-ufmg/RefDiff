@@ -22,7 +22,10 @@ public abstract class SourceFileSet {
 	public Optional<Path> getBasePath() {
 		return Optional.empty();
 	}
-
+	
 	public abstract String describeLocation(SourceFile sourceFile);
 	
+	public void materialize(Path baseFolder) throws IOException {
+		throw new UnsupportedOperationException();
+	}
 }

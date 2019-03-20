@@ -3,6 +3,7 @@ package refdiff.evaluation;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import refdiff.core.diff.RastComparatorMonitor;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
+import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
@@ -236,6 +238,36 @@ public class EvaluationUtils {
 			} catch (RuntimeException e) {
 				fCheckoutFolderV0.delete();
 				fCheckoutFolderV1.delete();
+				throw new RuntimeException(String.format("Error checking out %s %s:\n%s", project, commit, e.getMessage()), e);
+			}
+		}
+	}
+	
+	public void prepareSourceCodeLightCheckout(String project, String commit) {
+		System.out.println(String.format("Preparing %s %s", project, commit));
+		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
+		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
+		File fRepoFolder = repoFolder(project);
+		if (!fRepoFolder.exists()) {
+			//ExternalProcess.execute(new File(tempFolder), "git", "clone", project, "--bare", "--shallow-since=2015-05-01");
+			fRepoFolder.mkdirs();
+			ExternalProcess.execute(fRepoFolder, "git", "init", "--bare");
+			ExternalProcess.execute(fRepoFolder, "git", "remote", "add", "origin", project);
+		}
+		File fCheckoutFolderV0 = new File(checkoutFolderV0);
+		File fCheckoutFolderV1 = new File(checkoutFolderV1);
+		if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
+			// ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", commit);
+			GitHelper gitHelper = new GitHelper();
+			try (Repository repo = gitHelper.openRepository(project)) {
+				PairBeforeAfter<SourceFileSet> sourcesPair = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, new FilePathFilter(Arrays.asList(".java")));
+				if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
+					sourcesPair.getBefore().materialize(fCheckoutFolderV0.toPath());
+				}
+				if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
+					sourcesPair.getAfter().materialize(fCheckoutFolderV1.toPath());
+				}
+			} catch (Exception e) {
 				throw new RuntimeException(String.format("Error checking out %s %s:\n%s", project, commit, e.getMessage()), e);
 			}
 		}
