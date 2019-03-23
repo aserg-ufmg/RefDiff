@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,11 +55,12 @@ public class GitSourceTree extends SourceFileSet {
 	@Override
 	public void materialize(Path baseFolderPath) throws IOException {
 		File baseFolder = baseFolderPath.toFile();
-		if (baseFolder.mkdirs()) {
+		if (baseFolder.exists() || baseFolder.mkdirs()) {
 			for (SourceFile sf : getSourceFiles()) {
 				String fileContent = readContent(sf);
 				File destinationFile = new File(baseFolder, sf.getPath());
-				Files.write(destinationFile.toPath(), fileContent.getBytes(StandardCharsets.UTF_8));
+				Files.createDirectories(destinationFile.getParentFile().toPath());
+				Files.write(destinationFile.toPath(), fileContent.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
 			}
 			checkoutFolder = baseFolderPath;
 		} else {

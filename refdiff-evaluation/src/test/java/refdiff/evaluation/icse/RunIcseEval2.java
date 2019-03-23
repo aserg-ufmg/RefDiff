@@ -14,15 +14,15 @@ import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
-import refdiff.parsers.java.JavaParserNoBindings;
+import refdiff.parsers.java.JavaParser;
 
 public class RunIcseEval2 {
 	
-	private EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
+	public static EnumSet<RefactoringType> refactoringTypes = EnumSet.complementOf(EnumSet.of(RefactoringType.PULL_UP_ATTRIBUTE, RefactoringType.PUSH_DOWN_ATTRIBUTE, RefactoringType.MOVE_ATTRIBUTE));
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval2(String tempFolder) {
-		evalUtils = new EvaluationUtils(new RastComparator(new JavaParserNoBindings()), tempFolder);
+		evalUtils = new EvaluationUtils(new RastComparator(new JavaParser()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -71,14 +71,14 @@ public class RunIcseEval2 {
 				rc.remove(project, commit);
 			} else {				
 				try {
-					//evalUtils.prepareSourceCodeNoCheckout(project, commit);
+					evalUtils.prepareSourceCodeLightCheckout(project, commit);
 				} catch (RuntimeException e) {
 					System.out.println(String.format("Skipped %s %s", project, commit));
-					System.err.println(e.getMessage());
+					e.printStackTrace();
 					continue;
 				}
 				Map<KeyPair, String> explanations = new HashMap<>();
-				rc.compareWith("RefDiff", evalUtils.runRefDiffGit(project, commit, explanations), explanations);
+				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
 			}
 		}
 		

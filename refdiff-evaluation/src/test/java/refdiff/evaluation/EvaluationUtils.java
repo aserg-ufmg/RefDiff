@@ -87,7 +87,10 @@ public class EvaluationUtils {
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		
-		prepareSourceCode2(project, commit);
+		//prepareSourceCode2(project, commit);
+		if (!new File(checkoutFolderV0).exists() || !new File(checkoutFolderV1).exists()) {
+			throw new RuntimeException(project + " " + commit + " not prepared");
+		}
 		
 		GitHelper gitHelper = new GitHelper();
 		try (
@@ -259,7 +262,7 @@ public class EvaluationUtils {
 		if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
 			// ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", commit);
 			GitHelper gitHelper = new GitHelper();
-			try (Repository repo = gitHelper.openRepository(project)) {
+			try (Repository repo = gitHelper.openRepository(fRepoFolder)) {
 				PairBeforeAfter<SourceFileSet> sourcesPair = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, new FilePathFilter(Arrays.asList(".java")));
 				if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
 					sourcesPair.getBefore().materialize(fCheckoutFolderV0.toPath());
