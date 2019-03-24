@@ -2,6 +2,7 @@ package refdiff.core.io;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -19,7 +20,7 @@ public class SourceFolder extends SourceFileSet {
 	public static SourceFolder from(Path basePath, String... fileExtensions) {
 		try {
 			List<SourceFile> files = getSourceFiles(basePath, fileExtensions);
-			return new SourceFolder(basePath, Charset.defaultCharset(), files);
+			return new SourceFolder(basePath, StandardCharsets.UTF_8, files);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -27,7 +28,7 @@ public class SourceFolder extends SourceFileSet {
 	
 	public static SourceFolder from(Path basePath, Collection<Path> paths) {
 		List<SourceFile> files = paths.stream().map(path -> new SourceFile(path)).collect(Collectors.toList());
-		return new SourceFolder(basePath, Charset.defaultCharset(), files);
+		return new SourceFolder(basePath, StandardCharsets.UTF_8, files);
 	}
 	
 	public static SourceFolder from(Path basePath, Path... paths) {

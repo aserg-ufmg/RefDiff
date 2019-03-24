@@ -11,7 +11,7 @@ import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
-import refdiff.parsers.java.JavaParserNoBindings;
+import refdiff.parsers.java.JavaParser;
 
 public class RunIcseEval {
 	
@@ -19,7 +19,7 @@ public class RunIcseEval {
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval(String tempFolder) {
-		evalUtils = new EvaluationUtils(new RastComparator(new JavaParserNoBindings()), tempFolder);
+		evalUtils = new EvaluationUtils(new RastComparator(new JavaParser()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -40,15 +40,16 @@ public class RunIcseEval {
 			String commit = rs.getRevision();
 			try {
 				System.out.printf("%d/%d - ", i + 1, expected.size());
-				//evalUtils.prepareSourceCode2(project, commit);
+				evalUtils.prepareSourceCodeLightCheckout(project, commit);
+				
+				Map<KeyPair, String> explanations = new HashMap<>();
+				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
 			} catch (RuntimeException e) {
 				errorCount++;
 				System.err.println(String.format("Skipped %s %s", project, commit));
 				System.err.println(e.getMessage());
 				continue;
 			}
-			Map<KeyPair, String> explanations = new HashMap<>();
-			rc.compareWith("RefDiff", evalUtils.runRefDiffGit(project, commit, explanations), explanations);
 			count++;
 		}
 		

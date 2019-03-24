@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,9 +63,12 @@ public class SDModelBuilder {
 		final String projectRoot = rootFolder.getPath();
 		final String[] emptyArray = new String[0];
 		
+		String encoding = StandardCharsets.UTF_8.name();
 		String[] filesArray = new String[javaFiles.size()];
+		String[] encodings = new String[javaFiles.size()];
 		for (int i = 0; i < filesArray.length; i++) {
 			filesArray[i] = rootFolder + File.separator + javaFiles.get(i).replaceAll("/", systemFileSeparator);
+			encodings[i] = encoding;
 		}
 		final String[] sourceFolders = this.inferSourceFolders(filesArray);
 		final ASTParser parser = buildAstParser(sourceFolders);
@@ -79,7 +83,8 @@ public class SDModelBuilder {
 				// }
 				//
 				try {
-					char[] charArray = Util.getFileCharContent(new File(sourceFilePath), null);
+					//char[] charArray = Util.getFileCharContent(new File(sourceFilePath), StandardCharsets.UTF_8.name());
+					char[] charArray = Util.getFileCharContent(new File(sourceFilePath), encoding);
 					processCompilationUnit(relativePath, charArray, ast, model);
 					TokenizedSource tokenizedSource = new TokenizedSource(relativePath, tokenizer.tokenize(charArray));
 					model.getRoot().addTokenizedFile(tokenizedSource);
@@ -92,7 +97,7 @@ public class SDModelBuilder {
 				// }
 			}
 		};
-		parser.createASTs((String[]) filesArray, null, emptyArray, fileASTRequestor, null);
+		parser.createASTs((String[]) filesArray, encodings, emptyArray, fileASTRequestor, null);
 		
 		postProcessReferences(model, postProcessReferences);
 		postProcessReferences = null;

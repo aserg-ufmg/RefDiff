@@ -3,6 +3,7 @@ package refdiff.core.io;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +11,9 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.jgit.errors.CorruptObjectException;
+import org.eclipse.jgit.errors.IncorrectObjectTypeException;
+import org.eclipse.jgit.errors.MissingObjectException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Repository;
@@ -32,6 +36,10 @@ public class GitSourceTree extends SourceFileSet {
 	
 	@Override
 	public String readContent(SourceFile sourceFile) throws IOException {
+		return new String(readBytes(sourceFile), StandardCharsets.UTF_8.name());
+	}
+	
+	private byte[] readBytes(SourceFile sourceFile) throws MissingObjectException, IncorrectObjectTypeException, IOException, CorruptObjectException, UnsupportedEncodingException, FileNotFoundException {
 		try (ObjectReader reader = repo.newObjectReader(); RevWalk walk = new RevWalk(reader)) {
 			RevCommit commit = walk.parseCommit(sha1);
 			
@@ -39,8 +47,7 @@ public class GitSourceTree extends SourceFileSet {
 			TreeWalk treewalk = TreeWalk.forPath(reader, sourceFile.getPath(), tree);
 			
 			if (treewalk != null) {
-				byte[] data = reader.open(treewalk.getObjectId(0)).getBytes();
-				return new String(data, StandardCharsets.UTF_8.name());
+				return reader.open(treewalk.getObjectId(0)).getBytes();
 			} else {
 				throw new FileNotFoundException(sourceFile.getPath());
 			}
@@ -57,10 +64,10 @@ public class GitSourceTree extends SourceFileSet {
 		File baseFolder = baseFolderPath.toFile();
 		if (baseFolder.exists() || baseFolder.mkdirs()) {
 			for (SourceFile sf : getSourceFiles()) {
-				String fileContent = readContent(sf);
+				byte[] content = readBytes(sf);
 				File destinationFile = new File(baseFolder, sf.getPath());
 				Files.createDirectories(destinationFile.getParentFile().toPath());
-				Files.write(destinationFile.toPath(), fileContent.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+				Files.write(destinationFile.toPath(), content, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
 			}
 			checkoutFolder = baseFolderPath;
 		} else {
