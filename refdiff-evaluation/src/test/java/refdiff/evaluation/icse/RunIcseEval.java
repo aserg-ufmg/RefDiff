@@ -53,6 +53,7 @@ public class RunIcseEval {
 			count++;
 		}
 		
+		System.out.println("\n\n\n");
 		rc.printDetails(System.out, refactoringTypes, "RefDiff");
 		System.out.println();
 		rc.printSummary(System.out, refactoringTypes);
