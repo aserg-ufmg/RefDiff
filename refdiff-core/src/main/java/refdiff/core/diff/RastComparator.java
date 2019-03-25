@@ -190,9 +190,14 @@ public class RastComparator {
 						// if (sameName(n1, n2)) {
 						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
 						if (optRelationshipType.isPresent()) {
-							double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
-							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
-							candidates.add(candidate);
+							double score1 = srb.partialSimilarity(before.sourceRep(n1), after.sourceRep(n2));
+							double score2 = srb.partialSimilarity(after.sourceRep(n2), before.sourceRep(n1));
+							//double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+							double score = Math.max(score1, score2);
+							if (score > threshold.getIdeal()) {
+								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+								candidates.add(candidate);
+							}
 						}
 						// }
 					}
