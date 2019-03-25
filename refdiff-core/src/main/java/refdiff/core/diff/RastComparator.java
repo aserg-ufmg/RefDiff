@@ -115,7 +115,7 @@ public class RastComparator {
 			findMatchesById();
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
-			findMatchesByChildren();
+//			findMatchesByChildren();
 			createRelationshipsForMatchings();
 			findPullPushDownAbstract();
 			findAdditionalPullUpAndPushDown();
@@ -164,7 +164,7 @@ public class RastComparator {
 							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
 							if (optRelationshipType.isPresent()) {
 								RelationshipType type = optRelationshipType.get();
-								double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+								double score = computeSimilarityScore(n1, n2);
 								if (type.isById() || score > thresholdValue) {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 									candidates.add(candidate);
@@ -207,6 +207,14 @@ public class RastComparator {
 			for (PotentialMatch candidate : candidates) {
 				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
 			}
+		}
+		
+		private double computeSimilarityScore(RastNode n1, RastNode n2) {
+//			double score1 = srb.partialSimilarity(before.sourceRep(n1), after.sourceRep(n2));
+//			double score2 = srb.partialSimilarity(after.sourceRep(n2), before.sourceRep(n1));
+//			double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+//			return (Math.max(score1, score2) + score) / 2.0;
+			return srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
 		}
 		
 		private Optional<RelationshipType> findRelationshipForCandidate(RastNode n1, RastNode n2) {
