@@ -83,36 +83,22 @@ public class EvaluationUtils {
 	
 	public RefactoringSet runRefDiff(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
 		
-		File repoFolder = repoFolder(project);
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		
-		//prepareSourceCode2(project, commit);
 		if (!new File(checkoutFolderV0).exists() || !new File(checkoutFolderV1).exists()) {
 			throw new RuntimeException(project + " " + commit + " not prepared");
 		}
 		
-		GitHelper gitHelper = new GitHelper();
-		try (
-			Repository repo = gitHelper.openRepository(repoFolder);
-			RevWalk rw = new RevWalk(repo)) {
-			
-			RevCommit revCommit = rw.parseCommit(repo.resolve(commit));
-			rw.parseCommit(revCommit.getParent(0));
-			
-			List<String> filesV0 = new ArrayList<>();
-			List<String> filesV1 = new ArrayList<>();
-			Map<String, String> renamedFilesHint = new HashMap<>();
-			
-			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getParser().getAllowedFilesFilter());
-			
-			System.out.println(String.format("Computing diff for %s %s", project, commit));
-			FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
-			
-			RastDiff diff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1), fnExplainer);
-			
-			return buildRefactoringSet(project, commit, diff);
-		}
+		System.out.println(String.format("Computing diff for %s %s", project, commit));
+		FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
+		
+		SourceFolder sourceSetBefore = SourceFolder.from(Paths.get(checkoutFolderV0), ".java");
+		SourceFolder sourceSetAfter = SourceFolder.from(Paths.get(checkoutFolderV1), ".java");
+		
+		RastDiff diff = comparator.compare(sourceSetBefore, sourceSetAfter, fnExplainer);
+		
+		return buildRefactoringSet(project, commit, diff);
 	}
 
 	public RefactoringSet runRefDiffGit(String project, String commit, Map<KeyPair, String> explanations) throws Exception {

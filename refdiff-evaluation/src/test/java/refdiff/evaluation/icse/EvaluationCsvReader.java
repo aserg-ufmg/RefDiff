@@ -22,23 +22,36 @@ public class EvaluationCsvReader {
 	public static ResultComparator buildResultComparator(IcseDataset data, List<ResultCommit> list) throws FileNotFoundException, IOException {
 		ResultComparator rc2 = new ResultComparator();
 		Map<String, RefactoringSet> mapRs = new HashMap<>();
+		Map<String, RefactoringSet> mapRsNotExpected = new HashMap<>();
 		for (RefactoringSet rs : data.getExpected()) {
 			RefactoringSet rs2 = new RefactoringSet(rs.getProject(), rs.getRevision());
 			mapRs.put(rs.getRevision(), rs2);
 			rs2.add(rs.getRefactorings());
 			rc2.expect(rs2);
 		}
-		rc2.dontExpect(data.getNotExpected());
+		for (RefactoringSet rs : data.getNotExpected()) {
+			RefactoringSet rs2 = new RefactoringSet(rs.getProject(), rs.getRevision());
+			mapRsNotExpected.put(rs.getRevision(), rs2);
+			rs2.add(rs.getRefactorings());
+			rc2.dontExpect(rs2);
+		}
 		if (list != null) {
 			for (ResultCommit commitResult : list) {
 				String url = commitResult.commitUrl;
 				String commit = url.substring(url.lastIndexOf("/") + 1);
 				
 				RefactoringSet expectedRefactorings = mapRs.get(commit);
+				RefactoringSet notExpectedRefactorings = mapRsNotExpected.get(commit);
 				for (ResultRow row : commitResult.rows) {
-					if ((row.resultA.equals("TP") && row.resultB.equals("TP")) || row.resultFinal.equals("TP")) {
+					boolean evaluatedAsTp = (row.resultA.equals("TP") && row.resultB.equals("TP")) || row.resultFinal.equals("TP");
+					if (evaluatedAsTp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						expectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
+					}
+					boolean evaluatedAsFp = (row.resultA.equals("FP") && row.resultB.equals("FP")) || row.resultFinal.equals("FP");
+					if (evaluatedAsFp) {
+						RefactoringType refType = RefactoringType.fromName(row.refType);
+						notExpectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
 					}
 				}
 			}

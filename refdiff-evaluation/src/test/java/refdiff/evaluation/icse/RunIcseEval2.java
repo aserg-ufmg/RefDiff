@@ -48,7 +48,7 @@ public class RunIcseEval2 {
 //			"54fa890a6af4ccf564fb481d3e1b6ad4d084de9e",
 //			"021d17c8234904dcb1d54596662352395927fe7b",
 //			"cb98ee25ff52bf97faebe3f45cdef0ced9b4416e",
-			"bf5ee44b3b576e01ab09cae9f50300417b01dc07"
+//			"bf5ee44b3b576e01ab09cae9f50300417b01dc07",
 //			"881baed894540031bd55e402933bcad28b74ca88",
 //			"b36ab386559d04db114db8edd87c8d4cbf850c12",
 //			"c753d2e41ba667f9b5a31451a16ecbaecdc65d80",
@@ -61,7 +61,10 @@ public class RunIcseEval2 {
 //			"72b5348307d86b1a118e546c24d97f1ac1895bdb",
 //			"46b0d84de9c309bca48a99e572e6611693ed5236",
 //			"03ade425dd5a65d3a713d5e7d85aa7605956fbd2",
-//			"b0938501f1014cf663e33b44ed5bb9b24d19a358"
+//			"b0938501f1014cf663e33b44ed5bb9b24d19a358",
+//			"669e0722324965e3c99f29685517ac24d4ff2848",
+//			"bec15926deb49d2b3f7b979d4cfc819947a434ec",
+			"3fd77b419673ce6ec41e06cdc27558b1d8f4ca06"
 			));
 		
 		for (RefactoringSet rs : expected) {
@@ -82,8 +85,8 @@ public class RunIcseEval2 {
 			}
 		}
 		
-		rc.printSummary(System.out, refactoringTypes);
 		rc.printDetails(System.out, refactoringTypes, "RefDiff");
+		rc.printSummary(System.out, refactoringTypes);
 	}
 	
 }
