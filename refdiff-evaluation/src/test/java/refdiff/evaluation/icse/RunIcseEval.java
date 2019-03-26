@@ -8,6 +8,7 @@ import java.util.Map;
 import refdiff.core.diff.RastComparator;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
+import refdiff.evaluation.RefactoringRelationship;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
@@ -23,7 +24,7 @@ public class RunIcseEval {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "D:/refdiff/").run();
+		new RunIcseEval(args.length > 0 ? args[0] : "C:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -43,7 +44,7 @@ public class RunIcseEval {
 				evalUtils.prepareSourceCodeLightCheckout(project, commit);
 				
 				Map<KeyPair, String> explanations = new HashMap<>();
-				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs), explanations);
+				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs));
 			} catch (RuntimeException e) {
 				errorCount++;
 				System.err.println(String.format("Skipped %s %s", project, commit));
@@ -54,11 +55,14 @@ public class RunIcseEval {
 		}
 		
 		System.out.println("\n\n\n");
-		rc.printDetails(System.out, refactoringTypes, "RefDiff");
+		rc.printDetails(System.out, refactoringTypes, "RefDiff", this::printDetails);
 		System.out.println();
 		rc.printSummary(System.out, refactoringTypes);
 		
 		System.out.println(String.format("%d commits processed, %d commits skipped.", count, errorCount));
 	}
 	
+	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause) {
+		System.out.printf("\t%s\t%s", label, cause);
+	}
 }

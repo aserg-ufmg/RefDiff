@@ -77,19 +77,14 @@ public class ResultComparator {
 	}
 	
 	public void compareWith(String groupId, RefactoringSet actual) {
-		compareWith(groupId, actual, new HashMap<>());
-	}
-	
-	public void compareWith(String groupId, RefactoringSet actual, Map<KeyPair, String> fnExplanation) {
 		groupIds.add(groupId);
-		resultMap.put(getResultId(actual.getProject(), actual.getRevision(), groupId), computeResult(actual, fnExplanation));
+		resultMap.put(getResultId(actual.getProject(), actual.getRevision(), groupId), computeResult(actual));
 	}
 	
-	public CompareResult computeResult(RefactoringSet actual, Map<KeyPair, String> fnExplanationMap) {
+	public CompareResult computeResult(RefactoringSet actual) {
 		List<RefactoringRelationship> truePositives = new ArrayList<>();
 		List<RefactoringRelationship> falsePositives = new ArrayList<>();
 		List<RefactoringRelationship> falseNegatives = new ArrayList<>();
-		Map<RefactoringRelationship, String> details = new HashMap<>();
 		
 		RefactoringSet expected = expectedMap.get(getProjectRevisionId(actual.getProject(), actual.getRevision()));
 		Set<RefactoringRelationship> expectedRefactorings = new HashSet<>(expected.getRefactorings());
@@ -105,22 +100,14 @@ public class ResultComparator {
 					ignorePullUpToExtractedSupertype && isPullUpToExtractedSupertype(r, expectedUnfiltered);
 				if (!ignoreFp) {
 					falsePositives.add(r);
-					String fpCause = findFpCause(r, expectedUnfiltered);
-					if (fpCause != null) {
-						details.put(r, fpCause);
-					}
 				}
 			}
 		}
 		for (RefactoringRelationship r : expectedRefactorings) {
 			falseNegatives.add(r);
-			String fnCause = fnExplanationMap.get(new KeyPair(r.getEntityBefore(), r.getEntityAfter()));
-			if (fnCause != null) {
-				details.put(r, fnCause);
-			}
 		}
 		
-		return new CompareResult(truePositives, falsePositives, falseNegatives, details);
+		return new CompareResult(truePositives, falsePositives, falseNegatives);
 	}
 	
 	public int getExpectedCount(EnumSet<RefactoringType> refTypesToConsider) {
@@ -225,7 +212,7 @@ public class ResultComparator {
 				Collections.sort(allList);
 				for (RefactoringRelationship r : allList) {
 					out.print(format(r));
-					//out.print('\t');
+					// out.print('\t');
 					if (result != null) {
 						Set<RefactoringRelationship> actualRefactorings = new HashSet<>();
 						actualRefactorings.addAll(result.getTruePositives());
@@ -233,20 +220,19 @@ public class ResultComparator {
 						int correct = expectedRefactorings.contains(r) ? 2 : 0;
 						int found = actualRefactorings.contains(r) ? 1 : 0;
 						String label = labels[correct + found];
-						String cause = result.getDetails(r);
-						if (label == "FP" && cause == null && !notExpectedRefactorings.contains(r)) {
-							label = label + "?";
-						}
-						//out.print(label);
-						rowPrinter.printDetails(expected, r, label, cause);
-						/*
-						if (label.equals("FP") || label.equals("FN")) {
-							if (cause != null) {
-								out.print('\t');
-								out.print(cause);
+						String fpCause = "";
+						
+						if (label == "FP") {
+							fpCause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings);
+							if (fpCause.equals("?")) {
+								label = label + "?";
 							}
 						}
-						*/
+						// out.print(label);
+						rowPrinter.printDetails(expected, r, label, fpCause);
+						/*
+						 * if (label.equals("FP") || label.equals("FN")) { if (cause != null) { out.print('\t'); out.print(cause); } }
+						 */
 					}
 					out.println();
 				}
@@ -258,38 +244,35 @@ public class ResultComparator {
 	public static String format(RefactoringRelationship r) {
 		return String.format("%s\t%s\t%s", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
 	}
-
-	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered) {
+	
+	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered, Set<RefactoringRelationship> blacklisted) {
 		if (isPullUpToExtractedSupertype(r, expectedUnfiltered)) {
-			return "<ES>";
+			return "<PullUpToExtractedSupertype>";
 		}
 		if (isMoveToRenamedType(r, expectedUnfiltered)) {
-			return "<RT>";
+			return "<MoveToRenamedType>";
 		}
 		if (isMoveToMovedType(r, expectedUnfiltered)) {
-			return "<MT>";
+			return "<MoveToMovedType>";
 		}
 		if (r.getRefactoringType() == RefactoringType.MOVE_ATTRIBUTE || r.getRefactoringType() == RefactoringType.MOVE_OPERATION) {
-			if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.EXTRACT_SUPERCLASS, parentOf(r.getEntityBefore()), parentOf(r.getEntityAfter())))) {
-				return "<ES>";
-			}
-			if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.EXTRACT_INTERFACE, parentOf(r.getEntityBefore()), parentOf(r.getEntityAfter())))) {
-				return "<ES>";
-			}
 			if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PULL_UP_ATTRIBUTE, (r.getEntityBefore()), (r.getEntityAfter())))) {
-				return "<PUF>";
+				return "<ShouldBePullUp>";
 			}
 			if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PUSH_DOWN_ATTRIBUTE, (r.getEntityBefore()), (r.getEntityAfter())))) {
-				return "<PDF>";
+				return "<ShouldBePushDown>";
 			}
 			if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PULL_UP_OPERATION, (r.getEntityBefore()), (r.getEntityAfter())))) {
-				return "<PUM>";
+				return "<ShouldBePullUp>";
 			}
 			if (expectedUnfiltered.contains(new RefactoringRelationship(RefactoringType.PUSH_DOWN_OPERATION, (r.getEntityBefore()), (r.getEntityAfter())))) {
-				return "<PDM>";
+				return "<ShouldBePushDown>";
 			}
 		}
-		return null;
+		if (blacklisted.contains(r)) {
+			return "<Blacklisted>";
+		}
+		return "?";
 	}
 	
 	private boolean isPullUpToExtractedSupertype(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered) {
@@ -349,17 +332,11 @@ public class ResultComparator {
 		private final Collection<RefactoringRelationship> truePositives;
 		private final Collection<RefactoringRelationship> falsePositives;
 		private final Collection<RefactoringRelationship> falseNegatives;
-		private final Map<RefactoringRelationship, String> details;
 		
 		public CompareResult(Collection<RefactoringRelationship> truePositives, Collection<RefactoringRelationship> falsePositives, Collection<RefactoringRelationship> falseNegatives) {
-			this(truePositives, falsePositives, falseNegatives, new HashMap<>());
-		}
-		
-		public CompareResult(Collection<RefactoringRelationship> truePositives, Collection<RefactoringRelationship> falsePositives, Collection<RefactoringRelationship> falseNegatives, Map<RefactoringRelationship, String> details) {
 			this.truePositives = truePositives;
 			this.falsePositives = falsePositives;
 			this.falseNegatives = falseNegatives;
-			this.details = details;
 		}
 		
 		public int getTPCount() {
@@ -405,8 +382,7 @@ public class ResultComparator {
 			return new CompareResult(
 				this.truePositives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()),
 				this.falsePositives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()),
-				this.falseNegatives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()),
-				this.details);
+				this.falseNegatives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()));
 		}
 		
 		private boolean isOneOf(RefactoringRelationship r, EnumSet<RefactoringType> rts) {
@@ -417,11 +393,6 @@ public class ResultComparator {
 			this.truePositives.addAll(other.truePositives);
 			this.falsePositives.addAll(other.falsePositives);
 			this.falseNegatives.addAll(other.falseNegatives);
-			this.details.putAll(other.details);
-		}
-		
-		public String getDetails(RefactoringRelationship r) {
-			return details.get(r);
 		}
 		
 		public Collection<RefactoringRelationship> getTruePositives() {

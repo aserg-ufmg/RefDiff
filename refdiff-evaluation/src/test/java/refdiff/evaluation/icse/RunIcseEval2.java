@@ -11,6 +11,7 @@ import java.util.Set;
 import refdiff.core.diff.RastComparator;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
+import refdiff.evaluation.RefactoringRelationship;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
@@ -26,7 +27,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "D:/refdiff/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "C:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -92,13 +93,16 @@ public class RunIcseEval2 {
 					continue;
 				}
 				Map<KeyPair, String> explanations = new HashMap<>();
-				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs), explanations);
+				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs));
 			}
 		}
 		
 		System.out.println("\n\n\n");
-		rc.printDetails(System.out, refactoringTypes, "RefDiff");
+		rc.printDetails(System.out, refactoringTypes, "RefDiff", this::printDetails);
 		rc.printSummary(System.out, refactoringTypes);
 	}
 	
+	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause) {
+		System.out.printf("\t%s\t%s", label, cause);
+	}
 }
