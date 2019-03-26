@@ -403,9 +403,9 @@ public class ResultComparator {
 		
 		public CompareResult filterBy(EnumSet<RefactoringType> refTypes) {
 			return new CompareResult(
-				this.truePositives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toSet()),
-				this.falsePositives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toSet()),
-				this.falseNegatives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toSet()),
+				this.truePositives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()),
+				this.falsePositives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()),
+				this.falseNegatives.stream().filter(r -> isOneOf(r, refTypes)).collect(Collectors.toList()),
 				this.details);
 		}
 		

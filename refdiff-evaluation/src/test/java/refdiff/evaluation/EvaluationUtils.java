@@ -47,7 +47,7 @@ public class EvaluationUtils {
 	}
 	
 	public RefactoringSet runRefDiff(String project, String commit) throws Exception {
-		return runRefDiff(project, commit, new HashMap<>());
+		return runRefDiff(project, commit, new HashMap<>(), null);
 	}
 	
 	public RastDiff computeDiff(String project, String commit) throws Exception {
@@ -81,7 +81,7 @@ public class EvaluationUtils {
 		}
 	}
 	
-	public RefactoringSet runRefDiff(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
+	public RefactoringSet runRefDiff(String project, String commit, Map<KeyPair, String> explanations, RefactoringSet expected) throws Exception {
 		
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
@@ -98,7 +98,7 @@ public class EvaluationUtils {
 		
 		RastDiff diff = comparator.compare(sourceSetBefore, sourceSetAfter, fnExplainer);
 		
-		return buildRefactoringSet(project, commit, diff);
+		return buildRefactoringSet(project, commit, diff, expected);
 	}
 
 	public RefactoringSet runRefDiffGit(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
@@ -111,28 +111,32 @@ public class EvaluationUtils {
 			
 			RastDiff diff = comparator.compare(sourcesBeforeAfter.getBefore(), sourcesBeforeAfter.getAfter(), fnExplainer);
 			
-			return buildRefactoringSet(project, commit, diff);
+			return buildRefactoringSet(project, commit, diff, null);
 		}
 	}
 	
-	private RefactoringSet buildRefactoringSet(String project, String commit, RastDiff diff) {
+	private RefactoringSet buildRefactoringSet(String project, String commit, RastDiff diff, RefactoringSet expected) {
 		RefactoringSet rs = new RefactoringSet(project, commit);
 		for (Relationship rel : diff.getRelationships()) {
 			RelationshipType relType = rel.getType();
 			String nodeType = rel.getNodeAfter().getType();
 			Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
 			if (refType.isPresent()) {
-				if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) &&
-					diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))) {
-					continue;
-				}
-				
 				boolean copyN1Parent = refType.get().equals(RefactoringType.EXTRACT_OPERATION);
 				boolean copyN2Parent = refType.get().equals(RefactoringType.INLINE_OPERATION) || refType.get().equals(RefactoringType.RENAME_METHOD);
 				
 				KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), copyN1Parent, copyN2Parent);
 				
-				rs.add(new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel));
+				RefactoringRelationship normalizedRefactoring = new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel);
+				
+				if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) &&
+					diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))
+					) {
+					if (expected == null || !expected.getRefactorings().contains(normalizedRefactoring)) {
+						continue;
+					}
+				}
+				rs.add(normalizedRefactoring);
 			}
 		}
 		return rs;

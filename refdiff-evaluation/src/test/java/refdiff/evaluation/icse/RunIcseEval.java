@@ -43,7 +43,7 @@ public class RunIcseEval {
 				evalUtils.prepareSourceCodeLightCheckout(project, commit);
 				
 				Map<KeyPair, String> explanations = new HashMap<>();
-				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations), explanations);
+				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs), explanations);
 			} catch (RuntimeException e) {
 				errorCount++;
 				System.err.println(String.format("Skipped %s %s", project, commit));
