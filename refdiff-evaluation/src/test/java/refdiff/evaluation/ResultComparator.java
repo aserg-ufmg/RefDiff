@@ -23,6 +23,7 @@ public class ResultComparator {
 	Map<String, RefactoringSet> expectedMap = new LinkedHashMap<>();
 	Map<String, RefactoringSet> notExpectedMap = new LinkedHashMap<>();
 	Map<String, CompareResult> resultMap = new HashMap<>();
+	Map<String, Map<KeyPair, String>> fnExplanations = new HashMap<>();
 	
 	private boolean ignorePullUpToExtractedSupertype = false;
 	private boolean ignoreMoveToMovedType = false;
@@ -220,16 +221,18 @@ public class ResultComparator {
 						int correct = expectedRefactorings.contains(r) ? 2 : 0;
 						int found = actualRefactorings.contains(r) ? 1 : 0;
 						String label = labels[correct + found];
-						String fpCause = "";
+						String cause = "";
 						
 						if (label == "FP") {
-							fpCause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings);
-							if (fpCause.equals("?")) {
+							cause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings);
+							if (cause.equals("?")) {
 								label = label + "?";
 							}
+						} else if (label == "FN") {
+							cause = findFnCause(r, actualRefactorings, this.fnExplanations.get(getProjectRevisionId(expected.getProject(), expected.getRevision())));
 						}
 						// out.print(label);
-						rowPrinter.printDetails(expected, r, label, fpCause);
+						rowPrinter.printDetails(expected, r, label, cause);
 						/*
 						 * if (label.equals("FP") || label.equals("FN")) { if (cause != null) { out.print('\t'); out.print(cause); } }
 						 */
@@ -271,6 +274,14 @@ public class ResultComparator {
 		}
 		if (blacklisted.contains(r)) {
 			return "<Blacklisted>";
+		}
+		return "?";
+	}
+	
+	private String findFnCause(RefactoringRelationship r, Set<RefactoringRelationship> actualRefactorings, Map<KeyPair, String> fnCauseMap) {
+		if (fnCauseMap != null) {
+			KeyPair keyPair = new KeyPair(r.getEntityBefore(), r.getEntityAfter());
+			return fnCauseMap.getOrDefault(keyPair, "?");
 		}
 		return "?";
 	}
@@ -430,6 +441,10 @@ public class ResultComparator {
 	
 	public void setIgnoreMoveToRenamedType(boolean ignoreMoveToRenamedType) {
 		this.ignoreMoveToRenamedType = ignoreMoveToRenamedType;
+	}
+
+	public void addFnExplanations(String project, String commit, Map<KeyPair, String> explanations) {
+		this.fnExplanations.put(getProjectRevisionId(project, commit), explanations);
 	}
 	
 }

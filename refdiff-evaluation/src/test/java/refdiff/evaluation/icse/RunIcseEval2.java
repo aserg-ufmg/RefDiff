@@ -27,7 +27,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "C:/refdiff/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "D:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -67,15 +67,17 @@ public class RunIcseEval2 {
 //			"bec15926deb49d2b3f7b979d4cfc819947a434ec",
 //			"3fd77b419673ce6ec41e06cdc27558b1d8f4ca06",
 			
-			"fcc9a34356817d93c24b5ccf3107ec234a28b136",
-			"08b1b56e2cd5ad72126f4bbeb15a47d9b104dfff",
-			"bba4af3f52064b5a2de2c9a57f9d34ba67dcdd8c",
-			"182f4d1174036417aad9d6db908ceaf64234fd5f",
-			"32dd05fc13b53873bf18c589622b55d12e3883c7",
-			"c1b847acdc8cb90a1498b236b3bb5c81ca75c044",
-			"51b8b0e1ad4be1b137d67774eab28dc0ef52cb0a",
-			"6ad1dcbfef36821a71cbffa301c58d1c3ffe8d62",
-			"f9d3171f5020da5c359cdda28ef05172e858c464"
+//			"fcc9a34356817d93c24b5ccf3107ec234a28b136",
+//			"08b1b56e2cd5ad72126f4bbeb15a47d9b104dfff",
+//			"bba4af3f52064b5a2de2c9a57f9d34ba67dcdd8c",
+//			"182f4d1174036417aad9d6db908ceaf64234fd5f",
+//			"32dd05fc13b53873bf18c589622b55d12e3883c7",
+//			"c1b847acdc8cb90a1498b236b3bb5c81ca75c044",
+//			"51b8b0e1ad4be1b137d67774eab28dc0ef52cb0a",
+//			"6ad1dcbfef36821a71cbffa301c58d1c3ffe8d62",
+//			"f9d3171f5020da5c359cdda28ef05172e858c464",
+			
+			"372f4ae6cebcd664e3b43cade356d1df233f6467"
 			
 			));
 		
@@ -94,6 +96,7 @@ public class RunIcseEval2 {
 				}
 				Map<KeyPair, String> explanations = new HashMap<>();
 				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs));
+				rc.addFnExplanations(project, commit, explanations);
 			}
 		}
 		

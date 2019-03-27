@@ -24,6 +24,7 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
+import refdiff.core.util.PairBeforeAfter;
 import refdiff.parsers.RastParser;
 
 public class RastComparator {
@@ -113,6 +114,7 @@ public class RastComparator {
 		RastDiff computeDiff() {
 			computeSourceRepresentationForRemovedAndAdded();
 			findMatchesById();
+			//findMatchesByName();
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
 			findMatchesByChildren();
@@ -153,6 +155,42 @@ public class RastComparator {
 //			//reportSimilarity(similarityNotSame);
 //		}
 		
+		private void findMatchesByName() {
+			List<PotentialMatch> candidates = new ArrayList<>();
+			Map<String, PairBeforeAfter<List<RastNode>>> nodesGroupedByName = new HashMap<>();
+			for (RastNode n1 : removed) {
+				PairBeforeAfter<List<RastNode>> pair = nodesGroupedByName.computeIfAbsent(n1.getSimpleName(), name -> new PairBeforeAfter<List<RastNode>>(new ArrayList<>(), new ArrayList<>()));
+				pair.getBefore().add(n1);
+			}
+			for (RastNode n2 : added) {
+				PairBeforeAfter<List<RastNode>> pair = nodesGroupedByName.computeIfAbsent(n2.getSimpleName(), name -> new PairBeforeAfter<List<RastNode>>(new ArrayList<>(), new ArrayList<>()));
+				pair.getAfter().add(n2);
+			}
+			for (PairBeforeAfter<List<RastNode>> pair : nodesGroupedByName.values()) {
+				if (pair.getBefore().size() == 1 && pair.getAfter().size() == 1) {
+					RastNode n1 = pair.getBefore().get(0);
+					RastNode n2 = pair.getAfter().get(0);
+					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
+						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
+						if (optRelationshipType.isPresent()) {
+							RelationshipType type = optRelationshipType.get();
+							double score = computeLightSimilarityScore(n1, n2);
+							if (type.isById() || score > threshold.getMinimum()) {
+								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+								candidates.add(candidate);
+							} else {
+								monitor.reportDiscardedMatch(n1, n2, score);
+							}
+						}
+					}
+				}
+			}
+			Collections.sort(candidates);
+			for (PotentialMatch candidate : candidates) {
+				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
+			}
+		}
+		
 		private void findMatchesBySimilarity(boolean onlySafe) {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
@@ -164,7 +202,7 @@ public class RastComparator {
 							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
 							if (optRelationshipType.isPresent()) {
 								RelationshipType type = optRelationshipType.get();
-								double score = computeSimilarityScore(n1, n2);
+								double score = computeHardSimilarityScore(n1, n2);
 								if (type.isById() || score > thresholdValue) {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 									candidates.add(candidate);
@@ -190,16 +228,12 @@ public class RastComparator {
 						// if (sameName(n1, n2)) {
 						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
 						if (optRelationshipType.isPresent()) {
-							double score1 = srb.partialSimilarity(before.sourceRep(n1), after.sourceRep(n2));
-							double score2 = srb.partialSimilarity(after.sourceRep(n2), before.sourceRep(n1));
-							//double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
-							double score = Math.max(score1, score2);
+							double score = computeLightSimilarityScore(n1, n2);
 							if (score > threshold.getIdeal()) {
 								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 								candidates.add(candidate);
 							}
 						}
-						// }
 					}
 				}
 			}
@@ -209,12 +243,14 @@ public class RastComparator {
 			}
 		}
 		
-		private double computeSimilarityScore(RastNode n1, RastNode n2) {
-//			double score1 = srb.partialSimilarity(before.sourceRep(n1), after.sourceRep(n2));
-//			double score2 = srb.partialSimilarity(after.sourceRep(n2), before.sourceRep(n1));
-//			double score = srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
-//			return (Math.max(score1, score2) + score) / 2.0;
+		private double computeHardSimilarityScore(RastNode n1, RastNode n2) {
 			return srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+		}
+		
+		private double computeLightSimilarityScore(RastNode n1, RastNode n2) {
+			double score1 = srb.partialSimilarity(before.sourceRep(n1), after.sourceRep(n2));
+			double score2 = srb.partialSimilarity(after.sourceRep(n2), before.sourceRep(n1));
+			return Math.max(score1, score2);
 		}
 		
 		private Optional<RelationshipType> findRelationshipForCandidate(RastNode n1, RastNode n2) {
