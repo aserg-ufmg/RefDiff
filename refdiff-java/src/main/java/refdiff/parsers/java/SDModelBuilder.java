@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FileASTRequestor;
@@ -124,8 +125,13 @@ public class SDModelBuilder {
 		if (packageDeclaration != null) {
 			packageName = packageDeclaration.getName().getFullyQualifiedName();
 		}
-		BindingsRecoveryAstVisitor visitor = new BindingsRecoveryAstVisitor(model, compilationUnit, sourceFilePath, fileContent, packageName, postProcessReferences, postProcessSupertypes);
-		compilationUnit.accept(visitor);
+		int flags = compilationUnit.getFlags();
+		if ((flags & ASTNode.RECOVERED) > 1 || (flags & ASTNode.MALFORMED) > 1) {
+			// syntax error
+		} else {			
+			BindingsRecoveryAstVisitor visitor = new BindingsRecoveryAstVisitor(model, compilationUnit, sourceFilePath, fileContent, packageName, postProcessReferences, postProcessSupertypes);
+			compilationUnit.accept(visitor);
+		}
 	}
 	
 	private String[] inferSourceFolders(String[] filesArray) {

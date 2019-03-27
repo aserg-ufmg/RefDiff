@@ -1225,20 +1225,6 @@ Extract Method	com.goide.psi.impl.GoVarReference.resolveInner()	com.goide.psi.im
 https://github.com/icse18-refactorings/go-lang-idea-plugin/commit/b8929ccb4057c74ac64679216487a4abcd3ae1c3
 Extract Method	com.goide.runconfig.testing.GoTestRunConfigurationProducerBase.setupConfigurationFromContext(GoTestRunConfigurationBase,ConfigurationContext,Ref)	com.goide.runconfig.testing.GoTestRunConfigurationProducerBase.isAvailableInModule(Module)	TP	
 Extract Method	com.goide.runconfig.testing.frameworks.gocheck.GocheckRunConfiguration.checkConfiguration()	com.goide.runconfig.testing.frameworks.gocheck.GocheckRunConfiguration.hasGoCheckSupport(Module)	TP	
-https://github.com/icse18-refactorings/drill/commit/8815eb7d947be6d2a0281c15a3a60d8ba040db95
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.ListWriter()	org.apache.drill.exec.vector.complex.impl.$.ListWriter()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.ListWriter(String)	org.apache.drill.exec.vector.complex.impl.$.ListWriter(String)	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.allocate()	org.apache.drill.exec.vector.complex.impl.$.allocate()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.clear()	org.apache.drill.exec.vector.complex.impl.$.clear()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.end()	org.apache.drill.exec.vector.complex.impl.$.end()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.getField()	org.apache.drill.exec.vector.complex.impl.$.getField()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.getUnsupportedErrorMsg(String,String)	org.apache.drill.exec.vector.complex.impl.$.getUnsupportedErrorMsg(String,String)	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.getValueCapacity()	org.apache.drill.exec.vector.complex.impl.$.getValueCapacity()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.list()	org.apache.drill.exec.vector.complex.impl.$.list()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.map()	org.apache.drill.exec.vector.complex.impl.$.map()	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.setPosition(int)	org.apache.drill.exec.vector.complex.impl.$.setPosition(int)	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.setValueCount(int)	org.apache.drill.exec.vector.complex.impl.$.setValueCount(int)	FP	<Blacklisted>
-Move Method	org.apache.drill.exec.vector.complex.impl.Mode.start()	org.apache.drill.exec.vector.complex.impl.$.start()	FP	<Blacklisted>
 https://github.com/icse18-refactorings/drill/commit/711992f22ae6d6dfc43bdb4c01bf8f921d175b38
 Extract Method	org.apache.drill.jdbc.impl.DrillCursor.next()	org.apache.drill.jdbc.impl.DrillCursor.nextRowInternally()	TP	
 https://github.com/icse18-refactorings/spring-integration/commit/ec5230abc7500734d7b78a176c291378e100a927
@@ -1921,9 +1907,8 @@ Extract Method	uk.co.real_logic.aeron.driver.media.SendChannelEndpoint.onStatusM
 https://github.com/icse18-refactorings/spring-data-jpa/commit/36d1b0717bc5836bba39985caadc2df5f2533ac4
 Move Class	org.springframework.data.jpa.repository.augment.JpaSoftDeleteQueryAugmentor.PropertyChangeEnsuringBeanWrapper	org.springframework.data.jpa.repository.augment.PropertyChangeEnsuringBeanWrapper	TP	
 https://github.com/icse18-refactorings/drill/commit/b2bbd9941be6b132a83d27c0ae02c935e1dec5dd
-Extract Method	org.apache.drill.exec.vector.$.allocateNewSafe()	org.apache.drill.exec.vector.$.allocateBytes(long)	FP	<Blacklisted>
 Extract Method	org.apache.drill.exec.vector.BitVector.allocateNew(int)	org.apache.drill.exec.vector.BitVector.allocateBytes(long)	TP	
-Extract Method	org.apache.drill.exec.vector.BitVector.allocateNewSafe()	org.apache.drill.exec.vector.BitVector.allocateBytes(long)	FN	
+Extract Method	org.apache.drill.exec.vector.BitVector.allocateNewSafe()	org.apache.drill.exec.vector.BitVector.allocateBytes(long)	TP	
 https://github.com/icse18-refactorings/deeplearning4j/commit/3325f5ccd23f8016fa28a24f878b54f1918546ed
 Extract Method	org.deeplearning4j.models.embeddings.loader.WordVectorSerializer.loadGoogleModel(File,boolean)	org.deeplearning4j.models.embeddings.loader.WordVectorSerializer.loadGoogleModel(File,boolean,boolean)	TP	
 https://github.com/icse18-refactorings/cucumber-jvm/commit/0e815f3e1339f91960c7c64ab395de6dd8ff9eec
@@ -3915,16 +3900,16 @@ Extract Method	org.apache.hadoop.hive.ql.session.SessionState.close()	org.apache
 
 
 # RefDiff #
-Total  #: 3212  TP: 2652  FP: 188  FN: 560  Prec.: 0,934  Recall: 0,826  F1: 0,876
+Total  #: 3212  TP: 2653  FP: 174  FN: 559  Prec.: 0,938  Recall: 0,826  F1: 0,879
 MC     #: 1093  TP: 1060  FP:   8  FN:  33  Prec.: 0,993  Recall: 0,970  F1: 0,981
-MM     #: 319  TP: 256  FP:  54  FN:  63  Prec.: 0,826  Recall: 0,803  F1: 0,814
+MM     #: 319  TP: 256  FP:  41  FN:  63  Prec.: 0,862  Recall: 0,803  F1: 0,831
 RC     #:  83  TP:  71  FP:  19  FN:  12  Prec.: 0,789  Recall: 0,855  F1: 0,821
 RM     #: 343  TP: 236  FP:  22  FN: 107  Prec.: 0,915  Recall: 0,688  F1: 0,785
 EI     #:  24  TP:  15  FP:   4  FN:   9  Prec.: 0,789  Recall: 0,625  F1: 0,698
 ES     #:  70  TP:  52  FP:   1  FN:  18  Prec.: 0,981  Recall: 0,743  F1: 0,846
 PUM    #:  88  TP:  72  FP:   1  FN:  16  Prec.: 0,986  Recall: 0,818  F1: 0,894
 PDM    #:  39  TP:  37  FP:   3  FN:   2  Prec.: 0,925  Recall: 0,949  F1: 0,937
-EM     #: 1033  TP: 767  FP:  71  FN: 266  Prec.: 0,915  Recall: 0,742  F1: 0,820
+EM     #: 1033  TP: 768  FP:  70  FN: 265  Prec.: 0,916  Recall: 0,743  F1: 0,821
 IM     #: 120  TP:  86  FP:   5  FN:  34  Prec.: 0,945  Recall: 0,717  F1: 0,815
 
 
