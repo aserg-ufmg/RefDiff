@@ -230,9 +230,7 @@ public class RastComparator {
 				for (RastNode n2 : added) {
 					int matchingChild = countMatchingChild(n1, n2);
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && matchingChild > 1) {
-						double nameScore = Math.max(
-							srb.partialSimilarity(before.nameSourceRep(n1), after.nameSourceRep(n2)), 
-							srb.partialSimilarity(after.nameSourceRep(n2), before.nameSourceRep(n1)));
+						double nameScore = computeNameSimilarity(n1, n2);
 						
 						double matchingChildrenRatio = ((double) matchingChild) / n1.getNodes().size();
 						
@@ -259,6 +257,18 @@ public class RastComparator {
 		
 		private double computeHardSimilarityScore(RastNode n1, RastNode n2) {
 			return srb.similarity(before.sourceRep(n1), after.sourceRep(n2));
+		}
+		
+		private double computeNameSimilarity(RastNode n1, RastNode n2) {
+			double s1 = Math.max(
+				srb.partialSimilarity(before.nameSourceRep(n1), after.nameSourceRep(n2)), 
+				srb.partialSimilarity(after.nameSourceRep(n2), before.nameSourceRep(n1)));
+			double s2 = srb.similarity(before.nameSourceRep(n1), after.nameSourceRep(n2));
+			return (s1 + s2) / 2.0;
+		}
+		
+		private double computeMixedSimilarityScore(RastNode n1, RastNode n2) {
+			return (computeNameSimilarity(n1, n2) + computeHardSimilarityScore(n1, n2)) / 2.0;
 		}
 		
 		private double computeLightSimilarityScore(RastNode n1, RastNode n2) {
