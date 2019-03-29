@@ -15,6 +15,7 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
 import refdiff.core.diff.RastComparator;
+import refdiff.core.diff.RastComparator.DiffBuilder;
 import refdiff.core.diff.RastComparatorMonitor;
 import refdiff.core.diff.RastDiff;
 import refdiff.core.diff.Relationship;
@@ -91,14 +92,14 @@ public class EvaluationUtils {
 		}
 		
 		System.out.println(String.format("Computing diff for %s %s", project, commit));
-		FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
 		
 		SourceFolder sourceSetBefore = SourceFolder.from(Paths.get(checkoutFolderV0), ".java");
 		SourceFolder sourceSetAfter = SourceFolder.from(Paths.get(checkoutFolderV1), ".java");
 		
-		RastDiff diff = comparator.compare(sourceSetBefore, sourceSetAfter, fnExplainer);
+		RefactoringSetBuilder rsBuilder = new RefactoringSetBuilder(project, commit, expected, explanations);
+		comparator.compare(sourceSetBefore, sourceSetAfter, rsBuilder);
 		
-		return buildRefactoringSet(project, commit, diff, expected);
+		return rsBuilder.getRs();
 	}
 
 	public RefactoringSet runRefDiffGit(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
@@ -107,39 +108,85 @@ public class EvaluationUtils {
 		try (Repository repo = gitHelper.openRepository(repoFolder)) {
 			PairBeforeAfter<SourceFileSet> sourcesBeforeAfter = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, comparator.getParser().getAllowedFilesFilter());
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
-			FalseNegativeExplainer fnExplainer = new FalseNegativeExplainer(explanations);
 			
-			RastDiff diff = comparator.compare(sourcesBeforeAfter.getBefore(), sourcesBeforeAfter.getAfter(), fnExplainer);
+			RefactoringSetBuilder rsBuilder = new RefactoringSetBuilder(project, commit, null, explanations);
+			comparator.compare(sourcesBeforeAfter.getBefore(), sourcesBeforeAfter.getAfter(), rsBuilder);
 			
-			return buildRefactoringSet(project, commit, diff, null);
+			return rsBuilder.getRs();
 		}
 	}
 	
-	private RefactoringSet buildRefactoringSet(String project, String commit, RastDiff diff, RefactoringSet expected) {
-		RefactoringSet rs = new RefactoringSet(project, commit);
-		for (Relationship rel : diff.getRelationships()) {
-			RelationshipType relType = rel.getType();
-			String nodeType = rel.getNodeAfter().getType();
-			Optional<RefactoringType> refType = getRefactoringType(relType, nodeType);
-			if (refType.isPresent()) {
-				boolean copyN1Parent = refType.get().equals(RefactoringType.EXTRACT_OPERATION);
-				boolean copyN2Parent = refType.get().equals(RefactoringType.INLINE_OPERATION) || refType.get().equals(RefactoringType.RENAME_METHOD);
-				
-				KeyPair keyPair = normalizeNodeKeys(rel.getNodeBefore(), rel.getNodeAfter(), copyN1Parent, copyN2Parent);
-				
-				RefactoringRelationship normalizedRefactoring = new RefactoringRelationship(refType.get(), keyPair.getKey1(), keyPair.getKey2(), rel);
-				
-				if (refType.get().equals(RefactoringType.PULL_UP_OPERATION) &&
-					diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))
-					) {
-					if (expected == null || !expected.getRefactorings().contains(normalizedRefactoring)) {
-						continue;
+	private class RefactoringSetBuilder implements RastComparatorMonitor {
+		private final String project;
+		private final String commit;
+		private final RefactoringSet expected;
+		private RefactoringSet rs;
+		private final Map<KeyPair, String> explanation;
+		
+		public void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
+			explanation.put(keyPair, String.format("Threshold %.3f", score));
+		}
+		
+		public void reportDiscardedConflictingMatch(RastNode n1, RastNode n2) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
+			explanation.put(keyPair, "Conflicting match");
+		}
+		
+		public void reportDiscardedExtract(RastNode n1, RastNode n2, double score) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, true, false);
+			explanation.put(keyPair, String.format("Threshold %.3f", score));
+		}
+		
+		public void reportDiscardedInline(RastNode n1, RastNode n2, double score) {
+			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, true);
+			explanation.put(keyPair, String.format("Threshold %.3f", score));
+		}
+		
+		public RefactoringSetBuilder(String project, String commit, RefactoringSet expected, Map<KeyPair, String> explanation) {
+			this.project = project;
+			this.commit = commit;
+			this.expected = expected;
+			this.explanation = explanation;
+		}
+
+		@Override
+		public void afterCompare(long elapsedTime, DiffBuilder<?> diffBuilder) {
+			RastDiff diff = diffBuilder.getDiff();
+			rs = new RefactoringSet(project, commit);
+			for (Relationship rel : diff.getRelationships()) {
+				RelationshipType relType = rel.getType();
+				String nodeType = rel.getNodeAfter().getType();
+				Optional<RefactoringType> optRefType = getRefactoringType(relType, nodeType);
+				if (optRefType.isPresent()) {
+					RefactoringType refType = optRefType.get();
+					boolean copyN1Parent = refType.equals(RefactoringType.EXTRACT_OPERATION);
+					boolean copyN2Parent = refType.equals(RefactoringType.INLINE_OPERATION) || refType.equals(RefactoringType.RENAME_METHOD);
+					
+					RastNode n1 = rel.getNodeBefore();
+					RastNode n2 = rel.getNodeAfter();
+					if (refType.equals(RefactoringType.EXTRACT_INTERFACE)) {
+						n1 = diffBuilder.matchingNodeAfter(n1).get();
 					}
+					KeyPair keyPair = normalizeNodeKeys(n1, n2, copyN1Parent, copyN2Parent);
+					
+					RefactoringRelationship normalizedRefactoring = new RefactoringRelationship(refType, keyPair.getKey1(), keyPair.getKey2(), rel);
+					
+					if (refType.equals(RefactoringType.PULL_UP_OPERATION) &&
+						diff.getRelationships().contains(new Relationship(RelationshipType.EXTRACT_SUPER, rel.getNodeBefore().getParent().get(), rel.getNodeAfter().getParent().get()))
+						) {
+						if (expected == null || !expected.getRefactorings().contains(normalizedRefactoring)) {
+							continue;
+						}
+					}
+					rs.add(normalizedRefactoring);
 				}
-				rs.add(normalizedRefactoring);
 			}
 		}
-		return rs;
+
+		public RefactoringSet getRs() {
+			return rs;
+		}
 	}
 	
 	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean copyN1Parent, boolean copyN2Parent) {
@@ -344,35 +391,6 @@ public class EvaluationUtils {
 			//
 		}
 		return Optional.empty();
-	}
-	
-	private class FalseNegativeExplainer implements RastComparatorMonitor {
-		
-		private final Map<KeyPair, String> explanation;
-		
-		public FalseNegativeExplainer(Map<KeyPair, String> explanation) {
-			this.explanation = explanation;
-		}
-		
-		public void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {
-			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
-			explanation.put(keyPair, String.format("Threshold %.3f", score));
-		}
-		
-		public void reportDiscardedConflictingMatch(RastNode n1, RastNode n2) {
-			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
-			explanation.put(keyPair, "Conflicting match");
-		}
-		
-		public void reportDiscardedExtract(RastNode n1, RastNode n2, double score) {
-			KeyPair keyPair = normalizeNodeKeys(n1, n2, true, false);
-			explanation.put(keyPair, String.format("Threshold %.3f", score));
-		}
-		
-		public void reportDiscardedInline(RastNode n1, RastNode n2, double score) {
-			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, true);
-			explanation.put(keyPair, String.format("Threshold %.3f", score));
-		}
 	}
 	
 }

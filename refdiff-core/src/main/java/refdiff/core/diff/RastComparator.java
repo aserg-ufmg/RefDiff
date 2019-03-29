@@ -44,11 +44,11 @@ public class RastComparator {
 		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), sourcesBefore, sourcesAfter, monitor);
 		RastDiff diff = diffBuilder.computeDiff();
 		long end = System.currentTimeMillis();
-		monitor.afterCompare(end - start);
+		monitor.afterCompare(end - start, diffBuilder);
 		return diff;
 	}
 	
-	private class DiffBuilder<T> {
+	public class DiffBuilder<T> {
 		private final SourceRepresentationBuilder<T> srb;
 		private RastDiff diff;
 		private RastRootHelper<T> before;
@@ -91,6 +91,10 @@ public class RastComparator {
 			monitor.beforeCompare(before, after);
 		}
 		
+		public RastDiff getDiff() {
+			return diff;
+		}
+
 		private void apply(Set<Relationship> relationships) {
 			for (Relationship r : relationships) {
 				addRelationship(r);
@@ -504,8 +508,22 @@ public class RastComparator {
 					}
 				});
 			
+			inferExtractEmptySuper(relationships);
 			apply(relationships);
-		} 
+		}
+		
+		private void inferExtractEmptySuper(Set<Relationship> relationships) {
+			for (RastNode n2 : added) {
+				if (n2.getNodes().isEmpty()) {
+					for (RastNode subtypeAfter : after.findReverseRelationships(RastNodeRelationshipType.SUBTYPE, n2)) {
+						Optional<RastNode> optN1Before = matchingNodeBefore(subtypeAfter);
+						if (optN1Before.isPresent()) {
+							relationships.add(new Relationship(RelationshipType.EXTRACT_SUPER, optN1Before.get(), n2));
+						}
+					}
+				}
+			}
+		}
 		
 		private void addMatch(RastNode nBefore, RastNode nAfter) {
 			if (mapBeforeToAfter.containsKey(nBefore) || mapAfterToBefore.containsKey(nAfter)) {
@@ -550,22 +568,22 @@ public class RastComparator {
 			}
 		}
 		
-		private Optional<RastNode> matchingNodeBefore(RastNode n2) {
+		public Optional<RastNode> matchingNodeBefore(RastNode n2) {
 			return Optional.ofNullable(mapAfterToBefore.get(n2));
 		}
 		
-		private Optional<RastNode> matchingNodeAfter(RastNode n1) {
+		public Optional<RastNode> matchingNodeAfter(RastNode n1) {
 			return Optional.ofNullable(mapBeforeToAfter.get(n1));
 		}
 		
-		private Optional<RastNode> matchingNodeAfter(Optional<RastNode> optN1) {
+		public Optional<RastNode> matchingNodeAfter(Optional<RastNode> optN1) {
 			if (optN1.isPresent()) {
 				return matchingNodeAfter(optN1.get());
 			}
 			return Optional.empty();
 		}
 		
-		private boolean sameLocation(RastNode n1, RastNode n2) {
+		public boolean sameLocation(RastNode n1, RastNode n2) {
 			if (n1.getParent().isPresent() && n2.getParent().isPresent()) {
 				return matchingNodeAfter(n1.getParent().get()).equals(n2.getParent());
 			} else if (!n1.getParent().isPresent() && !n1.getParent().isPresent()) {
@@ -575,7 +593,7 @@ public class RastComparator {
 			}
 		}
 		
-		private boolean sameRootNode(RastNode n1, RastNode n2) {
+		public boolean sameRootNode(RastNode n1, RastNode n2) {
 			Optional<RastNode> n1Root = n1.getRootParent();
 			Optional<RastNode> n2Root = n2.getRootParent();
 			if (n1Root.isPresent() && n2Root.isPresent()) {
@@ -585,11 +603,11 @@ public class RastComparator {
 			}
 		}
 		
-		private boolean removed(RastNode n) {
+		public boolean removed(RastNode n) {
 			return this.removed.contains(n);
 		}
 		
-		private boolean added(RastNode n) {
+		public boolean added(RastNode n) {
 			return this.added.contains(n);
 		}
 		
@@ -632,7 +650,7 @@ public class RastComparator {
 			return false;
 		}
 		
-		private int countMatchingChild(RastNode n1, RastNode n2) {
+		public int countMatchingChild(RastNode n1, RastNode n2) {
 			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
 				return 0;
 			}
@@ -648,7 +666,7 @@ public class RastComparator {
 			return count;
 		}
 		
-		private List<RastNode> children(HasChildrenNodes nodeWithChildren, Predicate<RastNode> predicate) {
+		public List<RastNode> children(HasChildrenNodes nodeWithChildren, Predicate<RastNode> predicate) {
 			return nodeWithChildren.getNodes().stream().filter(predicate).collect(Collectors.toList());
 		}
 
