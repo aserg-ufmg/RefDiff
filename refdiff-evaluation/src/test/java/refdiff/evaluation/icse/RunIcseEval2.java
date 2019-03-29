@@ -88,7 +88,7 @@ public class RunIcseEval2 {
 				rc.remove(project, commit);
 			} else {				
 				try {
-					evalUtils.prepareSourceCodeLightCheckout(project, commit);
+					//evalUtils.prepareSourceCodeLightCheckout(project, commit);
 				} catch (RuntimeException e) {
 					System.out.println(String.format("Skipped %s %s", project, commit));
 					e.printStackTrace();
@@ -96,7 +96,7 @@ public class RunIcseEval2 {
 				}
 				Map<KeyPair, String> explanations = new HashMap<>();
 				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs));
-				rc.addFnExplanations(project, commit, explanations);
+				//rc.addFnExplanations(project, commit, explanations);
 			}
 		}
 		

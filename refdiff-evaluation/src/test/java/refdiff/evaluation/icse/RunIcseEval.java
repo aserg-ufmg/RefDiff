@@ -45,7 +45,7 @@ public class RunIcseEval {
 				
 				Map<KeyPair, String> explanations = new HashMap<>();
 				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs));
-				rc.addFnExplanations(project, commit, explanations);
+				//rc.addFnExplanations(project, commit, explanations);
 			} catch (RuntimeException e) {
 				errorCount++;
 				System.err.println(String.format("Skipped %s %s", project, commit));

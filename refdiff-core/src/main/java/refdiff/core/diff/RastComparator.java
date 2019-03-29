@@ -224,14 +224,16 @@ public class RastComparator {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
 				for (RastNode n2 : added) {
-					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && countMatchingChild(n1, n2) > 1) {
-						// if (sameName(n1, n2)) {
-						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
-						if (optRelationshipType.isPresent()) {
-							double score = computeLightSimilarityScore(n1, n2);
-							if (score > threshold.getIdeal()) {
+					int matchingChild = countMatchingChild(n1, n2);
+					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && matchingChild > 1) {
+						if (((double) matchingChild) / n1.getNodes().size() > 0.5) {
+							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
+							if (optRelationshipType.isPresent()) {
+								double score = computeLightSimilarityScore(n1, n2);
+								//if (score > threshold.getIdeal()) {
 								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 								candidates.add(candidate);
+								//}
 							}
 						}
 					}

@@ -190,7 +190,7 @@ public class ResultComparator {
 			String id = getProjectRevisionId(expected.getProject(), expected.getRevision());
 			Set<RefactoringRelationship> notExpectedRefactorings = notExpectedMap.getOrDefault(id, new RefactoringSet(expected.getProject(), expected.getRevision())).getRefactorings();
 			
-			String header = String.format("Ref Type\tEntity before\tEntity after\t%s\tDetails", groupId);
+			String header = String.format("Commit\tRef Type\tEntity before\tEntity after\t%s\tDetails", groupId);
 			
 			CompareResult result = resultMap.get(getResultId(expected.getProject(), expected.getRevision(), groupId));
 			if (result != null) {
@@ -207,11 +207,13 @@ public class ResultComparator {
 				headerPrinted = true;
 			}
 			if (!all.isEmpty()) {
-				out.println(getProjectRevisionId(expected.getProject(), expected.getRevision()));
+				//out.println(getProjectRevisionId(expected.getProject(), expected.getRevision()));
 				ArrayList<RefactoringRelationship> allList = new ArrayList<>();
 				allList.addAll(all);
 				Collections.sort(allList);
 				for (RefactoringRelationship r : allList) {
+					out.print(id);
+					out.print('\t');
 					out.print(format(r));
 					// out.print('\t');
 					if (result != null) {
