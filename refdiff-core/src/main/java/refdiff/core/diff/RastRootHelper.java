@@ -38,6 +38,7 @@ public class RastRootHelper<T> {
 	private final SourceRepresentationBuilder<T> srb;
 	private final Map<RastNode, T> srMap = new HashMap<>();
 	private final Map<RastNode, T> srBodyMap = new HashMap<>();
+	private final Map<RastNode, T> srNameMap = new HashMap<>();
 	private final boolean isBefore;
 	
 	public RastRootHelper(RastRoot rastRoot, SourceFileSet sources, SourceRepresentationBuilder<T> srb, boolean isBefore) throws IOException {
@@ -195,6 +196,7 @@ public class RastRootHelper<T> {
 			String sourceCode = fileMap.get(node.getLocation().getFile());
 			List<String> nodeTokens = retrieveTokens(sourceCode, node, false);
 			srMap.put(node, srb.buildForNode(node, isBefore, nodeTokens));
+			srNameMap.put(node, srb.buildForName(node, isBefore));
 			
 			if (node.getLocation().getBegin() != node.getLocation().getBodyBegin()) {
 				List<String> nodeBodyTokens = retrieveTokens(sourceCode, node, true);
@@ -260,6 +262,13 @@ public class RastRootHelper<T> {
 			throw new RuntimeException("Source representation not computed");
 		}
 		return srBodyMap.get(n);
+	}
+	
+	public T nameSourceRep(RastNode n) {
+		if (!srNameMap.containsKey(n)) {
+			throw new RuntimeException("Source representation not computed");
+		}
+		return srNameMap.get(n);
 	}
 	
 	public static List<String> getNodePath(RastNode node) {

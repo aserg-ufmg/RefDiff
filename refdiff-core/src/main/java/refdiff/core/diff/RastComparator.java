@@ -230,8 +230,16 @@ public class RastComparator {
 				for (RastNode n2 : added) {
 					int matchingChild = countMatchingChild(n1, n2);
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && matchingChild > 1) {
-						if (((double) matchingChild) / n1.getNodes().size() > 0.5) {
+						double nameScore = Math.max(
+							srb.partialSimilarity(before.nameSourceRep(n1), after.nameSourceRep(n2)), 
+							srb.partialSimilarity(after.nameSourceRep(n2), before.nameSourceRep(n1)));
+						
+						double matchingChildrenRatio = ((double) matchingChild) / n1.getNodes().size();
+						
+						if (nameScore > 0.5) {
 							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
+							
+							
 							if (optRelationshipType.isPresent()) {
 								double score = computeLightSimilarityScore(n1, n2);
 								//if (score > threshold.getIdeal()) {

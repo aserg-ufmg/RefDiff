@@ -8,6 +8,7 @@ import refdiff.core.util.IdentifierSplitter;
 public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBuilder<TfIdfSourceRepresentation> {
 	
 	private final Vocabulary vocabulary = new Vocabulary();
+	private final Vocabulary nameVocabulary = new Vocabulary();
 	private boolean initialized = false;
 	
 	@Override
@@ -25,13 +26,23 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 		return new TfIdfSourceRepresentation(multiset, vocabulary);
 	}
 	
-	private static void collectTokensOfSimpleName(Multiset<String> multiset, RastNode node) {
-		String nodeName;
-		if (node.getNamespace() != null) {
-			nodeName = node.getNamespace() + node.getSimpleName();
-		} else {
-			nodeName = node.getSimpleName();
+	@Override
+	public TfIdfSourceRepresentation buildForName(RastNode node, boolean isBefore) {
+		if (initialized) {
+			throw new RuntimeException("Initialization phase terminated");
 		}
+		Multiset<String> multiset = new Multiset<String>();
+		
+		// Add tokens from node name
+		String nodeName = getNodeName(node);
+		List<String> tokens = IdentifierSplitter.split(nodeName);
+		multiset.addAll(tokens);
+		nameVocabulary.count(isBefore, multiset.asSet());
+		return new TfIdfSourceRepresentation(multiset, nameVocabulary);
+	}
+	
+	private static void collectTokensOfSimpleName(Multiset<String> multiset, RastNode node) {
+		String nodeName = getNodeName(node);
 		List<String> tokens = IdentifierSplitter.split(nodeName);
 		multiset.add(nodeName);
 		if (tokens.size() > 1) {
@@ -40,6 +51,16 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 		if (node.getParent().isPresent()) {
 			collectTokensOfSimpleName(multiset, node.getParent().get());
 		}
+	}
+
+	private static String getNodeName(RastNode node) {
+		String nodeName;
+		if (node.getNamespace() != null) {
+			nodeName = node.getNamespace() + node.getSimpleName();
+		} else {
+			nodeName = node.getSimpleName();
+		}
+		return nodeName;
 	}
 	
 	@Override

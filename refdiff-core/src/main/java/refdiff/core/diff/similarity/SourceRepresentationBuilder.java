@@ -8,6 +8,8 @@ public interface SourceRepresentationBuilder<T> {
 	
 	T buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode);
 	
+	T buildForName(RastNode node, boolean isBefore);
+	
 	T buildForFragment(List<String> tokenizedSourceCode);
 	
 	T combine(T arg1, T arg2);
@@ -19,4 +21,5 @@ public interface SourceRepresentationBuilder<T> {
 	double similarity(T arg1, T arg2);
 	
 	double partialSimilarity(T arg1, T arg2);
+
 }
