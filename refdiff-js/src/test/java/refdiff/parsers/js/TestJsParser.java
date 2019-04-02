@@ -36,18 +36,18 @@ public class TestJsParser {
 		RastNode nodeScriptEx1 = root.getNodes().get(0);
 		assertThat(nodeScriptEx1.getType(), is("File"));
 		assertThat(nodeScriptEx1.getNamespace(), is(""));
-		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 83)));
+		assertThat(nodeScriptEx1.getLocation(), is(new Location("ex1.js", 0, 83, 1)));
 		
 		assertThat(nodeScriptEx1.getNodes().size(), is(2));
 		RastNode nodeArrowFn = nodeScriptEx1.getNodes().get(0);
 		RastNode nodeFnHello = nodeScriptEx1.getNodes().get(1);
 		
 		assertThat(nodeArrowFn.getType(), is("Function"));
-		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 16, 23, 22, 23)));
+		assertThat(nodeArrowFn.getLocation(), is(new Location("ex1.js", 16, 23, 2, 22, 23)));
 		assertThat(nodeArrowFn.getLocalName(), is("fn"));
 		
 		assertThat(nodeFnHello.getType(), is("Function"));
-		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 83, 50, 82)));
+		assertThat(nodeFnHello.getLocation(), is(new Location("ex1.js", 28, 83, 6, 50, 82)));
 		assertThat(nodeFnHello.getLocalName(), is("hello"));
 		assertThat(nodeFnHello.getParameters().size(), is(1));
 		assertThat(nodeFnHello.getParameters().get(0).getName(), is("name"));

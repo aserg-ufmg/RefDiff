@@ -57,18 +57,18 @@ public class SDModel {
 //		return rastNode;
 //	}
 
-	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast, String nodeType) {
-		return createType(typeName, "", parent, sourceFilePath, ast, nodeType);
+	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
+		return createType(typeName, "", parent, sourceFilePath, fileContent, ast, nodeType);
 	}
 	
-	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, AbstractTypeDeclaration ast, String nodeType) {
+	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
 		if (typeName == null || typeName.isEmpty()) {
 			throw new RuntimeException("Type should have a name");
 		}
 		String namespace = packageName.isEmpty() ? "" : packageName + "."; 
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(nodeType);
-		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
+		rastNode.setLocation(Location.of(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), fileContent));
 		rastNode.setLocalName(typeName);
 		rastNode.setSimpleName(typeName);
 		rastNode.setNamespace(namespace);
@@ -80,7 +80,7 @@ public class SDModel {
 		return rastNode;
 	}
 
-	public RastNode createMethod(String methodSignature, HasChildrenNodes parent, String sourceFilePath, boolean constructor, MethodDeclaration ast) {
+	public RastNode createMethod(String methodSignature, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, boolean constructor, MethodDeclaration ast) {
 		String methodName = ast.isConstructor() ? "new" : ast.getName().getIdentifier();
 		RastNode rastNode = new RastNode(++nodeCounter);
 		rastNode.setType(ast.getClass().getSimpleName());
@@ -99,7 +99,7 @@ public class SDModel {
         	bodyStart = body.getStartPosition() + 1;
         	bodyLength = body.getLength() - 2;
         }
-        rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), bodyStart, bodyStart + bodyLength));
+        rastNode.setLocation(Location.of(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), bodyStart, bodyStart + bodyLength, fileContent));
 		rastNode.setLocalName(methodSignature);
 		rastNode.setSimpleName(methodName);
 		parent.addNode(rastNode);

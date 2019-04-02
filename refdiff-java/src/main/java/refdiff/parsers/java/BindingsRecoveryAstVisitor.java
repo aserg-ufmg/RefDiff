@@ -1,5 +1,6 @@
 package refdiff.parsers.java;
 
+import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -33,6 +34,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 	
 	private final SDModel model;
 	private final String sourceFilePath;
+	private final CharSequence fileContent;
 	private final String packageName;
 	private final LinkedList<HasChildrenNodes> containerStack;
 	private final Map<RastNode, List<String>> postProcessReferences;
@@ -41,6 +43,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 	public BindingsRecoveryAstVisitor(SDModel model, CompilationUnit compilationUnit, String sourceFilePath, char[] fileContent, String packageName, Map<RastNode, List<String>> postProcessReferences, Map<RastNode, List<String>> postProcessSupertypes) {
 		this.model = model;
 		this.sourceFilePath = sourceFilePath;
+		this.fileContent = CharBuffer.wrap(fileContent);
 		this.packageName = packageName;
 		this.containerStack = new LinkedList<HasChildrenNodes>();
 		this.containerStack.push(model.getRoot());
@@ -103,9 +106,9 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 		RastNode type;
 		String typeName = node.getName().getIdentifier();
 		if (node.isPackageMemberTypeDeclaration()) {
-			type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, node, nodeType);
+			type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, fileContent, node, nodeType);
 		} else {
-			type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, node, nodeType);
+			type = model.createInnerType(typeName, containerStack.peek(), sourceFilePath, fileContent, node, nodeType);
 		}
 		
 		Set<String> annotations = extractAnnotationTypes(node.modifiers());
@@ -158,7 +161,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 		//
 		// }
 		
-		final RastNode method = model.createMethod(methodSignature, containerStack.peek(), sourceFilePath, methodDeclaration.isConstructor(), methodDeclaration);
+		final RastNode method = model.createMethod(methodSignature, containerStack.peek(), sourceFilePath, fileContent, methodDeclaration.isConstructor(), methodDeclaration);
 		
 		List<?> modifiers = methodDeclaration.modifiers();
 		Set<String> annotations = extractAnnotationTypes(modifiers);

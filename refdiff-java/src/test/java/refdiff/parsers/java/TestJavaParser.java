@@ -37,7 +37,7 @@ public class TestJavaParser {
 		assertThat(classFoo.getNamespace(), is("p2."));
 		assertThat(classFoo.getLocalName(), is("Foo"));
 		assertThat(classFoo.getSimpleName(), is("Foo"));
-		assertThat(classFoo.getLocation(), is(new Location("p2/Foo.java", 13, 121)));
+		assertThat(classFoo.getLocation(), is(new Location("p2/Foo.java", 13, 121, 3)));
 		
 		assertThat(classFoo.getNodes().size(), is(1));
 		RastNode fooM1 = classFoo.getNodes().get(0);
@@ -46,7 +46,7 @@ public class TestJavaParser {
 		assertThat(fooM1.getParameters().size(), is(1));
 		assertThat(fooM1.getParameters().get(0).getName(), is("arg"));
 		assertThat(fooM1.getSimpleName(), is("m1"));
-		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 35, 117, 111, 116)));
+		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 35, 117, 9, 111, 116)));
 		
 		RastNode classBar = root.getNodes().get(1);
 		assertThat(classBar.getType(), is(NodeTypes.CLASS_DECLARATION));

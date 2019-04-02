@@ -43,7 +43,7 @@ public class CParser implements RastParser {
 //			System.out.println(sourceFile.getPath());
 //			ASTPrinter.print(translationUnit);
 
-			ASTVisitor cRastVisitor = new CRastVisitor(root, sourceFile.getPath(), id);
+			ASTVisitor cRastVisitor = new CRastVisitor(root, sourceFile.getPath(), sourceCode, id);
 			translationUnit.accept(cRastVisitor);
 			
 			root.addTokenizedFile(new TokenizedSource(sourceFile.getPath(), tokenize(sourceCode)));

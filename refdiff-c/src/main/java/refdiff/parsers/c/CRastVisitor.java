@@ -90,12 +90,14 @@ public class CRastVisitor extends ASTGenericVisitor {
 	private String waitingType;
 	private String maybeWaitingArray;
 	private String fileName;
+	private CharSequence fileContent;
 	private String maybePointer = "";
 
-	public CRastVisitor(RastRoot rastRoot, String fileName, AtomicInteger id) {
+	public CRastVisitor(RastRoot rastRoot, String fileName, CharSequence fileContent, AtomicInteger id) {
 		super(true);
 		this.rastRoot = rastRoot;
 		this.fileName = fileName;
+		this.fileContent = fileContent;
 		this.id = id;
 	}
 	
@@ -280,6 +282,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 		
 		Location location = new Location();
 		location.setBegin(offset);
+		location.setLine(Location.findLineNumber(offset, fileContent));
 		location.setEnd(offset + length);
 		location.setFile(this.fileName);
 		

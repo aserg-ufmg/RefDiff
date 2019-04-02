@@ -75,7 +75,7 @@ public class JsParser implements RastParser, Closeable {
 				
 				// System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
 				Map<String, Set<RastNode>> callerMap = new HashMap<>();
-				getRast(0, root, sourceFile, astRoot, callerMap);
+				getRast(0, root, sourceFile, content, astRoot, callerMap);
 				
 				root.forEachNode((calleeNode, depth) -> {
 					if (calleeNode.getType().equals(JsNodeType.FUNCTION) && callerMap.containsKey(calleeNode.getLocalName())) {
@@ -108,7 +108,7 @@ public class JsParser implements RastParser, Closeable {
 		return tokenizedSource;
 	}
 	
-	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, JsValueV8 babelAst, Map<String, Set<RastNode>> callerMap) throws Exception {
+	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, String fileContent, JsValueV8 babelAst, Map<String, Set<RastNode>> callerMap) throws Exception {
 		if (!babelAst.has("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
@@ -141,7 +141,7 @@ public class JsParser implements RastParser, Closeable {
 					}
 				}
 				
-				rastNode.setLocation(new Location(path, begin, end, bodyBegin, bodyEnd));
+				rastNode.setLocation(Location.of(path, begin, end, bodyBegin, bodyEnd, fileContent));
 				rastNode.setLocalName(handler.getLocalName(rastNode, babelAst));
 				rastNode.setSimpleName(handler.getSimpleName(rastNode, babelAst));
 				rastNode.setNamespace(handler.getNamespace(rastNode, babelAst));
@@ -167,14 +167,14 @@ public class JsParser implements RastParser, Closeable {
 		for (JsValueV8 value : children) {
 			if (value.isObject()) {
 				if (value.has("type")) {
-					getRast(depth + 1, container, sourceFile, value, callerMap);
+					getRast(depth + 1, container, sourceFile, fileContent, value, callerMap);
 				}
 			}
 			if (value.isArray()) {
 				for (int i = 0; i < value.size(); i++) {
 					JsValueV8 element = value.get(i);
 					if (element.has("type")) {
-						getRast(depth + 1, container, sourceFile, element, callerMap);
+						getRast(depth + 1, container, sourceFile, fileContent, element, callerMap);
 					}
 				}
 			}
