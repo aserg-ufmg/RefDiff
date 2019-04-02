@@ -41,6 +41,7 @@ public class PotentialMatch implements Comparable<PotentialMatch> {
 	public int compareTo(PotentialMatch o) {
 		int c1 = -Double.compare(score, o.score);
 		int c2 = Integer.compare(maxDepth, o.maxDepth);
-		return c1 != 0 ? c1 : c2;
+		int c3 = Integer.compare(nodeBefore.getId(), o.nodeBefore.getId());
+		return c1 != 0 ? c1 : c2 != 0 ? c2 : c3;
 	}
 }

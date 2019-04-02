@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import refdiff.core.diff.RastComparator;
+import refdiff.core.diff.Relationship;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringRelationship;
@@ -24,7 +25,7 @@ public class RunIcseEval {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "D:/refdiff/").run();
+		new RunIcseEval(args.length > 0 ? args[0] : "C:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -64,6 +65,15 @@ public class RunIcseEval {
 	}
 	
 	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause) {
-		System.out.printf("\t%s\t%s", label, cause);
+		String refDiffRefType = "";
+		String n1Location = "";
+		String n2Location = "";
+		Relationship rastRelationship = r.getRastRelationship();
+		if (rastRelationship != null) {
+			refDiffRefType = rastRelationship.getType().toString();
+			n1Location = rastRelationship.getNodeBefore().getLocation().format();
+			n2Location = rastRelationship.getNodeAfter().getLocation().format();
+		}
+		System.out.printf("\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, cause);
 	}
 }

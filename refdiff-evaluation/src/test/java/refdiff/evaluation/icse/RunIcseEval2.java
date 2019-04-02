@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import refdiff.core.diff.RastComparator;
+import refdiff.core.diff.Relationship;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringRelationship;
@@ -27,7 +28,7 @@ public class RunIcseEval2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval2(args.length > 0 ? args[0] : "D:/refdiff/").run();
+		new RunIcseEval2(args.length > 0 ? args[0] : "C:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -77,7 +78,9 @@ public class RunIcseEval2 {
 //			"6ad1dcbfef36821a71cbffa301c58d1c3ffe8d62",
 //			"f9d3171f5020da5c359cdda28ef05172e858c464",
 			
-			"372f4ae6cebcd664e3b43cade356d1df233f6467"
+//			"372f4ae6cebcd664e3b43cade356d1df233f6467",
+//			"30c4ae09745d6062077925a54f27205b7401d8df",
+			"99528dcc3b4a82b5e52a87d3e7aed5c6479028c7"
 			
 			));
 		
@@ -106,6 +109,15 @@ public class RunIcseEval2 {
 	}
 	
 	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause) {
-		System.out.printf("\t%s\t%s", label, cause);
+		String refDiffRefType = "";
+		String n1Location = "";
+		String n2Location = "";
+		Relationship rastRelationship = r.getRastRelationship();
+		if (rastRelationship != null) {
+			refDiffRefType = rastRelationship.getType().toString();
+			n1Location = rastRelationship.getNodeBefore().getLocation().format();
+			n2Location = rastRelationship.getNodeAfter().getLocation().format();
+		}
+		System.out.printf("\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, cause);
 	}
 }

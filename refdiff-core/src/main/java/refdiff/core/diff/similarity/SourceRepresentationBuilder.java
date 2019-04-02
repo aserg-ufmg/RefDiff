@@ -22,4 +22,6 @@ public interface SourceRepresentationBuilder<T> {
 	
 	double partialSimilarity(T arg1, T arg2);
 
+	double rawSimilarity(T arg1, T arg2);
+
 }

@@ -34,16 +34,22 @@ public class TfIdfSourceRepresentation {
 	}
 	
 	public double similarity(TfIdfSourceRepresentation other) {
-		return jaccardSimilarity(((TfIdfSourceRepresentation) other).tokens, false);
+		return jaccardSimilarity(other, false);
 	}
 	
 	public double partialSimilarity(TfIdfSourceRepresentation other) {
-		return jaccardSimilarity(((TfIdfSourceRepresentation) other).tokens, true);
+		return jaccardSimilarity(other, true);
 	}
 	
-	public double jaccardSimilarity(Multiset<String> tokens2, boolean partial) {
+	public double jaccardSimilarity(TfIdfSourceRepresentation other, boolean partial) {
+		double[] tuple = jaccardSimilarityDecomposed(other, partial);
+		return tuple[0] / tuple[1];
+	}
+	
+	public double[] jaccardSimilarityDecomposed(TfIdfSourceRepresentation other, boolean partial) {
+		Multiset<String> tokens2 = other.tokens;
 		if (tokens.isEmpty() || tokens2.isEmpty()) {
-			return 0.0;
+			return new double[]{0.0, 1.0};
 		}
 		Set<String> keys = new HashSet<String>();
 		keys.addAll(tokens.asSet());
@@ -64,9 +70,9 @@ public class TfIdfSourceRepresentation {
 				double c1 = tf(tokens.getMultiplicity(key));
 				idfp += c1 * idf;
 			}
-			return idfu / idfp;
+			return new double[]{idfu, idfp};
 		}
-		return idfu / idfd;
+		return new double[]{idfu, idfd};
 	}
 	
 	private double tf(int multiplicity) {

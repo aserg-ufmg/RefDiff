@@ -207,6 +207,8 @@ public class RastComparator {
 							if (optRelationshipType.isPresent()) {
 								RelationshipType type = optRelationshipType.get();
 								double score = computeHardSimilarityScore(n1, n2);
+								//double rankScore = srb.rawSimilarity(before.sourceRep(n1), after.sourceRep(n2));
+								
 								if (type.isById() || score > thresholdValue) {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 									candidates.add(candidate);
@@ -263,12 +265,12 @@ public class RastComparator {
 			double s1 = Math.max(
 				srb.partialSimilarity(before.nameSourceRep(n1), after.nameSourceRep(n2)), 
 				srb.partialSimilarity(after.nameSourceRep(n2), before.nameSourceRep(n1)));
-			double s2 = srb.similarity(before.nameSourceRep(n1), after.nameSourceRep(n2));
-			return (s1 + s2) / 2.0;
+			//double s2 = srb.similarity(before.nameSourceRep(n1), after.nameSourceRep(n2));
+			return s1;
 		}
 		
 		private double computeMixedSimilarityScore(RastNode n1, RastNode n2) {
-			return (computeNameSimilarity(n1, n2) + computeHardSimilarityScore(n1, n2)) / 2.0;
+			return (computeNameSimilarity(n1, n2) + 2 * computeHardSimilarityScore(n1, n2)) / 3.0;
 		}
 		
 		private double computeLightSimilarityScore(RastNode n1, RastNode n2) {
