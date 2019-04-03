@@ -328,11 +328,15 @@ public class RastComparator {
 							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
 							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
 							double score = Math.max(score1, score2);
+							//double finalScore = rawScore * score;
+							
 							boolean sameLocation = sameLocation(n1, n2);
-							if (sameLocation && score > threshold.getMinimum()) {
-								relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
-							} else if (score > threshold.getIdeal()) {
-								relationships.add(new Relationship(RelationshipType.EXTRACT_MOVE, n1, n2, score));
+							if (score > threshold.getIdeal()) {
+								if (sameLocation) {
+									relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
+								} else {
+									relationships.add(new Relationship(RelationshipType.EXTRACT_MOVE, n1, n2, score));
+								}
 							} else {
 								monitor.reportDiscardedExtract(n1, n2, score);
 							}

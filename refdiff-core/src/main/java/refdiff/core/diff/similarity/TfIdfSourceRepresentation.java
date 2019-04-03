@@ -80,4 +80,8 @@ public class TfIdfSourceRepresentation {
 		return multiplicity;
 	}
 
+	public int getSize() {
+		return tokens.size();
+	}
+
 }

@@ -24,4 +24,6 @@ public interface SourceRepresentationBuilder<T> {
 
 	double rawSimilarity(T arg1, T arg2);
 
+	int size(T arg);
+
 }

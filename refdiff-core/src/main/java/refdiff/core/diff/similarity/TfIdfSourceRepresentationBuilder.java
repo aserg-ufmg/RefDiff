@@ -108,4 +108,9 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 		return this.getClass().getSimpleName() + "\n" + vocabulary.toString();
 	}
 
+	@Override
+	public int size(TfIdfSourceRepresentation arg) {
+		return arg.getSize();
+	}
+
 }
