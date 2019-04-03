@@ -15,4 +15,8 @@ public class ThresholdsProvider {
 	public double getIdeal() {
 		return t2;
 	}
+	
+	public double getExtractMinimum() {
+		return 0.3;
+	}
 }

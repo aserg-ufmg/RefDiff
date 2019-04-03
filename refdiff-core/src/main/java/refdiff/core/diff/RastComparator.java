@@ -331,7 +331,7 @@ public class RastComparator {
 							//double finalScore = rawScore * score;
 							
 							boolean sameLocation = sameLocation(n1, n2);
-							if (score > threshold.getIdeal()) {
+							if (score > threshold.getIdeal() && score1 > threshold.getExtractMinimum()) {
 								if (sameLocation) {
 									relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 								} else {
@@ -359,12 +359,12 @@ public class RastComparator {
 							T sourceN1Caller = before.sourceRep(n1Caller);
 							T sourceN1CallerAfter = after.sourceRep(n2);
 							T addedCode = srb.minus(sourceN1CallerAfter, srb.minus(sourceN1Caller, getTokensToUseNode(n1)));
-							double score = srb.partialSimilarity(sourceN1, addedCode);
+							//double score = srb.partialSimilarity(sourceN1, addedCode);
 							boolean sameLocation = sameLocation(n1, n2);
-							// double score1 = srb.partialSimilarity(sourceN1, addedCode);
-							// double score2 = srb.partialSimilarity(addedCode, sourceN1);
-							// double score = Math.max(score1, score2);
-							if (sameLocation && score > threshold.getMinimum() || score > threshold.getIdeal()) {
+							double score1 = srb.partialSimilarity(sourceN1, addedCode);
+							double score2 = srb.partialSimilarity(addedCode, sourceN1);
+							double score = Math.max(score1, score2);
+							if (sameLocation && score > threshold.getIdeal() && score1 > threshold.getExtractMinimum()) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							} else {
 								monitor.reportDiscardedInline(n1, n2, score);
