@@ -325,13 +325,14 @@ public class RastComparator {
 							T sourceN1Before = before.sourceRep(n1);
 							T removedSource = srb.minus(sourceN1Before, srb.minus(sourceN1After, getTokensToUseNode(n2)));
 							T bodySourceN2 = after.bodySourceRep(n2);
-							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
-							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
-							double score = Math.max(score1, score2);
+//							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
+//							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
+//							double score = Math.max(score1, score2);
+							double score = srb.partialSimilarity(bodySourceN2, removedSource);
 							//double finalScore = rawScore * score;
 							
 							boolean sameLocation = sameLocation(n1, n2);
-							if (score > threshold.getIdeal() && score1 > threshold.getExtractMinimum()) {
+							if (score > threshold.getIdeal()) {
 								if (sameLocation) {
 									relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 								} else {
@@ -361,10 +362,11 @@ public class RastComparator {
 							T addedCode = srb.minus(sourceN1CallerAfter, srb.minus(sourceN1Caller, getTokensToUseNode(n1)));
 							//double score = srb.partialSimilarity(sourceN1, addedCode);
 							boolean sameLocation = sameLocation(n1, n2);
-							double score1 = srb.partialSimilarity(sourceN1, addedCode);
-							double score2 = srb.partialSimilarity(addedCode, sourceN1);
-							double score = Math.max(score1, score2);
-							if (sameLocation && score > threshold.getIdeal() && score1 > threshold.getExtractMinimum()) {
+//							double score1 = srb.partialSimilarity(sourceN1, addedCode);
+//							double score2 = srb.partialSimilarity(addedCode, sourceN1);
+//							double score = Math.max(score1, score2);
+							double score = srb.partialSimilarity(sourceN1, addedCode);
+							if (score > threshold.getIdeal()) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							} else {
 								monitor.reportDiscardedInline(n1, n2, score);
