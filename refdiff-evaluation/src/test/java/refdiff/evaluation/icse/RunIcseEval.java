@@ -25,14 +25,14 @@ public class RunIcseEval {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "C:/refdiff/").run();
+		new RunIcseEval(args.length > 0 ? args[0] : "D:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
 		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
 		
-		ResultComparator rc = EvaluationCsvReader.buildResultComparator(data, EvaluationCsvReader.readRefDiffResults());
+		ResultComparator rc = EvaluationCsvReader.buildResultComparator(data, EvaluationCsvReader.readEvalAll());
 		
 		int count = 0;
 		int errorCount = 0;

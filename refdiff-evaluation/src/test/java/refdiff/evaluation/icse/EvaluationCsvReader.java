@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import refdiff.evaluation.RefactoringRelationship;
 import refdiff.evaluation.RefactoringSet;
@@ -43,12 +44,12 @@ public class EvaluationCsvReader {
 				RefactoringSet expectedRefactorings = mapRs.get(commit);
 				RefactoringSet notExpectedRefactorings = mapRsNotExpected.get(commit);
 				for (ResultRow row : commitResult.rows) {
-					boolean evaluatedAsTp = (row.resultA.equals("TP") && row.resultB.equals("TP")) || row.resultFinal.equals("TP");
+					boolean evaluatedAsTp = ("TP".equals(row.resultA) && "TP".equals(row.resultB)) || "TP".equals(row.resultFinal);
 					if (evaluatedAsTp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						expectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
 					}
-					boolean evaluatedAsFp = (row.resultA.equals("FP") && row.resultB.equals("FP")) || row.resultFinal.equals("FP");
+					boolean evaluatedAsFp = ("FP".equals(row.resultA) && "FP".equals(row.resultB)) || "FP".equals(row.resultFinal);
 					if (evaluatedAsFp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						notExpectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
@@ -62,7 +63,7 @@ public class EvaluationCsvReader {
 	public static void eval() throws Exception {
 		
 		IcseDataset data = new IcseDataset();
-		List<ResultCommit> list = readRefDiffResults();
+		List<ResultCommit> list = readEvalRicardoGustavo();
 		
 		ResultComparator rc = buildResultComparator(data, null);
 		ResultComparator rc2 = buildResultComparator(data, list);
@@ -116,7 +117,7 @@ public class EvaluationCsvReader {
 		return commit + " " + refType.name() + " " + n1 + " " + n2;
 	}
 	
-	public static List<ResultCommit> readRefDiffResults() throws IOException, FileNotFoundException {
+	public static List<ResultCommit> readEvalRicardoGustavo() throws IOException, FileNotFoundException {
 		List<ResultCommit> list = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader("data/java-evaluation/FixExtractBefore.txt"))) {
 			String line;
@@ -150,6 +151,34 @@ public class EvaluationCsvReader {
 				}
 			}
 		}
+		return list;
+	}
+	
+	public static List<ResultCommit> readEvalDanilo() throws IOException, FileNotFoundException {
+		List<ResultRow> list = CsvReader.readCsv("data/java-evaluation/eval-danilo.txt", parts -> {
+			ResultRow row = new ResultRow();
+			row.commitUrl = parts[0];
+			row.refType = parts[1];
+			row.n1 = parts[2];
+			row.n2 = parts[3];
+			row.resultFinal = parts[4];
+			row.commentFinal = parts[5];
+			return row;
+		});
+		
+		Map<String, List<ResultRow>> map = list.stream().collect(Collectors.groupingBy(row -> row.commitUrl));
+		return map.entrySet().stream().map(e -> {
+			ResultCommit resultCommit = new ResultCommit();
+			resultCommit.commitUrl = e.getKey();
+			resultCommit.rows = e.getValue();
+			return resultCommit; 
+		}).collect(Collectors.toList());
+	}
+	
+	public static List<ResultCommit> readEvalAll() throws IOException, FileNotFoundException {
+		List<ResultCommit> list = new ArrayList<>();
+		list.addAll(readEvalRicardoGustavo());
+		list.addAll(readEvalDanilo());
 		return list;
 	}
 	
