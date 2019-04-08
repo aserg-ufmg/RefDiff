@@ -27,7 +27,7 @@ public class JavaSourceTokenizer {
 				int tokenEnd = scanner.getCurrentTokenEndPosition();
 				if (token == ITerminalSymbols.TokenNameCOMMENT_LINE || token == ITerminalSymbols.TokenNameCOMMENT_BLOCK || token == ITerminalSymbols.TokenNameCOMMENT_JAVADOC) {
 					tokenizeComment(charArray, tokenStart, tokenEnd + 1, tokens);
-				} else if (token != ITerminalSymbols.TokenNameWHITESPACE) {
+				} else if (isSignificantToken(token)) {
 					tokens.add(new TokenPosition(tokenStart, tokenEnd + 1));
 				}
 			}
@@ -35,6 +35,17 @@ public class JavaSourceTokenizer {
 		} catch (InvalidInputException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	private static boolean isSignificantToken(int token) {
+		return token != ITerminalSymbols.TokenNameWHITESPACE/* &&
+			token != ITerminalSymbols.TokenNameSEMICOLON &&
+			token != ITerminalSymbols.TokenNameCOMMA &&
+			token != ITerminalSymbols.TokenNameLBRACKET &&
+			token != ITerminalSymbols.TokenNameRBRACKET &&
+			token != ITerminalSymbols.TokenNameRBRACE &&
+			token != ITerminalSymbols.TokenNameLBRACE &&
+			token != ITerminalSymbols.TokenNameDOT*/;
 	}
 	
 	private static Pattern pattern = Pattern.compile("\\S+");
