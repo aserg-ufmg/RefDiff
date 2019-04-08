@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -275,7 +276,8 @@ public class ResultComparator {
 			}
 		}
 		if (blacklisted.contains(r)) {
-			return "<Blacklisted>";
+			RefactoringRelationship blacklistedR = blacklisted.stream().filter(br -> br.equals(r)).findFirst().get();
+			return blacklistedR.getComment() != null ? blacklistedR.getComment() : "<Blacklist>";
 		}
 		return "?";
 	}

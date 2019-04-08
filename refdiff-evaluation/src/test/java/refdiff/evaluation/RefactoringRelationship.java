@@ -19,6 +19,7 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	private final String entityBefore;
 	private final String entityAfter;
 	private final Relationship rastRelationship;
+	private String comment;
 	
 	public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter) {
 		this(refactoringType, entityBefore, entityAfter, null);
@@ -142,6 +143,8 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 		return entityAfter;
 	}
 	
+	
+	
 	@Override
 	public int compareTo(RefactoringRelationship o) {
 		int rt = getRefactoringType().compareTo(o.getRefactoringType());
@@ -194,6 +197,14 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 		public String toString() {
 			return String.format("%s\t%s", refactoringType.getDisplayName(), mainEntity);
 		}
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 }

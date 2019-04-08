@@ -67,6 +67,10 @@ public class IcseDataset extends AbstractDataset {
 					
 					refCount += refs.size();
 
+					if (refactoring.comment != null) {
+						refs.forEach(r -> r.setComment(refactoring.comment));
+					}
+					
 					if (refactoring.validation.equals("TP") || refactoring.validation.equals("CTP")) {
 						rs.add(refs);
 						tpCount += refs.size();

@@ -52,7 +52,9 @@ public class EvaluationCsvReader {
 					boolean evaluatedAsFp = ("FP".equals(row.resultA) && "FP".equals(row.resultB)) || "FP".equals(row.resultFinal);
 					if (evaluatedAsFp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
-						notExpectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
+						RefactoringRelationship fpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
+						fpInstance.setComment(row.commentFinal != null ? row.commentFinal : row.commentA);
+						notExpectedRefactorings.add(fpInstance);
 					}
 				}
 			}
