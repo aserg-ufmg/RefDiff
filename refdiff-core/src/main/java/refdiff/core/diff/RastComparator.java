@@ -232,7 +232,7 @@ public class RastComparator {
 								double score = computeHardSimilarityScore(n1, n2);
 								double scoreLight = computeLightSimilarityScore(n1, n2);
 								//double rankScore = srb.rawSimilarity(before.sourceRep(n1), after.sourceRep(n2));
-								boolean uniqueNames = before.isNameUnique(n1) && after.isNameUnique(n2) && scoreLight > thresholdValue;
+								boolean uniqueNames = false;//before.isNameUnique(n1) && after.isNameUnique(n2) && scoreLight > thresholdValue;
 								
 								if (type.isById() || score > thresholdValue || uniqueNames) {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
