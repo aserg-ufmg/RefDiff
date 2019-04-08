@@ -164,7 +164,7 @@ public class EvaluationCsvReader {
 			row.n1 = parts[2];
 			row.n2 = parts[3];
 			row.resultFinal = parts[4];
-			row.commentFinal = parts[5];
+			row.commentFinal = "[Danilo] " + parts[5];
 			return row;
 		});
 		

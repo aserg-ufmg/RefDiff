@@ -39,6 +39,7 @@ public class RastRootHelper<T> {
 	private final Map<RastNode, T> srMap = new HashMap<>();
 	private final Map<RastNode, T> srBodyMap = new HashMap<>();
 	private final Map<RastNode, T> srNameMap = new HashMap<>();
+	private final Map<String, List<RastNode>> nameIndex = new HashMap<>();
 	private final boolean isBefore;
 	
 	public RastRootHelper(RastRoot rastRoot, SourceFileSet sources, SourceRepresentationBuilder<T> srb, boolean isBefore) throws IOException {
@@ -49,6 +50,7 @@ public class RastRootHelper<T> {
 		rastRoot.forEachNode((node, depth) -> {
 			idMap.put(node.getId(), node);
 			depthMap.put(node, depth);
+			nameIndex.computeIfAbsent(node.getLocalName(), k -> new ArrayList<>()).add(node);
 		});
 		
 		for (RastNodeRelationship relationship : rastRoot.getRelationships()) {
@@ -81,6 +83,10 @@ public class RastRootHelper<T> {
 	
 	public int depth(RastNode node) {
 		return depthMap.get(node);
+	}
+	
+	public List<RastNode> findByLocalName(String localName) {
+		return nameIndex.getOrDefault(localName, Collections.emptyList());
 	}
 	
 	public Collection<RastNode> findRelationships(RastNodeRelationshipType type, RastNode node) {
@@ -288,5 +294,9 @@ public class RastRootHelper<T> {
 		if (node.getParent().isPresent()) {
 			computeNodePath(path, node.getParent().get());
 		}
+	}
+
+	public boolean isNameUnique(RastNode n2) {
+		return findByLocalName(n2.getLocalName()).size() == 1;
 	}
 }

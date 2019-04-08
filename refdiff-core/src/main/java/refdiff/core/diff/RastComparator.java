@@ -119,6 +119,7 @@ public class RastComparator {
 			computeSourceRepresentationForRemovedAndAdded();
 			findMatchesById();
 			//findMatchesByName();
+			//findMatchesByUniqueName();
 			findMatchesBySimilarity(false);
 			findMatchesBySimilarity(true);
 			findMatchesByChildren();
@@ -195,6 +196,28 @@ public class RastComparator {
 			}
 		}
 		
+		private void findMatchesByUniqueName() {
+			List<PotentialMatch> candidates = new ArrayList<>();
+			for (RastNode n1 : removed) {
+				String name = n1.getLocalName();
+				if (before.findByLocalName(name).size() == 1) {
+					List<RastNode> n2WithSameName = after.findByLocalName(name);
+					if (n2WithSameName.size() == 1) {
+						RastNode n2 = n2WithSameName.get(0);
+						double score = computeLightSimilarityScore(n1, n2);
+						if (sameType(n1, n2) && score > 0.5) {
+							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+							candidates.add(candidate);
+						}
+					}
+				}
+			}
+			Collections.sort(candidates);
+			for (PotentialMatch candidate : candidates) {
+				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
+			}
+		}
+		
 		private void findMatchesBySimilarity(boolean onlySafe) {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
@@ -207,9 +230,11 @@ public class RastComparator {
 							if (optRelationshipType.isPresent()) {
 								RelationshipType type = optRelationshipType.get();
 								double score = computeHardSimilarityScore(n1, n2);
+								double scoreLight = computeLightSimilarityScore(n1, n2);
 								//double rankScore = srb.rawSimilarity(before.sourceRep(n1), after.sourceRep(n2));
+								boolean uniqueNames = before.isNameUnique(n1) && after.isNameUnique(n2) && scoreLight > thresholdValue;
 								
-								if (type.isById() || score > thresholdValue) {
+								if (type.isById() || score > thresholdValue || uniqueNames) {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 									candidates.add(candidate);
 								} else {
@@ -529,7 +554,8 @@ public class RastComparator {
 				.forEach(r -> {
 					RastNode supertypeAfter = r.getNodeAfter().getParent().get();
 					RastNode subtypeBefore = r.getNodeBefore().getParent().get();
-					if (added(supertypeAfter)) {
+					boolean hadNoSupertypesBefore = true;//before.findRelationships(RastNodeRelationshipType.SUBTYPE, subtypeBefore).isEmpty();
+					if (added(supertypeAfter) && hadNoSupertypesBefore) {
 						relationships.add(new Relationship(RelationshipType.EXTRACT_SUPER, subtypeBefore, supertypeAfter));
 					}
 				});
