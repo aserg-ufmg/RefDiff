@@ -119,9 +119,10 @@ public class RastComparator {
 			computeSourceRepresentationForRemovedAndAdded();
 			findMatchesById();
 			//findMatchesByName();
-			//findMatchesByUniqueName();
-			findMatchesBySimilarity(false);
+			findMatchesByUniqueName(0.75);
 			findMatchesBySimilarity(true);
+			findMatchesBySimilarity(false);
+			//findMatchesByUniqueName(0.25);
 			findMatchesByChildren();
 			createRelationshipsForMatchings();
 			findPullPushDownAbstract();
@@ -196,7 +197,7 @@ public class RastComparator {
 			}
 		}
 		
-		private void findMatchesByUniqueName() {
+		private void findMatchesByUniqueName(double threshold) {
 			List<PotentialMatch> candidates = new ArrayList<>();
 			for (RastNode n1 : removed) {
 				String name = n1.getLocalName();
@@ -204,10 +205,16 @@ public class RastComparator {
 					List<RastNode> n2WithSameName = after.findByLocalName(name);
 					if (n2WithSameName.size() == 1) {
 						RastNode n2 = n2WithSameName.get(0);
-						double score = computeLightSimilarityScore(n1, n2);
-						if (sameType(n1, n2) && score > 0.5) {
-							PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
-							candidates.add(candidate);
+						if (added(n2) && sameType(n1, n2)) {
+							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
+							if (optRelationshipType.isPresent()) {								
+								double score = computeHardSimilarityScore(n1, n2);
+								boolean emptyBody = isAbstract(n1, n2);
+								if (!emptyBody && score > threshold) {
+									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+									candidates.add(candidate);
+								}
+							}
 						}
 					}
 				}
@@ -230,11 +237,12 @@ public class RastComparator {
 							if (optRelationshipType.isPresent()) {
 								RelationshipType type = optRelationshipType.get();
 								double score = computeHardSimilarityScore(n1, n2);
-								double scoreLight = computeLightSimilarityScore(n1, n2);
+								//double scoreLight = computeLightSimilarityScore(n1, n2);
 								//double rankScore = srb.rawSimilarity(before.sourceRep(n1), after.sourceRep(n2));
-								boolean uniqueNames = false;//before.isNameUnique(n1) && after.isNameUnique(n2) && scoreLight > thresholdValue;
 								
-								if (type.isById() || score > thresholdValue || uniqueNames) {
+								//boolean emptyBody = isAbstract(n1, n2);
+								
+								if (type.isById() || score > thresholdValue) {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
 									candidates.add(candidate);
 								} else {
@@ -653,6 +661,10 @@ public class RastComparator {
 			} else {
 				return false;
 			}
+		}
+		
+		public boolean isAbstract(RastNode n1, RastNode n2) {
+			return n1.hasStereotype(Stereotype.ABSTRACT) || n2.hasStereotype(Stereotype.ABSTRACT);
 		}
 		
 		public boolean removed(RastNode n) {
