@@ -158,13 +158,13 @@ public class EvaluationUtils {
 				RelationshipType relType = rel.getType();
 				String nodeType = rel.getNodeAfter().getType();
 				Optional<RefactoringType> optRefType = getRefactoringType(relType, nodeType);
+				RastNode n1 = rel.getNodeBefore();
+				RastNode n2 = rel.getNodeAfter();
 				if (optRefType.isPresent()) {
 					RefactoringType refType = optRefType.get();
 					boolean copyN1Parent = refType.equals(RefactoringType.EXTRACT_OPERATION);
 					boolean copyN2Parent = refType.equals(RefactoringType.INLINE_OPERATION) || refType.equals(RefactoringType.RENAME_METHOD);
 					
-					RastNode n1 = rel.getNodeBefore();
-					RastNode n2 = rel.getNodeAfter();
 					if (refType.equals(RefactoringType.EXTRACT_INTERFACE)) {
 						n1 = diffBuilder.matchingNodeAfter(n1).get();
 					}
@@ -179,7 +179,26 @@ public class EvaluationUtils {
 							continue;
 						}
 					}
+					
+					
 					rs.add(normalizedRefactoring);
+				} else {
+					KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
+					if (relType.equals(RelationshipType.SAME) && n1.getParent().isPresent() && n2.getParent().isPresent() && expected != null) {
+						RastNode n1Parent = rel.getNodeBefore().getParent().get();
+						RastNode n2Parent = rel.getNodeAfter().getParent().get();
+						
+						KeyPair keyPairParent = normalizeNodeKeys(n1Parent, n2Parent, false, false);
+						
+						RefactoringRelationship moveOpRef = new RefactoringRelationship(RefactoringType.MOVE_OPERATION, keyPair.getKey1(), keyPair.getKey2());
+						RefactoringRelationship moveClassRef = new RefactoringRelationship(RefactoringType.MOVE_CLASS, keyPairParent.getKey1(), keyPairParent.getKey2());
+						RefactoringRelationship renameClassRef = new RefactoringRelationship(RefactoringType.RENAME_CLASS, keyPairParent.getKey1(), keyPairParent.getKey2());
+						
+						if (expected.getRefactorings().contains(moveOpRef) && (expected.getRefactorings().contains(moveClassRef) || expected.getRefactorings().contains(renameClassRef))) {
+							//rs.add(new RefactoringRelationship(RefactoringType.MOVE_OPERATION, keyPair.getKey1(), keyPair.getKey2(), rel));
+							//System.out.println("MACACO");
+						}
+					}
 				}
 			}
 		}

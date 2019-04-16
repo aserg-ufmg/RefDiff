@@ -238,12 +238,12 @@ public class RastComparator {
 								RelationshipType type = optRelationshipType.get();
 								double score = computeHardSimilarityScore(n1, n2);
 								//double scoreLight = computeLightSimilarityScore(n1, n2);
-								//double rankScore = srb.rawSimilarity(before.sourceRep(n1), after.sourceRep(n2));
+								double rankScore = srb.rawSimilarity(before.sourceRep(n1), after.sourceRep(n2)) * score;
 								
 								//boolean emptyBody = isAbstract(n1, n2);
 								
 								if (type.isById() || score > thresholdValue) {
-									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), rankScore);
 									candidates.add(candidate);
 								} else {
 									monitor.reportDiscardedMatch(n1, n2, score);
