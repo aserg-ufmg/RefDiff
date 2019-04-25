@@ -448,7 +448,18 @@ public class ResultComparator {
 	}
 
 	public void addFnExplanations(String project, String commit, Map<KeyPair, String> explanations) {
-		this.fnExplanations.put(getProjectRevisionId(project, commit), explanations);
+		String id = getProjectRevisionId(project, commit);
+		RefactoringSet expected = this.expectedMap.get(id);
+		if (expected != null) {
+			Set<KeyPair> keyPairSet = expected.getRefactorings().stream()
+				.map(r -> new KeyPair(r.getEntityBefore(), r.getEntityAfter()))
+				.collect(Collectors.toSet());
+			
+			Map<KeyPair, String> filteredMap = explanations.entrySet().stream()
+				.filter(e -> keyPairSet.contains(e.getKey()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+			this.fnExplanations.put(id, filteredMap);
+		}
 	}
 	
 }

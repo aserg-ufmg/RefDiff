@@ -102,17 +102,17 @@ public class RastComparator {
 		}
 
 		private T getTokensToUseNode(RastNode node) {
-			return srb.buildForFragment(Collections.emptyList());
-//			List<String> tokens = new ArrayList<>();
-//			tokens.add(node.getSimpleName());
-//			tokens.add("(");
-//			tokens.add(")");
-//			if (node.getParameters() != null) {
-//				for (int i = 1; i < node.getParameters().size(); i++) {
-//					tokens.add(",");
-//				}
-//			}
-//			return srb.buildForFragment(tokens);
+			//return srb.buildForFragment(Collections.emptyList());
+			List<String> tokens = new ArrayList<>();
+			tokens.add(node.getSimpleName());
+			tokens.add("(");
+			tokens.add(")");
+			if (node.getParameters() != null) {
+				for (int i = 1; i < node.getParameters().size(); i++) {
+					tokens.add(",");
+				}
+			}
+			return srb.buildForFragment(tokens);
 		}
 		
 		RastDiff computeDiff() {
@@ -360,9 +360,14 @@ public class RastComparator {
 							T bodySourceN2 = after.bodySourceRep(n2);
 //							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
 //							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
-//							double score = Math.max(score1, score2);
+//							double scoreMax = Math.max(score1, score2);
 							double score = srb.partialSimilarity(bodySourceN2, removedSource);
+//							double rawScore = srb.rawSimilarity(bodySourceN2, removedSource);
 							//double finalScore = rawScore * score;
+							
+//							if (n2.getSimpleName().equals("parseAndValidateMetadata") && n2.getLocation().getFile().equals("core/src/test/java/feign/DefaultContractTest.java")) {
+//								System.out.println("danilo"); 
+//							}
 							
 							boolean sameLocation = sameLocation(n1, n2);
 							if (score > threshold.getIdeal()) {
@@ -392,7 +397,7 @@ public class RastComparator {
 							T sourceN1 = before.bodySourceRep(n1);
 							T sourceN1Caller = before.sourceRep(n1Caller);
 							T sourceN1CallerAfter = after.sourceRep(n2);
-							T addedCode = srb.minus(sourceN1CallerAfter, srb.minus(sourceN1Caller, getTokensToUseNode(n1)));
+							T addedCode = srb.minus(srb.minus(sourceN1CallerAfter, sourceN1Caller), getTokensToUseNode(n1));
 							//double score = srb.partialSimilarity(sourceN1, addedCode);
 							boolean sameLocation = sameLocation(n1, n2);
 //							double score1 = srb.partialSimilarity(sourceN1, addedCode);
