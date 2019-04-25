@@ -3380,5 +3380,18 @@ PDM    #:  40  TP:  38  FP:   2  FN:   2  Prec.: 0,950  Recall: 0,950  F1: 0,950
 EM     #: 1037  TP: 650  FP:  24  FN: 387  Prec.: 0,964  Recall: 0,627  F1: 0,760
 IM     #: 120  TP:  86  FP:   6  FN:  34  Prec.: 0,935  Recall: 0,717  F1: 0,811
 
+# RMiner #
+Total  #: 3261  TP: 2642  FP:  33  FN: 619  Prec.: 0,988  Recall: 0,810  F1: 0,890
+MC     #: 1121  TP: 1017  FP:   0  FN: 104  Prec.: 1,000  Recall: 0,907  F1: 0,951
+MM     #: 320  TP: 210  FP:  10  FN: 110  Prec.: 0,955  Recall: 0,656  F1: 0,778
+RC     #:  92  TP:  59  FP:   1  FN:  33  Prec.: 0,983  Recall: 0,641  F1: 0,776
+RM     #: 346  TP: 270  FP:   6  FN:  76  Prec.: 0,978  Recall: 0,780  F1: 0,868
+EI     #:  24  TP:  20  FP:   0  FN:   4  Prec.: 1,000  Recall: 0,833  F1: 0,909
+ES     #:  70  TP:  68  FP:   3  FN:   2  Prec.: 0,958  Recall: 0,971  F1: 0,965
+PUM    #:  91  TP:  72  FP:   0  FN:  19  Prec.: 1,000  Recall: 0,791  F1: 0,883
+PDM    #:  40  TP:  33  FP:   0  FN:   7  Prec.: 1,000  Recall: 0,825  F1: 0,904
+EM     #: 1037  TP: 796  FP:  12  FN: 241  Prec.: 0,985  Recall: 0,768  F1: 0,863
+IM     #: 120  TP:  97  FP:   1  FN:  23  Prec.: 0,990  Recall: 0,808  F1: 0,890
+
 
 535 commits processed, 0 commits skipped.

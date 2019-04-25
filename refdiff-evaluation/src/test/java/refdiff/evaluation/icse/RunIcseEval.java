@@ -56,6 +56,8 @@ public class RunIcseEval {
 			count++;
 		}
 		
+		rc.compareWith("RMiner", data.getrMinerRefactorings());
+		
 		System.out.println("\n\n\n");
 		rc.printDetails(System.out, refactoringTypes, "RefDiff", this::printDetails);
 		System.out.println();
