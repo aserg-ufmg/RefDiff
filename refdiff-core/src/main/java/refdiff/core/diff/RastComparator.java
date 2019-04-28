@@ -346,9 +346,9 @@ public class RastComparator {
 		private void matchExtract() {
 			Set<Relationship> relationships = new HashSet<>();
 			for (RastNode n2 : added) {
-				// if (n2.getLocalName().equals("has(NSString)") && n2.getParent().isPresent() && n2.getParent().get().getLocalName().equals("CBConnectPeripheralOptions")) {
-				// n2.getLocalName();
-				// }
+//				if (n2.getLocalName().equals("getNodes()") && n2.getLocation().getFile().equals("core/src/main/java/com/graphhopper/storage/LevelGraphImpl.java") && n2.getLocation().getLine() == 144) {
+//					n2.getLocalName();
+//				}
 				for (RastNode n1After : after.findReverseRelationships(RastNodeRelationshipType.USE, n2)) {
 					Optional<RastNode> optMatchingNode = matchingNodeBefore(n1After);
 					if (optMatchingNode.isPresent()) {
@@ -356,8 +356,8 @@ public class RastComparator {
 						if (sameType(n1, n2)/* && !n2.hasStereotype(Stereotype.FIELD_ACCESSOR) && !n2.hasStereotype(Stereotype.FIELD_MUTATOR) */) {
 							T sourceN1After = after.sourceRep(n1After);
 							T sourceN1Before = before.sourceRep(n1);
-							T removedSource = srb.minus(sourceN1Before, srb.minus(sourceN1After, getTokensToUseNode(n2)));
 							T bodySourceN2 = after.bodySourceRep(n2);
+							T removedSource = srb.minus(srb.combine(sourceN1Before, getTokensToUseNode(n2)), sourceN1After);
 //							double score1 = srb.partialSimilarity(bodySourceN2, removedSource);
 //							double score2 = srb.partialSimilarity(removedSource, bodySourceN2);
 //							double scoreMax = Math.max(score1, score2);
@@ -397,9 +397,9 @@ public class RastComparator {
 							T sourceN1 = before.bodySourceRep(n1);
 							T sourceN1Caller = before.sourceRep(n1Caller);
 							T sourceN1CallerAfter = after.sourceRep(n2);
-							T addedCode = srb.minus(srb.minus(sourceN1CallerAfter, sourceN1Caller), getTokensToUseNode(n1));
+							T addedCode = srb.minus(srb.minus(sourceN1CallerAfter, getTokensToUseNode(n1)), sourceN1Caller);
 							//double score = srb.partialSimilarity(sourceN1, addedCode);
-							boolean sameLocation = sameLocation(n1, n2);
+//							boolean sameLocation = sameLocation(n1, n2);
 //							double score1 = srb.partialSimilarity(sourceN1, addedCode);
 //							double score2 = srb.partialSimilarity(addedCode, sourceN1);
 //							double score = Math.max(score1, score2);
@@ -567,6 +567,14 @@ public class RastComparator {
 				.forEach(r -> {
 					RastNode supertypeAfter = r.getNodeAfter().getParent().get();
 					RastNode subtypeBefore = r.getNodeBefore().getParent().get();
+					
+					// If there is the same supertype before, ignore
+					for (RastNode superTypeBefore : before.findRelationships(RastNodeRelationshipType.SUBTYPE, subtypeBefore)) {
+						if (superTypeBefore.getSimpleName().equals(supertypeAfter.getSimpleName())) {
+							return;
+						}
+					}
+					
 					boolean hadNoSupertypesBefore = true;//before.findRelationships(RastNodeRelationshipType.SUBTYPE, subtypeBefore).isEmpty();
 					if (added(supertypeAfter) && hadNoSupertypesBefore) {
 						relationships.add(new Relationship(RelationshipType.EXTRACT_SUPER, subtypeBefore, supertypeAfter));

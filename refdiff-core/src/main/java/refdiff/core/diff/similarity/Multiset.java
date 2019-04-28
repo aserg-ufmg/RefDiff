@@ -55,13 +55,11 @@ public class Multiset<E> implements Collection<E> {
 	
 	public Multiset<E> plus(Multiset<E> other) {
 		Multiset<E> result = new Multiset<E>();
+		for (Entry<E, Integer> e : map.entrySet()) {
+			result.add(e.getKey(), e.getValue());
+		}
 		for (Entry<E, Integer> e : other.map.entrySet()) {
-			E key = e.getKey();
-			if (map.containsKey(key)) {
-				result.add(key, map.get(key) + e.getValue());
-			} else {
-				result.add(key, e.getValue());
-			}
+			result.add(e.getKey(), e.getValue());
 		}
 		return result;
 	}
