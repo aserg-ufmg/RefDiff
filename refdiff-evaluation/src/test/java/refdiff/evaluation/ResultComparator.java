@@ -175,7 +175,7 @@ public class ResultComparator {
 	}
 	
 	public void printDetails(PrintStream out, EnumSet<RefactoringType> refTypesToConsider, String groupId) {
-		printDetails(out, refTypesToConsider, groupId, (RefactoringSet rs, RefactoringRelationship r, String label, String cause) -> {
+		printDetails(out, refTypesToConsider, groupId, (RefactoringSet rs, RefactoringRelationship r, String label, String cause, String evaluators) -> {
 			out.print('\t');
 			out.print(label);
 		});
@@ -225,6 +225,7 @@ public class ResultComparator {
 						int found = actualRefactorings.contains(r) ? 1 : 0;
 						String label = labels[correct + found];
 						String cause = "";
+						String evaluators = findEvaluators(r, expected.getRefactorings(), notExpectedRefactorings);
 						
 						if (label == "FP") {
 							cause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings);
@@ -235,7 +236,7 @@ public class ResultComparator {
 							cause = findFnCause(r, actualRefactorings, this.fnExplanations.get(getProjectRevisionId(expected.getProject(), expected.getRevision())));
 						}
 						// out.print(label);
-						rowPrinter.printDetails(expected, r, label, cause);
+						rowPrinter.printDetails(expected, r, label, cause, evaluators);
 						/*
 						 * if (label.equals("FP") || label.equals("FN")) { if (cause != null) { out.print('\t'); out.print(cause); } }
 						 */
@@ -280,6 +281,16 @@ public class ResultComparator {
 			return blacklistedR.getComment() != null ? blacklistedR.getComment() : "<Blacklist>";
 		}
 		return "?";
+	}
+	
+	private String findEvaluators(RefactoringRelationship r, Set<RefactoringRelationship> expected, Set<RefactoringRelationship> blacklisted) {
+		if (expected.contains(r)) {
+			return expected.stream().filter(br -> br.equals(r)).findFirst().get().getEvaluators();
+		}
+		if (blacklisted.contains(r)) {
+			return blacklisted.stream().filter(br -> br.equals(r)).findFirst().get().getEvaluators();
+		}
+		return null;
 	}
 	
 	private String findFnCause(RefactoringRelationship r, Set<RefactoringRelationship> actualRefactorings, Map<KeyPair, String> fnCauseMap) {

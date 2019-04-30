@@ -47,13 +47,16 @@ public class EvaluationCsvReader {
 					boolean evaluatedAsTp = ("TP".equals(row.resultA) && "TP".equals(row.resultB)) || "TP".equals(row.resultFinal);
 					if (evaluatedAsTp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
-						expectedRefactorings.add(new RefactoringRelationship(refType, row.n1, row.n2));
+						RefactoringRelationship tpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
+						expectedRefactorings.add(tpInstance);
+						tpInstance.setEvaluators(row.evaluators);
 					}
 					boolean evaluatedAsFp = ("FP".equals(row.resultA) && "FP".equals(row.resultB)) || "FP".equals(row.resultFinal);
 					if (evaluatedAsFp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship fpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
 						fpInstance.setComment(row.commentFinal != null ? row.commentFinal : row.commentA);
+						fpInstance.setEvaluators(row.evaluators);
 						notExpectedRefactorings.add(fpInstance);
 					}
 				}
@@ -101,7 +104,7 @@ public class EvaluationCsvReader {
 		
 		rc2.compareWith("RMiner", data.getrMinerRefactorings());
 		
-		rc.printDetails(System.out, RunIcseEval.refactoringTypes, "RefDiff", (RefactoringSet expected, RefactoringRelationship r, String label, String cause) -> {
+		rc.printDetails(System.out, RunIcseEval.refactoringTypes, "RefDiff", (RefactoringSet expected, RefactoringRelationship r, String label, String cause, String evaluators) -> {
 			ResultRow row = map.get(getKey(expected.getRevision(), r.getRefactoringType(), r.getEntityBefore(), r.getEntityAfter()));
 			if (row != null) {
 				System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", row.description, label, row.resultA, row.commentA, row.resultB, row.commentB, row.getResult2(label), row.resultC, row.commentC, row.resultFinal, cause != null ? cause : row.commentFinal, row.getResult3(label));
@@ -149,6 +152,7 @@ public class EvaluationCsvReader {
 					row.commentC = parts[11];
 					row.resultFinal = parts[12];
 					row.commentFinal = parts[13];
+					row.evaluators = "FP?".equals(row.result1) ? String.format("Gustavo/Ricardo: %s/%s", row.resultA, row.resultB) : "";
 					resultCommit.rows.add(row);
 				}
 			}
@@ -165,6 +169,7 @@ public class EvaluationCsvReader {
 			row.n2 = parts[3];
 			row.resultFinal = parts[4];
 			row.commentFinal = "[Danilo] " + parts[5];
+			row.evaluators = "Danilo: " + row.resultFinal;
 			return row;
 		});
 		
@@ -204,6 +209,7 @@ public class EvaluationCsvReader {
 		public String commentC;
 		public String commentFinal;
 		public String resultFinal;
+		public String evaluators;
 		
 		@Override
 		public String toString() {
