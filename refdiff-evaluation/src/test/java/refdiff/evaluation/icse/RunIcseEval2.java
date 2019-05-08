@@ -124,7 +124,7 @@ public class RunIcseEval2 {
 		rc.printSummary(System.out, refactoringTypes);
 	}
 	
-	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause) {
+	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause, String evaluators) {
 		String refDiffRefType = "";
 		String n1Location = "";
 		String n2Location = "";
