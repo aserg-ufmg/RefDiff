@@ -124,7 +124,7 @@ public class RunIcseEval2 {
 		rc.printSummary(System.out, refactoringTypes);
 	}
 	
-	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause) {
+	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause, String evaluators) {
 		String refDiffRefType = "";
 		String n1Location = "";
 		String n2Location = "";
@@ -134,6 +134,6 @@ public class RunIcseEval2 {
 			n1Location = rastRelationship.getNodeBefore().getLocation().format();
 			n2Location = rastRelationship.getNodeAfter().getLocation().format();
 		}
-		System.out.printf("\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, cause);
+		System.out.printf("\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, evaluators);
 	}
 }
