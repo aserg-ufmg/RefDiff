@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import refdiff.evaluation.EvaluationDetails;
 import refdiff.evaluation.RefactoringRelationship;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
@@ -44,19 +46,18 @@ public class EvaluationCsvReader {
 				RefactoringSet expectedRefactorings = mapRs.get(commit);
 				RefactoringSet notExpectedRefactorings = mapRsNotExpected.get(commit);
 				for (ResultRow row : commitResult.rows) {
-					boolean evaluatedAsTp = ("TP".equals(row.resultA) && "TP".equals(row.resultB)) || "TP".equals(row.resultFinal);
+					boolean evaluatedAsTp = "TP".equals(row.resultFinal);
 					if (evaluatedAsTp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship tpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
 						expectedRefactorings.add(tpInstance);
-						tpInstance.setEvaluators(row.evaluators);
+						tpInstance.setEvaluationDetails(new EvaluationDetails(row));
 					}
-					boolean evaluatedAsFp = ("FP".equals(row.resultA) && "FP".equals(row.resultB)) || "FP".equals(row.resultFinal);
+					boolean evaluatedAsFp = "FP".equals(row.resultFinal) || "FP?".equals(row.resultFinal);
 					if (evaluatedAsFp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship fpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
-						fpInstance.setComment(row.commentFinal != null ? row.commentFinal : row.commentA);
-						fpInstance.setEvaluators(row.evaluators);
+						fpInstance.setEvaluationDetails(new EvaluationDetails(row));
 						notExpectedRefactorings.add(fpInstance);
 					}
 				}
@@ -104,7 +105,7 @@ public class EvaluationCsvReader {
 		
 		rc2.compareWith("RMiner", data.getrMinerRefactorings());
 		
-		rc.printDetails(System.out, RunIcseEval.refactoringTypes, "RefDiff", (RefactoringSet expected, RefactoringRelationship r, String label, String cause, String evaluators) -> {
+		rc.printDetails(System.out, RunIcseEval.refactoringTypes, "RefDiff", (RefactoringSet expected, RefactoringRelationship r, String label, String cause, EvaluationDetails evaluationDetails) -> {
 			ResultRow row = map.get(getKey(expected.getRevision(), r.getRefactoringType(), r.getEntityBefore(), r.getEntityAfter()));
 			if (row != null) {
 				System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", row.description, label, row.resultA, row.commentA, row.resultB, row.commentB, row.getResult2(label), row.resultC, row.commentC, row.resultFinal, cause != null ? cause : row.commentFinal, row.getResult3(label));
@@ -151,13 +152,112 @@ public class EvaluationCsvReader {
 					row.resultC = parts[10];
 					row.commentC = parts[11];
 					row.resultFinal = parts[12];
+					computeResultFinal(row);
 					row.commentFinal = parts[13];
-					row.evaluators = "FP?".equals(row.result1) ? String.format("Gustavo/Ricardo: %s/%s", row.resultA, row.resultB) : "";
+					//row.evaluators = "FP?".equals(row.result1) ? String.format("Gustavo/Ricardo: %s/%s", row.resultA, row.resultB) : "";
+					if ("FP?".equals(row.result1)) {						
+						row.evaluators = "Gustavo/Ricardo";
+					}
 					resultCommit.rows.add(row);
 				}
 			}
 		}
 		return list;
+	}
+	
+	public static List<ResultCommit> readEvalGustavoRicardoDaniloAndMerge() throws IOException, FileNotFoundException {
+		List<ResultRow> listGustavo = CsvReader.readCsv("data/java-evaluation/eval-gustavo-2.txt", parts -> {
+			ResultRow row = new ResultRow();
+			row.commitUrl = parts[0];
+			row.refType = parts[1];
+			row.n1 = parts[2];
+			row.n2 = parts[3];
+			row.resultA = parts[4];
+			row.commentA = parts[5];
+			row.evaluators = "Gustavo/Danilo";
+			return row;
+		});
+		
+		List<ResultRow> listRicardo = CsvReader.readCsv("data/java-evaluation/eval-ricardo-2.txt", parts -> {
+			ResultRow row = new ResultRow();
+			row.commitUrl = parts[0];
+			row.refType = parts[1];
+			row.n1 = parts[2];
+			row.n2 = parts[3];
+			row.resultB = parts[4];
+			row.commentB = parts[5];
+			row.evaluators = "Ricardo/Danilo";
+			return row;
+		});
+		
+		List<ResultRow> listDanilo = CsvReader.readCsv("data/java-evaluation/eval-danilo.txt", parts -> {
+			ResultRow row = new ResultRow();
+			row.commitUrl = parts[0];
+			row.refType = parts[1];
+			row.n1 = parts[2];
+			row.n2 = parts[3];
+			row.resultC = parts[4];
+			row.commentC = parts[5];
+			return row;
+		});
+		
+		Stream<ResultRow> allRows = Stream.concat(Stream.concat(listGustavo.stream(), listRicardo.stream()), listDanilo.stream());
+		Map<String, List<ResultRow>> map = allRows.collect(Collectors.groupingBy(row -> String.format("%s\t%s\t%s\t%s", row.commitUrl, row.refType, row.n1, row.n2)));
+		Map<String, List<ResultRow>> map2 = map.entrySet().stream().map(e -> {
+			ResultRow row = new ResultRow();
+			for (ResultRow partialRow : e.getValue()) {
+				row.commitUrl = partialRow.commitUrl;
+				row.refType = partialRow.refType;
+				row.n1 = partialRow.n1;
+				row.n2 = partialRow.n2;
+				if (partialRow.resultA != null && !partialRow.resultA.isEmpty()) {
+					row.resultA = partialRow.resultA;
+					row.commentA = partialRow.commentA;
+				}
+				if (partialRow.resultB != null && !partialRow.resultB.isEmpty()) {
+					row.resultB = partialRow.resultB;
+					row.commentB = partialRow.commentB;
+				}
+				if (partialRow.resultC != null && !partialRow.resultC.isEmpty()) {
+					row.resultC = partialRow.resultC;
+					row.commentC = partialRow.commentC;
+				}
+				if (partialRow.evaluators != null) {
+					row.evaluators = partialRow.evaluators;
+				}
+			}
+			computeResultFinal(row);
+			return row;
+		}).collect(Collectors.groupingBy(row -> row.commitUrl));
+		return map2.entrySet().stream().map(e -> {
+			ResultCommit resultCommit = new ResultCommit();
+			resultCommit.commitUrl = e.getKey();
+			resultCommit.rows = e.getValue();
+			return resultCommit; 
+		}).collect(Collectors.toList());
+	}
+	
+	private static void computeResultFinal(ResultRow row) {
+		if (isEmpty(row.resultFinal)) {
+			if (("TP".equals(row.resultA) && "TP".equals(row.resultB)) || ("TP".equals(row.resultA) && "TP".equals(row.resultC)) || ("TP".equals(row.resultB) && "TP".equals(row.resultC))) {
+				row.resultFinal = "TP";
+			} else if (("FP".equals(row.resultA) && "FP".equals(row.resultB)) || ("FP".equals(row.resultA) && "FP".equals(row.resultC)) || ("FP".equals(row.resultB) && "FP".equals(row.resultC))) {
+				row.resultFinal = "FP";
+			} else if (!isEmpty(row.resultA) || !isEmpty(row.resultB) || !isEmpty(row.resultB)) {
+				row.resultFinal = "FP?";
+			}
+		}
+		if (!isEmpty(row.resultA) && !isEmpty(row.resultB)) {
+			row.evaluators = "Gustavo/Ricardo";
+		} else if (!isEmpty(row.resultA) && !isEmpty(row.resultC)) {
+			row.evaluators = "Gustavo/Danilo";
+		} else if (!isEmpty(row.resultB) && !isEmpty(row.resultC)) {
+			row.evaluators = "Ricardo/Danilo";
+		}
+	}
+	
+	private static boolean isEmpty(String str) {
+		return str == null || str.isEmpty();
 	}
 	
 	public static List<ResultCommit> readEvalDanilo() throws IOException, FileNotFoundException {
@@ -185,7 +285,7 @@ public class EvaluationCsvReader {
 	public static List<ResultCommit> readEvalAll() throws IOException, FileNotFoundException {
 		List<ResultCommit> list = new ArrayList<>();
 		list.addAll(readEvalRicardoGustavo());
-		list.addAll(readEvalDanilo());
+		list.addAll(readEvalGustavoRicardoDaniloAndMerge());
 		return list;
 	}
 	

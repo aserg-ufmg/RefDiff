@@ -20,7 +20,7 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	private final String entityAfter;
 	private final Relationship rastRelationship;
 	private String comment;
-	private String evaluators;
+	private EvaluationDetails evaluationDetails;
 	
 	public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter) {
 		this(refactoringType, entityBefore, entityAfter, null);
@@ -208,12 +208,12 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 		this.comment = comment;
 	}
 
-	public String getEvaluators() {
-		return evaluators;
+	public EvaluationDetails getEvaluationDetails() {
+		return evaluationDetails;
 	}
 
-	public void setEvaluators(String evaluators) {
-		this.evaluators = evaluators;
+	public void setEvaluationDetails(EvaluationDetails evaluationDetails) {
+		this.evaluationDetails = evaluationDetails;
 	}
 
 }
