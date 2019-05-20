@@ -7,6 +7,7 @@ import java.util.Map;
 
 import refdiff.core.diff.RastComparator;
 import refdiff.core.diff.Relationship;
+import refdiff.evaluation.EvaluationDetails;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringRelationship;
@@ -25,7 +26,7 @@ public class RunIcseEval {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "D:/refdiff/").run();
+		new RunIcseEval(args.length > 0 ? args[0] : "C:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -59,14 +60,14 @@ public class RunIcseEval {
 		rc.compareWith("RMiner", data.getrMinerRefactorings());
 		
 		System.out.println("\n\n\n");
-		rc.printDetails(System.out, refactoringTypes, "RefDiff", this::printDetails);
+		rc.printDetails(System.out, refactoringTypes, "RefDiff", RunIcseEval::printDetails);
 		System.out.println();
 		rc.printSummary(System.out, refactoringTypes);
 		
 		System.out.println(String.format("%d commits processed, %d commits skipped.", count, errorCount));
 	}
 	
-	private void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause, String evaluators) {
+	public static void printDetails(RefactoringSet rs, RefactoringRelationship r, String label, String cause, EvaluationDetails evaluationDetails) {
 		String refDiffRefType = "";
 		String n1Location = "";
 		String n2Location = "";
@@ -76,6 +77,15 @@ public class RunIcseEval {
 			n1Location = rastRelationship.getNodeBefore().getLocation().format();
 			n2Location = rastRelationship.getNodeAfter().getLocation().format();
 		}
-		System.out.printf("\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, evaluators);
+		System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, findOrigin(label, evaluationDetails, cause), evaluationDetails != null ? evaluationDetails.format() : "");
+	}
+	
+	private static String findOrigin(String label, EvaluationDetails evaluationDetails, String cause) {
+		if (evaluationDetails != null && evaluationDetails.evaluators != null) {
+			return evaluationDetails.evaluators;
+		} else if ("FP".equals(label)) {
+			return cause;
+		}
+		return "Oracle";
 	}
 }

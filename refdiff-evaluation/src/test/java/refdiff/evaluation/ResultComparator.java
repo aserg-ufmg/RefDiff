@@ -14,7 +14,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -175,7 +174,7 @@ public class ResultComparator {
 	}
 	
 	public void printDetails(PrintStream out, EnumSet<RefactoringType> refTypesToConsider, String groupId) {
-		printDetails(out, refTypesToConsider, groupId, (RefactoringSet rs, RefactoringRelationship r, String label, String cause, String evaluators) -> {
+		printDetails(out, refTypesToConsider, groupId, (RefactoringSet rs, RefactoringRelationship r, String label, String cause, EvaluationDetails evaluationDetails) -> {
 			out.print('\t');
 			out.print(label);
 		});
@@ -225,10 +224,10 @@ public class ResultComparator {
 						int found = actualRefactorings.contains(r) ? 1 : 0;
 						String label = labels[correct + found];
 						String cause = "";
-						String evaluators = findEvaluators(r, expected.getRefactorings(), notExpectedRefactorings);
+						EvaluationDetails evaluationDetails = findEvaluationDetails(r, expected.getRefactorings(), notExpectedRefactorings);
 						
 						if (label == "FP") {
-							cause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings);
+							cause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings, evaluationDetails);
 							if (cause.equals("?")) {
 								label = label + "?";
 							}
@@ -236,7 +235,7 @@ public class ResultComparator {
 							cause = findFnCause(r, actualRefactorings, this.fnExplanations.get(getProjectRevisionId(expected.getProject(), expected.getRevision())));
 						}
 						// out.print(label);
-						rowPrinter.printDetails(expected, r, label, cause, evaluators);
+						rowPrinter.printDetails(expected, r, label, cause, evaluationDetails);
 						/*
 						 * if (label.equals("FP") || label.equals("FN")) { if (cause != null) { out.print('\t'); out.print(cause); } }
 						 */
@@ -252,7 +251,12 @@ public class ResultComparator {
 		return String.format("%s\t%s\t%s", r.getRefactoringType().getDisplayName(), r.getEntityBefore(), r.getEntityAfter());
 	}
 	
-	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered, Set<RefactoringRelationship> blacklisted) {
+	private String findFpCause(RefactoringRelationship r, Set<RefactoringRelationship> expectedUnfiltered, Set<RefactoringRelationship> blacklisted, EvaluationDetails evaluationDetails) {
+		if (evaluationDetails != null) {
+			if (evaluationDetails.commentFinal != null) {
+				return evaluationDetails.commentFinal;
+			}
+		}
 		if (isPullUpToExtractedSupertype(r, expectedUnfiltered)) {
 			return "<PullUpToExtractedSupertype>";
 		}
@@ -277,18 +281,19 @@ public class ResultComparator {
 			}
 		}
 		if (blacklisted.contains(r)) {
-			RefactoringRelationship blacklistedR = blacklisted.stream().filter(br -> br.equals(r)).findFirst().get();
-			return blacklistedR.getComment() != null ? blacklistedR.getComment() : "<Blacklist>";
+			//RefactoringRelationship blacklistedR = blacklisted.stream().filter(br -> br.equals(r)).findFirst().get();
+			//return blacklistedR.getComment() != null ? blacklistedR.getComment() : "<Blacklist>";
+			return "<Blacklist>";
 		}
 		return "?";
 	}
 	
-	private String findEvaluators(RefactoringRelationship r, Set<RefactoringRelationship> expected, Set<RefactoringRelationship> blacklisted) {
+	private EvaluationDetails findEvaluationDetails(RefactoringRelationship r, Set<RefactoringRelationship> expected, Set<RefactoringRelationship> blacklisted) {
 		if (expected.contains(r)) {
-			return expected.stream().filter(br -> br.equals(r)).findFirst().get().getEvaluators();
+			return expected.stream().filter(br -> br.equals(r)).findFirst().get().getEvaluationDetails();
 		}
 		if (blacklisted.contains(r)) {
-			return blacklisted.stream().filter(br -> br.equals(r)).findFirst().get().getEvaluators();
+			return blacklisted.stream().filter(br -> br.equals(r)).findFirst().get().getEvaluationDetails();
 		}
 		return null;
 	}
