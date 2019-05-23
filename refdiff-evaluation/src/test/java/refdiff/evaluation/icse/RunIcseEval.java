@@ -26,7 +26,7 @@ public class RunIcseEval {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new RunIcseEval(args.length > 0 ? args[0] : "C:/refdiff/").run();
+		new RunIcseEval(args.length > 0 ? args[0] : "D:/refdiff/").run();
 	}
 	
 	public void run() throws Exception {
@@ -58,6 +58,7 @@ public class RunIcseEval {
 		}
 		
 		rc.compareWith("RMiner", data.getrMinerRefactorings());
+		rc.compareWith("RefDiff1", data.getRefDiffRefactorings());
 		
 		System.out.println("\n\n\n");
 		rc.printDetails(System.out, refactoringTypes, "RefDiff", RunIcseEval::printDetails);

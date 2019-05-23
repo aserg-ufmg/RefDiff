@@ -20,6 +20,7 @@ import refdiff.evaluation.RefactoringType;
 public class IcseDataset extends AbstractDataset {
 	
 	protected final List<RefactoringSet> rMinerRefactorings = new ArrayList<>();
+	protected final List<RefactoringSet> refDiffRefactorings = new ArrayList<>();
 	
 	protected final List<String> ignore = Arrays.asList("Change Package", "Move Attribute", "Pull Up Attribute", "Push Down Attribute");
 	
@@ -53,6 +54,7 @@ public class IcseDataset extends AbstractDataset {
 				
 				RefactoringSet rs = new RefactoringSet(repoUrl, commit.sha1);
 				RefactoringSet rsRMiner = new RefactoringSet(repoUrl, commit.sha1);
+				RefactoringSet rsRefDiff = new RefactoringSet(repoUrl, commit.sha1);
 				RefactoringSet rsNotExpected = new RefactoringSet(repoUrl, commit.sha1);
 				for (IcseRefactoring refactoring : commit.refactorings) {
 					if (ignore.contains(refactoring.type)) {
@@ -81,11 +83,15 @@ public class IcseDataset extends AbstractDataset {
 					if (refactoring.detectionTools.contains("RefactoringMiner")) {
 						rsRMiner.add(refs);
 					}
+					if (refactoring.detectionTools.contains("RefDiff")) {
+						rsRefDiff.add(refs);
+					}
 				}
 				tpCount2 += rs.getRefactorings().size();
 				fpCount2 += rsNotExpected.getRefactorings().size();
 				add(rs, rsNotExpected);
 				rMinerRefactorings.add(rsRMiner);
+				refDiffRefactorings.add(rsRefDiff);
 			}
 //			System.out.println("Ignored: " + ignoredCount);
 //			System.out.println("Added: " + addedCount);
@@ -102,4 +108,9 @@ public class IcseDataset extends AbstractDataset {
 	public List<RefactoringSet> getrMinerRefactorings() {
 		return rMinerRefactorings;
 	}
+
+	public List<RefactoringSet> getRefDiffRefactorings() {
+		return refDiffRefactorings;
+	}
+	
 }

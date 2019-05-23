@@ -201,7 +201,18 @@ public class EvaluationCsvReader {
 			return row;
 		});
 		
-		Stream<ResultRow> allRows = Stream.concat(Stream.concat(listGustavo.stream(), listRicardo.stream()), listDanilo.stream());
+		List<ResultRow> listConsensus = CsvReader.readCsv("data/java-evaluation/eval-phase2.txt", parts -> {
+			ResultRow row = new ResultRow();
+			row.commitUrl = parts[0];
+			row.refType = parts[1];
+			row.n1 = parts[2];
+			row.n2 = parts[3];
+			row.resultFinal = parts[4];
+			row.commentFinal = parts[5];
+			return row;
+		});
+		
+		Stream<ResultRow> allRows = Stream.concat(Stream.concat(Stream.concat(listGustavo.stream(), listRicardo.stream()), listDanilo.stream()), listConsensus.stream());
 		Map<String, List<ResultRow>> map = allRows.collect(Collectors.groupingBy(row -> String.format("%s\t%s\t%s\t%s", row.commitUrl, row.refType, row.n1, row.n2)));
 		Map<String, List<ResultRow>> map2 = map.entrySet().stream().map(e -> {
 			ResultRow row = new ResultRow();
@@ -221,6 +232,10 @@ public class EvaluationCsvReader {
 				if (partialRow.resultC != null && !partialRow.resultC.isEmpty()) {
 					row.resultC = partialRow.resultC;
 					row.commentC = partialRow.commentC;
+				}
+				if (partialRow.resultFinal != null && !partialRow.resultFinal.isEmpty()) {
+					row.resultFinal = partialRow.resultFinal;
+					row.commentFinal = partialRow.commentFinal;
 				}
 				if (partialRow.evaluators != null) {
 					row.evaluators = partialRow.evaluators;
@@ -258,28 +273,6 @@ public class EvaluationCsvReader {
 	
 	private static boolean isEmpty(String str) {
 		return str == null || str.isEmpty();
-	}
-	
-	public static List<ResultCommit> readEvalDanilo() throws IOException, FileNotFoundException {
-		List<ResultRow> list = CsvReader.readCsv("data/java-evaluation/eval-danilo.txt", parts -> {
-			ResultRow row = new ResultRow();
-			row.commitUrl = parts[0];
-			row.refType = parts[1];
-			row.n1 = parts[2];
-			row.n2 = parts[3];
-			row.resultFinal = parts[4];
-			row.commentFinal = "[Danilo] " + parts[5];
-			row.evaluators = "Danilo: " + row.resultFinal;
-			return row;
-		});
-		
-		Map<String, List<ResultRow>> map = list.stream().collect(Collectors.groupingBy(row -> row.commitUrl));
-		return map.entrySet().stream().map(e -> {
-			ResultCommit resultCommit = new ResultCommit();
-			resultCommit.commitUrl = e.getKey();
-			resultCommit.rows = e.getValue();
-			return resultCommit; 
-		}).collect(Collectors.toList());
 	}
 	
 	public static List<ResultCommit> readEvalAll() throws IOException, FileNotFoundException {
