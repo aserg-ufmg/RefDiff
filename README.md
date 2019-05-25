@@ -4,7 +4,7 @@ RefDiff is a tool to mine refactorings in the commit history of git repositories
 Currently, three programming languages are supported: Java, JavaScript, and C.
 
 RefDiff finds relationships between code elements of two given revisions of the
-project. Relationships indicate the both elements are the same, or that a refactoring
+project. Relationships indicate that both elements are the same, or that a refactoring
 operation involving them was applied. The following relationship types are supported:
 
 * Same
@@ -76,6 +76,41 @@ refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
 	printRefactorings("Refactorings found in angular.js " + commit.getId().name(), diff);
 });
 ```
+
+You can use different parsers to mine refactorings in other programming languages:
+
+```java
+// In this example, we use the parser for C.
+CParser cParser = new CParser();
+RefDiff refDiffC = new RefDiff(cParser);
+
+File gitRepo = refDiffC.cloneGitRepository(
+	new File(tempFolder, "git"),
+	"https://github.com/refdiff-study/git.git");
+
+printRefactorings(
+	"Refactorings found in git ba97aea",
+	refDiffC.computeDiffForCommit(gitRepo, "ba97aea1659e249a3a58ecc5f583ee2056a90ad8"));
+
+
+// Now, we use the parser for Java.
+JavaParser javaParser = new JavaParser(tempFolder);
+RefDiff refDiffJava = new RefDiff(javaParser);
+
+File eclipseThemesRepo = refDiffC.cloneGitRepository(
+	new File(tempFolder, "eclipse-themes"),
+	"https://github.com/icse18-refactorings/eclipse-themes.git");
+
+printRefactorings(
+	"Refactorings found in eclipse-themes 72f61ec",
+	refDiffJava.computeDiffForCommit(eclipseThemesRepo, "72f61ec"));
+```
+
+## Extending RefDiff to support other programming languages
+
+You can implement the `CstParser` interface to support other programming languages.
+Soon, we will provide a detailed tutorial on how to do this.
+
 
 ## Example data
 
