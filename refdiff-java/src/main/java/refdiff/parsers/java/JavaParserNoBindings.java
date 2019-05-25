@@ -7,9 +7,9 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
-public class JavaParserNoBindings implements RastParser {
+public class JavaParserNoBindings implements CstParser {
 
 	private final JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	

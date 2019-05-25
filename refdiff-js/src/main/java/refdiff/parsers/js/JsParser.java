@@ -27,9 +27,9 @@ import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.TokenPosition;
 import refdiff.core.rast.TokenizedSource;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
-public class JsParser implements RastParser, Closeable {
+public class JsParser implements CstParser, Closeable {
 	
 	private NodeJS nodeJs;
 	private int nodeCounter = 0;

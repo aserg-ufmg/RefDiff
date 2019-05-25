@@ -13,9 +13,9 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
-public class JavaParser implements RastParser {
+public class JavaParser implements CstParser {
 
 	private File tempDir = null;
 	private final JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();

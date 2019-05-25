@@ -4,7 +4,7 @@ import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastRoot;
 
-public interface RastParser {
+public interface CstParser {
 	
 	RastRoot parse(SourceFileSet sources) throws Exception;
 	

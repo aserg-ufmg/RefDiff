@@ -25,9 +25,9 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.TokenPosition;
 import refdiff.core.rast.TokenizedSource;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
-public class CParser implements RastParser {
+public class CParser implements CstParser {
 	
 	@Override
 	public RastRoot parse(SourceFileSet sources) throws Exception {

@@ -12,14 +12,14 @@ import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
 public class RefDiff {
 	
 	private final RastComparator comparator;
 	private final FilePathFilter fileFilter;
 	
-	public RefDiff(RastParser parser) {
+	public RefDiff(CstParser parser) {
 		this.comparator = new RastComparator(parser);
 		this.fileFilter = parser.getAllowedFilesFilter();
 	}

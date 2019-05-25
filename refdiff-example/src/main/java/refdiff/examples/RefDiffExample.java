@@ -16,7 +16,9 @@ public class RefDiffExample {
 	}
 	
 	private static void runExamples() throws Exception {
+		// This is a temp folder to clone or checkout git repositories
 		File tempFolder = new File("temp");
+		
 		JsParser jsParser = new JsParser();
 		RefDiff refDiffJs = new RefDiff(jsParser);
 		

@@ -25,13 +25,13 @@ import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
 import refdiff.core.rast.Stereotype;
 import refdiff.core.util.PairBeforeAfter;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
 public class RastComparator {
 	
-	private final RastParser parser;
+	private final CstParser parser;
 	
-	public RastComparator(RastParser parser) {
+	public RastComparator(CstParser parser) {
 		this.parser = parser;
 	}
 	
@@ -772,7 +772,7 @@ public class RastComparator {
 		*/
 	}
 
-	public RastParser getParser() {
+	public CstParser getParser() {
 		return parser;
 	}
 

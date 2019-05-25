@@ -17,11 +17,11 @@ import refdiff.core.rast.RastNode;
 import refdiff.core.rast.RastNodeRelationship;
 import refdiff.core.rast.RastNodeRelationshipType;
 import refdiff.core.rast.RastRoot;
-import refdiff.parsers.RastParser;
+import refdiff.parsers.CstParser;
 
 public class TestJavaParser {
 	
-	private RastParser parser = new JavaParserNoBindings();
+	private CstParser parser = new JavaParserNoBindings();
 	
 	@Test
 	public void shouldParseFiles() throws Exception {
