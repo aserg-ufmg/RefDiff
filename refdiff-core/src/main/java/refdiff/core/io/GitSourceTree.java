@@ -60,19 +60,27 @@ public class GitSourceTree extends SourceFileSet {
 	}
 	
 	@Override
-	public void materialize(Path baseFolderPath) throws IOException {
-		File baseFolder = baseFolderPath.toFile();
-		if (baseFolder.exists() || baseFolder.mkdirs()) {
+	public void materializeAt(Path folderPath) throws IOException {
+		File folder = folderPath.toFile();
+		if (folder.exists()) {
+			checkoutFolder = folderPath;
+		} else if (folder.mkdirs()) {			
 			for (SourceFile sf : getSourceFiles()) {
 				byte[] content = readBytes(sf);
-				File destinationFile = new File(baseFolder, sf.getPath());
+				File destinationFile = new File(folder, sf.getPath());
 				Files.createDirectories(destinationFile.getParentFile().toPath());
 				Files.write(destinationFile.toPath(), content, StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
 			}
-			checkoutFolder = baseFolderPath;
+			checkoutFolder = folderPath;
 		} else {
-			throw new IOException("Failed to create directory " + baseFolderPath);
+			throw new IOException("Failed to create directory " + folderPath);
 		}
+	}
+	
+	@Override
+	public void materializeAtBase(Path baseFolderPath) throws IOException {
+		Path folder = baseFolderPath.resolve(repo.getDirectory().getName() + "-" + sha1.abbreviate(7).name());
+		materializeAt(folder);
 	}
 	
 	@Override

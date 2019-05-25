@@ -321,10 +321,10 @@ public class EvaluationUtils {
 			try (Repository repo = gitHelper.openRepository(fRepoFolder)) {
 				PairBeforeAfter<SourceFileSet> sourcesPair = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, new FilePathFilter(Arrays.asList(".java")));
 				if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
-					sourcesPair.getBefore().materialize(fCheckoutFolderV0.toPath());
+					sourcesPair.getBefore().materializeAt(fCheckoutFolderV0.toPath());
 				}
 				if (!fCheckoutFolderV1.exists() && fCheckoutFolderV1.mkdirs()) {
-					sourcesPair.getAfter().materialize(fCheckoutFolderV1.toPath());
+					sourcesPair.getAfter().materializeAt(fCheckoutFolderV1.toPath());
 				}
 			} catch (Exception e) {
 				throw new RuntimeException(String.format("Error checking out %s %s:\n%s", project, commit, e.getMessage()), e);

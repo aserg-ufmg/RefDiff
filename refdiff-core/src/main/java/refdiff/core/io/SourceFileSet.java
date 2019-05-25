@@ -25,7 +25,11 @@ public abstract class SourceFileSet {
 	
 	public abstract String describeLocation(SourceFile sourceFile);
 	
-	public void materialize(Path baseFolder) throws IOException {
+	public void materializeAt(Path folder) throws IOException {
+		throw new UnsupportedOperationException();
+	}
+	
+	public void materializeAtBase(Path baseFolder) throws IOException {
 		throw new UnsupportedOperationException();
 	}
 }

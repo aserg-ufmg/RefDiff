@@ -59,7 +59,19 @@ public class Relationship {
 		return String.format("%s({%s}, {%s})", this.type, format(this.nodeBefore), format(this.nodeAfter));
 	}
 	
-	public String format(RastNode node) {
+	public String getStandardDescription() {
+		return String.format("%s\t{%s}\t{%s})", this.type, formatWithLineNum(this.nodeBefore), formatWithLineNum(this.nodeAfter));
+	}
+	
+	private String formatWithLineNum(RastNode node) {
+		return String.format("%s %s at %s:%d", node.getType(), node.getLocalName(), node.getLocation().getFile(), node.getLocation().getLine());
+	}
+	
+	private String format(RastNode node) {
 		return String.join(" ", RastRootHelper.getNodePath(node));
+	}
+	
+	public boolean isRefactoring() {
+		return !type.equals(RelationshipType.SAME);
 	}
 }

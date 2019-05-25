@@ -61,6 +61,7 @@ public class GitHelper {
 	
 	public static File cloneBareRepository(File folder, String cloneUrl) {
 		if (!folder.exists()) {
+			System.out.print("Cloning " + cloneUrl + "...");
 			try {
 				Git.cloneRepository()
 					.setURI(cloneUrl)
@@ -68,6 +69,7 @@ public class GitHelper {
 					.setBare(true)
 					.setCloneAllBranches(true)
 					.call();
+				System.out.println(" DONE");
 			} catch (Exception e) {
 				throw new RuntimeException(String.format("Unable to clone %s, cause: %s", cloneUrl, e.getMessage()), e);
 			}

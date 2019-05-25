@@ -3,6 +3,7 @@ package refdiff.core.diff;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import refdiff.core.rast.RastRoot;
 
@@ -33,4 +34,9 @@ public class RastDiff {
 		relationships.add(relationship);
 	}
 	
+	public Set<Relationship> getRefactoringRelationships() {
+		return relationships.stream()
+			.filter(Relationship::isRefactoring)
+			.collect(Collectors.toSet());
+	}
 }

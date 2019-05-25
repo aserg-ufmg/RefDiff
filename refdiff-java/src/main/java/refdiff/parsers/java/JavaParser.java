@@ -17,14 +17,26 @@ import refdiff.parsers.RastParser;
 
 public class JavaParser implements RastParser {
 
+	private File tempDir = null;
 	private final JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	
+	public JavaParser() {}
+	
+	public JavaParser(File tempDir) {
+		this.tempDir = tempDir;
+	}
+
 	@Override
 	public RastRoot parse(SourceFileSet sources) throws Exception {
 		List<String> javaFiles = new ArrayList<>();
 		Optional<Path> optBasePath = sources.getBasePath();
 		if (!optBasePath.isPresent()) {
-			throw new RuntimeException("The JavaParser requires a SourceFileSet that is materialized on the file system");
+			if (this.tempDir == null) {
+				throw new RuntimeException("The JavaParser requires a SourceFileSet that is materialized on the file system. Either pass a tempDir to JavaParser's contructor or call SourceFileSet::materializeAt before calling this method.");
+			} else {
+				sources.materializeAtBase(tempDir.toPath());
+				optBasePath = sources.getBasePath();
+			}
 		}
 		for (SourceFile sourceFile : sources.getSourceFiles()) {
 			javaFiles.add(sourceFile.getPath());
