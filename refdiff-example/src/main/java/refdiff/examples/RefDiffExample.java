@@ -16,26 +16,36 @@ public class RefDiffExample {
 	}
 	
 	private static void runExamples() throws Exception {
-		// This is a temp folder to clone or checkout git repositories
+		// This is a temp folder to clone or checkout git repositories.
 		File tempFolder = new File("temp");
 		
+		// Creates a RefDiff instance configured with the JavaScript parser.
 		JsParser jsParser = new JsParser();
 		RefDiff refDiffJs = new RefDiff(jsParser);
 		
+		// Clone the angular.js GitHub repo.
 		File angularJsRepo = refDiffJs.cloneGitRepository(
 			new File(tempFolder, "angular.js"),
 			"https://github.com/refdiff-study/angular.js.git");
 		
+		// You can compute the relationships between the code elements in a commit with
+		// its previous commit. The result of this operation is a CstDiff object, which
+		// contains all relationships between CstNode's. Relationships whose type is different
+		// from RelationshipType.SAME are refactorings.
 		CstDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
 		printRefactorings("Refactorings found in angular.js 2636105", diffForCommit);
 		
+		// You can also mine refactoring from the commit history. In this example we navigate
+		// the commit graph backwards up to 5 commits. Merge commits are skipped.
 		refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
 			printRefactorings("Refactorings found in angular.js " + commit.getId().name(), diff);
 		});
 		
+		// The JsParser initializes JavaScript runtime to run the Babel parser. We should close it shut down.
 		jsParser.close();
 		
 		
+		// In this example, we use the parser for C.
 		CParser cParser = new CParser();
 		RefDiff refDiffC = new RefDiff(cParser);
 		
@@ -47,6 +57,8 @@ public class RefDiffExample {
 			"Refactorings found in git ba97aea",
 			refDiffC.computeDiffForCommit(gitRepo, "ba97aea1659e249a3a58ecc5f583ee2056a90ad8"));
 		
+		
+		// Now, we use the parser for Java.
 		JavaParser javaParser = new JavaParser(tempFolder);
 		RefDiff refDiffJava = new RefDiff(javaParser);
 		
