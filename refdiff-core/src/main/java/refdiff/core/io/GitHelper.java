@@ -37,7 +37,7 @@ public class GitHelper {
 	
 	DefaultCommitsFilter commitsFilter = new DefaultCommitsFilter();
 	
-	public Repository cloneIfNotExists(String projectPath, String cloneUrl/* , String branch */) throws Exception {
+	public static Repository cloneIfNotExists(String projectPath, String cloneUrl) throws Exception {
 		File folder = new File(projectPath);
 		Repository repository;
 		if (folder.exists()) {
@@ -48,8 +48,6 @@ public class GitHelper {
 				.findGitDir()
 				.build();
 			
-			// logger.info("Project {} is already cloned, current branch is {}", cloneUrl, repository.getBranch());
-			
 		} else {
 			Git git = Git.cloneRepository()
 				.setDirectory(folder)
@@ -57,44 +55,31 @@ public class GitHelper {
 				.setCloneAllBranches(true)
 				.call();
 			repository = git.getRepository();
-			// logger.info("Done cloning {}, current branch is {}", cloneUrl, repository.getBranch());
 		}
-		
-		// if (branch != null && !repository.getBranch().equals(branch)) {
-		// Git git = new Git(repository);
-		//
-		// String localBranch = "refs/heads/" + branch;
-		// List<Ref> refs = git.branchList().call();
-		// boolean branchExists = false;
-		// for (Ref ref : refs) {
-		// if (ref.getName().equals(localBranch)) {
-		// branchExists = true;
-		// }
-		// }
-		//
-		// if (branchExists) {
-		// git.checkout()
-		// .setName(branch)
-		// .call();
-		// } else {
-		// git.checkout()
-		// .setCreateBranch(true)
-		// .setName(branch)
-		// .setUpstreamMode(CreateBranchCommand.SetupUpstreamMode.TRACK)
-		// .setStartPoint("origin/" + branch)
-		// .call();
-		// }
-		//
-		// logger.info("Project {} switched to {}", cloneUrl, repository.getBranch());
-		// }
 		return repository;
 	}
 	
-	public Repository openRepository(String repositoryPath) throws Exception {
+	public static File cloneBareRepository(File folder, String cloneUrl) {
+		if (!folder.exists()) {
+			try {
+				Git.cloneRepository()
+					.setURI(cloneUrl)
+					.setDirectory(folder)
+					.setBare(true)
+					.setCloneAllBranches(true)
+					.call();
+			} catch (Exception e) {
+				throw new RuntimeException(String.format("Unable to clone %s, cause: %s", cloneUrl, e.getMessage()), e);
+			}
+		}
+		return folder;
+	}
+	
+	public static Repository openRepository(String repositoryPath) throws Exception {
 		return openRepository(new File(repositoryPath, ".git"));
 	}
 	
-	public Repository openRepository(File repositoryPath) {
+	public static Repository openRepository(File repositoryPath) {
 		try {
 			if (repositoryPath.exists()) {
 				RepositoryBuilder builder = new RepositoryBuilder();
@@ -112,7 +97,7 @@ public class GitHelper {
 		}
 	}
 	
-	public void forEachNonMergeCommit(Repository repo, int maxDepth, BiConsumer<RevCommit, RevCommit> function) throws Exception {
+	public static void forEachNonMergeCommit(Repository repo, int maxDepth, BiConsumer<RevCommit, RevCommit> function) {
 		try (RevWalk revWalk = new RevWalk(repo)) {
 			RevCommit head = revWalk.parseCommit(repo.resolve("HEAD"));
 			revWalk.markStart(head);
@@ -129,10 +114,12 @@ public class GitHelper {
 				if (count >= maxDepth)
 					break;
 			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 	
-	public void checkout(Repository repository, String commitId) throws Exception {
+	public static void checkout(Repository repository, String commitId) throws Exception {
 		try (Git git = new Git(repository)) {
 			CheckoutCommand checkout = git.checkout().setName(commitId);
 			checkout.call();
@@ -153,7 +140,7 @@ public class GitHelper {
 		}
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, RevCommit commitBefore, RevCommit commitAfter, FilePathFilter fileExtensions) throws Exception {
+	public static PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, RevCommit commitBefore, RevCommit commitAfter, FilePathFilter fileExtensions) {
 		List<SourceFile> filesBefore = new ArrayList<>();
 		List<SourceFile> filesAfter = new ArrayList<>();
 		fileTreeDiff(repository, commitBefore, commitAfter, filesBefore, filesAfter, fileExtensions);
@@ -163,7 +150,7 @@ public class GitHelper {
 			new GitSourceTree(repository, commitAfter.getId(), filesAfter));
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId, FilePathFilter fileExtensions) throws Exception {
+	public static PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitId, FilePathFilter fileExtensions) {
 		try (RevWalk rw = new RevWalk(repository)) {
 			RevCommit commitAfter = rw.parseCommit(repository.resolve(commitId));
 			if (commitAfter.getParentCount() != 1) {
@@ -171,14 +158,18 @@ public class GitHelper {
 			}
 			RevCommit commitBefore = rw.parseCommit(commitAfter.getParent(0));
 			return getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, fileExtensions);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 	
-	public PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitIdBefore, String commitIdAfter, FilePathFilter fileExtensions) throws Exception {
+	public static PairBeforeAfter<SourceFileSet> getSourcesBeforeAndAfterCommit(Repository repository, String commitIdBefore, String commitIdAfter, FilePathFilter fileExtensions) {
 		try (RevWalk rw = new RevWalk(repository)) {
 			RevCommit commitBefore = rw.parseCommit(repository.resolve(commitIdBefore));
 			RevCommit commitAfter = rw.parseCommit(repository.resolve(commitIdAfter));
 			return getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, fileExtensions);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 	
@@ -333,38 +324,42 @@ public class GitHelper {
 		}
 	}
 	
-	public void fileTreeDiff(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<SourceFile> filesBefore, List<SourceFile> filesAfter, FilePathFilter fileExtensions) throws Exception {
-		ObjectId oldHead = commitBefore.getTree();
-		ObjectId head = commitAfter.getTree();
-		
-		// prepare the two iterators to compute the diff between
-		ObjectReader reader = repository.newObjectReader();
-		CanonicalTreeParser oldTreeIter = new CanonicalTreeParser();
-		oldTreeIter.reset(reader, oldHead);
-		CanonicalTreeParser newTreeIter = new CanonicalTreeParser();
-		newTreeIter.reset(reader, head);
-		// finally get the list of changed files
-		try (Git git = new Git(repository)) {
-			List<DiffEntry> diffs = git.diff()
-				.setNewTree(newTreeIter)
-				.setOldTree(oldTreeIter)
-				.setShowNameAndStatusOnly(true)
-				.call();
-			for (DiffEntry entry : diffs) {
-				ChangeType changeType = entry.getChangeType();
-				if (changeType != ChangeType.ADD) {
-					String oldPath = entry.getOldPath();
-					if (fileExtensions.isAllowed(oldPath)) {
-						filesBefore.add(new SourceFile(Paths.get(oldPath)));
+	public static void fileTreeDiff(Repository repository, RevCommit commitBefore, RevCommit commitAfter, List<SourceFile> filesBefore, List<SourceFile> filesAfter, FilePathFilter fileExtensions) {
+		try {
+			ObjectId oldHead = commitBefore.getTree();
+			ObjectId head = commitAfter.getTree();
+			
+			// prepare the two iterators to compute the diff between
+			ObjectReader reader = repository.newObjectReader();
+			CanonicalTreeParser oldTreeIter = new CanonicalTreeParser();
+			oldTreeIter.reset(reader, oldHead);
+			CanonicalTreeParser newTreeIter = new CanonicalTreeParser();
+			newTreeIter.reset(reader, head);
+			// finally get the list of changed files
+			try (Git git = new Git(repository)) {
+				List<DiffEntry> diffs = git.diff()
+					.setNewTree(newTreeIter)
+					.setOldTree(oldTreeIter)
+					.setShowNameAndStatusOnly(true)
+					.call();
+				for (DiffEntry entry : diffs) {
+					ChangeType changeType = entry.getChangeType();
+					if (changeType != ChangeType.ADD) {
+						String oldPath = entry.getOldPath();
+						if (fileExtensions.isAllowed(oldPath)) {
+							filesBefore.add(new SourceFile(Paths.get(oldPath)));
+						}
 					}
-				}
-				if (changeType != ChangeType.DELETE) {
-					String newPath = entry.getNewPath();
-					if (fileExtensions.isAllowed(newPath)) {
-						filesAfter.add(new SourceFile(Paths.get(newPath)));
+					if (changeType != ChangeType.DELETE) {
+						String newPath = entry.getNewPath();
+						if (fileExtensions.isAllowed(newPath)) {
+							filesAfter.add(new SourceFile(Paths.get(newPath)));
+						}
 					}
 				}
 			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 	

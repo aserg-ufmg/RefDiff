@@ -35,17 +35,25 @@ public class RastComparator {
 		this.parser = parser;
 	}
 	
-	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter) throws Exception {
+	public RastDiff compare(PairBeforeAfter<SourceFileSet> beforeAndAfter) {
+		return compare(beforeAndAfter.getBefore(), beforeAndAfter.getAfter(), new RastComparatorMonitor() {});
+	}
+	
+	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter) {
 		return compare(sourcesBefore, sourcesAfter, new RastComparatorMonitor() {});
 	}
 	
-	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) throws Exception {
-		long start = System.currentTimeMillis();
-		DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), sourcesBefore, sourcesAfter, monitor);
-		RastDiff diff = diffBuilder.computeDiff();
-		long end = System.currentTimeMillis();
-		monitor.afterCompare(end - start, diffBuilder);
-		return diff;
+	public RastDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, RastComparatorMonitor monitor) {
+		try {
+			long start = System.currentTimeMillis();
+			DiffBuilder<?> diffBuilder = new DiffBuilder<>(new TfIdfSourceRepresentationBuilder(), sourcesBefore, sourcesAfter, monitor);
+			RastDiff diff = diffBuilder.computeDiff();
+			long end = System.currentTimeMillis();
+			monitor.afterCompare(end - start, diffBuilder);
+			return diff;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public class DiffBuilder<T> {
@@ -161,41 +169,41 @@ public class RastComparator {
 //			//reportSimilarity(similarityNotSame);
 //		}
 		
-		private void findMatchesByName() {
-			List<PotentialMatch> candidates = new ArrayList<>();
-			Map<String, PairBeforeAfter<List<RastNode>>> nodesGroupedByName = new HashMap<>();
-			for (RastNode n1 : removed) {
-				PairBeforeAfter<List<RastNode>> pair = nodesGroupedByName.computeIfAbsent(n1.getSimpleName(), name -> new PairBeforeAfter<List<RastNode>>(new ArrayList<>(), new ArrayList<>()));
-				pair.getBefore().add(n1);
-			}
-			for (RastNode n2 : added) {
-				PairBeforeAfter<List<RastNode>> pair = nodesGroupedByName.computeIfAbsent(n2.getSimpleName(), name -> new PairBeforeAfter<List<RastNode>>(new ArrayList<>(), new ArrayList<>()));
-				pair.getAfter().add(n2);
-			}
-			for (PairBeforeAfter<List<RastNode>> pair : nodesGroupedByName.values()) {
-				if (pair.getBefore().size() == 1 && pair.getAfter().size() == 1) {
-					RastNode n1 = pair.getBefore().get(0);
-					RastNode n2 = pair.getAfter().get(0);
-					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
-						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
-						if (optRelationshipType.isPresent()) {
-							RelationshipType type = optRelationshipType.get();
-							double score = computeLightSimilarityScore(n1, n2);
-							if (type.isById() || score > threshold.getMinimum()) {
-								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
-								candidates.add(candidate);
-							} else {
-								monitor.reportDiscardedMatch(n1, n2, score);
-							}
-						}
-					}
-				}
-			}
-			Collections.sort(candidates);
-			for (PotentialMatch candidate : candidates) {
-				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
-			}
-		}
+//		private void findMatchesByName() {
+//			List<PotentialMatch> candidates = new ArrayList<>();
+//			Map<String, PairBeforeAfter<List<RastNode>>> nodesGroupedByName = new HashMap<>();
+//			for (RastNode n1 : removed) {
+//				PairBeforeAfter<List<RastNode>> pair = nodesGroupedByName.computeIfAbsent(n1.getSimpleName(), name -> new PairBeforeAfter<List<RastNode>>(new ArrayList<>(), new ArrayList<>()));
+//				pair.getBefore().add(n1);
+//			}
+//			for (RastNode n2 : added) {
+//				PairBeforeAfter<List<RastNode>> pair = nodesGroupedByName.computeIfAbsent(n2.getSimpleName(), name -> new PairBeforeAfter<List<RastNode>>(new ArrayList<>(), new ArrayList<>()));
+//				pair.getAfter().add(n2);
+//			}
+//			for (PairBeforeAfter<List<RastNode>> pair : nodesGroupedByName.values()) {
+//				if (pair.getBefore().size() == 1 && pair.getAfter().size() == 1) {
+//					RastNode n1 = pair.getBefore().get(0);
+//					RastNode n2 = pair.getAfter().get(0);
+//					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2)) {
+//						Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
+//						if (optRelationshipType.isPresent()) {
+//							RelationshipType type = optRelationshipType.get();
+//							double score = computeLightSimilarityScore(n1, n2);
+//							if (type.isById() || score > threshold.getMinimum()) {
+//								PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), score);
+//								candidates.add(candidate);
+//							} else {
+//								monitor.reportDiscardedMatch(n1, n2, score);
+//							}
+//						}
+//					}
+//				}
+//			}
+//			Collections.sort(candidates);
+//			for (PotentialMatch candidate : candidates) {
+//				addMatch(candidate.getNodeBefore(), candidate.getNodeAfter());
+//			}
+//		}
 		
 		private void findMatchesByUniqueName(double threshold) {
 			List<PotentialMatch> candidates = new ArrayList<>();
@@ -267,7 +275,7 @@ public class RastComparator {
 					if (sameType(n1, n2) && !anonymous(n1) && !anonymous(n2) && matchingChild > 1) {
 						double nameScore = computeNameSimilarity(n1, n2);
 						
-						double matchingChildrenRatio = ((double) matchingChild) / n1.getNodes().size();
+//						double matchingChildrenRatio = ((double) matchingChild) / n1.getNodes().size();
 						
 						if (nameScore > 0.5) {
 							Optional<RelationshipType> optRelationshipType = findRelationshipForCandidate(n1, n2);
@@ -302,9 +310,9 @@ public class RastComparator {
 			return s1;
 		}
 		
-		private double computeMixedSimilarityScore(RastNode n1, RastNode n2) {
-			return (computeNameSimilarity(n1, n2) + 2 * computeHardSimilarityScore(n1, n2)) / 3.0;
-		}
+//		private double computeMixedSimilarityScore(RastNode n1, RastNode n2) {
+//			return (computeNameSimilarity(n1, n2) + 2 * computeHardSimilarityScore(n1, n2)) / 3.0;
+//		}
 		
 		private double computeLightSimilarityScore(RastNode n1, RastNode n2) {
 			double score1 = srb.partialSimilarity(before.sourceRep(n1), after.sourceRep(n2));
@@ -688,44 +696,44 @@ public class RastComparator {
 			return this.added.contains(n);
 		}
 		
-		private boolean childrenMatch(RastNode n1, RastNode n2) {
-			boolean existsChildMatch = false;
-			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
-				return false;
-			}
-			for (RastNode n1Child : n1.getNodes()) {
-				Optional<RastNode> maybeN2Child = matchingNodeAfter(n1Child);
-				if (maybeN2Child.isPresent()) {
-					if (childOf(maybeN2Child.get(), n2)) {
-						existsChildMatch = true;
-					} else {
-						return false;
-					}
-				}
-			}
-			for (RastNode n2Child : n2.getNodes()) {
-				Optional<RastNode> maybeN1Child = matchingNodeBefore(n2Child);
-				if (maybeN1Child.isPresent() && !childOf(maybeN1Child.get(), n1)) {
-					return false;
-				}
-			}
-			return existsChildMatch;
-		}
+//		private boolean childrenMatch(RastNode n1, RastNode n2) {
+//			boolean existsChildMatch = false;
+//			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
+//				return false;
+//			}
+//			for (RastNode n1Child : n1.getNodes()) {
+//				Optional<RastNode> maybeN2Child = matchingNodeAfter(n1Child);
+//				if (maybeN2Child.isPresent()) {
+//					if (childOf(maybeN2Child.get(), n2)) {
+//						existsChildMatch = true;
+//					} else {
+//						return false;
+//					}
+//				}
+//			}
+//			for (RastNode n2Child : n2.getNodes()) {
+//				Optional<RastNode> maybeN1Child = matchingNodeBefore(n2Child);
+//				if (maybeN1Child.isPresent() && !childOf(maybeN1Child.get(), n1)) {
+//					return false;
+//				}
+//			}
+//			return existsChildMatch;
+//		}
 		
-		private boolean existsMatchingChild(RastNode n1, RastNode n2) {
-			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
-				return false;
-			}
-			for (RastNode n1Child : n1.getNodes()) {
-				Optional<RastNode> maybeN2Child = matchingNodeAfter(n1Child);
-				if (maybeN2Child.isPresent()) {
-					if (childOf(maybeN2Child.get(), n2)) {
-						return true;
-					}
-				}
-			}
-			return false;
-		}
+//		private boolean existsMatchingChild(RastNode n1, RastNode n2) {
+//			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {
+//				return false;
+//			}
+//			for (RastNode n1Child : n1.getNodes()) {
+//				Optional<RastNode> maybeN2Child = matchingNodeAfter(n1Child);
+//				if (maybeN2Child.isPresent()) {
+//					if (childOf(maybeN2Child.get(), n2)) {
+//						return true;
+//					}
+//				}
+//			}
+//			return false;
+//		}
 		
 		public int countMatchingChild(RastNode n1, RastNode n2) {
 			if (n1.getNodes().size() == 0 || n2.getNodes().size() == 0) {

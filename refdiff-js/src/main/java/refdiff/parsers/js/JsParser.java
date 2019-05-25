@@ -3,6 +3,7 @@ package refdiff.parsers.js;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,11 +33,13 @@ public class JsParser implements RastParser, Closeable {
 	
 	private NodeJS nodeJs;
 	private int nodeCounter = 0;
-	private File nodeModules = new File("node_modules");
+	private File nodeModules;
 	private V8Object babel;
 	
 	public JsParser() throws Exception {
 		this.nodeJs = NodeJS.createNodeJS();
+		URL nodeModulesUrl = this.getClass().getClassLoader().getResource("node_modules");
+		nodeModules = new File(nodeModulesUrl.getFile());
 		this.babel = this.nodeJs.require(new File(nodeModules, "@babel/parser"));
 		
 		this.nodeJs.getRuntime().add("babelParser", this.babel);

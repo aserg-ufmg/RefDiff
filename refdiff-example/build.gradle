@@ -1,13 +1,10 @@
 plugins {
-  id 'java'
-  id 'eclipse'
-}
-
-repositories {
-	mavenCentral()
+    id 'java'
+    id 'eclipse'
 }
 
 dependencies {
-  compile 'com.github.aserg-ufmg:refdiff-core:0.1.1'
+    compile project(':refdiff-js')
+    compile project(':refdiff-java')
+    compile project(':refdiff-c')
 }
-

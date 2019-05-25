@@ -213,7 +213,7 @@ public class ComputeRecallJs {
 			if (debug) {
 				return rastComparator.compare(sources.getBefore(), sources.getAfter(), new Monitor());
 			} else {
-				return rastComparator.compare(sources.getBefore(), sources.getAfter());
+				return rastComparator.compare(sources);
 			}
 		}
 	}
