@@ -5,8 +5,8 @@ import java.io.File;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
@@ -28,7 +28,7 @@ public class MineRefactoringsFromRepo {
 		}
 		
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser);
+		CstComparator cstComparator = new CstComparator(parser);
 		GitHelper gh = new GitHelper();
 		
 		try (Repository repository = gh.openRepository(repoFolder)) {
@@ -38,7 +38,7 @@ public class MineRefactoringsFromRepo {
 				
 				try {
 					PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, parser.getAllowedFilesFilter());
-					RastDiff diff = rastComparator.compare(sources);
+					CstDiff diff = cstComparator.compare(sources);
 					
 					for (Relationship relationship : diff.getRelationships()) {
 						if (relationship.getType() != RelationshipType.SAME) {

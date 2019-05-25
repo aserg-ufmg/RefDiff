@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import refdiff.core.diff.RastComparator;
+import refdiff.core.diff.CstComparator;
 import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
@@ -22,7 +22,7 @@ public class RunIcseEval2 {
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval2(String tempFolder) {
-		evalUtils = new EvaluationUtils(new RastComparator(new JavaParser()), tempFolder);
+		evalUtils = new EvaluationUtils(new CstComparator(new JavaParser()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {

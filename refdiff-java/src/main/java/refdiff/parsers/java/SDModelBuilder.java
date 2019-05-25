@@ -22,22 +22,22 @@ import org.eclipse.jdt.core.dom.FileASTRequestor;
 import org.eclipse.jdt.core.dom.PackageDeclaration;
 import org.eclipse.jdt.internal.compiler.util.Util;
 
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.TokenizedSource;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.TokenizedSource;
 
 public class SDModelBuilder {
 	
 	private static final String systemFileSeparator = Matcher.quoteReplacement(File.separator);
 	
-	private Map<RastNode, List<String>> postProcessReferences;
-	private Map<RastNode, List<String>> postProcessSupertypes;
+	private Map<CstNode, List<String>> postProcessReferences;
+	private Map<CstNode, List<String>> postProcessSupertypes;
 	
-	private void postProcessReferences(SDModel model, Map<RastNode, List<String>> referencesMap) {
-		for (Map.Entry<RastNode, List<String>> entry : referencesMap.entrySet()) {
-			final RastNode entity = entry.getKey();
+	private void postProcessReferences(SDModel model, Map<CstNode, List<String>> referencesMap) {
+		for (Map.Entry<CstNode, List<String>> entry : referencesMap.entrySet()) {
+			final CstNode entity = entry.getKey();
 			List<String> references = entry.getValue();
 			for (String referencedKey : references) {
-				Optional<RastNode> referenced = model.findByKey(referencedKey);
+				Optional<CstNode> referenced = model.findByKey(referencedKey);
 				if (referenced.isPresent()) {
 					model.addReference(entity, referenced.get());
 				}
@@ -46,11 +46,11 @@ public class SDModelBuilder {
 	}
 	
 	private void postProcessSupertypes(SDModel model) {
-		for (Map.Entry<RastNode, List<String>> entry : postProcessSupertypes.entrySet()) {
-			final RastNode type = entry.getKey();
+		for (Map.Entry<CstNode, List<String>> entry : postProcessSupertypes.entrySet()) {
+			final CstNode type = entry.getKey();
 			List<String> supertypes = entry.getValue();
 			for (String supertypeKey : supertypes) {
-				Optional<RastNode> supertype = model.findByKey(supertypeKey);
+				Optional<CstNode> supertype = model.findByKey(supertypeKey);
 				if (supertype.isPresent()) {
 					model.addSubtype(supertype.get(), type);
 				}
@@ -59,8 +59,8 @@ public class SDModelBuilder {
 	}
 	
 	public void analyze(File rootFolder, List<String> javaFiles, final SDModel model, JavaSourceTokenizer tokenizer) {
-		postProcessReferences = new HashMap<RastNode, List<String>>();
-		postProcessSupertypes = new HashMap<RastNode, List<String>>();
+		postProcessReferences = new HashMap<CstNode, List<String>>();
+		postProcessSupertypes = new HashMap<CstNode, List<String>>();
 		final String projectRoot = rootFolder.getPath();
 		final String[] emptyArray = new String[0];
 		

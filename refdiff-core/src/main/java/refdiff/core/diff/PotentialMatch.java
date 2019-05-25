@@ -1,26 +1,26 @@
 package refdiff.core.diff;
 
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 
 public class PotentialMatch implements Comparable<PotentialMatch> {
 	
-	private final RastNode nodeBefore;
-	private final RastNode nodeAfter;
+	private final CstNode nodeBefore;
+	private final CstNode nodeAfter;
 	private final int maxDepth;
 	private final double score;
 	
-	public PotentialMatch(RastNode nodeBefore, RastNode nodeAfter, int maxDepth, double score) {
+	public PotentialMatch(CstNode nodeBefore, CstNode nodeAfter, int maxDepth, double score) {
 		this.nodeBefore = nodeBefore;
 		this.nodeAfter = nodeAfter;
 		this.maxDepth = maxDepth;
 		this.score = score;
 	}
 	
-	public RastNode getNodeBefore() {
+	public CstNode getNodeBefore() {
 		return nodeBefore;
 	}
 	
-	public RastNode getNodeAfter() {
+	public CstNode getNodeAfter() {
 		return nodeAfter;
 	}
 	

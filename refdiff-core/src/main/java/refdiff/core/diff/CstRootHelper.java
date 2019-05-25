@@ -18,45 +18,45 @@ import java.util.stream.Collectors;
 import refdiff.core.diff.similarity.SourceRepresentationBuilder;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.Location;
-import refdiff.core.rast.Parameter;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastNodeRelationship;
-import refdiff.core.rast.RastNodeRelationshipType;
-import refdiff.core.rast.RastRoot;
-import refdiff.core.rast.TokenizedSource;
+import refdiff.core.cst.HasChildrenNodes;
+import refdiff.core.cst.Location;
+import refdiff.core.cst.Parameter;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstNodeRelationship;
+import refdiff.core.cst.CstNodeRelationshipType;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.TokenizedSource;
 
-public class RastRootHelper<T> {
+public class CstRootHelper<T> {
 	
-	private final RastRoot rastRoot;
-	private final Map<Integer, RastNode> idMap = new HashMap<>();
-	private final Map<Integer, List<RastNodeRelationship>> edges = new HashMap<>();
-	private final Map<Integer, List<RastNodeRelationship>> reverseEdges = new HashMap<>();
-	private final Map<RastNode, Integer> depthMap = new HashMap<>();
+	private final CstRoot cstRoot;
+	private final Map<Integer, CstNode> idMap = new HashMap<>();
+	private final Map<Integer, List<CstNodeRelationship>> edges = new HashMap<>();
+	private final Map<Integer, List<CstNodeRelationship>> reverseEdges = new HashMap<>();
+	private final Map<CstNode, Integer> depthMap = new HashMap<>();
 	private final Map<String, String> fileMap = new HashMap<>();
 	private final SourceRepresentationBuilder<T> srb;
-	private final Map<RastNode, T> srMap = new HashMap<>();
-	private final Map<RastNode, T> srBodyMap = new HashMap<>();
-	private final Map<RastNode, T> srNameMap = new HashMap<>();
-	private final Map<String, List<RastNode>> nameIndex = new HashMap<>();
+	private final Map<CstNode, T> srMap = new HashMap<>();
+	private final Map<CstNode, T> srBodyMap = new HashMap<>();
+	private final Map<CstNode, T> srNameMap = new HashMap<>();
+	private final Map<String, List<CstNode>> nameIndex = new HashMap<>();
 	private final boolean isBefore;
 	
-	public RastRootHelper(RastRoot rastRoot, SourceFileSet sources, SourceRepresentationBuilder<T> srb, boolean isBefore) throws IOException {
-		this.rastRoot = rastRoot;
+	public CstRootHelper(CstRoot cstRoot, SourceFileSet sources, SourceRepresentationBuilder<T> srb, boolean isBefore) throws IOException {
+		this.cstRoot = cstRoot;
 		this.srb = srb;
 		this.isBefore = isBefore;
 		
-		rastRoot.forEachNode((node, depth) -> {
+		cstRoot.forEachNode((node, depth) -> {
 			idMap.put(node.getId(), node);
 			depthMap.put(node, depth);
 			nameIndex.computeIfAbsent(node.getLocalName(), k -> new ArrayList<>()).add(node);
 		});
 		
-		for (RastNodeRelationship relationship : rastRoot.getRelationships()) {
+		for (CstNodeRelationship relationship : cstRoot.getRelationships()) {
 			edges.compute(relationship.getN1(), (key, oldValue) -> {
 				if (oldValue == null) {
-					ArrayList<RastNodeRelationship> list = new ArrayList<>();
+					ArrayList<CstNodeRelationship> list = new ArrayList<>();
 					list.add(relationship);
 					return list;
 				} else {
@@ -66,7 +66,7 @@ public class RastRootHelper<T> {
 			});
 			reverseEdges.compute(relationship.getN2(), (key, oldValue) -> {
 				if (oldValue == null) {
-					ArrayList<RastNodeRelationship> list = new ArrayList<>();
+					ArrayList<CstNodeRelationship> list = new ArrayList<>();
 					list.add(relationship);
 					return list;
 				} else {
@@ -81,26 +81,26 @@ public class RastRootHelper<T> {
 		}
 	}
 	
-	public int depth(RastNode node) {
+	public int depth(CstNode node) {
 		return depthMap.get(node);
 	}
 	
-	public List<RastNode> findByLocalName(String localName) {
+	public List<CstNode> findByLocalName(String localName) {
 		return nameIndex.getOrDefault(localName, Collections.emptyList());
 	}
 	
-	public Collection<RastNode> findRelationships(RastNodeRelationshipType type, RastNode node) {
+	public Collection<CstNode> findRelationships(CstNodeRelationshipType type, CstNode node) {
 		return this.findRelationships(edges, type, node, rel -> idMap.get(rel.getN2()));
 	}
 	
-	public boolean hasRelationship(RastNodeRelationshipType type, Optional<RastNode> optN1, RastNode n2) {
+	public boolean hasRelationship(CstNodeRelationshipType type, Optional<CstNode> optN1, CstNode n2) {
 		return hasRelationship(type, optN1, Optional.of(n2));
 	}
 	
-	public boolean hasRelationship(RastNodeRelationshipType type, Optional<RastNode> optN1, Optional<RastNode> optN2) {
+	public boolean hasRelationship(CstNodeRelationshipType type, Optional<CstNode> optN1, Optional<CstNode> optN2) {
 		if (optN1.isPresent() && optN2.isPresent()) {
-			RastNode n1 = optN1.get();
-			RastNode n2 = optN2.get();
+			CstNode n1 = optN1.get();
+			CstNode n2 = optN2.get();
 			return edges.getOrDefault(n1.getId(), Collections.emptyList()).stream()
 				.filter(rel -> rel.getType().equals(type) && idMap.get(rel.getN2()).equals(n2))
 				.findFirst().isPresent();
@@ -108,26 +108,26 @@ public class RastRootHelper<T> {
 		return false;
 	}
 	
-	public Collection<RastNode> findReverseRelationships(RastNodeRelationshipType type, RastNode node) {
+	public Collection<CstNode> findReverseRelationships(CstNodeRelationshipType type, CstNode node) {
 		return this.findRelationships(reverseEdges, type, node, rel -> idMap.get(rel.getN1()));
 	}
 	
-	private Collection<RastNode> findRelationships(Map<Integer, List<RastNodeRelationship>> map, RastNodeRelationshipType type, RastNode node, Function<RastNodeRelationship, RastNode> mappingFn) {
+	private Collection<CstNode> findRelationships(Map<Integer, List<CstNodeRelationship>> map, CstNodeRelationshipType type, CstNode node, Function<CstNodeRelationship, CstNode> mappingFn) {
 		return map.getOrDefault(node.getId(), Collections.emptyList()).stream()
 			.filter(rel -> rel.getType().equals(type))
 			.map(mappingFn).collect(Collectors.toList());
 	}
 	
-	public Optional<RastNode> findByNamePath(String... namePath) {
-		return findByNamePath(rastRoot, namePath);
+	public Optional<CstNode> findByNamePath(String... namePath) {
+		return findByNamePath(cstRoot, namePath);
 	}
 	
-	public static Optional<RastNode> findByNamePath(RastRoot rastRoot, String... namePath) {
-		return findByNamePathRecursive(rastRoot.getNodes(), 0, namePath);
+	public static Optional<CstNode> findByNamePath(CstRoot cstRoot, String... namePath) {
+		return findByNamePathRecursive(cstRoot.getNodes(), 0, namePath);
 	}
 	
-	public static Optional<RastNode> findByFullName(HasChildrenNodes parent, String name) {
-		for (RastNode node : parent.getNodes()) {
+	public static Optional<CstNode> findByFullName(HasChildrenNodes parent, String name) {
+		for (CstNode node : parent.getNodes()) {
 			if (fullName(node).equals(name)) {
 				return Optional.of(node);
 			}
@@ -135,12 +135,12 @@ public class RastRootHelper<T> {
 		return Optional.empty();
 	}
 	
-	private static Optional<RastNode> findByNamePathRecursive(List<RastNode> list, int depth, String[] namePath) {
+	private static Optional<CstNode> findByNamePathRecursive(List<CstNode> list, int depth, String[] namePath) {
 		if (depth >= namePath.length) {
 			throw new IllegalArgumentException(String.format("depth should be less than namePath.length"));
 		}
 		String name = namePath[depth];
-		for (RastNode node : list) {
+		for (CstNode node : list) {
 			if (fullName(node).equals(name)) {
 				if (depth == namePath.length - 1) {
 					return Optional.of(node);
@@ -152,52 +152,52 @@ public class RastRootHelper<T> {
 		return Optional.empty();
 	}
 	
-	public static boolean sameName(RastNode n1, RastNode n2) {
+	public static boolean sameName(CstNode n1, CstNode n2) {
 		return !n1.getSimpleName().isEmpty() && n1.getSimpleName().equals(n2.getSimpleName());
 	}
 	
-	public static boolean sameSignature(RastNode n1, RastNode n2) {
+	public static boolean sameSignature(CstNode n1, CstNode n2) {
 		return signature(n1).equals(signature(n2));
 	}
 	
-	public static boolean sameNamespace(RastNode n1, RastNode n2) {
+	public static boolean sameNamespace(CstNode n1, CstNode n2) {
 		return Objects.equals(n1.getNamespace(), n2.getNamespace());
 	}
 	
-	public static String signature(RastNode n) {
+	public static String signature(CstNode n) {
 		return n.getLocalName();
 	}
 	
-	public static String fullName(RastNode n) {
+	public static String fullName(CstNode n) {
 		return n.getNamespace() != null ? n.getNamespace() + n.getLocalName() : n.getLocalName();
 	}
 	
-	public static boolean anonymous(RastNode n) {
+	public static boolean anonymous(CstNode n) {
 		return n.getSimpleName().isEmpty();
 	}
 	
-	public static boolean leaf(RastNode n) {
+	public static boolean leaf(CstNode n) {
 		return n.getNodes().isEmpty();
 	}
 	
-	public static boolean sameType(RastNode n1, RastNode n2) {
+	public static boolean sameType(CstNode n1, CstNode n2) {
 		return n1.getType().equals(n2.getType());
 	}
 	
-	public static boolean childOf(RastNode n1, RastNode n2) {
+	public static boolean childOf(CstNode n1, CstNode n2) {
 		return n1.getParent().isPresent() && n1.getParent().get().equals(n2);
 	}
 	
 	public void printRelationships(PrintStream out) {
 		out.print("Relationships:\n");
-		for (RastNodeRelationship rel : rastRoot.getRelationships()) {
-			RastNode n1 = idMap.get(rel.getN1());
-			RastNode n2 = idMap.get(rel.getN2());
+		for (CstNodeRelationship rel : cstRoot.getRelationships()) {
+			CstNode n1 = idMap.get(rel.getN1());
+			CstNode n2 = idMap.get(rel.getN2());
 			out.print(String.format("%s %s %s\n", n1.getLocalName(), rel.getType(), n2.getLocalName()));
 		}
 	}
 	
-	public void computeSourceRepresentation(RastNode node) {
+	public void computeSourceRepresentation(CstNode node) {
 		if (!srMap.containsKey(node)) {
 			String sourceCode = fileMap.get(node.getLocation().getFile());
 			List<String> nodeTokens = retrieveTokens(sourceCode, node, false);
@@ -221,11 +221,11 @@ public class RastRootHelper<T> {
 		}
 	}
 	
-	private List<String> retrieveTokens(String sourceCode, RastNode node, boolean bodyOnly) {
-		return retrieveTokens(rastRoot, sourceCode, node, bodyOnly);
+	private List<String> retrieveTokens(String sourceCode, CstNode node, boolean bodyOnly) {
+		return retrieveTokens(cstRoot, sourceCode, node, bodyOnly);
 	}
 	
-	public static List<String> retrieveTokens(RastRoot rastRoot, String sourceCode, RastNode node, boolean bodyOnly) {
+	public static List<String> retrieveTokens(CstRoot cstRoot, String sourceCode, CstNode node, boolean bodyOnly) {
 		Location location = node.getLocation();
 		int nodeStart;
 		int nodeEnd;
@@ -236,7 +236,7 @@ public class RastRootHelper<T> {
 			nodeStart = location.getBegin();
 			nodeEnd = location.getEnd();
 		}
-		TokenizedSource tokenizedSourceCode = rastRoot.getTokenizedSource().get(location.getFile());
+		TokenizedSource tokenizedSourceCode = cstRoot.getTokenizedSource().get(location.getFile());
 		List<String> tokens = new ArrayList<>();
 		for (int[] tokenPositon : tokenizedSourceCode.getTokens()) {
 			int tokenStart = tokenPositon[TokenizedSource.START];
@@ -252,38 +252,38 @@ public class RastRootHelper<T> {
 		return tokens;
 	}
 	
-	private Collection<String> getTokensToIgnoreInNodeBody(RastNode node) {
+	private Collection<String> getTokensToIgnoreInNodeBody(CstNode node) {
 		return Arrays.asList("return");
 	}
 	
-	public T sourceRep(RastNode n) {
+	public T sourceRep(CstNode n) {
 		if (!srMap.containsKey(n)) {
 			throw new RuntimeException("Source representation not computed");
 		}
 		return srMap.get(n);
 	}
 	
-	public T bodySourceRep(RastNode n) {
+	public T bodySourceRep(CstNode n) {
 		if (!srBodyMap.containsKey(n)) {
 			throw new RuntimeException("Source representation not computed");
 		}
 		return srBodyMap.get(n);
 	}
 	
-	public T nameSourceRep(RastNode n) {
+	public T nameSourceRep(CstNode n) {
 		if (!srNameMap.containsKey(n)) {
 			throw new RuntimeException("Source representation not computed");
 		}
 		return srNameMap.get(n);
 	}
 	
-	public static List<String> getNodePath(RastNode node) {
+	public static List<String> getNodePath(CstNode node) {
 		LinkedList<String> path = new LinkedList<>();
 		computeNodePath(path, node);
 		return path;
 	}
 	
-	private static void computeNodePath(LinkedList<String> path, RastNode node) {
+	private static void computeNodePath(LinkedList<String> path, CstNode node) {
 		String nodeName;
 		if (node.getNamespace() != null) {
 			nodeName = node.getNamespace() + node.getLocalName();
@@ -296,7 +296,7 @@ public class RastRootHelper<T> {
 		}
 	}
 
-	public boolean isNameUnique(RastNode n2) {
+	public boolean isNameUnique(CstNode n2) {
 		return findByLocalName(n2.getLocalName()).size() == 1;
 	}
 }

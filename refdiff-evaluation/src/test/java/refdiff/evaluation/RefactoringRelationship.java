@@ -18,7 +18,7 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	private final RefactoringType refactoringType;
 	private final String entityBefore;
 	private final String entityAfter;
-	private final Relationship rastRelationship;
+	private final Relationship cstRelationship;
 	private String comment;
 	private EvaluationDetails evaluationDetails;
 	
@@ -26,14 +26,14 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 		this(refactoringType, entityBefore, entityAfter, null);
 	}
 	
-	public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter, Relationship rastRelationship) {
+	public RefactoringRelationship(RefactoringType refactoringType, String entityBefore, String entityAfter, Relationship cstRelationship) {
 		if (refactoringType == null || entityBefore == null || entityAfter == null) {
 			throw new IllegalArgumentException("arguments should not be null");
 		}
 		this.refactoringType = refactoringType;
 		this.entityBefore = normalize(entityBefore).trim();
 		this.entityAfter = normalize(entityAfter).trim();
-		this.rastRelationship = rastRelationship;
+		this.cstRelationship = cstRelationship;
 	}
 	
 	public RefactoringType getRefactoringType() {
@@ -48,8 +48,8 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 		return entityAfter;
 	}
 	
-	public Relationship getRastRelationship() {
-		return rastRelationship;
+	public Relationship getCstRelationship() {
+		return cstRelationship;
 	}
 	
 	@Override

@@ -2,20 +2,20 @@ package refdiff.core.diff;
 
 import java.util.Objects;
 
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 
 public class Relationship {
 	
 	private final RelationshipType type;
-	private final RastNode nodeBefore;
-	private final RastNode nodeAfter;
+	private final CstNode nodeBefore;
+	private final CstNode nodeAfter;
 	private final Double similarity;
 	
-	public Relationship(RelationshipType type, RastNode nodeBefore, RastNode nodeAfter) {
+	public Relationship(RelationshipType type, CstNode nodeBefore, CstNode nodeAfter) {
 		this(type, nodeBefore, nodeAfter, null);
 	}
 	
-	public Relationship(RelationshipType type, RastNode nodeBefore, RastNode nodeAfter, Double similarity) {
+	public Relationship(RelationshipType type, CstNode nodeBefore, CstNode nodeAfter, Double similarity) {
 		this.type = type;
 		this.nodeBefore = nodeBefore;
 		this.nodeAfter = nodeAfter;
@@ -26,11 +26,11 @@ public class Relationship {
 		return type;
 	}
 	
-	public RastNode getNodeBefore() {
+	public CstNode getNodeBefore() {
 		return nodeBefore;
 	}
 	
-	public RastNode getNodeAfter() {
+	public CstNode getNodeAfter() {
 		return nodeAfter;
 	}
 	
@@ -63,12 +63,12 @@ public class Relationship {
 		return String.format("%s\t{%s}\t{%s})", this.type, formatWithLineNum(this.nodeBefore), formatWithLineNum(this.nodeAfter));
 	}
 	
-	private String formatWithLineNum(RastNode node) {
+	private String formatWithLineNum(CstNode node) {
 		return String.format("%s %s at %s:%d", node.getType(), node.getLocalName(), node.getLocation().getFile(), node.getLocation().getLine());
 	}
 	
-	private String format(RastNode node) {
-		return String.join(" ", RastRootHelper.getNodePath(node));
+	private String format(CstNode node) {
+		return String.join(" ", CstRootHelper.getNodePath(node));
 	}
 	
 	public boolean isRefactoring() {

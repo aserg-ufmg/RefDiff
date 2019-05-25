@@ -13,14 +13,14 @@ import org.eclipse.jdt.core.dom.QualifiedType;
 import org.eclipse.jdt.core.dom.SimpleType;
 import org.eclipse.jdt.core.dom.Type;
 
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 
 public class BindingResolver {
 	
 	private Map<String, Set<MethodInvocationToResolve>> invokedByIndex = new HashMap<>();
-	private Map<String, Set<RastNode>> supertypeOfIndex = new HashMap<>();
+	private Map<String, Set<CstNode>> supertypeOfIndex = new HashMap<>();
 	
-	public void addSupertypeToResolve(RastNode type, Type superType) {
+	public void addSupertypeToResolve(CstNode type, Type superType) {
 		String name = null;
 		if (superType.isSimpleType()) {
 			SimpleType simpleType = (SimpleType) superType;
@@ -37,7 +37,7 @@ public class BindingResolver {
 		}
 	}
 	
-	public void addMethodInvocationToResolve(RastNode method, MethodInvocation methodInvocation) {
+	public void addMethodInvocationToResolve(CstNode method, MethodInvocation methodInvocation) {
 		String methodName = methodInvocation.getName().getIdentifier();
 		invokedByIndex.computeIfAbsent(methodName, key -> new HashSet<>()).add(new MethodInvocationToResolve(method, methodInvocation));
 	}
@@ -52,15 +52,15 @@ public class BindingResolver {
 					}
 				}
 			} else if (node.getType().equals(NodeTypes.CLASS_DECLARATION) || node.getType().equals(NodeTypes.INTERFACE_DECLARATION)) {
-				Set<RastNode> subtypes = supertypeOfIndex.getOrDefault(node.getSimpleName(), Collections.emptySet());
-				for (RastNode subtype : subtypes) {
+				Set<CstNode> subtypes = supertypeOfIndex.getOrDefault(node.getSimpleName(), Collections.emptySet());
+				for (CstNode subtype : subtypes) {
 					model.addSubtype(node, subtype);
 				}
 			}
 		});
 	}
 
-	private boolean isCompatible(MethodInvocationToResolve invocation, RastNode node) {
+	private boolean isCompatible(MethodInvocationToResolve invocation, CstNode node) {
 		MethodInvocation invocationNode = invocation.getInvocation();
 		List arguments = invocationNode.arguments();
 		return arguments.size() == node.getParameters().size();

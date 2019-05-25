@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import refdiff.core.diff.RastComparator;
+import refdiff.core.diff.CstComparator;
 import refdiff.core.diff.Relationship;
 import refdiff.evaluation.EvaluationDetails;
 import refdiff.evaluation.EvaluationUtils;
@@ -22,7 +22,7 @@ public class RunIcseEval {
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval(String tempFolder) {
-		evalUtils = new EvaluationUtils(new RastComparator(new JavaParser()), tempFolder);
+		evalUtils = new EvaluationUtils(new CstComparator(new JavaParser()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -72,11 +72,11 @@ public class RunIcseEval {
 		String refDiffRefType = "";
 		String n1Location = "";
 		String n2Location = "";
-		Relationship rastRelationship = r.getRastRelationship();
-		if (rastRelationship != null) {
-			refDiffRefType = rastRelationship.getType().toString();
-			n1Location = rastRelationship.getNodeBefore().getLocation().format();
-			n2Location = rastRelationship.getNodeAfter().getLocation().format();
+		Relationship cstRelationship = r.getCstRelationship();
+		if (cstRelationship != null) {
+			refDiffRefType = cstRelationship.getType().toString();
+			n1Location = cstRelationship.getNodeBefore().getLocation().format();
+			n2Location = cstRelationship.getNodeAfter().getLocation().format();
 		}
 		System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s", refDiffRefType, n1Location, n2Location, label, findOrigin(label, evaluationDetails, cause), evaluationDetails != null ? evaluationDetails.format() : "");
 	}

@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.dom.PackageDeclaration;
 
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.TokenizedSource;
+import refdiff.core.cst.TokenizedSource;
 
 public class SDModelBuilderNoBindings {
 	

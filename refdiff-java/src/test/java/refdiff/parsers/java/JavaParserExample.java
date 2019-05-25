@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 import refdiff.core.io.SourceFolder;
-import refdiff.core.rast.RastRoot;
+import refdiff.core.cst.CstRoot;
 
 public class JavaParserExample {
 	
@@ -17,12 +17,12 @@ public class JavaParserExample {
 		Path basePath = Paths.get("test-data/parser/java");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("p2/Foo.java"), Paths.get("p1/Bar.java"));
 		
-		RastRoot rastRoot = parser.parse(sources);
+		CstRoot cstRoot = parser.parse(sources);
 		
 		ObjectMapper jacksonObjectMapper = new ObjectMapper();
 		ObjectWriter jsonWriter = jacksonObjectMapper.writerWithDefaultPrettyPrinter();
 		
-		jsonWriter.writeValue(System.out, rastRoot);
+		jsonWriter.writeValue(System.out, cstRoot);
 	}
 	
 }

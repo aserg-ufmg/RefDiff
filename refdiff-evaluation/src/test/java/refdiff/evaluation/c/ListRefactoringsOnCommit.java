@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
@@ -45,14 +45,14 @@ public class ListRefactoringsOnCommit {
 		}
 		
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser);
+		CstComparator cstComparator = new CstComparator(parser);
 		GitHelper gh = new GitHelper();
 		
 		try (Repository repo = gh.openRepository(repoFolder)) {
 			
 			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(
 					repo, commitSHA, parser.getAllowedFilesFilter());
-			RastDiff diff = rastComparator.compare(sources);
+			CstDiff diff = cstComparator.compare(sources);
 			
 			Set<Relationship> relationships = diff.getRelationships().stream()
 				.filter(relationship -> !relationship.getType().equals(RelationshipType.SAME))

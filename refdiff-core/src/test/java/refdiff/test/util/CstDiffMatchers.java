@@ -11,14 +11,14 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
 
-import refdiff.core.diff.RastDiff;
-import refdiff.core.diff.RastRootHelper;
+import refdiff.core.diff.CstDiff;
+import refdiff.core.diff.CstRootHelper;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastRoot;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstRoot;
 
-public class RastDiffMatchers {
+public class CstDiffMatchers {
 	
 	public static RelationshipQuery relationship(RelationshipType type, NodeQuery nodeBefore, NodeQuery nodeAfter) {
 		return new RelationshipQuery(type, nodeBefore, nodeAfter);
@@ -28,16 +28,16 @@ public class RastDiffMatchers {
 		return new NodeQuery(path);
 	}
 	
-	public static RastDiffMatcher contains(RelationshipQuery... queries) {
-		return new RastDiffMatcher(false, queries);
+	public static CstDiffMatcher contains(RelationshipQuery... queries) {
+		return new CstDiffMatcher(false, queries);
 	}
 	
-	public static RastDiffMatcher containsOnly(RelationshipQuery... queries) {
-		return new RastDiffMatcher(true, queries);
+	public static CstDiffMatcher containsOnly(RelationshipQuery... queries) {
+		return new CstDiffMatcher(true, queries);
 	}
 	
-	public static Matcher<RastDiff> doesntContain(RelationshipQuery... queries) {
-		return new RastDiffMatcherDoesntContain(queries);
+	public static Matcher<CstDiff> doesntContain(RelationshipQuery... queries) {
+		return new CstDiffMatcherDoesntContain(queries);
 	}
 	
 	public static class NodeQuery {
@@ -69,11 +69,11 @@ public class RastDiffMatchers {
 			return String.format("%s(%s, %s)", type, nodeQBefore, nodeQAfter);
 		}
 		
-		public Optional<Relationship> find(RastDiff diff) {
-			RastRoot before = diff.getBefore();
-			RastRoot after = diff.getAfter();
-			Optional<RastNode> oNodeBefore = RastRootHelper.findByNamePath(before, nodeQBefore.namePath);
-			Optional<RastNode> oNodeAfter = RastRootHelper.findByNamePath(after, nodeQAfter.namePath);
+		public Optional<Relationship> find(CstDiff diff) {
+			CstRoot before = diff.getBefore();
+			CstRoot after = diff.getAfter();
+			Optional<CstNode> oNodeBefore = CstRootHelper.findByNamePath(before, nodeQBefore.namePath);
+			Optional<CstNode> oNodeAfter = CstRootHelper.findByNamePath(after, nodeQAfter.namePath);
 			return oNodeBefore.flatMap(nodeBefore -> oNodeAfter.flatMap(nodeAfter -> {
 				Relationship r = new Relationship(type, nodeBefore, nodeAfter);
 				if (diff.getRelationships().contains(r)) {
@@ -84,12 +84,12 @@ public class RastDiffMatchers {
 		}
 	}
 	
-	private static class RastDiffMatcher extends TypeSafeDiagnosingMatcher<RastDiff> {
+	private static class CstDiffMatcher extends TypeSafeDiagnosingMatcher<CstDiff> {
 		
 		RelationshipQuery[] queries;
 		boolean computeFp;
 		
-		public RastDiffMatcher(boolean computeFp, RelationshipQuery... queries) {
+		public CstDiffMatcher(boolean computeFp, RelationshipQuery... queries) {
 			this.computeFp = computeFp;
 			this.queries = queries;
 		}
@@ -100,7 +100,7 @@ public class RastDiffMatchers {
 		}
 		
 		@Override
-		protected boolean matchesSafely(RastDiff diff, Description mismatchDescription) {
+		protected boolean matchesSafely(CstDiff diff, Description mismatchDescription) {
 			List<RelationshipQuery> falseNegatives = new ArrayList<>();
 			Set<Relationship> truePositives = new HashSet<>();
 			Set<Relationship> falsePositives = new HashSet<>(diff.getRelationships());
@@ -135,11 +135,11 @@ public class RastDiffMatchers {
 		
 	}
 	
-	private static class RastDiffMatcherDoesntContain extends TypeSafeDiagnosingMatcher<RastDiff> {
+	private static class CstDiffMatcherDoesntContain extends TypeSafeDiagnosingMatcher<CstDiff> {
 		
 		RelationshipQuery[] queries;
 		
-		public RastDiffMatcherDoesntContain(RelationshipQuery... queries) {
+		public CstDiffMatcherDoesntContain(RelationshipQuery... queries) {
 			this.queries = queries;
 		}
 
@@ -149,7 +149,7 @@ public class RastDiffMatchers {
 		}
 
 		@Override
-		protected boolean matchesSafely(RastDiff diff, Description mismatchDescription) {
+		protected boolean matchesSafely(CstDiff diff, Description mismatchDescription) {
 			int truePositives = 0;
 			int falsePositives = 0;
 			

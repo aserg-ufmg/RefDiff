@@ -7,13 +7,13 @@ import java.util.Random;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
 import refdiff.parsers.js.JsParser;
@@ -70,7 +70,7 @@ public class MineRefactoringsFromRepoJs {
 			JsParser parser = new JsParser();
 			Repository repository = gh.openRepository(repoFolder)) {
 			
-			RastComparator rastComparator = new RastComparator(parser);
+			CstComparator cstComparator = new CstComparator(parser);
 			
 			gh.forEachNonMergeCommit(repository, MAX_COMMITS, (RevCommit commitBefore, RevCommit commitAfter) -> {
 				String commitSha1 = commitAfter.getId().getName();
@@ -78,12 +78,12 @@ public class MineRefactoringsFromRepoJs {
 				
 				try {
 					PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repository, commitBefore, commitAfter, parser.getAllowedFilesFilter());
-					RastDiff diff = rastComparator.compare(sources);
+					CstDiff diff = cstComparator.compare(sources);
 					
 					for (Relationship relationship : diff.getRelationships()) {
 						if (relationship.getType() != RelationshipType.SAME) {
-							RastNode n1 = relationship.getNodeBefore();
-							RastNode n2 = relationship.getNodeAfter();
+							CstNode n1 = relationship.getNodeBefore();
+							CstNode n2 = relationship.getNodeAfter();
 							csv.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%d\n", projectName, commitSha1, relationship.getType(), n1.getType(), n1.getLocation().format(), n1.getLocalName(), n2.getLocation().format(), n2.getLocalName(), random.nextInt());
 						}
 					}

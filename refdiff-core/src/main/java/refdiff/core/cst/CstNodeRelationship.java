@@ -1,20 +1,20 @@
-package refdiff.core.rast;
+package refdiff.core.cst;
 
 import java.util.Objects;
 
-public class RastNodeRelationship {
+public class CstNodeRelationship {
 	
-	private final RastNodeRelationshipType type;
+	private final CstNodeRelationshipType type;
 	private final int n1;
 	private final int n2;
 	
-	public RastNodeRelationship(RastNodeRelationshipType type, int n1, int n2) {
+	public CstNodeRelationship(CstNodeRelationshipType type, int n1, int n2) {
 		this.type = type;
 		this.n1 = n1;
 		this.n2 = n2;
 	}
 	
-	public RastNodeRelationshipType getType() {
+	public CstNodeRelationshipType getType() {
 		return type;
 	}
 	
@@ -28,8 +28,8 @@ public class RastNodeRelationship {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof RastNodeRelationship) {
-			RastNodeRelationship otherRelationship = (RastNodeRelationship) obj;
+		if (obj instanceof CstNodeRelationship) {
+			CstNodeRelationship otherRelationship = (CstNodeRelationship) obj;
 			return Objects.equals(this.type, otherRelationship.type) &&
 				this.n1 == otherRelationship.n1 &&
 				this.n2 == otherRelationship.n2;

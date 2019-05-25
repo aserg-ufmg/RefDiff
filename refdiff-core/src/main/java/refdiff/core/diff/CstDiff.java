@@ -5,24 +5,24 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import refdiff.core.rast.RastRoot;
+import refdiff.core.cst.CstRoot;
 
-public class RastDiff {
+public class CstDiff {
 	
-	private final RastRoot before;
-	private final RastRoot after;
+	private final CstRoot before;
+	private final CstRoot after;
 	private final Set<Relationship> relationships = new HashSet<>();
 	
-	public RastDiff(RastRoot before, RastRoot after) {
+	public CstDiff(CstRoot before, CstRoot after) {
 		this.before = before;
 		this.after = after;
 	}
 	
-	public RastRoot getBefore() {
+	public CstRoot getBefore() {
 		return before;
 	}
 	
-	public RastRoot getAfter() {
+	public CstRoot getAfter() {
 		return after;
 	}
 	

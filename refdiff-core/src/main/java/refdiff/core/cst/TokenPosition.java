@@ -1,4 +1,4 @@
-package refdiff.core.rast;
+package refdiff.core.cst;
 
 public class TokenPosition {
 	private final int start;

@@ -2,18 +2,18 @@ package refdiff.parsers.java;
 
 import org.eclipse.jdt.core.dom.MethodInvocation;
 
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 
 public class MethodInvocationToResolve {
-	private final RastNode caller;
+	private final CstNode caller;
 	private final MethodInvocation invocation;
 	
-	public MethodInvocationToResolve(RastNode caller, MethodInvocation invocation) {
+	public MethodInvocationToResolve(CstNode caller, MethodInvocation invocation) {
 		this.caller = caller;
 		this.invocation = invocation;
 	}
 	
-	public RastNode getCaller() {
+	public CstNode getCaller() {
 		return caller;
 	}
 	

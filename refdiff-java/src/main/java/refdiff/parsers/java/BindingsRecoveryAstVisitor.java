@@ -26,9 +26,9 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.Stereotype;
+import refdiff.core.cst.HasChildrenNodes;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.Stereotype;
 
 public class BindingsRecoveryAstVisitor extends ASTVisitor {
 	
@@ -37,10 +37,10 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 	private final CharSequence fileContent;
 	private final String packageName;
 	private final LinkedList<HasChildrenNodes> containerStack;
-	private final Map<RastNode, List<String>> postProcessReferences;
-	private final Map<RastNode, List<String>> postProcessSupertypes;
+	private final Map<CstNode, List<String>> postProcessReferences;
+	private final Map<CstNode, List<String>> postProcessSupertypes;
 	
-	public BindingsRecoveryAstVisitor(SDModel model, CompilationUnit compilationUnit, String sourceFilePath, char[] fileContent, String packageName, Map<RastNode, List<String>> postProcessReferences, Map<RastNode, List<String>> postProcessSupertypes) {
+	public BindingsRecoveryAstVisitor(SDModel model, CompilationUnit compilationUnit, String sourceFilePath, char[] fileContent, String packageName, Map<CstNode, List<String>> postProcessReferences, Map<CstNode, List<String>> postProcessSupertypes) {
 		this.model = model;
 		this.sourceFilePath = sourceFilePath;
 		this.fileContent = CharBuffer.wrap(fileContent);
@@ -59,7 +59,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 	/*
 	 * @Override public boolean visit(AnonymousClassDeclaration node) { if (node.getParent() instanceof ClassInstanceCreation) { ClassInstanceCreation parent = (ClassInstanceCreation)
 	 * node.getParent(); ITypeBinding typeBinding = parent.getType().resolveBinding(); if (typeBinding != null && typeBinding.isFromSource()) { int line =
-	 * compilationUnit.getLineNumber(node.getStartPosition()); RastNode type = model.createAnonymousType(containerStack.peek(), sourceFilePath, "$" + line, node); containerStack.push(type);
+	 * compilationUnit.getLineNumber(node.getStartPosition()); CstNode type = model.createAnonymousType(containerStack.peek(), sourceFilePath, "$" + line, node); containerStack.push(type);
 	 * extractSupertypesForPostProcessing(type, typeBinding); return true; } } return false; }
 	 * 
 	 * @Override public void endVisit(AnonymousClassDeclaration node) { if (node.getParent() instanceof ClassInstanceCreation) { ClassInstanceCreation parent = (ClassInstanceCreation)
@@ -90,7 +90,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 			supertypes.add(superclass);
 		}
 		supertypes.addAll(typeDeclaration.superInterfaceTypes());
-		RastNode sdType = visitTypeDeclaration(typeDeclaration, supertypes, typeDeclaration.isInterface() ? NodeTypes.INTERFACE_DECLARATION : NodeTypes.CLASS_DECLARATION);
+		CstNode sdType = visitTypeDeclaration(typeDeclaration, supertypes, typeDeclaration.isInterface() ? NodeTypes.INTERFACE_DECLARATION : NodeTypes.CLASS_DECLARATION);
 		containerStack.push(sdType);
 		if (typeDeclaration.isInterface()) {
 			sdType.addStereotypes(Stereotype.ABSTRACT);
@@ -102,8 +102,8 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 		containerStack.pop();
 	}
 	
-	private RastNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes, String nodeType) {
-		RastNode type;
+	private CstNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes, String nodeType) {
+		CstNode type;
 		String typeName = node.getName().getIdentifier();
 		if (node.isPackageMemberTypeDeclaration()) {
 			type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, fileContent, node, nodeType);
@@ -134,7 +134,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 		return type;
 	}
 	
-	private void extractSupertypesForPostProcessing(RastNode type, ITypeBinding superTypeBinding) {
+	private void extractSupertypesForPostProcessing(CstNode type, ITypeBinding superTypeBinding) {
 		List<String> supertypes = postProcessSupertypes.get(type);
 		if (supertypes == null) {
 			supertypes = new ArrayList<String>();
@@ -161,7 +161,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 		//
 		// }
 		
-		final RastNode method = model.createMethod(methodSignature, containerStack.peek(), sourceFilePath, fileContent, methodDeclaration.isConstructor(), methodDeclaration);
+		final CstNode method = model.createMethod(methodSignature, containerStack.peek(), sourceFilePath, fileContent, methodDeclaration.isConstructor(), methodDeclaration);
 		
 		List<?> modifiers = methodDeclaration.modifiers();
 		Set<String> annotations = extractAnnotationTypes(modifiers);
@@ -232,7 +232,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void extractParametersAndReturnType(SDModel model, MethodDeclaration methodDeclaration, RastNode method) {
+	public static void extractParametersAndReturnType(SDModel model, MethodDeclaration methodDeclaration, CstNode method) {
 		Type returnType = methodDeclaration.getReturnType2();
 		if (returnType != null) {
 			model.setReturnType(method, AstUtils.normalizeTypeName(returnType, methodDeclaration.getExtraDimensions(), false));

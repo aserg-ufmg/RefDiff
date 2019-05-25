@@ -68,23 +68,23 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTUnaryExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTWhileStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.GNUCASTGotoStatement;
 
-import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.Location;
-import refdiff.core.rast.Parameter;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastNodeRelationship;
-import refdiff.core.rast.RastNodeRelationshipType;
-import refdiff.core.rast.RastRoot;
+import refdiff.core.cst.HasChildrenNodes;
+import refdiff.core.cst.Location;
+import refdiff.core.cst.Parameter;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstNodeRelationship;
+import refdiff.core.cst.CstNodeRelationshipType;
+import refdiff.core.cst.CstRoot;
 
-public class CRastVisitor extends ASTGenericVisitor {
+public class CCstVisitor extends ASTGenericVisitor {
 
 	private static final char FOLDER_SEPARATOR = '/';
 	private AtomicInteger id;
-	private RastNode currentNode;
-	private RastNode currentRelationshipN1;
-	private Map<Integer, RastNode> nodesHash = new HashMap<Integer, RastNode>();
-	private RastRoot rastRoot;
-	private RastNode programNode;
+	private CstNode currentNode;
+	private CstNode currentRelationshipN1;
+	private Map<Integer, CstNode> nodesHash = new HashMap<Integer, CstNode>();
+	private CstRoot cstRoot;
+	private CstNode programNode;
 	private String waitingName;
 	private String waitingBodyLocation = "";
 	private String waitingType;
@@ -93,9 +93,9 @@ public class CRastVisitor extends ASTGenericVisitor {
 	private CharSequence fileContent;
 	private String maybePointer = "";
 
-	public CRastVisitor(RastRoot rastRoot, String fileName, CharSequence fileContent, AtomicInteger id) {
+	public CCstVisitor(CstRoot cstRoot, String fileName, CharSequence fileContent, AtomicInteger id) {
 		super(true);
-		this.rastRoot = rastRoot;
+		this.cstRoot = cstRoot;
 		this.fileName = fileName;
 		this.fileContent = fileContent;
 		this.id = id;
@@ -113,7 +113,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 			}
 			
 			if (iastNode instanceof CASTFunctionCallExpression) {
-				this.currentRelationshipN1 = (RastNode) this.getRASTParent(iastNode);
+				this.currentRelationshipN1 = (CstNode) this.getRASTParent(iastNode);
 				this.waitingName = "Relationship";
 			}
 			else if (iastNode instanceof CASTParameterDeclaration) {
@@ -141,7 +141,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 			}
 			else if (iastNode instanceof CASTArrayModifier) {
 				if (this.maybeWaitingArray != null && this.maybeWaitingArray.equals("Parameter")) {
-					RastNode parentNode = (RastNode) this.getRASTParent(iastNode);
+					CstNode parentNode = (CstNode) this.getRASTParent(iastNode);
 					
 					List<Parameter> parameters = parentNode.getParameters();
 					Parameter lastParameter = parameters.get(parameters.size() - 1);
@@ -178,21 +178,21 @@ public class CRastVisitor extends ASTGenericVisitor {
 						Parameter parameter = new Parameter();
 						parameter.setName(this.maybePointer + name);
 						
-						RastNode parentNode = (RastNode) this.getRASTParent(iastNode);
+						CstNode parentNode = (CstNode) this.getRASTParent(iastNode);
 						parentNode.getParameters().add(parameter);
 												
 						this.maybeWaitingArray = "Parameter";
 					}
 					else if (this.waitingName.equals("Relationship")) {
-						RastNode n2 = this.getBySimpleName(this.maybePointer + name);
+						CstNode n2 = this.getBySimpleName(this.maybePointer + name);
 						if (n2 != null) {
 							if (!this.hasRelationship(
-									this.rastRoot, this.currentRelationshipN1, n2, RastNodeRelationshipType.USE)) {
-								RastNodeRelationship relationship = new RastNodeRelationship(
-										RastNodeRelationshipType.USE, 
+									this.cstRoot, this.currentRelationshipN1, n2, CstNodeRelationshipType.USE)) {
+								CstNodeRelationship relationship = new CstNodeRelationship(
+										CstNodeRelationshipType.USE, 
 										this.currentRelationshipN1.getId(), 
 										n2.getId());
-								this.rastRoot.getRelationships().add(relationship);								
+								this.cstRoot.getRelationships().add(relationship);								
 							}
 						}
 						
@@ -223,7 +223,7 @@ public class CRastVisitor extends ASTGenericVisitor {
 				}
 				
 				if (createNode) {
-					RastNode node = this.createNode((ASTNode) iastNode);
+					CstNode node = this.createNode((ASTNode) iastNode);
 					this.currentNode = node;
 					if (iastNode instanceof CASTTranslationUnit) {
 						this.programNode = node;
@@ -257,8 +257,8 @@ public class CRastVisitor extends ASTGenericVisitor {
 		this.maybeWaitingArray = null;
 	}
 	
-	private RastNode createNode(ASTNode astNode) {
-		RastNode rastNode = new RastNode(this.id.get());
+	private CstNode createNode(ASTNode astNode) {
+		CstNode cstNode = new CstNode(this.id.get());
 		
 		int offset = astNode.getFileLocation().getNodeOffset();
 		int length = astNode.getRawSignature().length();
@@ -273,12 +273,12 @@ public class CRastVisitor extends ASTGenericVisitor {
 			
 			String fileNameWithoutPath = this.fileName.substring(lastSeparatorIndex + 1);
 
-			rastNode.setNamespace(path);
-			rastNode.setSimpleName(fileNameWithoutPath);
-			rastNode.setLocalName(fileNameWithoutPath);
+			cstNode.setNamespace(path);
+			cstNode.setSimpleName(fileNameWithoutPath);
+			cstNode.setLocalName(fileNameWithoutPath);
 		}
 		
-		rastNode.setType(this.getRASTType(astNode));
+		cstNode.setType(this.getRASTType(astNode));
 		
 		Location location = new Location();
 		location.setBegin(offset);
@@ -295,23 +295,23 @@ public class CRastVisitor extends ASTGenericVisitor {
 			location.setBodyEnd(offset + length);
 		}
 		
-		rastNode.setLocation(location);
+		cstNode.setLocation(location);
 		
 		if (astNode instanceof CASTFunctionDefinition
 				|| astNode instanceof CASTFunctionDeclarator) {
-			rastNode.setSimpleName("");
-			rastNode.setLocalName("()");			
+			cstNode.setSimpleName("");
+			cstNode.setLocalName("()");			
 		}
 		
 		this.id.incrementAndGet();
 		
 		HasChildrenNodes parentNode = this.getRASTParent(astNode);
 		
-		parentNode.addNode(rastNode);
+		parentNode.addNode(cstNode);
 
-		this.nodesHash.put(astNode.hashCode(), rastNode);
+		this.nodesHash.put(astNode.hashCode(), cstNode);
 		
-		return rastNode;
+		return cstNode;
 	}
 	
 	private String getRASTType(ASTNode astNode) {
@@ -382,25 +382,25 @@ public class CRastVisitor extends ASTGenericVisitor {
 	
 	private HasChildrenNodes getRASTParent(IASTNode iastNode) {
 		if (iastNode instanceof CASTTranslationUnit) {
-			return this.rastRoot;
+			return this.cstRoot;
 		}
 		
-		RastNode rastParent = null;
+		CstNode cstParent = null;
 		iastNode = iastNode.getParent();
 		
-		while (rastParent == null && iastNode != null) {
-			rastParent = this.nodesHash.get(iastNode.hashCode());
+		while (cstParent == null && iastNode != null) {
+			cstParent = this.nodesHash.get(iastNode.hashCode());
 			iastNode = iastNode.getParent();
 		}
 		
-		if (rastParent == null) {
-			rastParent = this.currentNode;
+		if (cstParent == null) {
+			cstParent = this.currentNode;
 		}
 		
-		return rastParent;
+		return cstParent;
 	}
 	
-	private RastNode getBySimpleName(String simpleName) {
+	private CstNode getBySimpleName(String simpleName) {
 		return this.searchBySimpleName(this.programNode, simpleName);
 	}
 	
@@ -447,8 +447,8 @@ public class CRastVisitor extends ASTGenericVisitor {
 		return null;
 	}
 	
-	private boolean hasRelationship(RastRoot root, RastNode n1, RastNode n2, RastNodeRelationshipType type) {
-		for (RastNodeRelationship relationship : root.getRelationships()) {
+	private boolean hasRelationship(CstRoot root, CstNode n1, CstNode n2, CstNodeRelationshipType type) {
+		for (CstNodeRelationship relationship : root.getRelationships()) {
 			if (relationship.getType().equals(type)
 					&& ((relationship.getN1() == n1.getId() && relationship.getN2() == n2.getId()) 
 							|| (relationship.getN2() == n1.getId() && relationship.getN1() == n2.getId()))) {
@@ -459,13 +459,13 @@ public class CRastVisitor extends ASTGenericVisitor {
 		return false;
 	}
 	
-	private RastNode searchBySimpleName(RastNode node, String simpleName) {
+	private CstNode searchBySimpleName(CstNode node, String simpleName) {
 		if (node.getSimpleName() != null && node.getSimpleName().equals(simpleName)) {
 			return node;
 		}
 
-		for (RastNode child : node.getNodes()) {
-			RastNode found = this.searchBySimpleName(child, simpleName);
+		for (CstNode child : node.getNodes()) {
+			CstNode found = this.searchBySimpleName(child, simpleName);
 			if (found != null) {
 				return found;
 			}

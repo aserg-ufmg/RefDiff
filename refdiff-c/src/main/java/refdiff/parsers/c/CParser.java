@@ -22,16 +22,16 @@ import org.eclipse.core.runtime.CoreException;
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastRoot;
-import refdiff.core.rast.TokenPosition;
-import refdiff.core.rast.TokenizedSource;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.TokenPosition;
+import refdiff.core.cst.TokenizedSource;
 import refdiff.parsers.CstParser;
 
 public class CParser implements CstParser {
 	
 	@Override
-	public RastRoot parse(SourceFileSet sources) throws Exception {
-		RastRoot root = new RastRoot();
+	public CstRoot parse(SourceFileSet sources) throws Exception {
+		CstRoot root = new CstRoot();
 		
 		AtomicInteger id = new AtomicInteger(1);
 		
@@ -43,8 +43,8 @@ public class CParser implements CstParser {
 //			System.out.println(sourceFile.getPath());
 //			ASTPrinter.print(translationUnit);
 
-			ASTVisitor cRastVisitor = new CRastVisitor(root, sourceFile.getPath(), sourceCode, id);
-			translationUnit.accept(cRastVisitor);
+			ASTVisitor cCstVisitor = new CCstVisitor(root, sourceFile.getPath(), sourceCode, id);
+			translationUnit.accept(cCstVisitor);
 			
 			root.addTokenizedFile(new TokenizedSource(sourceFile.getPath(), tokenize(sourceCode)));
 		}

@@ -10,13 +10,13 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.diff.RastRootHelper;
+import refdiff.core.diff.CstRootHelper;
 import refdiff.core.io.SourceFolder;
-import refdiff.core.rast.Location;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastNodeRelationship;
-import refdiff.core.rast.RastNodeRelationshipType;
-import refdiff.core.rast.RastRoot;
+import refdiff.core.cst.Location;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstNodeRelationship;
+import refdiff.core.cst.CstNodeRelationshipType;
+import refdiff.core.cst.CstRoot;
 import refdiff.parsers.CstParser;
 
 public class TestJavaParser {
@@ -28,11 +28,11 @@ public class TestJavaParser {
 		Path basePath = Paths.get("test-data/parser/java");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("p2/Foo.java"), Paths.get("p1/Bar.java"));
 		
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(2));
 		
-		RastNode classFoo = root.getNodes().get(0);
+		CstNode classFoo = root.getNodes().get(0);
 		assertThat(classFoo.getType(), is(NodeTypes.CLASS_DECLARATION));
 		assertThat(classFoo.getNamespace(), is("p2."));
 		assertThat(classFoo.getLocalName(), is("Foo"));
@@ -40,7 +40,7 @@ public class TestJavaParser {
 		assertThat(classFoo.getLocation(), is(new Location("p2/Foo.java", 13, 121, 3)));
 		
 		assertThat(classFoo.getNodes().size(), is(1));
-		RastNode fooM1 = classFoo.getNodes().get(0);
+		CstNode fooM1 = classFoo.getNodes().get(0);
 		assertThat(fooM1.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(fooM1.getLocalName(), is("m1(String)"));
 		assertThat(fooM1.getParameters().size(), is(1));
@@ -48,47 +48,47 @@ public class TestJavaParser {
 		assertThat(fooM1.getSimpleName(), is("m1"));
 		assertThat(fooM1.getLocation(), is(new Location("p2/Foo.java", 35, 117, 9, 111, 116)));
 		
-		RastNode classBar = root.getNodes().get(1);
+		CstNode classBar = root.getNodes().get(1);
 		assertThat(classBar.getType(), is(NodeTypes.CLASS_DECLARATION));
 		assertThat(classBar.getNamespace(), is("p1."));
 		assertThat(classBar.getLocalName(), is("Bar"));
 		assertThat(classBar.getSimpleName(), is("Bar"));
 		
 		assertThat(classBar.getNodes().size(), is(2));
-		RastNode barM1 = classBar.getNodes().get(0);
+		CstNode barM1 = classBar.getNodes().get(0);
 		assertThat(barM1.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(barM1.getLocalName(), is("m1(String)"));
 		assertThat(barM1.getSimpleName(), is("m1"));
 		
-		RastNode barM2 = classBar.getNodes().get(1);
+		CstNode barM2 = classBar.getNodes().get(1);
 		assertThat(barM2.getType(), is(NodeTypes.METHOD_DECLARATION));
 		assertThat(barM2.getLocalName(), is("m2()"));
 		assertThat(barM2.getSimpleName(), is("m2"));
 		
-		Set<RastNodeRelationship> relationships = root.getRelationships();
+		Set<CstNodeRelationship> relationships = root.getRelationships();
 		assertThat(relationships.size(), is(2));
-		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, barM1, barM2)));
-		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.SUBTYPE, classBar, classFoo)));
+		assertThat(relationships, hasItem(rel(CstNodeRelationshipType.USE, barM1, barM2)));
+		assertThat(relationships, hasItem(rel(CstNodeRelationshipType.SUBTYPE, classBar, classFoo)));
 		
 		String fooSourceCode = sources.readContent(sources.getSourceFiles().get(0));
 		assertThat(
-			RastRootHelper.retrieveTokens(root, fooSourceCode, fooM1, false),
+			CstRootHelper.retrieveTokens(root, fooSourceCode, fooM1, false),
 			is(Arrays.asList("/**", "A", "javadoc", "comment.", "@param", "arg", "*/", "public", "void", "m1", "(", "String", "arg", ")", "{", "}"))
 		);
 		
 		String barSourceCode = sources.readContent(sources.getSourceFiles().get(1));
 		assertThat(
-			RastRootHelper.retrieveTokens(root, barSourceCode, barM1, false),
+			CstRootHelper.retrieveTokens(root, barSourceCode, barM1, false),
 			is(Arrays.asList("public", "void", "m1", "(", "String", "arg", ")", "{", "m2", "(", ")", ";", "}"))
 		);
 		
 		assertThat(
-			RastRootHelper.retrieveTokens(root, barSourceCode, barM1, true),
+			CstRootHelper.retrieveTokens(root, barSourceCode, barM1, true),
 			is(Arrays.asList("m2", "(", ")", ";"))
 		);
 	}
 	
-	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {
-		return new RastNodeRelationship(type, n1.getId(), n2.getId());
+	private CstNodeRelationship rel(CstNodeRelationshipType type, CstNode n1, CstNode n2) {
+		return new CstNodeRelationship(type, n1.getId(), n2.getId());
 	}
 }

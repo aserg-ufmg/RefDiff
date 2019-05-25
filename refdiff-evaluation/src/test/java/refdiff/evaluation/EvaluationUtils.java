@@ -14,24 +14,24 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastComparator.DiffBuilder;
-import refdiff.core.diff.RastComparatorMonitor;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstComparator.DiffBuilder;
+import refdiff.core.diff.CstComparatorMonitor;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.NodeTypes;
 
 public class EvaluationUtils {
 	
-	private RastComparator comparator = new RastComparator(new JavaParser());
+	private CstComparator comparator = new CstComparator(new JavaParser());
 	private String tempFolder = "D:/tmp/";
 	/**
 	 * The ICSE dataset don't describe the qualified name of the extracted/inlined method.
@@ -42,7 +42,7 @@ public class EvaluationUtils {
 		this.tempFolder = tempFolder;
 	}
 	
-	public EvaluationUtils(RastComparator comparator, String tempFolder) {
+	public EvaluationUtils(CstComparator comparator, String tempFolder) {
 		this.comparator = comparator;
 		this.tempFolder = tempFolder;
 	}
@@ -51,7 +51,7 @@ public class EvaluationUtils {
 		return runRefDiff(project, commit, new HashMap<>(), null);
 	}
 	
-	public RastDiff computeDiff(String project, String commit) throws Exception {
+	public CstDiff computeDiff(String project, String commit) throws Exception {
 		File repoFolder = repoFolder(project);
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
@@ -74,11 +74,11 @@ public class EvaluationUtils {
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			
-			RastDiff rastDiff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
+			CstDiff cstDiff = comparator.compare(getSourceFiles(checkoutFolderV0, filesV0), getSourceFiles(checkoutFolderV1, filesV1));
 			
 			System.out.println("Done computing");
 			
-			return rastDiff;
+			return cstDiff;
 		}
 	}
 	
@@ -116,29 +116,29 @@ public class EvaluationUtils {
 		}
 	}
 	
-	private class RefactoringSetBuilder implements RastComparatorMonitor {
+	private class RefactoringSetBuilder implements CstComparatorMonitor {
 		private final String project;
 		private final String commit;
 		private final RefactoringSet expected;
 		private RefactoringSet rs;
 		private final Map<KeyPair, String> explanation;
 		
-		public void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {
+		public void reportDiscardedMatch(CstNode n1, CstNode n2, double score) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));
 		}
 		
-		public void reportDiscardedConflictingMatch(RastNode n1, RastNode n2) {
+		public void reportDiscardedConflictingMatch(CstNode n1, CstNode n2) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
 			explanation.put(keyPair, "Conflicting match");
 		}
 		
-		public void reportDiscardedExtract(RastNode n1, RastNode n2, double score) {
+		public void reportDiscardedExtract(CstNode n1, CstNode n2, double score) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, true, false);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));
 		}
 		
-		public void reportDiscardedInline(RastNode n1, RastNode n2, double score) {
+		public void reportDiscardedInline(CstNode n1, CstNode n2, double score) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, true);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));
 		}
@@ -152,14 +152,14 @@ public class EvaluationUtils {
 
 		@Override
 		public void afterCompare(long elapsedTime, DiffBuilder<?> diffBuilder) {
-			RastDiff diff = diffBuilder.getDiff();
+			CstDiff diff = diffBuilder.getDiff();
 			rs = new RefactoringSet(project, commit);
 			for (Relationship rel : diff.getRelationships()) {
 				RelationshipType relType = rel.getType();
 				String nodeType = rel.getNodeAfter().getType();
 				Optional<RefactoringType> optRefType = getRefactoringType(relType, nodeType);
-				RastNode n1 = rel.getNodeBefore();
-				RastNode n2 = rel.getNodeAfter();
+				CstNode n1 = rel.getNodeBefore();
+				CstNode n2 = rel.getNodeAfter();
 				if (optRefType.isPresent()) {
 					RefactoringType refType = optRefType.get();
 					boolean copyN1Parent = refType.equals(RefactoringType.EXTRACT_OPERATION);
@@ -185,8 +185,8 @@ public class EvaluationUtils {
 				} else {
 					KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
 					if (relType.equals(RelationshipType.SAME) && n1.getParent().isPresent() && n2.getParent().isPresent() && expected != null) {
-						RastNode n1Parent = rel.getNodeBefore().getParent().get();
-						RastNode n2Parent = rel.getNodeAfter().getParent().get();
+						CstNode n1Parent = rel.getNodeBefore().getParent().get();
+						CstNode n2Parent = rel.getNodeAfter().getParent().get();
 						
 						KeyPair keyPairParent = normalizeNodeKeys(n1Parent, n2Parent, false, false);
 						
@@ -208,7 +208,7 @@ public class EvaluationUtils {
 		}
 	}
 	
-	private KeyPair normalizeNodeKeys(RastNode n1, RastNode n2, boolean copyN1Parent, boolean copyN2Parent) {
+	private KeyPair normalizeNodeKeys(CstNode n1, CstNode n2, boolean copyN1Parent, boolean copyN2Parent) {
 		String keyN1 = JavaParser.getKey(n1);
 		String keyN2 = JavaParser.getKey(n2);
 		

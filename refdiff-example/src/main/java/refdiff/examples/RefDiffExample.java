@@ -3,7 +3,7 @@ package refdiff.examples;
 import java.io.File;
 
 import refdiff.core.RefDiff;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.parsers.c.CParser;
 import refdiff.parsers.java.JavaParser;
@@ -26,7 +26,7 @@ public class RefDiffExample {
 			new File(tempFolder, "angular.js"),
 			"https://github.com/refdiff-study/angular.js.git");
 		
-		RastDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
+		CstDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
 		printRefactorings("Refactorings found in angular.js 2636105", diffForCommit);
 		
 		refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
@@ -59,7 +59,7 @@ public class RefDiffExample {
 			refDiffJava.computeDiffForCommit(eclipseThemesRepo, "72f61ec"));
 	}
 	
-	private static void printRefactorings(String headLine, RastDiff diff) {
+	private static void printRefactorings(String headLine, CstDiff diff) {
 		System.out.println(headLine);
 		for (Relationship rel : diff.getRefactoringRelationships()) {
 			System.out.println(rel.getStandardDescription());

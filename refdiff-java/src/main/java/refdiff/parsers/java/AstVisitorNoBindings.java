@@ -22,9 +22,9 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.Stereotype;
+import refdiff.core.cst.HasChildrenNodes;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.Stereotype;
 
 public class AstVisitorNoBindings extends ASTVisitor {
 	
@@ -74,7 +74,7 @@ public class AstVisitorNoBindings extends ASTVisitor {
 			supertypes.add(superclass);
 		}
 		supertypes.addAll(typeDeclaration.superInterfaceTypes());
-		RastNode sdType = visitTypeDeclaration(typeDeclaration, supertypes, typeDeclaration.isInterface() ? NodeTypes.INTERFACE_DECLARATION : NodeTypes.CLASS_DECLARATION);
+		CstNode sdType = visitTypeDeclaration(typeDeclaration, supertypes, typeDeclaration.isInterface() ? NodeTypes.INTERFACE_DECLARATION : NodeTypes.CLASS_DECLARATION);
 		containerStack.push(sdType);
 		if (typeDeclaration.isInterface()) {
 			sdType.addStereotypes(Stereotype.ABSTRACT);
@@ -86,8 +86,8 @@ public class AstVisitorNoBindings extends ASTVisitor {
 		containerStack.pop();
 	}
 	
-	private RastNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes, String nodeType) {
-		RastNode type;
+	private CstNode visitTypeDeclaration(AbstractTypeDeclaration node, List<Type> supertypes, String nodeType) {
+		CstNode type;
 		String typeName = node.getName().getIdentifier();
 		if (node.isPackageMemberTypeDeclaration()) {
 			type = model.createType(typeName, packageName, containerStack.peek(), sourceFilePath, fileContent, node, nodeType);
@@ -110,7 +110,7 @@ public class AstVisitorNoBindings extends ASTVisitor {
 	public boolean visit(MethodDeclaration methodDeclaration) {
 		String methodSignature = AstUtils.getSignatureFromMethodDeclaration(methodDeclaration);
 		
-		final RastNode method = model.createMethod(methodSignature, containerStack.peek(), sourceFilePath, fileContent, methodDeclaration.isConstructor(), methodDeclaration);
+		final CstNode method = model.createMethod(methodSignature, containerStack.peek(), sourceFilePath, fileContent, methodDeclaration.isConstructor(), methodDeclaration);
 		
 		List<?> modifiers = methodDeclaration.modifiers();
 		Set<String> annotations = extractAnnotationTypes(modifiers);
@@ -158,7 +158,7 @@ public class AstVisitorNoBindings extends ASTVisitor {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void extractParametersAndReturnType(SDModel model, MethodDeclaration methodDeclaration, RastNode method) {
+	public static void extractParametersAndReturnType(SDModel model, MethodDeclaration methodDeclaration, CstNode method) {
 		Type returnType = methodDeclaration.getReturnType2();
 		if (returnType != null) {
 			model.setReturnType(method, AstUtils.normalizeTypeName(returnType, methodDeclaration.getExtraDimensions(), false));

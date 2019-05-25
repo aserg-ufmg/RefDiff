@@ -1,4 +1,4 @@
-package refdiff.core.rast;
+package refdiff.core.cst;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,19 +10,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-public class RastNode implements HasChildrenNodes {
+public class CstNode implements HasChildrenNodes {
 	private final int id;
 	private String type;
 	private Location location;
 	private String simpleName;
 	private String localName;
 	private String namespace;
-	private Optional<RastNode> parent = Optional.empty();
-	private List<RastNode> nodes = new ArrayList<>();
+	private Optional<CstNode> parent = Optional.empty();
+	private List<CstNode> nodes = new ArrayList<>();
 	private Set<Stereotype> stereotypes = new HashSet<>();
 	private List<Parameter> parameters = new ArrayList<>();
 	
-	public RastNode(int id) {
+	public CstNode(int id) {
 		this.id = id;
 	}
 	
@@ -67,17 +67,17 @@ public class RastNode implements HasChildrenNodes {
 		this.simpleName = simpleName;
 	}
 	
-	public List<RastNode> getNodes() {
+	public List<CstNode> getNodes() {
 		return nodes;
 	}
 	
 	@Override
-	public void addNode(RastNode node) {
+	public void addNode(CstNode node) {
 		nodes.add(node);
 		node.setParent(this);
 	}
 	
-	public void setNodes(List<RastNode> nodes) {
+	public void setNodes(List<CstNode> nodes) {
 		this.nodes = nodes;
 	}
 	
@@ -97,21 +97,21 @@ public class RastNode implements HasChildrenNodes {
 		return this.stereotypes.contains(stereotype);
 	}
 	
-	public void setParent(RastNode node) {
+	public void setParent(CstNode node) {
 		this.parent = Optional.ofNullable(node);
 	}
 
 	@JsonIgnore
-	public Optional<RastNode> getParent() {
+	public Optional<CstNode> getParent() {
 		return parent;
 	}
 
 	@JsonIgnore
-	public Optional<RastNode> getRootParent() {
+	public Optional<CstNode> getRootParent() {
 		if (!parent.isPresent()) {
 			return Optional.empty();
 		} else {
-			RastNode parentNode = parent.get();
+			CstNode parentNode = parent.get();
 			if (parentNode.getParent().isPresent()) {
 				return parentNode.getRootParent();
 			} else {

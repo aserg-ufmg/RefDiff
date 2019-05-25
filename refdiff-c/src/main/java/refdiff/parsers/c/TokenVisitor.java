@@ -7,7 +7,7 @@ import org.eclipse.cdt.core.dom.ast.ExpansionOverlapsBoundaryException;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.parser.IToken;
 
-import refdiff.core.rast.TokenPosition;
+import refdiff.core.cst.TokenPosition;
 
 public class TokenVisitor extends ASTGenericVisitor {
 

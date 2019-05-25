@@ -2,7 +2,7 @@ package refdiff.core.diff.similarity;
 
 import java.util.List;
 
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 import refdiff.core.util.IdentifierSplitter;
 
 public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBuilder<TfIdfSourceRepresentation> {
@@ -12,7 +12,7 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 	private boolean initialized = false;
 	
 	@Override
-	public TfIdfSourceRepresentation buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode) {
+	public TfIdfSourceRepresentation buildForNode(CstNode node, boolean isBefore, List<String> tokenizedSourceCode) {
 		if (initialized) {
 			throw new RuntimeException("Initialization phase terminated");
 		}
@@ -27,7 +27,7 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 	}
 	
 	@Override
-	public TfIdfSourceRepresentation buildForName(RastNode node, boolean isBefore) {
+	public TfIdfSourceRepresentation buildForName(CstNode node, boolean isBefore) {
 		if (initialized) {
 			throw new RuntimeException("Initialization phase terminated");
 		}
@@ -41,7 +41,7 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 		return new TfIdfSourceRepresentation(multiset, nameVocabulary);
 	}
 	
-	private static void collectTokensOfSimpleName(Multiset<String> multiset, RastNode node) {
+	private static void collectTokensOfSimpleName(Multiset<String> multiset, CstNode node) {
 		String nodeName = getNodeName(node);
 		List<String> tokens = IdentifierSplitter.split(nodeName);
 		multiset.add(nodeName);
@@ -53,7 +53,7 @@ public class TfIdfSourceRepresentationBuilder implements SourceRepresentationBui
 		}
 	}
 
-	private static String getNodeName(RastNode node) {
+	private static String getNodeName(CstNode node) {
 		String nodeName;
 		if (node.getNamespace() != null) {
 			nodeName = node.getNamespace() + node.getSimpleName();

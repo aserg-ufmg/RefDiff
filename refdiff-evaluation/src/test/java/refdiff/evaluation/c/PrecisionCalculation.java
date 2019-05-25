@@ -26,13 +26,13 @@ import com.jcabi.github.Repos;
 import com.jcabi.github.RtGithub;
 import com.jcabi.http.response.JsonResponse;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
 import refdiff.parsers.c.CParser;
@@ -324,8 +324,8 @@ public class PrecisionCalculation {
 		if (relationshipType.equals(RelationshipType.MOVE)
 				|| relationshipType.equals(RelationshipType.MOVE_RENAME) 
 				|| relationshipType.equals(RelationshipType.RENAME)) {
-			RastNode nodeBefore = relationship.getNodeBefore();
-			RastNode nodeAfter = relationship.getNodeAfter();
+			CstNode nodeBefore = relationship.getNodeBefore();
+			CstNode nodeAfter = relationship.getNodeAfter();
 			
 			String nodeTypeBefore = nodeBefore.getType();
 			String nodeTypeAfter = nodeAfter.getType();
@@ -349,7 +349,7 @@ public class PrecisionCalculation {
 		return StringEscapeUtils.escapeCsv(field);
 	}
 	
-	private static String nodeRepresentation(RastNode node) {
+	private static String nodeRepresentation(CstNode node) {
 		return node.getLocation().getFile() + ":" + node.getLocalName() + ":" + node.getLocation().getBegin() + "-" + node.getLocation().getEnd();
 	}
 	
@@ -365,11 +365,11 @@ public class PrecisionCalculation {
 	private static Set<Relationship> getRelationships(GitHelper gh, Repository repository, RevCommit commitBefore, RevCommit commitAfter) 
 			throws Exception {
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser);
+		CstComparator cstComparator = new CstComparator(parser);
 		
 		PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(
 				repository, commitBefore, commitAfter, parser.getAllowedFilesFilter());
-		RastDiff diff = rastComparator.compare(sources);
+		CstDiff diff = cstComparator.compare(sources);
 		
 		Set<Relationship> relationships = diff.getRelationships().stream()
 				.filter(relationship -> !relationship.getType().equals(RelationshipType.SAME))

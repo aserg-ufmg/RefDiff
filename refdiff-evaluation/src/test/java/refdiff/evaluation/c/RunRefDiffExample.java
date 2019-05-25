@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
@@ -21,7 +21,7 @@ public class RunRefDiffExample {
 	public static void main(String[] args) throws Exception {
 		
 		CParser parser = new CParser();
-		RastComparator rastComparator = new RastComparator(parser);
+		CstComparator cstComparator = new CstComparator(parser);
 		
 		String tempFolder = "D:/tmp";
 		String cloneUrl = "https://github.com/torvalds/linux.git";
@@ -35,7 +35,7 @@ public class RunRefDiffExample {
 		try (Repository repo = gh.openRepository(repoFolder)) {
 			
 			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, "f72c3ab791ac0b2b75b5b5d4d51d8eb89ea1e515", parser.getAllowedFilesFilter());
-			RastDiff diff = rastComparator.compare(sources.getBefore(), sources.getAfter());
+			CstDiff diff = cstComparator.compare(sources.getBefore(), sources.getAfter());
 			
 			Set<Relationship> relationships = diff.getRelationships().stream()
 				.filter(relationship -> !relationship.getType().equals(RelationshipType.SAME))

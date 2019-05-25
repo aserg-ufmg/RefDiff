@@ -1,4 +1,4 @@
-package refdiff.core.rast;
+package refdiff.core.cst;
 
 public class Parameter {
 	private String name;

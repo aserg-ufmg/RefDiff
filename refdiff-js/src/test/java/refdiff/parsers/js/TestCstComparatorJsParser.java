@@ -1,19 +1,19 @@
 package refdiff.parsers.js;
 
 import static org.junit.Assert.*;
-import static refdiff.test.util.RastDiffMatchers.*;
+import static refdiff.test.util.CstDiffMatchers.*;
 
 import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.SourceFolder;
 import refdiff.test.util.JsParserSingleton;
 
-public class TestRastComparatorJsParser {
+public class TestCstComparatorJsParser {
 	
 	private JsParser parser = JsParserSingleton.get();
 	
@@ -64,11 +64,11 @@ public class TestRastComparatorJsParser {
 		));
 	}
 	
-	private RastDiff diff(String folder) throws Exception {
+	private CstDiff diff(String folder) throws Exception {
 		String basePath = "test-data/diff/" + folder;
 		SourceFolder sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".js");
 		SourceFolder sourcesAfter = SourceFolder.from(Paths.get(basePath, "v1"), ".js");
-		RastComparator comparator = new RastComparator(parser);
+		CstComparator comparator = new CstComparator(parser);
 		return comparator.compare(sourcesBefore, sourcesAfter);
 	}
 	

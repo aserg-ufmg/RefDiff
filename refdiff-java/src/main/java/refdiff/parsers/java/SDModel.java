@@ -10,88 +10,88 @@ import org.eclipse.jdt.core.dom.IMethodBinding;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
-import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.Location;
-import refdiff.core.rast.Parameter;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastNodeRelationship;
-import refdiff.core.rast.RastNodeRelationshipType;
-import refdiff.core.rast.RastRoot;
-import refdiff.core.rast.Stereotype;
+import refdiff.core.cst.HasChildrenNodes;
+import refdiff.core.cst.Location;
+import refdiff.core.cst.Parameter;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstNodeRelationship;
+import refdiff.core.cst.CstNodeRelationshipType;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.Stereotype;
 
 public class SDModel {
 
 	private int nodeCounter = 0;
-	private RastRoot root = new RastRoot();
-	private Map<String, RastNode> keyMap = new HashMap<>();
+	private CstRoot root = new CstRoot();
+	private Map<String, CstNode> keyMap = new HashMap<>();
 	
-	public Optional<RastNode> findByKey(String referencedKey) {
+	public Optional<CstNode> findByKey(String referencedKey) {
 		return Optional.ofNullable(keyMap.get(referencedKey));
 	}
 
-	public void addReference(RastNode caller, RastNode calleeNode) {
-		root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, caller.getId(), calleeNode.getId()));
+	public void addReference(CstNode caller, CstNode calleeNode) {
+		root.getRelationships().add(new CstNodeRelationship(CstNodeRelationshipType.USE, caller.getId(), calleeNode.getId()));
 	}
 
-	public void addSubtype(RastNode supertype, RastNode type) {
-		root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.SUBTYPE, type.getId(), supertype.getId()));
+	public void addSubtype(CstNode supertype, CstNode type) {
+		root.getRelationships().add(new CstNodeRelationship(CstNodeRelationshipType.SUBTYPE, type.getId(), supertype.getId()));
 	}
 
-//	public RastNode createCompilationUnit(String packageName, String sourceFolder, String sourceFilePath, CompilationUnit compilationUnit) {
-//		RastNode rastNode = new RastNode(++nodeCounter);
-//		rastNode.setType("CompilationUnit");
-//		rastNode.setLocation(new Location(sourceFilePath, 0, compilationUnit.getLength()));
-//		rastNode.setLocalName(sourceFilePath);
-//		root.getNodes().add(rastNode);
-//		return rastNode;
+//	public CstNode createCompilationUnit(String packageName, String sourceFolder, String sourceFilePath, CompilationUnit compilationUnit) {
+//		CstNode cstNode = new CstNode(++nodeCounter);
+//		cstNode.setType("CompilationUnit");
+//		cstNode.setLocation(new Location(sourceFilePath, 0, compilationUnit.getLength()));
+//		cstNode.setLocalName(sourceFilePath);
+//		root.getNodes().add(cstNode);
+//		return cstNode;
 //	}
 
-//	public RastNode createAnonymousType(HasChildrenNodes parent, String sourceFilePath, String name, ASTNode ast) {
-//		RastNode rastNode = new RastNode(++nodeCounter);
-//		rastNode.setType(ast.getClass().getSimpleName());
-//		rastNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
-//		rastNode.setLocalName(name);
-//		rastNode.setSimpleName("");
-//		parent.addNode(rastNode);
-//		keyMap.put(JavaParser.getKey(rastNode), rastNode);
-//		return rastNode;
+//	public CstNode createAnonymousType(HasChildrenNodes parent, String sourceFilePath, String name, ASTNode ast) {
+//		CstNode cstNode = new CstNode(++nodeCounter);
+//		cstNode.setType(ast.getClass().getSimpleName());
+//		cstNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
+//		cstNode.setLocalName(name);
+//		cstNode.setSimpleName("");
+//		parent.addNode(cstNode);
+//		keyMap.put(JavaParser.getKey(cstNode), cstNode);
+//		return cstNode;
 //	}
 
-	public RastNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
+	public CstNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
 		return createType(typeName, "", parent, sourceFilePath, fileContent, ast, nodeType);
 	}
 	
-	public RastNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
+	public CstNode createType(String typeName, String packageName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
 		if (typeName == null || typeName.isEmpty()) {
 			throw new RuntimeException("Type should have a name");
 		}
 		String namespace = packageName.isEmpty() ? "" : packageName + "."; 
-		RastNode rastNode = new RastNode(++nodeCounter);
-		rastNode.setType(nodeType);
-		rastNode.setLocation(Location.of(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), fileContent));
-		rastNode.setLocalName(typeName);
-		rastNode.setSimpleName(typeName);
-		rastNode.setNamespace(namespace);
-		parent.addNode(rastNode);
+		CstNode cstNode = new CstNode(++nodeCounter);
+		cstNode.setType(nodeType);
+		cstNode.setLocation(Location.of(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), fileContent));
+		cstNode.setLocalName(typeName);
+		cstNode.setSimpleName(typeName);
+		cstNode.setNamespace(namespace);
+		parent.addNode(cstNode);
 		ITypeBinding binding = ast.resolveBinding();
 		if (binding != null) {
-			keyMap.put(binding.getKey(), rastNode);
+			keyMap.put(binding.getKey(), cstNode);
 		}
-		return rastNode;
+		return cstNode;
 	}
 
-	public RastNode createMethod(String methodSignature, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, boolean constructor, MethodDeclaration ast) {
+	public CstNode createMethod(String methodSignature, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, boolean constructor, MethodDeclaration ast) {
 		String methodName = ast.isConstructor() ? "new" : ast.getName().getIdentifier();
-		RastNode rastNode = new RastNode(++nodeCounter);
-		rastNode.setType(ast.getClass().getSimpleName());
+		CstNode cstNode = new CstNode(++nodeCounter);
+		cstNode.setType(ast.getClass().getSimpleName());
 		if (constructor) {
-			rastNode.addStereotypes(Stereotype.TYPE_CONSTRUCTOR);
+			cstNode.addStereotypes(Stereotype.TYPE_CONSTRUCTOR);
 		}
 		Block body = ast.getBody();
 		int bodyStart;
 		int bodyLength;
         if (body == null) {
-            rastNode.addStereotypes(Stereotype.ABSTRACT);
+            cstNode.addStereotypes(Stereotype.ABSTRACT);
             bodyStart = ast.getStartPosition() + ast.getLength();
             bodyLength = 0;
         } else {
@@ -99,27 +99,27 @@ public class SDModel {
         	bodyStart = body.getStartPosition() + 1;
         	bodyLength = body.getLength() - 2;
         }
-        rastNode.setLocation(Location.of(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), bodyStart, bodyStart + bodyLength, fileContent));
-		rastNode.setLocalName(methodSignature);
-		rastNode.setSimpleName(methodName);
-		parent.addNode(rastNode);
+        cstNode.setLocation(Location.of(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength(), bodyStart, bodyStart + bodyLength, fileContent));
+		cstNode.setLocalName(methodSignature);
+		cstNode.setSimpleName(methodName);
+		parent.addNode(cstNode);
 		IMethodBinding binding = ast.resolveBinding();
 		if (binding != null) {
-			keyMap.put(binding.getKey(), rastNode);
+			keyMap.put(binding.getKey(), cstNode);
 		}
-		return rastNode;
+		return cstNode;
 	}
 
-	public void setReturnType(RastNode method, String normalizeTypeName) {
+	public void setReturnType(CstNode method, String normalizeTypeName) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void addParameter(RastNode method, String identifier, String typeName) {
+	public void addParameter(CstNode method, String identifier, String typeName) {
 		method.getParameters().add(new Parameter(identifier));
 	}
 
-	public RastRoot getRoot() {
+	public CstRoot getRoot() {
 		return root;
 	}
 	

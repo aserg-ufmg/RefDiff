@@ -14,11 +14,11 @@ import java.util.Set;
 import org.junit.Test;
 
 import refdiff.core.io.SourceFolder;
-import refdiff.core.rast.Parameter;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastNodeRelationship;
-import refdiff.core.rast.RastNodeRelationshipType;
-import refdiff.core.rast.RastRoot;
+import refdiff.core.cst.Parameter;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstNodeRelationship;
+import refdiff.core.cst.CstNodeRelationshipType;
+import refdiff.core.cst.CstRoot;
 
 public class TestCParser {
 
@@ -28,20 +28,20 @@ public class TestCParser {
 	public void shouldParseSimpleFile() throws Exception {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("dir1/hello.c"));
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 
 		assertThat(root.getNodes().size(), is(1));
 
-		RastNode nodeScriptEx2 = root.getNodes().get(0);
+		CstNode nodeScriptEx2 = root.getNodes().get(0);
 		assertThat(nodeScriptEx2.getType(), is("Program"));
 		assertThat(nodeScriptEx2.getLocalName(), is("hello.c"));
 		assertThat(nodeScriptEx2.getSimpleName(), is("hello.c"));
 		assertThat(nodeScriptEx2.getNamespace(), is("dir1/"));
 
 		assertThat(nodeScriptEx2.getNodes().size(), is(3));
-		RastNode nodeF1 = nodeScriptEx2.getNodes().get(0);
-		RastNode nodeF2 = nodeScriptEx2.getNodes().get(1);
-		RastNode nodeMain = nodeScriptEx2.getNodes().get(2);
+		CstNode nodeF1 = nodeScriptEx2.getNodes().get(0);
+		CstNode nodeF2 = nodeScriptEx2.getNodes().get(1);
+		CstNode nodeMain = nodeScriptEx2.getNodes().get(2);
 
 		assertThat(nodeF1.getType(), is("FunctionDeclaration"));
 		assertThat(nodeF1.getLocalName(), is("f1()"));
@@ -56,14 +56,14 @@ public class TestCParser {
 		assertThat(nodeMain.getLocalName(), is("main()"));
 		assertThat(nodeMain.getSimpleName(), is("main"));
 
-		Set<RastNodeRelationship> relationships = root.getRelationships();
+		Set<CstNodeRelationship> relationships = root.getRelationships();
 		assertThat(relationships.size(), is(2));
-		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, nodeF2, nodeF1)));
-		assertThat(relationships, hasItem(rel(RastNodeRelationshipType.USE, nodeMain, nodeF2)));
+		assertThat(relationships, hasItem(rel(CstNodeRelationshipType.USE, nodeF2, nodeF1)));
+		assertThat(relationships, hasItem(rel(CstNodeRelationshipType.USE, nodeMain, nodeF2)));
 	}
 
-	private RastNodeRelationship rel(RastNodeRelationshipType type, RastNode n1, RastNode n2) {
-		return new RastNodeRelationship(type, n1.getId(), n2.getId());
+	private CstNodeRelationship rel(CstNodeRelationshipType type, CstNode n1, CstNode n2) {
+		return new CstNodeRelationship(type, n1.getId(), n2.getId());
 	}
 
 	@Test
@@ -71,11 +71,11 @@ public class TestCParser {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("file1.c"));
 		
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 
-		RastNode programNode = root.getNodes().get(0);
+		CstNode programNode = root.getNodes().get(0);
 		assertThat(programNode.getType(), is("Program"));
 		assertThat(programNode.getLocalName(), is("file1.c"));
 		assertThat(programNode.getSimpleName(), is("file1.c"));
@@ -83,7 +83,7 @@ public class TestCParser {
 
 		assertThat(programNode.getNodes().size(), is(2));
 
-		RastNode nodeAddItem = programNode.getNodes().get(0);
+		CstNode nodeAddItem = programNode.getNodes().get(0);
 
 		assertThat(nodeAddItem.getType(), is("FunctionDeclaration"));
 		assertThat(nodeAddItem.getLocalName(), is("add_item(HTree, HTree, HTree)"));
@@ -97,7 +97,7 @@ public class TestCParser {
 		assertThat(nodeAddItemParams.get(1).getName(), is("param2[]"));
 		assertThat(nodeAddItemParams.get(2).getName(), is("*param3"));
 
-		RastNode nodeRemoveItem = programNode.getNodes().get(1);
+		CstNode nodeRemoveItem = programNode.getNodes().get(1);
 
 		assertThat(nodeRemoveItem.getType(), is("FunctionDeclaration"));
 		assertThat(nodeRemoveItem.getLocalName(), is("remove_item(HTree)"));
@@ -115,30 +115,30 @@ public class TestCParser {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("locationIssue.c"));
 		
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 
-		RastNode program = root.getNodes().get(0);
+		CstNode program = root.getNodes().get(0);
 
 		assertThat(program.getLocation().getBegin(), is(0));
 		assertThat(program.getLocation().getEnd(), is(631));
 
-		RastNode nodeF1 = program.getNodes().get(0);
+		CstNode nodeF1 = program.getNodes().get(0);
 
 		assertThat(nodeF1.getLocation().getBegin(), is(479));
 		assertThat(nodeF1.getLocation().getEnd(), is(528));
 		assertThat(nodeF1.getLocation().getBodyBegin(), is(489));
 		assertThat(nodeF1.getLocation().getBodyEnd(), is(527));
 
-		RastNode nodeF2 = program.getNodes().get(1);
+		CstNode nodeF2 = program.getNodes().get(1);
 
 		assertThat(nodeF2.getLocation().getBegin(), is(530));
 		assertThat(nodeF2.getLocation().getEnd(), is(579));
 		assertThat(nodeF2.getLocation().getBodyBegin(), is(540));
 		assertThat(nodeF2.getLocation().getBodyEnd(), is(578));
 
-		RastNode nodeF3 = program.getNodes().get(2);
+		CstNode nodeF3 = program.getNodes().get(2);
 
 		assertThat(nodeF3.getLocation().getBegin(), is(581));
 		assertThat(nodeF3.getLocation().getEnd(), is(630));
@@ -151,11 +151,11 @@ public class TestCParser {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("locationIssue2.c"));
 		
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 
-		RastNode program = root.getNodes().get(0);
+		CstNode program = root.getNodes().get(0);
 
 		assertThat(program.getLocation().getBegin(), is(0));
 		assertThat(program.getLocation().getEnd(), is(1979));
@@ -166,13 +166,13 @@ public class TestCParser {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("structParams.c"));
 		
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 		
 		assertThat(root.getNodes().size(), is(1));
 
-		RastNode program = root.getNodes().get(0);
+		CstNode program = root.getNodes().get(0);
 
-		RastNode functionNode = program.getNodes().get(0);
+		CstNode functionNode = program.getNodes().get(0);
 
 		assertThat(functionNode.getSimpleName(), is("__init_swait_queue_head"));
 		assertThat(functionNode.getLocalName(), is("__init_swait_queue_head(swait_queue_head, char, lock_class_key)"));
@@ -218,13 +218,13 @@ public class TestCParser {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("functionWithStructReturn.c"));
 
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 
 		assertThat(root.getNodes().size(), is(1));
 		
-		RastNode program = root.getNodes().get(0);
+		CstNode program = root.getNodes().get(0);
 
-		RastNode functionNode = program.getNodes().get(0);
+		CstNode functionNode = program.getNodes().get(0);
 		assertThat(functionNode.getLocalName(), is("Curl_pgrsLimitWaitTime(curl_off_t, curl_off_t, curl_off_t, curltime, curltime)"));
 	}
 	
@@ -233,13 +233,13 @@ public class TestCParser {
 		Path basePath = Paths.get("test-data/c/parser");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("functionWithStructAndPointerReturn.c"));
 
-		RastRoot root = parser.parse(sources);
+		CstRoot root = parser.parse(sources);
 
 		assertThat(root.getNodes().size(), is(1));
 		
-		RastNode program = root.getNodes().get(0);
+		CstNode program = root.getNodes().get(0);
 
-		RastNode functionNode = program.getNodes().get(0);
+		CstNode functionNode = program.getNodes().get(0);
 		assertThat(functionNode.getLocalName(), is("Curl_cookie_add(Curl_easy, CookieInfo, bool, bool, char, char, char)"));
 	}
 }

@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastRoot;
-import refdiff.core.rast.Stereotype;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.Stereotype;
 import refdiff.parsers.CstParser;
 
 public class JavaParserNoBindings implements CstParser {
@@ -14,14 +14,14 @@ public class JavaParserNoBindings implements CstParser {
 	private final JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	
 	@Override
-	public RastRoot parse(SourceFileSet sources) throws Exception {
+	public CstRoot parse(SourceFileSet sources) throws Exception {
 		SDModel sdModel = new SDModel();
 		SDModelBuilderNoBindings mb = new SDModelBuilderNoBindings();
 		mb.analyze(sources, sdModel, tokenizer);
 		return sdModel.getRoot();
 	}
 
-	public static String getKey(RastNode node) {
+	public static String getKey(CstNode node) {
 		String parentName;
 		if (node.getParent().isPresent()) {
 			parentName = getKey(node.getParent().get()) + ".";

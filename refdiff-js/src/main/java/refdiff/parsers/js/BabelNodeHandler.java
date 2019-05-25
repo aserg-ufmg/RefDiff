@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import refdiff.core.rast.Parameter;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.Stereotype;
+import refdiff.core.cst.Parameter;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.Stereotype;
 
 abstract class BabelNodeHandler {
 	
-	public abstract String getLocalName(RastNode rastNode, JsValueV8 esprimaNode);
+	public abstract String getLocalName(CstNode cstNode, JsValueV8 esprimaNode);
 	
-	public boolean isRastNode(JsValueV8 babelAst) {
+	public boolean isCstNode(JsValueV8 babelAst) {
 		return true;
 	}
 	
@@ -28,17 +28,17 @@ abstract class BabelNodeHandler {
 	public abstract JsValueV8 getBodyNode(JsValueV8 babelAst);
 	
 	
-	public String getSimpleName(RastNode rastNode, JsValueV8 babelAst) {
-		return getLocalName(rastNode, babelAst);
+	public String getSimpleName(CstNode cstNode, JsValueV8 babelAst) {
+		return getLocalName(cstNode, babelAst);
 	}
 	
-	public String getNamespace(RastNode rastNode, JsValueV8 babelAst) {
+	public String getNamespace(CstNode cstNode, JsValueV8 babelAst) {
 		return null;
 	}
 	
-	public abstract Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 babelAst);
+	public abstract Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 babelAst);
 	
-	public List<Parameter> getParameters(RastNode rastNode, JsValueV8 babelAst) {
+	public List<Parameter> getParameters(CstNode cstNode, JsValueV8 babelAst) {
 		return Collections.emptyList();
 	}
 	
@@ -63,8 +63,8 @@ abstract class BabelNodeHandler {
 	
 	static {
 		RAST_NODE_HANDLERS.put("Program", new BabelNodeHandler() {
-			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
-				String filePath = rastNode.getLocation().getFile();
+			public String getLocalName(CstNode cstNode, JsValueV8 esprimaNode) {
+				String filePath = cstNode.getLocation().getFile();
 				if (filePath.lastIndexOf('/') != -1) {
 					return filePath.substring(filePath.lastIndexOf('/') + 1);
 				} else {
@@ -72,8 +72,8 @@ abstract class BabelNodeHandler {
 				}
 			}
 			
-			public String getNamespace(RastNode rastNode, JsValueV8 esprimaNode) {
-				String filePath = rastNode.getLocation().getFile();
+			public String getNamespace(CstNode cstNode, JsValueV8 esprimaNode) {
+				String filePath = cstNode.getLocation().getFile();
 				if (filePath.lastIndexOf('/') != -1) {
 					return filePath.substring(0, filePath.lastIndexOf('/') + 1);
 				} else {
@@ -81,7 +81,7 @@ abstract class BabelNodeHandler {
 				}
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 esprimaNode) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 esprimaNode) {
 				return Collections.singleton(Stereotype.HAS_BODY);
 			}
 
@@ -97,16 +97,16 @@ abstract class BabelNodeHandler {
 		});
 		
 		RAST_NODE_HANDLERS.put("FunctionDeclaration", new BabelNodeHandler() {
-			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
+			public String getLocalName(CstNode cstNode, JsValueV8 esprimaNode) {
 				return esprimaNode.get("id").get("name").asString();
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 esprimaNode) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 esprimaNode) {
 				return Collections.singleton(Stereotype.HAS_BODY);
 			}
 			
 			@Override
-			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 esprimaNode) {
+			public List<Parameter> getParameters(CstNode cstNode, JsValueV8 esprimaNode) {
 				return extractParameters(esprimaNode);
 			}
 			
@@ -123,7 +123,7 @@ abstract class BabelNodeHandler {
 		
 		RAST_NODE_HANDLERS.put("VariableDeclarator", new BabelNodeHandler() {
 			@Override
-			public boolean isRastNode(JsValueV8 babelAst) {
+			public boolean isCstNode(JsValueV8 babelAst) {
 				if (babelAst.has("init")) {
 					String expressionType = babelAst.get("init").get("type").asString();
 					return "FunctionExpression".equals(expressionType) || "ArrowFunctionExpression".equals(expressionType);
@@ -136,16 +136,16 @@ abstract class BabelNodeHandler {
 				return JsNodeType.FUNCTION;
 			}
 			
-			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
+			public String getLocalName(CstNode cstNode, JsValueV8 esprimaNode) {
 				return esprimaNode.get("id").get("name").asString();
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 esprimaNode) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 esprimaNode) {
 				return Collections.singleton(Stereotype.HAS_BODY);
 			}
 			
 			@Override
-			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 esprimaNode) {
+			public List<Parameter> getParameters(CstNode cstNode, JsValueV8 esprimaNode) {
 				return extractParameters(esprimaNode.get("init"));
 			}
 			
@@ -161,11 +161,11 @@ abstract class BabelNodeHandler {
 		});
 		
 		RAST_NODE_HANDLERS.put("ClassDeclaration", new BabelNodeHandler() {
-			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
+			public String getLocalName(CstNode cstNode, JsValueV8 esprimaNode) {
 				return esprimaNode.get("id").get("name").asString();
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 esprimaNode) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 esprimaNode) {
 				return Collections.emptySet();
 			}
 			
@@ -181,11 +181,11 @@ abstract class BabelNodeHandler {
 		});
 		
 		RAST_NODE_HANDLERS.put("ClassMethod", new BabelNodeHandler() {
-			public String getLocalName(RastNode rastNode, JsValueV8 esprimaNode) {
+			public String getLocalName(CstNode cstNode, JsValueV8 esprimaNode) {
 				return esprimaNode.get("key").get("name").asString();
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 esprimaNode) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 esprimaNode) {
 				String kind = esprimaNode.get("kind").asString();
 				if (kind.equals("method")) {
 					return Collections.singleton(Stereotype.TYPE_MEMBER);
@@ -197,7 +197,7 @@ abstract class BabelNodeHandler {
 			}
 			
 			@Override
-			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 esprimaNode) {
+			public List<Parameter> getParameters(CstNode cstNode, JsValueV8 esprimaNode) {
 				return extractParameters(esprimaNode);
 			}
 			
@@ -214,7 +214,7 @@ abstract class BabelNodeHandler {
 		
 		RAST_NODE_HANDLERS.put("ObjectProperty", new BabelNodeHandler() {
 			@Override
-			public boolean isRastNode(JsValueV8 babelAst) {
+			public boolean isCstNode(JsValueV8 babelAst) {
 				String keyNodeType = babelAst.get("key").get("type").asString();
 				String valueNodeType = babelAst.get("value").get("type").asString();
 				boolean hasIdentifier = "Identifier".equals(keyNodeType);
@@ -227,16 +227,16 @@ abstract class BabelNodeHandler {
 				return JsNodeType.FUNCTION;
 			}
 			
-			public String getLocalName(RastNode rastNode, JsValueV8 babelAst) {
+			public String getLocalName(CstNode cstNode, JsValueV8 babelAst) {
 				return babelAst.get("key").get("name").asString();
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 babelAst) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 babelAst) {
 				return Collections.singleton(Stereotype.HAS_BODY);
 			}
 			
 			@Override
-			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 babelAst) {
+			public List<Parameter> getParameters(CstNode cstNode, JsValueV8 babelAst) {
 				return extractParameters(babelAst.get("value"));
 			}
 			
@@ -253,7 +253,7 @@ abstract class BabelNodeHandler {
 		
 		RAST_NODE_HANDLERS.put("AssignmentExpression", new BabelNodeHandler() {
 			@Override
-			public boolean isRastNode(JsValueV8 babelAst) {
+			public boolean isCstNode(JsValueV8 babelAst) {
 				String leftNodeType = babelAst.get("left").get("type").asString();
 				String rightNodeType = babelAst.get("right").get("type").asString();
 				boolean isIdentifier = "Identifier".equals(leftNodeType);
@@ -267,7 +267,7 @@ abstract class BabelNodeHandler {
 				return JsNodeType.FUNCTION;
 			}
 			
-			public String getLocalName(RastNode rastNode, JsValueV8 babelAst) {
+			public String getLocalName(CstNode cstNode, JsValueV8 babelAst) {
 				JsValueV8 leftNode = babelAst.get("left");
 				String leftNodetype = leftNode.get("type").asString();
 				if ("MemberExpression".equals(leftNodetype)) {
@@ -276,12 +276,12 @@ abstract class BabelNodeHandler {
 				return leftNode.get("name").asString();
 			}
 			
-			public Set<Stereotype> getStereotypes(RastNode rastNode, JsValueV8 babelAst) {
+			public Set<Stereotype> getStereotypes(CstNode cstNode, JsValueV8 babelAst) {
 				return Collections.singleton(Stereotype.HAS_BODY);
 			}
 			
 			@Override
-			public List<Parameter> getParameters(RastNode rastNode, JsValueV8 babelAst) {
+			public List<Parameter> getParameters(CstNode cstNode, JsValueV8 babelAst) {
 				return extractParameters(babelAst.get("right"));
 			}
 			

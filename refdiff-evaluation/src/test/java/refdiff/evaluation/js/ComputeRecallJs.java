@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastComparatorMonitor;
-import refdiff.core.diff.RastDiff;
-import refdiff.core.diff.RastRootHelper;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstComparatorMonitor;
+import refdiff.core.diff.CstDiff;
+import refdiff.core.diff.CstRootHelper;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
 import refdiff.parsers.js.JsParser;
@@ -154,7 +154,7 @@ public class ComputeRecallJs {
 		return commit(false, commit, relType, n1, n2);
 	}
 	private static boolean commit(boolean debug, String commit, RelationshipType relType, String n1, String n2) throws Exception {
-		RastDiff diff = diff(commit, debug);
+		CstDiff diff = diff(commit, debug);
 		
 		Set<String> refactorings = diff.getRelationships().stream()
 			.filter(r -> r.getType() != RelationshipType.SAME)
@@ -184,7 +184,7 @@ public class ComputeRecallJs {
 		return String.format("%s\t%s\t%s", relType, n1, n2);
 	}
 	
-	private static String format(RastNode node) {
+	private static String format(CstNode node) {
 		return node.getLocation().getFile() + ":" + node.getLocalName();
 	}
 	
@@ -192,7 +192,7 @@ public class ComputeRecallJs {
 		return file + ":" + localName;
 	}
 
-	private static RastDiff diff(String commitUrl, boolean debug) throws Exception, IOException {
+	private static CstDiff diff(String commitUrl, boolean debug) throws Exception, IOException {
 		String[] url = commitUrl.split("/commit/");
 		String commit = url[1];
 		String project = url[0].substring(url[0].lastIndexOf("/") + 1);
@@ -207,37 +207,37 @@ public class ComputeRecallJs {
 		GitHelper gh = new GitHelper();
 		try (JsParser parser = new JsParser();
 			Repository repo = gh.openRepository(repoFolder)) {
-			RastComparator rastComparator = new RastComparator(parser);
+			CstComparator cstComparator = new CstComparator(parser);
 			
 			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, commit, parser.getAllowedFilesFilter());
 			if (debug) {
-				return rastComparator.compare(sources.getBefore(), sources.getAfter(), new Monitor());
+				return cstComparator.compare(sources.getBefore(), sources.getAfter(), new Monitor());
 			} else {
-				return rastComparator.compare(sources);
+				return cstComparator.compare(sources);
 			}
 		}
 	}
 	
-	private static class Monitor implements RastComparatorMonitor {
+	private static class Monitor implements CstComparatorMonitor {
 		
 		@Override
-		public void beforeCompare(RastRootHelper<?> before, RastRootHelper<?> after) {
+		public void beforeCompare(CstRootHelper<?> before, CstRootHelper<?> after) {
 			after.printRelationships(System.out);
 		}
 		
-		public void reportDiscardedMatch(RastNode n1, RastNode n2, double score) {
+		public void reportDiscardedMatch(CstNode n1, CstNode n2, double score) {
 			System.out.println(String.format("Threshold %.3f\t%s%s", score, format(n1), format(n2)));
 		}
 		
-		public void reportDiscardedConflictingMatch(RastNode n1, RastNode n2) {
+		public void reportDiscardedConflictingMatch(CstNode n1, CstNode n2) {
 			System.out.println(String.format("Conflicting match\t%s%s", format(n1), format(n2)));
 		}
 		
-		public void reportDiscardedExtract(RastNode n1, RastNode n2, double score) {
+		public void reportDiscardedExtract(CstNode n1, CstNode n2, double score) {
 			System.out.println(String.format("Extract threshold %.3f\t%s%s", format(n1), format(n2)));
 		}
 		
-		public void reportDiscardedInline(RastNode n1, RastNode n2, double score) {
+		public void reportDiscardedInline(CstNode n1, CstNode n2, double score) {
 			System.out.println(String.format("Inline threshold %.3f\t%s%s", format(n1), format(n2)));
 		}
 	}

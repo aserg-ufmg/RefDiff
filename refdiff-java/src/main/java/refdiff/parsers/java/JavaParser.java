@@ -10,9 +10,9 @@ import java.util.Optional;
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastRoot;
-import refdiff.core.rast.Stereotype;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.Stereotype;
 import refdiff.parsers.CstParser;
 
 public class JavaParser implements CstParser {
@@ -27,7 +27,7 @@ public class JavaParser implements CstParser {
 	}
 
 	@Override
-	public RastRoot parse(SourceFileSet sources) throws Exception {
+	public CstRoot parse(SourceFileSet sources) throws Exception {
 		List<String> javaFiles = new ArrayList<>();
 		Optional<Path> optBasePath = sources.getBasePath();
 		if (!optBasePath.isPresent()) {
@@ -51,7 +51,7 @@ public class JavaParser implements CstParser {
 		return sdModel.getRoot();
 	}
 
-	public static String getKey(RastNode node) {
+	public static String getKey(CstNode node) {
 		String parentName;
 		if (node.getParent().isPresent()) {
 			parentName = getKey(node.getParent().get()) + ".";

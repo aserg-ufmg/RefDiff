@@ -2,13 +2,13 @@ package refdiff.core.diff.similarity;
 
 import java.util.List;
 
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 
 public interface SourceRepresentationBuilder<T> {
 	
-	T buildForNode(RastNode node, boolean isBefore, List<String> tokenizedSourceCode);
+	T buildForNode(CstNode node, boolean isBefore, List<String> tokenizedSourceCode);
 	
-	T buildForName(RastNode node, boolean isBefore);
+	T buildForName(CstNode node, boolean isBefore);
 	
 	T buildForFragment(List<String> tokenizedSourceCode);
 	

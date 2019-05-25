@@ -19,14 +19,14 @@ import com.eclipsesource.v8.V8Object;
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.SourceFile;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.rast.HasChildrenNodes;
-import refdiff.core.rast.Location;
-import refdiff.core.rast.RastNode;
-import refdiff.core.rast.RastNodeRelationship;
-import refdiff.core.rast.RastNodeRelationshipType;
-import refdiff.core.rast.RastRoot;
-import refdiff.core.rast.TokenPosition;
-import refdiff.core.rast.TokenizedSource;
+import refdiff.core.cst.HasChildrenNodes;
+import refdiff.core.cst.Location;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstNodeRelationship;
+import refdiff.core.cst.CstNodeRelationshipType;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.TokenPosition;
+import refdiff.core.cst.TokenizedSource;
 import refdiff.parsers.CstParser;
 
 public class JsParser implements CstParser, Closeable {
@@ -51,13 +51,13 @@ public class JsParser implements CstParser, Closeable {
 	}
 	
 	@Override
-	public RastRoot parse(SourceFileSet sources) throws Exception {
+	public CstRoot parse(SourceFileSet sources) throws Exception {
 		try {
-			RastRoot root = new RastRoot();
+			CstRoot root = new CstRoot();
 			this.nodeCounter = 0;
 			for (SourceFile sourceFile : sources.getSourceFiles()) {
 				String content = sources.readContent(sourceFile);
-				getRast(root, sourceFile, content, sources);
+				getCst(root, sourceFile, content, sources);
 			}
 			return root;
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class JsParser implements CstParser, Closeable {
 		}
 	}
 	
-	private void getRast(RastRoot root, SourceFile sourceFile, String content, SourceFileSet sources) throws Exception {
+	private void getCst(CstRoot root, SourceFile sourceFile, String content, SourceFileSet sources) throws Exception {
 		try {
 			V8Object babelAst = (V8Object) this.nodeJs.getRuntime().executeJSFunction("parse", content);
 			
@@ -77,14 +77,14 @@ public class JsParser implements CstParser, Closeable {
 				root.addTokenizedFile(tokenizedSource);
 				
 				// System.out.println(String.format("Done in %d ms", System.currentTimeMillis() - timestamp));
-				Map<String, Set<RastNode>> callerMap = new HashMap<>();
-				getRast(0, root, sourceFile, content, astRoot, callerMap);
+				Map<String, Set<CstNode>> callerMap = new HashMap<>();
+				getCst(0, root, sourceFile, content, astRoot, callerMap);
 				
 				root.forEachNode((calleeNode, depth) -> {
 					if (calleeNode.getType().equals(JsNodeType.FUNCTION) && callerMap.containsKey(calleeNode.getLocalName())) {
-						Set<RastNode> callerNodes = callerMap.get(calleeNode.getLocalName());
-						for (RastNode callerNode : callerNodes) {
-							root.getRelationships().add(new RastNodeRelationship(RastNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
+						Set<CstNode> callerNodes = callerMap.get(calleeNode.getLocalName());
+						for (CstNode callerNode : callerNodes) {
+							root.getRelationships().add(new CstNodeRelationship(CstNodeRelationshipType.USE, callerNode.getId(), calleeNode.getId()));
 						}
 					}
 				});
@@ -111,7 +111,7 @@ public class JsParser implements CstParser, Closeable {
 		return tokenizedSource;
 	}
 	
-	private void getRast(int depth, HasChildrenNodes container, SourceFile sourceFile, String fileContent, JsValueV8 babelAst, Map<String, Set<RastNode>> callerMap) throws Exception {
+	private void getCst(int depth, HasChildrenNodes container, SourceFile sourceFile, String fileContent, JsValueV8 babelAst, Map<String, Set<CstNode>> callerMap) throws Exception {
 		if (!babelAst.has("type")) {
 			throw new RuntimeException("object is not an AST node");
 		}
@@ -122,7 +122,7 @@ public class JsParser implements CstParser, Closeable {
 		if (BabelNodeHandler.RAST_NODE_HANDLERS.containsKey(type)) {
 			BabelNodeHandler handler = BabelNodeHandler.RAST_NODE_HANDLERS.get(type);
 			
-			if (handler.isRastNode(babelAst)) {
+			if (handler.isCstNode(babelAst)) {
 				JsValueV8 mainNode = handler.getMainNode(babelAst);
 				
 				int begin = mainNode.get("start").asInt();
@@ -130,8 +130,8 @@ public class JsParser implements CstParser, Closeable {
 				int bodyBegin = begin;
 				int bodyEnd = end;
 				
-				RastNode rastNode = new RastNode(++nodeCounter);
-				rastNode.setType(handler.getType(babelAst));
+				CstNode cstNode = new CstNode(++nodeCounter);
+				cstNode.setType(handler.getType(babelAst));
 				JsValueV8 bodyNode = handler.getBodyNode(babelAst);
 				if (bodyNode.isDefined()) {
 					if (bodyNode.has("range")) {
@@ -144,18 +144,18 @@ public class JsParser implements CstParser, Closeable {
 					}
 				}
 				
-				rastNode.setLocation(Location.of(path, begin, end, bodyBegin, bodyEnd, fileContent));
-				rastNode.setLocalName(handler.getLocalName(rastNode, babelAst));
-				rastNode.setSimpleName(handler.getSimpleName(rastNode, babelAst));
-				rastNode.setNamespace(handler.getNamespace(rastNode, babelAst));
-				rastNode.setStereotypes(handler.getStereotypes(rastNode, babelAst));
-				rastNode.setParameters(handler.getParameters(rastNode, babelAst));
-				container.addNode(rastNode);
-				container = rastNode;
+				cstNode.setLocation(Location.of(path, begin, end, bodyBegin, bodyEnd, fileContent));
+				cstNode.setLocalName(handler.getLocalName(cstNode, babelAst));
+				cstNode.setSimpleName(handler.getSimpleName(cstNode, babelAst));
+				cstNode.setNamespace(handler.getNamespace(cstNode, babelAst));
+				cstNode.setStereotypes(handler.getStereotypes(cstNode, babelAst));
+				cstNode.setParameters(handler.getParameters(cstNode, babelAst));
+				container.addNode(cstNode);
+				container = cstNode;
 				children = Collections.singletonList(bodyNode);
 			}
 		} else if ("CallExpression".equals(type)) {
-			extractCalleeNameFromCallExpression(babelAst, callerMap, (RastNode) container);
+			extractCalleeNameFromCallExpression(babelAst, callerMap, (CstNode) container);
 		}
 		
 		if (children == null) {
@@ -170,21 +170,21 @@ public class JsParser implements CstParser, Closeable {
 		for (JsValueV8 value : children) {
 			if (value.isObject()) {
 				if (value.has("type")) {
-					getRast(depth + 1, container, sourceFile, fileContent, value, callerMap);
+					getCst(depth + 1, container, sourceFile, fileContent, value, callerMap);
 				}
 			}
 			if (value.isArray()) {
 				for (int i = 0; i < value.size(); i++) {
 					JsValueV8 element = value.get(i);
 					if (element.has("type")) {
-						getRast(depth + 1, container, sourceFile, fileContent, element, callerMap);
+						getCst(depth + 1, container, sourceFile, fileContent, element, callerMap);
 					}
 				}
 			}
 		}
 	}
 	
-	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, Set<RastNode>> callerMap, RastNode container) {
+	private void extractCalleeNameFromCallExpression(JsValueV8 callExpresionNode, Map<String, Set<CstNode>> callerMap, CstNode container) {
 		JsValueV8 callee = callExpresionNode.get("callee");
 		if (callee.get("type").asString().equals("MemberExpression")) {
 			JsValueV8 property = callee.get("property");

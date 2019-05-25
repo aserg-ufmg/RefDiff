@@ -1,21 +1,21 @@
 package refdiff.parsers.c;
 
 import static org.junit.Assert.*;
-import static refdiff.test.util.RastDiffMatchers.*;
+import static refdiff.test.util.CstDiffMatchers.*;
 
 import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import refdiff.core.diff.RastComparator;
-import refdiff.core.diff.RastDiff;
+import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
-import refdiff.core.rast.RastNode;
+import refdiff.core.cst.CstNode;
 
-public class TestRastComparator {
+public class TestCstComparator {
 	
 	private CParser parser = new CParser();
 	
@@ -119,7 +119,7 @@ public class TestRastComparator {
 	
 	@Test
 	public void shouldMatchMoveRenameFunction() throws Exception {
-		RastDiff diff = diff("moveRenameFunction");
+		CstDiff diff = diff("moveRenameFunction");
 		
 		assertThat(diff, containsOnly(
 			relationship(RelationshipType.SAME, node("file.c"), node("file.c")),
@@ -132,8 +132,8 @@ public class TestRastComparator {
 				.findFirst()
 				.get();
 		
-		RastNode nodeBefore = relationship.getNodeBefore();
-		RastNode nodeAfter = relationship.getNodeAfter();
+		CstNode nodeBefore = relationship.getNodeBefore();
+		CstNode nodeAfter = relationship.getNodeAfter();
 		
 		assertEquals(nodeBefore.getType(), "FunctionDeclaration");
 		assertEquals(nodeAfter.getType(), "FunctionDeclaration");
@@ -141,7 +141,7 @@ public class TestRastComparator {
 	
 	@Test
 	public void shouldMatchMoveRenameFile() throws Exception {
-		RastDiff diff = diff("moveRenameFile");
+		CstDiff diff = diff("moveRenameFile");
 		
 		assertThat(diff, containsOnly(
 			relationship(RelationshipType.SAME, node("folder1/file1.c", "main()"), node("folder2/file2.c", "main()")),
@@ -153,18 +153,18 @@ public class TestRastComparator {
 				.findFirst()
 				.get();
 		
-		RastNode nodeBefore = relationship.getNodeBefore();
-		RastNode nodeAfter = relationship.getNodeAfter();
+		CstNode nodeBefore = relationship.getNodeBefore();
+		CstNode nodeAfter = relationship.getNodeAfter();
 		
 		assertEquals(nodeBefore.getType(), "Program");
 		assertEquals(nodeAfter.getType(), "Program");
 	}
 	
-	private RastDiff diff(String folder) throws Exception {
+	private CstDiff diff(String folder) throws Exception {
 		String basePath = "test-data/c/" + folder;
 		SourceFileSet sourcesBefore = SourceFolder.from(Paths.get(basePath, "v0"), ".c", ".h");
 		SourceFileSet sourcesAfter = SourceFolder.from(Paths.get(basePath, "v1"), ".c", ".h");
-		RastComparator comparator = new RastComparator(parser);
+		CstComparator comparator = new CstComparator(parser);
 		return comparator.compare(sourcesBefore, sourcesAfter);
 	}
 	

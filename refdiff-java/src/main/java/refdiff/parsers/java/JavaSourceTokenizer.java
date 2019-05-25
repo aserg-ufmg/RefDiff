@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.compiler.IScanner;
 import org.eclipse.jdt.core.compiler.ITerminalSymbols;
 import org.eclipse.jdt.core.compiler.InvalidInputException;
 
-import refdiff.core.rast.TokenPosition;
+import refdiff.core.cst.TokenPosition;
 
 public class JavaSourceTokenizer {
 	
