@@ -1,65 +1,87 @@
 # RefDiff
 
-RefDiff is a tool to detect refactorings applied to Java code in git repositories.
+RefDiff is a tool to mine refactorings in the commit history of git repositories.
+Currently, three programming languages are supported: Java, JavaScript, and C.
 
-The following types of refactoring are supported:
+RefDiff finds relationships between code elements of two given revisions of the
+project. Relationships indicate the both elements are the same, or that a refactoring
+operation involving them was applied. The following relationship types are supported:
 
-* Rename Type
-* Move Type
-* Move and Rename Type 
-* Extract Supertype
-* Rename Method 
-* Change Method Signature 
-* Pull Up Method 
-* Push Down Method 
-* Move Method 
-* Extract Method 
-* Inline Method 
-* Pull Up Field 
-* Push Down Field 
-* Move Field 
+* Same
+* Convert Type
+* Change Signature of Method/Function
+* Pull Up Method
+* Push Down Method
+* Rename
+* Move
+* Move and Rename
+* Extract Supertype (e.g., Class/Interface)
+* Extract Method/Function
+* Inline Method/Function
 
 
-## Usage
-
-The easiest way to get RefDiff is from the Mavel Central. Declare it as a dependency in your build system (Maven, Gradle, etc). For example:
+## Getting started
 
 ```
-<dependency>
-  <groupId>com.github.aserg-ufmg</groupId>
-  <artifactId>refdiff-core</artifactId>
-  <version>0.1.1</version>
-</dependency>
+git clone https://github.com/aserg-ufmg/RefDiff.git
 ```
 
-Then, you can detect refactoring in a certain repository/commit using the following code:
+Use gradle to create the Eclipse IDE project metadata.
+
+```
+cd RefDiff
+gradlew eclipse
+```
+
+Import all projects within `RefDiff` folder to Eclipse. Then, see the examples 
+in `RefDiffExample.java` from `refdiff-example`.
+
+You can detect refactorings in a certain repository/commit using the following code:
 
 ```java
-RefDiff refDiff = new RefDiff();
-GitService gitService = new GitServiceImpl(); 
-try (Repository repository = gitService.cloneIfNotExists("C:/tmp/clojure", "https://github.com/refdiff-data/clojure.git")) {
-    List<SDRefactoring> refactorings = refDiff.detectAtCommit(repository, "17217a1");
-    for (SDRefactoring refactoring : refactorings) {
-        System.out.println(refactoring.toString());
-    }
+private static void runExamples() throws Exception {
+	// This is a temp folder to clone or checkout git repositories.
+	File tempFolder = new File("temp");
+
+	// Creates a RefDiff instance configured with the JavaScript parser.
+	JsParser jsParser = new JsParser();
+	RefDiff refDiffJs = new RefDiff(jsParser);
+
+	// Clone the angular.js GitHub repo.
+	File angularJsRepo = refDiffJs.cloneGitRepository(
+		new File(tempFolder, "angular.js"),
+		"https://github.com/refdiff-study/angular.js.git");
+
+	// You can compute the relationships between the code elements in a commit with
+	// its previous commit. The result of this operation is a CstDiff object, which
+	// contains all relationships between CstNodes. Relationships whose type is different
+	// from RelationshipType.SAME are refactorings.
+	CstDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
+	printRefactorings("Refactorings found in angular.js 2636105", diffForCommit);
+}
+private static void printRefactorings(String headLine, CstDiff diff) {
+	System.out.println(headLine);
+	for (Relationship rel : diff.getRefactoringRelationships()) {
+		System.out.println(rel.getStandardDescription());
+	}
 }
 ```
 
-See more details in [this tutorial](doc/Tutorial1.md)
+You can also mine recatorings from the commit history:
 
-## Example
+```java
+// You can also mine refactoring from the commit history. In this example we navigate
+// the commit graph backwards up to 5 commits. Merge commits are skipped.
+refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
+	printRefactorings("Refactorings found in angular.js " + commit.getId().name(), diff);
+});
+```
+
+## Example data
 
 The following figure shows the number of refactorings detected by RefDiff when executed over all commits of [JUnit4](https://github.com/junit-team/junit4).
 
 ![Junit4 results](https://github.com/aserg-ufmg/RefDiff/blob/master/junit4-refdiff.png)
-
-## Building from the source code
-
-RefDiff uses Gradle as the build system. If you would like to work with the source code of RefDiff, clone the repository and run the following command inside the folder:
-
-    ./gradlew eclipse
-
-This will create Eclipse metadata for the project. Now, you can import the project refdiff-core into Eclipse IDE and work with the source code.
 
 
 ## Publications
