@@ -30,7 +30,7 @@ public class RefDiffExample {
 		
 		// You can compute the relationships between the code elements in a commit with
 		// its previous commit. The result of this operation is a CstDiff object, which
-		// contains all relationships between CstNode's. Relationships whose type is different
+		// contains all relationships between CstNodes. Relationships whose type is different
 		// from RelationshipType.SAME are refactorings.
 		CstDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
 		printRefactorings("Refactorings found in angular.js 2636105", diffForCommit);
