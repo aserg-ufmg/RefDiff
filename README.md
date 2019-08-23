@@ -69,7 +69,7 @@ private static void printRefactorings(String headLine, CstDiff diff) {
 }
 ```
 
-You can also mine recatorings from the commit history:
+You can also mine refactorings from the commit history:
 
 ```java
 // You can also mine refactoring from the commit history. In this example we navigate
