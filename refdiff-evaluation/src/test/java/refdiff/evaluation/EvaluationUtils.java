@@ -5,15 +5,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.revwalk.RevTree;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.treewalk.TreeWalk;
 
+import refdiff.core.cst.CstNode;
 import refdiff.core.diff.CstComparator;
 import refdiff.core.diff.CstComparator.DiffBuilder;
 import refdiff.core.diff.CstComparatorMonitor;
@@ -24,7 +29,6 @@ import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
-import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.parsers.java.JavaParser;
 import refdiff.parsers.java.NodeTypes;
@@ -60,7 +64,7 @@ public class EvaluationUtils {
 		
 		GitHelper gitHelper = new GitHelper();
 		try (
-			Repository repo = gitHelper.openRepository(repoFolder);
+			Repository repo = GitHelper.openRepository(repoFolder);
 			RevWalk rw = new RevWalk(repo)) {
 			
 			RevCommit revCommit = rw.parseCommit(repo.resolve(commit));
@@ -84,6 +88,15 @@ public class EvaluationUtils {
 	
 	public RefactoringSet runRefDiff(String project, String commit, Map<KeyPair, String> explanations, RefactoringSet expected) throws Exception {
 		
+		PairBeforeAfter<SourceFolder> sourceBeforeAfter = getSourceBeforeAfter(project, commit);
+		
+		RefactoringSetBuilder rsBuilder = new RefactoringSetBuilder(project, commit, expected, explanations);
+		comparator.compare(sourceBeforeAfter.getBefore(), sourceBeforeAfter.getAfter(), rsBuilder);
+		
+		return rsBuilder.getRs();
+	}
+
+	public PairBeforeAfter<SourceFolder> getSourceBeforeAfter(String project, String commit) {
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
 		String checkoutFolderV1 = checkoutFolder(tempFolder, project, commit, "v1");
 		
@@ -95,18 +108,14 @@ public class EvaluationUtils {
 		
 		SourceFolder sourceSetBefore = SourceFolder.from(Paths.get(checkoutFolderV0), ".java");
 		SourceFolder sourceSetAfter = SourceFolder.from(Paths.get(checkoutFolderV1), ".java");
-		
-		RefactoringSetBuilder rsBuilder = new RefactoringSetBuilder(project, commit, expected, explanations);
-		comparator.compare(sourceSetBefore, sourceSetAfter, rsBuilder);
-		
-		return rsBuilder.getRs();
+		PairBeforeAfter<SourceFolder> sourceBeforeAfter = new PairBeforeAfter<SourceFolder>(sourceSetBefore, sourceSetAfter);
+		return sourceBeforeAfter;
 	}
 
 	public RefactoringSet runRefDiffGit(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
 		File repoFolder = repoFolder(project);
-		GitHelper gitHelper = new GitHelper();
-		try (Repository repo = gitHelper.openRepository(repoFolder)) {
-			PairBeforeAfter<SourceFileSet> sourcesBeforeAfter = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, comparator.getParser().getAllowedFilesFilter());
+		try (Repository repo = GitHelper.openRepository(repoFolder)) {
+			PairBeforeAfter<SourceFileSet> sourcesBeforeAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, commit, comparator.getParser().getAllowedFilesFilter());
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			
 			RefactoringSetBuilder rsBuilder = new RefactoringSetBuilder(project, commit, null, explanations);
@@ -317,9 +326,8 @@ public class EvaluationUtils {
 		File fCheckoutFolderV1 = new File(checkoutFolderV1);
 		if (!fCheckoutFolderV0.exists() || !fCheckoutFolderV1.exists()) {
 			// ExternalProcess.execute(fRepoFolder, "git", "fetch", "--depth", "2", "origin", commit);
-			GitHelper gitHelper = new GitHelper();
-			try (Repository repo = gitHelper.openRepository(fRepoFolder)) {
-				PairBeforeAfter<SourceFileSet> sourcesPair = gitHelper.getSourcesBeforeAndAfterCommit(repo, commit, new FilePathFilter(Arrays.asList(".java")));
+			try (Repository repo = GitHelper.openRepository(fRepoFolder)) {
+				PairBeforeAfter<SourceFileSet> sourcesPair = GitHelper.getSourcesBeforeAndAfterCommit(repo, commit, new FilePathFilter(Arrays.asList(".java")));
 				if (!fCheckoutFolderV0.exists() && fCheckoutFolderV0.mkdirs()) {
 					sourcesPair.getBefore().materializeAt(fCheckoutFolderV0.toPath());
 				}
@@ -330,6 +338,45 @@ public class EvaluationUtils {
 				throw new RuntimeException(String.format("Error checking out %s %s:\n%s", project, commit, e.getMessage()), e);
 			}
 		}
+	}
+	
+	public PairBeforeAfter<Set<String>> getRepositoryDirectoriesBeforeAfter(String project, String commit) {
+		File fRepoFolder = repoFolder(project);
+		try (Repository repo = GitHelper.openRepository(fRepoFolder)) {
+			try (RevWalk rw = new RevWalk(repo)) {
+				RevCommit commitAfter = rw.parseCommit(repo.resolve(commit));
+				if (commitAfter.getParentCount() != 1) {
+					throw new RuntimeException("Commit should have one parent");
+				}
+				RevCommit commitBefore = rw.parseCommit(commitAfter.getParent(0));
+				return new PairBeforeAfter<>(extractRepositoryDirectories(repo, commitBefore), extractRepositoryDirectories(repo, commitAfter));
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+	
+	private Set<String> extractRepositoryDirectories(Repository repository, RevCommit commit) throws Exception {
+		Set<String> repositoryDirectories = new HashSet<>();
+		RevTree parentTree = commit.getTree();
+		try (TreeWalk treeWalk = new TreeWalk(repository)) {
+			treeWalk.addTree(parentTree);
+			treeWalk.setRecursive(true);
+			while (treeWalk.next()) {
+				String pathString = treeWalk.getPathString();
+				if (pathString.endsWith(".java")) {
+					String directory = pathString.substring(0, pathString.lastIndexOf("/"));
+					repositoryDirectories.add(directory);
+					// include sub-directories
+					String subDirectory = new String(directory);
+					while (subDirectory.contains("/")) {
+						subDirectory = subDirectory.substring(0, subDirectory.lastIndexOf("/"));
+						repositoryDirectories.add(subDirectory);
+					}
+				}
+			}
+		}
+		return repositoryDirectories;
 	}
 	
 	private File repoFolder(String project) {
