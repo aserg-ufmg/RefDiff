@@ -22,6 +22,8 @@ operation involving them was applied. The following relationship types are suppo
 
 ## Getting started
 
+Before building the project, make sure you have git and a Java Development Kit (JDK) version 8 installed in your system. Also, set the JAVA_HOME environment variable to point to the installation directory of the desired JDK.
+
 ```
 git clone https://github.com/aserg-ufmg/RefDiff.git
 ```
@@ -67,7 +69,7 @@ private static void printRefactorings(String headLine, CstDiff diff) {
 }
 ```
 
-You can also mine recatorings from the commit history:
+You can also mine refactorings from the commit history:
 
 ```java
 // You can also mine refactoring from the commit history. In this example we navigate
