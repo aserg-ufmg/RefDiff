@@ -45,4 +45,9 @@ public class RefDiff {
 		}
 	}
 	
+	public CstDiff computeDiffBetweenRevisions(Repository repo, RevCommit revBefore, RevCommit revAfter) {
+		PairBeforeAfter<SourceFileSet> beforeAndAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, revBefore, revAfter, fileFilter);
+		return comparator.compare(beforeAndAfter);
+	}
+	
 }
