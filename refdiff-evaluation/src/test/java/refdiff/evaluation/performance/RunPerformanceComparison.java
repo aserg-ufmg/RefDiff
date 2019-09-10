@@ -1,8 +1,8 @@
 package refdiff.evaluation.performance;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
@@ -16,6 +16,7 @@ import gr.uom.java.xmi.UMLModel;
 import gr.uom.java.xmi.UMLModelASTReader;
 import gr.uom.java.xmi.diff.UMLModelDiff;
 import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstDiff;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.EvaluationUtils;
@@ -40,27 +41,53 @@ public class RunPerformanceComparison {
 	public void run() throws Exception {
 		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
-		
-		for (int i = 0; i < expected.size(); i++) {
-			RefactoringSet rs = expected.get(i);
-			String project = rs.getProject();
-			String commit = rs.getRevision();
-			
-			System.out.printf("%d/%d - ", i + 1, expected.size());
-			evalUtils.prepareSourceCodeLightCheckout(project, commit);
-			
-			PairBeforeAfter<SourceFolder> sources = evalUtils.getSourceBeforeAfter(project, commit);
-			PairBeforeAfter<Set<String>> folders = evalUtils.getRepositoryDirectoriesBeforeAfter(project, commit);
-			
-			MeasuredResponse<List<Refactoring>> measuredRefactorings = measureTime(() -> runRMiner(sources, folders));
-			printOutput(System.out, project, commit, measuredRefactorings);
-			if (i > 10)
-				break;
+		measureRefDiff(expected, "data/performance/refdiff2.txt");
+		measureRMiner(expected, "data/performance/rminer2.txt");
+	}
+
+	private void measureRMiner(List<RefactoringSet> expected, String file) throws FileNotFoundException {
+		try (PrintStream out = new PrintStream(file)) {
+			for (int i = 0; i < expected.size(); i++) {
+				RefactoringSet rs = expected.get(i);
+				String project = rs.getProject();
+				String projectName = project.substring("https://github.com/icse18-refactorings/".length(), project.length() - 4);
+				String commit = rs.getRevision();
+				
+				System.out.printf("%d/%d - ", i + 1, expected.size());
+				//evalUtils.prepareSourceCodeLightCheckout(project, commit);
+				
+				PairBeforeAfter<SourceFolder> sources = evalUtils.getSourceBeforeAfter(project, commit);
+				PairBeforeAfter<Set<String>> folders = evalUtils.getRepositoryDirectoriesBeforeAfter(project, commit);
+				
+//				MeasuredResponse<CstDiff> measuredResponse = measureTime(() -> evalUtils.runRefDiff(sources));
+				MeasuredResponse<List<Refactoring>> measuredResponse = measureTime(() -> runRMiner(sources, folders));
+				printOutput(out, projectName, commit, measuredResponse.getTime());
+			}
 		}
 	}
 	
-	private void printOutput(PrintStream out, String project, String commit, MeasuredResponse<List<Refactoring>> measuredRefactorings) {
-		out.printf("%s\t%s\t%d\n", project, commit, measuredRefactorings.getTime());
+	private void measureRefDiff(List<RefactoringSet> expected, String file) throws FileNotFoundException {
+		try (PrintStream out = new PrintStream(file)) {
+			for (int i = 0; i < expected.size(); i++) {
+				RefactoringSet rs = expected.get(i);
+				String project = rs.getProject();
+				String projectName = project.substring("https://github.com/icse18-refactorings/".length(), project.length() - 4);
+				String commit = rs.getRevision();
+				
+				System.out.printf("%d/%d - ", i + 1, expected.size());
+				//evalUtils.prepareSourceCodeLightCheckout(project, commit);
+				
+				PairBeforeAfter<SourceFolder> sources = evalUtils.getSourceBeforeAfter(project, commit);
+				
+				MeasuredResponse<CstDiff> measuredResponse = measureTime(() -> evalUtils.runRefDiff(sources));
+//				MeasuredResponse<List<Refactoring>> measuredResponse = measureTime(() -> runRMiner(sources, folders));
+				printOutput(out, projectName, commit, measuredResponse.getTime());
+			}
+		}
+	}
+	
+	private void printOutput(PrintStream out, String project, String commit, long time) {
+		out.printf("%s\t%s\t%d\n", project, commit, time);
 	}
 	
 	private List<Refactoring> runRMiner(PairBeforeAfter<SourceFolder> sources, PairBeforeAfter<Set<String>> folders) {

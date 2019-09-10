@@ -95,6 +95,10 @@ public class EvaluationUtils {
 		
 		return rsBuilder.getRs();
 	}
+	
+	public CstDiff runRefDiff(PairBeforeAfter<SourceFolder> sourceBeforeAfter) {
+		return comparator.compare(sourceBeforeAfter.getBefore(), sourceBeforeAfter.getAfter());
+	}
 
 	public PairBeforeAfter<SourceFolder> getSourceBeforeAfter(String project, String commit) {
 		String checkoutFolderV0 = checkoutFolder(tempFolder, project, commit, "v0");
