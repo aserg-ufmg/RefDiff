@@ -99,9 +99,9 @@ public class GitHelper {
 		}
 	}
 	
-	public static void forEachNonMergeCommit(Repository repo, int maxDepth, BiConsumer<RevCommit, RevCommit> function) {
+	public static void forEachNonMergeCommit(Repository repo, String startAt, int maxDepth, BiConsumer<RevCommit, RevCommit> function) {
 		try (RevWalk revWalk = new RevWalk(repo)) {
-			RevCommit head = revWalk.parseCommit(repo.resolve("HEAD"));
+			RevCommit head = revWalk.parseCommit(repo.resolve(startAt));
 			revWalk.markStart(head);
 			revWalk.setRevFilter(RevFilter.NO_MERGES);
 			
@@ -119,6 +119,10 @@ public class GitHelper {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public static void forEachNonMergeCommit(Repository repo, int maxDepth, BiConsumer<RevCommit, RevCommit> function) {
+		forEachNonMergeCommit(repo, "HEAD", maxDepth, function);
 	}
 	
 	public static void checkout(Repository repository, String commitId) throws Exception {
