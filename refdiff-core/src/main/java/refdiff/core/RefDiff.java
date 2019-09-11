@@ -36,13 +36,22 @@ public class RefDiff {
 	}
 	
 	public void computeDiffForCommitHistory(File gitRepository, int maxDepth, BiConsumer<RevCommit, CstDiff> diffConsumer) {
+		computeDiffForCommitHistory(gitRepository, "HEAD", maxDepth, diffConsumer);
+	}
+	
+	public void computeDiffForCommitHistory(File gitRepository, String startAt, int maxDepth, BiConsumer<RevCommit, CstDiff> diffConsumer) {
 		try (Repository repo = GitHelper.openRepository(gitRepository)) {
-			GitHelper.forEachNonMergeCommit(repo, maxDepth, (revBefore, revAfter) -> {
+			GitHelper.forEachNonMergeCommit(repo, startAt, maxDepth, (revBefore, revAfter) -> {
 				PairBeforeAfter<SourceFileSet> beforeAndAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, revBefore, revAfter, fileFilter);
 				CstDiff diff = comparator.compare(beforeAndAfter);
 				diffConsumer.accept(revAfter, diff);
 			});
 		}
+	}
+	
+	public CstDiff computeDiffBetweenRevisions(Repository repo, RevCommit revBefore, RevCommit revAfter) {
+		PairBeforeAfter<SourceFileSet> beforeAndAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, revBefore, revAfter, fileFilter);
+		return comparator.compare(beforeAndAfter);
 	}
 	
 }
