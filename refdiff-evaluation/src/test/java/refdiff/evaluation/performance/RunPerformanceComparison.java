@@ -41,7 +41,7 @@ public class RunPerformanceComparison {
 	public void run() throws Exception {
 		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
-		measureRefDiff(expected, "data/performance/refdiff2.txt");
+		//measureRefDiff(expected, "data/performance/refdiff2.txt");
 		measureRMiner(expected, "data/performance/rminer2.txt");
 	}
 
@@ -58,10 +58,11 @@ public class RunPerformanceComparison {
 				
 				PairBeforeAfter<SourceFolder> sources = evalUtils.getSourceBeforeAfter(project, commit);
 				PairBeforeAfter<Set<String>> folders = evalUtils.getRepositoryDirectoriesBeforeAfter(project, commit);
+				int changedFiles = sources.getBefore().getSourceFiles().size() + sources.getAfter().getSourceFiles().size();
 				
 //				MeasuredResponse<CstDiff> measuredResponse = measureTime(() -> evalUtils.runRefDiff(sources));
 				MeasuredResponse<List<Refactoring>> measuredResponse = measureTime(() -> runRMiner(sources, folders));
-				printOutput(out, projectName, commit, measuredResponse.getTime());
+				printOutput(out, "RMiner", projectName, commit, measuredResponse.getTime(), changedFiles);
 			}
 		}
 	}
@@ -78,16 +79,17 @@ public class RunPerformanceComparison {
 				//evalUtils.prepareSourceCodeLightCheckout(project, commit);
 				
 				PairBeforeAfter<SourceFolder> sources = evalUtils.getSourceBeforeAfter(project, commit);
+				int changedFiles = sources.getBefore().getSourceFiles().size() + sources.getAfter().getSourceFiles().size();
 				
 				MeasuredResponse<CstDiff> measuredResponse = measureTime(() -> evalUtils.runRefDiff(sources));
 //				MeasuredResponse<List<Refactoring>> measuredResponse = measureTime(() -> runRMiner(sources, folders));
-				printOutput(out, projectName, commit, measuredResponse.getTime());
+				printOutput(out, "RefDiff", projectName, commit, measuredResponse.getTime(), changedFiles);
 			}
 		}
 	}
 	
-	private void printOutput(PrintStream out, String project, String commit, long time) {
-		out.printf("%s\t%s\t%d\n", project, commit, time);
+	private void printOutput(PrintStream out, String tool, String project, String commit, long time, int changedFiles) {
+		out.printf("%s\t%s\t%s\t%d\t%d\n", tool, project, commit, time, changedFiles);
 	}
 	
 	private List<Refactoring> runRMiner(PairBeforeAfter<SourceFolder> sources, PairBeforeAfter<Set<String>> folders) {
