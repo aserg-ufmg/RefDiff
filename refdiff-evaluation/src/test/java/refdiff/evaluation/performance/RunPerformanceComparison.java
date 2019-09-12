@@ -41,12 +41,17 @@ public class RunPerformanceComparison {
 	public void run() throws Exception {
 		IcseDataset data = new IcseDataset();
 		List<RefactoringSet> expected = data.getExpected();
-		//measureRefDiff(expected, "data/performance/refdiff2.txt");
+		measureRefDiff(expected, "data/performance/refdiff1.txt");
+		measureRMiner(expected, "data/performance/rminer1.txt");
+		measureRefDiff(expected, "data/performance/refdiff2.txt");
 		measureRMiner(expected, "data/performance/rminer2.txt");
+		measureRefDiff(expected, "data/performance/refdiff3.txt");
+		measureRMiner(expected, "data/performance/rminer3.txt");
 	}
 
 	private void measureRMiner(List<RefactoringSet> expected, String file) throws FileNotFoundException {
 		try (PrintStream out = new PrintStream(file)) {
+			out.printf("tool\tproject\tcommit\ttime\tfiles\n");
 			for (int i = 0; i < expected.size(); i++) {
 				RefactoringSet rs = expected.get(i);
 				String project = rs.getProject();
@@ -69,6 +74,7 @@ public class RunPerformanceComparison {
 	
 	private void measureRefDiff(List<RefactoringSet> expected, String file) throws FileNotFoundException {
 		try (PrintStream out = new PrintStream(file)) {
+			out.printf("tool\tproject\tcommit\ttime\tfiles\n");
 			for (int i = 0; i < expected.size(); i++) {
 				RefactoringSet rs = expected.get(i);
 				String project = rs.getProject();
