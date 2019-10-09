@@ -3,7 +3,10 @@ package refdiff.parsers.js;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -39,7 +42,13 @@ public class JsParser implements CstParser, Closeable {
 	public JsParser() throws Exception {
 		this.nodeJs = NodeJS.createNodeJS();
 		URL nodeModulesUrl = this.getClass().getClassLoader().getResource("node_modules");
-		nodeModules = new File(nodeModulesUrl.getFile());
+		if (nodeModulesUrl.toString().startsWith("jar:")) {
+			String tempFolder = System.getProperty("java.io.tmpdir");
+			nodeModules = new File(tempFolder, "refdiff_node_modules");
+			createFilesIfDoesNotExist("@babel/parser/package.json", "@babel/parser/lib/index.js", "@babel/parser/bin/babel-parser.js");
+		} else {
+			nodeModules = new File(nodeModulesUrl.getFile());
+		}
 		this.babel = this.nodeJs.require(new File(nodeModules, "@babel/parser"));
 		
 		this.nodeJs.getRuntime().add("babelParser", this.babel);
@@ -50,6 +59,21 @@ public class JsParser implements CstParser, Closeable {
 		this.nodeJs.getRuntime().executeVoidScript("function toJson(object) {return JSON.stringify(object);}");
 	}
 	
+	private void createFilesIfDoesNotExist(String... paths) {
+		ClassLoader cl = this.getClass().getClassLoader();
+		for (String path : paths) {
+			Path destPath = nodeModules.toPath().resolve(path);
+			if (!Files.exists(destPath)) {
+				try (InputStream is = cl.getResourceAsStream("node_modules/" + path)) {
+					Files.createDirectories(destPath.getParent());
+					Files.copy(is, destPath);
+				} catch (IOException e) {
+					throw new RuntimeException(String.format("Could not copy %s to %s", path, nodeModules.toString()), e);
+				}
+			}
+		}
+	}
+
 	@Override
 	public CstRoot parse(SourceFileSet sources) throws Exception {
 		try {
