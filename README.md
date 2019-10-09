@@ -28,12 +28,14 @@ Before building the project, make sure you have git and a Java Development Kit (
 git clone https://github.com/aserg-ufmg/RefDiff.git
 ```
 
-Use gradle to create the Eclipse IDE project metadata.
+Use gradle to create the Eclipse IDE project metadata. For example, in Windows systems:
 
 ```
 cd RefDiff
 gradlew eclipse
 ```
+
+Note that in Linux or Mac you should run `./gradlew eclipse` to run the gradle wrapper.
 
 Import all projects within `RefDiff` folder to Eclipse. Then, see the examples 
 in `RefDiffExample.java` from `refdiff-example`.
