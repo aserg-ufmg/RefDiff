@@ -1,0 +1,17 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'eclipse'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.github.java-diff-utils:java-diff-utils:4.0'
+    compile project(':refdiff-core')
+    compile project(':refdiff-js')
+    compile project(':refdiff-java')
+    compile project(':refdiff-c')
+    testCompile 'junit:junit:4.11'
+}

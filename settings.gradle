@@ -1,1 +1,1 @@
-include 'refdiff-core', 'refdiff-js', 'refdiff-java', 'refdiff-c', 'refdiff-evaluation', 'refdiff-example'
+include 'refdiff-core', 'refdiff-js', 'refdiff-java', 'refdiff-c', 'refdiff-evaluation', 'refdiff-example', 'refdiff-viewer'
