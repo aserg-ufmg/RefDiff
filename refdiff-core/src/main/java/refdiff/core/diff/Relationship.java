@@ -64,7 +64,7 @@ public class Relationship {
 	}
 	
 	private String formatWithLineNum(CstNode node) {
-		return String.format("%s %s at %s:%d", node.getType(), node.getLocalName(), node.getLocation().getFile(), node.getLocation().getLine());
+		return String.format("%s %s at %s:%d", node.getType().replace("Declaration", ""), node.getLocalName(), node.getLocation().getFile(), node.getLocation().getLine());
 	}
 	
 	private String format(CstNode node) {

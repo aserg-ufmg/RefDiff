@@ -18,6 +18,7 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 	private final RefactoringType refactoringType;
 	private final String entityBefore;
 	private final String entityAfter;
+	private String description;
 	private final Relationship cstRelationship;
 	private String comment;
 	private EvaluationDetails evaluationDetails;
@@ -214,6 +215,14 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 
 	public void setEvaluationDetails(EvaluationDetails evaluationDetails) {
 		this.evaluationDetails = evaluationDetails;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

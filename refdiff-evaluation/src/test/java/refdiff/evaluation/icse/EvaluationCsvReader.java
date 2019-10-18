@@ -50,15 +50,21 @@ public class EvaluationCsvReader {
 					if (evaluatedAsTp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship tpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
-						expectedRefactorings.add(tpInstance);
 						tpInstance.setEvaluationDetails(new EvaluationDetails(row));
+						if (!notExpectedRefactorings.getRefactorings().contains(tpInstance)) {
+							expectedRefactorings.add(tpInstance);
+							//System.out.println("ERROR TP: " + tpInstance.toString());
+						}
 					}
 					boolean evaluatedAsFp = "FP".equals(row.resultFinal) || "FP?".equals(row.resultFinal);
 					if (evaluatedAsFp) {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship fpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
 						fpInstance.setEvaluationDetails(new EvaluationDetails(row));
-						notExpectedRefactorings.add(fpInstance);
+						if (!expectedRefactorings.getRefactorings().contains(fpInstance)) {
+							notExpectedRefactorings.add(fpInstance);
+							//System.out.println("ERROR FP: " + fpInstance.toString());
+						}
 					}
 				}
 			}

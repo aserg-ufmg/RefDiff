@@ -46,7 +46,7 @@ public class RunIcseEval {
 				evalUtils.prepareSourceCodeLightCheckout(project, commit);
 				
 				Map<KeyPair, String> explanations = new HashMap<>();
-				rc.compareWith("RefDiff", evalUtils.runRefDiff(project, commit, explanations, rs));
+				rc.compareWith("RefDiff2", evalUtils.runRefDiff(project, commit, explanations, rs));
 				rc.addFnExplanations(project, commit, explanations);
 			} catch (RuntimeException e) {
 				errorCount++;
@@ -57,11 +57,11 @@ public class RunIcseEval {
 			count++;
 		}
 		
-		rc.compareWith("RMiner", data.getrMinerRefactorings());
 		rc.compareWith("RefDiff1", data.getRefDiffRefactorings());
+		rc.compareWith("RMiner", data.getrMinerRefactorings());
 		
 		System.out.println("\n\n\n");
-		rc.printDetails(System.out, refactoringTypes, "RefDiff", RunIcseEval::printDetails);
+		rc.printDetails2(System.out, refactoringTypes);
 		System.out.println();
 		rc.printSummary(System.out, refactoringTypes);
 		
