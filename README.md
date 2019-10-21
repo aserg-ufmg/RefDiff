@@ -115,20 +115,18 @@ printRefactorings(
 You can implement the `CstParser` interface to support other programming languages.
 Soon, we will provide a detailed tutorial on how to do this.
 
+## Evaluation
 
-## Example data
+Our evaluation with an oracle containing 3,248 real refactoring instances from public Java repositories shows that RefDiff’s precision is 96% and recall is 80%:
 
-The following figure shows the number of refactorings detected by RefDiff when executed over all commits of [JUnit4](https://github.com/junit-team/junit4).
+![Java evaluation results](https://github.com/aserg-ufmg/RefDiff/blob/master/java-eval.png)
 
-![Junit4 results](https://github.com/aserg-ufmg/RefDiff/blob/master/junit4-refdiff.png)
-
+The data used in the evaluation is available in [this spreadsheet](refdiff-evaluation/data/java-evaluation/evaluation-data-public.xlsx).
 
 ## Publications
 
 The algorithm RefDiff uses is described in details in the following paper:
 
 * Danilo Silva, Marco Tulio Valente. [RefDiff: Detecting Refactorings in Version Histories](http://www.dcc.ufmg.br/~mtov/pub/2017-msr.pdf). In 14th International Conference on Mining Software Repositories (MSR), 2017.
-
-The data used in the evaluation is available in [this spreadsheet](refdiff-evaluation/data/evaluation-oracle.xlsx).
 
 Learn more about our research group at http://aserg.labsoft.dcc.ufmg.br/
