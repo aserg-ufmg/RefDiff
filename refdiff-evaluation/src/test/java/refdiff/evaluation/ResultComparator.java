@@ -252,11 +252,11 @@ public class ResultComparator {
 	public void printDetails2(PrintStream out, EnumSet<RefactoringType> refTypesToConsider) {
 		String[] labels = { "TN", "FP", "FN", "TP" };
 		EnumSet<RefactoringType> ignore = EnumSet.complementOf(refTypesToConsider);
-		String header = String.format("Commit\tRef Type\tDescription\tRelationship\tCst Node Before\tCst Node After");
+		String header = String.format("Commit\tRef Type\tDescription\tRelationship\tCst Node Before\tCst Node After\tExpected?");
 		for (String groupId : this.groupIds) {
 			header += "\t" + groupId;
 		}
-		//header += "\tCause";
+		header += "\tEvaluators\tEvaluators classification";
 		out.println(header);
 		
 		for (RefactoringSet expected : expectedMap.values()) {
@@ -285,10 +285,10 @@ public class ResultComparator {
 					int correct = expectedRefactorings.contains(r) ? 2 : 0;
 					
 					out.print(id);
-//					out.print('\t');
-//					out.print(r.getRefactoringType().getDisplayName());
 					out.print('\t');
-					out.print(format(r));
+					out.print(r.getRefactoringType().getDisplayName());
+//					out.print('\t');
+//					out.print(format(r));
 					out.print('\t');
 					String refDescriptionFromOracle = (correct > 0 ? expectedRefactorings : notExpectedRefactorings).stream().filter(i -> i.equals(r)).findFirst().map(i -> i.getDescription()).orElse("");
 					out.print(refDescriptionFromOracle);
@@ -301,6 +301,8 @@ public class ResultComparator {
 						out.print("\t\t");
 					}
 					
+					out.print('\t');
+					out.print(correct > 0 ? "T" : "F");
 					
 					for (String groupId : this.groupIds) {
 						CompareResult result = resultMap.get(getResultId(expected.getProject(), expected.getRevision(), groupId));
@@ -317,19 +319,34 @@ public class ResultComparator {
 						}
 					}
 					
-					out.print('\t');
 					EvaluationDetails evaluationDetails = findEvaluationDetails(r, expected.getRefactorings(), notExpectedRefactorings);
 					if (evaluationDetails != null && evaluationDetails.evaluators != null) {								
+						String evaluators = evaluationDetails.evaluators;
+						out.print('\t');
 						out.print(evaluationDetails.evaluators);
+						
+						out.print('\t');
+						String classification;
+						if ("Gustavo/Ricardo".equals(evaluators)) {
+							classification = evaluationDetails.resultA + "/" + evaluationDetails.resultB;
+						} else if ("Gustavo/Danilo".equals(evaluators)) {
+							classification = evaluationDetails.resultA + "/" + evaluationDetails.resultC;
+						} else /* if ("Ricardo/Danilo".equals(evaluators)) */ {
+							classification = evaluationDetails.resultB + "/" + evaluationDetails.resultC;
+						}
+						out.print(classification.replace("?", ""));
+					} else {
+						out.print('\t');
+						out.print('\t');
 					}
 					
-					out.print('\t');
-					if (evaluationDetails != null) {
-						String fpCause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings, evaluationDetails);
-						if (!"?".equals(fpCause)) {
-							out.print(fpCause);
-						}
-					}
+//					out.print('\t');
+//					if (evaluationDetails != null) {
+//						String fpCause = findFpCause(r, expected.getRefactorings(), notExpectedRefactorings, evaluationDetails);
+//						if (!"?".equals(fpCause)) {
+//							out.print(fpCause);
+//						}
+//					}
 					
 					out.println();
 				}

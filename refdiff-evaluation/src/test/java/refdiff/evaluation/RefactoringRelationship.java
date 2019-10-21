@@ -34,6 +34,7 @@ public class RefactoringRelationship implements Comparable<RefactoringRelationsh
 		this.refactoringType = refactoringType;
 		this.entityBefore = normalize(entityBefore).trim();
 		this.entityAfter = normalize(entityAfter).trim();
+		this.description = RefactoringDescriptionParser.format(refactoringType, this.entityBefore, this.entityAfter);
 		this.cstRelationship = cstRelationship;
 	}
 	

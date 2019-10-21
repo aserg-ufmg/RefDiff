@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import refdiff.evaluation.EvaluationDetails;
+import refdiff.evaluation.RefactoringDescriptionParser;
 import refdiff.evaluation.RefactoringRelationship;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
@@ -51,6 +52,7 @@ public class EvaluationCsvReader {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship tpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
 						tpInstance.setEvaluationDetails(new EvaluationDetails(row));
+						tpInstance.setDescription(RefactoringDescriptionParser.format(refType, row.n1, row.n2));
 						if (!notExpectedRefactorings.getRefactorings().contains(tpInstance)) {
 							expectedRefactorings.add(tpInstance);
 							//System.out.println("ERROR TP: " + tpInstance.toString());
@@ -61,6 +63,7 @@ public class EvaluationCsvReader {
 						RefactoringType refType = RefactoringType.fromName(row.refType);
 						RefactoringRelationship fpInstance = new RefactoringRelationship(refType, row.n1, row.n2);
 						fpInstance.setEvaluationDetails(new EvaluationDetails(row));
+						fpInstance.setDescription(RefactoringDescriptionParser.format(refType, row.n1, row.n2));
 						if (!expectedRefactorings.getRefactorings().contains(fpInstance)) {
 							notExpectedRefactorings.add(fpInstance);
 							//System.out.println("ERROR FP: " + fpInstance.toString());

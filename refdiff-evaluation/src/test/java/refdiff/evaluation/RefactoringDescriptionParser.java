@@ -32,6 +32,38 @@ public class RefactoringDescriptionParser {
 		new ParserDefinition(RefactoringType.EXTRACT_SUPERCLASS, "Extract Superclass (.+) from class (.+)", type(2), type(1))
 	};
 	
+	public static String format(RefactoringType type, String entityBefore, String entityAfter) {
+		switch (type) {
+		case RENAME_CLASS: return String.format("Rename Class %s renamed to %s", entityBefore, entityAfter);
+		case MOVE_CLASS: return String.format("Move Class %s moved to %s", entityBefore, entityAfter);
+		case EXTRACT_OPERATION: return String.format("Extract Method %s extracted from %s in class %s", methodOf(entityAfter), methodOf(entityBefore), classOf(entityBefore));
+		case RENAME_METHOD: return String.format("Rename Method %s renamed to %s in class %s", methodOf(entityBefore), methodOf(entityAfter), classOf(entityBefore));
+		case INLINE_OPERATION: return String.format("Inline Method %s inlined to %s in class %s", methodOf(entityBefore), methodOf(entityAfter), classOf(entityAfter));
+		case MOVE_OPERATION: return String.format("Move Method %s from class %s to %s from class %s", methodOf(entityBefore), classOf(entityBefore), methodOf(entityAfter), classOf(entityAfter));
+		case PULL_UP_OPERATION: return String.format("Pull Up Method %s from class %s to %s from class %s", methodOf(entityBefore), classOf(entityBefore), methodOf(entityAfter), classOf(entityAfter));
+		case PUSH_DOWN_OPERATION: return String.format("Push Down Method %s from class %s to %s from class %s", methodOf(entityBefore), classOf(entityBefore), methodOf(entityAfter), classOf(entityAfter));
+		case EXTRACT_INTERFACE: return String.format("Extract Interface %s from class %s", entityAfter, entityBefore);
+		case EXTRACT_SUPERCLASS: return String.format("Extract Superclass %s from class %s", entityAfter, entityBefore);
+		default: throw new RuntimeException("Format no implemented for " + type);
+		}
+	}
+	
+	private static String classOf(String entity) {
+		int pos = entity.lastIndexOf('.');
+		if (pos == -1) {
+			throw new RuntimeException("Could not extract class of " + entity);
+		}
+		return entity.substring(0, pos);
+	}
+	
+	private static String methodOf(String entity) {
+		int pos = entity.lastIndexOf('.');
+		if (pos == -1) {
+			throw new RuntimeException("Could not extract method of " + entity);
+		}
+		return entity.substring(pos + 1);
+	}
+
 	private static class ParserDefinition {
 		final RefactoringType type;
 		final Pattern regex;
