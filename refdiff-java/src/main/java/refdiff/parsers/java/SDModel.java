@@ -37,26 +37,6 @@ public class SDModel {
 		root.getRelationships().add(new CstNodeRelationship(CstNodeRelationshipType.SUBTYPE, type.getId(), supertype.getId()));
 	}
 
-//	public CstNode createCompilationUnit(String packageName, String sourceFolder, String sourceFilePath, CompilationUnit compilationUnit) {
-//		CstNode cstNode = new CstNode(++nodeCounter);
-//		cstNode.setType("CompilationUnit");
-//		cstNode.setLocation(new Location(sourceFilePath, 0, compilationUnit.getLength()));
-//		cstNode.setLocalName(sourceFilePath);
-//		root.getNodes().add(cstNode);
-//		return cstNode;
-//	}
-
-//	public CstNode createAnonymousType(HasChildrenNodes parent, String sourceFilePath, String name, ASTNode ast) {
-//		CstNode cstNode = new CstNode(++nodeCounter);
-//		cstNode.setType(ast.getClass().getSimpleName());
-//		cstNode.setLocation(new Location(sourceFilePath, ast.getStartPosition(), ast.getStartPosition() + ast.getLength()));
-//		cstNode.setLocalName(name);
-//		cstNode.setSimpleName("");
-//		parent.addNode(cstNode);
-//		keyMap.put(JavaParser.getKey(cstNode), cstNode);
-//		return cstNode;
-//	}
-
 	public CstNode createInnerType(String typeName, HasChildrenNodes parent, String sourceFilePath, CharSequence fileContent, AbstractTypeDeclaration ast, String nodeType) {
 		return createType(typeName, "", parent, sourceFilePath, fileContent, ast, nodeType);
 	}

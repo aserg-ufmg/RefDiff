@@ -93,9 +93,6 @@ public class SDModelBuilder {
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 				}
-				// catch (DuplicateEntityException e) {
-				// debug e;
-				// }
 			}
 		};
 		parser.createASTs((String[]) filesArray, encodings, emptyArray, fileASTRequestor, null);
@@ -107,6 +104,7 @@ public class SDModelBuilder {
 	}
 	
 	private static ASTParser buildAstParser(String[] sourceFolders) {
+		@SuppressWarnings("deprecation")
 		ASTParser parser = ASTParser.newParser(AST.JLS8);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		Map<String, String> options = JavaCore.getOptions();
@@ -119,7 +117,7 @@ public class SDModelBuilder {
 		return parser;
 	}
 	
-	protected void processCompilationUnit(String sourceFilePath, char[] fileContent, CompilationUnit compilationUnit, SDModel model) {
+	private void processCompilationUnit(String sourceFilePath, char[] fileContent, CompilationUnit compilationUnit, SDModel model) {
 		PackageDeclaration packageDeclaration = compilationUnit.getPackage();
 		String packageName = "";
 		if (packageDeclaration != null) {

@@ -10,18 +10,18 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import refdiff.core.diff.CstRootHelper;
-import refdiff.core.io.SourceFolder;
-import refdiff.core.cst.Location;
 import refdiff.core.cst.CstNode;
 import refdiff.core.cst.CstNodeRelationship;
 import refdiff.core.cst.CstNodeRelationshipType;
 import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.Location;
+import refdiff.core.diff.CstRootHelper;
+import refdiff.core.io.SourceFolder;
 import refdiff.parsers.CstParser;
 
 public class TestJavaParser {
 	
-	private CstParser parser = new JavaParserNoBindings();
+	private CstParser parser = new JavaParser();
 	
 	@Test
 	public void shouldParseFiles() throws Exception {

@@ -16,7 +16,7 @@ import refdiff.parsers.CstParser;
 
 public class TestCstComparator {
 	
-	private static CstParser parser = new JavaParserNoBindings();
+	private static CstParser parser = new JavaParser();
 	
 	@Test
 	public void shouldMatchExtractMethod() throws Exception {
