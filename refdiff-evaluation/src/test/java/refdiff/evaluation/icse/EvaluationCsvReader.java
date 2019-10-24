@@ -1,9 +1,11 @@
 package refdiff.evaluation.icse;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,7 +136,7 @@ public class EvaluationCsvReader {
 	
 	public static List<ResultCommit> readEvalRicardoGustavo() throws IOException, FileNotFoundException {
 		List<ResultCommit> list = new ArrayList<>();
-		try (BufferedReader br = new BufferedReader(new FileReader("data/java-evaluation/FixExtractBefore.txt"))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("data/java-evaluation/FixExtractBefore.txt"), StandardCharsets.UTF_8))) {
 			String line;
 			String commitUrl = "";
 			ResultCommit resultCommit = null;
