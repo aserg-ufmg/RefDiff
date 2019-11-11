@@ -16,7 +16,7 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.JsParser;
+import refdiff.parsers.js.JsPlugin;
 
 public class MineRefactoringsFromRepoJs {
 	
@@ -67,7 +67,7 @@ public class MineRefactoringsFromRepoJs {
 		
 		System.out.println("Mining " + cloneUrl);
 		try (
-			JsParser parser = new JsParser();
+			JsPlugin parser = new JsPlugin();
 			Repository repository = gh.openRepository(repoFolder)) {
 			
 			CstComparator cstComparator = new CstComparator(parser);

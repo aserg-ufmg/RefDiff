@@ -25,14 +25,14 @@ import refdiff.core.cst.CstNodeRelationshipType;
 import refdiff.core.cst.CstRoot;
 import refdiff.core.cst.Stereotype;
 import refdiff.core.util.PairBeforeAfter;
-import refdiff.parsers.CstParser;
+import refdiff.parsers.LanguagePlugin;
 
 public class CstComparator {
 	
-	private final CstParser parser;
+	private final LanguagePlugin languagePlugin;
 	
-	public CstComparator(CstParser parser) {
-		this.parser = parser;
+	public CstComparator(LanguagePlugin parser) {
+		this.languagePlugin = parser;
 	}
 	
 	public CstDiff compare(PairBeforeAfter<SourceFileSet> beforeAndAfter) {
@@ -72,8 +72,8 @@ public class CstComparator {
 		
 		DiffBuilder(SourceRepresentationBuilder<T> srb, SourceFileSet sourcesBefore, SourceFileSet sourcesAfter, CstComparatorMonitor monitor) throws Exception {
 			this.srb = srb;
-			CstRoot cstRootBefore = parser.parse(sourcesBefore);
-			CstRoot cstRootAfter = parser.parse(sourcesAfter);
+			CstRoot cstRootBefore = languagePlugin.parse(sourcesBefore);
+			CstRoot cstRootAfter = languagePlugin.parse(sourcesAfter);
 			this.diff = new CstDiff(cstRootBefore, cstRootAfter);
 			this.before = new CstRootHelper<>(this.diff.getBefore(), sourcesBefore, srb, true);
 			this.after = new CstRootHelper<>(this.diff.getAfter(), sourcesAfter, srb, false);
@@ -772,8 +772,8 @@ public class CstComparator {
 		*/
 	}
 
-	public CstParser getParser() {
-		return parser;
+	public LanguagePlugin getLanguagePlugin() {
+		return languagePlugin;
 	}
 
 }

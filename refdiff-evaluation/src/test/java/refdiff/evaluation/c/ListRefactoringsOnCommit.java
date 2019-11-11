@@ -14,7 +14,7 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.c.CParser;
+import refdiff.parsers.c.CPlugin;
 
 public class ListRefactoringsOnCommit {
 	
@@ -44,7 +44,7 @@ public class ListRefactoringsOnCommit {
 //			ExternalProcess.execute(new File(tempFolder), "git", "clone", repositoryUrl, repoFolder.getPath(), "--bare", "--shallow-since=2007-01-01");
 		}
 		
-		CParser parser = new CParser();
+		CPlugin parser = new CPlugin();
 		CstComparator cstComparator = new CstComparator(parser);
 		GitHelper gh = new GitHelper();
 		

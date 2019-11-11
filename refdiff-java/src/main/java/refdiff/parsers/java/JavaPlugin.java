@@ -13,16 +13,16 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.cst.CstNode;
 import refdiff.core.cst.CstRoot;
 import refdiff.core.cst.Stereotype;
-import refdiff.parsers.CstParser;
+import refdiff.parsers.LanguagePlugin;
 
-public class JavaParser implements CstParser {
+public class JavaPlugin implements LanguagePlugin {
 
 	private File tempDir = null;
 	private final JavaSourceTokenizer tokenizer = new JavaSourceTokenizer();
 	
-	public JavaParser() {}
+	public JavaPlugin() {}
 	
-	public JavaParser(File tempDir) {
+	public JavaPlugin(File tempDir) {
 		this.tempDir = tempDir;
 	}
 

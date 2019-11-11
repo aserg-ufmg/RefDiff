@@ -12,7 +12,7 @@ import refdiff.core.cst.CstRoot;
 public class JavaParserExample {
 	
 	public static void main(String[] args) throws Exception {
-		JavaParser parser = new JavaParser();
+		JavaPlugin parser = new JavaPlugin();
 		
 		Path basePath = Paths.get("test-data/parser/java");
 		SourceFolder sources = SourceFolder.from(basePath, Paths.get("p2/Foo.java"), Paths.get("p1/Bar.java"));

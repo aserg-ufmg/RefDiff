@@ -18,7 +18,7 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.js.JsParser;
+import refdiff.parsers.js.JsPlugin;
 
 public class ComputeRecallJs {
 	
@@ -205,7 +205,7 @@ public class ComputeRecallJs {
 		//ExternalProcess.execute(repoFolder, "git", "fetch", "--depth=5000");
 		
 		GitHelper gh = new GitHelper();
-		try (JsParser parser = new JsParser();
+		try (JsPlugin parser = new JsPlugin();
 			Repository repo = gh.openRepository(repoFolder)) {
 			CstComparator cstComparator = new CstComparator(parser);
 			

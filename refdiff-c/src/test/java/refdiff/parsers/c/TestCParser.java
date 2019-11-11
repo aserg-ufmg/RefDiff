@@ -22,7 +22,7 @@ import refdiff.core.cst.CstRoot;
 
 public class TestCParser {
 
-	private CParser parser = new CParser();
+	private CPlugin parser = new CPlugin();
 
 	@Test
 	public void shouldParseSimpleFile() throws Exception {

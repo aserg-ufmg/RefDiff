@@ -13,7 +13,7 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.c.CParser;
+import refdiff.parsers.c.CPlugin;
 
 public class MineRefactoringsFromRepo {
 	
@@ -27,7 +27,7 @@ public class MineRefactoringsFromRepo {
 			ExternalProcess.execute(new File(tempFolder), "git", "clone", cloneUrl, repoFolder.getPath(), "--bare", "--depth=1000");
 		}
 		
-		CParser parser = new CParser();
+		CPlugin parser = new CPlugin();
 		CstComparator cstComparator = new CstComparator(parser);
 		GitHelper gh = new GitHelper();
 		

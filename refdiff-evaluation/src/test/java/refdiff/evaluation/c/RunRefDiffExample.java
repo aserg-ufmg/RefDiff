@@ -14,13 +14,13 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.c.CParser;
+import refdiff.parsers.c.CPlugin;
 
 public class RunRefDiffExample {
 	
 	public static void main(String[] args) throws Exception {
 		
-		CParser parser = new CParser();
+		CPlugin parser = new CPlugin();
 		CstComparator cstComparator = new CstComparator(parser);
 		
 		String tempFolder = "D:/tmp";

@@ -30,16 +30,16 @@ import refdiff.core.cst.CstNodeRelationshipType;
 import refdiff.core.cst.CstRoot;
 import refdiff.core.cst.TokenPosition;
 import refdiff.core.cst.TokenizedSource;
-import refdiff.parsers.CstParser;
+import refdiff.parsers.LanguagePlugin;
 
-public class JsParser implements CstParser, Closeable {
+public class JsPlugin implements LanguagePlugin, Closeable {
 	
 	private NodeJS nodeJs;
 	private int nodeCounter = 0;
 	private File nodeModules;
 	private V8Object babel;
 	
-	public JsParser() throws Exception {
+	public JsPlugin() throws Exception {
 		this.nodeJs = NodeJS.createNodeJS();
 		URL nodeModulesUrl = this.getClass().getClassLoader().getResource("node_modules");
 		if (nodeModulesUrl.toString().startsWith("jar:")) {

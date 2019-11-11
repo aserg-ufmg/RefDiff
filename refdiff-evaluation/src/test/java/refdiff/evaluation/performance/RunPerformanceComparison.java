@@ -23,7 +23,7 @@ import refdiff.evaluation.EvaluationUtils;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.icse.IcseDataset;
-import refdiff.parsers.java.JavaParser;
+import refdiff.parsers.java.JavaPlugin;
 
 public class RunPerformanceComparison {
 	
@@ -31,7 +31,7 @@ public class RunPerformanceComparison {
 	private EvaluationUtils evalUtils;
 	
 	public RunPerformanceComparison(String tempFolder) {
-		evalUtils = new EvaluationUtils(new CstComparator(new JavaParser()), tempFolder);
+		evalUtils = new EvaluationUtils(new CstComparator(new JavaPlugin()), tempFolder);
 	}
 	
 	public static void main(String[] args) throws Exception {

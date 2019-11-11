@@ -5,9 +5,9 @@ import java.io.File;
 import refdiff.core.RefDiff;
 import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
-import refdiff.parsers.c.CParser;
-import refdiff.parsers.java.JavaParser;
-import refdiff.parsers.js.JsParser;
+import refdiff.parsers.c.CPlugin;
+import refdiff.parsers.java.JavaPlugin;
+import refdiff.parsers.js.JsPlugin;
 
 public class RefDiffExample {
 	
@@ -19,9 +19,9 @@ public class RefDiffExample {
 		// This is a temp folder to clone or checkout git repositories.
 		File tempFolder = new File("temp");
 		
-		// Creates a RefDiff instance configured with the JavaScript parser.
-		JsParser jsParser = new JsParser();
-		RefDiff refDiffJs = new RefDiff(jsParser);
+		// Creates a RefDiff instance configured with the JavaScript plugin.
+		JsPlugin jsPlugin = new JsPlugin();
+		RefDiff refDiffJs = new RefDiff(jsPlugin);
 		
 		// Clone the angular.js GitHub repo.
 		File angularJsRepo = refDiffJs.cloneGitRepository(
@@ -41,13 +41,13 @@ public class RefDiffExample {
 			printRefactorings("Refactorings found in angular.js " + commit.getId().name(), diff);
 		});
 		
-		// The JsParser initializes JavaScript runtime to run the Babel parser. We should close it shut down.
-		jsParser.close();
+		// The JsPlugin initializes JavaScript runtime to run the Babel parser. We should close it shut down.
+		jsPlugin.close();
 		
 		
-		// In this example, we use the parser for C.
-		CParser cParser = new CParser();
-		RefDiff refDiffC = new RefDiff(cParser);
+		// In this example, we use the plugin for C.
+		CPlugin cPlugin = new CPlugin();
+		RefDiff refDiffC = new RefDiff(cPlugin);
 		
 		File gitRepo = refDiffC.cloneGitRepository(
 			new File(tempFolder, "git"),
@@ -58,9 +58,9 @@ public class RefDiffExample {
 			refDiffC.computeDiffForCommit(gitRepo, "ba97aea1659e249a3a58ecc5f583ee2056a90ad8"));
 		
 		
-		// Now, we use the parser for Java.
-		JavaParser javaParser = new JavaParser(tempFolder);
-		RefDiff refDiffJava = new RefDiff(javaParser);
+		// Now, we use the plugin for Java.
+		JavaPlugin javaPlugin = new JavaPlugin(tempFolder);
+		RefDiff refDiffJava = new RefDiff(javaPlugin);
 		
 		File eclipseThemesRepo = refDiffC.cloneGitRepository(
 			new File(tempFolder, "eclipse-themes"),

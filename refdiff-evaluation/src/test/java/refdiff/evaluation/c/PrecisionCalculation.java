@@ -35,7 +35,7 @@ import refdiff.core.io.SourceFileSet;
 import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.parsers.c.CParser;
+import refdiff.parsers.c.CPlugin;
 
 public class PrecisionCalculation {
 
@@ -364,7 +364,7 @@ public class PrecisionCalculation {
 	
 	private static Set<Relationship> getRelationships(GitHelper gh, Repository repository, RevCommit commitBefore, RevCommit commitAfter) 
 			throws Exception {
-		CParser parser = new CParser();
+		CPlugin parser = new CPlugin();
 		CstComparator cstComparator = new CstComparator(parser);
 		
 		PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(

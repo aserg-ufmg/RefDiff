@@ -15,7 +15,7 @@ import refdiff.test.util.JsParserSingleton;
 
 public class TestCstComparatorJsParser {
 	
-	private JsParser parser = JsParserSingleton.get();
+	private JsPlugin parser = JsParserSingleton.get();
 	
 	@Test
 	public void shouldMatchWithSameNamePath() throws Exception {

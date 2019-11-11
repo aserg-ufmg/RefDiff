@@ -12,14 +12,14 @@ import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
-import refdiff.parsers.CstParser;
+import refdiff.parsers.LanguagePlugin;
 
 public class RefDiff {
 	
 	private final CstComparator comparator;
 	private final FilePathFilter fileFilter;
 	
-	public RefDiff(CstParser parser) {
+	public RefDiff(LanguagePlugin parser) {
 		this.comparator = new CstComparator(parser);
 		this.fileFilter = parser.getAllowedFilesFilter();
 	}

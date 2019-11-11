@@ -17,7 +17,7 @@ import refdiff.core.cst.CstNode;
 
 public class TestCstComparator {
 	
-	private CParser parser = new CParser();
+	private CPlugin parser = new CPlugin();
 	
 	@Test
 	public void shouldMatchSameFile() throws Exception {

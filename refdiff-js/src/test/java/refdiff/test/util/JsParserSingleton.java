@@ -1,15 +1,15 @@
 package refdiff.test.util;
 
-import refdiff.parsers.js.JsParser;
+import refdiff.parsers.js.JsPlugin;
 
 public class JsParserSingleton {
 	
-	private static JsParser instance = null;
+	private static JsPlugin instance = null;
 	
-	public static JsParser get() {
+	public static JsPlugin get() {
 		try {
 			if (instance == null) {
-				instance = new JsParser();
+				instance = new JsPlugin();
 			}
 			return instance; 
 		} catch (Exception e) {

@@ -14,7 +14,7 @@ import refdiff.evaluation.KeyPair;
 import refdiff.evaluation.RefactoringSet;
 import refdiff.evaluation.RefactoringType;
 import refdiff.evaluation.ResultComparator;
-import refdiff.parsers.java.JavaParser;
+import refdiff.parsers.java.JavaPlugin;
 
 public class RunIcseEval2 {
 	
@@ -22,7 +22,7 @@ public class RunIcseEval2 {
 	private EvaluationUtils evalUtils;
 	
 	public RunIcseEval2(String tempFolder) {
-		evalUtils = new EvaluationUtils(new CstComparator(new JavaParser()), tempFolder);
+		evalUtils = new EvaluationUtils(new CstComparator(new JavaPlugin()), tempFolder);
 	}
 
 	public static void main(String[] args) throws Exception {

@@ -13,7 +13,7 @@ import refdiff.core.io.SourceFolder;
 import refdiff.core.cst.CstRoot;
 
 public class TestTokenizer {
-	private CParser parser = new CParser();
+	private CPlugin parser = new CPlugin();
 	
 	@Test
 	public void shouldTokenize() throws Exception {

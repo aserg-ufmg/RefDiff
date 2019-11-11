@@ -17,11 +17,11 @@ import refdiff.core.cst.CstRoot;
 import refdiff.core.cst.Location;
 import refdiff.core.diff.CstRootHelper;
 import refdiff.core.io.SourceFolder;
-import refdiff.parsers.CstParser;
+import refdiff.parsers.LanguagePlugin;
 
 public class TestJavaParser {
 	
-	private CstParser parser = new JavaParser();
+	private LanguagePlugin parser = new JavaPlugin();
 	
 	@Test
 	public void shouldParseFiles() throws Exception {

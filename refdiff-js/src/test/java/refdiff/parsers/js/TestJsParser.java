@@ -23,7 +23,7 @@ import refdiff.test.util.JsParserSingleton;
 
 public class TestJsParser {
 	
-	private JsParser parser = JsParserSingleton.get();
+	private JsPlugin parser = JsParserSingleton.get();
 	
 	@Test
 	public void shouldParseSimpleFile() throws Exception {

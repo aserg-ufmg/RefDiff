@@ -30,12 +30,12 @@ import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.io.SourceFolder;
 import refdiff.core.util.PairBeforeAfter;
-import refdiff.parsers.java.JavaParser;
+import refdiff.parsers.java.JavaPlugin;
 import refdiff.parsers.java.NodeTypes;
 
 public class EvaluationUtils {
 	
-	private CstComparator comparator = new CstComparator(new JavaParser());
+	private CstComparator comparator = new CstComparator(new JavaPlugin());
 	private String tempFolder = "D:/tmp/";
 	/**
 	 * The ICSE dataset don't describe the qualified name of the extracted/inlined method.
@@ -74,7 +74,7 @@ public class EvaluationUtils {
 			List<String> filesV1 = new ArrayList<>();
 			Map<String, String> renamedFilesHint = new HashMap<>();
 			
-			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getParser().getAllowedFilesFilter());
+			gitHelper.fileTreeDiff(repo, revCommit, filesV0, filesV1, renamedFilesHint, false, comparator.getLanguagePlugin().getAllowedFilesFilter());
 			
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			
@@ -119,7 +119,7 @@ public class EvaluationUtils {
 	public RefactoringSet runRefDiffGit(String project, String commit, Map<KeyPair, String> explanations) throws Exception {
 		File repoFolder = repoFolder(project);
 		try (Repository repo = GitHelper.openRepository(repoFolder)) {
-			PairBeforeAfter<SourceFileSet> sourcesBeforeAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, commit, comparator.getParser().getAllowedFilesFilter());
+			PairBeforeAfter<SourceFileSet> sourcesBeforeAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, commit, comparator.getLanguagePlugin().getAllowedFilesFilter());
 			System.out.println(String.format("Computing diff for %s %s", project, commit));
 			
 			RefactoringSetBuilder rsBuilder = new RefactoringSetBuilder(project, commit, null, explanations);
@@ -222,8 +222,8 @@ public class EvaluationUtils {
 	}
 	
 	private KeyPair normalizeNodeKeys(CstNode n1, CstNode n2, boolean copyN1Parent, boolean copyN2Parent) {
-		String keyN1 = JavaParser.getKey(n1);
-		String keyN2 = JavaParser.getKey(n2);
+		String keyN1 = JavaPlugin.getKey(n1);
+		String keyN2 = JavaPlugin.getKey(n2);
 		
 		if (workAroundExtractAndInlineInconsistencies) {
 			if (copyN1Parent) {

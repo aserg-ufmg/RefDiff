@@ -19,15 +19,15 @@ import org.eclipse.cdt.core.parser.IncludeFileContentProvider;
 import org.eclipse.cdt.core.parser.ScannerInfo;
 import org.eclipse.core.runtime.CoreException;
 
-import refdiff.core.io.FilePathFilter;
-import refdiff.core.io.SourceFile;
-import refdiff.core.io.SourceFileSet;
 import refdiff.core.cst.CstRoot;
 import refdiff.core.cst.TokenPosition;
 import refdiff.core.cst.TokenizedSource;
-import refdiff.parsers.CstParser;
+import refdiff.core.io.FilePathFilter;
+import refdiff.core.io.SourceFile;
+import refdiff.core.io.SourceFileSet;
+import refdiff.parsers.LanguagePlugin;
 
-public class CParser implements CstParser {
+public class CPlugin implements LanguagePlugin {
 	
 	@Override
 	public CstRoot parse(SourceFileSet sources) throws Exception {

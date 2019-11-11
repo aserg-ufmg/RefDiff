@@ -12,11 +12,11 @@ import refdiff.core.diff.CstComparator;
 import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.SourceFolder;
-import refdiff.parsers.CstParser;
+import refdiff.parsers.LanguagePlugin;
 
 public class TestCstComparator {
 	
-	private static CstParser parser = new JavaParser();
+	private static LanguagePlugin parser = new JavaPlugin();
 	
 	@Test
 	public void shouldMatchExtractMethod() throws Exception {
