@@ -121,7 +121,11 @@ Our evaluation with an oracle containing 3,248 real refactoring instances from p
 
 ![Java evaluation results](https://github.com/aserg-ufmg/RefDiff/blob/master/java-eval.png)
 
-The data used in the evaluation is available in [this spreadsheet](refdiff-evaluation/data/java-evaluation/evaluation-data-public.xlsx).
+The data used in the evaluation is available in the following links:
+- [Java evaluation data](refdiff-evaluation/data/java-evaluation/evaluation-data-public.xlsx)
+- [C evaluation data](https://docs.google.com/spreadsheets/d/1uAMLA47u8k1C5p1vJ8hbovHpxRrlVRinpm8LmDKpVfU/edit?usp=sharing)
+- [JavaScript evaluation data](https://docs.google.com/spreadsheets/d/1gTcga3gG0oWvqEm0iUv1_6y5Epc9T6a-KSONpQ8z9ss/edit?usp=sharing)
+
 
 ## Publications
 
