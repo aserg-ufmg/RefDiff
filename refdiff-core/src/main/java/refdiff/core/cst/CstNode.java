@@ -10,6 +10,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+/**
+ * A node in the Code Structure Tree (CST).
+ * It represents a code element in the target programming language. For example, 
+ * in Java we represent classes, interfaces, enums, and methods as CST nodes.
+ */
 public class CstNode implements HasChildrenNodes {
 	private final int id;
 	private String type;
@@ -31,10 +36,16 @@ public class CstNode implements HasChildrenNodes {
 		return String.format("%s %s %s", location.toString(), type, localName);
 	}
 	
+	/**
+	 * @return An unique id of the node in the CST.
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * @return The type of the code element in the target programming language.
+	 */
 	public String getType() {
 		return type;
 	}
@@ -43,6 +54,9 @@ public class CstNode implements HasChildrenNodes {
 		this.type = type;
 	}
 	
+	/**
+	 * @return The location of the CST node in the source code.
+	 */
 	public Location getLocation() {
 		return location;
 	}
@@ -51,6 +65,18 @@ public class CstNode implements HasChildrenNodes {
 		this.location = location;
 	}
 	
+	/**
+	 * @return The declared name and signature of the code element that uniquely identifies it whithin its parent node.
+	 * For example, the local name of {@code m1} may be encoded as {@code "m1(int,String)"} in the Java example below.
+	 * 
+	 * <pre>
+	 * class A {
+	 *   void m1(int n, String message) {
+	 *     // body
+	 *   }
+	 * }
+	 * </pre>
+	 */
 	public String getLocalName() {
 		return localName;
 	}
@@ -59,6 +85,19 @@ public class CstNode implements HasChildrenNodes {
 		this.localName = logicalName;
 	}
 	
+	/**
+	 * 
+	 * @return The declared name of the code element.
+	 * For example, the simple name of {@code m1} is {@code "m1"} in the Java example below.
+	 * 
+	 * <pre>
+	 * class A {
+	 *   void m1(int n, String message) {
+	 *     // body
+	 *   }
+	 * }
+	 * </pre>
+	 */
 	public String getSimpleName() {
 		return simpleName;
 	}
@@ -66,7 +105,10 @@ public class CstNode implements HasChildrenNodes {
 	public void setSimpleName(String simpleName) {
 		this.simpleName = simpleName;
 	}
-	
+
+	/**
+	 * @return The children nodes of this node.
+	 */
 	public List<CstNode> getNodes() {
 		return nodes;
 	}
@@ -101,11 +143,17 @@ public class CstNode implements HasChildrenNodes {
 		this.parent = Optional.ofNullable(node);
 	}
 
+	/**
+	 * @return The parent node of this node. Top-level declarations dos not have a parent node.
+	 */
 	@JsonIgnore
 	public Optional<CstNode> getParent() {
 		return parent;
 	}
 
+	/**
+	 * @return The top-level ancestor node of this node.
+	 */
 	@JsonIgnore
 	public Optional<CstNode> getRootParent() {
 		if (!parent.isPresent()) {
@@ -120,6 +168,22 @@ public class CstNode implements HasChildrenNodes {
 		}
 	}
 	
+	/**
+	 * @return The prefix that should be appended to {#code getLocalName} to uniquely identify this node.
+	 * Nodes that have a parent should have a null namespace, i.e., only top-level declarations should have a namespace.
+	 * 
+	 * <p>In the example below, class {@code A} should have {@code "foo."} as namespace and "A" as local name.
+	 * 
+	 * <pre>
+	 * package foo;
+	 * 
+	 * public class A {
+	 *   void m1(int n, String message) {
+	 *     // body
+	 *   }
+	 * }
+	 * </pre>
+	 */
 	@JsonInclude(Include.NON_NULL)
 	public String getNamespace() {
 		return namespace;

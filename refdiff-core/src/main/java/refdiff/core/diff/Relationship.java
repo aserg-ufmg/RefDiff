@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import refdiff.core.cst.CstNode;
 
+/**
+ * Represents a relationship between a CST node before and a CST node after.
+ */
 public class Relationship {
 	
 	private final RelationshipType type;
@@ -22,18 +25,30 @@ public class Relationship {
 		this.similarity = similarity;
 	}
 	
+	/**
+	 * @return The type of the relationship.
+	 */
 	public RelationshipType getType() {
 		return type;
 	}
 	
+	/**
+	 * @return The CST node before.
+	 */
 	public CstNode getNodeBefore() {
 		return nodeBefore;
 	}
 	
+	/**
+	 * @return The CST node after.
+	 */
 	public CstNode getNodeAfter() {
 		return nodeAfter;
 	}
 	
+	/**
+	 * @return The similarity between both nodes (null if the nodes are not matched by similarity).
+	 */
 	public Double getSimilarity() {
 		return similarity;
 	}

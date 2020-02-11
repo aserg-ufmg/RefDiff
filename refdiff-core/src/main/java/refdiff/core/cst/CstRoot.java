@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
+/**
+ * The Code Structure Tree (CST) root object.
+ */
 public class CstRoot implements HasChildrenNodes {
 	
 	private List<CstNode> nodes = new ArrayList<>();
@@ -16,6 +19,9 @@ public class CstRoot implements HasChildrenNodes {
 	
 	private Map<String, TokenizedSource> tokenizedSource = new HashMap<>();
 	
+	/**
+	 * The top-level nodes of the CST.
+	 */
 	public List<CstNode> getNodes() {
 		return nodes;
 	}
@@ -29,6 +35,9 @@ public class CstRoot implements HasChildrenNodes {
 		this.tokenizedSource.put(tokenizedSource.getFile(), tokenizedSource);
 	}
 	
+	/**
+	 * @return The relationships between nodes within the CST.
+	 */
 	public Set<CstNodeRelationship> getRelationships() {
 		return relationships;
 	}
@@ -44,6 +53,9 @@ public class CstRoot implements HasChildrenNodes {
 		}
 	}
 
+	/**
+	 * @return A map of source file paths to tokenized source code.
+	 */
 	public Map<String, TokenizedSource> getTokenizedSource() {
 		return tokenizedSource;
 	}
