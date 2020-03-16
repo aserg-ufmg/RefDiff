@@ -11,3 +11,8 @@ dependencies {
     compile project(':refdiff-java')
     compile project(':refdiff-c')
 }
+
+task runExampleJs(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'refdiff.examples.RefDiffExampleJs'
+}
