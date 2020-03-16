@@ -47,9 +47,9 @@ private static void runExamples() throws Exception {
 	// This is a temp folder to clone or checkout git repositories.
 	File tempFolder = new File("temp");
 
-	// Creates a RefDiff instance configured with the JavaScript parser.
-	JsParser jsParser = new JsParser();
-	RefDiff refDiffJs = new RefDiff(jsParser);
+	// Creates a RefDiff instance configured with the JavaScript plugin.
+	JsPlugin jsPlugin = new JsPlugin();
+	RefDiff refDiffJs = new RefDiff(jsPlugin);
 
 	// Clone the angular.js GitHub repo.
 	File angularJsRepo = refDiffJs.cloneGitRepository(
@@ -81,12 +81,12 @@ refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
 });
 ```
 
-You can use different parsers to mine refactorings in other programming languages:
+You can use different language plugins to mine refactorings in other programming languages:
 
 ```java
-// In this example, we use the parser for C.
-CParser cParser = new CParser();
-RefDiff refDiffC = new RefDiff(cParser);
+// In this example, we use the plugin for C.
+CPlugin cPlugin = new CPlugin();
+RefDiff refDiffC = new RefDiff(cPlugin);
 
 File gitRepo = refDiffC.cloneGitRepository(
 	new File(tempFolder, "git"),
@@ -97,9 +97,9 @@ printRefactorings(
 	refDiffC.computeDiffForCommit(gitRepo, "ba97aea1659e249a3a58ecc5f583ee2056a90ad8"));
 
 
-// Now, we use the parser for Java.
-JavaParser javaParser = new JavaParser(tempFolder);
-RefDiff refDiffJava = new RefDiff(javaParser);
+// Now, we use the plugin for Java.
+JavaPlugin javaPlugin = new JavaPlugin(tempFolder);
+RefDiff refDiffJava = new RefDiff(javaPlugin);
 
 File eclipseThemesRepo = refDiffC.cloneGitRepository(
 	new File(tempFolder, "eclipse-themes"),
@@ -112,7 +112,7 @@ printRefactorings(
 
 ## Extending RefDiff to support other programming languages
 
-You can implement the `CstParser` interface to support other programming languages.
+You can implement the `LanguagePlugin` interface to support other programming languages.
 Soon, we will provide a detailed tutorial on how to do this.
 
 ## Evaluation
