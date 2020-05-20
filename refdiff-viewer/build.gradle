@@ -9,9 +9,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.github.java-diff-utils:java-diff-utils:4.0'
-    compile project(':refdiff-core')
-    compile project(':refdiff-js')
-    compile project(':refdiff-java')
-    compile project(':refdiff-c')
-    testCompile 'junit:junit:4.11'
+    implementation project(':refdiff-core')
+    implementation project(':refdiff-js')
+    implementation project(':refdiff-java')
+    implementation project(':refdiff-c')
+    testImplementation 'junit:junit:4.11'
 }

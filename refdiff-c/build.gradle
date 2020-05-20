@@ -1,17 +1,17 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'eclipse'
 }
 
 dependencies {
-    compile project(':refdiff-core')
+    api project(':refdiff-core')
     
-	testCompile 'junit:junit:4.11'
-	testCompile project(path: ':refdiff-core', configuration: 'testArtifacts')
+    testImplementation 'junit:junit:4.11'
+    testImplementation project(path: ':refdiff-core', configuration: 'testArtifacts')
 
-	compile "com.fasterxml.jackson.core:jackson-databind:2.6.3"
-	
-	compile fileTree(dir: 'lib', include: ['*.jar'])
-	
-	compile "org.osgi:org.osgi.service.prefs:1.1.1"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.6.3"
+
+    implementation fileTree(dir: 'lib', include: ['*.jar'])
+
+    implementation "org.osgi:org.osgi.service.prefs:1.1.1"
 }

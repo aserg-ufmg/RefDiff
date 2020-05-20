@@ -7,9 +7,9 @@ plugins {
 mainClassName = 'refdiff.examples.RefDiffExample'
 
 dependencies {
-    compile project(':refdiff-js')
-    compile project(':refdiff-java')
-    compile project(':refdiff-c')
+    implementation project(':refdiff-js')
+    implementation project(':refdiff-java')
+    implementation project(':refdiff-c')
 }
 
 task runExampleJs(type: JavaExec) {
