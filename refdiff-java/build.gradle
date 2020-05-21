@@ -1,6 +1,12 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
+}
+
+description = 'Java language plugin for RefDiff'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 dependencies {
@@ -9,4 +15,41 @@ dependencies {
 
     testImplementation 'junit:junit:4.11'
     testImplementation project(path: ':refdiff-core', configuration: 'testArtifacts')
+}
+
+
+publishing {
+    publications {
+        refdiffJava(MavenPublication) {
+            artifactId = project.name
+            from components.java
+            pom {
+                name = 'Java plugin for RefDiff'
+                description = project.description
+                url = 'https://github.com/aserg-ufmg/RefDiff'
+                licenses {
+                    license {
+                        name = 'The MIT License (MIT)'
+                        url = 'http://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'danilofs'
+                        name = 'Danilo Ferreira e Silva'
+                        email = 'danilofs@dcc.ufmg.br'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/aserg-ufmg/RefDiff.git'
+                    developerConnection = 'scm:git:git@github.com:aserg-ufmg/RefDiff.git'
+                    url = 'https://github.com/aserg-ufmg/RefDiff/tree/master'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.refdiffJava
 }

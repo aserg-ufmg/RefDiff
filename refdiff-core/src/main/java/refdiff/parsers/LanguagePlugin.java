@@ -19,6 +19,7 @@ public interface LanguagePlugin {
 	 * examination are passed to this method. Additionally, RefDiff filters files using the {@code getAllowedFilesFilter}
 	 * method.
 	 * @return The CST.
+	 * @throws Exception when unable to parse the files.
 	 */
 	CstRoot parse(SourceFileSet sources) throws Exception;
 	

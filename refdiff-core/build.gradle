@@ -1,65 +1,16 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
-    id 'signing'
-    id 'maven'
+//    id 'signing'
+//    id 'maven'
 }
 
-group = 'com.github.aserg-ufmg'
-version = '0.2.0'
+//group = 'com.github.aserg-ufmg'
+//version = '0.2.0'
 description = 'An automated tool to detect refactorings in version histories'
 
-signing {
-	sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            // POM signature
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-            // Target repository
-            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-                authentication(userName: findProperty('ossrhUser'), password: findProperty('ossrhPassword'))
-            }
-            snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
-                authentication(userName: findProperty('ossrhUser'), password: findProperty('ossrhPassword'))
-            }
-            pom.project {
-                name project.name
-                description project.description
-                packaging 'jar'
-                url 'https://github.com/aserg-ufmg/RefDiff'
-
-                scm {
-                    connection 'scm:git:https://github.com/aserg-ufmg/RefDiff.git'
-                    developerConnection 'scm:git:git@github.com:aserg-ufmg/RefDiff.git'
-                    url 'https://github.com/aserg-ufmg/RefDiff.git'
-                }
-
-                licenses {
-                    license {
-                        name 'The MIT License (MIT)'
-                        url 'http://opensource.org/licenses/MIT'
-                        distribution 'repo'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = 'danilofs'
-                        name = 'Danilo Ferreira e Silva'
-                        email = 'danilofs@dcc.ufmg.br'
-                    }
-                }
-            }
-        }
-    }
-}
-
-nexusStaging {  
-    username = findProperty('ossrhUser')
-    password = findProperty('ossrhPassword')
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 dependencies {
@@ -74,26 +25,52 @@ dependencies {
     testImplementation 'junit:junit:4.11'
 }
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
 task testJar(type: Jar) {
     classifier = 'tests'
     from sourceSets.test.output
 }
 
 configurations {
-  testArtifacts
+    testArtifacts
 }
 
 artifacts {
     archives javadocJar, sourcesJar
     testArtifacts testJar
+}
+
+publishing {
+    publications {
+        refdiffCore(MavenPublication) {
+            artifactId = project.name
+            from components.java
+            pom {
+                name = 'RefDiff'
+                description = project.description
+                url = 'https://github.com/aserg-ufmg/RefDiff'
+                licenses {
+                    license {
+                        name = 'The MIT License (MIT)'
+                        url = 'http://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'danilofs'
+                        name = 'Danilo Ferreira e Silva'
+                        email = 'danilofs@dcc.ufmg.br'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/aserg-ufmg/RefDiff.git'
+                    developerConnection = 'scm:git:git@github.com:aserg-ufmg/RefDiff.git'
+                    url = 'https://github.com/aserg-ufmg/RefDiff/tree/master'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.refdiffCore
 }

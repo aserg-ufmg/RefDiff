@@ -34,7 +34,7 @@ public class RefDiff {
 	
 	/**
 	 * Clone a git repository in a local folder.
-	 * Note that the repository will be clone in bare mode (see {@link https://git-scm.com/docs/git-clone}).
+	 * Note that the repository will be clone in bare mode (see <a href="https://git-scm.com/docs/git-clone">git clone documentation</a>).
 	 * 
 	 * @param destinationFolder Folder in which the repository will be cloned.
 	 * @param cloneUrl The URL of the repository.
@@ -92,7 +92,7 @@ public class RefDiff {
 	 * Low level method that computes the CST diff between two arbitrary revisions.
 	 * This method operates directly with jgit objects such as {@code Repository} and {@code RevCommit}.
 	 * 
-	 * For more details on jgit library, please refer to {@link https://wiki.eclipse.org/JGit/User_Guide#Concepts}.
+	 * For more details on jgit library, please refer to <a href="https://wiki.eclipse.org/JGit/User_Guide#Concepts">JGit documentation</a>.
 	 * 
 	 * @param repo The jgit repository object.
 	 * @param revBefore The jgit commit object before the change.
