@@ -7,9 +7,12 @@ plugins {
 mainClassName = 'refdiff.examples.RefDiffExample'
 
 dependencies {
-    implementation project(':refdiff-js')
-    implementation project(':refdiff-java')
-    implementation project(':refdiff-c')
+    implementation 'com.github.aserg-ufmg:refdiff-js:2.0.0'
+    implementation 'com.github.aserg-ufmg:refdiff-java:2.0.0'
+    implementation 'com.github.aserg-ufmg:refdiff-c:2.0.0'
+    //implementation project(':refdiff-js')
+    //implementation project(':refdiff-java')
+    //implementation project(':refdiff-c')
 }
 
 task runExampleJs(type: JavaExec) {

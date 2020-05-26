@@ -110,10 +110,29 @@ printRefactorings(
 	refDiffJava.computeDiffForCommit(eclipseThemesRepo, "72f61ec"));
 ```
 
+
+## Maven artifacts
+
+RefDiff artifacts are also published to Maven central repository under the group id `com.github.aserg-ufmg`.
+There are individual artifacts for each supported language: `refdiff-java`, `refdiff-c`, and `refdiff-js`.
+
+For example, to use RefDiff in Java, you should add the following dependency to your `pom.xml`:
+
+```
+<dependency>
+  <groupId>com.github.aserg-ufmg</groupId>
+  <artifactId>refdiff-java</artifactId>
+  <version>2.0.0</version>
+</dependency>
+```
+
+
 ## Extending RefDiff to support other programming languages
 
 You can implement the `LanguagePlugin` interface to support other programming languages.
+The `LanguagePlugin` interface is provided by the `refdiff-core` Maven artifact.
 Soon, we will provide a detailed tutorial on how to do this.
+
 
 ## Evaluation
 
@@ -129,7 +148,9 @@ The data used in the evaluation is available in the following links:
 
 ## Publications
 
-The algorithm RefDiff uses is described in details in the following paper:
+The algorithm RefDiff uses is described in details in the following papers:
+
+* Danilo Silva, Joao Paulo da Silva, Gustavo Santos, Ricardo Terra, Marco Tulio Valente. [RefDiff: Detecting Refactorings in Version Histories](http://www.dcc.ufmg.br/~mtov/pub/2020-tse-refdiff.pdf). IEEE Transactions on Software Engineering, 2020.
 
 * Danilo Silva, Marco Tulio Valente. [RefDiff: Detecting Refactorings in Version Histories](http://www.dcc.ufmg.br/~mtov/pub/2017-msr.pdf). In 14th International Conference on Mining Software Repositories (MSR), 2017.
 
