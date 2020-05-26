@@ -150,7 +150,7 @@ The data used in the evaluation is available in the following links:
 
 The algorithm RefDiff uses is described in details in the following papers:
 
-* Danilo Silva, Joao Paulo da Silva, Gustavo Santos, Ricardo Terra, Marco Tulio Valente. [RefDiff: Detecting Refactorings in Version Histories](http://www.dcc.ufmg.br/~mtov/pub/2020-tse-refdiff.pdf). IEEE Transactions on Software Engineering, 2020.
+* Danilo Silva, Joao Paulo da Silva, Gustavo Santos, Ricardo Terra, Marco Tulio Valente. [RefDiff 2.0: A Multi-language Refactoring Detection Tool](http://www.dcc.ufmg.br/~mtov/pub/2020-tse-refdiff.pdf). IEEE Transactions on Software Engineering, 2020.
 
 * Danilo Silva, Marco Tulio Valente. [RefDiff: Detecting Refactorings in Version Histories](http://www.dcc.ufmg.br/~mtov/pub/2017-msr.pdf). In 14th International Conference on Mining Software Repositories (MSR), 2017.
 
