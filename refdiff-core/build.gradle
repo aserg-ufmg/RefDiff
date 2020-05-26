@@ -1,12 +1,6 @@
 plugins {
     id 'java-library'
-//    id 'signing'
-//    id 'maven'
 }
-
-//group = 'com.github.aserg-ufmg'
-//version = '0.2.0'
-description = 'An automated tool to detect refactorings in version histories'
 
 java {
     withJavadocJar()
@@ -44,29 +38,7 @@ publishing {
         refdiffCore(MavenPublication) {
             artifactId = project.name
             from components.java
-            pom {
-                name = 'RefDiff'
-                description = project.description
-                url = 'https://github.com/aserg-ufmg/RefDiff'
-                licenses {
-                    license {
-                        name = 'The MIT License (MIT)'
-                        url = 'http://opensource.org/licenses/MIT'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'danilofs'
-                        name = 'Danilo Ferreira e Silva'
-                        email = 'danilofs@dcc.ufmg.br'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:https://github.com/aserg-ufmg/RefDiff.git'
-                    developerConnection = 'scm:git:git@github.com:aserg-ufmg/RefDiff.git'
-                    url = 'https://github.com/aserg-ufmg/RefDiff/tree/master'
-                }
-            }
+            pom pomConfig('RefDiff', 'An automated tool to detect refactorings in version histories')
         }
     }
 }

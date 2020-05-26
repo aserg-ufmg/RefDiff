@@ -1,6 +1,5 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
 }
 
 dependencies {
@@ -10,8 +9,25 @@ dependencies {
     testImplementation project(path: ':refdiff-core', configuration: 'testArtifacts')
 
     implementation "com.fasterxml.jackson.core:jackson-databind:2.6.3"
-
     implementation fileTree(dir: 'lib', include: ['*.jar'])
-
     implementation "org.osgi:org.osgi.service.prefs:1.1.1"
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        refdiffC(MavenPublication) {
+            artifactId = project.name
+            from components.java
+            pom pomConfig('C plugin for RefDiff', 'C language plugin for RefDiff')
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.refdiffC
 }
