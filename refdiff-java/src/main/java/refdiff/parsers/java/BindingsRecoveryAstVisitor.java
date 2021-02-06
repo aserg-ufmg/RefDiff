@@ -195,7 +195,7 @@ public class BindingsRecoveryAstVisitor extends ASTVisitor {
 			body.accept(new DependenciesAstVisitor(true) {
 				@Override
 				protected void onMethodAccess(ASTNode node, IMethodBinding binding) {
-					String methodKey = binding.getKey();
+					String methodKey = binding.getMethodDeclaration().getKey();
 					references.add(methodKey);
 				}
 				
