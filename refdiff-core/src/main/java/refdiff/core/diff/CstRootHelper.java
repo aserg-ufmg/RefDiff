@@ -283,6 +283,10 @@ public class CstRootHelper<T> {
 		return path;
 	}
 	
+	public CstRoot getCstRoot() {
+		return cstRoot;
+	}
+
 	private static void computeNodePath(LinkedList<String> path, CstNode node) {
 		String nodeName;
 		if (node.getNamespace() != null) {
