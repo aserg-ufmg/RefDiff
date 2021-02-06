@@ -7,13 +7,13 @@ public interface CstComparatorMonitor {
 	
 	default void beforeCompare(CstRootHelper<?> before, CstRootHelper<?> after) {}
 	
-	default void reportDiscardedMatch(CstNode n1, CstNode n2, double score) {}
+	default void reportMatchDiscardedBySimilarity(CstNode n1, CstNode n2, double score, double threshold) {}
 	
-	default void reportDiscardedConflictingMatch(CstNode nBefore, CstNode nAfter) {}
+	default void reportMatchDiscardedByConflict(CstNode nBefore, CstNode nAfter) {}
 	
-	default void reportDiscardedExtract(CstNode n1, CstNode n2, double score) {}
+	default void reportExtractDiscardedBySimilarity(CstNode n1, CstNode n2, double score, double threshold) {}
 	
-	default void reportDiscardedInline(CstNode n1, CstNode n2, double score) {}
+	default void reportInlineDiscardedBySimilarity(CstNode n1, CstNode n2, double score, double threshold) {}
 
 	default void afterCompare(long elapsedTime, DiffBuilder<?> diffBuilder) {}
 }

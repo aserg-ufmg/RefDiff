@@ -7,15 +7,14 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jgit.lib.Repository;
 
+import refdiff.core.cst.CstNode;
 import refdiff.core.diff.CstComparator;
-import refdiff.core.diff.CstComparatorMonitor;
+import refdiff.core.diff.CstComparatorDebugger;
 import refdiff.core.diff.CstDiff;
-import refdiff.core.diff.CstRootHelper;
 import refdiff.core.diff.Relationship;
 import refdiff.core.diff.RelationshipType;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
-import refdiff.core.cst.CstNode;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
 import refdiff.parsers.js.JsPlugin;
@@ -211,34 +210,10 @@ public class ComputeRecallJs {
 			
 			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, commit, parser.getAllowedFilesFilter());
 			if (debug) {
-				return cstComparator.compare(sources.getBefore(), sources.getAfter(), new Monitor());
+				return cstComparator.compare(sources.getBefore(), sources.getAfter(), new CstComparatorDebugger());
 			} else {
 				return cstComparator.compare(sources);
 			}
-		}
-	}
-	
-	private static class Monitor implements CstComparatorMonitor {
-		
-		@Override
-		public void beforeCompare(CstRootHelper<?> before, CstRootHelper<?> after) {
-			after.printRelationships(System.out);
-		}
-		
-		public void reportDiscardedMatch(CstNode n1, CstNode n2, double score) {
-			System.out.println(String.format("Threshold %.3f\t%s%s", score, format(n1), format(n2)));
-		}
-		
-		public void reportDiscardedConflictingMatch(CstNode n1, CstNode n2) {
-			System.out.println(String.format("Conflicting match\t%s%s", format(n1), format(n2)));
-		}
-		
-		public void reportDiscardedExtract(CstNode n1, CstNode n2, double score) {
-			System.out.println(String.format("Extract threshold %.3f\t%s%s", format(n1), format(n2)));
-		}
-		
-		public void reportDiscardedInline(CstNode n1, CstNode n2, double score) {
-			System.out.println(String.format("Inline threshold %.3f\t%s%s", format(n1), format(n2)));
 		}
 	}
 	

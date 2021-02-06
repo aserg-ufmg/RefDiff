@@ -7,13 +7,13 @@ import java.util.Set;
 import org.eclipse.jgit.lib.Repository;
 
 import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstComparatorDebugger;
 import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.core.io.GitHelper;
 import refdiff.core.io.SourceFileSet;
 import refdiff.core.util.PairBeforeAfter;
 import refdiff.evaluation.ExternalProcess;
-import refdiff.evaluation.CstComparatorDebbuger;
 import refdiff.parsers.js.JsPlugin;
 
 public class RunRefDiffExampleJs {
@@ -37,7 +37,7 @@ public class RunRefDiffExampleJs {
 		try (JsPlugin parser = new JsPlugin();
 			Repository repo = gh.openRepository(repoFolder)) {
 			CstComparator cstComparator = new CstComparator(parser);
-			CstComparatorDebbuger debbuger = new CstComparatorDebbuger();
+			CstComparatorDebugger debbuger = new CstComparatorDebugger();
 			PairBeforeAfter<SourceFileSet> sources = gh.getSourcesBeforeAndAfterCommit(repo, commit, parser.getAllowedFilesFilter());
 			CstDiff diff = cstComparator.compare(sources.getBefore(), sources.getAfter(), debbuger);
 			

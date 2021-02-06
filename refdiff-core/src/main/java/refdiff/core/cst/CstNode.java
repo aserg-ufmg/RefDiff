@@ -33,7 +33,7 @@ public class CstNode implements HasChildrenNodes {
 	
 	@Override
 	public String toString() {
-		return String.format("%s %s %s", location.toString(), type, localName);
+		return String.format("%s %s at %s:%d", getType().replace("Declaration", ""), getLocalName(), getLocation().getFile(), getLocation().getLine());
 	}
 	
 	/**

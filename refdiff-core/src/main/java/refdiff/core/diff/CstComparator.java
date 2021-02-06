@@ -39,6 +39,10 @@ public class CstComparator {
 		return compare(beforeAndAfter.getBefore(), beforeAndAfter.getAfter(), new CstComparatorMonitor() {});
 	}
 	
+	public CstDiff compare(PairBeforeAfter<SourceFileSet> beforeAndAfter, CstComparatorMonitor monitor) {
+		return compare(beforeAndAfter.getBefore(), beforeAndAfter.getAfter(), monitor);
+	}
+	
 	public CstDiff compare(SourceFileSet sourcesBefore, SourceFileSet sourcesAfter) {
 		return compare(sourcesBefore, sourcesAfter, new CstComparatorMonitor() {});
 	}
@@ -254,7 +258,7 @@ public class CstComparator {
 									PotentialMatch candidate = new PotentialMatch(n1, n2, Math.max(before.depth(n1), after.depth(n2)), rankScore);
 									candidates.add(candidate);
 								} else {
-									monitor.reportDiscardedMatch(n1, n2, score);
+									monitor.reportMatchDiscardedBySimilarity(n1, n2, score, thresholdValue);
 								}
 							}
 						}
@@ -378,14 +382,15 @@ public class CstComparator {
 //							}
 							
 							boolean sameLocation = sameLocation(n1, n2);
-							if (score > threshold.getIdeal()) {
+							double minScore = threshold.getIdeal();
+							if (score > minScore) {
 								if (sameLocation) {
 									relationships.add(new Relationship(RelationshipType.EXTRACT, n1, n2, score));
 								} else {
 									relationships.add(new Relationship(RelationshipType.EXTRACT_MOVE, n1, n2, score));
 								}
 							} else {
-								monitor.reportDiscardedExtract(n1, n2, score);
+								monitor.reportExtractDiscardedBySimilarity(n1, n2, score, minScore);
 							}
 						}
 					}
@@ -412,10 +417,11 @@ public class CstComparator {
 //							double score2 = srb.partialSimilarity(addedCode, sourceN1);
 //							double score = Math.max(score1, score2);
 							double score = srb.partialSimilarity(sourceN1, addedCode);
-							if (score > threshold.getIdeal()) {
+							double minScore = threshold.getIdeal();
+							if (score > minScore) {
 								relationships.add(new Relationship(RelationshipType.INLINE, n1, n2, score));
 							} else {
-								monitor.reportDiscardedInline(n1, n2, score);
+								monitor.reportInlineDiscardedBySimilarity(n1, n2, score, minScore);
 							}
 						}
 					}
@@ -608,7 +614,7 @@ public class CstComparator {
 		
 		private void addMatch(CstNode nBefore, CstNode nAfter) {
 			if (mapBeforeToAfter.containsKey(nBefore) || mapAfterToBefore.containsKey(nAfter)) {
-				monitor.reportDiscardedConflictingMatch(nBefore, nAfter);
+				monitor.reportMatchDiscardedByConflict(nBefore, nAfter);
 			} else {
 				mapBeforeToAfter.put(nBefore, nAfter);
 				mapAfterToBefore.put(nAfter, nBefore);
@@ -643,7 +649,7 @@ public class CstComparator {
 			RelationshipType type = relationship.getType();
 			
 			if (type.isUnmarkRemoved() && !removed(nBefore) || type.isUnmarkAdded() && !added(nAfter)) {
-				monitor.reportDiscardedConflictingMatch(nBefore, nAfter);
+				monitor.reportMatchDiscardedByConflict(nBefore, nAfter);
 			} else {
 				diff.addRelationships(relationship);
 			}

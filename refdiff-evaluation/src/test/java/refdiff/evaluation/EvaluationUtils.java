@@ -136,22 +136,26 @@ public class EvaluationUtils {
 		private RefactoringSet rs;
 		private final Map<KeyPair, String> explanation;
 		
-		public void reportDiscardedMatch(CstNode n1, CstNode n2, double score) {
+		@Override
+		public void reportMatchDiscardedBySimilarity(CstNode n1, CstNode n2, double score, double threshold) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));
 		}
 		
-		public void reportDiscardedConflictingMatch(CstNode n1, CstNode n2) {
+		@Override
+		public void reportMatchDiscardedByConflict(CstNode n1, CstNode n2) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, false);
 			explanation.put(keyPair, "Conflicting match");
 		}
 		
-		public void reportDiscardedExtract(CstNode n1, CstNode n2, double score) {
+		@Override
+		public void reportExtractDiscardedBySimilarity(CstNode n1, CstNode n2, double score, double threshold) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, true, false);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));
 		}
 		
-		public void reportDiscardedInline(CstNode n1, CstNode n2, double score) {
+		@Override
+		public void reportInlineDiscardedBySimilarity(CstNode n1, CstNode n2, double score, double threshold) {
 			KeyPair keyPair = normalizeNodeKeys(n1, n2, false, true);
 			explanation.put(keyPair, String.format("Threshold %.3f", score));
 		}

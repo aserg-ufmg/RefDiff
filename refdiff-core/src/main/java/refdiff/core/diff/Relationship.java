@@ -78,6 +78,13 @@ public class Relationship {
 		return String.format("%s\t{%s}\t{%s})", this.type, formatWithLineNum(this.nodeBefore), formatWithLineNum(this.nodeAfter));
 	}
 	
+	public String getDescriptionWithScore() {
+		if (this.similarity != null) {			
+			return String.format("%s (score=%.3f)\t{%s}\t{%s})", this.type, this.similarity, formatWithLineNum(this.nodeBefore), formatWithLineNum(this.nodeAfter));
+		}
+		return getStandardDescription();
+	}
+	
 	private String formatWithLineNum(CstNode node) {
 		return String.format("%s %s at %s:%d", node.getType().replace("Declaration", ""), node.getLocalName(), node.getLocation().getFile(), node.getLocation().getLine());
 	}

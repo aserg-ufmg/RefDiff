@@ -7,6 +7,7 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 
 import refdiff.core.diff.CstComparator;
+import refdiff.core.diff.CstComparatorMonitor;
 import refdiff.core.diff.CstDiff;
 import refdiff.core.io.FilePathFilter;
 import refdiff.core.io.GitHelper;
@@ -53,9 +54,22 @@ public class RefDiff {
 	 * @return The computed CST diff.
 	 */
 	public CstDiff computeDiffForCommit(File gitRepository, String commitSha1) {
+		return computeDiffForCommit(gitRepository, commitSha1, new CstComparatorMonitor() {});
+	}
+	
+	/**
+	 * Compute a CST diff between a commit and its parent commit (previous revision).
+	 * This method will throw an exception if the given commit has more than one parent (e.g., merge commits).
+	 * 
+	 * @param gitRepository The folder of the git repository (you should pass the .git folder if the repository is not on bare mode).
+	 * @param commitSha1 SHA1 (or git object reference) that identifies the commit.
+	 * @param monitor CstComparatorMonitor object that can be used to inspect CST relationships discarded along the process.
+	 * @return The computed CST diff.
+	 */
+	public CstDiff computeDiffForCommit(File gitRepository, String commitSha1, CstComparatorMonitor monitor) {
 		try (Repository repo = GitHelper.openRepository(gitRepository)) {
 			PairBeforeAfter<SourceFileSet> beforeAndAfter = GitHelper.getSourcesBeforeAndAfterCommit(repo, commitSha1, fileFilter);
-			return comparator.compare(beforeAndAfter);
+			return comparator.compare(beforeAndAfter, monitor);
 		}
 	}
 	
