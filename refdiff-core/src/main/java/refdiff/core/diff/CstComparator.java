@@ -673,7 +673,7 @@ public class CstComparator {
 		public boolean sameLocation(CstNode n1, CstNode n2) {
 			if (n1.getParent().isPresent() && n2.getParent().isPresent()) {
 				return matchingNodeAfter(n1.getParent().get()).equals(n2.getParent());
-			} else if (!n1.getParent().isPresent() && !n1.getParent().isPresent()) {
+			} else if (!n1.getParent().isPresent() && !n2.getParent().isPresent()) {
 				return sameNamespace(n1, n2);
 			} else {
 				return false;
