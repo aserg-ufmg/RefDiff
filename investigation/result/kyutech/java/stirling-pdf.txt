@@ -1,0 +1,31 @@
+Refactorings found in Stirling-PDF cc7f16308541eee3fc7b94285d5d290b3e6870e5
+RENAME	{Class FakeScanController at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/FakeScanController.java:40}	{Class ScannerEffectController at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/ScannerEffectController.java:40})
+RENAME	{Class FakeScanRequest at app/core/src/main/java/stirling/software/SPDF/model/api/misc/FakeScanRequest.java:12}	{Class ScannerEffectRequest at app/core/src/main/java/stirling/software/SPDF/model/api/misc/ScannerEffectRequest.java:12})
+RENAME	{Method fakeScan(FakeScanRequest) at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/FakeScanController.java:55}	{Method scannerEffect(ScannerEffectRequest) at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/ScannerEffectController.java:55})
+Parent is null: app/core/src/main/resources/static/js/favourites.js for method: updateFavoritesDropdown()
+Parent is null: stirling-pdf/src/main/resources/static/js/darkmode.js for method: getElements()
+
+Refactorings found in Stirling-PDF bbf5d5f6d48e295ad2043a2a5575132fa180007e
+EXTRACT	{Method cleanupOldJobs() at common/src/main/java/stirling/software/common/service/TaskManager.java:239}	{Method cleanupJobFiles(JobResult, String) at common/src/main/java/stirling/software/common/service/TaskManager.java:434})
+Parent is null: stirling-pdf/src/main/resources/static/js/fileInput.js for method: setupFileInput()
+Parent is null: stirling-pdf/src/main/resources/static/js/DecryptFiles.js for method: constructor()
+
+Refactorings found in Stirling-PDF bc9c127819a1d96df20bea6dec1ae841cbc347c6
+EXTRACT_MOVE	{Method dynamicYamlPropertySource(ConfigurableEnvironment) at common/src/main/java/stirling/software/common/model/ApplicationProperties.java:65}	{Method exists() at common/src/main/java/stirling/software/common/util/TempFile.java:36})
+CHANGE_SIGNATURE	{Method convertEmlToPdf(String, EmlToPdfRequest, byte[], String, boolean, stirling.software.common.service.CustomPDFDocumentFactory) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:131}	{Method convertEmlToPdf(String, EmlToPdfRequest, byte[], String, boolean, stirling.software.common.service.CustomPDFDocumentFactory, TempFileManager) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:131})
+EXTRACT_MOVE	{Method createDir(String) at common/src/main/java/stirling/software/common/util/GeneralUtils.java:347}	{Method exists() at common/src/main/java/stirling/software/common/util/TempFile.java:36})
+EXTRACT_MOVE	{Method addFileToZip(File, String, ZipOutputStream) at stirling-pdf/src/main/java/stirling/software/SPDF/controller/api/misc/OCRController.java:178}	{Method exists() at common/src/main/java/stirling/software/common/util/TempFile.java:36})
+CHANGE_SIGNATURE	{Method convertHtmlToPdf(String, EmlToPdfRequest, String, boolean) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:193}	{Method convertHtmlToPdf(String, EmlToPdfRequest, String, boolean, TempFileManager) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:195})
+CHANGE_SIGNATURE	{Method sanitizeHtmlFilesInZip(Path, boolean) at common/src/main/java/stirling/software/common/util/FileToPdf.java:81}	{Method sanitizeHtmlFilesInZip(Path, boolean, TempFileManager) at common/src/main/java/stirling/software/common/util/FileToPdf.java:83})
+CHANGE_SIGNATURE	{Method convertHtmlToPdf(String, HTMLToPdfRequest, byte[], String, boolean) at common/src/main/java/stirling/software/common/util/FileToPdf.java:24}	{Method convertHtmlToPdf(String, HTMLToPdfRequest, byte[], String, boolean, TempFileManager) at common/src/main/java/stirling/software/common/util/FileToPdf.java:24})
+Parent is null: stirling-pdf/src/main/resources/static/js/fileInput.js for method: setupFileInput()
+Parent is null: proprietary/src/main/java/stirling/software/proprietary/security/saml2/CustomSaml2AuthenticatedPrincipal.java for method: getName()
+Parent is null: proprietary/src/main/java/stirling/software/proprietary/audit/AuditEventType.java for constructor: AuditEventType(String)
+
+Refactorings found in Stirling-PDF 136f16f613652312ea66a97e331b36d3c40b4b92
+CHANGE_SIGNATURE	{Method viewTeamDetails(Long, Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:63}	{Method viewTeamDetails(HttpServletRequest, Long, Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:85})
+CHANGE_SIGNATURE	{Method listTeams(Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:33}	{Method listTeams(HttpServletRequest, Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:34})
+Parent is null: proprietary/src/main/java/stirling/software/proprietary/security/saml2/CustomSaml2AuthenticatedPrincipal.java for method: getName()
+Parent is null: stirling-pdf/src/main/resources/static/js/pages/edit-table-of-contents.js for constructor: if()
+Parent is null: stirling-pdf/src/main/resources/static/js/pages/edit-table-of-contents.js for constructor: if()
+Parent is null: src/main/resources/static/js/DecryptFiles.js for method: constructor()

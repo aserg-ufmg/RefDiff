@@ -4,18 +4,22 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'refdiff.examples.RefDiffExample'
+application {
+    mainClass = 'refdiff.examples.RefDiffExample'
+}
 
 dependencies {
     //implementation 'com.github.aserg-ufmg:refdiff-js:2.0.0'
     //implementation 'com.github.aserg-ufmg:refdiff-java:2.0.0'
     //implementation 'com.github.aserg-ufmg:refdiff-c:2.0.0'
-    implementation project(':refdiff-js')
+    // implementation project(':refdiff-js')
     implementation project(':refdiff-java')
     implementation project(':refdiff-c')
+    // implementation project(':refdiff-go')
+    implementation project(':refdiff-universal')
 }
 
-task runExampleJs(type: JavaExec) {
-    classpath sourceSets.main.runtimeClasspath
-    main = 'refdiff.examples.RefDiffExampleJs'
-}
+// task runExampleJs(type: JavaExec) {
+//     classpath sourceSets.main.runtimeClasspath
+//     mainClass = 'refdiff.examples.RefDiffExampleJs'
+// }

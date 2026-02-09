@@ -1,0 +1,292 @@
+Commit: 0df15188d763400bcf2ce6c151ad39c68adff1e4
+No refactorings found.
+
+Commit: fb6d6aa3bb6d447d267def7279aad305b8e868bd
+No refactorings found.
+
+Commit: 96c507aa27329fc0dfa09589aca3b2a52a75f3d6
+No refactorings found.
+
+Commit: a0bc05aee51a0493c58fec431b29676eb3574a18
+No refactorings found.
+
+Commit: 2a7fb0a68040e8df6128cc0601043a1f492f0f8d
+No refactorings found.
+
+Commit: 3b5a5f243a7969ad9abb8c0e1d7d21204504a040
+No refactorings found.
+
+Commit: 29626f8fb84316815a97367d5cf2dac8bd2ca830
+No refactorings found.
+
+Commit: bf2384f224ad6f7d7fe7c6ce410b9fb9134c6887
+No refactorings found.
+
+Commit: ab694d566138586e9a7b41e80896e86e404eefda
+No refactorings found.
+
+Commit: c8d5b394e44733aa3938eba01c73a3c0665d82e3
+No refactorings found.
+
+Commit: 35e599b3d0c25442e0b15c4e45a5b9cf59f6489e
+No refactorings found.
+
+Commit: edd66d0130714cb0ac4c6038965f15d0bd25cb8a
+No refactorings found.
+
+Commit: 062e8b5a741b10239195b9385b1ef10e648ddbd5
+No refactorings found.
+
+Commit: 0fd1ecded6476378b207cacc8fb4e2f1698830c6
+No refactorings found.
+
+Commit: 036b1fd66d8e18091c826e644aef872aee92ffcc
+No refactorings found.
+
+Commit: 0221d6b6521baa6d9969573eb8241048a74c816d
+No refactorings found.
+
+Commit: 48fff6baf8cd5f318ee5458b6ab15a219fe6231e
+No refactorings found.
+
+Commit: fd717c9feb783b2b7ba4953393563c6101fc12e5
+No refactorings found.
+
+Commit: a8e4e0613c0873a2d94a2c1bad292e4961c0ab09
+No refactorings found.
+
+Commit: 049664bbdc421c63b2145c85a18c64d184b40aa5
+No refactorings found.
+
+Commit: a47274595888cb9e672c1bce3157a3eab2c50ab2
+No refactorings found.
+
+Commit: e3e739de63b0df9663411f4da9997055ab5a66e2
+No refactorings found.
+
+Commit: c44fa8d0b65d3550157c2fd4b0636fb269764f3e
+No refactorings found.
+
+Commit: b7db89f491f981d493de4057fbde471e4c84ac84
+No refactorings found.
+
+Commit: 69453378fc44afe56965f221fdda05fcbdda662c
+No refactorings found.
+
+Commit: 793a2792d5777cd59ec150e445196ffbabbc1421
+No refactorings found.
+
+Commit: 4de01974413bba0cd04d1b148169a0cd8c25ec20
+No refactorings found.
+
+Commit: eff504ff1214d58814f697a4c077e79f98c0806c
+No refactorings found.
+
+Commit: 1c4fe6d795ca8e318503fe0d78585d9ba99a31df
+No refactorings found.
+
+Commit: ba49d71dbffa53c45c9b9a2d7677938952f2ee3b
+No refactorings found.
+
+Commit: 8cc5e57af346110187145a31c21bc55391fe0675
+No refactorings found.
+
+Commit: c5c696547ed43c46a37c81ae631d940842691a63
+No refactorings found.
+
+Commit: 9523c84c17d5ac00f62c1ca356a91bc397e81da0
+No refactorings found.
+
+Commit: 9ab976397da80e84ebf9ed12c3e7bd308aab6de1
+No refactorings found.
+
+Commit: f5da8f89ee6e6450746c54a0809d43d64006c0f8
+No refactorings found.
+
+Commit: 053467253dddc7aed19c4c19e40ba698714a0e4d
+No refactorings found.
+
+Commit: cc856b3d5da2f8ee7ebc77afd0cb94f12b3827e5
+No refactorings found.
+
+Commit: ec4168668bd251eaff40e8f0604626c0e0a74976
+No refactorings found.
+
+Commit: 8173d9d72b02c18e1ec5b8e10a91fbd455781f5f
+No refactorings found.
+
+Commit: c08a1d152b758a1b97b81e9edce6ed60faaf4063
+No refactorings found.
+
+Commit: 7db30d7ca866b67d2e162b9dd0eff3712a90ee34
+No refactorings found.
+
+Commit: 61a0b12c8052840b2e6514ba840b6ba500255882
+No refactorings found.
+
+Commit: f6a4305d16a8d1df2f7af4b9a7a1bcf384cb79f5
+No refactorings found.
+
+Commit: 0b88e0927f2d5c54cc0a70cc9a829a64311dd326
+MOVE_RENAME	{File webidl.js at deps/undici/src/lib/web/fetch/webidl.js:1 LOC:0}	{File index.js at deps/undici/src/lib/web/webidl/index.js:1 LOC:0})
+
+Commit: 4c65776a3542ba85f17be8e1cf3dccfb1b0a1501
+No refactorings found.
+
+Commit: a3dfca90d1faa0fbc4900c2c816c035e4ae2a0a9
+No refactorings found.
+
+Commit: 529967aa95f8a6ee25d1b93d16efad8c79a7d917
+No refactorings found.
+
+Commit: f0a947865f0c69de2ac77dc72f2024cf18caa893
+No refactorings found.
+
+Commit: 0f7e75f7f61a977b8b995fe6fab6cceb13e86a53
+No refactorings found.
+
+Commit: 9fe3316280c61d9dfb8428866a8e9c0834443fe1
+No refactorings found.
+
+Commit: d824914e61e0d75e2487066bc6d5de28ad7f2041
+No refactorings found.
+
+Commit: afbf2f385a0d8f9202ed039de5dd8ba204a47ea5
+No refactorings found.
+
+Commit: eaebfab2998e2ce9fedd51e8343df5d18aaebdcb
+No refactorings found.
+
+Commit: 94f7568e5c105a1a26958eb07000a00182328598
+No refactorings found.
+
+Commit: 8aa07b78436e85e4edd3eebbce96b15a2f569e1f
+EXTRACT	{Function expand at deps/minimatch/index.js:124 LOC:88}	{Function expand_ at deps/minimatch/index.js:142 LOC:90})
+
+Commit: 5b0c7dba0ecc6c6e3812ed0a3a6ba959c9f81404
+No refactorings found.
+
+Commit: b4c5fb4ffbec9f27ba5799070c2e0588b7c7ff0e
+No refactorings found.
+
+Commit: e91aa7965d724c5c0506c450dc0c7a4725fcded7
+CHANGE_SIGNATURE	{Function mock_run(env, defines_stdout, expected_cmd) at tools/gyp/pylib/gyp/common_test.py:93 LOC:19}	{Function mock_run(env, defines_stdout, expected_cmd, throws) at tools/gyp/pylib/gyp/common_test.py:94 LOC:31})
+RENAME	{Function GetCrossCompilerPredefines() at tools/gyp/pylib/gyp/common.py:424 LOC:46}	{Function GetCompilerPredefines() at tools/gyp/pylib/gyp/common.py:424 LOC:63})
+RENAME	{Function test_GetCrossCompilerPredefines(self, mock_mkstemp, mock_unlink, mock_close) at tools/gyp/pylib/gyp/common_test.py:88 LOC:83}	{Function test_GetCompilerPredefines(self, mock_mkstemp, mock_unlink, mock_close) at tools/gyp/pylib/gyp/common_test.py:89 LOC:98})
+
+Commit: 8ba66c5e7b367d640a98265ad4b1c7d54bf8005f
+No refactorings found.
+
+Commit: a705e240b197262d5a8eee39f11797d14cfc94cb
+No refactorings found.
+
+Commit: 2bb7667475e9aad2fe95d60c0d24b1688d6c8f61
+No refactorings found.
+
+Commit: 100c6da238bec44ea0b18a3df4e82080a8ae05b3
+No refactorings found.
+
+Commit: cd685fe3b6b18d2a1433f2635470513896faebe6
+No refactorings found.
+
+Commit: 6ce6fdbf219a72ecdbe5e65d0259f1072304b1d9
+No refactorings found.
+
+Commit: d08513dfc7d7fe2e1d89bf5f283a30a006b990ff
+No refactorings found.
+
+Commit: dff081e01fb08abff3f108f303d212a2158ef1ae
+No refactorings found.
+
+Commit: 057b4b5d301bc26a6c011f2f32f15b54d335613c
+No refactorings found.
+
+Commit: 6145ba7c75422fd598df74a328a17ec26cc42fee
+No refactorings found.
+
+Commit: 68930cf5507da1978759990732e9e28199e6363e
+No refactorings found.
+
+Commit: 5f3262add6f481f4f91075dc40885c9bd9cded15
+No refactorings found.
+
+Commit: 32be16bca2a12eb1bc8a1b9d468f7a4ec4a6522f
+No refactorings found.
+
+Commit: 04cb57249adffe17fe0a4c0048dd64c4b1fc68f0
+No refactorings found.
+
+Commit: bf86e025a58e65b9f00e9e8e5698e9909fb51bbf
+No refactorings found.
+
+Commit: 9a1c0bc07adbdc6b298b3585a7f46dd46c3d01e0
+No refactorings found.
+
+Commit: 7a0c74b4eadca323a376abc9daa2c7d1cb76ef91
+No refactorings found.
+
+Commit: dcfdaab13aa674d88712ca853551fb432dcc77c8
+No refactorings found.
+
+Commit: 910a8af2d2bc028976f997baf7f7910b9eef30f2
+No refactorings found.
+
+Commit: d7becc58750096b711c55a378a55f596a45f3ce1
+No refactorings found.
+
+Commit: dfcb824ae3e7752abf3c809a3f226cb21dd2187a
+No refactorings found.
+
+Commit: eec03020880cf83d20e827d9067bdbeb4e0adf64
+RENAME	{File test-fs-rmdir-recursive-throws-not-found.js at test/parallel/test-fs-rmdir-recursive-throws-not-found.js:1 LOC:0}	{File test-fs-rmdir-throws-not-found.js at test/parallel/test-fs-rmdir-throws-not-found.js:1 LOC:0})
+RENAME	{File test-fs-rmdir-recursive-throws-on-file.js at test/parallel/test-fs-rmdir-recursive-throws-on-file.js:1 LOC:0}	{File test-fs-rmdir-throws-on-file.js at test/parallel/test-fs-rmdir-throws-on-file.js:1 LOC:0})
+
+Commit: b04c4a44a5c1eeda542570710027958586f284bc
+No refactorings found.
+
+Commit: e679e38b252ee5203ef583392f77fd532e2b4a67
+No refactorings found.
+
+Commit: 11222f1a272b9b2ab000e75cbe3e09942bd2d877
+No refactorings found.
+
+Commit: c3b986853c07bf4583bd679748f3ce03682491c1
+No refactorings found.
+
+Commit: ce546e468aff70c43b5f6524d6472edff85aba28
+No refactorings found.
+
+Commit: 88f4cef8b96b2bb9d4a92f6848ce4d63a82879a8
+No refactorings found.
+
+Commit: 5a14ea62b9ff21ff61d6746d2cc131411696d0c4
+No refactorings found.
+
+Commit: 3d608bbe8b27bd641688fa5ba52f6a8d4f79b961
+No refactorings found.
+
+Commit: 433d9a0486fe810b0d3da50f0036ac0b68806157
+RENAME	{File run-script.js at deps/npm/lib/commands/run-script.js:1 LOC:0}	{File run.js at deps/npm/lib/commands/run.js:1 LOC:0})
+RENAME	{File run-script.js at deps/npm/test/lib/commands/run-script.js:1 LOC:0}	{File run.js at deps/npm/test/lib/commands/run.js:1 LOC:0})
+
+Commit: 214e4db60ef55f1a59c93336ab956371b0b058ed
+No refactorings found.
+
+Commit: f2e99c5c16f64a304d26747abedf186f84fafab8
+No refactorings found.
+
+Commit: 5584cc5038a172392588c7510353c18edf2a0cf7
+No refactorings found.
+
+Commit: ef2e0848ba366ca278d936f1f793d455188e792e
+No refactorings found.
+
+Commit: 462c74181d8e15e74bc5a25d55290d93bd7edf65
+No refactorings found.
+
+Commit: 07220230d9effcb4822d7a55563a86af3764540c
+No refactorings found.
+
+Commit: ea5d37ecbebabd754201b2a0b4fe47d1e2ed07e1
+No refactorings found.
+

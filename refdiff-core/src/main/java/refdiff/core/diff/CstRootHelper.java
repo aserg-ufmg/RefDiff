@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.nio.charset.StandardCharsets;
 
 import refdiff.core.diff.similarity.SourceRepresentationBuilder;
 import refdiff.core.io.SourceFile;
@@ -238,6 +239,7 @@ public class CstRootHelper<T> {
 		}
 		TokenizedSource tokenizedSourceCode = cstRoot.getTokenizedSource().get(location.getFile());
 		List<String> tokens = new ArrayList<>();
+		byte[] sourceBytes = sourceCode.getBytes(StandardCharsets.UTF_8);
 		for (int[] tokenPositon : tokenizedSourceCode.getTokens()) {
 			int tokenStart = tokenPositon[TokenizedSource.START];
 			int tokenEnd = tokenPositon[TokenizedSource.END];
@@ -247,7 +249,7 @@ public class CstRootHelper<T> {
 			if (tokenStart >= nodeEnd) {
 				break;
 			}
-			tokens.add(sourceCode.substring(tokenStart, tokenEnd));
+			tokens.add(new String(sourceBytes, tokenStart, tokenEnd - tokenStart, StandardCharsets.UTF_8));
 		}
 		return tokens;
 	}

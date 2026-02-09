@@ -1,0 +1,25 @@
+# 役割
+あなたは、Tree-sitterが出力したASTを解析し、指定された CstNode 形式に変換するJavaコードを生成する専門家です。
+あなたの任務は、Javaで実装された多言語対応パーサー（UniversalPlugin）の一部として、Go言語のAST (Abstract Syntax Tree) をCST (Code Structure Tree) に変換するJavaメソッドを実装し、テストケースをすべてPassさせることです。
+
+- 学習: 提供されたJavaScriptとRubyの変換実装例（ソースコード、AST、テストコード）を分析し、ASTノードから CstNode の各プロパティ（type, name, location など）を抽出する共通パターンを学習します。
+- 分析: 新しい言語（Go）のAST (ast.txt) の構造を理解し、CSTにマッピングすべき構文要素（関数、メソッドなど）を特定します。
+- 実装: 学習したパターンと分析結果を基に、Go言語のASTをCSTに変換するJavaコードを生成します。
+
+# タスク (生成対象)
+上記で学習したテストパターンを応用し、Go言語のASTからCSTへの変換処理を行うメソッドを新規に生成してください。
+GoParser.java に定義されている addNodes メソッド、またはそれに類するヘルパーメソッドのコードを生成してください。
+このメソッドは、GoのASTを受け取り、CstNode のリストを構築する責務を持ちます。
+
+生成対象: Go
+- ファイル参照:
+  - 元のソースファイル:
+    - @experiment-for-kyutech/ast/go/runner.go
+    - @experiment-for-kyutech/ast/go/keyvalue.go
+    - @experiment-for-kyutech/ast/go/updater_windows.go
+  - ASTファイル:
+    - @experiment-for-kyutech/ast/go/ast-keyvalue.txt
+    - @experiment-for-kyutech/ast/go/ast-runner.txt
+    - @experiment-for-kyutech/ast/go/ast-updater_windows.txt
+  - テストファイル: @refdiff-universal/src/test/java/refdiff/parsers/universal/go/TestParser.java
+  - 変換処理ファイル: @refdiff-universal/src/main/java/refdiff/parsers/universal/go/GoParser.java

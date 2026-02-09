@@ -1,0 +1,365 @@
+(program (hash_bang_line) (expression_statement (string (string_fragment))) (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (string (string_fragment)))))) (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (string (string_fragment)))))) (lexical_declaration (variable_declarator name: (identifier) value: (array (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment)))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false)))))) (expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (arrow_function parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier))))) (lexical_declaration (variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier)))) (if_statement condition: (parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (if_statement condition: (parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (return_statement (identifier))))))) L:1
+(hash_bang_line) L:1
+(expression_statement (string (string_fragment))) L:3
+(string (string_fragment)) L:3
+("'") L:3
+(string_fragment) L:3
+("'") L:3
+(";") L:3
+(lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (string (string_fragment)))))) L:5
+("const") L:5
+(variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (string (string_fragment))))) L:5
+(identifier) L:5
+("=") L:5
+(call_expression function: (identifier) arguments: (arguments (string (string_fragment)))) L:5
+(identifier) L:5
+(arguments (string (string_fragment))) L:5
+("(") L:5
+(string (string_fragment)) L:5
+("'") L:5
+(string_fragment) L:5
+("'") L:5
+(")") L:5
+(";") L:5
+(lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (string (string_fragment)))))) L:6
+("const") L:6
+(variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (string (string_fragment))))) L:6
+(identifier) L:6
+("=") L:6
+(call_expression function: (identifier) arguments: (arguments (string (string_fragment)))) L:6
+(identifier) L:6
+(arguments (string (string_fragment))) L:6
+("(") L:6
+(string (string_fragment)) L:6
+("'") L:6
+(string_fragment) L:6
+("'") L:6
+(")") L:6
+(";") L:6
+(lexical_declaration (variable_declarator name: (identifier) value: (array (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment)))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false)))))) L:8
+("const") L:8
+(variable_declarator name: (identifier) value: (array (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment)))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))))) L:8
+(identifier) L:8
+("=") L:8
+(array (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment)))) (object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false)))) L:8
+("[") L:8
+(object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) L:9
+("{") L:9
+(pair key: (property_identifier) value: (string (string_fragment))) L:10
+(property_identifier) L:10
+(":") L:10
+(string (string_fragment)) L:10
+("'") L:10
+(string_fragment) L:10
+("'") L:10
+(",") L:10
+(pair key: (property_identifier) value: (identifier)) L:11
+(property_identifier) L:11
+(":") L:11
+(identifier) L:11
+(",") L:11
+(pair key: (property_identifier) value: (string (string_fragment))) L:12
+(property_identifier) L:12
+(":") L:12
+(string (string_fragment)) L:13
+("'") L:13
+(string_fragment) L:13
+("'") L:13
+(",") L:13
+(pair key: (property_identifier) value: (null)) L:14
+(property_identifier) L:14
+(":") L:14
+(null) L:14
+(",") L:14
+("}") L:15
+(",") L:15
+(object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (null))) L:16
+("{") L:16
+(pair key: (property_identifier) value: (string (string_fragment))) L:17
+(property_identifier) L:17
+(":") L:17
+(string (string_fragment)) L:17
+("'") L:17
+(string_fragment) L:17
+("'") L:17
+(",") L:17
+(pair key: (property_identifier) value: (identifier)) L:18
+(property_identifier) L:18
+(":") L:18
+(identifier) L:18
+(",") L:18
+(pair key: (property_identifier) value: (string (string_fragment))) L:19
+(property_identifier) L:19
+(":") L:19
+(string (string_fragment)) L:20
+("'") L:20
+(string_fragment) L:20
+("'") L:20
+(",") L:20
+(pair key: (property_identifier) value: (null)) L:21
+(property_identifier) L:21
+(":") L:21
+(null) L:21
+(",") L:21
+("}") L:22
+(",") L:22
+(object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))) L:23
+("{") L:23
+(pair key: (property_identifier) value: (string (string_fragment))) L:24
+(property_identifier) L:24
+(":") L:24
+(string (string_fragment)) L:24
+("'") L:24
+(string_fragment) L:24
+("'") L:24
+(",") L:24
+(pair key: (property_identifier) value: (identifier)) L:25
+(property_identifier) L:25
+(":") L:25
+(identifier) L:25
+(",") L:25
+(pair key: (property_identifier) value: (string (string_fragment))) L:26
+(property_identifier) L:26
+(":") L:26
+(string (string_fragment)) L:26
+("'") L:26
+(string_fragment) L:26
+("'") L:26
+(",") L:26
+(pair key: (property_identifier) value: (false)) L:27
+(property_identifier) L:27
+(":") L:27
+(false) L:27
+(",") L:27
+("}") L:28
+(",") L:28
+(object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment)))) L:29
+("{") L:29
+(pair key: (property_identifier) value: (string (string_fragment))) L:30
+(property_identifier) L:30
+(":") L:30
+(string (string_fragment)) L:30
+("'") L:30
+(string_fragment) L:30
+("'") L:30
+(",") L:30
+(pair key: (property_identifier) value: (string (string_fragment))) L:31
+(property_identifier) L:31
+(":") L:31
+(string (string_fragment)) L:31
+("'") L:31
+(string_fragment) L:31
+("'") L:31
+(",") L:31
+(pair key: (property_identifier) value: (identifier)) L:32
+(property_identifier) L:32
+(":") L:32
+(identifier) L:32
+(",") L:32
+(pair key: (property_identifier) value: (string (string_fragment))) L:33
+(property_identifier) L:33
+(":") L:33
+(string (string_fragment)) L:33
+("'") L:33
+(string_fragment) L:33
+("'") L:33
+(",") L:33
+("}") L:34
+(",") L:34
+(object (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (identifier)) (pair key: (property_identifier) value: (string (string_fragment))) (pair key: (property_identifier) value: (false))) L:35
+("{") L:35
+(pair key: (property_identifier) value: (string (string_fragment))) L:36
+(property_identifier) L:36
+(":") L:36
+(string (string_fragment)) L:36
+("'") L:36
+(string_fragment) L:36
+("'") L:36
+(",") L:36
+(pair key: (property_identifier) value: (identifier)) L:37
+(property_identifier) L:37
+(":") L:37
+(identifier) L:37
+(",") L:37
+(pair key: (property_identifier) value: (string (string_fragment))) L:38
+(property_identifier) L:38
+(":") L:38
+(string (string_fragment)) L:39
+("'") L:39
+(string_fragment) L:39
+("'") L:39
+(",") L:39
+(pair key: (property_identifier) value: (false)) L:40
+(property_identifier) L:40
+(":") L:40
+(false) L:40
+(",") L:40
+("}") L:41
+(",") L:41
+("]") L:42
+(";") L:42
+(expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (arrow_function parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier))))) (lexical_declaration (variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier)))) (if_statement condition: (parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (if_statement condition: (parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (return_statement (identifier)))))) L:44
+(assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (arrow_function parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier))))) (lexical_declaration (variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier)))) (if_statement condition: (parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (if_statement condition: (parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (return_statement (identifier))))) L:44
+(member_expression object: (identifier) property: (property_identifier)) L:44
+(identifier) L:44
+(".") L:44
+(property_identifier) L:44
+("=") L:44
+(arrow_function parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier))))) (lexical_declaration (variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier)))) (if_statement condition: (parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (if_statement condition: (parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (return_statement (identifier)))) L:44
+("async") L:44
+(formal_parameters) L:44
+("(") L:44
+(")") L:44
+("=>") L:44
+(statement_block (lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier))))) (lexical_declaration (variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier)))) (if_statement condition: (parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (if_statement condition: (parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) (return_statement (identifier))) L:44
+("{") L:44
+(lexical_declaration (variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier))))) L:45
+("const") L:45
+(variable_declarator name: (identifier) value: (call_expression function: (identifier) arguments: (arguments (identifier)))) L:45
+(identifier) L:45
+("=") L:45
+(call_expression function: (identifier) arguments: (arguments (identifier))) L:45
+(identifier) L:45
+(arguments (identifier)) L:45
+("(") L:45
+(identifier) L:45
+(")") L:45
+(";") L:45
+(lexical_declaration (variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier)))) L:47
+("const") L:47
+(variable_declarator name: (identifier) value: (member_expression object: (identifier) property: (property_identifier))) L:47
+(identifier) L:47
+("=") L:47
+(member_expression object: (identifier) property: (property_identifier)) L:47
+(identifier) L:47
+(".") L:47
+(property_identifier) L:47
+(";") L:47
+(if_statement condition: (parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) L:48
+("if") L:48
+(parenthesized_expression (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment))))) L:48
+("(") L:48
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) L:49
+(binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) L:49
+(binary_expression left: (binary_expression left: (identifier) right: (string (string_fragment))) right: (binary_expression left: (identifier) right: (string (string_fragment)))) L:49
+(binary_expression left: (identifier) right: (string (string_fragment))) L:49
+(identifier) L:49
+("!==") L:49
+(string (string_fragment)) L:49
+("'") L:49
+(string_fragment) L:49
+("'") L:49
+("&&") L:49
+(binary_expression left: (identifier) right: (string (string_fragment))) L:50
+(identifier) L:50
+("!==") L:50
+(string (string_fragment)) L:50
+("'") L:50
+(string_fragment) L:50
+("'") L:50
+("&&") L:50
+(binary_expression left: (identifier) right: (string (string_fragment))) L:51
+(identifier) L:51
+("!==") L:51
+(string (string_fragment)) L:51
+("'") L:51
+(string_fragment) L:51
+("'") L:51
+("&&") L:51
+(binary_expression left: (identifier) right: (string (string_fragment))) L:52
+(identifier) L:52
+("!==") L:52
+(string (string_fragment)) L:52
+("'") L:52
+(string_fragment) L:52
+("'") L:52
+(")") L:53
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number))))) L:53
+("{") L:53
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))))) L:54
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment))))) L:54
+(member_expression object: (identifier) property: (property_identifier)) L:54
+(identifier) L:54
+(".") L:54
+(property_identifier) L:54
+(arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment)))) L:54
+("(") L:54
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment) (template_substitution (identifier)) (string_fragment))) L:55
+(member_expression object: (identifier) property: (property_identifier)) L:55
+(identifier) L:55
+(".") L:55
+(property_identifier) L:55
+(template_string (string_fragment) (template_substitution (identifier)) (string_fragment)) L:55
+("`") L:55
+(string_fragment) L:55
+(template_substitution (identifier)) L:55
+("${") L:55
+(identifier) L:55
+("}") L:55
+(string_fragment) L:55
+("`") L:55
+(")") L:56
+(";") L:56
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))) L:57
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number))) L:57
+(member_expression object: (identifier) property: (property_identifier)) L:57
+(identifier) L:57
+(".") L:57
+(property_identifier) L:57
+(arguments (number)) L:57
+("(") L:57
+(number) L:57
+(")") L:57
+(";") L:57
+("}") L:58
+(if_statement condition: (parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) consequence: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))))) L:60
+("if") L:60
+(parenthesized_expression (binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null))) L:60
+("(") L:60
+(binary_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (null)) L:60
+(member_expression object: (identifier) property: (property_identifier)) L:60
+(identifier) L:60
+(".") L:60
+(property_identifier) L:60
+("===") L:60
+(null) L:60
+(")") L:60
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number))))) L:60
+("{") L:60
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))))) L:61
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment))))) L:61
+(member_expression object: (identifier) property: (property_identifier)) L:61
+(identifier) L:61
+(".") L:61
+(property_identifier) L:61
+(arguments (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment)))) L:61
+("(") L:61
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (template_string (string_fragment))) L:61
+(member_expression object: (identifier) property: (property_identifier)) L:61
+(identifier) L:61
+(".") L:61
+(property_identifier) L:61
+(template_string (string_fragment)) L:61
+("`") L:61
+(string_fragment) L:61
+("`") L:61
+(")") L:61
+(";") L:61
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number)))) L:62
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (number))) L:62
+(member_expression object: (identifier) property: (property_identifier)) L:62
+(identifier) L:62
+(".") L:62
+(property_identifier) L:62
+(arguments (number)) L:62
+("(") L:62
+(number) L:62
+(")") L:62
+(";") L:62
+("}") L:63
+(return_statement (identifier)) L:65
+("return") L:65
+(identifier) L:65
+(";") L:65
+("}") L:66
+(";") L:66

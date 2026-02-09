@@ -1,0 +1,13 @@
+@plugin-maker/context/python/ast/ast-request.txtは、Pythonのメソッド定義が記述された@plugin-maker/context/python/src/request.pyをTree-sitterで構文解析しASTに変換した結果です。
+@plugin-maker/context/python/ast/ast-request.txtに基づいて、ASTから情報を抽出してCSTを生成する処理を実装して。
+
+@refdiff-universal/main/java/refdiff/parsers/universal/ruby/RubyParser.javaのaddNodesの実装を参考にして。
+typeは関数のみを対象に処理を実装して。
+CstNodeは、CstRootに直接追加する形にして。
+
+CstNodeにsetする情報は下記の通り。
+- type: Function
+- location: ファイルパス、メソッド全体の開始終了位置、メソッドが定義されている行数、ボディの開始終了位置
+- simplename: メソッド名
+- localname: メソッド名
+- parameters: 引数の変数名

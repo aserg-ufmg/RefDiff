@@ -1,0 +1,1195 @@
+(program (comment) (comment) (class name: (constant) (comment) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (comment) (singleton_method object: (self) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))))) (comment) (comment) (singleton_class value: (constant) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier)) (call receiver: (constant) method: (identifier)) (call receiver: (constant) method: (identifier)) (identifier) (comment) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content))))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content))))) (comment) (singleton_method object: (identifier) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (interpolation (self)) (string_content)))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (call receiver: (identifier) method: (identifier)) (comment) (comment) (comment) (class name: (constant)) (singleton_method object: (constant) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (call receiver: (constant) method: (identifier)) (identifier) (comment) (class name: (constant) (comment) body: (body_statement (call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) (comment) (call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) (comment) (call receiver: (array (string (string_content)) (string (string_content))) method: (identifier) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))))))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) (call receiver: (identifier) method: (identifier)) (call receiver: (identifier) method: (identifier)) (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)))) (identifier) (comment) (class name: (constant) body: (body_statement (call method: (identifier) arguments: (argument_list (simple_symbol))) (call method: (identifier) arguments: (argument_list (simple_symbol))) (call method: (identifier) arguments: (argument_list (simple_symbol))) (method name: (identifier) parameters: (method_parameters (identifier) (identifier) (identifier)) body: (body_statement (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (instance_variable))))))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)) (string (string_content)) (integer)))) (call method: (identifier) arguments: (argument_list (call receiver: (identifier) method: (identifier)))) (assignment left: (call receiver: (identifier) method: (identifier)) right: (string (string_content))) (call method: (identifier) arguments: (argument_list (call receiver: (identifier) method: (identifier)))) (call method: (identifier) arguments: (argument_list (call receiver: (identifier) method: (identifier)))) (comment) (comment) (assignment left: (call receiver: (identifier) method: (identifier)) right: (integer)) (call receiver: (identifier) method: (identifier)) (identifier) (comment) (class name: (constant) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (call method: (identifier) arguments: (argument_list (simple_symbol) (simple_symbol))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier)) (call receiver: (identifier) method: (identifier)) (identifier) (comment) (class name: (constant) body: (body_statement (method name: (identifier) parameters: (method_parameters (identifier) (splat_parameter name: (identifier)) (block_parameter name: (identifier))) body: (body_statement (if condition: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) consequence: (then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) alternative: (else (super))))) (method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (false))) body: (body_statement (binary left: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) right: (super)))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)) (string (string_content))) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))))) (call receiver: (identifier) method: (identifier)) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))))))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))))))) (identifier) (comment) (class name: (constant) body: (body_statement (assignment left: (constant) right: (call method: (identifier) block: (block parameters: (block_parameters (identifier)) body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) (assignment left: (constant) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) (method name: (identifier) body: (body_statement (assignment left: (instance_variable) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))))))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (instance_variable) method: (identifier) arguments: (argument_list (identifier))))) (singleton_method object: (self) name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (integer))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (integer))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (integer))) (call receiver: (constant) method: (identifier) arguments: (argument_list (integer))) (identifier) (comment) (class name: (constant) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))) (identifier) (identifier))) (identifier) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (identifier) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))))) (class name: (constant) superclass: (superclass (constant)) body: (body_statement (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (identifier) method: (identifier)))) (method name: (identifier) body: (body_statement (identifier))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier)) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (identifier))) (call receiver: (identifier) method: (identifier)) (identifier) (comment) (comment) (comment) (comment) (comment) (comment) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (call method: (identifier) arguments: (argument_list (string (string_content)))) (comment) (comment) (comment) (comment) (comment) (comment) (comment) (comment) (comment) (identifier) (comment) (class name: (constant) (comment) body: (body_statement (method name: (identifier) parameters: (method_parameters (optional_parameter name: (identifier) value: (integer)))) (comment) (method name: (identifier) parameters: (method_parameters (keyword_parameter name: (identifier) value: (string (string_content))))) (comment) (method name: (identifier) parameters: (method_parameters (hash_splat_parameter name: (identifier)))) (comment) (method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (string (string_content))) (splat_parameter name: (identifier)) (keyword_parameter name: (identifier)) (keyword_parameter name: (identifier) value: (string (string_content))) (hash_splat_parameter name: (identifier)) (block_parameter name: (identifier))))))) L:0
+(comment) L:0
+(comment) L:2
+(class name: (constant) (comment) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (comment) (singleton_method object: (self) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))))) L:4
+("class") L:4
+(constant) L:4
+(comment) L:5
+(body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (comment) (singleton_method object: (self) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))))) L:6
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:6
+("def") L:6
+(identifier) L:6
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:7
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:7
+(identifier) L:7
+(argument_list (string (string_content))) L:7
+(string (string_content)) L:7
+(""") L:7
+(string_content) L:7
+(") L:7
+("end") L:8
+(comment) L:10
+(singleton_method object: (self) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:11
+("def") L:11
+(self) L:11
+(".") L:11
+(identifier) L:11
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:12
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:12
+(identifier) L:12
+(argument_list (string (string_content))) L:12
+(string (string_content)) L:12
+(""") L:12
+(string_content) L:12
+(") L:12
+("end") L:13
+("end") L:14
+(comment) L:16
+(comment) L:17
+(singleton_class value: (constant) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))))) L:19
+("class") L:19
+("<<") L:19
+(constant) L:19
+(body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))))) L:20
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:20
+("def") L:20
+(identifier) L:20
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:21
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:21
+(identifier) L:21
+(argument_list (string (string_content))) L:21
+(string (string_content)) L:21
+(""") L:21
+(string_content) L:21
+(") L:21
+("end") L:22
+("end") L:23
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:25
+(identifier) L:25
+(argument_list (string (string_content))) L:25
+(string (string_content)) L:25
+(""") L:25
+(string_content) L:25
+(") L:25
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:26
+(identifier) L:26
+("=") L:26
+(call receiver: (constant) method: (identifier)) L:26
+(constant) L:26
+(".") L:26
+(identifier) L:26
+(call receiver: (identifier) method: (identifier)) L:27
+(identifier) L:27
+(".") L:27
+(identifier) L:27
+(call receiver: (constant) method: (identifier)) L:29
+(constant) L:29
+(".") L:29
+(identifier) L:29
+(call receiver: (constant) method: (identifier)) L:30
+(constant) L:30
+(".") L:30
+(identifier) L:30
+(identifier) L:31
+(comment) L:33
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content))))) L:35
+(identifier) L:35
+("=") L:35
+(call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)))) L:35
+(constant) L:35
+(".") L:35
+(identifier) L:35
+(argument_list (string (string_content))) L:35
+("(") L:35
+(string (string_content)) L:35
+(""") L:35
+(string_content) L:35
+(") L:35
+(")") L:35
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content))))) L:36
+(identifier) L:36
+("=") L:36
+(call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)))) L:36
+(constant) L:36
+(".") L:36
+(identifier) L:36
+(argument_list (string (string_content))) L:36
+("(") L:36
+(string (string_content)) L:36
+(""") L:36
+(string_content) L:36
+(") L:36
+(")") L:36
+(comment) L:38
+(singleton_method object: (identifier) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (interpolation (self)) (string_content)))))) L:39
+("def") L:39
+(identifier) L:39
+(".") L:39
+(identifier) L:39
+(body_statement (call method: (identifier) arguments: (argument_list (string (interpolation (self)) (string_content))))) L:40
+(call method: (identifier) arguments: (argument_list (string (interpolation (self)) (string_content)))) L:40
+(identifier) L:40
+(argument_list (string (interpolation (self)) (string_content))) L:40
+(string (interpolation (self)) (string_content)) L:40
+(""") L:40
+(interpolation (self)) L:40
+("#{") L:40
+(self) L:40
+("}") L:40
+(string_content) L:40
+(") L:40
+("end") L:41
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:43
+(identifier) L:43
+(argument_list (string (string_content))) L:43
+(string (string_content)) L:43
+(""") L:43
+(string_content) L:43
+(") L:43
+(call receiver: (identifier) method: (identifier)) L:44
+(identifier) L:44
+(".") L:44
+(identifier) L:44
+(comment) L:44
+(comment) L:45
+(comment) L:47
+(class name: (constant)) L:48
+("class") L:48
+(constant) L:48
+("end") L:49
+(singleton_method object: (constant) name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:51
+("def") L:51
+(constant) L:51
+(".") L:51
+(identifier) L:51
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:52
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:52
+(identifier) L:52
+(argument_list (string (string_content))) L:52
+(string (string_content)) L:52
+(""") L:52
+(string_content) L:52
+(") L:52
+("end") L:53
+(call receiver: (constant) method: (identifier)) L:55
+(constant) L:55
+(".") L:55
+(identifier) L:55
+(identifier) L:56
+(comment) L:58
+(class name: (constant) (comment) body: (body_statement (call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) (comment) (call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) (comment) (call receiver: (array (string (string_content)) (string (string_content))) method: (identifier) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))))))))) L:60
+("class") L:60
+(constant) L:60
+(comment) L:61
+(body_statement (call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) (comment) (call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) (comment) (call receiver: (array (string (string_content)) (string (string_content))) method: (identifier) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))))))) L:62
+(call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) L:62
+(identifier) L:62
+(argument_list (simple_symbol)) L:62
+(simple_symbol) L:62
+(do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))) L:62
+("do") L:62
+(block_parameters (identifier)) L:62
+("|") L:62
+(identifier) L:62
+("|") L:62
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))) L:63
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))) L:63
+(identifier) L:63
+(argument_list (string (string_content) (interpolation (identifier)) (string_content))) L:63
+(string (string_content) (interpolation (identifier)) (string_content)) L:63
+(""") L:63
+(string_content) L:63
+(interpolation (identifier)) L:63
+("#{") L:63
+(identifier) L:63
+("}") L:63
+(string_content) L:63
+(") L:63
+("end") L:64
+(comment) L:66
+(call method: (identifier) arguments: (argument_list (simple_symbol)) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) L:67
+(identifier) L:67
+(argument_list (simple_symbol)) L:67
+(simple_symbol) L:67
+(do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))) L:67
+("do") L:67
+(block_parameters (identifier)) L:67
+("|") L:67
+(identifier) L:67
+("|") L:67
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))) L:68
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))) L:68
+(identifier) L:68
+(argument_list (string (string_content) (interpolation (identifier)) (string_content))) L:68
+(string (string_content) (interpolation (identifier)) (string_content)) L:68
+(""") L:68
+(string_content) L:68
+(interpolation (identifier)) L:68
+("#{") L:68
+(identifier) L:68
+("}") L:68
+(string_content) L:68
+(") L:68
+("end") L:69
+(comment) L:71
+(call receiver: (array (string (string_content)) (string (string_content))) method: (identifier) block: (do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))))))) L:72
+(array (string (string_content)) (string (string_content))) L:72
+("[") L:72
+(string (string_content)) L:72
+(""") L:72
+(string_content) L:72
+(") L:72
+(",") L:72
+(string (string_content)) L:72
+(""") L:72
+(string_content) L:72
+(") L:72
+("]") L:72
+(".") L:72
+(identifier) L:72
+(do_block parameters: (block_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))))) L:72
+("do") L:72
+(block_parameters (identifier)) L:72
+("|") L:72
+(identifier) L:72
+("|") L:72
+(body_statement (call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))))) L:73
+(call method: (identifier) arguments: (argument_list (identifier)) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))))) L:73
+(identifier) L:73
+(argument_list (identifier)) L:73
+(identifier) L:73
+(do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))) L:73
+("do") L:73
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))) L:74
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))) L:74
+(identifier) L:74
+(argument_list (string (string_content) (interpolation (identifier)) (string_content))) L:74
+(string (string_content) (interpolation (identifier)) (string_content)) L:74
+(""") L:74
+(string_content) L:74
+(interpolation (identifier)) L:74
+("#{") L:74
+(identifier) L:74
+("}") L:74
+(string_content) L:74
+(") L:74
+("end") L:75
+("end") L:76
+("end") L:77
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:79
+(identifier) L:79
+(argument_list (string (string_content))) L:79
+(string (string_content)) L:79
+(""") L:79
+(string_content) L:79
+(") L:79
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:80
+(identifier) L:80
+("=") L:80
+(call receiver: (constant) method: (identifier)) L:80
+(constant) L:80
+(".") L:80
+(identifier) L:80
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:81
+(identifier) L:81
+(".") L:81
+(identifier) L:81
+(argument_list (string (string_content))) L:81
+("(") L:81
+(string (string_content)) L:81
+(""") L:81
+(string_content) L:81
+(") L:81
+(")") L:81
+(call receiver: (identifier) method: (identifier)) L:82
+(identifier) L:82
+(".") L:82
+(identifier) L:82
+(call receiver: (identifier) method: (identifier)) L:83
+(identifier) L:83
+(".") L:83
+(identifier) L:83
+(call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)))) L:85
+(constant) L:85
+(".") L:85
+(identifier) L:85
+(argument_list (string (string_content))) L:85
+("(") L:85
+(string (string_content)) L:85
+(""") L:85
+(string_content) L:85
+(") L:85
+(")") L:85
+(identifier) L:86
+(comment) L:88
+(class name: (constant) body: (body_statement (call method: (identifier) arguments: (argument_list (simple_symbol))) (call method: (identifier) arguments: (argument_list (simple_symbol))) (call method: (identifier) arguments: (argument_list (simple_symbol))) (method name: (identifier) parameters: (method_parameters (identifier) (identifier) (identifier)) body: (body_statement (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (instance_variable))))))))) L:90
+("class") L:90
+(constant) L:90
+(body_statement (call method: (identifier) arguments: (argument_list (simple_symbol))) (call method: (identifier) arguments: (argument_list (simple_symbol))) (call method: (identifier) arguments: (argument_list (simple_symbol))) (method name: (identifier) parameters: (method_parameters (identifier) (identifier) (identifier)) body: (body_statement (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (instance_variable)))))))) L:91
+(call method: (identifier) arguments: (argument_list (simple_symbol))) L:91
+(identifier) L:91
+(argument_list (simple_symbol)) L:91
+(simple_symbol) L:91
+(call method: (identifier) arguments: (argument_list (simple_symbol))) L:92
+(identifier) L:92
+(argument_list (simple_symbol)) L:92
+(simple_symbol) L:92
+(call method: (identifier) arguments: (argument_list (simple_symbol))) L:93
+(identifier) L:93
+(argument_list (simple_symbol)) L:93
+(simple_symbol) L:93
+(method name: (identifier) parameters: (method_parameters (identifier) (identifier) (identifier)) body: (body_statement (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)))) L:95
+("def") L:95
+(identifier) L:95
+(method_parameters (identifier) (identifier) (identifier)) L:95
+("(") L:95
+(identifier) L:95
+(",") L:95
+(identifier) L:95
+(",") L:95
+(identifier) L:95
+(")") L:95
+(body_statement (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier)) (assignment left: (instance_variable) right: (identifier))) L:96
+(assignment left: (instance_variable) right: (identifier)) L:96
+(instance_variable) L:96
+("=") L:96
+(identifier) L:96
+(assignment left: (instance_variable) right: (identifier)) L:97
+(instance_variable) L:97
+("=") L:97
+(identifier) L:97
+(assignment left: (instance_variable) right: (identifier)) L:98
+(instance_variable) L:98
+("=") L:98
+(identifier) L:98
+("end") L:99
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (instance_variable))))))) L:101
+("def") L:101
+(identifier) L:101
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (instance_variable)))))) L:102
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (instance_variable))))) L:102
+(identifier) L:102
+(argument_list (string (string_content) (interpolation (instance_variable)))) L:102
+(string (string_content) (interpolation (instance_variable))) L:102
+(""") L:102
+(string_content) L:102
+(interpolation (instance_variable)) L:102
+("#{") L:102
+(instance_variable) L:102
+("}") L:102
+(") L:102
+("end") L:103
+("end") L:104
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:106
+(identifier) L:106
+(argument_list (string (string_content))) L:106
+(string (string_content)) L:106
+(""") L:106
+(string_content) L:106
+(") L:106
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)) (string (string_content)) (integer)))) L:107
+(identifier) L:107
+("=") L:107
+(call receiver: (constant) method: (identifier) arguments: (argument_list (string (string_content)) (string (string_content)) (integer))) L:107
+(constant) L:107
+(".") L:107
+(identifier) L:107
+(argument_list (string (string_content)) (string (string_content)) (integer)) L:107
+("(") L:107
+(string (string_content)) L:107
+(""") L:107
+(string_content) L:107
+(") L:107
+(",") L:107
+(string (string_content)) L:107
+(""") L:107
+(string_content) L:107
+(") L:107
+(",") L:107
+(integer) L:107
+(")") L:107
+(call method: (identifier) arguments: (argument_list (call receiver: (identifier) method: (identifier)))) L:109
+(identifier) L:109
+(argument_list (call receiver: (identifier) method: (identifier))) L:109
+(call receiver: (identifier) method: (identifier)) L:109
+(identifier) L:109
+(".") L:109
+(identifier) L:109
+(assignment left: (call receiver: (identifier) method: (identifier)) right: (string (string_content))) L:110
+(call receiver: (identifier) method: (identifier)) L:110
+(identifier) L:110
+(".") L:110
+(identifier) L:110
+("=") L:110
+(string (string_content)) L:110
+(""") L:110
+(string_content) L:110
+(") L:110
+(call method: (identifier) arguments: (argument_list (call receiver: (identifier) method: (identifier)))) L:111
+(identifier) L:111
+(argument_list (call receiver: (identifier) method: (identifier))) L:111
+(call receiver: (identifier) method: (identifier)) L:111
+(identifier) L:111
+(".") L:111
+(identifier) L:111
+(call method: (identifier) arguments: (argument_list (call receiver: (identifier) method: (identifier)))) L:113
+(identifier) L:113
+(argument_list (call receiver: (identifier) method: (identifier))) L:113
+(call receiver: (identifier) method: (identifier)) L:113
+(identifier) L:113
+(".") L:113
+(identifier) L:113
+(comment) L:114
+(comment) L:116
+(assignment left: (call receiver: (identifier) method: (identifier)) right: (integer)) L:117
+(call receiver: (identifier) method: (identifier)) L:117
+(identifier) L:117
+(".") L:117
+(identifier) L:117
+("=") L:117
+(integer) L:117
+(call receiver: (identifier) method: (identifier)) L:118
+(identifier) L:118
+(".") L:118
+(identifier) L:118
+(identifier) L:119
+(comment) L:121
+(class name: (constant) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (call method: (identifier) arguments: (argument_list (simple_symbol) (simple_symbol))))) L:123
+("class") L:123
+(constant) L:123
+(body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (call method: (identifier) arguments: (argument_list (simple_symbol) (simple_symbol)))) L:124
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:124
+("def") L:124
+(identifier) L:124
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:125
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:125
+(identifier) L:125
+(argument_list (string (string_content))) L:125
+(string (string_content)) L:125
+(""") L:125
+(string_content) L:125
+(") L:125
+("end") L:126
+(call method: (identifier) arguments: (argument_list (simple_symbol) (simple_symbol))) L:128
+(identifier) L:128
+(argument_list (simple_symbol) (simple_symbol)) L:128
+(simple_symbol) L:128
+(",") L:128
+(simple_symbol) L:128
+("end") L:129
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:131
+(identifier) L:131
+(argument_list (string (string_content))) L:131
+(string (string_content)) L:131
+(""") L:131
+(string_content) L:131
+(") L:131
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:132
+(identifier) L:132
+("=") L:132
+(call receiver: (constant) method: (identifier)) L:132
+(constant) L:132
+(".") L:132
+(identifier) L:132
+(call receiver: (identifier) method: (identifier)) L:133
+(identifier) L:133
+(".") L:133
+(identifier) L:133
+(call receiver: (identifier) method: (identifier)) L:134
+(identifier) L:134
+(".") L:134
+(identifier) L:134
+(identifier) L:135
+(comment) L:137
+(class name: (constant) body: (body_statement (method name: (identifier) parameters: (method_parameters (identifier) (splat_parameter name: (identifier)) (block_parameter name: (identifier))) body: (body_statement (if condition: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) consequence: (then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) alternative: (else (super))))) (method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (false))) body: (body_statement (binary left: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) right: (super)))))) L:139
+("class") L:139
+(constant) L:139
+(body_statement (method name: (identifier) parameters: (method_parameters (identifier) (splat_parameter name: (identifier)) (block_parameter name: (identifier))) body: (body_statement (if condition: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) consequence: (then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) alternative: (else (super))))) (method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (false))) body: (body_statement (binary left: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) right: (super))))) L:140
+(method name: (identifier) parameters: (method_parameters (identifier) (splat_parameter name: (identifier)) (block_parameter name: (identifier))) body: (body_statement (if condition: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) consequence: (then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) alternative: (else (super))))) L:140
+("def") L:140
+(identifier) L:140
+(method_parameters (identifier) (splat_parameter name: (identifier)) (block_parameter name: (identifier))) L:140
+("(") L:140
+(identifier) L:140
+(",") L:140
+(splat_parameter name: (identifier)) L:140
+("*") L:140
+(identifier) L:140
+(",") L:140
+(block_parameter name: (identifier)) L:140
+("&") L:140
+(identifier) L:140
+(")") L:140
+(body_statement (if condition: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) consequence: (then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) alternative: (else (super)))) L:141
+(if condition: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) consequence: (then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) alternative: (else (super))) L:141
+("if") L:141
+(call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) L:141
+(call receiver: (identifier) method: (identifier)) L:141
+(identifier) L:141
+(".") L:141
+(identifier) L:141
+(".") L:141
+(identifier) L:141
+(argument_list (string (string_content))) L:141
+("(") L:141
+(string (string_content)) L:141
+(""") L:141
+(string_content) L:141
+(") L:141
+(")") L:141
+(then (assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) (if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier)))) L:141
+(assignment left: (identifier) right: (element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer))) L:142
+(identifier) L:142
+("=") L:142
+(element_reference object: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) (integer)) L:142
+(call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)) (integer))) L:142
+(call receiver: (identifier) method: (identifier)) L:142
+(identifier) L:142
+(".") L:142
+(identifier) L:142
+(".") L:142
+(identifier) L:142
+(argument_list (string (string_content)) (integer)) L:142
+("(") L:142
+(string (string_content)) L:142
+(""") L:142
+(string_content) L:142
+(") L:142
+(",") L:142
+(integer) L:142
+(")") L:142
+("[") L:142
+(integer) L:142
+("]") L:142
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) L:143
+(identifier) L:143
+(argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) L:143
+(string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))) L:143
+(""") L:143
+(string_content) L:143
+(interpolation (identifier)) L:143
+("#{") L:143
+(identifier) L:143
+("}") L:143
+(string_content) L:143
+(interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))) L:143
+("#{") L:143
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:143
+(identifier) L:143
+(".") L:143
+(identifier) L:143
+(argument_list (string (string_content))) L:143
+("(") L:143
+(string (string_content)) L:143
+(""") L:143
+(string_content) L:143
+(") L:143
+(")") L:143
+("}") L:143
+(") L:143
+(if_modifier body: (call receiver: (identifier) method: (identifier)) condition: (call method: (identifier))) L:144
+(call receiver: (identifier) method: (identifier)) L:144
+(identifier) L:144
+(".") L:144
+(identifier) L:144
+("if") L:144
+(call method: (identifier)) L:144
+(identifier) L:144
+(else (super)) L:145
+("else") L:145
+(super) L:146
+("end") L:147
+("end") L:148
+(method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (false))) body: (body_statement (binary left: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) right: (super)))) L:150
+("def") L:150
+(identifier) L:150
+(method_parameters (identifier) (optional_parameter name: (identifier) value: (false))) L:150
+("(") L:150
+(identifier) L:150
+(",") L:150
+(optional_parameter name: (identifier) value: (false)) L:150
+(identifier) L:150
+("=") L:150
+(false) L:150
+(")") L:150
+(body_statement (binary left: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) right: (super))) L:151
+(binary left: (call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) right: (super)) L:151
+(call receiver: (call receiver: (identifier) method: (identifier)) method: (identifier) arguments: (argument_list (string (string_content)))) L:151
+(call receiver: (identifier) method: (identifier)) L:151
+(identifier) L:151
+(".") L:151
+(identifier) L:151
+(".") L:151
+(identifier) L:151
+(argument_list (string (string_content))) L:151
+("(") L:151
+(string (string_content)) L:151
+(""") L:151
+(string_content) L:151
+(") L:151
+(")") L:151
+("||") L:151
+(super) L:151
+("end") L:152
+("end") L:153
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:155
+(identifier) L:155
+(argument_list (string (string_content))) L:155
+(string (string_content)) L:155
+(""") L:155
+(string_content) L:155
+(") L:155
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:156
+(identifier) L:156
+("=") L:156
+(call receiver: (constant) method: (identifier)) L:156
+(constant) L:156
+(".") L:156
+(identifier) L:156
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)) (string (string_content))) block: (do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))))) L:157
+(identifier) L:157
+(".") L:157
+(identifier) L:157
+(argument_list (string (string_content)) (string (string_content))) L:157
+("(") L:157
+(string (string_content)) L:157
+(""") L:157
+(string_content) L:157
+(") L:157
+(",") L:157
+(string (string_content)) L:157
+(""") L:157
+(string_content) L:157
+(") L:157
+(")") L:157
+(do_block body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:157
+("do") L:157
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:158
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:158
+(identifier) L:158
+(argument_list (string (string_content))) L:158
+(string (string_content)) L:158
+(""") L:158
+(string_content) L:158
+(") L:158
+("end") L:159
+(call receiver: (identifier) method: (identifier)) L:160
+(identifier) L:160
+(".") L:160
+(identifier) L:160
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))))))) L:162
+(identifier) L:162
+(argument_list (string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol)))))) L:162
+(string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))))) L:162
+(""") L:162
+(string_content) L:162
+(interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol)))) L:162
+("#{") L:162
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))) L:162
+(identifier) L:162
+(".") L:162
+(identifier) L:162
+(argument_list (simple_symbol)) L:162
+("(") L:162
+(simple_symbol) L:162
+(")") L:162
+("}") L:162
+(") L:162
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))))))) L:163
+(identifier) L:163
+(argument_list (string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol)))))) L:163
+(string (string_content) (interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))))) L:163
+(""") L:163
+(string_content) L:163
+(interpolation (call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol)))) L:163
+("#{") L:163
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (simple_symbol))) L:163
+(identifier) L:163
+(".") L:163
+(identifier) L:163
+(argument_list (simple_symbol)) L:163
+("(") L:163
+(simple_symbol) L:163
+(")") L:163
+("}") L:163
+(") L:163
+(identifier) L:164
+(comment) L:166
+(class name: (constant) body: (body_statement (assignment left: (constant) right: (call method: (identifier) block: (block parameters: (block_parameters (identifier)) body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) (assignment left: (constant) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) (method name: (identifier) body: (body_statement (assignment left: (instance_variable) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))))))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (instance_variable) method: (identifier) arguments: (argument_list (identifier))))) (singleton_method object: (self) name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))))) L:168
+("class") L:168
+(constant) L:168
+(body_statement (assignment left: (constant) right: (call method: (identifier) block: (block parameters: (block_parameters (identifier)) body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) (assignment left: (constant) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) (method name: (identifier) body: (body_statement (assignment left: (instance_variable) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))))))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (instance_variable) method: (identifier) arguments: (argument_list (identifier))))) (singleton_method object: (self) name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier)))))) L:169
+(assignment left: (constant) right: (call method: (identifier) block: (block parameters: (block_parameters (identifier)) body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) L:169
+(constant) L:169
+("=") L:169
+(call method: (identifier) block: (block parameters: (block_parameters (identifier)) body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)))))))) L:169
+(identifier) L:169
+(block parameters: (block_parameters (identifier)) body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))) L:169
+("{") L:169
+(block_parameters (identifier)) L:169
+("|") L:169
+(identifier) L:169
+("|") L:169
+(block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)))))) L:169
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))) L:169
+(identifier) L:169
+(argument_list (string (string_content) (interpolation (identifier)))) L:169
+(string (string_content) (interpolation (identifier))) L:169
+(""") L:169
+(string_content) L:169
+(interpolation (identifier)) L:169
+("#{") L:169
+(identifier) L:169
+("}") L:169
+(") L:169
+("}") L:169
+(assignment left: (constant) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))))) L:170
+(constant) L:170
+("=") L:170
+(lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)))))))) L:170
+("->") L:170
+(lambda_parameters (identifier)) L:170
+("(") L:170
+(identifier) L:170
+(")") L:170
+(block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))))) L:170
+("{") L:170
+(block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)))))) L:170
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier))))) L:170
+(identifier) L:170
+(argument_list (string (string_content) (interpolation (identifier)))) L:170
+(string (string_content) (interpolation (identifier))) L:170
+(""") L:170
+(string_content) L:170
+(interpolation (identifier)) L:170
+("#{") L:170
+(identifier) L:170
+("}") L:170
+(") L:170
+("}") L:170
+(method name: (identifier) body: (body_statement (assignment left: (instance_variable) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))))))))) L:172
+("def") L:172
+(identifier) L:172
+(body_statement (assignment left: (instance_variable) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content))))))))) L:173
+(assignment left: (instance_variable) right: (lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))))))) L:173
+(instance_variable) L:173
+("=") L:173
+(lambda parameters: (lambda_parameters (identifier)) body: (block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content))))))) L:173
+("->") L:173
+(lambda_parameters (identifier)) L:173
+("(") L:173
+(identifier) L:173
+(")") L:173
+(block body: (block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))))) L:173
+("{") L:173
+(block_body (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content))))) L:173
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)))) L:173
+(identifier) L:173
+(argument_list (string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content))) L:173
+(string (string_content) (interpolation (identifier)) (string_content) (interpolation (call receiver: (self) method: (identifier))) (string_content)) L:173
+(""") L:173
+(string_content) L:173
+(interpolation (identifier)) L:173
+("#{") L:173
+(identifier) L:173
+("}") L:173
+(string_content) L:173
+(interpolation (call receiver: (self) method: (identifier))) L:173
+("#{") L:173
+(call receiver: (self) method: (identifier)) L:173
+(self) L:173
+(".") L:173
+(identifier) L:173
+("}") L:173
+(string_content) L:173
+(") L:173
+("}") L:173
+("end") L:174
+(method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) L:176
+("def") L:176
+(identifier) L:176
+(method_parameters (identifier)) L:176
+("(") L:176
+(identifier) L:176
+(")") L:176
+(body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier)))) L:177
+(call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))) L:177
+(constant) L:177
+(".") L:177
+(identifier) L:177
+(argument_list (identifier)) L:177
+("(") L:177
+(identifier) L:177
+(")") L:177
+("end") L:178
+(method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) L:180
+("def") L:180
+(identifier) L:180
+(method_parameters (identifier)) L:180
+("(") L:180
+(identifier) L:180
+(")") L:180
+(body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier)))) L:181
+(call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))) L:181
+(constant) L:181
+(".") L:181
+(identifier) L:181
+(argument_list (identifier)) L:181
+("(") L:181
+(identifier) L:181
+(")") L:181
+("end") L:182
+(method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (instance_variable) method: (identifier) arguments: (argument_list (identifier))))) L:184
+("def") L:184
+(identifier) L:184
+(method_parameters (identifier)) L:184
+("(") L:184
+(identifier) L:184
+(")") L:184
+(body_statement (call receiver: (instance_variable) method: (identifier) arguments: (argument_list (identifier)))) L:185
+(call receiver: (instance_variable) method: (identifier) arguments: (argument_list (identifier))) L:185
+(instance_variable) L:185
+(".") L:185
+(identifier) L:185
+(argument_list (identifier)) L:185
+("(") L:185
+(identifier) L:185
+(")") L:185
+("end") L:186
+(singleton_method object: (self) name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))))) L:188
+("def") L:188
+(self) L:188
+(".") L:188
+(identifier) L:188
+(method_parameters (identifier)) L:188
+("(") L:188
+(identifier) L:188
+(")") L:188
+(body_statement (call receiver: (constant) method: (identifier) arguments: (argument_list (identifier)))) L:189
+(call receiver: (constant) method: (identifier) arguments: (argument_list (identifier))) L:189
+(constant) L:189
+(".") L:189
+(identifier) L:189
+(argument_list (identifier)) L:189
+("(") L:189
+(identifier) L:189
+(")") L:189
+("end") L:190
+("end") L:191
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:193
+(identifier) L:193
+(argument_list (string (string_content))) L:193
+(string (string_content)) L:193
+(""") L:193
+(string_content) L:193
+(") L:193
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:194
+(identifier) L:194
+("=") L:194
+(call receiver: (constant) method: (identifier)) L:194
+(constant) L:194
+(".") L:194
+(identifier) L:194
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (integer))) L:195
+(identifier) L:195
+(".") L:195
+(identifier) L:195
+(argument_list (integer)) L:195
+("(") L:195
+(integer) L:195
+(")") L:195
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (integer))) L:196
+(identifier) L:196
+(".") L:196
+(identifier) L:196
+(argument_list (integer)) L:196
+("(") L:196
+(integer) L:196
+(")") L:196
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (integer))) L:197
+(identifier) L:197
+(".") L:197
+(identifier) L:197
+(argument_list (integer)) L:197
+("(") L:197
+(integer) L:197
+(")") L:197
+(call receiver: (constant) method: (identifier) arguments: (argument_list (integer))) L:198
+(constant) L:198
+(".") L:198
+(identifier) L:198
+(argument_list (integer)) L:198
+("(") L:198
+(integer) L:198
+(")") L:198
+(identifier) L:199
+(comment) L:201
+(class name: (constant) body: (body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))) (identifier) (identifier))) (identifier) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (identifier) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))))) L:203
+("class") L:203
+(constant) L:203
+(body_statement (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))) (identifier) (identifier))) (identifier) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (identifier) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) (method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))))) L:204
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))) (identifier) (identifier))) L:204
+("def") L:204
+(identifier) L:204
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))) (identifier) (identifier)) L:205
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:205
+(identifier) L:205
+(argument_list (string (string_content))) L:205
+(string (string_content)) L:205
+(""") L:205
+(string_content) L:205
+(") L:205
+(identifier) L:206
+(identifier) L:207
+("end") L:208
+(identifier) L:210
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:212
+("def") L:212
+(identifier) L:212
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:213
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:213
+(identifier) L:213
+(argument_list (string (string_content))) L:213
+(string (string_content)) L:213
+(""") L:213
+(string_content) L:213
+(") L:213
+("end") L:214
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:216
+("def") L:216
+(identifier) L:216
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:217
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:217
+(identifier) L:217
+(argument_list (string (string_content))) L:217
+(string (string_content)) L:217
+(""") L:217
+(string_content) L:217
+(") L:217
+("end") L:218
+(identifier) L:220
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:222
+("def") L:222
+(identifier) L:222
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:223
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:223
+(identifier) L:223
+(argument_list (string (string_content))) L:223
+(string (string_content)) L:223
+(""") L:223
+(string_content) L:223
+(") L:223
+("end") L:224
+(method name: (identifier) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:226
+("def") L:226
+(identifier) L:226
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content))))) L:227
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:227
+(identifier) L:227
+(argument_list (string (string_content))) L:227
+(string (string_content)) L:227
+(""") L:227
+(string_content) L:227
+(") L:227
+("end") L:228
+("end") L:229
+(class name: (constant) superclass: (superclass (constant)) body: (body_statement (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (identifier) method: (identifier)))) (method name: (identifier) body: (body_statement (identifier))))) L:231
+("class") L:231
+(constant) L:231
+(superclass (constant)) L:231
+("<") L:231
+(constant) L:231
+(body_statement (method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (identifier) method: (identifier)))) (method name: (identifier) body: (body_statement (identifier)))) L:232
+(method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call receiver: (identifier) method: (identifier)))) L:232
+("def") L:232
+(identifier) L:232
+(method_parameters (identifier)) L:232
+("(") L:232
+(identifier) L:232
+(")") L:232
+(body_statement (call receiver: (identifier) method: (identifier))) L:233
+(call receiver: (identifier) method: (identifier)) L:233
+(identifier) L:233
+(".") L:233
+(identifier) L:233
+("end") L:234
+(method name: (identifier) body: (body_statement (identifier))) L:236
+("def") L:236
+(identifier) L:236
+(body_statement (identifier)) L:237
+(identifier) L:237
+("end") L:238
+("end") L:239
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:241
+(identifier) L:241
+(argument_list (string (string_content))) L:241
+(string (string_content)) L:241
+(""") L:241
+(string_content) L:241
+(") L:241
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:242
+(identifier) L:242
+("=") L:242
+(call receiver: (constant) method: (identifier)) L:242
+(constant) L:242
+(".") L:242
+(identifier) L:242
+(call receiver: (identifier) method: (identifier)) L:243
+(identifier) L:243
+(".") L:243
+(identifier) L:243
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:245
+(identifier) L:245
+("=") L:245
+(call receiver: (constant) method: (identifier)) L:245
+(constant) L:245
+(".") L:245
+(identifier) L:245
+(assignment left: (identifier) right: (call receiver: (constant) method: (identifier))) L:246
+(identifier) L:246
+("=") L:246
+(call receiver: (constant) method: (identifier)) L:246
+(constant) L:246
+(".") L:246
+(identifier) L:246
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (identifier))) L:247
+(identifier) L:247
+(".") L:247
+(identifier) L:247
+(argument_list (identifier)) L:247
+("(") L:247
+(identifier) L:247
+(")") L:247
+(call receiver: (identifier) method: (identifier)) L:248
+(identifier) L:248
+(".") L:248
+(identifier) L:248
+(identifier) L:249
+(comment) L:251
+(comment) L:253
+(comment) L:254
+(comment) L:255
+(comment) L:256
+(comment) L:257
+(method name: (identifier) parameters: (method_parameters (identifier)) body: (body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))))) L:259
+("def") L:259
+(identifier) L:259
+(method_parameters (identifier)) L:259
+("(") L:259
+(identifier) L:259
+(")") L:259
+(body_statement (call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content))))) L:260
+(call method: (identifier) arguments: (argument_list (string (string_content) (interpolation (identifier)) (string_content)))) L:260
+(identifier) L:260
+(argument_list (string (string_content) (interpolation (identifier)) (string_content))) L:260
+(string (string_content) (interpolation (identifier)) (string_content)) L:260
+(""") L:260
+(string_content) L:260
+(interpolation (identifier)) L:260
+("#{") L:260
+(identifier) L:260
+("}") L:260
+(string_content) L:260
+(") L:260
+("end") L:261
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:263
+(identifier) L:263
+(argument_list (string (string_content))) L:263
+(string (string_content)) L:263
+(""") L:263
+(string_content) L:263
+(") L:263
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:264
+(identifier) L:264
+(argument_list (string (string_content))) L:264
+("(") L:264
+(string (string_content)) L:264
+(""") L:264
+(string_content) L:264
+(") L:264
+(")") L:264
+(comment) L:266
+(comment) L:267
+(comment) L:269
+(comment) L:270
+(comment) L:271
+(comment) L:272
+(comment) L:273
+(comment) L:274
+(comment) L:275
+(identifier) L:276
+(comment) L:278
+(class name: (constant) (comment) body: (body_statement (method name: (identifier) parameters: (method_parameters (optional_parameter name: (identifier) value: (integer)))) (comment) (method name: (identifier) parameters: (method_parameters (keyword_parameter name: (identifier) value: (string (string_content))))) (comment) (method name: (identifier) parameters: (method_parameters (hash_splat_parameter name: (identifier)))) (comment) (method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (string (string_content))) (splat_parameter name: (identifier)) (keyword_parameter name: (identifier)) (keyword_parameter name: (identifier) value: (string (string_content))) (hash_splat_parameter name: (identifier)) (block_parameter name: (identifier)))))) L:280
+("class") L:280
+(constant) L:280
+(comment) L:281
+(body_statement (method name: (identifier) parameters: (method_parameters (optional_parameter name: (identifier) value: (integer)))) (comment) (method name: (identifier) parameters: (method_parameters (keyword_parameter name: (identifier) value: (string (string_content))))) (comment) (method name: (identifier) parameters: (method_parameters (hash_splat_parameter name: (identifier)))) (comment) (method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (string (string_content))) (splat_parameter name: (identifier)) (keyword_parameter name: (identifier)) (keyword_parameter name: (identifier) value: (string (string_content))) (hash_splat_parameter name: (identifier)) (block_parameter name: (identifier))))) L:282
+(method name: (identifier) parameters: (method_parameters (optional_parameter name: (identifier) value: (integer)))) L:282
+("def") L:282
+(identifier) L:282
+(method_parameters (optional_parameter name: (identifier) value: (integer))) L:282
+("(") L:282
+(optional_parameter name: (identifier) value: (integer)) L:282
+(identifier) L:282
+("=") L:282
+(integer) L:282
+(")") L:282
+("end") L:283
+(comment) L:285
+(method name: (identifier) parameters: (method_parameters (keyword_parameter name: (identifier) value: (string (string_content))))) L:286
+("def") L:286
+(identifier) L:286
+(method_parameters (keyword_parameter name: (identifier) value: (string (string_content)))) L:286
+("(") L:286
+(keyword_parameter name: (identifier) value: (string (string_content))) L:286
+(identifier) L:286
+(":") L:286
+(string (string_content)) L:286
+(""") L:286
+(string_content) L:286
+(") L:286
+(")") L:286
+("end") L:287
+(comment) L:289
+(method name: (identifier) parameters: (method_parameters (hash_splat_parameter name: (identifier)))) L:290
+("def") L:290
+(identifier) L:290
+(method_parameters (hash_splat_parameter name: (identifier))) L:290
+("(") L:290
+(hash_splat_parameter name: (identifier)) L:290
+("**") L:290
+(identifier) L:290
+(")") L:290
+("end") L:291
+(comment) L:293
+(method name: (identifier) parameters: (method_parameters (identifier) (optional_parameter name: (identifier) value: (string (string_content))) (splat_parameter name: (identifier)) (keyword_parameter name: (identifier)) (keyword_parameter name: (identifier) value: (string (string_content))) (hash_splat_parameter name: (identifier)) (block_parameter name: (identifier)))) L:294
+("def") L:294
+(identifier) L:294
+(method_parameters (identifier) (optional_parameter name: (identifier) value: (string (string_content))) (splat_parameter name: (identifier)) (keyword_parameter name: (identifier)) (keyword_parameter name: (identifier) value: (string (string_content))) (hash_splat_parameter name: (identifier)) (block_parameter name: (identifier))) L:294
+("(") L:294
+(identifier) L:294
+(",") L:294
+(optional_parameter name: (identifier) value: (string (string_content))) L:294
+(identifier) L:294
+("=") L:294
+(string (string_content)) L:294
+(""") L:294
+(string_content) L:294
+(") L:294
+(",") L:294
+(splat_parameter name: (identifier)) L:294
+("*") L:294
+(identifier) L:294
+(",") L:294
+(keyword_parameter name: (identifier)) L:294
+(identifier) L:294
+(":") L:294
+(",") L:294
+(keyword_parameter name: (identifier) value: (string (string_content))) L:294
+(identifier) L:294
+(":") L:294
+(string (string_content)) L:294
+(""") L:294
+(string_content) L:294
+(") L:294
+(",") L:294
+(hash_splat_parameter name: (identifier)) L:294
+("**") L:294
+(identifier) L:294
+(",") L:294
+(block_parameter name: (identifier)) L:294
+("&") L:294
+(identifier) L:294
+(")") L:294
+("end") L:295
+("end") L:296

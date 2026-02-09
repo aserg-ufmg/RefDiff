@@ -1,0 +1,9 @@
+function_no_args_no_return	func.c	/^void function_no_args_no_return() {$/;"	f	line:13	typeref:typename:void
+function_with_args_no_return	func.c	/^void function_with_args_no_return(int a, int b) {$/;"	f	line:18	typeref:typename:void
+add	func.c	/^int add(int a, int b) { return a + b; }$/;"	f	line:24	typeref:typename:int
+old_style_add	func.c	/^int old_style_add(a, b)$/;"	f	line:34
+internal_function	func.c	/^static void internal_function() {$/;"	f	line:48	typeref:typename:void	file:
+multiply	func.c	/^inline int multiply(int a, int b) { return a * b; }$/;"	f	line:60	typeref:typename:int
+get_global_variable_address	func.c	/^int* get_global_variable_address() { return &global_variable; }$/;"	f	line:71	typeref:typename:int *
+sum_all	func.c	/^int sum_all(int count, ...) {$/;"	f	line:80	typeref:typename:int
+main	func.c	/^int main() {$/;"	f	line:100	typeref:typename:int

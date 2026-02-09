@@ -1,0 +1,5 @@
+Commit: 02ad9146a3800ce2aecce801df8a6b46f685771a
+EXTRACT	{Method extract_subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:102 LOC:4}	{Method subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:104 LOC:4})
+EXTRACT	{Method extract_domain_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:98 LOC:3}	{Method domain_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:64 LOC:3})
+EXTRACT_MOVE	{Method extract_subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:102 LOC:4}	{Method subdomains_from(_, _) at actionpack/test/dispatch/request_test.rb:344 LOC:3})
+

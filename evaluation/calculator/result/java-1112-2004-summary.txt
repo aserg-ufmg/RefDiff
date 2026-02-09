@@ -1,0 +1,88 @@
+Move Class:
+  TP: 1057.0
+  FP: 0.0
+  FN: 43.0
+  TN: 2.0
+  Precision: 1.0000
+  Recall: 0.9609
+
+Move Method:
+  TP: 246.0
+  FP: 28.0
+  FN: 73.0
+  TN: 489.0
+  Precision: 0.8978
+  Recall: 0.7712
+
+Rename Class:
+  TP: 76.0
+  FP: 5.0
+  FN: 19.0
+  TN: 6.0
+  Precision: 0.9383
+  Recall: 0.8000
+
+Rename Method:
+  TP: 233.0
+  FP: 11.0
+  FN: 123.0
+  TN: 45.0
+  Precision: 0.9549
+  Recall: 0.6545
+
+Extract Interface:
+  TP: 8.0
+  FP: 0.0
+  FN: 16.0
+  TN: 6.0
+  Precision: 1.0000
+  Recall: 0.3333
+
+Extract Superclass:
+  TP: 19.0
+  FP: 0.0
+  FN: 51.0
+  TN: 3.0
+  Precision: 1.0000
+  Recall: 0.2714
+
+Pull Up Method:
+  TP: 64.0
+  FP: 1.0
+  FN: 31.0
+  TN: 14.0
+  Precision: 0.9846
+  Recall: 0.6737
+
+Push Down Method:
+  TP: 21.0
+  FP: 2.0
+  FN: 19.0
+  TN: 0.0
+  Precision: 0.9130
+  Recall: 0.5250
+
+Extract Method:
+  TP: 474.0
+  FP: 20.0
+  FN: 565.0
+  TN: 101.0
+  Precision: 0.9595
+  Recall: 0.4562
+
+Inline Method:
+  TP: 70.0
+  FP: 1.0
+  FN: 52.0
+  TN: 21.0
+  Precision: 0.9859
+  Recall: 0.5738
+
+Total:
+  TP: 2268.0
+  FP: 68.0
+  FN: 992.0
+  TN: 687.0
+  Precision: 0.9709
+  Recall: 0.6957
+

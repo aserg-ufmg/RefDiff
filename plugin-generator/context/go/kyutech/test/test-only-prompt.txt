@@ -1,0 +1,170 @@
+あなたの主な任務は、与えられたソースコードを解析し、そのCST (Code Structure Tree) が仕様通りに正しいかを検証するための Javaのテストコードを記述することです。
+
+# 指示
+1. 下記の# 本題で与えられるソースコードを解析してください。
+2. ソースコードに含まれる主要な構文要素（クラス、メソッド、関数など）を全て特定します。
+3. # 参考例で示されているJavaのテストファイルの書き方に倣い、特定した全ての構文要素を検証する完全なJUnitテストファイルを生成してください。
+4. テストコードでは、# CSTノードの仕様に記載されている各プロパティ（type, simplename, location, parametersなど）が期待通りに設定されていることをアサーションで確認してください。
+5. typeは、言語の慣習に基づき、大文字のスネークケース（CLASS, METHODなど）で表現してください。
+
+# CSTノードの仕様
+テスト対象のCSTノードは、概念的に以下のプロパティを持っています。Javaテストコード内では、これらのプロパティにアクセスし、値を検証します。
+
+- getType(): String - クラス、メソッドなどの構文要素の種別。
+- getSimpleName(): String - 要素の単純名（例: main, Greeter）。
+- getLocalName(): String - 引数などを含む、より詳細な名前（例: main(String[] args)）。
+- getLocation(): Location - ソースコード内での位置情報を保持するオブジェクト。
+  - getFile(): String - ファイルパス。
+  - getLine(): int - 要素定義の開始行番号。
+  - その他、getStart(), getEnd()など。
+- getParameters(): List<Parameter> - 引数オブジェクトのリスト。
+  - getName(): String - 引数名。
+
+-----
+
+# 参考例1: Java
+
+## ソースコード: SimpleApp.java
+```java
+1  public class SimpleApp {
+2     public void execute() {
+3         System.out.println("Status: OK");
+4     }
+5     public static void main(String[] args) {
+6         new SimpleApp().execute();
+7     }
+8  }
+```
+
+## 生成されるテストファイル: SimpleAppCstTest.java
+```java
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import org.junit.Test;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.Parameter;
+// (その他の必要なimport)
+
+public class SimpleAppCstTest {
+
+    private CstNode findNode(List<CstNode> nodes, String name, int line) {
+        return nodes.stream()
+            .filter(node -> name.equals(node.getSimpleName()) && node.getLocation().getLine() == line)
+            .findFirst()
+            .orElseThrow(() -> new AssertionError(String.format("Node '%s' at line %d not found.", name, line)));
+    }
+
+    @Test
+    public void shouldParseJavaFileCorrectly() throws Exception {
+        // CstRoot cstRoot = parser.parse("SimpleApp.java"); // 実際にはパーサー経由でCSTを取得
+        // List<CstNode> nodes = cstRoot.getNodes();
+
+        // --- 以下はテストの検証ロジックの例 ---
+        // CstNode classNode = findNode(nodes, "SimpleApp", 1);
+        // assertThat(classNode.getType(), is(equalTo("CLASS")));
+        // assertThat(classNode.getLocalName(), is(equalTo("SimpleApp")));
+        // assertThat(classNode.getParameters().isEmpty(), is(true));
+
+        // CstNode executeMethod = findNode(nodes, "execute", 2);
+        // assertThat(executeMethod.getType(), is(equalTo("METHOD")));
+        // assertThat(executeMethod.getLocalName(), is(equalTo("execute()")));
+        // assertThat(executeMethod.getParameters().isEmpty(), is(true));
+
+        // CstNode mainMethod = findNode(nodes, "main", 5);
+        // assertThat(mainMethod.getType(), is(equalTo("METHOD")));
+        // assertThat(mainMethod.getLocalName(), is(equalTo("main(String[] args)")));
+        // List<String> mainParams = mainMethod.getParameters().stream().map(Parameter::getName).collect(Collectors.toList());
+        // assertThat(mainParams, is(equalTo(List.of("args"))));
+    }
+}
+# 参考例2: JavaScript
+## ソースコード: Greeter.js
+
+JavaScript
+
+1  class Greeter {
+2    constructor(name) {
+3      this.name = name;
+4    }
+5    sayHello() {
+6      console.log(`Hello, ${this.name}!`);
+7    }
+8  }
+9  function startApp() {
+10   const greeter = new Greeter('JavaScript');
+11   greeter.sayHello();
+12 }
+
+## 生成されるテストファイル: GreeterCstTest.java
+````java
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import org.junit.Test;
+import refdiff.core.cst.CstNode;
+import refdiff.core.cst.CstRoot;
+import refdiff.core.cst.Parameter;
+// (その他の必要なimport)
+
+public class GreeterCstTest {
+
+    private CstNode findNode(List<CstNode> nodes, String name, int line) {
+        return nodes.stream()
+            .filter(node -> name.equals(node.getSimpleName()) && node.getLocation().getLine() == line)
+            .findFirst()
+            .orElseThrow(() -> new AssertionError(String.format("Node '%s' at line %d not found.", name, line)));
+    }
+
+    @Test
+    public void shouldParseJavaScriptFileCorrectly() throws Exception {
+        // CstRoot cstRoot = parser.parse("Greeter.js"); // 実際にはパーサー経由でCSTを取得
+        // List<CstNode> nodes = cstRoot.getNodes();
+
+        // --- 以下はテストの検証ロジックの例 ---
+        // CstNode classNode = findNode(nodes, "Greeter", 1);
+        // assertThat(classNode.getType(), is(equalTo("CLASS")));
+        // assertThat(classNode.getLocalName(), is(equalTo("Greeter")));
+
+        // CstNode constructorNode = findNode(nodes, "constructor", 2);
+        // assertThat(constructorNode.getType(), is(equalTo("CONSTRUCTOR")));
+        // assertThat(constructorNode.getLocalName(), is(equalTo("constructor(name)")));
+        // assertThat(constructorNode.getParameters().get(0).getName(), is(equalTo("name")));
+
+        // CstNode methodNode = findNode(nodes, "sayHello", 5);
+        // assertThat(methodNode.getType(), is(equalTo("METHOD")));
+        // assertThat(methodNode.getLocalName(), is(equalTo("sayHello()")));
+        // assertThat(methodNode.getParameters().isEmpty(), is(true));
+        
+        // CstNode functionNode = findNode(nodes, "startApp", 9);
+        // assertThat(functionNode.getType(), is(equalTo("FUNCTION")));
+        // assertThat(functionNode.getLocalName(), is(equalTo("startApp()")));
+        // assertThat(functionNode.getParameters().isEmpty(), is(true));
+    }
+}
+```
+
+-----
+
+# 本題
+以下のRubyソースコード (method.rb) を解析し、仕様と参考例に沿った完全なJavaのテストファイル (MethodRbCstTest.java) を記述してください。
+
+## ソースコード: method.rb
+```ruby
+1  def add(a, b)
+2    a + b
+3  end
+4
+5  class Calculator
+6    def subtract(x, y)
+7      x - y
+8    end
+9  end
+```

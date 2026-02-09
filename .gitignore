@@ -2,3 +2,5 @@
 /.gradle/
 
 .project
+
+.DS_Store

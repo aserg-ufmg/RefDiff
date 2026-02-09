@@ -1,0 +1,1 @@
+{"_type": "tag", "name": "main", "path": "foo/bar/baz.java", "pattern": "/^    public static void main(String[] args) {$/", "line": 75, "kind": "method", "scope": "array", "scopeKind": "class", "end": 104}

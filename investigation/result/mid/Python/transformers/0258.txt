@@ -1,0 +1,672 @@
+Commit: 28ca27cb2b78dae855b6e9ce1461fed18a9a9594
+No refactorings found.
+
+Commit: 0a21e870c76262eb54cf6d7fde0f6c22b962204c
+No refactorings found.
+
+Commit: 894b2d84b697a9c1b502eb6b18d703b39ec1464a
+No refactorings found.
+
+Commit: 56d68c6706ee052b445e1e476056ed92ac5eb383
+No refactorings found.
+
+Commit: 7db228a92ad5fcb9d5089cac91d7c7c70e5578d6
+No refactorings found.
+
+Commit: 19ffe0219dae122203f9726669f88ef1c6ea3bb4
+EXTRACT	{Function test_unstructured_kwargs_audio(self) at tests/test_processing_common.py:462 LOC:17}	{Function prepare_audio_inputs(self, batch_size) at tests/test_processing_common.py:174 LOC:7})
+EXTRACT_MOVE	{Function model_input_names(self) at src/transformers/models/instructblipvideo/processing_instructblipvideo.py:194 LOC:4}	{Function model_input_names(self) at src/transformers/models/trocr/processing_trocr.py:113 LOC:3})
+EXTRACT	{Function test_tokenizer_defaults_preserved_by_kwargs_audio(self) at tests/test_processing_common.py:425 LOC:16}	{Function prepare_audio_inputs(self, batch_size) at tests/test_processing_common.py:174 LOC:7})
+EXTRACT_MOVE	{Function model_input_names(self) at src/transformers/models/instructblipvideo/processing_instructblipvideo.py:194 LOC:4}	{Function model_input_names(self) at src/transformers/models/donut/processing_donut.py:120 LOC:4})
+EXTRACT	{Function test_doubly_passed_kwargs_audio(self) at tests/test_processing_common.py:481 LOC:21}	{Function prepare_audio_inputs(self, batch_size) at tests/test_processing_common.py:174 LOC:7})
+EXTRACT	{Function test_kwargs_overrides_default_tokenizer_kwargs_audio(self) at tests/test_processing_common.py:443 LOC:17}	{Function prepare_audio_inputs(self, batch_size) at tests/test_processing_common.py:174 LOC:7})
+INLINE	{Function model_input_names(self) at src/transformers/models/markuplm/processing_markuplm.py:145 LOC:3}	{Function model_input_names(self) at src/transformers/models/blip/processing_blip.py:118 LOC:5})
+EXTRACT	{Function test_structured_kwargs_audio_nested(self) at tests/test_processing_common.py:505 LOC:24}	{Function prepare_audio_inputs(self, batch_size) at tests/test_processing_common.py:174 LOC:7})
+
+Commit: d8f6d3790acdd7033e199875b5b57691adf10735
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:568 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:568 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:602 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:602 LOC:1})
+CHANGE_SIGNATURE	{Function test_small_model_pt(self, torch_dtype) at tests/pipelines/test_pipelines_zero_shot_image_classification.py:76 LOC:58}	{Function test_small_model_pt(self, dtype) at tests/pipelines/test_pipelines_zero_shot_image_classification.py:76 LOC:58})
+RENAME	{Function remove_torch_dtype(model_path) at tests/utils/test_modeling_utils.py:617 LOC:7}	{Function remove_dtype(model_path) at tests/utils/test_modeling_utils.py:617 LOC:7})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_fill_mask.py:199 LOC:24}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_fill_mask.py:199 LOC:24})
+CHANGE_SIGNATURE	{Function __init__(self, video, video_height, video_width, inference_device, inference_state_device, video_storage_device, torch_dtype, max_vision_features_cache_size) at src/transformers/models/sam2_video/modular_sam2_video.py:402 LOC:44}	{Function __init__(self, video, video_height, video_width, inference_device, inference_state_device, video_storage_device, dtype, max_vision_features_cache_size) at src/transformers/models/sam2_video/modular_sam2_video.py:402 LOC:44})
+CHANGE_SIGNATURE	{Function __init__(self, output_hidden_states, output_attentions, return_dict, torchscript, torch_dtype, pruned_heads, tie_word_embeddings, chunk_size_feed_forward, is_encoder_decoder, is_decoder, cross_attention_hidden_size, add_cross_attention, tie_encoder_decoder, architectures, finetuning_task, id2label, label2id, num_labels, task_specific_params, problem_type, tokenizer_class, prefix, bos_token_id, pad_token_id, eos_token_id, sep_token_id, decoder_start_token_id, **kwargs) at src/transformers/configuration_utils.py:214 LOC:138}	{Function __init__(self, output_hidden_states, output_attentions, return_dict, torchscript, dtype, pruned_heads, tie_word_embeddings, chunk_size_feed_forward, is_encoder_decoder, is_decoder, cross_attention_hidden_size, add_cross_attention, tie_encoder_decoder, architectures, finetuning_task, id2label, label2id, num_labels, task_specific_params, problem_type, tokenizer_class, prefix, bos_token_id, pad_token_id, eos_token_id, sep_token_id, decoder_start_token_id, **kwargs) at src/transformers/configuration_utils.py:209 LOC:143})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_document_question_answering.py:72 LOC:38}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_document_question_answering.py:72 LOC:38})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:596 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:596 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:590 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:590 LOC:1})
+CHANGE_SIGNATURE	{Function run_model_pipeline_tests(self, task, repo_name, model_architecture, tokenizer_names, image_processor_names, feature_extractor_names, processor_names, commit, torch_dtype) at tests/test_pipeline_mixin.py:262 LOC:93}	{Function run_model_pipeline_tests(self, task, repo_name, model_architecture, tokenizer_names, image_processor_names, feature_extractor_names, processor_names, commit, dtype) at tests/test_pipeline_mixin.py:262 LOC:93})
+CHANGE_SIGNATURE	{Function test_small_model_pt(self, torch_dtype) at tests/pipelines/test_pipelines_table_question_answering.py:38 LOC:100}	{Function test_small_model_pt(self, dtype) at tests/pipelines/test_pipelines_table_question_answering.py:38 LOC:100})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_image_to_text.py:47 LOC:23}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_image_to_text.py:47 LOC:23})
+RENAME	{Function test_update_torch_dtype(self) at tests/quantization/mxfp4/test_mxfp4.py:223 LOC:14}	{Function test_update_dtype(self) at tests/quantization/mxfp4/test_mxfp4.py:223 LOC:14})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_image_segmentation.py:101 LOC:21}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_image_segmentation.py:101 LOC:21})
+CHANGE_SIGNATURE	{Function __init__(self, model, feature_extractor, tokenizer, decoder, device, torch_dtype, **kwargs) at src/transformers/pipelines/automatic_speech_recognition.py:196 LOC:26}	{Function __init__(self, model, feature_extractor, tokenizer, decoder, device, **kwargs) at src/transformers/pipelines/automatic_speech_recognition.py:192 LOC:25})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:582 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:582 LOC:1})
+CHANGE_SIGNATURE	{Function test_integration_wtq_pt(self, torch_dtype) at tests/pipelines/test_pipelines_table_question_answering.py:268 LOC:42}	{Function test_integration_wtq_pt(self, dtype) at tests/pipelines/test_pipelines_table_question_answering.py:268 LOC:42})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:584 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:584 LOC:1})
+CHANGE_SIGNATURE	{Function test_inference_with_different_dtypes(self, torch_dtype_str) at tests/models/d_fine/test_modeling_d_fine.py:691 LOC:18}	{Function test_inference_with_different_dtypes(self, dtype_str) at tests/models/d_fine/test_modeling_d_fine.py:691 LOC:18})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:576 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:576 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:592 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:592 LOC:1})
+CHANGE_SIGNATURE	{Function adjust_target_dtype(self, torch_dtype) at src/transformers/quantizers/base.py:94 LOC:11}	{Function adjust_target_dtype(self, dtype) at src/transformers/quantizers/base.py:109 LOC:11})
+RENAME	{Function _get_torch_dtype(cls, torch_dtype, checkpoint_files, config, sharded_metadata, state_dict, weights_only) at src/transformers/modeling_utils.py:1344 LOC:78}	{Function _get_dtype(cls, dtype, checkpoint_files, config, sharded_metadata, state_dict, weights_only) at src/transformers/modeling_utils.py:1344 LOC:78})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:560 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:560 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:616 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:616 LOC:1})
+RENAME	{Function test_model_from_config_torch_dtype(self) at tests/utils/test_modeling_utils.py:506 LOC:17}	{Function test_model_from_config_dtype(self) at tests/utils/test_modeling_utils.py:506 LOC:17})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_text_to_audio.py:250 LOC:24}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_text_to_audio.py:250 LOC:24})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:562 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:562 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:574 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:574 LOC:1})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_zero_shot.py:55 LOC:19}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_zero_shot.py:55 LOC:19})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:612 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:612 LOC:1})
+CHANGE_SIGNATURE	{Function init_video_session(self, video, inference_device, inference_state_device, processing_device, video_storage_device, max_vision_features_cache_size, torch_dtype) at src/transformers/models/sam2_video/processing_sam2_video.py:529 LOC:52}	{Function init_video_session(self, video, inference_device, inference_state_device, processing_device, video_storage_device, max_vision_features_cache_size, dtype) at src/transformers/models/sam2_video/processing_sam2_video.py:529 LOC:52})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:627 LOC:4}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:627 LOC:4})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_text_generation.py:274 LOC:19}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_text_generation.py:274 LOC:19})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:606 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:606 LOC:1})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_mask_generation.py:79 LOC:21}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_mask_generation.py:79 LOC:21})
+CHANGE_SIGNATURE	{Function test_pipeline(self, torch_dtype) at tests/pipelines/test_pipelines_image_to_image.py:57 LOC:11}	{Function test_pipeline(self, dtype) at tests/pipelines/test_pipelines_image_to_image.py:57 LOC:11})
+RENAME	{Function dict_torch_dtype_to_str(self, d) at src/transformers/configuration_utils.py:1033 LOC:14}	{Function dict_dtype_to_str(self, d) at src/transformers/configuration_utils.py:1049 LOC:14})
+RENAME	{Function update_torch_dtype(self, torch_dtype) at src/transformers/quantizers/quantizer_compressed_tensors.py:107 LOC:9}	{Function update_dtype(self, dtype) at src/transformers/quantizers/quantizer_compressed_tensors.py:107 LOC:7})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:598 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:598 LOC:1})
+RENAME	{Function test_restore_default_torch_dtype_from_config(self) at tests/utils/test_modeling_utils.py:1810 LOC:33}	{Function test_restore_default_dtype_from_config(self) at tests/utils/test_modeling_utils.py:1810 LOC:33})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:604 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:604 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:580 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:580 LOC:1})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_text_classification.py:166 LOC:18}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_text_classification.py:166 LOC:18})
+CHANGE_SIGNATURE	{Function test_slow_tokenizer_sqa_pt(self, torch_dtype) at tests/pipelines/test_pipelines_table_question_answering.py:144 LOC:117}	{Function test_slow_tokenizer_sqa_pt(self, dtype) at tests/pipelines/test_pipelines_table_question_answering.py:144 LOC:117})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_feature_extraction.py:115 LOC:36}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_feature_extraction.py:115 LOC:36})
+RENAME	{Function _dict_torch_dtype_to_str(self, d) at src/transformers/training_args.py:2529 LOC:11}	{Function _dict_dtype_to_str(self, d) at src/transformers/training_args.py:2529 LOC:11})
+CHANGE_SIGNATURE	{Function adjust_target_dtype(self, torch_dtype) at src/transformers/quantizers/quantizer_torchao.py:140 LOC:35}	{Function adjust_target_dtype(self, dtype) at src/transformers/quantizers/quantizer_torchao.py:140 LOC:35})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:578 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:578 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:594 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:594 LOC:1})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:614 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:614 LOC:1})
+CHANGE_SIGNATURE	{Function run_task_tests(self, task, torch_dtype) at tests/test_pipeline_mixin.py:176 LOC:85}	{Function run_task_tests(self, task, dtype) at tests/test_pipeline_mixin.py:176 LOC:85})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:586 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:586 LOC:1})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/moshi/test_modeling_moshi.py:196 LOC:7}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/moshi/test_modeling_moshi.py:196 LOC:7})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:566 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:566 LOC:1})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_zero_shot_object_detection.py:50 LOC:24}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_zero_shot_object_detection.py:50 LOC:24})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/aimv2/test_modeling_aimv2.py:565 LOC:27}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/aimv2/test_modeling_aimv2.py:563 LOC:27})
+CHANGE_SIGNATURE	{Function test_inference_equivalence_for_static_and_dynamic_anchors(self, torch_dtype_str) at tests/models/d_fine/test_modeling_d_fine.py:713 LOC:35}	{Function test_inference_equivalence_for_static_and_dynamic_anchors(self, dtype_str) at tests/models/d_fine/test_modeling_d_fine.py:713 LOC:35})
+RENAME	{Function test_torch_dtype_property(self) at tests/pipelines/test_pipelines_common.py:192 LOC:21}	{Function test_dtype_property(self) at tests/pipelines/test_pipelines_common.py:192 LOC:21})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/test_modeling_common.py:3794 LOC:6}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/test_modeling_common.py:3792 LOC:6})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/kosmos2/test_modeling_kosmos2.py:461 LOC:4}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/kosmos2/test_modeling_kosmos2.py:461 LOC:4})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_text2text_generation.py:38 LOC:19}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_text2text_generation.py:38 LOC:19})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:588 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:588 LOC:1})
+RENAME	{Function test_model_from_config_torch_dtype_str(self) at tests/utils/test_modeling_utils.py:524 LOC:13}	{Function test_model_from_config_dtype_str(self) at tests/utils/test_modeling_utils.py:524 LOC:13})
+RENAME	{Function test_restore_default_torch_dtype_from_pretrained(self) at tests/utils/test_modeling_utils.py:1783 LOC:26}	{Function test_restore_default_dtype_from_pretrained(self) at tests/utils/test_modeling_utils.py:1783 LOC:26})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:608 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:608 LOC:1})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_visual_question_answering.py:57 LOC:25}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_visual_question_answering.py:57 LOC:25})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:625 LOC:586}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:625 LOC:593})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:600 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:600 LOC:1})
+RENAME	{Function dict_torch_dtype_to_str(self, d) at src/transformers/generation/configuration_utils.py:1082 LOC:11}	{Function dict_dtype_to_str(self, d) at src/transformers/generation/configuration_utils.py:1082 LOC:11})
+CHANGE_SIGNATURE	{Function test_generate_from_random_inputs_embeds(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:608 LOC:4}	{Function test_generate_from_random_inputs_embeds(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:608 LOC:4})
+RENAME	{Function restore_default_torch_dtype(func) at src/transformers/modeling_utils.py:294 LOC:17}	{Function restore_default_dtype(func) at src/transformers/modeling_utils.py:294 LOC:17})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_object_detection.py:70 LOC:18}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_object_detection.py:70 LOC:18})
+RENAME	{Function test_model_from_config_torch_dtype_composite(self) at tests/utils/test_modeling_utils.py:538 LOC:65}	{Function test_model_from_config_dtype_composite(self) at tests/utils/test_modeling_utils.py:538 LOC:65})
+CHANGE_SIGNATURE	{Function get_special_dtypes_update(self, model, torch_dtype) at src/transformers/quantizers/base.py:149 LOC:18}	{Function get_special_dtypes_update(self, model, dtype) at src/transformers/quantizers/base.py:164 LOC:16})
+CHANGE_SIGNATURE	{Function __init__(self, model, tokenizer, feature_extractor, image_processor, processor, modelcard, framework, task, args_parser, device, torch_dtype, binary_output, **kwargs) at src/transformers/pipelines/base.py:943 LOC:176}	{Function __init__(self, model, tokenizer, feature_extractor, image_processor, processor, modelcard, framework, task, device, binary_output, **kwargs) at src/transformers/pipelines/base.py:943 LOC:176})
+CHANGE_SIGNATURE	{Function update_torch_dtype(self, torch_dtype) at src/transformers/quantizers/base.py:70 LOC:11}	{Function update_torch_dtype(self, dtype) at src/transformers/quantizers/base.py:72 LOC:12})
+RENAME	{Function test_model_from_pretrained_torch_dtype(self) at tests/utils/test_modeling_utils.py:604 LOC:86}	{Function test_model_from_pretrained_dtype(self) at tests/utils/test_modeling_utils.py:604 LOC:86})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_question_answering.py:60 LOC:27}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_question_answering.py:60 LOC:27})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:610 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:610 LOC:1})
+RENAME	{Function update_torch_dtype(self, torch_dtype) at src/transformers/quantizers/quantizer_spqr.py:54 LOC:10}	{Function update_dtype(self, dtype) at src/transformers/quantizers/quantizer_spqr.py:54 LOC:10})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/moshi/test_modeling_moshi.py:632 LOC:4}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/moshi/test_modeling_moshi.py:632 LOC:4})
+CHANGE_SIGNATURE	{Function test_inference_equivalence_for_static_and_dynamic_anchors(self, torch_dtype_str) at tests/models/rt_detr/test_modeling_rt_detr.py:667 LOC:38}	{Function test_inference_equivalence_for_static_and_dynamic_anchors(self, dtype_str) at tests/models/rt_detr/test_modeling_rt_detr.py:667 LOC:38})
+CHANGE_SIGNATURE	{Function test_integration_sqa_pt(self, torch_dtype) at tests/pipelines/test_pipelines_table_question_answering.py:318 LOC:22}	{Function test_integration_sqa_pt(self, dtype) at tests/pipelines/test_pipelines_table_question_answering.py:318 LOC:22})
+RENAME	{Function _set_default_torch_dtype(cls, dtype) at src/transformers/modeling_utils.py:2457 LOC:25}	{Function _set_default_dtype(cls, dtype) at src/transformers/modeling_utils.py:2462 LOC:25})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, processor, image_processor, torch_dtype) at tests/pipelines/test_pipelines_image_text_to_text.py:45 LOC:14}	{Function get_test_pipeline(self, model, tokenizer, processor, image_processor, dtype) at tests/pipelines/test_pipelines_image_text_to_text.py:45 LOC:14})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_audio_classification.py:57 LOC:22}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_audio_classification.py:57 LOC:22})
+CHANGE_SIGNATURE	{Function __init__(self, video, video_height, video_width, inference_device, inference_state_device, video_storage_device, torch_dtype, max_vision_features_cache_size) at src/transformers/models/sam2_video/modeling_sam2_video.py:126 LOC:44}	{Function __init__(self, video, video_height, video_width, inference_device, inference_state_device, video_storage_device, dtype, max_vision_features_cache_size) at src/transformers/models/sam2_video/modeling_sam2_video.py:126 LOC:44})
+CHANGE_SIGNATURE	{Function test_large_model_pt_tapex(self, torch_dtype) at tests/pipelines/test_pipelines_table_question_answering.py:348 LOC:26}	{Function test_large_model_pt_tapex(self, dtype) at tests/pipelines/test_pipelines_table_question_answering.py:348 LOC:26})
+CHANGE_SIGNATURE	{Function test_inference_with_different_dtypes(self, torch_dtype_str) at tests/models/rt_detr/test_modeling_rt_detr.py:645 LOC:18}	{Function test_inference_with_different_dtypes(self, dtype_str) at tests/models/rt_detr/test_modeling_rt_detr.py:645 LOC:18})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/kyutai_speech_to_text/test_modeling_kyutai_speech_to_text.py:342 LOC:7}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/kyutai_speech_to_text/test_modeling_kyutai_speech_to_text.py:342 LOC:7})
+CHANGE_SIGNATURE	{Function _get_device_map(model, device_map, max_memory, hf_quantizer, torch_dtype, keep_in_fp32_regex) at src/transformers/modeling_utils.py:1424 LOC:74}	{Function _get_device_map(model, device_map, max_memory, hf_quantizer, dtype, keep_in_fp32_regex) at src/transformers/modeling_utils.py:1424 LOC:74})
+RENAME	{Function update_torch_dtype(self, torch_dtype) at src/transformers/quantizers/quantizer_awq.py:97 LOC:14}	{Function update_dtype(self, dtype) at src/transformers/quantizers/quantizer_awq.py:97 LOC:12})
+CHANGE_SIGNATURE	{Function test_inference_equivalence_for_static_and_dynamic_anchors(self, torch_dtype_str) at tests/models/rt_detr_v2/test_modeling_rt_detr_v2.py:671 LOC:38}	{Function test_inference_equivalence_for_static_and_dynamic_anchors(self, dtype_str) at tests/models/rt_detr_v2/test_modeling_rt_detr_v2.py:671 LOC:38})
+RENAME	{Function test_torch_dtype_to_json(self) at tests/trainer/test_trainer.py:4565 LOC:28}	{Function test_dtype_to_json(self) at tests/trainer/test_trainer.py:4565 LOC:28})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:558 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:558 LOC:1})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/gemma3n/test_modeling_gemma3n.py:376 LOC:27}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/gemma3n/test_modeling_gemma3n.py:376 LOC:27})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_summarization.py:35 LOC:19}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_summarization.py:35 LOC:19})
+CHANGE_SIGNATURE	{Function init_video_session(self, video, inference_device, inference_state_device, processing_device, video_storage_device, max_vision_features_cache_size, torch_dtype) at src/transformers/models/sam2_video/modular_sam2_video.py:644 LOC:52}	{Function init_video_session(self, video, inference_device, inference_state_device, processing_device, video_storage_device, max_vision_features_cache_size, dtype) at src/transformers/models/sam2_video/modular_sam2_video.py:644 LOC:52})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_depth_estimation.py:72 LOC:21}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_depth_estimation.py:72 LOC:21})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:572 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:572 LOC:1})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_image_feature_extraction.py:103 LOC:36}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_image_feature_extraction.py:103 LOC:36})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_image_classification.py:72 LOC:23}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_image_classification.py:72 LOC:23})
+CHANGE_SIGNATURE	{Function _test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels, atols, rtols) at tests/test_modeling_common.py:162 LOC:326}	{Function _test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels, atols, rtols) at tests/test_modeling_common.py:162 LOC:326})
+CHANGE_SIGNATURE	{Function run_pipeline_test(self, task, repo_name, model_architecture, tokenizer_name, image_processor_name, feature_extractor_name, processor_name, commit, torch_dtype) at tests/test_pipeline_mixin.py:356 LOC:143}	{Function run_pipeline_test(self, task, repo_name, model_architecture, tokenizer_name, image_processor_name, feature_extractor_name, processor_name, commit, dtype) at tests/test_pipeline_mixin.py:356 LOC:143})
+CHANGE_SIGNATURE	{Function test_small_model_pt(self, torch_dtype) at tests/pipelines/test_pipelines_zero_shot_audio_classification.py:31 LOC:13}	{Function test_small_model_pt(self, dtype) at tests/pipelines/test_pipelines_zero_shot_audio_classification.py:31 LOC:13})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:570 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:570 LOC:1})
+CHANGE_SIGNATURE	{Function test_eager_matches_sdpa_inference(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:346 LOC:4}	{Function test_eager_matches_sdpa_inference(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:346 LOC:4})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_translation.py:38 LOC:33}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_translation.py:38 LOC:33})
+CHANGE_SIGNATURE	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, torch_dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:564 LOC:1}	{Function pipeline(task, model, config, tokenizer, feature_extractor, image_processor, processor, framework, revision, use_fast, token, device, device_map, dtype, trust_remote_code, model_kwargs, pipeline_class) at src/transformers/pipelines/__init__.py:564 LOC:1})
+CHANGE_SIGNATURE	{Function test_inference_with_different_dtypes(self, torch_dtype_str) at tests/models/rt_detr_v2/test_modeling_rt_detr_v2.py:649 LOC:18}	{Function test_inference_with_different_dtypes(self, dtype_str) at tests/models/rt_detr_v2/test_modeling_rt_detr_v2.py:649 LOC:18})
+CHANGE_SIGNATURE	{Function test_generate_from_random_inputs_embeds(self, name, torch_dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:902 LOC:4}	{Function test_generate_from_random_inputs_embeds(self, name, dtype, padding_side, use_attention_mask, output_attentions, enable_kernels) at tests/models/idefics/test_modeling_idefics.py:902 LOC:4})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_automatic_speech_recognition.py:64 LOC:33}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_automatic_speech_recognition.py:64 LOC:33})
+RENAME	{Function update_torch_dtype(self, torch_dtype) at src/transformers/quantizers/quantizer_vptq.py:51 LOC:16}	{Function update_dtype(self, dtype) at src/transformers/quantizers/quantizer_vptq.py:51 LOC:16})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_token_classification.py:63 LOC:18}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_token_classification.py:63 LOC:18})
+CHANGE_SIGNATURE	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, torch_dtype) at tests/pipelines/test_pipelines_video_classification.py:50 LOC:25}	{Function get_test_pipeline(self, model, tokenizer, image_processor, feature_extractor, processor, dtype) at tests/pipelines/test_pipelines_video_classification.py:50 LOC:25})
+
+Commit: 9c25820978ea1b132bb145258959a852b2de4b7b
+CHANGE_SIGNATURE	{Function _sanitize_parameters(self, return_full_text, return_tensors, return_text, return_type, clean_up_tokenization_spaces, prefix, handle_long_generation, stop_sequence, truncation, max_length, continue_final_message, **generate_kwargs) at src/transformers/pipelines/text_generation.py:147 LOC:82}	{Function _sanitize_parameters(self, return_full_text, return_tensors, return_text, return_type, clean_up_tokenization_spaces, prefix, handle_long_generation, stop_sequence, truncation, max_length, continue_final_message, skip_special_tokens, **generate_kwargs) at src/transformers/pipelines/text_generation.py:147 LOC:85})
+CHANGE_SIGNATURE	{Function _sanitize_parameters(self, max_new_tokens, generate_kwargs, timeout, return_full_text, return_tensors, return_type, clean_up_tokenization_spaces, stop_sequence, continue_final_message) at src/transformers/pipelines/image_text_to_text.py:195 LOC:58}	{Function _sanitize_parameters(self, max_new_tokens, generate_kwargs, timeout, return_full_text, return_tensors, return_type, clean_up_tokenization_spaces, stop_sequence, continue_final_message, skip_special_tokens) at src/transformers/pipelines/image_text_to_text.py:195 LOC:65})
+CHANGE_SIGNATURE	{Function postprocess(self, model_outputs, return_type, clean_up_tokenization_spaces, continue_final_message) at src/transformers/pipelines/text_generation.py:459 LOC:73}	{Function postprocess(self, model_outputs, return_type, clean_up_tokenization_spaces, continue_final_message, skip_special_tokens) at src/transformers/pipelines/text_generation.py:462 LOC:75})
+CHANGE_SIGNATURE	{Function postprocess(self, model_outputs, return_type, continue_final_message, **postprocess_kwargs) at src/transformers/pipelines/image_text_to_text.py:434 LOC:69}	{Function postprocess(self, model_outputs, return_type, continue_final_message, skip_special_tokens, **postprocess_kwargs) at src/transformers/pipelines/image_text_to_text.py:441 LOC:79})
+
+Commit: 5c40e7a2258dd2c3addfb69c91cb7660fb39a6c5
+No refactorings found.
+
+Commit: e018b77c89d59b8f3241372a41cfd3ee149afba5
+No refactorings found.
+
+Commit: d7fe3111ff1ad3518bb3fe02e376f1f487e1daf4
+No refactorings found.
+
+Commit: cf487cdf1f61dae1465b4dff20a693a9b6ad6aff
+No refactorings found.
+
+Commit: 8365f70e9259c21058bf18f876006f945d2a99de
+No refactorings found.
+
+Commit: 9568b506ed511c76ab4d0c6ed591c7fce8e048a5
+CHANGE_SIGNATURE	{Function get_text_config(self, decoder) at src/transformers/models/qwen2_5_omni/modular_qwen2_5_omni.py:1111 LOC:13}	{Function get_text_config(self, *args, **kwargs) at src/transformers/models/qwen2_5_omni/modular_qwen2_5_omni.py:1111 LOC:13})
+CHANGE_SIGNATURE	{Function get_text_config(self, decoder) at src/transformers/models/qwen2_5_omni/configuration_qwen2_5_omni.py:1076 LOC:13}	{Function get_text_config(self, *args, **kwargs) at src/transformers/models/qwen2_5_omni/configuration_qwen2_5_omni.py:1076 LOC:13})
+CHANGE_SIGNATURE	{Function get_text_config(self, decoder) at src/transformers/models/t5gemma/modular_t5gemma.py:216 LOC:4}	{Function get_text_config(self, *args, **kwargs) at src/transformers/models/t5gemma/modular_t5gemma.py:216 LOC:3})
+CHANGE_SIGNATURE	{Function get_text_config(self, decoder) at src/transformers/models/dia/configuration_dia.py:371 LOC:3}	{Function get_text_config(self, *args, **kwargs) at src/transformers/models/dia/configuration_dia.py:371 LOC:3})
+CHANGE_SIGNATURE	{Function get_text_config(self, decoder) at src/transformers/models/t5gemma/configuration_t5gemma.py:326 LOC:4}	{Function get_text_config(self, *args, **kwargs) at src/transformers/models/t5gemma/configuration_t5gemma.py:326 LOC:3})
+CHANGE_SIGNATURE	{Function get_text_config(self, decoder) at src/transformers/models/colqwen2/configuration_colqwen2.py:90 LOC:2}	{Function get_text_config(self, *args, **kwargs) at src/transformers/models/colqwen2/configuration_colqwen2.py:90 LOC:2})
+
+Commit: 7f38068ae031b1b55696035e1dae8e881f593960
+No refactorings found.
+
+Commit: cb1df4d26a93cdade051710c7dfa3aaa0e99abd6
+No refactorings found.
+
+Commit: f46f29dd7ccc44a1bfb9fdc64a5171628f55b999
+No refactorings found.
+
+Commit: 128f42d37096e0808ee2539a33e6ad98877f3b10
+No refactorings found.
+
+Commit: 2121d0923912bea3f97273f6b082adac5116b785
+No refactorings found.
+
+Commit: b40b834ab1eab4856878ef93b016ee24429bbe7a
+CHANGE_SIGNATURE	{Function encode(self, input_values, bandwidth, return_dict, **kwargs) at src/transformers/models/xcodec/modeling_xcodec.py:425 LOC:58}	{Function encode(self, input_values, bandwidth, return_dict) at src/transformers/models/xcodec/modeling_xcodec.py:424 LOC:48})
+CHANGE_SIGNATURE	{Function decode(self, audio_codes, return_dict, **kwargs) at src/transformers/models/xcodec/modeling_xcodec.py:485 LOC:36}	{Function decode(self, audio_codes, return_dict) at src/transformers/models/xcodec/modeling_xcodec.py:474 LOC:26})
+CHANGE_SIGNATURE	{Function forward(self, input_values, audio_codes, bandwidth, return_dict, **kwargs) at src/transformers/models/xcodec/modeling_xcodec.py:523 LOC:58}	{Function forward(self, input_values, audio_codes, bandwidth, return_dict) at src/transformers/models/xcodec/modeling_xcodec.py:502 LOC:57})
+
+Commit: 75aa7c72526dbc80831db4c1439376596b4560c4
+No refactorings found.
+
+Commit: 04b751f07d6151401311de50c3dad7af6e9acdb1
+No refactorings found.
+
+Commit: 1e1db123048dd3ccc3516673a93ef4c376e75a8a
+No refactorings found.
+
+Commit: 7f2f53424ee18a8317f4bde93b579a3a8958690c
+No refactorings found.
+
+Commit: 11a49dd9e3db2138eadf67d416e3257701aef535
+No refactorings found.
+
+Commit: c4513a9fe667c6763819c01efefdac94f0a7c075
+No refactorings found.
+
+Commit: c7e6f9a4857f9dcdf35237e4515890437713a01b
+No refactorings found.
+
+Commit: e95441bdb586a7c3c9b4f61a41e99178c1becf54
+No refactorings found.
+
+Commit: 5c88d8fbccd9e61fce8cdde32878539e60b15f1c
+CHANGE_SIGNATURE	{Function forward(self, input_ids, **kwargs) at tests/trainer/test_trainer.py:519 LOC:5}	{Function forward(self, input_ids, labels, **kwargs) at tests/trainer/test_trainer.py:519 LOC:9})
+
+Commit: 7b060e5eb7ba7d6dea147c7eb927add9221213ee
+INLINE	{Function __init__(self, config, layer_idx) at src/transformers/models/aria/modular_aria.py:1275 LOC:3}	{Function __init__(self, config, layer_idx) at src/transformers/models/aria/modular_aria.py:1274 LOC:3})
+
+Commit: 6ad7f2946130ef0cf0c046862d043bb03c8f9ff2
+No refactorings found.
+
+Commit: adf84aec214afc27fa676343e5d2da4f3d0c7ed2
+No refactorings found.
+
+Commit: 1e2e28f3c804db6c697ebcb37dc48093bd7d7190
+MOVE	{Function __init__(self, hidden_size, eps) at src/transformers/models/qwen2_5_omni/modeling_qwen2_5_omni.py:990 LOC:7}	{Function __init__(self, hidden_size, eps) at src/transformers/models/qwen2/modular_qwen2.py:113 LOC:7})
+MOVE	{Function extra_repr(self) at src/transformers/models/qwen2_vl/modeling_qwen2_vl.py:461 LOC:2}	{Function extra_repr(self) at src/transformers/models/qwen2/modular_qwen2.py:128 LOC:2})
+MOVE	{Function forward(self, hidden_states) at src/transformers/models/qwen2_vl/modeling_qwen2_vl.py:454 LOC:6}	{Function forward(self, hidden_states) at src/transformers/models/qwen2/modular_qwen2.py:121 LOC:6})
+
+Commit: 022af24fccd5426a06de9b9f6c79aeffec6f7cdd
+No refactorings found.
+
+Commit: c99ed492c761c66e7218ced0fdbb80ca87de1404
+No refactorings found.
+
+Commit: c2e3cc24e09a3113e650d381c9913a3ccfa23fa3
+CHANGE_SIGNATURE	{Function chunked_overlay(chunk_size) at src/transformers/masking_utils.py:90 LOC:10}	{Function chunked_overlay(chunk_size, left_padding) at src/transformers/masking_utils.py:93 LOC:10})
+CHANGE_SIGNATURE	{Function chunked_causal_mask_function(chunk_size) at src/transformers/masking_utils.py:109 LOC:5}	{Function chunked_causal_mask_function(chunk_size, left_padding) at src/transformers/masking_utils.py:124 LOC:7})
+
+Commit: 242bb2cafccec9f90479f5f688bca9d240b1031f
+CHANGE_SIGNATURE	{Function __init__(self, ddp_cache_data, config) at src/transformers/cache_utils.py:994 LOC:52}	{Function __init__(self, ddp_cache_data, config, offloading, offload_only_non_sliding) at src/transformers/cache_utils.py:1001 LOC:44})
+
+Commit: 1054494dd625566dcfd2881334ebda26b022e406
+No refactorings found.
+
+Commit: 139cd91713ae858d0f9905ca88e9807870880765
+No refactorings found.
+
+Commit: 5d906740d2109f04be34f90ce3cff05ef412c7c1
+No refactorings found.
+
+Commit: 4977ec2ae81d868fcd96ad4c7b1bffdc8c57f52c
+No refactorings found.
+
+Commit: 2df0c323cb23a722a3f8c20f8803adda136e1e53
+No refactorings found.
+
+Commit: c50f140be277642b2c1777455e71c633c253bfae
+EXTRACT_MOVE	{Function distribute_model(model, distributed_config, device_mesh, tp_size) at src/transformers/integrations/tensor_parallel.py:1081 LOC:43}	{Function tp_plan(self) at src/transformers/modeling_utils.py:2291 LOC:7})
+
+Commit: a97213d131d3f116888bab6e92685b471617c919
+No refactorings found.
+
+Commit: ca543f822f73ebc69b00835c74ae927d9730b6f5
+No refactorings found.
+
+Commit: 959239debc3ab7d35e95e8d99123468b7b08cdc0
+No refactorings found.
+
+Commit: 7d2aa5d6e6ba60ed692c844054e3771b85e8e22c
+No refactorings found.
+
+Commit: 3128db69274913ecaced722c17da2eeec4405f2b
+No refactorings found.
+
+Commit: ca0aaa8c740c5ebe7eddf366a979f21384afdc6b
+No refactorings found.
+
+Commit: a01f38b36483b1aa45fe7ac8e7686ad191c90e99
+No refactorings found.
+
+Commit: a5f0b505a03e9252395c2634cd3603deadd397b8
+No refactorings found.
+
+Commit: d0f1a6ec3692160302a21613d8b7599aabf49f17
+CHANGE_SIGNATURE	{Function __init__(self, parent, batch_size, num_channels, sample_rate, codebook_size, num_quantizers, num_samples, is_training) at tests/models/xcodec/test_modeling_xcodec.py:48 LOC:19}	{Function __init__(self, parent, batch_size, num_channels, sample_rate, codebook_size, num_samples, is_training) at tests/models/xcodec/test_modeling_xcodec.py:51 LOC:17})
+CHANGE_SIGNATURE	{Function __init__(self, target_bandwidths, audio_channels, sample_rate, input_channels, encoder_channels, kernel_size, channel_ratios, strides, block_dilations, unit_kernel_size, decoder_channels, output_channels, codebook_size, num_quantizers, codebook_dim, initializer_range, hidden_dim, intermediate_dim, output_dim, acoustic_model_config, semantic_model_config, **kwargs) at src/transformers/models/xcodec/configuration_xcodec.py:107 LOC:69}	{Function __init__(self, target_bandwidths, sample_rate, kernel_size, channel_ratios, strides, block_dilations, unit_kernel_size, codebook_size, codebook_dim, initializer_range, acoustic_model_config, semantic_model_config, **kwargs) at src/transformers/models/xcodec/configuration_xcodec.py:89 LOC:71})
+
+Commit: da9452a592ac1e284d61bdbc86ad13d304586f93
+No refactorings found.
+
+Commit: a4e1fee44dc849f2d5ea698c5e730a86c058ba6b
+No refactorings found.
+
+Commit: 126bc03b4eb7710acf4e4efdc1601ddfbd479181
+No refactorings found.
+
+Commit: 1d4609173780c973c2f52ee21249856724277922
+No refactorings found.
+
+Commit: 42fe769928b505158bc6a0342f47b10693b81927
+No refactorings found.
+
+Commit: 4c017465bd0855143ab010d6a97d92e0fd542d50
+No refactorings found.
+
+Commit: 6ceb13fb22dc4ac23abb2b4b35d6b311461fe5e1
+No refactorings found.
+
+Commit: 8636b309e6c573a6ebef4f2e0c683673b1b50d0b
+No refactorings found.
+
+Commit: bebeccb06a3c10cc8fedf27faaa8ed904df3353b
+No refactorings found.
+
+Commit: 249d7c6929436465f45ec01df67d0517b259b858
+CHANGE_SIGNATURE	{Function _preprocess(self, images, do_resize, do_rescale, rescale_factor, do_normalize, image_mean, image_std, tile_size, max_num_tiles, return_tensors, disable_grouping) at src/transformers/models/perception_lm/image_processing_perception_lm_fast.py:266 LOC:50}	{Function _preprocess(self, images, do_resize, do_rescale, rescale_factor, do_normalize, image_mean, image_std, vision_input_type, tile_size, max_num_tiles, return_tensors, disable_grouping) at src/transformers/models/perception_lm/image_processing_perception_lm_fast.py:266 LOC:51})
+
+Commit: 57bb6db6ee4cfaccc45b8d474dfad5a17811ca60
+MOVE	{Function _get_cache_dict(cache) at src/transformers/cache_utils.py:1079 LOC:13}	{Function _get_cache_dict(cache) at src/transformers/integrations/executorch.py:1055 LOC:12})
+MOVE	{Function is_fsdp_enabled() at src/transformers/modeling_utils.py:185 LOC:7}	{Function is_fsdp_enabled() at src/transformers/integrations/fsdp.py:42 LOC:12})
+MOVE	{Function _unflatten_dynamic_cache(values, context) at src/transformers/cache_utils.py:1093 LOC:14}	{Function _unflatten_dynamic_cache(values, context) at src/transformers/integrations/executorch.py:1069 LOC:11})
+
+Commit: 5b3b7ea4720bec9775c28a986b038245eb7e9c36
+EXTRACT_MOVE	{Function get_output_embeddings(self) at src/transformers/models/pix2struct/modeling_pix2struct.py:1416 LOC:2}	{Function get_output_embeddings(self) at src/transformers/models/kosmos2_5/modeling_kosmos2_5.py:1687 LOC:2})
+EXTRACT_MOVE	{Function set_output_embeddings(self, new_embeddings) at src/transformers/models/kosmos2/modeling_kosmos2.py:1699 LOC:2}	{Function set_output_embeddings(self, new_embeddings) at src/transformers/models/kosmos2_5/modeling_kosmos2_5.py:1690 LOC:2})
+EXTRACT_MOVE	{Function get_output_embeddings(self) at src/transformers/models/kosmos2/modeling_kosmos2.py:1696 LOC:2}	{Function get_output_embeddings(self) at src/transformers/models/kosmos2_5/modeling_kosmos2_5.py:1687 LOC:2})
+EXTRACT_MOVE	{Function set_output_embeddings(self, new_embeddings) at src/transformers/models/pix2struct/modeling_pix2struct.py:1419 LOC:2}	{Function set_output_embeddings(self, new_embeddings) at src/transformers/models/kosmos2_5/modeling_kosmos2_5.py:1690 LOC:2})
+
+Commit: c93594e286a15d2b3d69433451e4a3bf4e025f8a
+No refactorings found.
+
+Commit: 2f1a8ad4ba39a684078e157d2685fe0131e25346
+No refactorings found.
+
+Commit: a2e76b908b1fd68a71117be1bcc9389869c6f445
+RENAME	{Function test_generate_compile_model_forward(self) at tests/models/qwen2_5_omni/test_modeling_qwen2_5_omni.py:450 LOC:2}	{Function test_generate_compile_model_forward_fullgraph(self) at tests/models/qwen2_5_omni/test_modeling_qwen2_5_omni.py:450 LOC:2})
+RENAME	{Function test_generate_compile_model_forward(self) at tests/generation/test_utils.py:2053 LOC:116}	{Function test_generate_compile_model_forward_fullgraph(self) at tests/generation/test_utils.py:2059 LOC:116})
+
+Commit: 2b59207a7238b04f02a3837e53006265b51199a8
+No refactorings found.
+
+Commit: 56c44213b332e71e0cdd209fdfc83448dbdbac40
+No refactorings found.
+
+Commit: 5d9a715e305ee27620fbbd5437fbde93b88b0640
+No refactorings found.
+
+Commit: debc92e60a9f72d8d95f648822adf1849ecf2a8c
+No refactorings found.
+
+Commit: 01c03bf4eea3f9a37031fc6dd30a01a6ba130fda
+No refactorings found.
+
+Commit: 2bcf9f6c7ef7f84b3c3aeec51e117429ecdc1254
+No refactorings found.
+
+Commit: aa458249195c8a69c5c60f2a5bcfe494056a6d3d
+No refactorings found.
+
+Commit: d6fad86d23787e54218dbec362ae9f7dc20dd1b0
+No refactorings found.
+
+Commit: 7a0ba0d7d833848f84de4d2f7fdc851ac71466ed
+No refactorings found.
+
+Commit: 00b4dfb7860c13eaf12613b815f3b5ef2d22ce52
+No refactorings found.
+
+Commit: f417a1aad44df6f20101d1fe8cbf918020190268
+No refactorings found.
+
+Commit: a36d51e801ba0f4a534eccba57cacfa7092abcec
+No refactorings found.
+
+Commit: 57e230cdb2e78f020a2f1d9e7887593c39f9fe84
+No refactorings found.
+
+Commit: 47938f8f8df23c01248a417cd031c2b4b16a2da5
+No refactorings found.
+
+Commit: e4bd2c858daa5815aa271fde3b63c4a85923599d
+No refactorings found.
+
+Commit: 6333eb986ac85b3ae4cf4c7c819363ef9cd374e7
+No refactorings found.
+
+Commit: e5886f9194ab6e19a7187c72d0b42be17bbc09cd
+No refactorings found.
+
+Commit: eb2f9da096fc59dd80ed14d4165719887dfeb792
+No refactorings found.
+
+Commit: 6ce8f0537537455806ab7bfd39b59ad37803ead9
+No refactorings found.
+
+Commit: 2914ceca202fd3a68a79fa88d03cf5b0435ec4f1
+No refactorings found.
+
+Commit: 05000aefe173bf7a10fa1d90e4c528585b45d3c7
+No refactorings found.
+
+Commit: 3f4c85fef06549d8e5f11b1931f178419e1913cd
+No refactorings found.
+
+Commit: 29e4e35927711da5381ccf5b12d11ed5e2d6d5e7
+MOVE	{Function sample(logits, temperature, top_k) at benchmark/llama.py:103 LOC:4}	{Function sample(logits, temperature, top_k) at benchmark/benches/llama.py:149 LOC:4})
+MOVE	{Function multinomial_sample_one_no_sync(probs_sort) at benchmark/llama.py:89 LOC:3}	{Function multinomial_sample_one_no_sync(probs_sort) at benchmark/benches/llama.py:135 LOC:3})
+INLINE	{Function decode_one_token(model, cur_token, cache_position, past_key_values) at benchmark/llama.py:108 LOC:10}	{Function run_benchmark(logger, repository, branch, commit_id, commit_msg, metrics_recorder, num_tokens_to_generate) at benchmark/benches/llama.py:65 LOC:281})
+MOVE	{Function run_benchmark(logger, repository, branch, commit_id, commit_msg, num_tokens_to_generate) at benchmark/llama.py:36 LOC:311}	{Function run_benchmark(logger, repository, branch, commit_id, commit_msg, metrics_recorder, num_tokens_to_generate) at benchmark/benches/llama.py:65 LOC:281})
+MOVE	{Function collect_metrics(benchmark_id, continue_metric_collection, metrics_recorder) at benchmark/llama.py:21 LOC:13}	{Function collect_metrics(benchmark_id, continue_metric_collection, metrics_recorder) at benchmark/benches/llama.py:50 LOC:13})
+MOVE	{Function logits_to_probs(logits, temperature, top_k) at benchmark/llama.py:93 LOC:9}	{Function logits_to_probs(logits, temperature, top_k) at benchmark/benches/llama.py:139 LOC:9})
+
+Commit: de437d0d7ac30beb44b196e1413544122df64152
+No refactorings found.
+
+Commit: 28a03fb78a46a27d875b8b2b06dcfbd12ee20ae4
+No refactorings found.
+
+Commit: ec85d2c44f0c9020e54144afd50fcc96fbc52e90
+No refactorings found.
+
+Commit: c7afaa5b4467943fe6409b546719fb3b650062f9
+No refactorings found.
+
+Commit: c167faa0813ef261623d6cfcaee21ddaff607ec5
+No refactorings found.
+
+Commit: 5068fcd9a80221357ebf7c3d3971c187bd2ca8e1
+No refactorings found.
+
+Commit: 421175685d715214b216f5ee71f78992e772691c
+MOVE	{Function torchrun(self, script, is_torchrun) at tests/tensor_parallel/test_tensor_parallel.py:70 LOC:18}	{Function torchrun(script, nproc_per_node, is_torchrun, env) at src/transformers/testing_utils.py:3476 LOC:18})
+
+Commit: 4912d5b490a39d621b9d6f1b80df446d99e6239a
+No refactorings found.
+
+Commit: cc9997878a5ffefafbb659dbbfc5c7d2a2b78776
+No refactorings found.
+
+Commit: 85fce2e54c1677d7d7e51fd91457c461ac0a210f
+No refactorings found.
+
+Commit: 52c6c1bb6e27ca87c4faede34a4c2a7404c17c4d
+CHANGE_SIGNATURE	{Function get_correct_attn_implementation(self, _requested_attention, is_init_check) at src/transformers/modeling_utils.py:2776 LOC:38}	{Function get_correct_attn_implementation(self, requested_attention, is_init_check) at src/transformers/modeling_utils.py:2777 LOC:34})
+
+Commit: 2b6cbedeb2595baa3ee25a951cb323ff3b25b6ca
+No refactorings found.
+
+Commit: b834cb813862387c7148ca86cdab68d2a959d7f3
+No refactorings found.
+
+Commit: 6f259bc83e518c281877cfc90efe61bf8a79bba0
+No refactorings found.
+
+Commit: 41980ce93e775f6c88500c51c8db7946fc6a2add
+No refactorings found.
+
+Commit: eba1d62091a84644f0de8aede67da37fe5344a93
+No refactorings found.
+
+Commit: 1c5d2f7fb6c56e50a7aea48d55597682a8975b5b
+No refactorings found.
+
+Commit: cfe52ff4db1aea64a7faf3eaa1a00a854abe4a45
+No refactorings found.
+
+Commit: c47544b16f36d3529d26efa048baaa38c576fd54
+No refactorings found.
+
+Commit: 22e89e538529420b2ddae6af70865655bc5c22d8
+No refactorings found.
+
+Commit: 252364fd8e88f14fe588912b0992f3d016495355
+CHANGE_SIGNATURE	{Function forward(self, input_ids, pixel_values, image_num_patches, attention_mask, position_ids, past_key_values, inputs_embeds, labels, use_cache, cache_position, logits_to_keep, image_sizes) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:187 LOC:86}	{Function forward(self, input_ids, pixel_values, attention_mask, position_ids, past_key_values, inputs_embeds, labels, use_cache, cache_position, logits_to_keep, image_sizes) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:169 LOC:82})
+CHANGE_SIGNATURE	{Function forward(self, input_ids, pixel_values, image_num_patches, attention_mask, position_ids, past_key_values, inputs_embeds, labels, use_cache, cache_position, logits_to_keep, image_sizes) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:331 LOC:86}	{Function forward(self, input_ids, pixel_values, attention_mask, position_ids, past_key_values, inputs_embeds, labels, use_cache, cache_position, logits_to_keep, image_sizes) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:313 LOC:82})
+CHANGE_SIGNATURE	{Function get_image_features(self, pixel_values, image_num_patches) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:306 LOC:9}	{Function get_image_features(self, pixel_values) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:295 LOC:2})
+CHANGE_SIGNATURE	{Function forward(self, input_ids, pixel_values, image_num_patches, attention_mask, position_ids, past_key_values, inputs_embeds, use_cache, cache_position) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:122 LOC:48}	{Function forward(self, input_ids, pixel_values, attention_mask, position_ids, past_key_values, inputs_embeds, use_cache, cache_position) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:116 LOC:43})
+CHANGE_SIGNATURE	{Function forward(self, input_ids, pixel_values, image_num_patches, attention_mask, position_ids, past_key_values, inputs_embeds, use_cache, cache_position) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:226 LOC:48}	{Function forward(self, input_ids, pixel_values, attention_mask, position_ids, past_key_values, inputs_embeds, use_cache, cache_position) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:220 LOC:43})
+CHANGE_SIGNATURE	{Function get_image_features(self, pixel_values, image_num_patches) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:177 LOC:22}	{Function get_image_features(self, pixel_values) at src/transformers/models/cohere2_vision/modeling_cohere2_vision.py:177 LOC:16})
+CHANGE_SIGNATURE	{Function get_image_features(self, pixel_values, image_num_patches) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:175 LOC:9}	{Function get_image_features(self, pixel_values) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:164 LOC:2})
+CHANGE_SIGNATURE	{Function get_image_features(self, pixel_values, image_num_patches) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:97 LOC:22}	{Function get_image_features(self, pixel_values) at src/transformers/models/cohere2_vision/modular_cohere2_vision.py:97 LOC:16})
+
+Commit: be1ab5103f62a1c1c19f3af55c6b54e7d40b69b5
+No refactorings found.
+
+Commit: 591708d9ce433b37d51ccbcc516f6a739078468c
+No refactorings found.
+
+Commit: 12e49cda32a5301fe94df0d1a96d6756472ff81d
+No refactorings found.
+
+Commit: 412c9c3030d6eed09770c7ba80d6952d80bf8a57
+No refactorings found.
+
+Commit: 68a13cd4a65d0624a5b87827c6e0709a882613f0
+EXTRACT_MOVE	{Function get_input_embeddings(self) at src/transformers/models/sam/modeling_sam.py:1138 LOC:2}	{Function get_input_embeddings(self) at src/transformers/models/sam2/modeling_sam2.py:1319 LOC:2})
+EXTRACT_MOVE	{Function test_inputs_embeds_matches_input_ids(self) at tests/test_modeling_common.py:2831 LOC:46}	{Function get_input_embeddings(self) at src/transformers/models/sam2/modeling_sam2.py:1319 LOC:2})
+EXTRACT_MOVE	{Function test_inputs_embeds(self) at tests/test_modeling_common.py:2798 LOC:32}	{Function get_input_embeddings(self) at src/transformers/models/sam2_video/modeling_sam2_video.py:1623 LOC:2})
+EXTRACT_MOVE	{Function test_resize_tokens_embeddings(self) at tests/test_modeling_common.py:2149 LOC:155}	{Function get_input_embeddings(self) at src/transformers/models/sam2/modeling_sam2.py:1319 LOC:2})
+EXTRACT_MOVE	{Function test_resize_tokens_embeddings(self) at tests/test_modeling_common.py:2149 LOC:155}	{Function get_input_embeddings(self) at src/transformers/models/sam2_video/modeling_sam2_video.py:1623 LOC:2})
+EXTRACT_MOVE	{Function test_inputs_embeds(self) at tests/test_modeling_common.py:2798 LOC:32}	{Function get_input_embeddings(self) at src/transformers/models/sam2/modeling_sam2.py:1319 LOC:2})
+EXTRACT_MOVE	{Function test_inputs_embeds_matches_input_ids(self) at tests/test_modeling_common.py:2831 LOC:46}	{Function get_input_embeddings(self) at src/transformers/models/sam2_video/modeling_sam2_video.py:1623 LOC:2})
+CHANGE_SIGNATURE	{Function _forward(self, model_inputs, pred_iou_thresh, stability_score_thresh, mask_threshold, stability_score_offset) at src/transformers/pipelines/mask_generation.py:246 LOC:37}	{Function _forward(self, model_inputs, pred_iou_thresh, stability_score_thresh, mask_threshold, stability_score_offset, max_hole_area, max_sprinkle_area) at src/transformers/pipelines/mask_generation.py:250 LOC:57})
+EXTRACT_MOVE	{Function get_input_embeddings(self) at src/transformers/models/sam_hq/modeling_sam_hq.py:1261 LOC:2}	{Function get_input_embeddings(self) at src/transformers/models/sam2/modeling_sam2.py:1319 LOC:2})
+EXTRACT_MOVE	{Function get_input_embeddings(self) at src/transformers/models/sam_hq/modeling_sam_hq.py:1261 LOC:2}	{Function get_input_embeddings(self) at src/transformers/models/sam2_video/modeling_sam2_video.py:1623 LOC:2})
+EXTRACT_MOVE	{Function test_model_get_set_embeddings(self) at tests/test_modeling_common.py:2434 LOC:13}	{Function get_input_embeddings(self) at src/transformers/models/sam2/modeling_sam2.py:1319 LOC:2})
+EXTRACT_MOVE	{Function test_model_get_set_embeddings(self) at tests/test_modeling_common.py:2434 LOC:13}	{Function get_input_embeddings(self) at src/transformers/models/sam2_video/modeling_sam2_video.py:1623 LOC:2})
+EXTRACT_MOVE	{Function get_input_embeddings(self) at src/transformers/models/sam/modeling_sam.py:1138 LOC:2}	{Function get_input_embeddings(self) at src/transformers/models/sam2_video/modeling_sam2_video.py:1623 LOC:2})
+
+Commit: 25ad9c8c92f13090eb96a848eb361229e80c7498
+No refactorings found.
+
+Commit: bec6926696e66c6d8878e3501016489548ff6b89
+No refactorings found.
+
+Commit: 20c6b478cd6e704685901e16c842f56bd13f884e
+CHANGE_SIGNATURE	{Function forward(self, x, mask) at src/transformers/models/mask2former/modeling_mask2former.py:858 LOC:20}	{Function forward(self, shape, device, dtype, mask) at src/transformers/models/mask2former/modeling_mask2former.py:860 LOC:26})
+CHANGE_SIGNATURE	{Function forward(self, x, mask) at src/transformers/models/oneformer/modeling_oneformer.py:2406 LOC:20}	{Function forward(self, shape, device, dtype, mask) at src/transformers/models/oneformer/modeling_oneformer.py:2412 LOC:26})
+CHANGE_SIGNATURE	{Function forward(self, x, mask) at src/transformers/models/maskformer/modeling_maskformer.py:1241 LOC:20}	{Function forward(self, shape, device, dtype, mask) at src/transformers/models/maskformer/modeling_maskformer.py:1243 LOC:26})
+
+Commit: 5337f3052db90e8f5f8f64afcbf257da603d56fb
+No refactorings found.
+
+Commit: f445caeb0f6577e1ef2bc59149e264fdf0d25461
+No refactorings found.
+
+Commit: 11537c3e0c8e92e420e2bfbf37d19722db47ed70
+No refactorings found.
+
+Commit: e78571f5ced094a9245186f286d4a1b1d13baeb5
+No refactorings found.
+
+Commit: 8d19231bca9438b70754aacea0badd85d9c6bcb7
+No refactorings found.
+
+Commit: 34a1fc6426fa86efd6eea3e3da5acdba32c28085
+No refactorings found.
+
+Commit: 060b86e21d0460fbd2b6e642d0fbc8f19f679039
+No refactorings found.
+
+Commit: 849c3778c620004e8d117cfb66ceb332350a65c4
+No refactorings found.
+
+Commit: 31ab7168ff7e07f61c90134e5238c4d97606aa70
+No refactorings found.
+
+Commit: 0ce24f5a885e694e4dfd49cb74336099bab48f40
+No refactorings found.
+
+Commit: 83dbebc429abd86ff4d4a2601fa4575e3145c753
+No refactorings found.
+
+Commit: 9977cf17392fe5b821dc026ab76d3f5ed16e03f2
+EXTRACT	{Function test_flex_attention_with_grads(self) at tests/test_modeling_common.py:4702 LOC:88}	{Function _prepare_config_headdim(config, requested_dim) at tests/test_modeling_common.py:4717 LOC:62})
+EXTRACT	{Function _flash_attention_forward(query_states, key_states, value_states, attention_mask, query_length, is_causal, dropout, position_ids, softmax_scale, sliding_window, use_top_left_mask, softcap, deterministic, cu_seq_lens_q, cu_seq_lens_k, max_length_q, max_length_k, target_dtype, implementation, **kwargs) at src/transformers/modeling_flash_attention_utils.py:395 LOC:119}	{Function lazy_import_flash_attention(implementation) at src/transformers/modeling_flash_attention_utils.py:125 LOC:16})
+RENAME	{Function _fa3_pad_input(hidden_states, indices, batch, seqlen) at src/transformers/modeling_flash_attention_utils.py:72 LOC:15}	{Function _pad_input(hidden_states, indices, batch, seqlen) at src/transformers/modeling_flash_attention_utils.py:187 LOC:17})
+RENAME	{Function _fa3_unpad_input(hidden_states, attention_mask, unused_mask) at src/transformers/modeling_flash_attention_utils.py:42 LOC:28}	{Function _unpad_input(hidden_states, attention_mask, unused_mask) at src/transformers/modeling_flash_attention_utils.py:155 LOC:30})
+RENAME	{Function update_config_for_flex(config) at tests/test_modeling_common.py:4714 LOC:47}	{Function update_config_headdim(config, requested_dim) at tests/test_modeling_common.py:4728 LOC:43})
+
+Commit: b6ba5955438559d8e88a803e0418b203f36d0816
+No refactorings found.
+
+Commit: a5fac1c394eafb07312519fcef48ffe8f1a247dc
+No refactorings found.
+
+Commit: 085e02383c3d74a4e18e7ef8404c281b3e8ccfb5
+No refactorings found.
+
+Commit: 2ce0dae390dc0e19eb5b5babb7cf20aa1dcd291b
+CHANGE_SIGNATURE	{Function __init__(self, max_cache_len, config, **kwargs) at src/transformers/cache_utils.py:1225 LOC:3}	{Function __init__(self, config, max_cache_len, *args, **kwargs) at src/transformers/cache_utils.py:1225 LOC:3})
+CHANGE_SIGNATURE	{Function __init__(self, max_cache_len, config, **kwargs) at src/transformers/cache_utils.py:1292 LOC:14}	{Function __init__(self, config, max_cache_len, *args, **kwargs) at src/transformers/cache_utils.py:1292 LOC:14})
+CHANGE_SIGNATURE	{Function __init__(self, max_cache_len, config, **kwargs) at src/transformers/cache_utils.py:1194 LOC:3}	{Function __init__(self, config, max_cache_len, *args, **kwargs) at src/transformers/cache_utils.py:1194 LOC:3})
+CHANGE_SIGNATURE	{Function __init__(self, max_cache_len, config, **kwargs) at src/transformers/cache_utils.py:1260 LOC:14}	{Function __init__(self, config, max_cache_len, *args, **kwargs) at src/transformers/cache_utils.py:1260 LOC:14})
+CHANGE_SIGNATURE	{Function __init__(self, max_cache_len, config, **kwargs) at src/transformers/cache_utils.py:1159 LOC:3}	{Function __init__(self, config, max_cache_len, *args, **kwargs) at src/transformers/cache_utils.py:1159 LOC:3})
+
+Commit: f7cbd5f3ef3ce800028cfe3bb570cba681a1070e
+No refactorings found.
+
+Commit: 35dc88829c62f7f31803b5d9bbd9f94d0c1eae51
+No refactorings found.
+
+Commit: b1b46555cd461b884c632444513a4d3097bdbd95
+No refactorings found.
+
+Commit: a07b5e90f2c2c176e72e91510f36f092d1084684
+No refactorings found.
+
+Commit: 952fac100dd593ae5e86aa6afde75fb3f877dec0
+No refactorings found.
+
+Commit: 41d17178827455e7b6553a7026d71d3036ef719c
+EXTRACT_MOVE	{Function __init__(self, config, layer_idx) at src/transformers/models/modernbert_decoder/modeling_modernbert_decoder.py:90 LOC:26}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT	{Function is_compileable(self) at src/transformers/cache_utils.py:883 LOC:6}	{Function is_compileable(self) at src/transformers/cache_utils.py:1610 LOC:2})
+CHANGE_SIGNATURE	{Function get_seq_length(self, cache_position) at src/transformers/cache_utils.py:48 LOC:1}	{Function get_seq_length(self) at src/transformers/cache_utils.py:54 LOC:1})
+CHANGE_SIGNATURE	{Function get_seq_length(self, layer_idx, cache_position) at src/transformers/cache_utils.py:817 LOC:5}	{Function get_seq_length(self, layer_idx) at src/transformers/cache_utils.py:860 LOC:5})
+CHANGE_SIGNATURE	{Function get_seq_length(self, cache_position) at src/transformers/cache_utils.py:414 LOC:3}	{Function get_seq_length(self) at src/transformers/cache_utils.py:616 LOC:3})
+EXTRACT_MOVE	{Function __init__(self, config, layer_idx) at src/transformers/models/modernbert_decoder/modular_modernbert_decoder.py:267 LOC:26}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function prepare_inputs_for_generation(self, input_ids, past_key_values, attention_mask, inputs_embeds, cache_position, **kwargs) at src/transformers/generation/utils.py:551 LOC:149}	{Function is_compileable(self) at src/transformers/cache_utils.py:1610 LOC:2})
+EXTRACT	{Function crop(self, max_length) at src/transformers/cache_utils.py:853 LOC:4}	{Function crop(self, max_length) at src/transformers/cache_utils.py:896 LOC:4})
+EXTRACT_MOVE	{Function __init__(self, config, layer_idx) at src/transformers/models/gemma3/modeling_gemma3.py:273 LOC:28}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function forward(self, hidden_states, position_embeddings_global, position_embeddings_local, attention_mask, position_ids, past_key_values, output_attentions, use_cache, cache_position, **kwargs) at src/transformers/models/gemma3/modeling_gemma3.py:366 LOC:49}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function forward(self, hidden_states, position_embeddings, attention_mask, past_key_values, cache_position) at src/transformers/models/exaone4/modeling_exaone4.py:205 LOC:50}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+CHANGE_SIGNATURE	{Function get_seq_length(self, cache_position) at src/transformers/cache_utils.py:127 LOC:5}	{Function get_seq_length(self) at src/transformers/cache_utils.py:133 LOC:5})
+EXTRACT_MOVE	{Function forward(self, hidden_states, position_embeddings_global, position_embeddings_local, attention_mask, past_key_values, use_cache, cache_position, **kwargs) at src/transformers/models/modernbert_decoder/modular_modernbert_decoder.py:356 LOC:40}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT	{Function prefetch(self, layer_idx, only_non_sliding) at src/transformers/cache_utils.py:732 LOC:19}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+CHANGE_SIGNATURE	{Function get_seq_length(self, cache_position) at src/transformers/cache_utils.py:567 LOC:3}	{Function get_seq_length(self) at src/transformers/cache_utils.py:230 LOC:3})
+EXTRACT_MOVE	{Function _valid_auto_compile_criteria(self, model_kwargs, generation_config) at src/transformers/generation/utils.py:2104 LOC:41}	{Function is_compileable(self) at src/transformers/cache_utils.py:1610 LOC:2})
+EXTRACT_MOVE	{Function __init__(self, config, layer_idx) at src/transformers/models/exaone4/modular_exaone4.py:267 LOC:23}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function forward(self, hidden_states, position_embeddings_global, position_embeddings_local, attention_mask, past_key_values, use_cache, cache_position, **kwargs) at src/transformers/models/modernbert_decoder/modeling_modernbert_decoder.py:179 LOC:40}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function forward(self, hidden_states, position_embeddings_global, position_embeddings_local, attention_mask, position_ids, past_key_values, output_attentions, use_cache, cache_position, **kwargs) at src/transformers/models/gemma3/modular_gemma3.py:469 LOC:49}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT	{Function is_sliding(self) at src/transformers/cache_utils.py:891 LOC:3}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function _sample(self, input_ids, logits_processor, stopping_criteria, generation_config, synced_gpus, streamer, **model_kwargs) at src/transformers/generation/utils.py:3409 LOC:199}	{Function is_compileable(self) at src/transformers/cache_utils.py:1610 LOC:2})
+EXTRACT_MOVE	{Function __init__(self, config, layer_idx) at src/transformers/models/gemma3/modular_gemma3.py:396 LOC:8}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT_MOVE	{Function __init__(self, config, layer_idx) at src/transformers/models/exaone4/modeling_exaone4.py:180 LOC:23}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+CHANGE_SIGNATURE	{Function get_seq_length(self, cache_position) at src/transformers/cache_utils.py:297 LOC:8}	{Function get_seq_length(self) at src/transformers/cache_utils.py:349 LOC:5})
+EXTRACT_MOVE	{Function forward(self, hidden_states, position_embeddings, attention_mask, past_key_values, cache_position) at src/transformers/models/exaone4/modular_exaone4.py:292 LOC:50}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+EXTRACT	{Function offload(self, layer_idx, only_non_sliding) at src/transformers/cache_utils.py:752 LOC:8}	{Function is_sliding(self) at src/transformers/cache_utils.py:1606 LOC:2})
+CHANGE_SIGNATURE	{Function get_seq_length(self, layer_idx, cache_position) at src/transformers/cache_utils.py:1459 LOC:4}	{Function get_seq_length(self, layer_idx) at src/transformers/cache_utils.py:1538 LOC:3})
+
+Commit: ab455e0d88e8763adc65ac814ab57f7123a1aa64
+No refactorings found.
+
+Commit: 4b3a1a62cc3bb912ae6b0b55ed9d2fbbc3131eb2
+No refactorings found.
+
+Commit: 1c5e17c025c4f1f5f5bc70e7d7e2b7b886d14a3a
+CHANGE_SIGNATURE	{Function _preprocess(self, images, do_resize, interpolation, do_rescale, rescale_factor, do_normalize, image_mean, image_std, patch_size, temporal_patch_size, merge_size, disable_grouping, return_tensors, **kwargs) at src/transformers/models/glm4v/image_processing_glm4v_fast.py:91 LOC:83}	{Function _preprocess(self, images, do_resize, size, interpolation, do_rescale, rescale_factor, do_normalize, image_mean, image_std, patch_size, temporal_patch_size, merge_size, disable_grouping, return_tensors, **kwargs) at src/transformers/models/glm4v/image_processing_glm4v_fast.py:109 LOC:86})
+CHANGE_SIGNATURE	{Function _preprocess(self, videos, video_metadata, do_resize, interpolation, do_rescale, rescale_factor, do_normalize, do_sample_frames, image_mean, image_std, patch_size, temporal_patch_size, merge_size, return_tensors, **kwargs) at src/transformers/models/glm4v/video_processing_glm4v.py:142 LOC:116}	{Function _preprocess(self, videos, video_metadata, do_resize, size, interpolation, do_rescale, rescale_factor, do_normalize, do_sample_frames, image_mean, image_std, patch_size, temporal_patch_size, merge_size, return_tensors, **kwargs) at src/transformers/models/glm4v/video_processing_glm4v.py:160 LOC:118})
+
+Commit: c6fbfab61bf8ccf264e8316752b099dc8541c2ad
+No refactorings found.
+
+Commit: 86bb1fcd26d80263835378bdef5217f97a080954
+EXTRACT	{Function _prepare_from_posids(query, key, value, position_ids, query_length) at src/transformers/modeling_flash_attention_utils.py:193 LOC:75}	{Function prepare_fa_kwargs_from_position_ids(position_ids, is_packed_sequence) at src/transformers/modeling_flash_attention_utils.py:193 LOC:58})
+
+Commit: 3ff2e984d2c3703501aafb8ede90fd47e6ff69a7
+No refactorings found.
+
+Commit: 4668ef1459ba16cd00d32a9108780c05d943dfdf
+No refactorings found.
+
+Commit: 1cea763ba422b83778a8db0374ea90f43b09992b
+No refactorings found.
+
+Commit: e29919f9936c36a48f8cb9bb671979d3f0d0799d
+No refactorings found.
+
+Commit: 43001fd3c691a4a9668446ce3a62373882ee0f75
+No refactorings found.
+
+Commit: 5521c62b89b2ffbd061804c241b22618d0f0d4d5
+No refactorings found.
+
+Commit: 6b70d79b612a3b9b52b23dfc50cf85013e49efdd
+No refactorings found.
+
+Commit: 7dd82f307b6153427f9c1eade0bcf2a0df3719e8
+No refactorings found.
+
+Commit: 68eb1a9a6353911f491b1c8139eb73d052a8e9b9
+No refactorings found.
+
+Commit: 480653d27164f5b7953c227a74c8fb81dd3154fb
+No refactorings found.
+

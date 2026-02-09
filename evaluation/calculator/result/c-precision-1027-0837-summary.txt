@@ -1,0 +1,72 @@
+CHANGE_SIGNATURE:
+  TP: 12.0
+  FP: 0
+  FN: 0.0
+  TN: 0.0
+  Precision: 1.0000
+  Recall: 1.0000
+
+EXTRACT:
+  TP: 7.0
+  FP: 0
+  FN: 3.0
+  TN: 0.0
+  Precision: 1.0000
+  Recall: 0.7000
+
+INLINE:
+  TP: 3.0
+  FP: 0
+  FN: 2.0
+  TN: 5.0
+  Precision: 1.0000
+  Recall: 0.6000
+
+MOVE_FILE:
+  TP: 10.0
+  FP: 0
+  FN: 0.0
+  TN: 0.0
+  Precision: 1.0000
+  Recall: 1.0000
+
+MOVE_FUNCTION:
+  TP: 8.0
+  FP: 0
+  FN: 0.0
+  TN: 2.0
+  Precision: 1.0000
+  Recall: 1.0000
+
+MOVE_RENAME_FUNCTION:
+  TP: 4.0
+  FP: 0
+  FN: 4.0
+  TN: 2.0
+  Precision: 1.0000
+  Recall: 0.5000
+
+RENAME_FILE:
+  TP: 10.0
+  FP: 0
+  FN: 0.0
+  TN: 0.0
+  Precision: 1.0000
+  Recall: 1.0000
+
+RENAME_FUNCTION:
+  TP: 7.0
+  FP: 0
+  FN: 2.0
+  TN: 1.0
+  Precision: 1.0000
+  Recall: 0.7778
+
+Total:
+  TP: 61.0
+  FP: 0.0
+  FN: 11.0
+  TN: 10.0
+  Precision: 1.0000
+  Recall: 0.8472
+

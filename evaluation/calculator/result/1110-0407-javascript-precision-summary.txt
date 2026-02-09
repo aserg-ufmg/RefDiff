@@ -1,0 +1,48 @@
+EXTRACT:
+  TP: 3.0
+  FP: 0.0
+  FN: 6.0
+  TN: 1.0
+  Precision: 1.0000
+  Recall: 0.3333
+
+INLINE:
+  TP: 3.0
+  FP: 0.0
+  FN: 5.0
+  TN: 2.0
+  Precision: 1.0000
+  Recall: 0.3750
+
+MOVE:
+  TP: 14.0
+  FP: 1.0
+  FN: 7.0
+  TN: 0.0
+  Precision: 0.9333
+  Recall: 0.6667
+
+MOVE_RENAME:
+  TP: 12.0
+  FP: 0.0
+  FN: 6.0
+  TN: 2.0
+  Precision: 1.0000
+  Recall: 0.6667
+
+RENAME:
+  TP: 20.0
+  FP: 0.0
+  FN: 3.0
+  TN: 2.0
+  Precision: 1.0000
+  Recall: 0.8696
+
+Total:
+  TP: 52.0
+  FP: 1.0
+  FN: 27.0
+  TN: 7.0
+  Precision: 0.9811
+  Recall: 0.6582
+

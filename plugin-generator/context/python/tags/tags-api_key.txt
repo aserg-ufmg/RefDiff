@@ -1,0 +1,16 @@
+APIKeyError	api_key.py	/^class APIKeyError(Exception):$/;"	c	line:23
+APIKeyNotFoundError	api_key.py	/^class APIKeyNotFoundError(APIKeyError):$/;"	c	line:29
+APIKeyPermissionError	api_key.py	/^class APIKeyPermissionError(APIKeyError):$/;"	c	line:35
+APIKeyValidationError	api_key.py	/^class APIKeyValidationError(APIKeyError):$/;"	c	line:41
+APIKey	api_key.py	/^class APIKey(BaseDbModel):$/;"	c	line:47
+from_db	api_key.py	/^    def from_db(api_key: PrismaAPIKey):$/;"	m	line:61	class:APIKey
+APIKeyWithoutHash	api_key.py	/^class APIKeyWithoutHash(BaseModel):$/;"	c	line:82
+from_db	api_key.py	/^    def from_db(api_key: PrismaAPIKey):$/;"	m	line:96	class:APIKeyWithoutHash
+generate_api_key	api_key.py	/^async def generate_api_key($/;"	f	line:116	typeref:typename:tuple[APIKeyWithoutHash,str]
+validate_api_key	api_key.py	/^async def validate_api_key(plain_text_key: str) -> Optional[APIKey]:$/;"	f	line:153	typeref:typename:Optional[APIKey]
+revoke_api_key	api_key.py	/^async def revoke_api_key(key_id: str, user_id: str) -> Optional[APIKeyWithoutHash]:$/;"	f	line:184	typeref:typename:Optional[APIKeyWithoutHash]
+list_user_api_keys	api_key.py	/^async def list_user_api_keys(user_id: str) -> List[APIKeyWithoutHash]:$/;"	f	line:217	typeref:typename:List[APIKeyWithoutHash]
+suspend_api_key	api_key.py	/^async def suspend_api_key(key_id: str, user_id: str) -> Optional[APIKeyWithoutHash]:$/;"	f	line:234	typeref:typename:Optional[APIKeyWithoutHash]
+has_permission	api_key.py	/^def has_permission(api_key: APIKey, required_permission: APIKeyPermission) -> bool:$/;"	f	line:265	typeref:typename:bool
+get_api_key_by_id	api_key.py	/^async def get_api_key_by_id(key_id: str, user_id: str) -> Optional[APIKeyWithoutHash]:$/;"	f	line:273	typeref:typename:Optional[APIKeyWithoutHash]
+update_api_key_permissions	api_key.py	/^async def update_api_key_permissions($/;"	f	line:291	typeref:typename:Optional[APIKeyWithoutHash]

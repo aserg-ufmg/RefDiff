@@ -1,0 +1,12 @@
+----- Analyzing commits -----
+
+Refactorings found in curl 7d1ca2e7e1a3b9d3ba70f587f6bc5e83f905afd5
+CHANGE_SIGNATURE	{Function setget_parts(void) at tests/libtest/lib1560.c:1431}	{Function setget_parts(int) at tests/libtest/lib1560.c:1431})
+CHANGE_SIGNATURE	{Function get_url(void) at tests/libtest/lib1560.c:1528}	{Function get_url(int) at tests/libtest/lib1560.c:1532})
+CHANGE_SIGNATURE	{Function get_parts(void) at tests/libtest/lib1560.c:1568}	{Function get_parts(int) at tests/libtest/lib1560.c:1576})
+Parent is null
+Parent is null
+
+Refactorings found in curl fa0ed1fe4f7de6519dfc5519728e3710bfe077fc
+CHANGE_SIGNATURE	{Function main(void) at docs/examples/websocket.c:109}	{Function main(int, char) at docs/examples/websocket.c:137})
+Parent is null

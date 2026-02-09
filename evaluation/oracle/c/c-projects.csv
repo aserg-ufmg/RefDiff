@@ -1,0 +1,21 @@
+Project,,Description,Commits
+torvalds,linux,Linux kernel source tree.,839761
+firehol,netdata,"Real-time performance monitoring, done right!",8338
+antirez,redis,Redis is an in-memory database that persists on disk.,8158
+git,git,Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.,55723
+Bilibili,ijkplayer,"Android/iOS video player based on FFmpeg n3.4, with MediaCodec, VideoToolbox support.",2584
+php,php-src,The PHP Interpreter.,112847
+wg,wrk,Modern HTTP benchmarking tool.,76
+ggreer,the_silver_searcher,"A code-searching tool similar to ack, but faster.",2016
+kripken,emscripten,Emscripten: An LLVM-to-Web Compiler.,19468
+vim,vim,The ubiquitous text editor.,9875
+stedolan,jq,Command-line JSON processor.,1287
+FFmpeg,FFmpeg,"A complete, cross-platform solution to record, convert and stream audio and video.",93898
+tmux,tmux,"A terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen. ",7618
+vurtun,nuklear,A single-header ANSI C gui library.,1646
+obsproject,obs-studio,Free and open source software for live streaming and screen recording.,6727
+libuv,libuv,Cross-platform asynchronous I/O.,4319
+swoole,swoole-src,Coroutine-based concurrency library for PHP (like Golang).,9938
+curl,curl,A command line tool and library for transferring data with URL syntax.,24339
+irungentoo,toxcore,The future of online communications.,3771
+pjreddie,darknet,Convolutional Neural Networks.,436

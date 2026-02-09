@@ -1,0 +1,9 @@
+{"_type": "tag", "name": "function_no_args_no_return", "path": "func.c", "pattern": "/^void function_no_args_no_return() {$/", "line": 13, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "function_with_args_no_return", "path": "func.c", "pattern": "/^void function_with_args_no_return(int a, int b) {$/", "line": 18, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "add", "path": "func.c", "pattern": "/^int add(int a, int b) { return a + b; }$/", "line": 24, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "old_style_add", "path": "func.c", "pattern": "/^int old_style_add(a, b)$/", "line": 34, "kind": "function"}
+{"_type": "tag", "name": "internal_function", "path": "func.c", "pattern": "/^static void internal_function() {$/", "file": true, "line": 48, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "multiply", "path": "func.c", "pattern": "/^inline int multiply(int a, int b) { return a * b; }$/", "line": 60, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "get_global_variable_address", "path": "func.c", "pattern": "/^int* get_global_variable_address() { return &global_variable; }$/", "line": 71, "typeref": "typename:int *", "kind": "function"}
+{"_type": "tag", "name": "sum_all", "path": "func.c", "pattern": "/^int sum_all(int count, ...) {$/", "line": 80, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "main", "path": "func.c", "pattern": "/^int main() {$/", "line": 100, "typeref": "typename:int", "kind": "function"}

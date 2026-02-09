@@ -1,0 +1,46 @@
+Refactorings found in scrcpy 8a02e3c2f58cffc3fdd8c08b26aae04bbf9d5a97
+CHANGE_SIGNATURE	{Method ClipboardManager(IInterface) at server/src/main/java/com/genymobile/scrcpy/wrappers/ClipboardManager.java:34}	{Method ClipboardManager(android.content.ClipboardManager) at server/src/main/java/com/genymobile/scrcpy/wrappers/ClipboardManager.java:22})
+
+Refactorings found in scrcpy ca4f50c5ef12eee2c0efb562e157a8b2d75cb001
+CHANGE_SIGNATURE	{Method buildUhidCreate2Req(int, int, String, byte[]) at server/src/main/java/com/genymobile/scrcpy/control/UhidManager.java:151}	{Method buildUhidCreate2Req(int, int, String, byte[], String) at server/src/main/java/com/genymobile/scrcpy/control/UhidManager.java:165})
+CHANGE_SIGNATURE	{Method DisplayInfo(int, Size, int, int, int, int) at server/src/main/java/com/genymobile/scrcpy/device/DisplayInfo.java:13}	{Method DisplayInfo(int, Size, int, int, int, int, String) at server/src/main/java/com/genymobile/scrcpy/device/DisplayInfo.java:14})
+CHANGE_SIGNATURE	{Method UhidManager(DeviceMessageSender) at server/src/main/java/com/genymobile/scrcpy/control/UhidManager.java:40}	{Method UhidManager(DeviceMessageSender, String) at server/src/main/java/com/genymobile/scrcpy/control/UhidManager.java:46})
+
+Refactorings found in scrcpy 41ed40f5f9ee557c5ccbca8b30a51c74af92da92
+CHANGE_SIGNATURE	{Method InputManager(Object) at server/src/main/java/com/genymobile/scrcpy/wrappers/InputManager.java:46}	{Method InputManager(android.hardware.input.InputManager) at server/src/main/java/com/genymobile/scrcpy/wrappers/InputManager.java:33})
+Parent is null: server/src/main/java/com/genymobile/scrcpy/device/Orientation.java for constructor: Orientation(String)
+
+Refactorings found in scrcpy 882003f314ad5077a41bbc936831aeb36dd8b078
+CHANGE_SIGNATURE	{Function event_loop(struct scrcpy) at app/src/scrcpy.c:167}	{Function event_loop(struct scrcpy, bool) at app/src/scrcpy.c:167})
+Parent is null: server/src/main/java/com/genymobile/scrcpy/audio/AudioSource.java for constructor: AudioSource(String)
+
+Refactorings found in scrcpy 4bd1c5981db307155452fa7594945e069542ddb3
+RENAME	{Function sc_gamepad_processor_process_gamepad_device(struct sc_gamepad_processor, struct sc_gamepad_device_event) at app/src/usb/gamepad_aoa.c:9}	{Function sc_gamepad_processor_process_gamepad_added(struct sc_gamepad_processor, struct sc_gamepad_device_event) at app/src/usb/gamepad_aoa.c:9})
+
+Refactorings found in scrcpy b2cdaa4bdce0adc256b87c3271c39a1482817dc6
+EXTRACT	{Method injectTouch(int, long, Position, float, int, int) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:353}	{Method getEventPointAndDisplayId(Position) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:354})
+EXTRACT	{Method injectScroll(Position, float, float, int) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:471}	{Method getEventPointAndDisplayId(Position) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:354})
+
+Refactorings found in scrcpy d72686c867dcde973f4666117128f2fc38888a1b
+MOVE	{Method setSessionDisplaySize(Size) at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:286}	{Method setSessionDisplaySize(Size) at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:100})
+MOVE	{Method onDisplayFoldChanged(int, boolean) at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:307}	{Method onDisplayFoldChanged(int, boolean) at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:155})
+EXTRACT_MOVE	{Method init() at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:71}	{Method start(int, Listener) at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:39})
+MOVE	{Method getSessionDisplaySize() at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:282}	{Method getSessionDisplaySize() at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:96})
+MOVE	{Method registerDisplayListenerFallbacks() at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:290}	{Method registerDisplayListenerFallbacks() at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:137})
+MOVE	{Method unregisterDisplayListenerFallbacks() at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:329}	{Method unregisterDisplayListenerFallbacks() at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:178})
+MOVE	{Method onRotationChanged(int) at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:292}	{Method onRotationChanged(int) at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:139})
+EXTRACT_MOVE	{Method release() at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:227}	{Method stopAndRelease() at server/src/main/java/com/genymobile/scrcpy/video/DisplaySizeMonitor.java:80})
+
+Refactorings found in scrcpy e226950cfab9b9e8f2fe8620dc9970bcf13133ee
+CHANGE_SIGNATURE	{Method PositionMapper(Size, Size) at server/src/main/java/com/genymobile/scrcpy/control/PositionMapper.java:12}	{Method PositionMapper(Size, AffineMatrix) at server/src/main/java/com/genymobile/scrcpy/control/PositionMapper.java:13})
+
+Refactorings found in scrcpy bd9d93194b04970655b22f1eb96d5ad2bd4f2c75
+CHANGE_SIGNATURE	{Method Controller(int, ControlChannel, CleanUp, boolean, boolean) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:100}	{Method Controller(ControlChannel, CleanUp, Options) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:101})
+EXTRACT_MOVE	{Method scrcpy(Options) at server/src/main/java/com/genymobile/scrcpy/Server.java:76}	{Method CameraCapture(Options) at server/src/main/java/com/genymobile/scrcpy/video/CameraCapture.java:62})
+CHANGE_SIGNATURE	{Method NewDisplayCapture(VirtualDisplayListener, NewDisplay, int) at server/src/main/java/com/genymobile/scrcpy/video/NewDisplayCapture.java:46}	{Method NewDisplayCapture(VirtualDisplayListener, Options) at server/src/main/java/com/genymobile/scrcpy/video/NewDisplayCapture.java:47})
+CHANGE_SIGNATURE	{Method AudioEncoder(AudioCapture, Streamer, int, List<CodecOption>, String) at server/src/main/java/com/genymobile/scrcpy/audio/AudioEncoder.java:70}	{Method AudioEncoder(AudioCapture, Streamer, Options) at server/src/main/java/com/genymobile/scrcpy/audio/AudioEncoder.java:71})
+
+Refactorings found in scrcpy 794595e3f0db8208a2a1df30c1c5e9442deb4112
+CHANGE_SIGNATURE	{Method runCleanUp(int, Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:45}	{Method runCleanUp(Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:45})
+CHANGE_SIGNATURE	{Method start(int, Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:33}	{Method start(Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:33})
+CHANGE_SIGNATURE	{Method CleanUp(int, Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:28}	{Method CleanUp(Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:28})

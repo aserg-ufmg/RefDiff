@@ -1,0 +1,7 @@
+You are a C++ language expert.
+
+Generate a single C++ file that systematically enumerates every syntactically valid way to define functions in C++.
+
+Each example should represent a distinct variation or pattern of function definition, including both typical and edge cases.
+
+Organize the examples in clearly separated sections with comments.

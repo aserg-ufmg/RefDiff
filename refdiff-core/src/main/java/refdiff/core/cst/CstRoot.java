@@ -18,6 +18,9 @@ public class CstRoot implements HasChildrenNodes {
 	private Set<CstNodeRelationship> relationships = new HashSet<>();
 	
 	private Map<String, TokenizedSource> tokenizedSource = new HashMap<>();
+
+	// Map of source file paths that failed parsing during CST construction.
+	private Map<String, Boolean> parseFailedFiles = new HashMap<>();
 	
 	/**
 	 * The top-level nodes of the CST.
@@ -58,6 +61,20 @@ public class CstRoot implements HasChildrenNodes {
 	 */
 	public Map<String, TokenizedSource> getTokenizedSource() {
 		return tokenizedSource;
+	}
+
+	/**
+	 * @return A map of source file paths which failed parsing (parse errors)
+	 */
+	public Boolean isFileParseFailed(String filePath) {
+		return this.parseFailedFiles.getOrDefault(filePath, false);
+	}
+
+	/**
+	 * Mark a source file as having a parse failure during CST construction.
+	 */
+	public void addParseFailedFile(String filePath) {
+		this.parseFailedFiles.put(filePath, true);
 	}
 
 }

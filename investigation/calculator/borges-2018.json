@@ -1,0 +1,945 @@
+{
+  "C": {
+    "Application software": [
+      {
+        "name": "FFmpeg/FFmpeg",
+        "stars": 6045,
+        "url": "https://github.com/ffmpeg/ffmpeg.git"
+      },
+      {
+        "name": "tmux/tmux",
+        "stars": 5818,
+        "url": "https://github.com/tmux/tmux.git"
+      },
+      {
+        "name": "b4winckler/macvim",
+        "stars": 5328,
+        "url": "https://github.com/b4winckler/macvim.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "SamyPesse/How-to-Make-a-Computer-Operating-System",
+        "stars": 14126,
+        "url": "https://github.com/samypesse/how-to-make-a-computer-operating-system.git"
+      },
+      {
+        "name": "julycoding/The-Art-Of-Programming-By-July",
+        "stars": 9371,
+        "url": "https://github.com/julycoding/the-art-of-programming-by-july.git"
+      },
+      {
+        "name": "nothings/stb",
+        "stars": 4753,
+        "url": "https://github.com/nothings/stb.git"
+      },
+      {
+        "name": "jgamblin/Mirai-Source-Code",
+        "stars": 4035,
+        "url": "https://github.com/jgamblin/mirai-source-code.git"
+      },
+      {
+        "name": "rswier/c4",
+        "stars": 3522,
+        "url": "https://github.com/rswier/c4.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "Bilibili/ijkplayer",
+        "stars": 10754,
+        "url": "https://github.com/bilibili/ijkplayer.git"
+      },
+      {
+        "name": "torch/torch7",
+        "stars": 6241,
+        "url": "https://github.com/torch/torch7.git"
+      },
+      {
+        "name": "antirez/disque",
+        "stars": 5934,
+        "url": "https://github.com/antirez/disque.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "firehol/netdata",
+        "stars": 17915,
+        "url": "https://github.com/firehol/netdata.git"
+      },
+      {
+        "name": "git/git",
+        "stars": 15988,
+        "url": "https://github.com/git/git.git"
+      },
+      {
+        "name": "ggreer/the_silver_searcher",
+        "stars": 11149,
+        "url": "https://github.com/ggreer/the_silver_searcher.git"
+      },
+      {
+        "name": "wg/wrk",
+        "stars": 10658,
+        "url": "https://github.com/wg/wrk.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "torvalds/linux",
+        "stars": 41150,
+        "url": "https://github.com/torvalds/linux.git"
+      },
+      {
+        "name": "antirez/redis",
+        "stars": 21486,
+        "url": "https://github.com/antirez/redis.git"
+      },
+      {
+        "name": "php/php-src",
+        "stars": 11203,
+        "url": "https://github.com/php/php-src.git"
+      },
+      {
+        "name": "h2o/h2o",
+        "stars": 6218,
+        "url": "https://github.com/h2o/h2o.git"
+      },
+      {
+        "name": "memcached/memcached",
+        "stars": 5736,
+        "url": "https://github.com/memcached/memcached.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "phpredis/phpredis",
+        "stars": 4648,
+        "url": "https://github.com/phpredis/phpredis.git"
+      },
+      {
+        "name": "allinurl/goaccess",
+        "stars": 4625,
+        "url": "https://github.com/allinurl/goaccess.git"
+      },
+      {
+        "name": "vmg/redcarpet",
+        "stars": 3792,
+        "url": "https://github.com/vmg/redcarpet.git"
+      },
+      {
+        "name": "nodejs/http-parser",
+        "stars": 3044,
+        "url": "https://github.com/nodejs/http-parser.git"
+      },
+      {
+        "name": "laruence/yaf",
+        "stars": 2842,
+        "url": "https://github.com/laruence/yaf.git"
+      }
+    ]
+  },
+  "Go": {
+    "Application software": [
+      {
+        "name": "getlantern/lantern",
+        "stars": 21876,
+        "url": "https://github.com/getlantern/lantern.git"
+      },
+      {
+        "name": "spf13/hugo",
+        "stars": 14466,
+        "url": "https://github.com/spf13/hugo.git"
+      },
+      {
+        "name": "hashicorp/vault",
+        "stars": 6040,
+        "url": "https://github.com/hashicorp/vault.git"
+      },
+      {
+        "name": "gizak/termui",
+        "stars": 5528,
+        "url": "https://github.com/gizak/termui.git"
+      },
+      {
+        "name": "cyfdecyf/cow",
+        "stars": 4825,
+        "url": "https://github.com/cyfdecyf/cow.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "avelino/awesome-go",
+        "stars": 17738,
+        "url": "https://github.com/avelino/awesome-go.git"
+      },
+      {
+        "name": "astaxie/build-web-application-with-golang",
+        "stars": 13739,
+        "url": "https://github.com/astaxie/build-web-application-with-golang.git"
+      },
+      {
+        "name": "Unknwon/the-way-to-go_ZH_CN",
+        "stars": 4192,
+        "url": "https://github.com/unknwon/the-way-to-go_zh_cn.git"
+      },
+      {
+        "name": "dropbox/godropbox",
+        "stars": 3207,
+        "url": "https://github.com/dropbox/godropbox.git"
+      },
+      {
+        "name": "tmrts/go-patterns",
+        "stars": 3005,
+        "url": "https://github.com/tmrts/go-patterns.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "labstack/echo",
+        "stars": 6287,
+        "url": "https://github.com/labstack/echo.git"
+      },
+      {
+        "name": "go-kit/kit",
+        "stars": 5768,
+        "url": "https://github.com/go-kit/kit.git"
+      },
+      {
+        "name": "fogleman/primitive",
+        "stars": 5688,
+        "url": "https://github.com/fogleman/primitive.git"
+      },
+      {
+        "name": "boltdb/bolt",
+        "stars": 5455,
+        "url": "https://github.com/boltdb/bolt.git"
+      },
+      {
+        "name": "CodisLabs/codis",
+        "stars": 5275,
+        "url": "https://github.com/codislabs/codis.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "kubernetes/kubernetes",
+        "stars": 20069,
+        "url": "https://github.com/kubernetes/kubernetes.git"
+      },
+      {
+        "name": "gogits/gogs",
+        "stars": 17408,
+        "url": "https://github.com/gogits/gogs.git"
+      },
+      {
+        "name": "syncthing/syncthing",
+        "stars": 14770,
+        "url": "https://github.com/syncthing/syncthing.git"
+      },
+      {
+        "name": "github/hub",
+        "stars": 9751,
+        "url": "https://github.com/github/hub.git"
+      },
+      {
+        "name": "inconshreveable/ngrok",
+        "stars": 8980,
+        "url": "https://github.com/inconshreveable/ngrok.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "docker/docker",
+        "stars": 39002,
+        "url": "https://github.com/docker/docker.git"
+      },
+      {
+        "name": "golang/go",
+        "stars": 24001,
+        "url": "https://github.com/golang/go.git"
+      },
+      {
+        "name": "coreos/etcd",
+        "stars": 12101,
+        "url": "https://github.com/coreos/etcd.git"
+      },
+      {
+        "name": "mholt/caddy",
+        "stars": 9775,
+        "url": "https://github.com/mholt/caddy.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "go-martini/martini",
+        "stars": 9041,
+        "url": "https://github.com/go-martini/martini.git"
+      },
+      {
+        "name": "gin-gonic/gin",
+        "stars": 8666,
+        "url": "https://github.com/gin-gonic/gin.git"
+      },
+      {
+        "name": "revel/revel",
+        "stars": 7801,
+        "url": "https://github.com/revel/revel.git"
+      }
+    ]
+  },
+  "Java": {
+    "Application software": [
+      {
+        "name": "pockethub/PocketHub",
+        "stars": 8482,
+        "url": "https://github.com/pockethub/pockethub.git"
+      },
+      {
+        "name": "HannahMitt/HomeMirror",
+        "stars": 7473,
+        "url": "https://github.com/hannahmitt/homemirror.git"
+      },
+      {
+        "name": "JakeWharton/u2020",
+        "stars": 4401,
+        "url": "https://github.com/jakewharton/u2020.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "iluwatar/java-design-patterns",
+        "stars": 16472,
+        "url": "https://github.com/iluwatar/java-design-patterns.git"
+      },
+      {
+        "name": "Blankj/AndroidUtilCode",
+        "stars": 7825,
+        "url": "https://github.com/blankj/androidutilcode.git"
+      },
+      {
+        "name": "android10/Android-CleanArchitecture",
+        "stars": 7455,
+        "url": "https://github.com/android10/android-cleanarchitecture.git"
+      },
+      {
+        "name": "daimajia/AndroidViewAnimations",
+        "stars": 6657,
+        "url": "https://github.com/daimajia/androidviewanimations.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "nostra13/Android-Universal-Image-Loader",
+        "stars": 14746,
+        "url": "https://github.com/nostra13/android-universal-image-loader.git"
+      },
+      {
+        "name": "google/guava",
+        "stars": 14097,
+        "url": "https://github.com/google/guava.git"
+      },
+      {
+        "name": "JakeWharton/butterknife",
+        "stars": 14034,
+        "url": "https://github.com/jakewharton/butterknife.git"
+      },
+      {
+        "name": "PhilJay/MPAndroidChart",
+        "stars": 13583,
+        "url": "https://github.com/philjay/mpandroidchart.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "elastic/elasticsearch",
+        "stars": 20441,
+        "url": "https://github.com/elastic/elasticsearch.git"
+      },
+      {
+        "name": "spring-projects/spring-boot",
+        "stars": 9738,
+        "url": "https://github.com/spring-projects/spring-boot.git"
+      },
+      {
+        "name": "nathanmarz/storm",
+        "stars": 8930,
+        "url": "https://github.com/nathanmarz/storm.git"
+      },
+      {
+        "name": "netty/netty",
+        "stars": 8912,
+        "url": "https://github.com/netty/netty.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "ReactiveX/RxJava",
+        "stars": 20734,
+        "url": "https://github.com/reactivex/rxjava.git"
+      },
+      {
+        "name": "clojure/clojure",
+        "stars": 6033,
+        "url": "https://github.com/clojure/clojure.git"
+      },
+      {
+        "name": "android/platform_frameworks_base",
+        "stars": 5645,
+        "url": "https://github.com/android/platform_frameworks_base.git"
+      },
+      {
+        "name": "eclipse/vert.x",
+        "stars": 5595,
+        "url": "https://github.com/eclipse/vert.x.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "bumptech/glide",
+        "stars": 12974,
+        "url": "https://github.com/bumptech/glide.git"
+      },
+      {
+        "name": "spring-projects/spring-framework",
+        "stars": 12009,
+        "url": "https://github.com/spring-projects/spring-framework.git"
+      },
+      {
+        "name": "Bearded-Hen/Android-Bootstrap",
+        "stars": 5715,
+        "url": "https://github.com/bearded-hen/android-bootstrap.git"
+      }
+    ]
+  },
+  "JavaScript": {
+    "Application software": [
+      {
+        "name": "adobe/brackets",
+        "stars": 26769,
+        "url": "https://github.com/adobe/brackets.git"
+      },
+      {
+        "name": "resume/resume.github.com",
+        "stars": 26228,
+        "url": "https://github.com/resume/resume.github.com.git"
+      },
+      {
+        "name": "NARKOZ/hacker-scripts",
+        "stars": 26112,
+        "url": "https://github.com/narkoz/hacker-scripts.git"
+      },
+      {
+        "name": "TryGhost/Ghost",
+        "stars": 21713,
+        "url": "https://github.com/tryghost/ghost.git"
+      },
+      {
+        "name": "nylas/N1",
+        "stars": 21693,
+        "url": "https://github.com/nylas/n1.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "airbnb/javascript",
+        "stars": 46155,
+        "url": "https://github.com/airbnb/javascript.git"
+      },
+      {
+        "name": "tastejs/todomvc",
+        "stars": 19871,
+        "url": "https://github.com/tastejs/todomvc.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "moment/moment",
+        "stars": 29595,
+        "url": "https://github.com/moment/moment.git"
+      },
+      {
+        "name": "lodash/lodash",
+        "stars": 21129,
+        "url": "https://github.com/lodash/lodash.git"
+      },
+      {
+        "name": "caolan/async",
+        "stars": 20255,
+        "url": "https://github.com/caolan/async.git"
+      },
+      {
+        "name": "jashkenas/underscore",
+        "stars": 19996,
+        "url": "https://github.com/jashkenas/underscore.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "gulpjs/gulp",
+        "stars": 24947,
+        "url": "https://github.com/gulpjs/gulp.git"
+      },
+      {
+        "name": "yarnpkg/yarn",
+        "stars": 21809,
+        "url": "https://github.com/yarnpkg/yarn.git"
+      },
+      {
+        "name": "adam-p/markdown-here",
+        "stars": 17013,
+        "url": "https://github.com/adam-p/markdown-here.git"
+      },
+      {
+        "name": "Unitech/pm2",
+        "stars": 16802,
+        "url": "https://github.com/unitech/pm2.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "nodejs/node",
+        "stars": 30884,
+        "url": "https://github.com/nodejs/node.git"
+      },
+      {
+        "name": "typicode/json-server",
+        "stars": 18650,
+        "url": "https://github.com/typicode/json-server.git"
+      },
+      {
+        "name": "pouchdb/pouchdb",
+        "stars": 8142,
+        "url": "https://github.com/pouchdb/pouchdb.git"
+      },
+      {
+        "name": "Microsoft/ChakraCore",
+        "stars": 5972,
+        "url": "https://github.com/microsoft/chakracore.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "facebook/react",
+        "stars": 58176,
+        "url": "https://github.com/facebook/react.git"
+      },
+      {
+        "name": "angular/angular.js",
+        "stars": 54439,
+        "url": "https://github.com/angular/angular.js.git"
+      }
+    ]
+  },
+  "PHP": {
+    "Application software": [
+      {
+        "name": "WordPress/WordPress",
+        "stars": 8573,
+        "url": "https://github.com/wordpress/wordpress.git"
+      },
+      {
+        "name": "phanan/koel",
+        "stars": 6953,
+        "url": "https://github.com/phanan/koel.git"
+      },
+      {
+        "name": "getgrav/grav",
+        "stars": 5891,
+        "url": "https://github.com/getgrav/grav.git"
+      },
+      {
+        "name": "octobercms/october",
+        "stars": 5511,
+        "url": "https://github.com/octobercms/october.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "domnikl/DesignPatternsPHP",
+        "stars": 11531,
+        "url": "https://github.com/domnikl/designpatternsphp.git"
+      },
+      {
+        "name": "phacility/phabricator",
+        "stars": 7989,
+        "url": "https://github.com/phacility/phabricator.git"
+      },
+      {
+        "name": "danielmiessler/SecLists",
+        "stars": 4627,
+        "url": "https://github.com/danielmiessler/seclists.git"
+      },
+      {
+        "name": "magento/magento2",
+        "stars": 4036,
+        "url": "https://github.com/magento/magento2.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "PHPMailer/PHPMailer",
+        "stars": 8005,
+        "url": "https://github.com/phpmailer/phpmailer.git"
+      },
+      {
+        "name": "PHPOffice/PHPExcel",
+        "stars": 7520,
+        "url": "https://github.com/phpoffice/phpexcel.git"
+      },
+      {
+        "name": "sebastianbergmann/phpunit",
+        "stars": 5721,
+        "url": "https://github.com/sebastianbergmann/phpunit.git"
+      },
+      {
+        "name": "Seldaek/monolog",
+        "stars": 5649,
+        "url": "https://github.com/seldaek/monolog.git"
+      },
+      {
+        "name": "FriendsOfPHP/Goutte",
+        "stars": 4836,
+        "url": "https://github.com/friendsofphp/goutte.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "composer/composer",
+        "stars": 8739,
+        "url": "https://github.com/composer/composer.git"
+      },
+      {
+        "name": "piwik/piwik",
+        "stars": 6731,
+        "url": "https://github.com/piwik/piwik.git"
+      },
+      {
+        "name": "CachetHQ/Cachet",
+        "stars": 5657,
+        "url": "https://github.com/cachethq/cachet.git"
+      },
+      {
+        "name": "barryvdh/laravel-ide-helper",
+        "stars": 4176,
+        "url": "https://github.com/barryvdh/laravel-ide-helper.git"
+      },
+      {
+        "name": "FriendsOfPHP/PHP-CS-Fixer",
+        "stars": 4060,
+        "url": "https://github.com/friendsofphp/php-cs-fixer.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "thephpleague/oauth2-server",
+        "stars": 2611,
+        "url": "https://github.com/thephpleague/oauth2-server.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "symfony/symfony",
+        "stars": 13693,
+        "url": "https://github.com/symfony/symfony.git"
+      },
+      {
+        "name": "bcit-ci/CodeIgniter",
+        "stars": 13671,
+        "url": "https://github.com/bcit-ci/codeigniter.git"
+      },
+      {
+        "name": "fzaninotto/Faker",
+        "stars": 10043,
+        "url": "https://github.com/fzaninotto/faker.git"
+      },
+      {
+        "name": "yiisoft/yii2",
+        "stars": 9475,
+        "url": "https://github.com/yiisoft/yii2.git"
+      }
+    ]
+  },
+  "Python": {
+    "Application software": [
+      {
+        "name": "rg3/youtube-dl",
+        "stars": 23124,
+        "url": "https://github.com/rg3/youtube-dl.git"
+      },
+      {
+        "name": "reddit/reddit",
+        "stars": 12223,
+        "url": "https://github.com/reddit/reddit.git"
+      },
+      {
+        "name": "soimort/you-get",
+        "stars": 9998,
+        "url": "https://github.com/soimort/you-get.git"
+      },
+      {
+        "name": "powerline/powerline",
+        "stars": 6922,
+        "url": "https://github.com/powerline/powerline.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "vinta/awesome-python",
+        "stars": 28649,
+        "url": "https://github.com/vinta/awesome-python.git"
+      },
+      {
+        "name": "josephmisiti/awesome-machine-learning",
+        "stars": 19488,
+        "url": "https://github.com/josephmisiti/awesome-machine-learning.git"
+      },
+      {
+        "name": "minimaxir/big-list-of-naughty-strings",
+        "stars": 19083,
+        "url": "https://github.com/minimaxir/big-list-of-naughty-strings.git"
+      },
+      {
+        "name": "tensorflow/models",
+        "stars": 10862,
+        "url": "https://github.com/tensorflow/models.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "scrapy/scrapy",
+        "stars": 17978,
+        "url": "https://github.com/scrapy/scrapy.git"
+      },
+      {
+        "name": "scikit-learn/scikit-learn",
+        "stars": 15960,
+        "url": "https://github.com/scikit-learn/scikit-learn.git"
+      },
+      {
+        "name": "tornadoweb/tornado",
+        "stars": 12818,
+        "url": "https://github.com/tornadoweb/tornado.git"
+      },
+      {
+        "name": "XX-net/XX-Net",
+        "stars": 12182,
+        "url": "https://github.com/xx-net/xx-net.git"
+      },
+      {
+        "name": "fchollet/keras",
+        "stars": 11474,
+        "url": "https://github.com/fchollet/keras.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "jkbrzt/httpie",
+        "stars": 27831,
+        "url": "https://github.com/jkbrzt/httpie.git"
+      },
+      {
+        "name": "nvbn/thefuck",
+        "stars": 23688,
+        "url": "https://github.com/nvbn/thefuck.git"
+      },
+      {
+        "name": "kennethreitz/requests",
+        "stars": 22978,
+        "url": "https://github.com/kennethreitz/requests.git"
+      },
+      {
+        "name": "ansible/ansible",
+        "stars": 20967,
+        "url": "https://github.com/ansible/ansible.git"
+      },
+      {
+        "name": "certbot/certbot",
+        "stars": 17421,
+        "url": "https://github.com/certbot/certbot.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "apenwarr/sshuttle",
+        "stars": 7657,
+        "url": "https://github.com/apenwarr/sshuttle.git"
+      },
+      {
+        "name": "samshadwell/TrumpScript",
+        "stars": 5408,
+        "url": "https://github.com/samshadwell/trumpscript.git"
+      },
+      {
+        "name": "nylas/sync-engine",
+        "stars": 3254,
+        "url": "https://github.com/nylas/sync-engine.git"
+      },
+      {
+        "name": "Kinto/kinto",
+        "stars": 2993,
+        "url": "https://github.com/kinto/kinto.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "pallets/flask",
+        "stars": 24778,
+        "url": "https://github.com/pallets/flask.git"
+      },
+      {
+        "name": "django/django",
+        "stars": 23372,
+        "url": "https://github.com/django/django.git"
+      },
+      {
+        "name": "tomchristie/django-rest-framework",
+        "stars": 7169,
+        "url": "https://github.com/tomchristie/django-rest-framework.git"
+      },
+      {
+        "name": "channelcat/sanic",
+        "stars": 4412,
+        "url": "https://github.com/channelcat/sanic.git"
+      }
+    ]
+  },
+  "Ruby": {
+    "Application software": [
+      {
+        "name": "jekyll/jekyll",
+        "stars": 28327,
+        "url": "https://github.com/jekyll/jekyll.git"
+      },
+      {
+        "name": "discourse/discourse",
+        "stars": 20404,
+        "url": "https://github.com/discourse/discourse.git"
+      },
+      {
+        "name": "diaspora/diaspora",
+        "stars": 11038,
+        "url": "https://github.com/diaspora/diaspora.git"
+      },
+      {
+        "name": "imathis/octopress",
+        "stars": 9538,
+        "url": "https://github.com/imathis/octopress.git"
+      },
+      {
+        "name": "mame/quine-relay",
+        "stars": 5744,
+        "url": "https://github.com/mame/quine-relay.git"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "bayandin/awesome-awesomeness",
+        "stars": 17977,
+        "url": "https://github.com/bayandin/awesome-awesomeness.git"
+      },
+      {
+        "name": "Thibaut/devdocs",
+        "stars": 11515,
+        "url": "https://github.com/thibaut/devdocs.git"
+      },
+      {
+        "name": "kilimchoi/engineering-blogs",
+        "stars": 9723,
+        "url": "https://github.com/kilimchoi/engineering-blogs.git"
+      },
+      {
+        "name": "thoughtbot/guides",
+        "stars": 6137,
+        "url": "https://github.com/thoughtbot/guides.git"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "plataformatec/devise",
+        "stars": 16478,
+        "url": "https://github.com/plataformatec/devise.git"
+      },
+      {
+        "name": "thoughtbot/paperclip",
+        "stars": 8312,
+        "url": "https://github.com/thoughtbot/paperclip.git"
+      },
+      {
+        "name": "resque/resque",
+        "stars": 7640,
+        "url": "https://github.com/resque/resque.git"
+      },
+      {
+        "name": "teamcapybara/capybara",
+        "stars": 7561,
+        "url": "https://github.com/teamcapybara/capybara.git"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "gitlabhq/gitlabhq",
+        "stars": 18939,
+        "url": "https://github.com/gitlabhq/gitlabhq.git"
+      },
+      {
+        "name": "cantino/huginn",
+        "stars": 15498,
+        "url": "https://github.com/cantino/huginn.git"
+      },
+      {
+        "name": "mitchellh/vagrant",
+        "stars": 13914,
+        "url": "https://github.com/mitchellh/vagrant.git"
+      },
+      {
+        "name": "fastlane/fastlane",
+        "stars": 13583,
+        "url": "https://github.com/fastlane/fastlane.git"
+      }
+    ],
+    "System software": [
+      {
+        "name": "ruby/ruby",
+        "stars": 11412,
+        "url": "https://github.com/ruby/ruby.git"
+      },
+      {
+        "name": "jruby/jruby",
+        "stars": 2742,
+        "url": "https://github.com/jruby/jruby.git"
+      },
+      {
+        "name": "lg/murder",
+        "stars": 2376,
+        "url": "https://github.com/lg/murder.git"
+      },
+      {
+        "name": "github/github-services",
+        "stars": 1856,
+        "url": "https://github.com/github/github-services.git"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "rails/rails",
+        "stars": 34188,
+        "url": "https://github.com/rails/rails.git"
+      },
+      {
+        "name": "sinatra/sinatra",
+        "stars": 8615,
+        "url": "https://github.com/sinatra/sinatra.git"
+      },
+      {
+        "name": "spree/spree",
+        "stars": 8103,
+        "url": "https://github.com/spree/spree.git"
+      },
+      {
+        "name": "ruby-grape/grape",
+        "stars": 7769,
+        "url": "https://github.com/ruby-grape/grape.git"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+/bin/
+/build/
+/.gradle/
+/.settings/
+.classpath
+.project
+/temp/
+/repository/
+/repo-for-analysis/
+/script/logs/

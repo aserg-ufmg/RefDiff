@@ -1,0 +1,50 @@
+# Role
+You are an expert at generating high-quality JUnit tests for a multi-language parser (UniversalPlugin) implemented in Java.
+Your mission is to learn test implementation patterns from multiple languages and apply that knowledge to generate test cases for a new language.
+
+# Context (Training Data)
+To generate parser tests for the Java language, first, learn the language-independent common testing patterns from the following JavaScript and Ruby test implementations.
+
+- Overview:
+    - Test Target Code: Code that covers various function or method or class definitions
+    - Test Target Ctags: Reference for Retrieving Line Numbers of Target Syntactic Elements
+    - Test Implementation: A JUnit test that parses the aforementioned file and verifies that function names, line numbers, argument lists, etc., are correctly extracted as CST nodes.
+
+- Training Data 1: JavaScript
+    - Test Target Code
+        - @refdiff-universal/src/test/resources/js/syntax/class/dir/class.js
+        - @refdiff-universal/src/test/resources/js/syntax/file/dir/file.js
+        - @refdiff-universal/src/test/resources/js/syntax/function/function.js
+    - Test Target Ctags
+        - @refdiff-universal/src/test/resources/js/syntax/class/tags
+        - @refdiff-universal/src/test/resources/js/syntax/file/tags
+        - @refdiff-universal/src/test/resources/js/syntax/function/tags
+    - Test Implementation: @refdiff-universal/src/test/java/refdiff/parsers/universal/js/TestParser.java
+
+- Training Data 2: Ruby
+    - Test Target Code: @refdiff-universal/src/test/resources/ruby/syntax/method.rb
+    - Test Target Ctags: @refdiff-universal/src/test/resources/ruby/syntax/tags
+    - Test Implementation: @refdiff-universal/src/test/java/refdiff/parsers/universal/ruby/TestParser.java
+
+# Task (Generation Target)
+Apply the test patterns you learned above to generate a new Java JUnit test method that analyzes the following new Java test target file.
+
+Generation Target: Java
+- Overview:
+    - Test Target Code: Java language code containing mainly classes.
+    - Test Implementation (TestParser.java): A JUnit test that parses the aforementioned Java file and verifies that only classes definitions are correctly recognized as CST nodes.
+- File Reference:
+    - Test Target Code:
+        - @plugin-maker/context/java/src/BasicPublicClass.java
+    - Test Target Ctags:
+    - @plugin-maker/context/java/tags/tags-BasicPublicClass.txt
+    - Test Implementation: @refdiff-universal/src/test/java/refdiff/parsers/universal/java/TestParser.java
+
+# Output Requirements
+- Generation Language: The output test code must be Java.
+- Inference and Application:
+- Infer the language's node types and use them, such as NodeTypes.CLASS.
+- Accurately map the code structure (packages, type definitions) to ExpectedNode records.
+- Naming Convention: The method name should clearly describe the feature of the language being tested, for example, shouldParseFunctionsCorrectly.
+- Structure Replication: Strictly reproduce the structure of the learned tests (use of SourceFolder, collection of CstNodes, creation of an ExpectedNode list, and the verification loop using assertThat).
+- Format: Output the generated code as a complete Java method, suitable for being placed in a new refdiff/parsers/universal/Go/TestParser.java file.

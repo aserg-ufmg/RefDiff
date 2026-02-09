@@ -1,0 +1,822 @@
+(source_file (package_clause (package_identifier)) (import_declaration (import_spec path: (interpreted_string_literal (interpreted_string_literal_content)))) (comment) (type_declaration (type_spec name: (type_identifier) type: (struct_type (field_declaration_list (field_declaration name: (field_identifier) type: (type_identifier)))))) (comment) (type_declaration (type_spec name: (type_identifier) type: (type_identifier))) (comment) (comment) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))))) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)))))) (comment) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) name: (field_identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))) (assignment_statement left: (expression_list (selector_expression operand: (identifier) field: (field_identifier))) right: (expression_list (interpreted_string_literal (interpreted_string_literal_content)))) (comment))) (comment) (comment) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) name: (field_identifier) parameters: (parameter_list (variadic_parameter_declaration name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (selector_expression operand: (identifier) field: (field_identifier)) (call_expression function: (identifier) arguments: (argument_list (identifier)))))) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) (for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)))))) (comment) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)))))) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) name: (field_identifier) parameters: (parameter_list) result: (type_identifier) body: (block (return_statement (expression_list (binary_expression left: (interpreted_string_literal (interpreted_string_literal_content)) right: (selector_expression operand: (identifier) field: (field_identifier))))))) (comment) (method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) result: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (interpreted_string_literal (interpreted_string_literal_content))))) (return_statement))) (function_declaration name: (identifier) parameters: (parameter_list) body: (block (comment) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (type_identifier) body: (literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content)))))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (comment) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) (comment) (comment) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (int_literal) (int_literal) (int_literal)))) (comment) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (slice_type element: (type_identifier)) body: (literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal)))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (variadic_argument (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) (comment) (var_declaration (var_spec name: (identifier) type: (type_identifier) value: (expression_list (int_literal)))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier) (identifier) (identifier)))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list) result: (type_identifier) body: (block (return_statement (expression_list (int_literal))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) result: (type_identifier) body: (block (return_statement (expression_list (binary_expression left: (identifier) right: (identifier)))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) result: (parameter_list (parameter_declaration type: (type_identifier)) (parameter_declaration type: (type_identifier))) body: (block (if_statement condition: (binary_expression left: (identifier) right: (int_literal)) consequence: (block (return_statement (expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))))))) (return_statement (expression_list (binary_expression left: (identifier) right: (identifier)) (nil))))) (comment) (function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) result: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) (return_statement))) (comment) (function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (variadic_parameter_declaration name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)))) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) (for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier))))))) L:1
+(package_clause (package_identifier)) L:1
+("package") L:1
+(package_identifier) L:1
+(import_declaration (import_spec path: (interpreted_string_literal (interpreted_string_literal_content)))) L:3
+("import") L:3
+(import_spec path: (interpreted_string_literal (interpreted_string_literal_content))) L:3
+(interpreted_string_literal (interpreted_string_literal_content)) L:3
+(""") L:3
+(interpreted_string_literal_content) L:3
+(""") L:3
+(comment) L:5
+(type_declaration (type_spec name: (type_identifier) type: (struct_type (field_declaration_list (field_declaration name: (field_identifier) type: (type_identifier)))))) L:6
+("type") L:6
+(type_spec name: (type_identifier) type: (struct_type (field_declaration_list (field_declaration name: (field_identifier) type: (type_identifier))))) L:6
+(type_identifier) L:6
+(struct_type (field_declaration_list (field_declaration name: (field_identifier) type: (type_identifier)))) L:6
+("struct") L:6
+(field_declaration_list (field_declaration name: (field_identifier) type: (type_identifier))) L:6
+("{") L:6
+(field_declaration name: (field_identifier) type: (type_identifier)) L:7
+(field_identifier) L:7
+(type_identifier) L:7
+("}") L:8
+(comment) L:10
+(type_declaration (type_spec name: (type_identifier) type: (type_identifier))) L:11
+("type") L:11
+(type_spec name: (type_identifier) type: (type_identifier)) L:11
+(type_identifier) L:11
+(type_identifier) L:11
+(comment) L:13
+(comment) L:15
+(comment) L:16
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))))) L:17
+("func") L:17
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) L:17
+("(") L:17
+(parameter_declaration name: (identifier) type: (type_identifier)) L:17
+(identifier) L:17
+(type_identifier) L:17
+(")") L:17
+(field_identifier) L:17
+(parameter_list) L:17
+("(") L:17
+(")") L:17
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier)))))) L:17
+("{") L:17
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))) L:18
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier)))) L:18
+(selector_expression operand: (identifier) field: (field_identifier)) L:18
+(identifier) L:18
+(".") L:18
+(field_identifier) L:18
+(argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))) L:18
+("(") L:18
+(interpreted_string_literal (interpreted_string_literal_content)) L:18
+(""") L:18
+(interpreted_string_literal_content) L:18
+(""") L:18
+(",") L:18
+(selector_expression operand: (identifier) field: (field_identifier)) L:18
+(identifier) L:18
+(".") L:18
+(field_identifier) L:18
+(")") L:18
+("}") L:19
+(comment) L:21
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)))))) L:22
+("func") L:22
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) L:22
+("(") L:22
+(parameter_declaration name: (identifier) type: (type_identifier)) L:22
+(identifier) L:22
+(type_identifier) L:22
+(")") L:22
+(field_identifier) L:22
+(parameter_list) L:22
+("(") L:22
+(")") L:22
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier))))) L:22
+("{") L:22
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)))) L:23
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier))) L:23
+(selector_expression operand: (identifier) field: (field_identifier)) L:23
+(identifier) L:23
+(".") L:23
+(field_identifier) L:23
+(argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)) L:23
+("(") L:23
+(interpreted_string_literal (interpreted_string_literal_content)) L:23
+(""") L:23
+(interpreted_string_literal_content) L:23
+(""") L:23
+(",") L:23
+(identifier) L:23
+(")") L:23
+("}") L:24
+(comment) L:26
+(comment) L:28
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) name: (field_identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))) (assignment_statement left: (expression_list (selector_expression operand: (identifier) field: (field_identifier))) right: (expression_list (interpreted_string_literal (interpreted_string_literal_content)))) (comment))) L:29
+("func") L:29
+(parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) L:29
+("(") L:29
+(parameter_declaration name: (identifier) type: (pointer_type (type_identifier))) L:29
+(identifier) L:29
+(pointer_type (type_identifier)) L:29
+("*") L:29
+(type_identifier) L:29
+(")") L:29
+(field_identifier) L:29
+(parameter_list) L:29
+("(") L:29
+(")") L:29
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))) (assignment_statement left: (expression_list (selector_expression operand: (identifier) field: (field_identifier))) right: (expression_list (interpreted_string_literal (interpreted_string_literal_content)))) (comment)) L:29
+("{") L:29
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))))) L:30
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier)))) L:30
+(selector_expression operand: (identifier) field: (field_identifier)) L:30
+(identifier) L:30
+(".") L:30
+(field_identifier) L:30
+(argument_list (interpreted_string_literal (interpreted_string_literal_content)) (selector_expression operand: (identifier) field: (field_identifier))) L:30
+("(") L:30
+(interpreted_string_literal (interpreted_string_literal_content)) L:30
+(""") L:30
+(interpreted_string_literal_content) L:30
+(""") L:30
+(",") L:30
+(selector_expression operand: (identifier) field: (field_identifier)) L:30
+(identifier) L:30
+(".") L:30
+(field_identifier) L:30
+(")") L:30
+(assignment_statement left: (expression_list (selector_expression operand: (identifier) field: (field_identifier))) right: (expression_list (interpreted_string_literal (interpreted_string_literal_content)))) L:31
+(expression_list (selector_expression operand: (identifier) field: (field_identifier))) L:31
+(selector_expression operand: (identifier) field: (field_identifier)) L:31
+(identifier) L:31
+(".") L:31
+(field_identifier) L:31
+("=") L:31
+(expression_list (interpreted_string_literal (interpreted_string_literal_content))) L:31
+(interpreted_string_literal (interpreted_string_literal_content)) L:31
+(""") L:31
+(interpreted_string_literal_content) L:31
+(""") L:31
+(comment) L:31
+("}") L:32
+(comment) L:34
+(comment) L:36
+(comment) L:37
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) name: (field_identifier) parameters: (parameter_list (variadic_parameter_declaration name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (selector_expression operand: (identifier) field: (field_identifier)) (call_expression function: (identifier) arguments: (argument_list (identifier)))))) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) (for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)))))) L:38
+("func") L:38
+(parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) L:38
+("(") L:38
+(parameter_declaration name: (identifier) type: (pointer_type (type_identifier))) L:38
+(identifier) L:38
+(pointer_type (type_identifier)) L:38
+("*") L:38
+(type_identifier) L:38
+(")") L:38
+(field_identifier) L:38
+(parameter_list (variadic_parameter_declaration name: (identifier) type: (type_identifier))) L:38
+("(") L:38
+(variadic_parameter_declaration name: (identifier) type: (type_identifier)) L:38
+(identifier) L:38
+("...") L:38
+(type_identifier) L:38
+(")") L:38
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (selector_expression operand: (identifier) field: (field_identifier)) (call_expression function: (identifier) arguments: (argument_list (identifier)))))) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) (for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier))))) L:38
+("{") L:38
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (selector_expression operand: (identifier) field: (field_identifier)) (call_expression function: (identifier) arguments: (argument_list (identifier)))))) L:39
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (selector_expression operand: (identifier) field: (field_identifier)) (call_expression function: (identifier) arguments: (argument_list (identifier))))) L:39
+(selector_expression operand: (identifier) field: (field_identifier)) L:39
+(identifier) L:39
+(".") L:39
+(field_identifier) L:39
+(argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (selector_expression operand: (identifier) field: (field_identifier)) (call_expression function: (identifier) arguments: (argument_list (identifier)))) L:39
+("(") L:39
+(interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) L:39
+(""") L:39
+(interpreted_string_literal_content) L:39
+(escape_sequence) L:39
+(""") L:39
+(",") L:39
+(selector_expression operand: (identifier) field: (field_identifier)) L:39
+(identifier) L:39
+(".") L:39
+(field_identifier) L:39
+(",") L:39
+(call_expression function: (identifier) arguments: (argument_list (identifier))) L:39
+(identifier) L:39
+(argument_list (identifier)) L:39
+("(") L:39
+(identifier) L:39
+(")") L:39
+(")") L:39
+(short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) L:40
+(expression_list (identifier)) L:40
+(identifier) L:40
+(":=") L:40
+(expression_list (int_literal)) L:40
+(int_literal) L:40
+(for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) L:41
+("for") L:41
+(range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) L:41
+(expression_list (identifier) (identifier)) L:41
+(identifier) L:41
+(",") L:41
+(identifier) L:41
+(":=") L:41
+("range") L:41
+(identifier) L:41
+(block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier)))) L:41
+("{") L:41
+(assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))) L:42
+(expression_list (identifier)) L:42
+(identifier) L:42
+("+=") L:42
+(expression_list (identifier)) L:42
+(identifier) L:42
+("}") L:43
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)))) L:44
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier))) L:44
+(selector_expression operand: (identifier) field: (field_identifier)) L:44
+(identifier) L:44
+(".") L:44
+(field_identifier) L:44
+(argument_list (interpreted_string_literal (interpreted_string_literal_content)) (identifier)) L:44
+("(") L:44
+(interpreted_string_literal (interpreted_string_literal_content)) L:44
+(""") L:44
+(interpreted_string_literal_content) L:44
+(""") L:44
+(",") L:44
+(identifier) L:44
+(")") L:44
+("}") L:45
+(comment) L:47
+(comment) L:49
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)))))) L:50
+("func") L:50
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) L:50
+("(") L:50
+(parameter_declaration name: (identifier) type: (type_identifier)) L:50
+(identifier) L:50
+(type_identifier) L:50
+(")") L:50
+(field_identifier) L:50
+(parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) L:50
+("(") L:50
+(parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) L:50
+(identifier) L:50
+(",") L:50
+(identifier) L:50
+(type_identifier) L:50
+(")") L:50
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier))))) L:50
+("{") L:50
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)))) L:51
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier))) L:51
+(selector_expression operand: (identifier) field: (field_identifier)) L:51
+(identifier) L:51
+(".") L:51
+(field_identifier) L:51
+(argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)) L:51
+("(") L:51
+(interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) L:51
+(""") L:51
+(interpreted_string_literal_content) L:51
+(escape_sequence) L:51
+(""") L:51
+(",") L:51
+(identifier) L:51
+(",") L:51
+(identifier) L:51
+(")") L:51
+("}") L:52
+(comment) L:54
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) name: (field_identifier) parameters: (parameter_list) result: (type_identifier) body: (block (return_statement (expression_list (binary_expression left: (interpreted_string_literal (interpreted_string_literal_content)) right: (selector_expression operand: (identifier) field: (field_identifier))))))) L:55
+("func") L:55
+(parameter_list (parameter_declaration name: (identifier) type: (pointer_type (type_identifier)))) L:55
+("(") L:55
+(parameter_declaration name: (identifier) type: (pointer_type (type_identifier))) L:55
+(identifier) L:55
+(pointer_type (type_identifier)) L:55
+("*") L:55
+(type_identifier) L:55
+(")") L:55
+(field_identifier) L:55
+(parameter_list) L:55
+("(") L:55
+(")") L:55
+(type_identifier) L:55
+(block (return_statement (expression_list (binary_expression left: (interpreted_string_literal (interpreted_string_literal_content)) right: (selector_expression operand: (identifier) field: (field_identifier)))))) L:55
+("{") L:55
+(return_statement (expression_list (binary_expression left: (interpreted_string_literal (interpreted_string_literal_content)) right: (selector_expression operand: (identifier) field: (field_identifier))))) L:56
+("return") L:56
+(expression_list (binary_expression left: (interpreted_string_literal (interpreted_string_literal_content)) right: (selector_expression operand: (identifier) field: (field_identifier)))) L:56
+(binary_expression left: (interpreted_string_literal (interpreted_string_literal_content)) right: (selector_expression operand: (identifier) field: (field_identifier))) L:56
+(interpreted_string_literal (interpreted_string_literal_content)) L:56
+(""") L:56
+(interpreted_string_literal_content) L:56
+(""") L:56
+("+") L:56
+(selector_expression operand: (identifier) field: (field_identifier)) L:56
+(identifier) L:56
+(".") L:56
+(field_identifier) L:56
+("}") L:57
+(comment) L:59
+(method_declaration receiver: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) name: (field_identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) result: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (interpreted_string_literal (interpreted_string_literal_content))))) (return_statement))) L:60
+("func") L:60
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) L:60
+("(") L:60
+(parameter_declaration name: (identifier) type: (type_identifier)) L:60
+(identifier) L:60
+(type_identifier) L:60
+(")") L:60
+(field_identifier) L:60
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier))) L:60
+("(") L:60
+(parameter_declaration name: (identifier) type: (type_identifier)) L:60
+(identifier) L:60
+(type_identifier) L:60
+(")") L:60
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) L:60
+("(") L:60
+(parameter_declaration name: (identifier) type: (type_identifier)) L:60
+(identifier) L:60
+(type_identifier) L:60
+(",") L:60
+(parameter_declaration name: (identifier) type: (type_identifier)) L:60
+(identifier) L:60
+(type_identifier) L:60
+(")") L:60
+(block (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (interpreted_string_literal (interpreted_string_literal_content))))) (return_statement)) L:60
+("{") L:60
+(assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (interpreted_string_literal (interpreted_string_literal_content))))) L:61
+(expression_list (identifier)) L:61
+(identifier) L:61
+("=") L:61
+(expression_list (binary_expression left: (identifier) right: (interpreted_string_literal (interpreted_string_literal_content)))) L:61
+(binary_expression left: (identifier) right: (interpreted_string_literal (interpreted_string_literal_content))) L:61
+(identifier) L:61
+("+") L:61
+(interpreted_string_literal (interpreted_string_literal_content)) L:61
+(""") L:61
+(interpreted_string_literal_content) L:61
+(""") L:61
+(return_statement) L:62
+("return") L:62
+("}") L:63
+(function_declaration name: (identifier) parameters: (parameter_list) body: (block (comment) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (type_identifier) body: (literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content)))))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (comment) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) (comment) (comment) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (int_literal) (int_literal) (int_literal)))) (comment) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (slice_type element: (type_identifier)) body: (literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal)))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (variadic_argument (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) (comment) (var_declaration (var_spec name: (identifier) type: (type_identifier) value: (expression_list (int_literal)))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))))) L:65
+("func") L:65
+(identifier) L:65
+(parameter_list) L:65
+("(") L:65
+(")") L:65
+(block (comment) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (type_identifier) body: (literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content)))))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) (comment) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) (comment) (comment) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (int_literal) (int_literal) (int_literal)))) (comment) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (slice_type element: (type_identifier)) body: (literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal)))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (variadic_argument (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) (comment) (var_declaration (var_spec name: (identifier) type: (type_identifier) value: (expression_list (int_literal)))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list)))) L:65
+("{") L:65
+(comment) L:66
+(short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (type_identifier) body: (literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content)))))))) L:67
+(expression_list (identifier)) L:67
+(identifier) L:67
+(":=") L:67
+(expression_list (composite_literal type: (type_identifier) body: (literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content))))))) L:67
+(composite_literal type: (type_identifier) body: (literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content)))))) L:67
+(type_identifier) L:67
+(literal_value (keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content))))) L:67
+("{") L:67
+(keyed_element key: (literal_element (identifier)) value: (literal_element (interpreted_string_literal (interpreted_string_literal_content)))) L:67
+(literal_element (identifier)) L:67
+(identifier) L:67
+(":") L:67
+(literal_element (interpreted_string_literal (interpreted_string_literal_content))) L:67
+(interpreted_string_literal (interpreted_string_literal_content)) L:67
+(""") L:67
+(interpreted_string_literal_content) L:67
+(""") L:67
+("}") L:67
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) L:68
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list)) L:68
+(selector_expression operand: (identifier) field: (field_identifier)) L:68
+(identifier) L:68
+(".") L:68
+(field_identifier) L:68
+(argument_list) L:68
+("(") L:68
+(")") L:68
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) L:69
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list)) L:69
+(selector_expression operand: (identifier) field: (field_identifier)) L:69
+(identifier) L:69
+(".") L:69
+(field_identifier) L:69
+(argument_list) L:69
+("(") L:69
+(")") L:69
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) L:70
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list)) L:70
+(selector_expression operand: (identifier) field: (field_identifier)) L:70
+(identifier) L:70
+(".") L:70
+(field_identifier) L:70
+(argument_list) L:70
+("(") L:70
+(")") L:70
+(comment) L:70
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) L:72
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))) L:72
+(selector_expression operand: (identifier) field: (field_identifier)) L:72
+(identifier) L:72
+(".") L:72
+(field_identifier) L:72
+(argument_list (interpreted_string_literal (interpreted_string_literal_content))) L:72
+("(") L:72
+(interpreted_string_literal (interpreted_string_literal_content)) L:72
+(""") L:72
+(interpreted_string_literal_content) L:72
+(""") L:72
+(")") L:72
+(comment) L:74
+(comment) L:75
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (int_literal) (int_literal) (int_literal)))) L:76
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (int_literal) (int_literal) (int_literal))) L:76
+(selector_expression operand: (identifier) field: (field_identifier)) L:76
+(identifier) L:76
+(".") L:76
+(field_identifier) L:76
+(argument_list (int_literal) (int_literal) (int_literal)) L:76
+("(") L:76
+(int_literal) L:76
+(",") L:76
+(int_literal) L:76
+(",") L:76
+(int_literal) L:76
+(")") L:76
+(comment) L:77
+(short_var_declaration left: (expression_list (identifier)) right: (expression_list (composite_literal type: (slice_type element: (type_identifier)) body: (literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal)))))) L:78
+(expression_list (identifier)) L:78
+(identifier) L:78
+(":=") L:78
+(expression_list (composite_literal type: (slice_type element: (type_identifier)) body: (literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal))))) L:78
+(composite_literal type: (slice_type element: (type_identifier)) body: (literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal)))) L:78
+(slice_type element: (type_identifier)) L:78
+("[") L:78
+("]") L:78
+(type_identifier) L:78
+(literal_value (literal_element (int_literal)) (literal_element (int_literal)) (literal_element (int_literal))) L:78
+("{") L:78
+(literal_element (int_literal)) L:78
+(int_literal) L:78
+(",") L:78
+(literal_element (int_literal)) L:78
+(int_literal) L:78
+(",") L:78
+(literal_element (int_literal)) L:78
+(int_literal) L:78
+("}") L:78
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (variadic_argument (identifier))))) L:79
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (variadic_argument (identifier)))) L:79
+(selector_expression operand: (identifier) field: (field_identifier)) L:79
+(identifier) L:79
+(".") L:79
+(field_identifier) L:79
+(argument_list (variadic_argument (identifier))) L:79
+("(") L:79
+(variadic_argument (identifier)) L:79
+(identifier) L:79
+("...") L:79
+(")") L:79
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) L:81
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))) L:81
+(selector_expression operand: (identifier) field: (field_identifier)) L:81
+(identifier) L:81
+(".") L:81
+(field_identifier) L:81
+(argument_list (interpreted_string_literal (interpreted_string_literal_content))) L:81
+("(") L:81
+(interpreted_string_literal (interpreted_string_literal_content)) L:81
+(""") L:81
+(interpreted_string_literal_content) L:81
+(""") L:81
+(")") L:81
+(comment) L:83
+(var_declaration (var_spec name: (identifier) type: (type_identifier) value: (expression_list (int_literal)))) L:84
+("var") L:84
+(var_spec name: (identifier) type: (type_identifier) value: (expression_list (int_literal))) L:84
+(identifier) L:84
+(type_identifier) L:84
+("=") L:84
+(expression_list (int_literal)) L:84
+(int_literal) L:84
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list))) L:85
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list)) L:85
+(selector_expression operand: (identifier) field: (field_identifier)) L:85
+(identifier) L:85
+(".") L:85
+(field_identifier) L:85
+(argument_list) L:85
+("(") L:85
+(")") L:85
+("}") L:86
+(comment) L:88
+(function_declaration name: (identifier) parameters: (parameter_list) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))))) L:89
+("func") L:89
+(identifier) L:89
+(parameter_list) L:89
+("(") L:89
+(")") L:89
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))))) L:89
+("{") L:89
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) L:90
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))) L:90
+(selector_expression operand: (identifier) field: (field_identifier)) L:90
+(identifier) L:90
+(".") L:90
+(field_identifier) L:90
+(argument_list (interpreted_string_literal (interpreted_string_literal_content))) L:90
+("(") L:90
+(interpreted_string_literal (interpreted_string_literal_content)) L:90
+(""") L:90
+(interpreted_string_literal_content) L:90
+(""") L:90
+(")") L:90
+("}") L:91
+(comment) L:93
+(function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)))))) L:94
+("func") L:94
+(identifier) L:94
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) L:94
+("(") L:94
+(parameter_declaration name: (identifier) type: (type_identifier)) L:94
+(identifier) L:94
+(type_identifier) L:94
+(",") L:94
+(parameter_declaration name: (identifier) type: (type_identifier)) L:94
+(identifier) L:94
+(type_identifier) L:94
+(")") L:94
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier))))) L:94
+("{") L:94
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)))) L:95
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier))) L:95
+(selector_expression operand: (identifier) field: (field_identifier)) L:95
+(identifier) L:95
+(".") L:95
+(field_identifier) L:95
+(argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier)) L:95
+("(") L:95
+(interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) L:95
+(""") L:95
+(interpreted_string_literal_content) L:95
+(escape_sequence) L:95
+(""") L:95
+(",") L:95
+(identifier) L:95
+(",") L:95
+(identifier) L:95
+(")") L:95
+("}") L:96
+(comment) L:98
+(function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier) (identifier) (identifier)))))) L:99
+("func") L:99
+(identifier) L:99
+(parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) L:99
+("(") L:99
+(parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) L:99
+(identifier) L:99
+(",") L:99
+(identifier) L:99
+(type_identifier) L:99
+(",") L:99
+(parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) L:99
+(identifier) L:99
+(",") L:99
+(identifier) L:99
+(type_identifier) L:99
+(")") L:99
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier) (identifier) (identifier))))) L:99
+("{") L:99
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier) (identifier) (identifier)))) L:100
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier) (identifier) (identifier))) L:100
+(selector_expression operand: (identifier) field: (field_identifier)) L:100
+(identifier) L:100
+(".") L:100
+(field_identifier) L:100
+(argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier) (identifier) (identifier) (identifier)) L:100
+("(") L:100
+(interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) L:100
+(""") L:100
+(interpreted_string_literal_content) L:100
+(escape_sequence) L:100
+(""") L:100
+(",") L:100
+(identifier) L:100
+(",") L:100
+(identifier) L:100
+(",") L:100
+(identifier) L:100
+(",") L:100
+(identifier) L:100
+(")") L:100
+("}") L:101
+(comment) L:103
+(function_declaration name: (identifier) parameters: (parameter_list) result: (type_identifier) body: (block (return_statement (expression_list (int_literal))))) L:104
+("func") L:104
+(identifier) L:104
+(parameter_list) L:104
+("(") L:104
+(")") L:104
+(type_identifier) L:104
+(block (return_statement (expression_list (int_literal)))) L:104
+("{") L:104
+(return_statement (expression_list (int_literal))) L:105
+("return") L:105
+(expression_list (int_literal)) L:105
+(int_literal) L:105
+("}") L:106
+(comment) L:108
+(function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) result: (type_identifier) body: (block (return_statement (expression_list (binary_expression left: (identifier) right: (identifier)))))) L:109
+("func") L:109
+(identifier) L:109
+(parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) L:109
+("(") L:109
+(parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) L:109
+(identifier) L:109
+(",") L:109
+(identifier) L:109
+(type_identifier) L:109
+(")") L:109
+(type_identifier) L:109
+(block (return_statement (expression_list (binary_expression left: (identifier) right: (identifier))))) L:109
+("{") L:109
+(return_statement (expression_list (binary_expression left: (identifier) right: (identifier)))) L:110
+("return") L:110
+(expression_list (binary_expression left: (identifier) right: (identifier))) L:110
+(binary_expression left: (identifier) right: (identifier)) L:110
+(identifier) L:110
+("+") L:110
+(identifier) L:110
+("}") L:111
+(comment) L:113
+(function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) result: (parameter_list (parameter_declaration type: (type_identifier)) (parameter_declaration type: (type_identifier))) body: (block (if_statement condition: (binary_expression left: (identifier) right: (int_literal)) consequence: (block (return_statement (expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))))))) (return_statement (expression_list (binary_expression left: (identifier) right: (identifier)) (nil))))) L:114
+("func") L:114
+(identifier) L:114
+(parameter_list (parameter_declaration name: (identifier) name: (identifier) type: (type_identifier))) L:114
+("(") L:114
+(parameter_declaration name: (identifier) name: (identifier) type: (type_identifier)) L:114
+(identifier) L:114
+(",") L:114
+(identifier) L:114
+(type_identifier) L:114
+(")") L:114
+(parameter_list (parameter_declaration type: (type_identifier)) (parameter_declaration type: (type_identifier))) L:114
+("(") L:114
+(parameter_declaration type: (type_identifier)) L:114
+(type_identifier) L:114
+(",") L:114
+(parameter_declaration type: (type_identifier)) L:114
+(type_identifier) L:114
+(")") L:114
+(block (if_statement condition: (binary_expression left: (identifier) right: (int_literal)) consequence: (block (return_statement (expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))))))) (return_statement (expression_list (binary_expression left: (identifier) right: (identifier)) (nil)))) L:114
+("{") L:114
+(if_statement condition: (binary_expression left: (identifier) right: (int_literal)) consequence: (block (return_statement (expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))))))) L:115
+("if") L:115
+(binary_expression left: (identifier) right: (int_literal)) L:115
+(identifier) L:115
+("==") L:115
+(int_literal) L:115
+(block (return_statement (expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))))) L:115
+("{") L:115
+(return_statement (expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))))) L:116
+("return") L:116
+(expression_list (int_literal) (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content))))) L:116
+(int_literal) L:116
+(",") L:116
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content)))) L:116
+(selector_expression operand: (identifier) field: (field_identifier)) L:116
+(identifier) L:116
+(".") L:116
+(field_identifier) L:116
+(argument_list (interpreted_string_literal (interpreted_string_literal_content))) L:116
+("(") L:116
+(interpreted_string_literal (interpreted_string_literal_content)) L:116
+(""") L:116
+(interpreted_string_literal_content) L:116
+(""") L:116
+(")") L:116
+("}") L:117
+(return_statement (expression_list (binary_expression left: (identifier) right: (identifier)) (nil))) L:118
+("return") L:118
+(expression_list (binary_expression left: (identifier) right: (identifier)) (nil)) L:118
+(binary_expression left: (identifier) right: (identifier)) L:118
+(identifier) L:118
+("/") L:118
+(identifier) L:118
+(",") L:118
+(nil) L:118
+("}") L:119
+(comment) L:121
+(function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) result: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) (return_statement))) L:122
+("func") L:122
+(identifier) L:122
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) L:122
+("(") L:122
+(parameter_declaration name: (identifier) type: (type_identifier)) L:122
+(identifier) L:122
+(type_identifier) L:122
+(",") L:122
+(parameter_declaration name: (identifier) type: (type_identifier)) L:122
+(identifier) L:122
+(type_identifier) L:122
+(")") L:122
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (parameter_declaration name: (identifier) type: (type_identifier))) L:122
+("(") L:122
+(parameter_declaration name: (identifier) type: (type_identifier)) L:122
+(identifier) L:122
+(type_identifier) L:122
+(",") L:122
+(parameter_declaration name: (identifier) type: (type_identifier)) L:122
+(identifier) L:122
+(type_identifier) L:122
+(")") L:122
+(block (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) (assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) (return_statement)) L:122
+("{") L:122
+(assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) L:123
+(expression_list (identifier)) L:123
+(identifier) L:123
+("=") L:123
+(expression_list (binary_expression left: (identifier) right: (identifier))) L:123
+(binary_expression left: (identifier) right: (identifier)) L:123
+(identifier) L:123
+("+") L:123
+(identifier) L:123
+(assignment_statement left: (expression_list (identifier)) right: (expression_list (binary_expression left: (identifier) right: (identifier)))) L:124
+(expression_list (identifier)) L:124
+(identifier) L:124
+("=") L:124
+(expression_list (binary_expression left: (identifier) right: (identifier))) L:124
+(binary_expression left: (identifier) right: (identifier)) L:124
+(identifier) L:124
+("-") L:124
+(identifier) L:124
+(return_statement) L:125
+("return") L:125
+("}") L:126
+(comment) L:128
+(function_declaration name: (identifier) parameters: (parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (variadic_parameter_declaration name: (identifier) type: (type_identifier))) body: (block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)))) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) (for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)))))) L:129
+("func") L:129
+(identifier) L:129
+(parameter_list (parameter_declaration name: (identifier) type: (type_identifier)) (variadic_parameter_declaration name: (identifier) type: (type_identifier))) L:129
+("(") L:129
+(parameter_declaration name: (identifier) type: (type_identifier)) L:129
+(identifier) L:129
+(type_identifier) L:129
+(",") L:129
+(variadic_parameter_declaration name: (identifier) type: (type_identifier)) L:129
+(identifier) L:129
+("...") L:129
+(type_identifier) L:129
+(")") L:129
+(block (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)))) (short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) (for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) (expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier))))) L:129
+("{") L:129
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)))) L:130
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier))) L:130
+(selector_expression operand: (identifier) field: (field_identifier)) L:130
+(identifier) L:130
+(".") L:130
+(field_identifier) L:130
+(argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)) L:130
+("(") L:130
+(interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) L:130
+(""") L:130
+(interpreted_string_literal_content) L:130
+(escape_sequence) L:130
+(""") L:130
+(",") L:130
+(identifier) L:130
+(")") L:130
+(short_var_declaration left: (expression_list (identifier)) right: (expression_list (int_literal))) L:131
+(expression_list (identifier)) L:131
+(identifier) L:131
+(":=") L:131
+(expression_list (int_literal)) L:131
+(int_literal) L:131
+(for_statement (range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) body: (block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))))) L:132
+("for") L:132
+(range_clause left: (expression_list (identifier) (identifier)) right: (identifier)) L:132
+(expression_list (identifier) (identifier)) L:132
+(identifier) L:132
+(",") L:132
+(identifier) L:132
+(":=") L:132
+("range") L:132
+(identifier) L:132
+(block (assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier)))) L:132
+("{") L:132
+(assignment_statement left: (expression_list (identifier)) right: (expression_list (identifier))) L:133
+(expression_list (identifier)) L:133
+(identifier) L:133
+("+=") L:133
+(expression_list (identifier)) L:133
+(identifier) L:133
+("}") L:134
+(expression_statement (call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)))) L:135
+(call_expression function: (selector_expression operand: (identifier) field: (field_identifier)) arguments: (argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier))) L:135
+(selector_expression operand: (identifier) field: (field_identifier)) L:135
+(identifier) L:135
+(".") L:135
+(field_identifier) L:135
+(argument_list (interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) (identifier)) L:135
+("(") L:135
+(interpreted_string_literal (interpreted_string_literal_content) (escape_sequence)) L:135
+(""") L:135
+(interpreted_string_literal_content) L:135
+(escape_sequence) L:135
+(""") L:135
+(",") L:135
+(identifier) L:135
+(")") L:135
+("}") L:136

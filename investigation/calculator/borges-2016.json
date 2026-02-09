@@ -1,0 +1,1168 @@
+{
+  "c": {
+    "Application software": [
+      {
+        "name": "WhisperSystems/Signal-Android",
+        "stars": 5863,
+        "url": "https://github.com/WhisperSystems/Signal-Android"
+      },
+      {
+        "name": "mozilla/firefox-ios",
+        "stars": 5488,
+        "url": "https://github.com/mozilla/firefox-ios"
+      },
+      {
+        "name": "b4winckler/macvim",
+        "stars": 5269,
+        "url": "https://github.com/b4winckler/macvim"
+      },
+      {
+        "name": "DrKLO/Telegram",
+        "stars": 4606,
+        "url": "https://github.com/DrKLO/Telegram"
+      },
+      {
+        "name": "tmux/tmux",
+        "stars": 4076,
+        "url": "https://github.com/tmux/tmux"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "SamyPesse/How-to-Make-a-Computer-Operating-System",
+        "stars": 10216,
+        "url": "https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System"
+      },
+      {
+        "name": "julycoding/The-Art-Of-Programming-By-July",
+        "stars": 7870,
+        "url": "https://github.com/julycoding/The-Art-Of-Programming-By-July"
+      },
+      {
+        "name": "nothings/stb",
+        "stars": 3284,
+        "url": "https://github.com/nothings/stb"
+      },
+      {
+        "name": "rswier/c4",
+        "stars": 3066,
+        "url": "https://github.com/rswier/c4"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "godotengine/godot",
+        "stars": 5538,
+        "url": "https://github.com/godotengine/godot"
+      },
+      {
+        "name": "liuliu/ccv",
+        "stars": 5130,
+        "url": "https://github.com/liuliu/ccv"
+      },
+      {
+        "name": "antirez/disque",
+        "stars": 4961,
+        "url": "https://github.com/antirez/disque"
+      },
+      {
+        "name": "grpc/grpc",
+        "stars": 4546,
+        "url": "https://github.com/grpc/grpc"
+      },
+      {
+        "name": "torch/torch7",
+        "stars": 4229,
+        "url": "https://github.com/torch/torch7"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "git/git",
+        "stars": 12380,
+        "url": "https://github.com/git/git"
+      },
+      {
+        "name": "kripken/emscripten",
+        "stars": 9932,
+        "url": "https://github.com/kripken/emscripten"
+      },
+      {
+        "name": "ggreer/the_silver_searcher",
+        "stars": 8420,
+        "url": "https://github.com/ggreer/the_silver_searcher"
+      },
+      {
+        "name": "wg/wrk",
+        "stars": 7923,
+        "url": "https://github.com/wg/wrk"
+      },
+      {
+        "name": "irungentoo/toxcore",
+        "stars": 7812,
+        "url": "https://github.com/irungentoo/toxcore"
+      }
+    ],
+    "System software": [
+      {
+        "name": "torvalds/linux",
+        "stars": 30830,
+        "url": "https://github.com/torvalds/linux"
+      },
+      {
+        "name": "antirez/redis",
+        "stars": 17230,
+        "url": "https://github.com/antirez/redis"
+      },
+      {
+        "name": "php/php-src",
+        "stars": 8873,
+        "url": "https://github.com/php/php-src"
+      },
+      {
+        "name": "h2o/h2o",
+        "stars": 5502,
+        "url": "https://github.com/h2o/h2o"
+      },
+      {
+        "name": "sdegutis/mjolnir",
+        "stars": 4826,
+        "url": "https://github.com/sdegutis/mjolnir"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "facebook/css-layout",
+        "stars": 3554,
+        "url": "https://github.com/facebook/css-layout"
+      },
+      {
+        "name": "vmg/redcarpet",
+        "stars": 3379,
+        "url": "https://github.com/vmg/redcarpet"
+      },
+      {
+        "name": "nodejs/http-parser",
+        "stars": 2595,
+        "url": "https://github.com/nodejs/http-parser"
+      },
+      {
+        "name": "allinurl/goaccess",
+        "stars": 2397,
+        "url": "https://github.com/allinurl/goaccess"
+      },
+      {
+        "name": "laruence/yaf",
+        "stars": 2364,
+        "url": "https://github.com/laruence/yaf"
+      }
+    ]
+  },
+  "go": {
+    "Application software": [
+      {
+        "name": "getlantern/lantern",
+        "stars": 12420,
+        "url": "https://github.com/getlantern/lantern"
+      },
+      {
+        "name": "spf13/hugo",
+        "stars": 9003,
+        "url": "https://github.com/spf13/hugo"
+      },
+      {
+        "name": "gizak/termui",
+        "stars": 4552,
+        "url": "https://github.com/gizak/termui"
+      },
+      {
+        "name": "schachmat/wego",
+        "stars": 3945,
+        "url": "https://github.com/schachmat/wego"
+      },
+      {
+        "name": "cyfdecyf/cow",
+        "stars": 3486,
+        "url": "https://github.com/cyfdecyf/cow"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "avelino/awesome-go",
+        "stars": 11882,
+        "url": "https://github.com/avelino/awesome-go"
+      },
+      {
+        "name": "astaxie/build-web-application-with-golang",
+        "stars": 9830,
+        "url": "https://github.com/astaxie/build-web-application-with-golang"
+      },
+      {
+        "name": "dropbox/godropbox",
+        "stars": 3007,
+        "url": "https://github.com/dropbox/godropbox"
+      },
+      {
+        "name": "Unknwon/the-way-to-go_ZH_CN",
+        "stars": 2702,
+        "url": "https://github.com/Unknwon/the-way-to-go_ZH_CN"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "golang/groupcache",
+        "stars": 4340,
+        "url": "https://github.com/golang/groupcache"
+      },
+      {
+        "name": "CodisLabs/codis",
+        "stars": 3956,
+        "url": "https://github.com/CodisLabs/codis"
+      },
+      {
+        "name": "boltdb/bolt",
+        "stars": 3886,
+        "url": "https://github.com/boltdb/bolt"
+      },
+      {
+        "name": "go-kit/kit",
+        "stars": 3697,
+        "url": "https://github.com/go-kit/kit"
+      },
+      {
+        "name": "jinzhu/gorm",
+        "stars": 3555,
+        "url": "https://github.com/jinzhu/gorm"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "kubernetes/kubernetes",
+        "stars": 13554,
+        "url": "https://github.com/kubernetes/kubernetes"
+      },
+      {
+        "name": "gogits/gogs",
+        "stars": 12348,
+        "url": "https://github.com/gogits/gogs"
+      },
+      {
+        "name": "syncthing/syncthing",
+        "stars": 11612,
+        "url": "https://github.com/syncthing/syncthing"
+      },
+      {
+        "name": "github/hub",
+        "stars": 8218,
+        "url": "https://github.com/github/hub"
+      },
+      {
+        "name": "joewalnes/websocketd",
+        "stars": 6884,
+        "url": "https://github.com/joewalnes/websocketd"
+      }
+    ],
+    "System software": [
+      {
+        "name": "docker/docker",
+        "stars": 29917,
+        "url": "https://github.com/docker/docker"
+      },
+      {
+        "name": "golang/go",
+        "stars": 15592,
+        "url": "https://github.com/golang/go"
+      },
+      {
+        "name": "coreos/etcd",
+        "stars": 9095,
+        "url": "https://github.com/coreos/etcd"
+      },
+      {
+        "name": "influxdata/influxdb",
+        "stars": 7707,
+        "url": "https://github.com/influxdata/influxdb"
+      },
+      {
+        "name": "google/cayley",
+        "stars": 7267,
+        "url": "https://github.com/google/cayley"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "grafana/grafana",
+        "stars": 9027,
+        "url": "https://github.com/grafana/grafana"
+      },
+      {
+        "name": "go-martini/martini",
+        "stars": 8314,
+        "url": "https://github.com/go-martini/martini"
+      },
+      {
+        "name": "astaxie/beego",
+        "stars": 6619,
+        "url": "https://github.com/astaxie/beego"
+      },
+      {
+        "name": "revel/revel",
+        "stars": 6532,
+        "url": "https://github.com/revel/revel"
+      },
+      {
+        "name": "gin-gonic/gin",
+        "stars": 6091,
+        "url": "https://github.com/gin-gonic/gin"
+      }
+    ]
+  },
+  "java": {
+    "Application software": [
+      {
+        "name": "google/iosched",
+        "stars": 10464,
+        "url": "https://github.com/google/iosched"
+      },
+      {
+        "name": "HannahMitt/HomeMirror",
+        "stars": 6885,
+        "url": "https://github.com/HannahMitt/HomeMirror"
+      },
+      {
+        "name": "nickbutcher/plaid",
+        "stars": 4625,
+        "url": "https://github.com/nickbutcher/plaid"
+      },
+      {
+        "name": "JakeWharton/u2020",
+        "stars": 3416,
+        "url": "https://github.com/JakeWharton/u2020"
+      },
+      {
+        "name": "googlesamples/android-topeka",
+        "stars": 3195,
+        "url": "https://github.com/googlesamples/android-topeka"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "iluwatar/java-design-patterns",
+        "stars": 10615,
+        "url": "https://github.com/iluwatar/java-design-patterns"
+      },
+      {
+        "name": "futurice/android-best-practices",
+        "stars": 9147,
+        "url": "https://github.com/futurice/android-best-practices"
+      },
+      {
+        "name": "google/physical-web",
+        "stars": 5201,
+        "url": "https://github.com/google/physical-web"
+      },
+      {
+        "name": "winterbe/java8-tutorial",
+        "stars": 5194,
+        "url": "https://github.com/winterbe/java8-tutorial"
+      },
+      {
+        "name": "EnterpriseQualityCoding/FizzBuzzEnterpriseEdition",
+        "stars": 5076,
+        "url": "https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "nostra13/Android-Universal-Image-Loader",
+        "stars": 12318,
+        "url": "https://github.com/nostra13/Android-Universal-Image-Loader"
+      },
+      {
+        "name": "square/retrofit",
+        "stars": 11133,
+        "url": "https://github.com/square/retrofit"
+      },
+      {
+        "name": "square/picasso",
+        "stars": 9366,
+        "url": "https://github.com/square/picasso"
+      },
+      {
+        "name": "jfeinstein10/SlidingMenu",
+        "stars": 9131,
+        "url": "https://github.com/jfeinstein10/SlidingMenu"
+      },
+      {
+        "name": "greenrobot/EventBus",
+        "stars": 8958,
+        "url": "https://github.com/greenrobot/EventBus"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "elastic/elasticsearch",
+        "stars": 15734,
+        "url": "https://github.com/elastic/elasticsearch"
+      },
+      {
+        "name": "nathanmarz/storm",
+        "stars": 8785,
+        "url": "https://github.com/nathanmarz/storm"
+      },
+      {
+        "name": "square/leakcanary",
+        "stars": 8126,
+        "url": "https://github.com/square/leakcanary"
+      },
+      {
+        "name": "netty/netty",
+        "stars": 6476,
+        "url": "https://github.com/netty/netty"
+      },
+      {
+        "name": "Netflix/Hystrix",
+        "stars": 5519,
+        "url": "https://github.com/Netflix/Hystrix"
+      }
+    ],
+    "System software": [
+      {
+        "name": "ReactiveX/RxJava",
+        "stars": 12364,
+        "url": "https://github.com/ReactiveX/RxJava"
+      },
+      {
+        "name": "clojure/clojure",
+        "stars": 5197,
+        "url": "https://github.com/clojure/clojure"
+      },
+      {
+        "name": "JetBrains/kotlin",
+        "stars": 4720,
+        "url": "https://github.com/JetBrains/kotlin"
+      },
+      {
+        "name": "eclipse/vert.x",
+        "stars": 4635,
+        "url": "https://github.com/eclipse/vert.x"
+      },
+      {
+        "name": "prestodb/presto",
+        "stars": 4600,
+        "url": "https://github.com/prestodb/presto"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "square/okhttp",
+        "stars": 10050,
+        "url": "https://github.com/square/okhttp"
+      },
+      {
+        "name": "spring-projects/spring-framework",
+        "stars": 8271,
+        "url": "https://github.com/spring-projects/spring-framework"
+      },
+      {
+        "name": "bumptech/glide",
+        "stars": 7478,
+        "url": "https://github.com/bumptech/glide"
+      },
+      {
+        "name": "afollestad/material-dialogs",
+        "stars": 5663,
+        "url": "https://github.com/afollestad/material-dialogs"
+      },
+      {
+        "name": "Bearded-Hen/Android-Bootstrap",
+        "stars": 5019,
+        "url": "https://github.com/Bearded-Hen/Android-Bootstrap"
+      }
+    ]
+  },
+  "javascript": {
+    "Application software": [
+      {
+        "name": "adobe/brackets",
+        "stars": 24989,
+        "url": "https://github.com/adobe/brackets"
+      },
+      {
+        "name": "resume/resume.github.com",
+        "stars": 21696,
+        "url": "https://github.com/resume/resume.github.com"
+      },
+      {
+        "name": "NARKOZ/hacker-scripts",
+        "stars": 21364,
+        "url": "https://github.com/NARKOZ/hacker-scripts"
+      },
+      {
+        "name": "TryGhost/Ghost",
+        "stars": 18944,
+        "url": "https://github.com/TryGhost/Ghost"
+      },
+      {
+        "name": "ajaxorg/ace",
+        "stars": 12421,
+        "url": "https://github.com/ajaxorg/ace"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "FreeCodeCamp/FreeCodeCamp",
+        "stars": 97948,
+        "url": "https://github.com/FreeCodeCamp/FreeCodeCamp"
+      },
+      {
+        "name": "airbnb/javascript",
+        "stars": 32516,
+        "url": "https://github.com/airbnb/javascript"
+      },
+      {
+        "name": "getify/You-Dont-Know-JS",
+        "stars": 28398,
+        "url": "https://github.com/getify/You-Dont-Know-JS"
+      },
+      {
+        "name": "tastejs/todomvc",
+        "stars": 16411,
+        "url": "https://github.com/tastejs/todomvc"
+      },
+      {
+        "name": "enaqx/awesome-react",
+        "stars": 12617,
+        "url": "https://github.com/enaqx/awesome-react"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "moment/moment",
+        "stars": 25334,
+        "url": "https://github.com/moment/moment"
+      },
+      {
+        "name": "socketio/socket.io",
+        "stars": 23878,
+        "url": "https://github.com/socketio/socket.io"
+      },
+      {
+        "name": "jashkenas/underscore",
+        "stars": 17741,
+        "url": "https://github.com/jashkenas/underscore"
+      },
+      {
+        "name": "caolan/async",
+        "stars": 16987,
+        "url": "https://github.com/caolan/async"
+      },
+      {
+        "name": "lodash/lodash",
+        "stars": 15575,
+        "url": "https://github.com/lodash/lodash"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "gulpjs/gulp",
+        "stars": 20157,
+        "url": "https://github.com/gulpjs/gulp"
+      },
+      {
+        "name": "babel/babel",
+        "stars": 14652,
+        "url": "https://github.com/babel/babel"
+      },
+      {
+        "name": "bower/bower",
+        "stars": 13872,
+        "url": "https://github.com/bower/bower"
+      },
+      {
+        "name": "Unitech/pm2",
+        "stars": 12314,
+        "url": "https://github.com/Unitech/pm2"
+      },
+      {
+        "name": "adam-p/markdown-here",
+        "stars": 11515,
+        "url": "https://github.com/adam-p/markdown-here"
+      }
+    ],
+    "System software": [
+      {
+        "name": "nodejs/node",
+        "stars": 21536,
+        "url": "https://github.com/nodejs/node"
+      },
+      {
+        "name": "typicode/json-server",
+        "stars": 11356,
+        "url": "https://github.com/typicode/json-server"
+      },
+      {
+        "name": "pouchdb/pouchdb",
+        "stars": 5981,
+        "url": "https://github.com/pouchdb/pouchdb"
+      },
+      {
+        "name": "Microsoft/ChakraCore",
+        "stars": 5023,
+        "url": "https://github.com/Microsoft/ChakraCore"
+      },
+      {
+        "name": "Strider-CD/strider",
+        "stars": 3175,
+        "url": "https://github.com/Strider-CD/strider"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "angular/angular.js",
+        "stars": 48142,
+        "url": "https://github.com/angular/angular.js"
+      },
+      {
+        "name": "mbostock/d3",
+        "stars": 48061,
+        "url": "https://github.com/mbostock/d3"
+      },
+      {
+        "name": "facebook/react",
+        "stars": 39152,
+        "url": "https://github.com/facebook/react"
+      },
+      {
+        "name": "jquery/jquery",
+        "stars": 38740,
+        "url": "https://github.com/jquery/jquery"
+      },
+      {
+        "name": "h5bp/html5-boilerplate",
+        "stars": 33400,
+        "url": "https://github.com/h5bp/html5-boilerplate"
+      }
+    ]
+  },
+  "php": {
+    "Application software": [
+      {
+        "name": "WordPress/WordPress",
+        "stars": 7176,
+        "url": "https://github.com/WordPress/WordPress"
+      },
+      {
+        "name": "phanan/koel",
+        "stars": 5708,
+        "url": "https://github.com/phanan/koel"
+      },
+      {
+        "name": "twostairs/paperwork",
+        "stars": 4723,
+        "url": "https://github.com/twostairs/paperwork"
+      },
+      {
+        "name": "owncloud/core",
+        "stars": 4341,
+        "url": "https://github.com/owncloud/core"
+      },
+      {
+        "name": "octobercms/october",
+        "stars": 4324,
+        "url": "https://github.com/octobercms/october"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "domnikl/DesignPatternsPHP",
+        "stars": 9148,
+        "url": "https://github.com/domnikl/DesignPatternsPHP"
+      },
+      {
+        "name": "phacility/phabricator",
+        "stars": 6701,
+        "url": "https://github.com/phacility/phabricator"
+      },
+      {
+        "name": "sovereign/sovereign",
+        "stars": 5186,
+        "url": "https://github.com/sovereign/sovereign"
+      },
+      {
+        "name": "subtlepatterns/SubtlePatterns",
+        "stars": 3627,
+        "url": "https://github.com/subtlepatterns/SubtlePatterns"
+      },
+      {
+        "name": "magento/magento2",
+        "stars": 3269,
+        "url": "https://github.com/magento/magento2"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "PHPMailer/PHPMailer",
+        "stars": 5804,
+        "url": "https://github.com/PHPMailer/PHPMailer"
+      },
+      {
+        "name": "PHPOffice/PHPExcel",
+        "stars": 5734,
+        "url": "https://github.com/PHPOffice/PHPExcel"
+      },
+      {
+        "name": "sebastianbergmann/phpunit",
+        "stars": 5081,
+        "url": "https://github.com/sebastianbergmann/phpunit"
+      },
+      {
+        "name": "Seldaek/monolog",
+        "stars": 4544,
+        "url": "https://github.com/Seldaek/monolog"
+      },
+      {
+        "name": "FriendsOfPHP/Goutte",
+        "stars": 3837,
+        "url": "https://github.com/FriendsOfPHP/Goutte"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "composer/composer",
+        "stars": 7333,
+        "url": "https://github.com/composer/composer"
+      },
+      {
+        "name": "piwik/piwik",
+        "stars": 5263,
+        "url": "https://github.com/piwik/piwik"
+      },
+      {
+        "name": "CachetHQ/Cachet",
+        "stars": 4031,
+        "url": "https://github.com/CachetHQ/Cachet"
+      },
+      {
+        "name": "JeffreyWay/Laravel-4-Generators",
+        "stars": 3092,
+        "url": "https://github.com/JeffreyWay/Laravel-4-Generators"
+      },
+      {
+        "name": "FriendsOfPHP/PHP-CS-Fixer",
+        "stars": 3089,
+        "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "laravel/laravel",
+        "stars": 22383,
+        "url": "https://github.com/laravel/laravel"
+      },
+      {
+        "name": "bcit-ci/CodeIgniter",
+        "stars": 12012,
+        "url": "https://github.com/bcit-ci/CodeIgniter"
+      },
+      {
+        "name": "symfony/symfony",
+        "stars": 12008,
+        "url": "https://github.com/symfony/symfony"
+      },
+      {
+        "name": "fzaninotto/Faker",
+        "stars": 8132,
+        "url": "https://github.com/fzaninotto/Faker"
+      },
+      {
+        "name": "yiisoft/yii2",
+        "stars": 7785,
+        "url": "https://github.com/yiisoft/yii2"
+      }
+    ]
+  },
+  "python": {
+    "Application software": [
+      {
+        "name": "rg3/youtube-dl",
+        "stars": 15107,
+        "url": "https://github.com/rg3/youtube-dl"
+      },
+      {
+        "name": "reddit/reddit",
+        "stars": 10498,
+        "url": "https://github.com/reddit/reddit"
+      },
+      {
+        "name": "mailpile/Mailpile",
+        "stars": 6397,
+        "url": "https://github.com/mailpile/Mailpile"
+      },
+      {
+        "name": "powerline/powerline",
+        "stars": 5602,
+        "url": "https://github.com/powerline/powerline"
+      },
+      {
+        "name": "nicolargo/glances",
+        "stars": 4869,
+        "url": "https://github.com/nicolargo/glances"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "vinta/awesome-python",
+        "stars": 19352,
+        "url": "https://github.com/vinta/awesome-python"
+      },
+      {
+        "name": "josephmisiti/awesome-machine-learning",
+        "stars": 11939,
+        "url": "https://github.com/josephmisiti/awesome-machine-learning"
+      },
+      {
+        "name": "minimaxir/big-list-of-naughty-strings",
+        "stars": 11212,
+        "url": "https://github.com/minimaxir/big-list-of-naughty-strings"
+      },
+      {
+        "name": "faif/python-patterns",
+        "stars": 8084,
+        "url": "https://github.com/faif/python-patterns"
+      },
+      {
+        "name": "donnemartin/data-science-ipython-notebooks",
+        "stars": 5267,
+        "url": "https://github.com/donnemartin/data-science-ipython-notebooks"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "scrapy/scrapy",
+        "stars": 13279,
+        "url": "https://github.com/scrapy/scrapy"
+      },
+      {
+        "name": "tornadoweb/tornado",
+        "stars": 11042,
+        "url": "https://github.com/tornadoweb/tornado"
+      },
+      {
+        "name": "scikit-learn/scikit-learn",
+        "stars": 10437,
+        "url": "https://github.com/scikit-learn/scikit-learn"
+      },
+      {
+        "name": "ipython/ipython",
+        "stars": 8872,
+        "url": "https://github.com/ipython/ipython"
+      },
+      {
+        "name": "XX-net/XX-Net",
+        "stars": 6144,
+        "url": "https://github.com/XX-net/XX-Net"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "jkbrzt/httpie",
+        "stars": 21839,
+        "url": "https://github.com/jkbrzt/httpie"
+      },
+      {
+        "name": "nvbn/thefuck",
+        "stars": 19518,
+        "url": "https://github.com/nvbn/thefuck"
+      },
+      {
+        "name": "mitsuhiko/flask",
+        "stars": 19344,
+        "url": "https://github.com/mitsuhiko/flask"
+      },
+      {
+        "name": "kennethreitz/requests",
+        "stars": 18284,
+        "url": "https://github.com/kennethreitz/requests"
+      },
+      {
+        "name": "ansible/ansible",
+        "stars": 16048,
+        "url": "https://github.com/ansible/ansible"
+      }
+    ],
+    "System software": [
+      {
+        "name": "apenwarr/sshuttle",
+        "stars": 6660,
+        "url": "https://github.com/apenwarr/sshuttle"
+      },
+      {
+        "name": "phusion/baseimage-docker",
+        "stars": 4027,
+        "url": "https://github.com/phusion/baseimage-docker"
+      },
+      {
+        "name": "samshadwell/TrumpScript",
+        "stars": 3309,
+        "url": "https://github.com/samshadwell/TrumpScript"
+      },
+      {
+        "name": "nylas/sync-engine",
+        "stars": 2837,
+        "url": "https://github.com/nylas/sync-engine"
+      },
+      {
+        "name": "Kinto/kinto",
+        "stars": 2681,
+        "url": "https://github.com/Kinto/kinto"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "django/django",
+        "stars": 18690,
+        "url": "https://github.com/django/django"
+      },
+      {
+        "name": "tomchristie/django-rest-framework",
+        "stars": 5577,
+        "url": "https://github.com/tomchristie/django-rest-framework"
+      },
+      {
+        "name": "bokeh/bokeh",
+        "stars": 4011,
+        "url": "https://github.com/bokeh/bokeh"
+      },
+      {
+        "name": "webpy/webpy",
+        "stars": 3791,
+        "url": "https://github.com/webpy/webpy"
+      },
+      {
+        "name": "bottlepy/bottle",
+        "stars": 3631,
+        "url": "https://github.com/bottlepy/bottle"
+      }
+    ]
+  },
+  "ruby": {
+    "Application software": [
+      {
+        "name": "jekyll/jekyll",
+        "stars": 24521,
+        "url": "https://github.com/jekyll/jekyll"
+      },
+      {
+        "name": "discourse/discourse",
+        "stars": 17708,
+        "url": "https://github.com/discourse/discourse"
+      },
+      {
+        "name": "diaspora/diaspora",
+        "stars": 10627,
+        "url": "https://github.com/diaspora/diaspora"
+      },
+      {
+        "name": "imathis/octopress",
+        "stars": 9386,
+        "url": "https://github.com/imathis/octopress"
+      },
+      {
+        "name": "mame/quine-relay",
+        "stars": 4789,
+        "url": "https://github.com/mame/quine-relay"
+      }
+    ],
+    "Documentation": [
+      {
+        "name": "Thibaut/devdocs",
+        "stars": 8516,
+        "url": "https://github.com/Thibaut/devdocs"
+      },
+      {
+        "name": "kilimchoi/engineering-blogs",
+        "stars": 7633,
+        "url": "https://github.com/kilimchoi/engineering-blogs"
+      },
+      {
+        "name": "progit/progit",
+        "stars": 5298,
+        "url": "https://github.com/progit/progit"
+      },
+      {
+        "name": "thoughtbot/guides",
+        "stars": 5228,
+        "url": "https://github.com/thoughtbot/guides"
+      },
+      {
+        "name": "skwp/dotfiles",
+        "stars": 4515,
+        "url": "https://github.com/skwp/dotfiles"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "plataformatec/devise",
+        "stars": 14834,
+        "url": "https://github.com/plataformatec/devise"
+      },
+      {
+        "name": "thoughtbot/paperclip",
+        "stars": 7762,
+        "url": "https://github.com/thoughtbot/paperclip"
+      },
+      {
+        "name": "resque/resque",
+        "stars": 7193,
+        "url": "https://github.com/resque/resque"
+      },
+      {
+        "name": "jnicklas/capybara",
+        "stars": 6885,
+        "url": "https://github.com/jnicklas/capybara"
+      },
+      {
+        "name": "javan/whenever",
+        "stars": 6252,
+        "url": "https://github.com/javan/whenever"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "Homebrew/homebrew",
+        "stars": 29973,
+        "url": "https://github.com/Homebrew/homebrew"
+      },
+      {
+        "name": "gitlabhq/gitlabhq",
+        "stars": 17535,
+        "url": "https://github.com/gitlabhq/gitlabhq"
+      },
+      {
+        "name": "cantino/huginn",
+        "stars": 13421,
+        "url": "https://github.com/cantino/huginn"
+      },
+      {
+        "name": "mitchellh/vagrant",
+        "stars": 11645,
+        "url": "https://github.com/mitchellh/vagrant"
+      },
+      {
+        "name": "caskroom/homebrew-cask",
+        "stars": 8703,
+        "url": "https://github.com/caskroom/homebrew-cask"
+      }
+    ],
+    "System software": [
+      {
+        "name": "ruby/ruby",
+        "stars": 9406,
+        "url": "https://github.com/ruby/ruby"
+      },
+      {
+        "name": "rubinius/rubinius",
+        "stars": 2584,
+        "url": "https://github.com/rubinius/rubinius"
+      },
+      {
+        "name": "jruby/jruby",
+        "stars": 2480,
+        "url": "https://github.com/jruby/jruby"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "rails/rails",
+        "stars": 30363,
+        "url": "https://github.com/rails/rails"
+      },
+      {
+        "name": "twbs/bootstrap-sass",
+        "stars": 10561,
+        "url": "https://github.com/twbs/bootstrap-sass"
+      },
+      {
+        "name": "spree/spree",
+        "stars": 7293,
+        "url": "https://github.com/spree/spree"
+      },
+      {
+        "name": "ruby-grape/grape",
+        "stars": 7144,
+        "url": "https://github.com/ruby-grape/grape"
+      },
+      {
+        "name": "carrierwaveuploader/carrierwave",
+        "stars": 6575,
+        "url": "https://github.com/carrierwaveuploader/carrierwave"
+      }
+    ]
+  },
+  "typescript": {
+    "Documentation": [
+      {
+        "name": "DefinitelyTyped/DefinitelyTyped",
+        "stars": 6591,
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped"
+      }
+    ],
+    "Non-web libraries and frameworks": [
+      {
+        "name": "NativeScript/NativeScript",
+        "stars": 6288,
+        "url": "https://github.com/NativeScript/NativeScript"
+      },
+      {
+        "name": "turbulenz/turbulenz_engine",
+        "stars": 2543,
+        "url": "https://github.com/turbulenz/turbulenz_engine"
+      }
+    ],
+    "Software tools": [
+      {
+        "name": "Microsoft/vscode",
+        "stars": 11847,
+        "url": "https://github.com/Microsoft/vscode"
+      },
+      {
+        "name": "Microsoft/TypeScript",
+        "stars": 10356,
+        "url": "https://github.com/Microsoft/TypeScript"
+      },
+      {
+        "name": "shockone/black-screen",
+        "stars": 7016,
+        "url": "https://github.com/shockone/black-screen"
+      }
+    ],
+    "Web libraries and frameworks": [
+      {
+        "name": "angular-ui/ui-router",
+        "stars": 10355,
+        "url": "https://github.com/angular-ui/ui-router"
+      },
+      {
+        "name": "angular/angular",
+        "stars": 10238,
+        "url": "https://github.com/angular/angular"
+      },
+      {
+        "name": "winjs/winjs",
+        "stars": 3802,
+        "url": "https://github.com/winjs/winjs"
+      },
+      {
+        "name": "mozilla/shumway",
+        "stars": 3287,
+        "url": "https://github.com/mozilla/shumway"
+      },
+      {
+        "name": "jquery/esprima",
+        "stars": 3030,
+        "url": "https://github.com/jquery/esprima"
+      }
+    ]
+  }
+}

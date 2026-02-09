@@ -1,0 +1,118 @@
+Error processing commit 8d9ed0a1d680c8d31e453e2e1cebfda66b357c11 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit c48d09ec8870ac218d6cc2bbec638d59839eda27 in repository tmux: org.treesitter.TSException: Node is a null node
+
+Error processing commit 2e5ac355b9b578e5d1e460f2b2f4205f8a7c87b3 in repository php-src: org.treesitter.TSException: Node is a null node
+
+Error processing commit d83efd35dd342da7f5b0f4b6e11ffd943d7f3c63 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 60a4f12f8b998c44dfff0e88202b01598287390d in repository redis: org.treesitter.TSException: Node is a null node
+
+Error processing commit 09e3b3b97588e9847fc016dbad489bbe8b46aa39 in repository redis: org.treesitter.TSException: Node is a null node
+
+Error processing commit d71136262227d68b649ce9fd8e020597c69cce07 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 1dd45fb4f3371f0256653b2186c8b4b3d26b3f41 in repository vim: org.treesitter.TSException: Node is a null node
+
+Error processing commit 6862ebbfcbdd44b68dbdcfecd432432bdf22b2e5 in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit 6e04b103568983bd699fac96b80a9b96ede68118 in repository linux: org.treesitter.TSException: Node is a null node
+
+Error processing commit 6c035f53f143c065aa3befbdbacd30ce691cff2a in repository php-src: org.treesitter.TSException: Node is a null node
+
+Error processing commit 3a8c8f4747313d324f4309af66e2211319eccffd in repository jq: org.treesitter.TSException: Node is a null node
+
+Error processing commit 08e1c8e820031751bd58736cc334dda1bc55cb5c in repository redis: org.treesitter.TSException: Node is a null node
+
+Error processing commit cb9dde3280244ec3b449f081639c37dd5a1916ab in repository redis: org.treesitter.TSException: Node is a null node
+
+Error processing commit 8a59d68e477233d324995342814a3a18162197b9 in repository obs-studio: org.treesitter.TSException: Node is a null node
+
+Error processing commit f56f09ea3871d3099dd31030501b982a4243a372 in repository tmux: org.treesitter.TSException: Node is a null node
+
+Error processing commit 00d483697a6e395ef6776320cd1e52a04f4367be in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit 22b1ebb46e5470d919e1f6896c99a82c29b443d3 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 0207fcdfb0e43d425abb026b08c074a6822e0349 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 8c5364f58569eaeb5582a4915b36b24fc5570c76 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit c3636a18fd3582e135ad110888fed2d685c5ca59 in repository netdata: org.treesitter.TSException: Node is a null node
+
+Error processing commit 8b026edac3104ecc40a68fd58b764fb3c717babb in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit 60e952ba694e3e0811db5868d70ad7ebfe676836 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit ce4c3e19e5201424357a0c82176633b32a98d2ec in repository linux: org.treesitter.TSException: Node is a null node
+
+Error processing commit f7221d8e670ec05471a16cc4cc1cc8e0040b5b5f in repository FFmpeg: org.treesitter.TSException: Node is a null node
+
+Error processing commit fc069593f2ccc5d9026d0a65cd650dbac9ea5b3a in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit e04417d98f2cac095ea233a4a03e85d881e7ad7b in repository curl: org.treesitter.TSException: Node is a null node
+
+Error processing commit 516f019ba6fb88de7218dd3b4eaeadb1cf676518 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit 40012f96b6765e588d8ffd7508d492339f2b9212 in repository linux: org.treesitter.TSException: Node is a null node
+
+Error processing commit 0c93eb3379241dc4775718a9d39f54a6c4de20d6 in repository jq: org.treesitter.TSException: Node is a null node
+
+Error processing commit 1ef829e585c86e14504e4aae9ee0085c8f6a80be in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit 9bba7a0434d0967d5dd76b8afc7783ea2edad0cf in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit bfc3c4eaac4eec6a2e714b7483b646d8ee21efc9 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 2313a8eb54d703323279c0fb9b2c9c52d26f0cf9 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit 809f924db2823b9e1eaf3efb9370380edc1f76ed in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit a9c87d7295d20b7314f457655cc3312b5b2c477b in repository swoole-src: org.treesitter.TSException: Node is a null node
+
+Error processing commit 0be121ed76617f891e2710b82d30d3a3d5d8611e in repository swoole-src: org.treesitter.TSException: Node is a null node
+
+Error processing commit 2a57fd9b2d9d1ecbcf671c0e6439b93e0192d74e in repository emscripten: java.lang.NullPointerException: Cannot invoke "refdiff.core.cst.CstNode.addNode(refdiff.core.cst.CstNode)" because "parent" is null
+
+Error processing commit 65b5f9483eafea0ccdea59884da4e00e0cfeee1f in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit 9b1774bd39d65614cdbd2d4e3815086298008911 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit ec5b408d815b655cda638c329439795c190ee0dc in repository php-src: org.treesitter.TSException: Node is a null node
+
+Error processing commit 2465f486acd90ed8395c8a83a13af09ecd024c98 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit aad4e4ddb194cba9c01b0ddd696fb7b214e1a7eb in repository tmux: org.treesitter.TSException: Node is a null node
+
+Error processing commit c504b6c753604ab25f78634ec486be13d8aedaae in repository ijkplayer: org.treesitter.TSException: Node is a null node
+
+Error processing commit 0d414471bb41f41373754c680ecc7f955a9ec2ad in repository jq: org.treesitter.TSException: Node is a null node
+
+Error processing commit c50781a2b7d0ab56acb31b8f79df2e69f9f74b8b in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit e233bef43e4a73ec183eb927ab4803aefc77bab9 in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit afb8b4f98bab53e85f2e5a3e7b3d11f0c9207ec7 in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit d807c4a01db2b06db047fc6d5d18ac25c8f05bd7 in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit fc1395f4a491a7da46a446233531005634eb979d in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit edbfca5474b59b865e383e0dae934ba293d9dc7d in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 27958d8982464e3a9f112f532af4b405c34aaffc in repository swoole-src: org.treesitter.TSException: Node is a null node
+
+Error processing commit 8286c2c22fc110dcc58c981eb39dd7bf46ae8aa9 in repository toxcore: org.treesitter.TSException: Node is a null node
+
+Error processing commit 226c0ddd0d63dd6c8dde497c755af2ad1f02e0c1 in repository git: org.treesitter.TSException: Node is a null node
+
+Error processing commit c53e03348c65462bcba33f6352087dd6b9268e8f in repository darknet: org.treesitter.TSException: Node is a null node
+
+Error processing commit 267d2e18a281c965229a3c3ccce51c471f9c4f8a in repository linux: org.treesitter.TSException: Node is a null node
+
+Error processing commit 3fce4301ec54e173c811a8e08c320d9ef86c4de2 in repository redis: org.treesitter.TSException: Node is a null node
+
+Error processing commit 4bac2bcd839605baf22e4c8b29e4e52156883e45 in repository linux: org.treesitter.TSException: Node is a null node
+
+Error processing commit ae7f8d6ab9d29bd72f462fdafa4d7a9270706d3b in repository jq: org.treesitter.TSException: Node is a null node
+

@@ -1,0 +1,425 @@
+Commit: c2af8c1a6ab874b67ded718e4469bc70b081093d
+RENAME	{Function _construct_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65}	{Function _construct_starting_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65})
+
+Commit: 2610c4579f2afc6cadbf692b131e6c1065a8556b
+No refactorings found.
+
+Commit: 0c09b0c459ae39d8cf70005a10876fe6197b198c
+No refactorings found.
+
+Commit: 1105e6c0d20c6b34c1a3a4e973aacb65aef12ce2
+No refactorings found.
+
+Commit: 650be0d1f7afcc3fbb35b2ed76fbbbf70f397319
+No refactorings found.
+
+Commit: 483c399812ac634fced2a8d2bb8d3f6f2a4d75f2
+No refactorings found.
+
+Commit: 260dd526c96abb052bb249bf865b1ec5a8cb72f1
+RENAME	{Function _construct_starting_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65}	{Function _construct_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65})
+
+Commit: 312cb0227f8bbd9e4e6d3828867d6a37035ceccf
+No refactorings found.
+
+Commit: 92515b36835afd3a90d8620a940d1b32f13516af
+No refactorings found.
+
+Commit: ba65fee86220089a6e3325f5ed00dc86e27829e4
+RENAME	{Function _construct_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65}	{Function _construct_starting_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65})
+
+Commit: 72938590f285fd266b735864402a886e61c3162d
+No refactorings found.
+
+Commit: bf92e7dbc8afb4cd7cf827cfa55c890a95ff9f73
+No refactorings found.
+
+Commit: 6bb6a081a24dc7771f92dd1b4c3e152cb263a1da
+No refactorings found.
+
+Commit: df20b70f44bbf0bc37be55e8ce30628abb66258d
+No refactorings found.
+
+Commit: 21faf1b6773ada5aed521f77b8f3b7070f77eb39
+No refactorings found.
+
+Commit: 4bfeddc03d42b224179573b597c202390407568f
+No refactorings found.
+
+Commit: af7d56612d332e89047af6f07198aa5e66eebc9b
+No refactorings found.
+
+Commit: 0dd30e275c64fb369e7adefe0cfbfaf415b2adee
+No refactorings found.
+
+Commit: 2d436caa841558dd958beb53355d539098421e57
+No refactorings found.
+
+Commit: 34dd218a91f7e752f2b2bcf2b3e64ff5006995ac
+No refactorings found.
+
+Commit: 793de77e76eb89e245f24a1248186d937f92d93b
+CHANGE_SIGNATURE	{Function _build_service(credentials, **kwargs) at autogpt_platform/backend/backend/blocks/google/gmail.py:247 LOC:18}	{Function _build_service(self, credentials, **kwargs) at autogpt_platform/backend/backend/blocks/google/gmail.py:190 LOC:18})
+
+Commit: a2059c6023c449b23a09ba932727df27476107fd
+MOVE	{Function get_client() at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:24 LOC:5}	{Function get_client() at autogpt_platform/backend/backend/util/feature_flag.py:40 LOC:5})
+MOVE_RENAME	{Function is_feature_enabled(flag_key, user_id, default) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:92 LOC:33}	{Function get_feature_flag_value(flag_key, user_id, default) at autogpt_platform/backend/backend/util/feature_flag.py:110 LOC:45})
+MOVE	{Function initialize_launchdarkly() at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:31 LOC:19}	{Function initialize_launchdarkly() at autogpt_platform/backend/backend/util/feature_flag.py:47 LOC:19})
+MOVE	{Function test_is_feature_enabled(ld_client) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:52 LOC:12}	{Function test_is_feature_enabled(ld_client) at autogpt_platform/backend/backend/util/feature_flag_test.py:56 LOC:12})
+MOVE	{Function _fetch_user_context_data(user_id) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:60 LOC:30}	{Function _fetch_user_context_data(user_id) at autogpt_platform/backend/backend/util/feature_flag.py:76 LOC:32})
+MOVE	{Function test_feature_flag_unauthorized_response(ld_client) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:33 LOC:9}	{Function test_feature_flag_unauthorized_response(ld_client) at autogpt_platform/backend/backend/util/feature_flag_test.py:35 LOC:10})
+MOVE	{Function feature_flag(flag_key, default) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:127 LOC:45}	{Function feature_flag(flag_key, default) at autogpt_platform/backend/backend/util/feature_flag.py:190 LOC:55})
+MOVE	{Function test_is_feature_enabled_not_initialized(ld_client) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:66 LOC:8}	{Function test_is_feature_enabled_not_initialized(ld_client) at autogpt_platform/backend/backend/util/feature_flag_test.py:71 LOC:8})
+MOVE	{Function async_wrapper() at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:144 LOC:24}	{Function async_wrapper() at autogpt_platform/backend/backend/util/feature_flag.py:207 LOC:34})
+MOVE	{Function shutdown_launchdarkly() at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:52 LOC:5}	{Function shutdown_launchdarkly() at autogpt_platform/backend/backend/util/feature_flag.py:68 LOC:5})
+MOVE	{Function test_function(user_id) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:24 LOC:2}	{Function test_function(user_id) at autogpt_platform/backend/backend/util/feature_flag_test.py:26 LOC:2})
+MOVE	{Function test_feature_flag_enabled(ld_client) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:20 LOC:10}	{Function test_feature_flag_enabled(ld_client) at autogpt_platform/backend/backend/util/feature_flag_test.py:22 LOC:10})
+MOVE	{Function mock_flag_variation(flag_key, return_value) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:175 LOC:10}	{Function mock_flag_variation(flag_key, return_value) at autogpt_platform/backend/backend/util/feature_flag.py:248 LOC:10})
+MOVE	{Function test_function(user_id) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:37 LOC:2}	{Function test_function(user_id) at autogpt_platform/backend/backend/util/feature_flag_test.py:39 LOC:2})
+MOVE	{Function ld_client(mocker) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:12 LOC:5}	{Function ld_client(mocker) at autogpt_platform/backend/backend/util/feature_flag_test.py:14 LOC:5})
+MOVE	{Function test_is_feature_enabled_exception(mocker) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:76 LOC:9}	{Function test_is_feature_enabled_exception(mocker) at autogpt_platform/backend/backend/util/feature_flag_test.py:82 LOC:9})
+MOVE	{Function test_mock_flag_variation(ld_client) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client_test.py:44 LOC:6}	{Function test_mock_flag_variation(ld_client) at autogpt_platform/backend/backend/util/feature_flag_test.py:47 LOC:6})
+MOVE	{Function decorator(func) at autogpt_platform/autogpt_libs/autogpt_libs/feature_flag/client.py:142 LOC:28}	{Function decorator(func) at autogpt_platform/backend/backend/util/feature_flag.py:205 LOC:38})
+
+Commit: b9c3920227e987a4f35b970c71a7efe69d89097f
+No refactorings found.
+
+Commit: abba10b6490c1ee18b78f7e3c7d9a10de4d59385
+No refactorings found.
+
+Commit: 89eb5d118956ee09e27f8b5e50773e6fc2ed84e6
+MOVE	{Function get_supabase() at autogpt_platform/backend/backend/server/integrations/utils.py:8 LOC:4}	{Function get_supabase() at autogpt_platform/backend/backend/util/clients.py:123 LOC:7})
+
+Commit: 28d85ad61ca449cd8f4d702a32af19c87f46f62d
+No refactorings found.
+
+Commit: d4b5508ed14dc1742bf5f0bdb7762b5253a73708
+No refactorings found.
+
+Commit: 01168661990e2abc37d45d700767ece4b04e8bfa
+CHANGE_SIGNATURE	{Function send_message(self, token, channel_name, message_content) at autogpt_platform/backend/backend/blocks/discord.py:188 LOC:22}	{Function send_message(self, token, channel_name, server_name, message_content) at autogpt_platform/backend/backend/blocks/discord.py:234 LOC:39})
+
+Commit: b68e490868cb9700a82b3c8031ff66ac11258dfa
+No refactorings found.
+
+Commit: da16397882c77a059da7f28dfbbe050caa98b594
+No refactorings found.
+
+Commit: 098c12a9614ec107fb9cb26e7b88fafbb24b9172
+No refactorings found.
+
+Commit: a28b2cf04f4b81690cc766d37952c375d3af2c48
+No refactorings found.
+
+Commit: de7b6b503f0a72ba1b6b29e21113731ad34bb1e9
+EXTRACT	{Function cleanup(self) at autogpt_platform/backend/backend/executor/manager.py:1364 LOC:83}	{Function _stop_message_consumers(self, thread, client, prefix) at autogpt_platform/backend/backend/executor/manager.py:1364 LOC:18})
+
+Commit: 5338ab5b8091fffc2859bb06e334731efcc4d52b
+No refactorings found.
+
+Commit: e8f897ead1f99f1cf0fe62af3213bace8dffcb1b
+No refactorings found.
+
+Commit: fbe432919d0031a57559067ec9a9eb6bbc8bd1f8
+No refactorings found.
+
+Commit: 4f208d262e6f858cd78f74779a16080ac051e252
+No refactorings found.
+
+Commit: e60deba05f542be0eeb77928e9ec727edaa8da74
+No refactorings found.
+
+Commit: 3131e2e8567454def38d83e53ce7b944f3a3e34d
+No refactorings found.
+
+Commit: 378d256b5878a836889fc5fda2d2b1693c8d0caf
+EXTRACT	{Function execute_graph(**kwargs) at autogpt_platform/backend/backend/executor/scheduler.py:84 LOC:6}	{Function run_async(coro, timeout) at autogpt_platform/backend/backend/executor/scheduler.py:88 LOC:5})
+EXTRACT	{Function cleanup_expired_files() at autogpt_platform/backend/backend/executor/scheduler.py:111 LOC:6}	{Function run_async(coro, timeout) at autogpt_platform/backend/backend/executor/scheduler.py:88 LOC:5})
+EXTRACT	{Function add_graph_execution(graph_id, user_id, inputs, preset_id, graph_version, graph_credentials_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:767 LOC:100}	{Function validate_and_construct_node_execution_input(graph_id, user_id, graph_inputs, graph_version, graph_credentials_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:618 LOC:59})
+RENAME	{Function construct_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65}	{Function _construct_node_execution_input(graph, user_id, graph_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:551 LOC:65})
+
+Commit: 40601f1616f1f3422d2e6f14fbed65f0cdfdc0c7
+CHANGE_SIGNATURE	{Function _handle_run_message(self, channel, method, _properties, body) at autogpt_platform/backend/backend/executor/manager.py:1258 LOC:80}	{Function _handle_run_message(self, _channel, method, _properties, body) at autogpt_platform/backend/backend/executor/manager.py:1258 LOC:83})
+
+Commit: 178c91d6b92018928ffdfc964ea378bb4bebd54c
+No refactorings found.
+
+Commit: 7b3ee6624715008ec34675a0f987bd3e33f69c83
+No refactorings found.
+
+Commit: 2d10ac92b54c73593b9ab3b1c72fadc6cde58b1b
+No refactorings found.
+
+Commit: 377b5ef01cfb03277553a3ea7f5707ee73c05e04
+No refactorings found.
+
+Commit: 7922e4add48e392522b8f4192fbe7a6a1c635e5e
+No refactorings found.
+
+Commit: e2af2f454dd8cb49a99a3326c8b5e896d02d90b6
+CHANGE_SIGNATURE	{Function on_node_execution(cls, node_exec, node_exec_progress, nodes_input_masks, graph_stats_pair) at autogpt_platform/backend/backend/executor/manager.py:394 LOC:62}	{Function on_node_execution(self, node_exec, node_exec_progress, nodes_input_masks, graph_stats_pair) at autogpt_platform/backend/backend/executor/manager.py:408 LOC:62})
+CHANGE_SIGNATURE	{Function _handle_agent_run_notif(cls, db_client, graph_exec, exec_stats) at autogpt_platform/backend/backend/executor/manager.py:1031 LOC:36}	{Function _handle_agent_run_notif(self, db_client, graph_exec, exec_stats) at autogpt_platform/backend/backend/executor/manager.py:1030 LOC:36})
+CHANGE_SIGNATURE	{Function on_graph_executor_start(cls) at autogpt_platform/backend/backend/executor/manager.py:542 LOC:16}	{Function on_graph_executor_start(self) at autogpt_platform/backend/backend/executor/manager.py:554 LOC:16})
+CHANGE_SIGNATURE	{Function _handle_low_balance_notif(cls, db_client, user_id, graph_id, exec_stats, e) at autogpt_platform/backend/backend/executor/manager.py:1069 LOC:25}	{Function _handle_low_balance_notif(self, db_client, user_id, graph_id, exec_stats, e) at autogpt_platform/backend/backend/executor/manager.py:1067 LOC:25})
+CHANGE_SIGNATURE	{Function _process_node_output(cls, output, node_id, graph_exec, log_metadata, nodes_input_masks, execution_queue) at autogpt_platform/backend/backend/executor/manager.py:996 LOC:33}	{Function _process_node_output(self, output, node_id, graph_exec, log_metadata, nodes_input_masks, execution_queue) at autogpt_platform/backend/backend/executor/manager.py:996 LOC:33})
+CHANGE_SIGNATURE	{Function on_graph_execution(cls, graph_exec, cancel) at autogpt_platform/backend/backend/executor/manager.py:561 LOC:103}	{Function on_graph_execution(self, graph_exec, cancel) at autogpt_platform/backend/backend/executor/manager.py:572 LOC:103})
+CHANGE_SIGNATURE	{Function _cleanup_graph_execution(cls, execution_queue, running_node_execution, running_node_evaluation, execution_status, error, graph_exec_id, log_metadata, db_client) at autogpt_platform/backend/backend/executor/manager.py:942 LOC:51}	{Function _cleanup_graph_execution(self, execution_queue, running_node_execution, running_node_evaluation, execution_status, error, graph_exec_id, log_metadata, db_client) at autogpt_platform/backend/backend/executor/manager.py:943 LOC:51})
+CHANGE_SIGNATURE	{Function _on_node_execution(cls, node, node_exec, node_exec_progress, stats, db_client, log_metadata, nodes_input_masks) at autogpt_platform/backend/backend/executor/manager.py:459 LOC:80}	{Function _on_node_execution(self, node, node_exec, node_exec_progress, stats, db_client, log_metadata, nodes_input_masks) at autogpt_platform/backend/backend/executor/manager.py:472 LOC:80})
+CHANGE_SIGNATURE	{Function _charge_usage(cls, node_exec, execution_count) at autogpt_platform/backend/backend/executor/manager.py:666 LOC:50}	{Function _charge_usage(self, node_exec, execution_count) at autogpt_platform/backend/backend/executor/manager.py:676 LOC:50})
+CHANGE_SIGNATURE	{Function _on_graph_execution(cls, graph_exec, cancel, log_metadata, execution_stats) at autogpt_platform/backend/backend/executor/manager.py:719 LOC:220}	{Function _on_graph_execution(self, graph_exec, cancel, log_metadata, execution_stats) at autogpt_platform/backend/backend/executor/manager.py:728 LOC:213})
+
+Commit: c9360555b20e2ae383d808df8add77d1b2a28d4c
+No refactorings found.
+
+Commit: 4a63fbc0063d57cb9c4ba6b829e9be280f93ae87
+No refactorings found.
+
+Commit: 98482664742b322ebd0f75b5e8fa728e7449f7c8
+No refactorings found.
+
+Commit: 3fe88b61064fe0569d7643bf5532bf93ef9ebf7a
+RENAME	{Function publish_node_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:932 LOC:3}	{Function _publish_node_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:934 LOC:3})
+EXTRACT	{Function _on_run_done(f) at autogpt_platform/backend/backend/executor/manager.py:1279 LOC:30}	{Function _ack_message(reject) at autogpt_platform/backend/backend/executor/manager.py:1263 LOC:10})
+EXTRACT_MOVE	{Function get_db_client() at autogpt_platform/backend/backend/executor/manager.py:1410 LOC:7}	{Function get_database_manager_client() at autogpt_platform/backend/backend/util/clients.py:22 LOC:6})
+EXTRACT	{Function run(self) at autogpt_platform/backend/backend/executor/manager.py:1111 LOC:24}	{Function run_thread(self) at autogpt_platform/backend/backend/executor/manager.py:1113 LOC:7})
+RENAME	{Function publish_node_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:890 LOC:3}	{Function _publish_node_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:891 LOC:3})
+EXTRACT_MOVE	{Function get_db_async_client() at autogpt_platform/backend/backend/executor/manager.py:1420 LOC:7}	{Function get_database_manager_async_client() at autogpt_platform/backend/backend/util/clients.py:31 LOC:6})
+CHANGE_SIGNATURE	{Function get_service_client(service_client_type, call_timeout, health_check, request_retry) at autogpt_platform/backend/backend/util/service.py:277 LOC:191}	{Function get_service_client(service_client_type, call_timeout, request_retry) at autogpt_platform/backend/backend/util/service.py:277 LOC:188})
+RENAME	{Function publish_graph_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:894 LOC:3}	{Function _publish_graph_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:895 LOC:3})
+EXTRACT	{Function run(self) at autogpt_platform/backend/backend/executor/manager.py:1111 LOC:24}	{Function cancel_thread(self) at autogpt_platform/backend/backend/executor/manager.py:1104 LOC:7})
+EXTRACT	{Function _consume_execution_run(self) at autogpt_platform/backend/backend/executor/manager.py:1151 LOC:41}	{Function run_client(self) at autogpt_platform/backend/backend/executor/manager.py:1143 LOC:4})
+MOVE	{Function get_integration_credentials_store() at autogpt_platform/backend/backend/executor/utils.py:107 LOC:4}	{Function get_integration_credentials_store() at autogpt_platform/backend/backend/util/clients.py:105 LOC:5})
+EXTRACT_MOVE	{Function db_manager(self) at autogpt_platform/backend/backend/integrations/credentials_store.py:233 LOC:10}	{Function get_database_manager_async_client() at autogpt_platform/backend/backend/util/clients.py:31 LOC:6})
+EXTRACT	{Function _consume_execution_cancel(self) at autogpt_platform/backend/backend/executor/manager.py:1137 LOC:12}	{Function cancel_client(self) at autogpt_platform/backend/backend/executor/manager.py:1137 LOC:4})
+RENAME	{Function publish_graph_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:936 LOC:8}	{Function _publish_graph_exec_update(self, res) at autogpt_platform/backend/backend/data/execution.py:938 LOC:8})
+
+Commit: fa2d968458945e14148cdf79b0c520ab361aad70
+RENAME	{Function is_tool_pin(name) at autogpt_platform/backend/backend/data/graph.py:429 LOC:2}	{Function _is_tool_pin(name) at autogpt_platform/backend/backend/data/graph.py:676 LOC:2})
+RENAME	{Function sanitize(name) at autogpt_platform/backend/backend/data/graph.py:432 LOC:5}	{Function _sanitize_pin_name(name) at autogpt_platform/backend/backend/data/graph.py:680 LOC:5})
+EXTRACT	{Function _validate_graph(graph, for_run, nodes_input_masks) at autogpt_platform/backend/backend/data/graph.py:424 LOC:166}	{Function _validate_graph_get_errors(graph, for_run, nodes_input_masks) at autogpt_platform/backend/backend/data/graph.py:464 LOC:132})
+
+Commit: f9b255fb7abeeb6299c92a51adcbb2fbc7e0e537
+INLINE	{Function _on_cleanup(self, log) at autogpt_platform/backend/backend/executor/manager.py:1288 LOC:20}	{Function cleanup(self) at autogpt_platform/backend/backend/executor/manager.py:1334 LOC:70})
+CHANGE_SIGNATURE	{Function _handle_run_message(self, channel, method, properties, body) at autogpt_platform/backend/backend/executor/manager.py:1190 LOC:75}	{Function _handle_run_message(self, channel, method, _properties, body) at autogpt_platform/backend/backend/executor/manager.py:1227 LOC:84})
+INLINE	{Function _run(self) at autogpt_platform/backend/backend/executor/manager.py:1101 LOC:13}	{Function run(self) at autogpt_platform/backend/backend/executor/manager.py:1111 LOC:24})
+CHANGE_SIGNATURE	{Function _cleanup_completed_runs(self, log) at autogpt_platform/backend/backend/executor/manager.py:1266 LOC:17}	{Function _cleanup_completed_runs(self) at autogpt_platform/backend/backend/executor/manager.py:1312 LOC:13})
+EXTRACT	{Function _cleanup_completed_runs(self, log) at autogpt_platform/backend/backend/executor/manager.py:1266 LOC:17}	{Function _update_prompt_metrics(self) at autogpt_platform/backend/backend/executor/manager.py:1326 LOC:7})
+CHANGE_SIGNATURE	{Function _handle_cancel_message(self, channel, method, properties, body) at autogpt_platform/backend/backend/executor/manager.py:1157 LOC:32}	{Function _handle_cancel_message(self, _channel, _method, _properties, body) at autogpt_platform/backend/backend/executor/manager.py:1194 LOC:32})
+MOVE	{Function llprint(message) at autogpt_platform/backend/backend/executor/manager.py:1434 LOC:6}	{Function llprint(message) at autogpt_platform/backend/backend/util/process.py:85 LOC:6})
+
+Commit: cc6697e46d85edda69fb97ca8b7d9939cf65629a
+No refactorings found.
+
+Commit: 5a5f7f0f9e5784baa16bc560b95da244ecd49f1a
+No refactorings found.
+
+Commit: 1e6bd8d2a63b2de74f5f53828512279afdd1eff6
+No refactorings found.
+
+Commit: 6f8d0bfdf2c0fee52e95f4c82dba3405134024d3
+No refactorings found.
+
+Commit: b85e8204df2416d2475edd7218400a6487f398d9
+No refactorings found.
+
+Commit: e5d3ebac088c3b13420cf26fa592490617abb411
+CHANGE_SIGNATURE	{Function _charge_usage(cls, node_exec, execution_count, execution_stats) at autogpt_platform/backend/backend/executor/manager.py:650 LOC:48}	{Function _charge_usage(cls, node_exec, execution_count) at autogpt_platform/backend/backend/executor/manager.py:649 LOC:50})
+CHANGE_SIGNATURE	{Function _on_node_execution(cls, node, node_exec, node_exec_progress, db_client, log_metadata, nodes_input_masks) at autogpt_platform/backend/backend/executor/manager.py:466 LOC:54}	{Function _on_node_execution(cls, node, node_exec, node_exec_progress, stats, db_client, log_metadata, nodes_input_masks) at autogpt_platform/backend/backend/executor/manager.py:464 LOC:58})
+
+Commit: 2182c7ba9e151b00a0b35c7351ef60e6989a924c
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_instagram.py:107 LOC:138}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_instagram.py:111 LOC:139})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_threads.py:50 LOC:62}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_threads.py:49 LOC:63})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_gmb.py:113 LOC:98}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_gmb.py:112 LOC:99})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_snapchat.py:62 LOC:68}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_snapchat.py:61 LOC:69})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_youtube.py:137 LOC:173}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_youtube.py:136 LOC:175})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_facebook.py:115 LOC:93}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_facebook.py:119 LOC:94})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_reddit.py:38 LOC:32}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_reddit.py:37 LOC:33})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_telegram.py:57 LOC:60}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_telegram.py:56 LOC:61})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_linkedin.py:112 LOC:111}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_linkedin.py:111 LOC:112})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_x.py:115 LOC:127}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_x.py:114 LOC:128})
+INLINE	{Function get_ayrshare_profile_key(self, user_id) at autogpt_platform/backend/backend/integrations/credentials_store.py:366 LOC:14}	{Function get_ayrshare_sso_url(user_id) at autogpt_platform/backend/backend/server/integrations/router.py:570 LOC:83})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_bluesky.py:57 LOC:57}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_bluesky.py:56 LOC:59})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_tiktok.py:110 LOC:134}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_tiktok.py:109 LOC:135})
+CHANGE_SIGNATURE	{Function run(self, input_data, profile_key, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_pinterest.py:87 LOC:123}	{Function run(self, input_data, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/ayrshare/post_to_pinterest.py:91 LOC:124})
+
+Commit: 1c3fa804d4a80adab54a6ba6bf2137e8b81bd053
+No refactorings found.
+
+Commit: 69d873debc126c10542c8e6915e0ce1130492c5d
+CHANGE_SIGNATURE	{Function _on_node_execution(cls, node, node_exec, node_exec_progress, db_client, log_metadata, stats, nodes_input_masks) at autogpt_platform/backend/backend/executor/manager.py:450 LOC:46}	{Function _on_node_execution(cls, node, node_exec, node_exec_progress, db_client, log_metadata, nodes_input_masks) at autogpt_platform/backend/backend/executor/manager.py:478 LOC:54})
+CHANGE_SIGNATURE	{Function _cleanup_graph_execution(cls, running_node_execution, running_node_evaluation, execution_status, error, graph_exec_id, log_metadata, db_client) at autogpt_platform/backend/backend/executor/manager.py:899 LOC:69}	{Function _cleanup_graph_execution(cls, execution_queue, running_node_execution, running_node_evaluation, execution_status, error, graph_exec_id, log_metadata, db_client) at autogpt_platform/backend/backend/executor/manager.py:925 LOC:57})
+CHANGE_SIGNATURE	{Function __init__(self, on_done_task) at autogpt_platform/backend/backend/executor/utils.py:891 LOC:8}	{Function __init__(self) at autogpt_platform/backend/backend/executor/utils.py:868 LOC:4})
+RENAME	{Function wait_for_cancellation(self, timeout) at autogpt_platform/backend/backend/executor/utils.py:955 LOC:18}	{Function wait_for_done(self, timeout) at autogpt_platform/backend/backend/executor/utils.py:930 LOC:21})
+CHANGE_SIGNATURE	{Function conn_retry(resource_name, action_name, max_retry, multiplier, min_wait, max_wait) at autogpt_platform/backend/backend/util/retry.py:25 LOC:52}	{Function conn_retry(resource_name, action_name, max_retry, max_wait) at autogpt_platform/backend/backend/util/retry.py:95 LOC:57})
+
+Commit: 4283798dc28cc26444a156f5f3f67aa3e26549e0
+No refactorings found.
+
+Commit: 8331dabf6a7b4b90495cfd4fcd4c6b12f4244098
+No refactorings found.
+
+Commit: e632549175890c16e7c78b030362c7ef943cc3fa
+No refactorings found.
+
+Commit: 878f61aaf4bac49a26da75ce22945156e4d620da
+No refactorings found.
+
+Commit: d323dc2821477adabf03a93de87e5e2ea9f28a9d
+No refactorings found.
+
+Commit: 686d8110628a979b75d770810aa9fcb1337f3145
+EXTRACT	{Function _on_graph_execution(cls, graph_exec, cancel, log_metadata, execution_stats) at autogpt_platform/backend/backend/executor/manager.py:639 LOC:268}	{Function _cleanup_graph_execution(cls, running_node_execution, running_node_evaluation, execution_status, error, graph_exec_id, log_metadata, db_client) at autogpt_platform/backend/backend/executor/manager.py:869 LOC:69})
+CHANGE_SIGNATURE	{Function locked_transaction(key) at autogpt_platform/backend/backend/data/db.py:89 LOC:5}	{Function locked_transaction(key, timeout) at autogpt_platform/backend/backend/data/db.py:102 LOC:15})
+
+Commit: 9ce857e29f432a5baa21abfe777600150d84c7c2
+No refactorings found.
+
+Commit: 054c20abdc9f041d909a2807d24a7b1cef34e939
+No refactorings found.
+
+Commit: b56da4586d27c81da77f50c25a8dda4de9580fa8
+No refactorings found.
+
+Commit: 9b94a7d39a5e678538127a4d4f161004a01d4070
+No refactorings found.
+
+Commit: b429505c14ae869a82c95b3fc9037a413c448971
+No refactorings found.
+
+Commit: 68974dc6da236eb0cb2e2418a868b03cf8ffeb75
+No refactorings found.
+
+Commit: 9ca75d93f775afa614d88c9ad792cf1e8a4c85ac
+No refactorings found.
+
+Commit: 48f756136e690fee462f2dc50d42ebca8a655c9b
+No refactorings found.
+
+Commit: 02f5e9216778811d2d7e9ca276a25c82990b4b31
+No refactorings found.
+
+Commit: b08761816a80c6e0dcdfda6c380ec3c110d9000e
+CHANGE_SIGNATURE	{Function _send_email(self, service, to, subject, body) at autogpt_platform/backend/backend/blocks/google/gmail.py:408 LOC:8}	{Function _send_email(self, service, input_data, graph_exec_id, user_id) at autogpt_platform/backend/backend/blocks/google/gmail.py:503 LOC:15})
+
+Commit: a37fac31b5e4d12a4a0ebf9098cd9f9b59325408
+No refactorings found.
+
+Commit: b9c7642cfc25d8c475d23b6332fb3286dfcfa584
+No refactorings found.
+
+Commit: 83f96b75c71206a19c058772bf664344dda4b9a7
+No refactorings found.
+
+Commit: 55af487589a4a14f063905920063b702e1a518d7
+No refactorings found.
+
+Commit: 95650ee34681571ae76bd5d0b0b3cc5fc1586bec
+No refactorings found.
+
+Commit: 4d05a27388791cb4e8923adf25d975d75e91db7f
+No refactorings found.
+
+Commit: b71d0ec80581ac71b52c064ed722bea822477dd2
+No refactorings found.
+
+Commit: f7c190636408aa32f3fbf74614ae3d6f49e87d05
+No refactorings found.
+
+Commit: 39fe22f7e76766974f8d8903b9b4f6b41710babe
+No refactorings found.
+
+Commit: c955e9a4d73e080c751197da89029255cfb1822d
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/backend/integrations/webhooks/slant3d.py:60 LOC:27}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/backend/integrations/webhooks/slant3d.py:60 LOC:30})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/test/sdk/test_sdk_webhooks.py:48 LOC:6}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/test/sdk/test_sdk_webhooks.py:49 LOC:8})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/backend/blocks/exa/_webhook.py:54 LOC:22}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/backend/blocks/exa/_webhook.py:54 LOC:24})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/test/sdk/test_sdk_patching.py:37 LOC:2}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/test/sdk/test_sdk_patching.py:38 LOC:2})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/backend/integrations/webhooks/_base.py:118 LOC:14}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/backend/integrations/webhooks/_base.py:118 LOC:17})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/backend/integrations/webhooks/github.py:32 LOC:29}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/backend/integrations/webhooks/github.py:32 LOC:32})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/backend/integrations/webhooks/compass.py:24 LOC:7}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/backend/integrations/webhooks/compass.py:25 LOC:10})
+CHANGE_SIGNATURE	{Function validate_payload(cls, webhook, request) at autogpt_platform/backend/backend/blocks/generic_webhook/_webhook.py:19 LOC:7}	{Function validate_payload(cls, webhook, request, credentials) at autogpt_platform/backend/backend/blocks/generic_webhook/_webhook.py:19 LOC:7})
+
+Commit: 070e1c02ba7bfeff4c4773d2647a8f1f4a2f7ec3
+No refactorings found.
+
+Commit: f78614247f30e6a02746b56391d6474df038dd96
+No refactorings found.
+
+Commit: ccad66427cf808560cb2ac54b67eadba8022fdfb
+No refactorings found.
+
+Commit: 51a39ef81a8689ef398da4202b2ca9d9d67c35fe
+No refactorings found.
+
+Commit: a58613a84c0bee8de2992264de4f088be685ce52
+No refactorings found.
+
+Commit: f8b9e80829cefdcb8033cd31bb77a07307d9e2b1
+No refactorings found.
+
+Commit: f4a179e5d6950dc417d59756d8f49cd6f464b593
+No refactorings found.
+
+Commit: 6d25e8f1950714626a6cc0da8462418cc567206e
+No refactorings found.
+
+Commit: 3b963e59ccd083c041ca44f6656b42c8268097d7
+No refactorings found.
+
+Commit: 0c9b7334c143cc0ae9c6e2f235b578499a739f4e
+CHANGE_SIGNATURE	{Function on_node_activate(user_id, node, credentials) at autogpt_platform/backend/backend/integrations/webhooks/graph_lifecycle_hooks.py:95 LOC:23}	{Function on_node_activate(user_id, graph_id, node, credentials) at autogpt_platform/backend/backend/integrations/webhooks/graph_lifecycle_hooks.py:112 LOC:24})
+CHANGE_SIGNATURE	{Function add_generated_agent_image(graph, library_agent_id) at autogpt_platform/backend/backend/server/v2/library/db.py:248 LOC:31}	{Function add_generated_agent_image(graph, user_id, library_agent_id) at autogpt_platform/backend/backend/server/v2/library/db.py:249 LOC:31})
+EXTRACT	{Function on_graph_activate(graph, user_id) at autogpt_platform/backend/backend/integrations/webhooks/graph_lifecycle_hooks.py:21 LOC:35}	{Function _on_graph_activate(graph, user_id) at autogpt_platform/backend/backend/integrations/webhooks/graph_lifecycle_hooks.py:44 LOC:29})
+
+Commit: e28eec6ff9bb2fce05dc7a3123453ab72081ffd3
+No refactorings found.
+
+Commit: bf73b42890096da411ebf824f004577e35c3a4bd
+EXTRACT	{Function process_weekly_summary(**kwargs) at autogpt_platform/backend/backend/monitoring/notification_monitor.py:33 LOC:7}	{Function get_notification_manager_client() at autogpt_platform/backend/backend/monitoring/notification_monitor.py:21 LOC:2})
+EXTRACT	{Function process_existing_batches(**kwargs) at autogpt_platform/backend/backend/monitoring/notification_monitor.py:19 LOC:12}	{Function get_notification_manager_client() at autogpt_platform/backend/backend/monitoring/notification_monitor.py:21 LOC:2})
+
+Commit: b6d6b865ded6ccb2e1ce22b67f719401d1e31702
+CHANGE_SIGNATURE	{Function add_graph_execution(graph_id, user_id, inputs, preset_id, graph_version, graph_credentials_inputs, nodes_input_masks, use_db_query) at autogpt_platform/backend/backend/executor/utils.py:777 LOC:89}	{Function add_graph_execution(graph_id, user_id, inputs, preset_id, graph_version, graph_credentials_inputs, nodes_input_masks) at autogpt_platform/backend/backend/executor/utils.py:777 LOC:92})
+CHANGE_SIGNATURE	{Function stop_graph_execution(user_id, graph_exec_id, use_db_query, wait_timeout) at autogpt_platform/backend/backend/executor/utils.py:684 LOC:91}	{Function stop_graph_execution(user_id, graph_exec_id, wait_timeout) at autogpt_platform/backend/backend/executor/utils.py:685 LOC:90})
+
+Commit: cf2ca63d528452699e58387a5ee84e0d76cb20a9
+No refactorings found.
+
+Commit: c78143e517a3f1230cd675ce27874956047ec030
+EXTRACT	{Function process_existing_batches(**kwargs) at autogpt_platform/backend/backend/monitoring/notification_monitor.py:19 LOC:12}	{Function get_notification_manager_client() at autogpt_platform/backend/backend/monitoring/notification_monitor.py:21 LOC:2})
+EXTRACT	{Function process_weekly_summary(**kwargs) at autogpt_platform/backend/backend/monitoring/notification_monitor.py:33 LOC:7}	{Function get_notification_manager_client() at autogpt_platform/backend/backend/monitoring/notification_monitor.py:21 LOC:2})
+
+Commit: 6641a77c70a5ea286d7ed800000cafa8fa636505
+MOVE	{Function run(self, input_data, credentials, **kwargs) at autogpt_platform/backend/backend/blocks/replicate_flux_advanced.py:162 LOC:23}	{Function run(self, input_data, credentials, **kwargs) at autogpt_platform/backend/backend/blocks/replicate/flux_advanced.py:144 LOC:23})
+MOVE	{Function api_name(self) at autogpt_platform/backend/backend/blocks/replicate_flux_advanced.py:40 LOC:7}	{Function api_name(self) at autogpt_platform/backend/backend/blocks/replicate/flux_advanced.py:24 LOC:7})
+MOVE	{Function __init__(self) at autogpt_platform/backend/backend/blocks/replicate_flux_advanced.py:130 LOC:31}	{Function __init__(self) at autogpt_platform/backend/backend/blocks/replicate/flux_advanced.py:112 LOC:31})
+
+Commit: d33459ddb59c7e4a4cba598cd95d275362bbd0c8
+CHANGE_SIGNATURE	{Function run(self, input_data, credentials, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/flux_kontext.py:126 LOC:25}	{Function run(self, input_data, credentials, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/flux_kontext.py:126 LOC:27})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, credentials, **kwargs) at autogpt_platform/backend/backend/blocks/http.py:224 LOC:39}	{Function run(self, input_data, graph_exec_id, credentials, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/http.py:225 LOC:40})
+CHANGE_SIGNATURE	{Function run(self, input_data, node_exec_id, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/media.py:197 LOC:49}	{Function run(self, input_data, node_exec_id, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/media.py:202 LOC:53})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/media.py:42 LOC:22}	{Function run(self, input_data, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/media.py:42 LOC:24})
+CHANGE_SIGNATURE	{Function store_media_file(graph_exec_id, file, return_content) at autogpt_platform/backend/backend/util/file.py:33 LOC:106}	{Function store_media_file(graph_exec_id, file, user_id, return_content) at autogpt_platform/backend/backend/util/file.py:34 LOC:126})
+CHANGE_SIGNATURE	{Function run(self, input_data, credentials, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/google/gmail.py:847 LOC:17}	{Function run(self, input_data, credentials, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/google/gmail.py:847 LOC:19})
+CHANGE_SIGNATURE	{Function take_screenshot(credentials, graph_exec_id, url, viewport_width, viewport_height, full_page, format, block_ads, block_cookie_banners, block_chats, cache) at autogpt_platform/backend/backend/blocks/screenshotone.py:108 LOC:51}	{Function take_screenshot(credentials, graph_exec_id, user_id, url, viewport_width, viewport_height, full_page, format, block_ads, block_cookie_banners, block_chats, cache) at autogpt_platform/backend/backend/blocks/screenshotone.py:108 LOC:53})
+CHANGE_SIGNATURE	{Function run(self, input_data, node_exec_id, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/media.py:108 LOC:48}	{Function run(self, input_data, node_exec_id, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/media.py:110 LOC:51})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, **_kwargs) at autogpt_platform/backend/backend/blocks/spreadsheet.py:94 LOC:86}	{Function run(self, input_data, graph_exec_id, user_id, **_kwargs) at autogpt_platform/backend/backend/blocks/spreadsheet.py:94 LOC:87})
+CHANGE_SIGNATURE	{Function _prepare_files(graph_exec_id, files_name, files) at autogpt_platform/backend/backend/blocks/http.py:112 LOC:25}	{Function _prepare_files(graph_exec_id, files_name, files, user_id) at autogpt_platform/backend/backend/blocks/http.py:112 LOC:26})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/basic.py:37 LOC:12}	{Function run(self, input_data, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/basic.py:37 LOC:14})
+CHANGE_SIGNATURE	{Function _reply(self, service, input_data, graph_exec_id) at autogpt_platform/backend/backend/blocks/google/gmail.py:865 LOC:88}	{Function _reply(self, service, input_data, graph_exec_id, user_id) at autogpt_platform/backend/backend/blocks/google/gmail.py:867 LOC:93})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/http.py:138 LOC:66}	{Function run(self, input_data, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/http.py:139 LOC:66})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, **_kwargs) at autogpt_platform/backend/backend/blocks/text.py:362 LOC:72}	{Function run(self, input_data, graph_exec_id, user_id, **_kwargs) at autogpt_platform/backend/backend/blocks/text.py:362 LOC:73})
+CHANGE_SIGNATURE	{Function run(self, input_data, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/io.py:445 LOC:15}	{Function run(self, input_data, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/io.py:445 LOC:17})
+CHANGE_SIGNATURE	{Function run(self, input_data, credentials, graph_exec_id, **kwargs) at autogpt_platform/backend/backend/blocks/screenshotone.py:160 LOC:25}	{Function run(self, input_data, credentials, graph_exec_id, user_id, **kwargs) at autogpt_platform/backend/backend/blocks/screenshotone.py:162 LOC:27})
+
+Commit: e50366726ceee123ba6143ae7797e0210fe499e4
+CHANGE_SIGNATURE	{Function _read_emails(self, service, query, max_results) at autogpt_platform/backend/backend/blocks/google/gmail.py:163 LOC:41}	{Function _read_emails(self, service, query, max_results, scopes) at autogpt_platform/backend/backend/blocks/google/gmail.py:179 LOC:51})
+
+Commit: 725440ff3841a51784870160b82a86b8bb68ebf1
+EXTRACT	{Function run(self, input_data, **kwargs) at autogpt_platform/backend/backend/blocks/youtube.py:82 LOC:9}	{Function format_transcript(transcript) at autogpt_platform/backend/backend/blocks/youtube.py:70 LOC:4})
+
+Commit: 08b05621c1eeee392f9660a53a0377422b6fce71
+MOVE	{Function __init__(self) at autogpt_platform/backend/backend/blocks/csv.py:57 LOC:23}	{Function __init__(self) at autogpt_platform/backend/backend/blocks/spreadsheet.py:63 LOC:30})
+RENAME	{Function wrapper(*args, **kwargs) at autogpt_platform/backend/backend/util/retry.py:89 LOC:12}	{Function sync_wrapper(*args, **kwargs) at autogpt_platform/backend/backend/util/retry.py:91 LOC:12})
+MOVE	{Function process_row(row) at autogpt_platform/backend/backend/blocks/csv.py:150 LOC:9}	{Function process_row(row) at autogpt_platform/backend/backend/blocks/spreadsheet.py:163 LOC:9})
+MOVE	{Function run(self, input_data, graph_exec_id, **_kwargs) at autogpt_platform/backend/backend/blocks/csv.py:81 LOC:84}	{Function run(self, input_data, graph_exec_id, **_kwargs) at autogpt_platform/backend/backend/blocks/spreadsheet.py:94 LOC:86})
+

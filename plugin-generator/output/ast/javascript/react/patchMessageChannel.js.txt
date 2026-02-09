@@ -1,0 +1,118 @@
+(program (expression_statement (string (string_fragment))) (export_statement declaration: (function_declaration name: (identifier) parameters: (formal_parameters) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))))))))))))))) L:1
+(expression_statement (string (string_fragment))) L:1
+(string (string_fragment)) L:1
+("'") L:1
+(string_fragment) L:1
+("'") L:1
+(";") L:1
+(export_statement declaration: (function_declaration name: (identifier) parameters: (formal_parameters) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))))))))))))))) L:3
+("export") L:3
+(function_declaration name: (identifier) parameters: (formal_parameters) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))))))))))))) L:3
+("function") L:3
+(identifier) L:3
+(formal_parameters) L:3
+("(") L:3
+(")") L:3
+(statement_block (expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))))))))))))) L:3
+("{") L:3
+(expression_statement (assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))))))))))) L:4
+(assignment_expression left: (member_expression object: (identifier) property: (property_identifier)) right: (class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))))))))))) L:4
+(member_expression object: (identifier) property: (property_identifier)) L:4
+(identifier) L:4
+(".") L:4
+(property_identifier) L:4
+("=") L:4
+(class body: (class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))))))))) L:4
+("class") L:4
+(class_body member: (method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))))))))) L:4
+("{") L:4
+(method_definition name: (property_identifier) parameters: (formal_parameters) body: (statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))))))) L:5
+(property_identifier) L:5
+(formal_parameters) L:5
+("(") L:5
+(")") L:5
+(statement_block (lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))))))) L:5
+("{") L:5
+(lexical_declaration (variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))))) L:6
+("const") L:6
+(variable_declarator name: (identifier) value: (object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block))))) L:6
+(identifier) L:6
+("=") L:6
+(object (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block)))) L:6
+("{") L:6
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (statement_block))) L:7
+(property_identifier) L:7
+(":") L:7
+(arrow_function parameters: (formal_parameters) body: (statement_block)) L:7
+(formal_parameters) L:7
+("(") L:7
+(")") L:7
+("=>") L:7
+(statement_block) L:7
+("{") L:7
+("}") L:7
+(",") L:7
+("}") L:8
+(";") L:8
+(expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) L:10
+(assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier)) L:10
+(member_expression object: (this) property: (property_identifier)) L:10
+(this) L:10
+(".") L:10
+(property_identifier) L:10
+("=") L:10
+(identifier) L:10
+(";") L:10
+(expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))))) L:12
+(assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))))) L:12
+(member_expression object: (this) property: (property_identifier)) L:12
+(this) L:12
+(".") L:12
+(property_identifier) L:12
+("=") L:12
+(object (method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))))) L:12
+("{") L:12
+(method_definition name: (property_identifier) parameters: (formal_parameters (identifier)) body: (statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))))) L:13
+(property_identifier) L:13
+(formal_parameters (identifier)) L:13
+("(") L:13
+(identifier) L:13
+(")") L:13
+(statement_block (expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))))) L:13
+("{") L:13
+(expression_statement (call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)))) L:14
+(call_expression function: (identifier) arguments: (arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number))) L:14
+(identifier) L:14
+(arguments (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (number)) L:14
+("(") L:14
+(arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) L:14
+(formal_parameters) L:14
+("(") L:14
+(")") L:14
+("=>") L:14
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier))))) L:14
+("{") L:14
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))) L:15
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier))) L:15
+(member_expression object: (identifier) property: (property_identifier)) L:15
+(identifier) L:15
+(".") L:15
+(property_identifier) L:15
+(arguments (identifier)) L:15
+("(") L:15
+(identifier) L:15
+(")") L:15
+(";") L:15
+("}") L:16
+(",") L:16
+(number) L:16
+(")") L:16
+(";") L:16
+("}") L:17
+(",") L:17
+("}") L:18
+(";") L:18
+("}") L:19
+("}") L:20
+(";") L:20
+("}") L:21

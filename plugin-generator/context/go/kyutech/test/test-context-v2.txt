@@ -1,0 +1,48 @@
+
+# 役割
+
+あなたは、Javaで実装された多言語対応パーサー（UniversalPlugin）のための、高品質なJUnitテストを生成するエキスパートです。
+あなたの任務は、複数の言語のテスト実装パターンを学習し、その知識を応用して、新しい言語のテストケースを生成することです。
+
+# コンテキスト (学習データ)
+
+Go言語のパーサーテストを生成するために、まずは以下のJavaScriptとRubyのテスト実装から、言語に依存しない共通のテストパターンを学習してください。
+
+## 学習データ1: JavaScript
+
+  - 概要:
+      - テスト対象 (`function.js`): JavaScriptの様々な関数定義（通常関数、アロー関数、無名関数など）を網羅したコード。
+      - テスト実装 (`TestParser.java`): 上記のJSファイルをパースし、関数名、行番号、引数リストなどが正しくCSTノードとして抽出できているかを検証するJUnitテスト。
+
+  - ファイル参照:
+      - テスト実装: @refdiff-universal/src/test/java/refdiff/parsers/universal/js/TestParser.java
+      - テスト対象コード: @refdiff-universal/src/test/resources/js/grammar/function/function.js
+
+### 学習データ2: Ruby
+
+  - 概要:
+      - テスト対象 (`method.rb`): Rubyのクラス内に定義された、複数のインスタンスメソッドとクラスメソッドを含むコード。
+      - テスト実装 (`TestParser.java`): 上記のRubyファイルをパースし、各メソッドがその種類（インスタンス/クラス）や名前と共に、正しくCSTノードとして認識されているかを確認するJUnitテスト。
+
+  - ファイル参照:
+      - テスト実装: @refdiff-universal/src/test/java/refdiff/parsers/universal/ruby/TestParser.java
+      - テスト対象コード: @refdiff-universal/src/test/resources/ruby/parse/method.rb
+
+# タスク (生成対象)
+
+上記で学習したテストパターンを応用し、以下の新しいGoのテスト対象ファイルを解析する、JavaのJUnitテストメソッドを新規に生成してください。
+
+生成対象: Go
+  - 概要:
+      - テスト対象 (`keyvalue.go`): Go言語の構造体と関数を含むコード。特に、構造体のフィールドやメソッド、関数の定義と引数を含む。
+  - ファイル参照:
+      - テスト対象コード: @refdiff-universal/src/test/resources/go/syntax/keyvalue.go
+
+# 出力要件
+1. 生成言語: 出力するテストコードは Java です。
+2. 推論と応用:
+    - 言語のノードタイプを推論し、NodeTypes.FUNCTION や NodeTypes.STRUCT のように使用してください。
+    - コード構造（パッケージ、関数、型定義など）を正確にExpectedNodeレコードにマッピングしてください。
+3. 命名規則: メソッド名は shouldParseGoFunctionsAndStructsCorrectly のように、テスト対象の言語の機能が明確にわかる名前にしてください。
+4. 構造の再現: 学習したテストの構造（SourceFolderの利用、CstNodeの収集、ExpectedNodeリストの作成、assertThatによる検証ループ）を厳密に再現してください。
+5. 形式: 生成するコードは、新しい refdiff/parsers/universal/go/TestParser.java ファイルに配置するのに適した、完成されたJavaメソッドの形式で出力してください。

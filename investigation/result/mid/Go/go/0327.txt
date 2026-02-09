@@ -1,0 +1,698 @@
+Commit: f2db0dca0b0399c08319d22cbcbfa83be2bb781a
+No refactorings found.
+
+Commit: d86ec924993bfb824dfb6f618a46ea205fdbf261
+CHANGE_SIGNATURE	{function_declaration openat(dirfd syscall.Handle, name string, flag int, perm FileMode) at src/os/root_windows.go:141 LOC:9}	{function_declaration openat(dirfd syscall.Handle, name string, flag uint64, perm FileMode) at src/os/root_windows.go:141 LOC:9})
+
+Commit: 9d3f7fda70900c9d311df1eb4656fe9f6d62c781
+No refactorings found.
+
+Commit: 78a05c541f7c5f7b89abac11cff0ff18b029cb47
+No refactorings found.
+
+Commit: 52c3f73fda5b63c6da338e8447c51bbe00c237dd
+No refactorings found.
+
+Commit: a076f497577605e4cf0e20c147711e03dee7b2c3
+No refactorings found.
+
+Commit: 98238fd495a2a16a2cd90197c6f41352760e4ccb
+No refactorings found.
+
+Commit: 1ad30844d9cc0d5792b055f44a6e98759587bbfb
+No refactorings found.
+
+Commit: 13c082601db45c25fc85f4cdac9cc3bab7c4329f
+No refactorings found.
+
+Commit: 9b0a507735e8c0210f7f8a1cb875836133c1cee9
+No refactorings found.
+
+Commit: 1843f1e9c0e44835b0a683f69ab33ff9ea744f6c
+No refactorings found.
+
+Commit: e0870a0a121c22899208d80e81310d247c54f198
+No refactorings found.
+
+Commit: fb8bbe46d5329a6ec502564f7ac3cb2e2c28df8b
+No refactorings found.
+
+Commit: 9632ba8160dd93107af3577334bcadfe40068e42
+No refactorings found.
+
+Commit: 8dcab6f4505d198b5609182b4b5928bd190b21a8
+No refactorings found.
+
+Commit: ba840c1bf9be0c3b133f2efd638ec6d32dbedaff
+No refactorings found.
+
+Commit: fa706ea50fd0b9bf36d642d3bb8eeb732caafc7f
+No refactorings found.
+
+Commit: ffc85ee1f1c865c953920f966a8401d963b102ca
+No refactorings found.
+
+Commit: 9de69f6913dc253ee8ce67043f543bedde28fdb4
+No refactorings found.
+
+Commit: 4afd4828129d547719e8e71352c36e5117ddb50e
+CHANGE_SIGNATURE	{function_declaration doPkgsite(urlPath string) at src/cmd/go/internal/doc/pkgsite.go:37 LOC:57}	{function_declaration doPkgsite(urlPath, fragment string) at src/cmd/go/internal/doc/pkgsite.go:37 LOC:60})
+CHANGE_SIGNATURE	{function_declaration doPkgsite(string) at src/cmd/go/internal/doc/pkgsite_bootstrap.go:11 LOC:1}	{function_declaration doPkgsite(string, string) at src/cmd/go/internal/doc/pkgsite_bootstrap.go:11 LOC:1})
+
+Commit: 509d5f647ffc413bd874c2e2bf6d1b33f9bc0ac2
+No refactorings found.
+
+Commit: 853fc1273912b020e428c77d35e525c9225fd51e
+No refactorings found.
+
+Commit: bd885401d5a4b45fee8ae37069be0cc3beef9e3e
+No refactorings found.
+
+Commit: 119546ea4fdded79057913a943bd3b6a8dcf8d4a
+No refactorings found.
+
+Commit: ffa882059cfbfc7cd5f16c83d24775c08d63668f
+No refactorings found.
+
+Commit: 1f2e8e03e48597367e674138e26432345c685b1c
+No refactorings found.
+
+Commit: b80ffb64d815596eb8882eaefa3e2d2920380634
+No refactorings found.
+
+Commit: c7d8bda4596d2ad4970c8052fded76284b2f0be1
+No refactorings found.
+
+Commit: de2d7416679f4f383da6a1e7dfc52845911845c4
+No refactorings found.
+
+Commit: c61db5ebd52a75af80da5afd2c2de3c6ddf080d2
+No refactorings found.
+
+Commit: 07ee3bfc631cd6593c10b8715fc58b05d844f4ba
+No refactorings found.
+
+Commit: 5a56d8848b4ffb79c5ccc11ec6fa01823a91aaf8
+No refactorings found.
+
+Commit: c3927a47f092fc7248d973f4d8a64ab410804986
+No refactorings found.
+
+Commit: 77f911e31c243a8302c086d64dbef340b0c999b8
+No refactorings found.
+
+Commit: 786be1d2bff0192288dfc2832e5012ad6b0816be
+No refactorings found.
+
+Commit: 4a7fde922ff12dce9d4e00f1b1e658fa907e488d
+EXTRACT	{method_declaration ReadEvent() at src/internal/trace/reader.go:77 LOC:176}	{method_declaration nextGenWithSpill() at src/internal/trace/reader.go:229 LOC:34})
+INLINE	{function_declaration readTrace() at src/runtime/trace.go:774 LOC:31}	{function_declaration ReadTrace() at src/runtime/trace.go:757 LOC:31})
+EXTRACT	{function_declaration readGeneration(r *bufio.Reader, spill *spilledBatch, ver version.Version) at src/internal/trace/generation.go:50 LOC:98}	{function_declaration fixUpCPUSamples(samples []cpuSample, freq frequency) at src/internal/trace/generation.go:593 LOC:11})
+EXTRACT	{method_declaration ReadEvent() at src/internal/trace/reader.go:77 LOC:176}	{method_declaration installGen(gen *generation) at src/internal/trace/reader.go:266 LOC:32})
+RENAME	{function_declaration readGeneration(r *bufio.Reader, spill *spilledBatch, ver version.Version) at src/internal/trace/generation.go:50 LOC:98}	{function_declaration readGenerationWithSpill(r *bufio.Reader, spill *spilledBatch, ver version.Version) at src/internal/trace/generation.go:128 LOC:95})
+
+Commit: cb814bd5bc3f0575e8d0e26370c05456770cb3da
+No refactorings found.
+
+Commit: 78a3968c2c9f2d6e8eb6dc263b4a2517c72d71be
+No refactorings found.
+
+Commit: ab8121a407280bf39bdd401699476feb39ccd0f7
+No refactorings found.
+
+Commit: 13df972f6885ebdeba1ea38f0acd99ea0f2bfb49
+CHANGE_SIGNATURE	{function_declaration gcount() at src/runtime/proc.go:5531 LOC:13}	{function_declaration gcount(includeSys bool) at src/runtime/proc.go:5540 LOC:16})
+
+Commit: bd07fafb0a2f979b2be05d9a533182ca55428079
+No refactorings found.
+
+Commit: a651e2ea47586f1e29688202ff60c719bac6a05b
+No refactorings found.
+
+Commit: e4291e484cfcef5711f45d08e6d97a505eca9bf4
+No refactorings found.
+
+Commit: 15d6dbc05cd8d9b71842a9e95730fd9a285f2580
+No refactorings found.
+
+Commit: bca3e98b8aa4f754ea3604b62ef42f64dec88800
+CHANGE_SIGNATURE	{method_declaration tryCache(b *work.Builder, a *work.Action) at src/cmd/go/internal/test/test.go:1744 LOC:3}	{method_declaration tryCache(b *work.Builder, a *work.Action, linkAction *work.Action) at src/cmd/go/internal/test/test.go:1771 LOC:3})
+
+Commit: 052fcde9fdd1655f823e810a284c651b3481a433
+No refactorings found.
+
+Commit: 3871c0d84d214bdecc370c8717c71a9a155a363f
+No refactorings found.
+
+Commit: a8564bd412d4495a6048f981d30d4d7abb1e45a7
+No refactorings found.
+
+Commit: 924fe98902cdebf20825ab5d1e4edfc0fed2966f
+No refactorings found.
+
+Commit: 320df537cc554610aacdc12a183944eb89db8337
+No refactorings found.
+
+Commit: ca66f907dd44d57c93b2dc5ecafcb8addf2b23c3
+No refactorings found.
+
+Commit: 4b1800e47632d52006e3080580e4e60792389759
+CHANGE_SIGNATURE	{function_declaration newUnmarshalErrorBeforeWithSkipping(d *jsontext.Decoder, o *jsonopts.Struct, t reflect.Type, err error) at src/encoding/json/v2/errors.go:139 LOC:9}	{function_declaration newUnmarshalErrorBeforeWithSkipping(d *jsontext.Decoder, t reflect.Type, err error) at src/encoding/json/v2/errors.go:142 LOC:9})
+CHANGE_SIGNATURE	{function_declaration newUnmarshalErrorAfterWithSkipping(d *jsontext.Decoder, o *jsonopts.Struct, t reflect.Type, err error) at src/encoding/json/v2/errors.go:173 LOC:9}	{function_declaration newUnmarshalErrorAfterWithSkipping(d *jsontext.Decoder, t reflect.Type, err error) at src/encoding/json/v2/errors.go:176 LOC:9})
+CHANGE_SIGNATURE	{function_declaration newInvalidFormatError(c coder, t reflect.Type, o *jsonopts.Struct) at src/encoding/json/v2/errors.go:100 LOC:10}	{function_declaration newInvalidFormatError(c coder, t reflect.Type) at src/encoding/json/v2/errors.go:103 LOC:10})
+
+Commit: af8870708bbaf15956a27cbab15582b4c666855e
+No refactorings found.
+
+Commit: 0a75e5a07b858cbe6216c99fa12d582d063499d9
+No refactorings found.
+
+Commit: de9b6f98759f718fb48ecef22c2275ac98f1871d
+CHANGE_SIGNATURE	{function_declaration demangleSingleFunction(fn *profile.Function, options []demangle.Option) at src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:284 LOC:36}	{function_declaration demangleSingleFunction(fn *profile.Function, opts []demangle.Option) at src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:284 LOC:33})
+
+Commit: 674c5f0edd82b5d1dd5cb44eb4b85830245c151e
+No refactorings found.
+
+Commit: 9bbea0f21a4539ea365d4804131b17d3b963c4f7
+No refactorings found.
+
+Commit: 08eef97500bd814a1dc83596a45837e6c7a7d43c
+No refactorings found.
+
+Commit: 2fe5d51d0494d3241a8006d797d02510b030c0e3
+No refactorings found.
+
+Commit: 9fcb87c352b398aa650310160346c8d9bfcdcc45
+No refactorings found.
+
+Commit: 9763ece873293c05560444cd6c6b8ea4cd2af1b4
+No refactorings found.
+
+Commit: f10a82b76ff92b3c506203485b158191de4b3090
+No refactorings found.
+
+Commit: 3bea95b2778312dd733c0f13fe9ec20bd2bf2d13
+No refactorings found.
+
+Commit: 90b7d7aaa27b5a1d7a69f76ed82ed2e88ae84c31
+No refactorings found.
+
+Commit: 1b263fc6042ed763319f59fd2b87df23e53c9f6f
+No refactorings found.
+
+Commit: b266318cf714ab34be01e32d7338053ca6dcb294
+No refactorings found.
+
+Commit: adbf59525c06ae7e037ad0e9a7709ebed2528d66
+No refactorings found.
+
+Commit: 4e182db5fc876564a4f87a0602c58ea0ddc6e37c
+No refactorings found.
+
+Commit: d2b3c1a5045437233ca6a8adc7e36293cd73655a
+No refactorings found.
+
+Commit: f63e12d0e0f4533af54550d6d049a836fb738147
+No refactorings found.
+
+Commit: 8e317da77d151f180b6e006a0e84154576a4a295
+No refactorings found.
+
+Commit: f67d8ff34ad3784fc82b1d93179885c2ea5ffc2f
+No refactorings found.
+
+Commit: fe4d445c36d69c1b238399e2f13b04bedd65ad7b
+No refactorings found.
+
+Commit: 750789fab7f9cccc0756c5ec0d0952c917a4546f
+No refactorings found.
+
+Commit: 889ab74169db2c8758f51c1a199a90266b16669b
+No refactorings found.
+
+Commit: 182336bf05c8e833f433510ba62205d8ce40299a
+No refactorings found.
+
+Commit: f04421ea9adc634fc24133ddc59aa24e323ceec9
+No refactorings found.
+
+Commit: 28aa529c998f114f08ac57cfe94fbf3dd7813f00
+No refactorings found.
+
+Commit: ec9e1176c3209cf92e73e3deb2d8073fab5ea4d6
+No refactorings found.
+
+Commit: d0a64f7969954add113ea9c3283d3200c4ead7a1
+No refactorings found.
+
+Commit: 00a7bdcb55dbaffcf73e42c9c11e37823cc6e8cc
+No refactorings found.
+
+Commit: 74421a305b4d76259d9860529fe59e8fc9bad81e
+No refactorings found.
+
+Commit: c31359138ca5078f33eb697f71fd280ca1889593
+No refactorings found.
+
+Commit: 7248995b608cdf62362c1b95550edc0bdd15babe
+No refactorings found.
+
+Commit: caf9fc3ccdf94b968e489d323b965fd47823e146
+No refactorings found.
+
+Commit: ce3f3e2ae73dcc0c270bc73a59ea5e7be6cf6a8d
+No refactorings found.
+
+Commit: 3dbef65bf37f1b7ccd1f884761341a5a15456ffa
+EXTRACT	{method_declaration PrepareContext(ctx context.Context, q string) at src/database/sql/sql_test.go:4265 LOC:3}	{method_declaration PrepareContext(ctx context.Context, q string) at src/database/sql/sql_test.go:4361 LOC:3})
+
+Commit: 2b804abf0712d45801671232585e0011902a5c48
+EXTRACT	{function_declaration DialUDP(network string, laddr, raddr *UDPAddr) at src/net/udpsock.go:287 LOC:16}	{function_declaration dialUDP(ctx context.Context, dialer *Dialer, network string, laddr, raddr *UDPAddr) at src/net/udpsock.go:291 LOC:19})
+EXTRACT	{method_declaration DialContext(ctx context.Context, network, address string) at src/net/dial.go:525 LOC:55}	{method_declaration dialCtx(ctx context.Context) at src/net/dial.go:560 LOC:34})
+EXTRACT	{function_declaration DialIP(network string, laddr, raddr *IPAddr) at src/net/iprawsock.go:208 LOC:11}	{function_declaration dialIP(ctx context.Context, dialer *Dialer, network string, laddr, raddr *IPAddr) at src/net/iprawsock.go:220 LOC:14})
+EXTRACT	{function_declaration DialUnix(network string, laddr, raddr *UnixAddr) at src/net/unixsock.go:203 LOC:13}	{function_declaration dialUnix(ctx context.Context, dialer *Dialer, network string, laddr, raddr *UnixAddr) at src/net/unixsock.go:207 LOC:16})
+EXTRACT	{function_declaration DialTCP(network string, laddr, raddr *TCPAddr) at src/net/tcpsock.go:317 LOC:24}	{function_declaration dialTCP(ctx context.Context, dialer *Dialer, network string, laddr, raddr *TCPAddr) at src/net/tcpsock.go:321 LOC:27})
+
+Commit: 6abfe7b0deaeb62d9f8d4bf09475efec68db9a1b
+No refactorings found.
+
+Commit: 691af6ca28dad9c72e51346fe10c6aaadc3f940b
+No refactorings found.
+
+Commit: 925149da2009589f6f2567564e1c7370e9f93b1b
+No refactorings found.
+
+Commit: cf4af0b2f30f27b6273fa9b9f295dbdaf9cdb7bb
+No refactorings found.
+
+Commit: b096ddb9ea84efa28eafd7850b8f8a8b3e76e49f
+No refactorings found.
+
+Commit: a2431776ebc57ebc385d3fd9d3cc6eb89acb9d9c
+No refactorings found.
+
+Commit: a7f05b38f7e7beefd5ee54089aae59b21507bb3c
+No refactorings found.
+
+Commit: 1718828c81f2bad44b51b13fb4b34540a9c2c096
+No refactorings found.
+
+Commit: 084c0f849467d5e45b7242cda3dd957352e86b8f
+No refactorings found.
+
+Commit: a62f72f7a7ee606c803d1c68cadd24e45eea5e83
+No refactorings found.
+
+Commit: fbac94a79998d4730a58592f0634fa8a39d8b9fb
+CHANGE_SIGNATURE	{method_declaration Store(key K, old V) at src/internal/sync/hashtriemap.go:199 LOC:3}	{method_declaration Store(key K, new V) at src/internal/sync/hashtriemap.go:199 LOC:3})
+
+Commit: 317be4cfeb7fc92bd7d5569aa8dff8f568e02f78
+No refactorings found.
+
+Commit: bce5601cbbb1a3a33ecdb13b796033e44931a3da
+No refactorings found.
+
+Commit: 777d76c4f2392b782418a867172e7e951c0278f8
+No refactorings found.
+
+Commit: 0201524c527f18e21240dce682dfe725b08cfb12
+No refactorings found.
+
+Commit: dcc77f9e3c7097b497e99800a7a4ed80c7a430d8
+No refactorings found.
+
+Commit: c7b85e9ddc1e23f84ccb3c5de8fdb55e80a9dd69
+No refactorings found.
+
+Commit: a8dd771e132beb8e4b2354f209cbb29b9f4fc815
+No refactorings found.
+
+Commit: bdb2d50fdf40706e7d7411f33ade80edac726707
+No refactorings found.
+
+Commit: 768c51e368e05739854c1413fdf7fd129d01e482
+No refactorings found.
+
+Commit: b3388569a187ea6be48caa41265f2b4dbc2fdfd3
+No refactorings found.
+
+Commit: dd3abf6bc5203df3c8a09ff151852fa8b9e7f2f4
+No refactorings found.
+
+Commit: 73ff6d148038da77dd05b3dca3f0767db000a0f7
+No refactorings found.
+
+Commit: f3606b0825c20e3f3ccdae00bb8d5d7d8dfd745e
+No refactorings found.
+
+Commit: ee7bb8969a62b12f466f818e4e3d836a2e126940
+No refactorings found.
+
+Commit: 1f7ffca171cd8c50fe6a10eb77a84a95c5b37c61
+No refactorings found.
+
+Commit: 8282b72d627269ed2c2f7db7ea744e109667d7b1
+No refactorings found.
+
+Commit: dc54d7b607488e71776ba0fa3d09398d65daf033
+No refactorings found.
+
+Commit: e0a1ea431c960c3ed740f9b32754e7c31737035c
+No refactorings found.
+
+Commit: 2747f925dd1f08f9b9a1ef23170ee601519d70c2
+No refactorings found.
+
+Commit: 025d36917c8f56baede2f477131bbf08bf1382ca
+No refactorings found.
+
+Commit: f53dcb6280a66acb7f6a66d39eaf51e5f0f5698b
+CHANGE_SIGNATURE	{function_declaration linkFile(runcmd runCmd, goname string, importcfg string, ldflags []string) at src/cmd/internal/testdir/testdir_test.go:236 LOC:16}	{function_declaration linkFile(runcmd runCmd, outfile, infile string, importcfg string, ldflags []string) at src/cmd/internal/testdir/testdir_test.go:238 LOC:18})
+
+Commit: a3895fe9f18682d5055cb68283eba21d7255a67f
+EXTRACT	{method_declaration Scan(dest ...any) at src/database/sql/sql.go:3365 LOC:43}	{method_declaration scanLocked(dest ...any) at src/database/sql/sql.go:3383 LOC:23})
+
+Commit: 608e9fac9055aa188c513f4dd53f12e692bc3c0c
+No refactorings found.
+
+Commit: 72e8237cc11569de2faf9885a1b83d06446533b5
+No refactorings found.
+
+Commit: 75ea2d05c01903a69dbdcd15e64b934da73c84ea
+No refactorings found.
+
+Commit: 4c7362e41cc3d25b471622169e4737743def51b5
+No refactorings found.
+
+Commit: a5527374181c936938676608d469baa41e9abe8b
+No refactorings found.
+
+Commit: e1fd4faf914b914856dfb0be1ad26cd4cef4a9ae
+No refactorings found.
+
+Commit: bcd25c79aa5675d3e5d28c09715b8147906da006
+No refactorings found.
+
+Commit: b0945a54b5ec65f79ad722d62f8c3ed62ba0b9d9
+No refactorings found.
+
+Commit: 55d961b202de263d6fba73a60d01d142f1d66dc6
+No refactorings found.
+
+Commit: af0c4fe2ca51918bd82231ac48a28a0d0ef15c98
+EXTRACT	{method_declaration asmHeader() at src/runtime/mkpreempt.go:125 LOC:13}	{method_declaration commonHeader() at src/runtime/mkpreempt.go:127 LOC:7})
+
+Commit: e73afaae69bb6f098e3c1dbd98cfe134843910a1
+No refactorings found.
+
+Commit: cef381ba60e129e407ea5e5c1191e6ed571cf956
+CHANGE_SIGNATURE	{function_declaration gen386() at src/runtime/mkpreempt.go:200 LOC:35}	{function_declaration gen386(g *gen) at src/runtime/mkpreempt.go:203 LOC:37})
+CHANGE_SIGNATURE	{function_declaration notImplemented() at src/runtime/mkpreempt.go:614 LOC:4}	{function_declaration notImplemented(g *gen) at src/runtime/mkpreempt.go:635 LOC:5})
+CHANGE_SIGNATURE	{function_declaration genLoong64() at src/runtime/mkpreempt.go:447 LOC:43}	{function_declaration genLoong64(g *gen) at src/runtime/mkpreempt.go:459 LOC:45})
+CHANGE_SIGNATURE	{function_declaration genARM() at src/runtime/mkpreempt.go:277 LOC:43}	{function_declaration genARM(g *gen) at src/runtime/mkpreempt.go:284 LOC:45})
+CHANGE_SIGNATURE	{function_declaration genRISCV64() at src/runtime/mkpreempt.go:546 LOC:29}	{function_declaration genRISCV64(g *gen) at src/runtime/mkpreempt.go:562 LOC:31})
+CHANGE_SIGNATURE	{function_declaration genS390X() at src/runtime/mkpreempt.go:576 LOC:32}	{function_declaration genS390X(g *gen) at src/runtime/mkpreempt.go:594 LOC:34})
+CHANGE_SIGNATURE	{function_declaration genMIPS(_64bit bool) at src/runtime/mkpreempt.go:376 LOC:70}	{function_declaration genMIPS(g *gen, _64bit bool) at src/runtime/mkpreempt.go:386 LOC:72})
+CHANGE_SIGNATURE	{method_declaration save() at src/runtime/mkpreempt.go:179 LOC:9}	{method_declaration save(g *gen) at src/runtime/mkpreempt.go:182 LOC:9})
+CHANGE_SIGNATURE	{function_declaration genPPC64() at src/runtime/mkpreempt.go:491 LOC:54}	{function_declaration genPPC64(g *gen) at src/runtime/mkpreempt.go:505 LOC:56})
+CHANGE_SIGNATURE	{function_declaration genAMD64() at src/runtime/mkpreempt.go:236 LOC:40}	{function_declaration genAMD64(g *gen) at src/runtime/mkpreempt.go:241 LOC:42})
+CHANGE_SIGNATURE	{function_declaration genARM64() at src/runtime/mkpreempt.go:321 LOC:54}	{function_declaration genARM64(g *gen) at src/runtime/mkpreempt.go:330 LOC:55})
+CHANGE_SIGNATURE	{method_declaration restore() at src/runtime/mkpreempt.go:189 LOC:10}	{method_declaration restore(g *gen) at src/runtime/mkpreempt.go:192 LOC:10})
+CHANGE_SIGNATURE	{function_declaration genWasm() at src/runtime/mkpreempt.go:609 LOC:4}	{function_declaration genWasm(g *gen) at src/runtime/mkpreempt.go:629 LOC:5})
+
+Commit: c0025d5e0b3f6fca7117e9b8f4593a95e37a9fa5
+No refactorings found.
+
+Commit: 4ee0df8c466861bcd258ec55b58283f276d3b3d5
+No refactorings found.
+
+Commit: cd55f86b8dcfc139ee5c17d32530ac9e758c8bc0
+No refactorings found.
+
+Commit: 21ab0128b62658ba3e325586f45bb781bee55fda
+No refactorings found.
+
+Commit: 802d056c784d6baa8e5fc13a86e24ecc82ec2bf2
+No refactorings found.
+
+Commit: a3295df873bb22b3ba427124b1220370a5ca5cdb
+No refactorings found.
+
+Commit: 2b622b05a97bf785e97a3c241270cb6580d65ef7
+INLINE	{function_declaration isUint32PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:511 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETEQstore(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:17805 LOC:582})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteBlockAMD64(b *Block) at src/cmd/compile/internal/ssa/rewriteAMD64.go:30098 LOC:1721})
+INLINE	{function_declaration isUint32PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:511 LOC:1}	{function_declaration rewriteBlockAMD64(b *Block) at src/cmd/compile/internal/ssa/rewriteAMD64.go:30098 LOC:1721})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETEQstore(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:17805 LOC:582})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64ANDQ(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:3082 LOC:158})
+INLINE	{function_declaration isUint32PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:511 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETEQ(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:17343 LOC:462})
+INLINE	{function_declaration isUint32PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:511 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETNE(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:19365 LOC:486})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETNE(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:19365 LOC:486})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETNEstore(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:19851 LOC:582})
+INLINE	{function_declaration isUint32PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:511 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETNEstore(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:19851 LOC:582})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64SETEQ(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:17343 LOC:462})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64XORQ(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:23475 LOC:115})
+INLINE	{function_declaration isUint64PowerOfTwo(in int64) at src/cmd/compile/internal/ssa/rewrite.go:508 LOC:1}	{function_declaration rewriteValueAMD64_OpAMD64ORQ(v *Value) at src/cmd/compile/internal/ssa/rewriteAMD64.go:14411 LOC:229})
+
+Commit: 72147ffa7556b2cd694a58ab562cb7e5b5c0514e
+No refactorings found.
+
+Commit: 26da1199ebdddeebc5eebdd562d8a40f01f42a1b
+No refactorings found.
+
+Commit: 5ab9f23977694ab87614fd30e081d294eb313efd
+No refactorings found.
+
+Commit: fcc036f03b07e58f76ed94bc9a9483ddef96f81c
+No refactorings found.
+
+Commit: 7a1679d7ae32dd8a01bd355413ee77ba517f5f43
+No refactorings found.
+
+Commit: 95693816a5c3edc98ea81851235d09d85c88b523
+No refactorings found.
+
+Commit: d7bd7773ebe0ffe7d7fae92acb77e10ad0539dd3
+No refactorings found.
+
+Commit: 4b6cbc377f9b3d2598b0d30a37c9cf3797ba6e12
+No refactorings found.
+
+Commit: b2960e35804aafbbb0df9973f99b034bea8c150a
+No refactorings found.
+
+Commit: abeeef1c08a589c2341f0d4e19ae49ec0892e797
+No refactorings found.
+
+Commit: d44749b65b47f42e7a5bae2e0e9b0ab6bb3d5f80
+CHANGE_SIGNATURE	{method_declaration specialLsxMovInst(a obj.As, fReg, tReg int16) at src/cmd/internal/obj/loong64/asm.go:4195 LOC:161}	{method_declaration specialLsxMovInst(a obj.As, fReg, tReg int16, offset_flag bool) at src/cmd/internal/obj/loong64/asm.go:4209 LOC:190})
+
+Commit: 4ab1aec00799f91e96182cbbffd1de405cd52e93
+No refactorings found.
+
+Commit: e666972a674eb96f5847c7bbeb5c6e1bcb572af5
+CHANGE_SIGNATURE	{function_declaration stdcall_no_g(fn stdFunction, n int, args uintptr) at src/runtime/os_windows.go:940 LOC:9}	{function_declaration stdcall_no_g(fn stdFunction, args ...uintptr) at src/runtime/os_windows.go:942 LOC:11})
+CHANGE_SIGNATURE	{function_declaration stdcall(fn stdFunction) at src/runtime/os_windows.go:955 LOC:20}	{function_declaration stdcall(fn stdFunction, args ...uintptr) at src/runtime/os_windows.go:961 LOC:24})
+
+Commit: ef4054978692bd934eb575d0027c1c5476af9931
+No refactorings found.
+
+Commit: 336931a4ca7172d4a21097b2b9a143a1c8df37f0
+EXTRACT	{method_declaration moveOrCopyFile(dst, src string, perm fs.FileMode, force bool) at src/cmd/go/internal/work/shell.go:120 LOC:60}	{method_declaration move(src, dst string, perm fs.FileMode) at src/cmd/go/internal/work/shell_nonwindows.go:19 LOC:31})
+
+Commit: eef5f8d93016147718afba8a05282d2ba7332c51
+No refactorings found.
+
+Commit: e071617222e373f59db8995ce171bae708e0dcef
+No refactorings found.
+
+Commit: eb7f515c4d920c884ba7c37939f016a153c466e9
+EXTRACT	{function_declaration numSpills(b *Block) at src/cmd/compile/internal/ssa/regalloc_test.go:221 LOC:9}	{function_declaration numOps(b *Block, op Op) at src/cmd/compile/internal/ssa/regalloc_test.go:249 LOC:9})
+
+Commit: c0ee2fd4e309ef0b8f4ab6f4860e2626c8e00802
+No refactorings found.
+
+Commit: a4d99770c0e5f340d6d11d6353110413dc109138
+No refactorings found.
+
+Commit: 70a2ff76485477211397ae6399bee06101bc5935
+No refactorings found.
+
+Commit: 69338a335ada5882b888fb7eabe0ad6f0e12c986
+No refactorings found.
+
+Commit: cedf63616a00c8a6a69f6bbe4bc93b6865cec842
+No refactorings found.
+
+Commit: 82a1921c3b6b493c4ff358f063c2ffffabba9fd5
+CHANGE_SIGNATURE	{method_declaration reset(typ *abi.SwissMapType, capacity uint16) at src/internal/runtime/maps/table.go:102 LOC:11}	{method_declaration reset(typ *abi.MapType, capacity uint16) at src/internal/runtime/maps/table.go:102 LOC:11})
+CHANGE_SIGNATURE	{function_declaration mapclear(t *abi.SwissMapType, m *maps.Map) at src/runtime/map.go:178 LOC:9}	{function_declaration mapclear(t *abi.MapType, m *maps.Map) at src/runtime/map.go:178 LOC:9})
+CHANGE_SIGNATURE	{function_declaration mapIterStart(t *abi.SwissMapType, m *maps.Map, it *maps.Iter) at src/runtime/map.go:156 LOC:9}	{function_declaration mapIterStart(t *abi.MapType, m *maps.Map, it *maps.Iter) at src/runtime/map.go:156 LOC:9})
+CHANGE_SIGNATURE	{method_declaration Init(typ *abi.SwissMapType, m *Map) at src/internal/runtime/maps/table.go:651 LOC:23}	{method_declaration Init(typ *abi.MapType, m *Map) at src/internal/runtime/maps/table.go:651 LOC:23})
+CHANGE_SIGNATURE	{method_declaration getWithKeySmall(typ *abi.SwissMapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/map.go:442 LOC:30}	{method_declaration getWithKeySmall(typ *abi.MapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/map.go:442 LOC:30})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess2_fast64(typ *abi.SwissMapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:84 LOC:67}	{function_declaration runtime_mapaccess2_fast64(typ *abi.MapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:84 LOC:67})
+RENAME	{function_declaration decodetypeMapSwissGroup(ldr *loader.Loader, arch *sys.Arch, symIdx loader.Sym) at src/cmd/link/internal/ld/decodesym.go:161 LOC:4}	{function_declaration decodetypeMapGroup(ldr *loader.Loader, arch *sys.Arch, symIdx loader.Sym) at src/cmd/link/internal/ld/decodesym.go:161 LOC:4})
+CHANGE_SIGNATURE	{method_declaration Clear(typ *abi.SwissMapType) at src/internal/runtime/maps/table.go:598 LOC:15}	{method_declaration Clear(typ *abi.MapType) at src/internal/runtime/maps/table.go:598 LOC:15})
+CHANGE_SIGNATURE	{function_declaration reflect_mapdelete_faststr(t *abi.SwissMapType, m *maps.Map, key string) at src/runtime/map.go:270 LOC:3}	{function_declaration reflect_mapdelete_faststr(t *abi.MapType, m *maps.Map, key string) at src/runtime/map.go:270 LOC:3})
+CHANGE_SIGNATURE	{function_declaration mapaccess1_fat(t *abi.SwissMapType, m *maps.Map, key, zero unsafe.Pointer) at src/runtime/map.go:93 LOC:7}	{function_declaration mapaccess1_fat(t *abi.MapType, m *maps.Map, key, zero unsafe.Pointer) at src/runtime/map.go:93 LOC:7})
+CHANGE_SIGNATURE	{method_declaration KeyFromFullGroup(typ *abi.SwissMapType) at src/internal/runtime/maps/export_test.go:71 LOC:36}	{method_declaration KeyFromFullGroup(typ *abi.MapType) at src/internal/runtime/maps/export_test.go:71 LOC:36})
+CHANGE_SIGNATURE	{function_declaration runtime_mapassign_faststr(typ *abi.SwissMapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:261 LOC:136}	{function_declaration runtime_mapassign_faststr(typ *abi.MapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:261 LOC:136})
+RENAME	{function_declaration SwissMapGroupType(t *types.Type) at src/cmd/compile/internal/reflectdata/map.go:19 LOC:71}	{function_declaration MapGroupType(t *types.Type) at src/cmd/compile/internal/reflectdata/map.go:19 LOC:71})
+CHANGE_SIGNATURE	{method_declaration putSlotSmallFastPtr(typ *abi.SwissMapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/runtime_fast64.go:327 LOC:39}	{method_declaration putSlotSmallFastPtr(typ *abi.MapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/runtime_fast64.go:327 LOC:39})
+CHANGE_SIGNATURE	{method_declaration Put(typ *abi.SwissMapType, key, elem unsafe.Pointer) at src/internal/runtime/maps/map.go:473 LOC:4}	{method_declaration Put(typ *abi.MapType, key, elem unsafe.Pointer) at src/internal/runtime/maps/map.go:473 LOC:4})
+CHANGE_SIGNATURE	{function_declaration runtime_mapassign_fast64ptr(typ *abi.SwissMapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime_fast64.go:370 LOC:128}	{function_declaration runtime_mapassign_fast64ptr(typ *abi.MapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime_fast64.go:370 LOC:128})
+CHANGE_SIGNATURE	{function_declaration reflect_mapaccess_faststr(t *abi.SwissMapType, m *maps.Map, key string) at src/runtime/map.go:235 LOC:8}	{function_declaration reflect_mapaccess_faststr(t *abi.MapType, m *maps.Map, key string) at src/runtime/map.go:235 LOC:8})
+CHANGE_SIGNATURE	{function_declaration makemap(t *abi.SwissMapType, hint int, m *maps.Map) at src/runtime/map.go:62 LOC:7}	{function_declaration makemap(t *abi.MapType, hint int, m *maps.Map) at src/runtime/map.go:62 LOC:7})
+CHANGE_SIGNATURE	{function_declaration newTable(typ *abi.SwissMapType, capacity uint64, index int, localDepth uint8) at src/internal/runtime/maps/table.go:74 LOC:25}	{function_declaration newTable(typ *abi.MapType, capacity uint64, index int, localDepth uint8) at src/internal/runtime/maps/table.go:74 LOC:25})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess1_fast32(typ *abi.SwissMapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:15 LOC:67}	{function_declaration runtime_mapaccess1_fast32(typ *abi.MapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:15 LOC:67})
+CHANGE_SIGNATURE	{method_declaration getWithKey(typ *abi.SwissMapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:403 LOC:18}	{method_declaration getWithKey(typ *abi.MapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:403 LOC:18})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess2_faststr(typ *abi.SwissMapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:160 LOC:57}	{function_declaration runtime_mapaccess2_faststr(typ *abi.MapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:160 LOC:57})
+CHANGE_SIGNATURE	{method_declaration checkInvariants(typ *abi.SwissMapType, m *Map) at src/internal/runtime/maps/table_debug.go:15 LOC:69}	{method_declaration checkInvariants(typ *abi.MapType, m *Map) at src/internal/runtime/maps/table_debug.go:15 LOC:69})
+RENAME	{function_declaration SwissMapIterType() at src/cmd/compile/internal/reflectdata/map.go:202 LOC:61}	{function_declaration MapIterType() at src/cmd/compile/internal/reflectdata/map.go:202 LOC:61})
+CHANGE_SIGNATURE	{method_declaration Get(typ *abi.SwissMapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/table.go:145 LOC:11}	{method_declaration Get(typ *abi.MapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/table.go:145 LOC:11})
+CHANGE_SIGNATURE	{function_declaration runtime_mapdelete_faststr(typ *abi.SwissMapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:399 LOC:13}	{function_declaration runtime_mapdelete_faststr(typ *abi.MapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:399 LOC:13})
+CHANGE_SIGNATURE	{method_declaration grow(typ *abi.SwissMapType, m *Map, newCapacity uint16) at src/internal/runtime/maps/table.go:1200 LOC:33}	{method_declaration grow(typ *abi.MapType, m *Map, newCapacity uint16) at src/internal/runtime/maps/table.go:1200 LOC:33})
+CHANGE_SIGNATURE	{function_declaration makemap64(t *abi.SwissMapType, hint int64, m *maps.Map) at src/runtime/map.go:23 LOC:6}	{function_declaration makemap64(t *abi.MapType, hint int64, m *maps.Map) at src/runtime/map.go:23 LOC:6})
+CHANGE_SIGNATURE	{method_declaration TableFor(typ *abi.SwissMapType, key unsafe.Pointer) at src/internal/runtime/maps/export_test.go:109 LOC:9}	{method_declaration TableFor(typ *abi.MapType, key unsafe.Pointer) at src/internal/runtime/maps/export_test.go:109 LOC:9})
+CHANGE_SIGNATURE	{function_declaration reflect_mapaccess(t *abi.SwissMapType, m *maps.Map, key unsafe.Pointer) at src/runtime/map.go:225 LOC:8}	{function_declaration reflect_mapaccess(t *abi.MapType, m *maps.Map, key unsafe.Pointer) at src/runtime/map.go:225 LOC:8})
+CHANGE_SIGNATURE	{method_declaration growToTable(typ *abi.SwissMapType) at src/internal/runtime/maps/map.go:604 LOC:38}	{method_declaration growToTable(typ *abi.MapType) at src/internal/runtime/maps/map.go:604 LOC:38})
+CHANGE_SIGNATURE	{function_declaration runtime_mapdelete_fast64(typ *abi.SwissMapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:500 LOC:13}	{function_declaration runtime_mapdelete_fast64(typ *abi.MapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:500 LOC:13})
+CHANGE_SIGNATURE	{function_declaration reflect_makemap(t *abi.SwissMapType, cap int) at src/runtime/map.go:204 LOC:9}	{function_declaration reflect_makemap(t *abi.MapType, cap int) at src/runtime/map.go:204 LOC:9})
+CHANGE_SIGNATURE	{method_declaration putSlotSmallFastStr(typ *abi.SwissMapType, hash uintptr, key string) at src/internal/runtime/maps/runtime_faststr.go:218 LOC:41}	{method_declaration putSlotSmallFastStr(typ *abi.MapType, hash uintptr, key string) at src/internal/runtime/maps/runtime_faststr.go:218 LOC:41})
+RENAME	{function_declaration writeSwissMapType(t *types.Type, lsym *obj.LSym, c rttype.Cursor) at src/cmd/compile/internal/reflectdata/map.go:264 LOC:47}	{function_declaration writeMapType(t *types.Type, lsym *obj.LSym, c rttype.Cursor) at src/cmd/compile/internal/reflectdata/map.go:264 LOC:47})
+CHANGE_SIGNATURE	{method_declaration key(typ *abi.SwissMapType, i uintptr) at src/internal/runtime/maps/group.go:284 LOC:5}	{method_declaration key(typ *abi.MapType, i uintptr) at src/internal/runtime/maps/group.go:284 LOC:5})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess2_fast32(typ *abi.SwissMapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:84 LOC:67}	{function_declaration runtime_mapaccess2_fast32(typ *abi.MapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:84 LOC:67})
+CHANGE_SIGNATURE	{method_declaration growToSmall(typ *abi.SwissMapType) at src/internal/runtime/maps/map.go:594 LOC:9}	{method_declaration growToSmall(typ *abi.MapType) at src/internal/runtime/maps/map.go:594 LOC:9})
+CHANGE_SIGNATURE	{method_declaration clone(typ *abi.SwissMapType) at src/internal/runtime/maps/table.go:1265 LOC:18}	{method_declaration clone(typ *abi.MapType) at src/internal/runtime/maps/table.go:1265 LOC:18})
+CHANGE_SIGNATURE	{function_declaration mapdelete(t *abi.SwissMapType, m *maps.Map, key unsafe.Pointer) at src/runtime/map.go:135 LOC:16}	{function_declaration mapdelete(t *abi.MapType, m *maps.Map, key unsafe.Pointer) at src/runtime/map.go:135 LOC:16})
+CHANGE_SIGNATURE	{function_declaration newGroups(typ *abi.SwissMapType, length uint64) at src/internal/runtime/maps/group.go:313 LOC:7}	{function_declaration newGroups(typ *abi.MapType, length uint64) at src/internal/runtime/maps/group.go:313 LOC:7})
+CHANGE_SIGNATURE	{method_declaration putSlotSmallFast32(typ *abi.SwissMapType, hash uintptr, key uint32) at src/internal/runtime/maps/runtime_fast32.go:152 LOC:39}	{method_declaration putSlotSmallFast32(typ *abi.MapType, hash uintptr, key uint32) at src/internal/runtime/maps/runtime_fast32.go:152 LOC:39})
+CHANGE_SIGNATURE	{function_declaration reflect_mapclear(t *abi.SwissMapType, m *maps.Map) at src/runtime/map.go:296 LOC:3}	{function_declaration reflect_mapclear(t *abi.MapType, m *maps.Map) at src/runtime/map.go:296 LOC:3})
+CHANGE_SIGNATURE	{method_declaration rehash(typ *abi.SwissMapType, m *Map) at src/internal/runtime/maps/table.go:1118 LOC:24}	{method_declaration rehash(typ *abi.MapType, m *Map) at src/internal/runtime/maps/table.go:1118 LOC:24})
+CHANGE_SIGNATURE	{function_declaration mapiterinit(t *abi.SwissMapType, m *maps.Map, it *linknameIter) at src/runtime/linkname_shim.go:88 LOC:15}	{function_declaration mapiterinit(t *abi.MapType, m *maps.Map, it *linknameIter) at src/runtime/linkname_shim.go:88 LOC:15})
+CHANGE_SIGNATURE	{function_declaration reflect_mapiterinit(t *abi.SwissMapType, m *maps.Map, it *linknameIter) at src/runtime/linkname_shim.go:120 LOC:3}	{function_declaration reflect_mapiterinit(t *abi.MapType, m *maps.Map, it *linknameIter) at src/runtime/linkname_shim.go:120 LOC:3})
+CHANGE_SIGNATURE	{method_declaration getWithoutKey(typ *abi.SwissMapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:226 LOC:32}	{method_declaration getWithoutKey(typ *abi.MapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:226 LOC:32})
+CHANGE_SIGNATURE	{method_declaration getWithKey(typ *abi.SwissMapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:166 LOC:59}	{method_declaration getWithKey(typ *abi.MapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:166 LOC:59})
+CHANGE_SIGNATURE	{function_declaration reflect_mapassign_faststr(t *abi.SwissMapType, m *maps.Map, key string, elem unsafe.Pointer) at src/runtime/map.go:259 LOC:4}	{function_declaration reflect_mapassign_faststr(t *abi.MapType, m *maps.Map, key string, elem unsafe.Pointer) at src/runtime/map.go:259 LOC:4})
+CHANGE_SIGNATURE	{method_declaration Delete(typ *abi.SwissMapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:643 LOC:39}	{method_declaration Delete(typ *abi.MapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:643 LOC:39})
+CHANGE_SIGNATURE	{method_declaration putSlotSmallFast64(typ *abi.SwissMapType, hash uintptr, key uint64) at src/internal/runtime/maps/runtime_fast64.go:152 LOC:39}	{method_declaration putSlotSmallFast64(typ *abi.MapType, hash uintptr, key uint64) at src/internal/runtime/maps/runtime_fast64.go:152 LOC:39})
+RENAME	{function_declaration SwissMapType() at src/cmd/compile/internal/reflectdata/map.go:146 LOC:51}	{function_declaration MapType() at src/cmd/compile/internal/reflectdata/map.go:146 LOC:51})
+CHANGE_SIGNATURE	{function_declaration runtime_mapassign_fast32ptr(typ *abi.SwissMapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime_fast32.go:332 LOC:127}	{function_declaration runtime_mapassign_fast32ptr(typ *abi.MapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime_fast32.go:332 LOC:127})
+CHANGE_SIGNATURE	{method_declaration clearSmall(typ *abi.SwissMapType) at src/internal/runtime/maps/map.go:769 LOC:10}	{method_declaration clearSmall(typ *abi.MapType) at src/internal/runtime/maps/map.go:769 LOC:10})
+CHANGE_SIGNATURE	{method_declaration PutSlot(typ *abi.SwissMapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:482 LOC:49}	{method_declaration PutSlot(typ *abi.MapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:482 LOC:49})
+CHANGE_SIGNATURE	{method_declaration Clone(typ *abi.SwissMapType) at src/internal/runtime/maps/map.go:780 LOC:36}	{method_declaration Clone(typ *abi.MapType) at src/internal/runtime/maps/map.go:780 LOC:36})
+CHANGE_SIGNATURE	{method_declaration uncheckedPutSlot(typ *abi.SwissMapType, hash uintptr, key, elem unsafe.Pointer) at src/internal/runtime/maps/table.go:381 LOC:38}	{method_declaration uncheckedPutSlot(typ *abi.MapType, hash uintptr, key, elem unsafe.Pointer) at src/internal/runtime/maps/table.go:381 LOC:38})
+CHANGE_SIGNATURE	{method_declaration getWithoutKeySmallFastStr(typ *abi.SwissMapType, key string) at src/internal/runtime/maps/runtime_faststr.go:15 LOC:56}	{method_declaration getWithoutKeySmallFastStr(typ *abi.MapType, key string) at src/internal/runtime/maps/runtime_faststr.go:15 LOC:56})
+CHANGE_SIGNATURE	{function_declaration reflect_mapdelete(t *abi.SwissMapType, m *maps.Map, key unsafe.Pointer) at src/runtime/map.go:265 LOC:3}	{function_declaration reflect_mapdelete(t *abi.MapType, m *maps.Map, key unsafe.Pointer) at src/runtime/map.go:265 LOC:3})
+CHANGE_SIGNATURE	{method_declaration Delete(typ *abi.SwissMapType, m *Map, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:421 LOC:72}	{method_declaration Delete(typ *abi.MapType, m *Map, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:421 LOC:72})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess1_fast64(typ *abi.SwissMapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:15 LOC:67}	{function_declaration runtime_mapaccess1_fast64(typ *abi.MapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:15 LOC:67})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess1(typ *abi.SwissMapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime.go:56 LOC:72}	{function_declaration runtime_mapaccess1(typ *abi.MapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime.go:56 LOC:72})
+CHANGE_SIGNATURE	{method_declaration Clear(typ *abi.SwissMapType) at src/internal/runtime/maps/map.go:731 LOC:37}	{method_declaration Clear(typ *abi.MapType) at src/internal/runtime/maps/map.go:731 LOC:37})
+CHANGE_SIGNATURE	{method_declaration group(typ *abi.SwissMapType, i uint64) at src/internal/runtime/maps/group.go:322 LOC:9}	{method_declaration group(typ *abi.MapType, i uint64) at src/internal/runtime/maps/group.go:322 LOC:9})
+CHANGE_SIGNATURE	{method_declaration getWithoutKey(typ *abi.SwissMapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:422 LOC:19}	{method_declaration getWithoutKey(typ *abi.MapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:422 LOC:19})
+CHANGE_SIGNATURE	{method_declaration Get(typ *abi.SwissMapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:399 LOC:3}	{method_declaration Get(typ *abi.MapType, key unsafe.Pointer) at src/internal/runtime/maps/map.go:399 LOC:3})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess2(typ *abi.SwissMapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime.go:130 LOC:72}	{function_declaration runtime_mapaccess2(typ *abi.MapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime.go:130 LOC:72})
+CHANGE_SIGNATURE	{method_declaration Print(typ *abi.SwissMapType, m *Map) at src/internal/runtime/maps/table_debug.go:84 LOC:38}	{method_declaration Print(typ *abi.MapType, m *Map) at src/internal/runtime/maps/table_debug.go:84 LOC:38})
+CHANGE_SIGNATURE	{method_declaration putSlotSmall(typ *abi.SwissMapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/map.go:532 LOC:61}	{method_declaration putSlotSmall(typ *abi.MapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/map.go:532 LOC:61})
+CHANGE_SIGNATURE	{function_declaration runtime_mapaccess1_faststr(typ *abi.SwissMapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:101 LOC:57}	{function_declaration runtime_mapaccess1_faststr(typ *abi.MapType, m *Map, key string) at src/internal/runtime/maps/runtime_faststr.go:101 LOC:57})
+CHANGE_SIGNATURE	{function_declaration mapaccess2_fat(t *abi.SwissMapType, m *maps.Map, key, zero unsafe.Pointer) at src/runtime/map.go:101 LOC:7}	{function_declaration mapaccess2_fat(t *abi.MapType, m *maps.Map, key, zero unsafe.Pointer) at src/runtime/map.go:101 LOC:7})
+CHANGE_SIGNATURE	{function_declaration reflect_mapassign(t *abi.SwissMapType, m *maps.Map, key unsafe.Pointer, elem unsafe.Pointer) at src/runtime/map.go:253 LOC:4}	{function_declaration reflect_mapassign(t *abi.MapType, m *maps.Map, key unsafe.Pointer, elem unsafe.Pointer) at src/runtime/map.go:253 LOC:4})
+RENAME	{function_declaration swissTableType() at src/cmd/compile/internal/reflectdata/map.go:95 LOC:46}	{function_declaration mapTableType() at src/cmd/compile/internal/reflectdata/map.go:95 LOC:46})
+CHANGE_SIGNATURE	{function_declaration runtime_mapassign_fast64(typ *abi.SwissMapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:193 LOC:133}	{function_declaration runtime_mapassign_fast64(typ *abi.MapType, m *Map, key uint64) at src/internal/runtime/maps/runtime_fast64.go:193 LOC:133})
+CHANGE_SIGNATURE	{method_declaration deleteSmall(typ *abi.SwissMapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/map.go:683 LOC:46}	{method_declaration deleteSmall(typ *abi.MapType, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/map.go:683 LOC:46})
+CHANGE_SIGNATURE	{function_declaration mapKeyError(t *abi.SwissMapType, p unsafe.Pointer) at src/internal/runtime/maps/map.go:817 LOC:6}	{function_declaration mapKeyError(t *abi.MapType, p unsafe.Pointer) at src/internal/runtime/maps/map.go:817 LOC:6})
+CHANGE_SIGNATURE	{function_declaration cloneGroup(typ *abi.SwissMapType, newGroup, oldGroup groupReference) at src/internal/runtime/maps/group.go:332 LOC:28}	{function_declaration cloneGroup(typ *abi.MapType, newGroup, oldGroup groupReference) at src/internal/runtime/maps/group.go:332 LOC:28})
+CHANGE_SIGNATURE	{function_declaration mapIterStart(t *abi.SwissMapType, m *maps.Map, it *maps.Iter) at src/reflect/map.go:177 LOC:9}	{function_declaration mapIterStart(t *abi.MapType, m *maps.Map, it *maps.Iter) at src/reflect/map.go:177 LOC:9})
+CHANGE_SIGNATURE	{function_declaration runtime_mapdelete_fast32(typ *abi.SwissMapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:461 LOC:13}	{function_declaration runtime_mapdelete_fast32(typ *abi.MapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:461 LOC:13})
+CHANGE_SIGNATURE	{method_declaration pruneTombstones(typ *abi.SwissMapType, m *Map) at src/internal/runtime/maps/table.go:508 LOC:81}	{method_declaration pruneTombstones(typ *abi.MapType, m *Map) at src/internal/runtime/maps/table.go:508 LOC:81})
+CHANGE_SIGNATURE	{method_declaration PutSlot(typ *abi.SwissMapType, m *Map, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:266 LOC:98}	{method_declaration PutSlot(typ *abi.MapType, m *Map, hash uintptr, key unsafe.Pointer) at src/internal/runtime/maps/table.go:266 LOC:98})
+CHANGE_SIGNATURE	{method_declaration split(typ *abi.SwissMapType, m *Map) at src/internal/runtime/maps/table.go:1152 LOC:43}	{method_declaration split(typ *abi.MapType, m *Map) at src/internal/runtime/maps/table.go:1152 LOC:43})
+CHANGE_SIGNATURE	{method_declaration elem(typ *abi.SwissMapType, i uintptr) at src/internal/runtime/maps/group.go:291 LOC:5}	{method_declaration elem(typ *abi.MapType, i uintptr) at src/internal/runtime/maps/group.go:291 LOC:5})
+CHANGE_SIGNATURE	{function_declaration runtime_mapassign(typ *abi.SwissMapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime.go:204 LOC:165}	{function_declaration runtime_mapassign(typ *abi.MapType, m *Map, key unsafe.Pointer) at src/internal/runtime/maps/runtime.go:204 LOC:165})
+CHANGE_SIGNATURE	{function_declaration NewMap(mt *abi.SwissMapType, hint uintptr, m *Map, maxAlloc uintptr) at src/internal/runtime/maps/map.go:260 LOC:66}	{function_declaration NewMap(mt *abi.MapType, hint uintptr, m *Map, maxAlloc uintptr) at src/internal/runtime/maps/map.go:260 LOC:66})
+CHANGE_SIGNATURE	{function_declaration runtime_mapassign_fast32(typ *abi.SwissMapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:193 LOC:133}	{function_declaration runtime_mapassign_fast32(typ *abi.MapType, m *Map, key uint32) at src/internal/runtime/maps/runtime_fast32.go:193 LOC:133})
+
+Commit: 2ae059ccaf982c3304fae0b48c1d78ad7192cbdd
+INLINE	{function_declaration walkMakeSwissMap(n *ir.MakeExpr, init *ir.Nodes) at src/cmd/compile/internal/walk/builtin.go:322 LOC:108}	{function_declaration walkMakeMap(n *ir.MakeExpr, init *ir.Nodes) at src/cmd/compile/internal/walk/builtin.go:314 LOC:108})
+INLINE	{function_declaration walkMakeOldMap(n *ir.MakeExpr, init *ir.Nodes) at src/cmd/compile/internal/walk/builtin.go:431 LOC:94}	{function_declaration walkMakeMap(n *ir.MakeExpr, init *ir.Nodes) at src/cmd/compile/internal/walk/builtin.go:314 LOC:108})
+INLINE	{function_declaration mapfastSwiss(t *types.Type) at src/cmd/compile/internal/walk/walk.go:201 LOC:27}	{function_declaration mapfast(t *types.Type) at src/cmd/compile/internal/walk/walk.go:193 LOC:27})
+INLINE	{function_declaration mapfastOld(t *types.Type) at src/cmd/compile/internal/walk/walk.go:229 LOC:27}	{function_declaration mapfast(t *types.Type) at src/cmd/compile/internal/walk/walk.go:193 LOC:27})
+INLINE	{method_declaration synthesizemaptypesSwiss(ctxt *Link, die *dwarf.DWDie) at src/cmd/link/internal/ld/dwarf.go:882 LOC:61}	{method_declaration synthesizemaptypes(ctxt *Link, die *dwarf.DWDie) at src/cmd/link/internal/ld/dwarf.go:874 LOC:61})
+
+Commit: cc571dab91e73413cf2ba1546a4ba485038cf2d1
+No refactorings found.
+
+Commit: 2174a7936c9e6109e2786369072f5b9dc5d631f5
+No refactorings found.
+
+Commit: 8330fb48a645a29a79dd5c58ad3d9c54d7e6537c
+No refactorings found.
+
+Commit: 9f9d7b50e8c1a2c186b7b526222ba5499e6f36b0
+No refactorings found.
+
+Commit: 5216fd570ee99133f7893e9b5d06b8e98bd6061b
+No refactorings found.
+
+Commit: 89a0af86b819ceb8095c686fc5109b40082bc8c5
+No refactorings found.
+
+Commit: 5e94d72158077411547287fc36f24b3121cca645
+No refactorings found.
+
+Commit: 8cd85e602a90cb97051fe95d5243557b566630e6
+No refactorings found.
+
+Commit: cefaed0de0b86ea67588546d2e18f850e7b7d41d
+No refactorings found.
+
+Commit: 3aa1b0008169cea3ed79a4a19b66f64479be4402
+No refactorings found.
+
+Commit: b1e933d95518a7978efb29772bd6129acf0af452
+No refactorings found.
+
+Commit: 880ca333d708b957325b6ef4798699372d4c090e
+No refactorings found.
+
+Commit: 1513661dc3b917ffe99e658919b4adc4f08853aa
+No refactorings found.
+
+Commit: bd94ae8903e6256d9777a28bf86f425116fca316
+No refactorings found.
+
+Commit: f3582fc80e19050d915ac9621bbeecef78c0548e
+No refactorings found.
+
+Commit: f7d167fe710501f687fad006125f4ec60be42c35
+No refactorings found.
+
+Commit: e0b07dc22eaab1b003d98ad6d63cdfacc76c5c70
+No refactorings found.
+
+Commit: 25816d401c459a9dfedded3b42315a8bd2d32802
+No refactorings found.
+
+Commit: 7961bf71f8d3119ac7a886b3658966973798f426
+No refactorings found.
+
+Commit: e15a14c4ddcb7854ecb5fb2f6dc01e8933a11652
+No refactorings found.
+
+Commit: 7dccd6395cd88e69654409f46d57931d1f9b90a0
+No refactorings found.
+
+Commit: d79405a344a90c2d4018a68382add989e8ccdd33
+No refactorings found.
+
+Commit: 19a086f716869bc79df24e1f30d74334261396db
+No refactorings found.
+
+Commit: aa95ab8215760dfd6e1b8bb02aa2211021108512
+No refactorings found.
+
+Commit: 4c854b7a3e5fc3e84a06511bce71ce01cbb4bb33
+No refactorings found.
+
+Commit: b10eb1d042cb10031ad6d1b61bf7509501d62c81
+No refactorings found.
+

@@ -1,0 +1,1393 @@
+(program (line_comment) (line_comment) (enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations))) (line_comment) (line_comment) (line_comment) (enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_body_declarations (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier))))))) (line_comment) (line_comment) (enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))))))))))))) (line_comment) (line_comment) (interface_declaration name: (identifier) body: (interface_body (method_declaration type: (type_identifier) name: (identifier) parameters: (formal_parameters)))) (enum_declaration name: (identifier) interfaces: (super_interfaces (type_list (type_identifier))) body: (enum_body (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) (enum_body_declarations))) (line_comment) (line_comment) (enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_body_declarations (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))))))) (line_comment) (line_comment) (enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_body_declarations (field_declaration (modifiers) type: (type_identifier) declarator: (variable_declarator name: (identifier))) (field_declaration (modifiers) type: (integral_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (update_expression (identifier))))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (integral_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (block (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) (return_statement (null_literal))))))) (line_comment) (line_comment) (enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier))))))))))) (class_declaration (modifiers) name: (identifier) body: (class_body (line_comment) (line_comment) (enum_declaration (modifiers) name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)))) (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal))))))))) L:2
+(line_comment) L:2
+(line_comment) L:3
+(enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations))) L:4
+("enum") L:4
+(identifier) L:4
+(enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations)) L:4
+("{") L:4
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(enum_constant name: (identifier)) L:5
+(identifier) L:5
+(enum_body_declarations) L:5
+(";") L:5
+("}") L:6
+(line_comment) L:8
+(line_comment) L:9
+(line_comment) L:10
+(enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_body_declarations (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier))))))) L:11
+("enum") L:11
+(identifier) L:11
+(enum_body (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) (enum_body_declarations (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))))) L:11
+("{") L:11
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:12
+(identifier) L:12
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:12
+("(") L:12
+(decimal_floating_point_literal) L:12
+(",") L:12
+(decimal_floating_point_literal) L:12
+(")") L:12
+(",") L:12
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:13
+(identifier) L:13
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:13
+("(") L:13
+(decimal_floating_point_literal) L:13
+(",") L:13
+(decimal_floating_point_literal) L:13
+(")") L:13
+(",") L:13
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:14
+(identifier) L:14
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:14
+("(") L:14
+(decimal_floating_point_literal) L:14
+(",") L:14
+(decimal_floating_point_literal) L:14
+(")") L:14
+(",") L:14
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:15
+(identifier) L:15
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:15
+("(") L:15
+(decimal_floating_point_literal) L:15
+(",") L:15
+(decimal_floating_point_literal) L:15
+(")") L:15
+(",") L:15
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:16
+(identifier) L:16
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:16
+("(") L:16
+(decimal_floating_point_literal) L:16
+(",") L:16
+(decimal_floating_point_literal) L:16
+(")") L:16
+(",") L:16
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:17
+(identifier) L:17
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:17
+("(") L:17
+(decimal_floating_point_literal) L:17
+(",") L:17
+(decimal_floating_point_literal) L:17
+(")") L:17
+(",") L:17
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:18
+(identifier) L:18
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:18
+("(") L:18
+(decimal_floating_point_literal) L:18
+(",") L:18
+(decimal_floating_point_literal) L:18
+(")") L:18
+(",") L:18
+(enum_constant name: (identifier) arguments: (argument_list (decimal_floating_point_literal) (decimal_floating_point_literal))) L:19
+(identifier) L:19
+(argument_list (decimal_floating_point_literal) (decimal_floating_point_literal)) L:19
+("(") L:19
+(decimal_floating_point_literal) L:19
+(",") L:19
+(decimal_floating_point_literal) L:19
+(")") L:19
+(enum_body_declarations (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) (line_comment) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier))))) L:19
+(";") L:19
+(field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) L:21
+(modifiers) L:21
+("private") L:21
+("final") L:21
+(floating_point_type) L:21
+("double") L:21
+(variable_declarator name: (identifier)) L:21
+(identifier) L:21
+(";") L:21
+(line_comment) L:21
+(field_declaration (modifiers) type: (floating_point_type) declarator: (variable_declarator name: (identifier))) L:22
+(modifiers) L:22
+("private") L:22
+("final") L:22
+(floating_point_type) L:22
+("double") L:22
+(variable_declarator name: (identifier)) L:22
+(identifier) L:22
+(";") L:22
+(line_comment) L:22
+(constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))))) L:24
+(identifier) L:24
+(formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) L:24
+("(") L:24
+(formal_parameter type: (floating_point_type) name: (identifier)) L:24
+(floating_point_type) L:24
+("double") L:24
+(identifier) L:24
+(",") L:24
+(formal_parameter type: (floating_point_type) name: (identifier)) L:24
+(floating_point_type) L:24
+("double") L:24
+(identifier) L:24
+(")") L:24
+(constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier)))) L:24
+("{") L:24
+(expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) L:25
+(assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier)) L:25
+(field_access object: (this) field: (identifier)) L:25
+(this) L:25
+(".") L:25
+(identifier) L:25
+("=") L:25
+(identifier) L:25
+(";") L:25
+(expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) L:26
+(assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier)) L:26
+(field_access object: (this) field: (identifier)) L:26
+(this) L:26
+(".") L:26
+(identifier) L:26
+("=") L:26
+(identifier) L:26
+(";") L:26
+("}") L:27
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) L:29
+(modifiers) L:29
+("public") L:29
+(floating_point_type) L:29
+("double") L:29
+(identifier) L:29
+(formal_parameters) L:29
+("(") L:29
+(")") L:29
+(block (return_statement (identifier))) L:29
+("{") L:29
+(return_statement (identifier)) L:30
+("return") L:30
+(identifier) L:30
+(";") L:30
+("}") L:31
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) L:33
+(modifiers) L:33
+("public") L:33
+(floating_point_type) L:33
+("double") L:33
+(identifier) L:33
+(formal_parameters) L:33
+("(") L:33
+(")") L:33
+(block (return_statement (identifier))) L:33
+("{") L:33
+(return_statement (identifier)) L:34
+("return") L:34
+(identifier) L:34
+(";") L:34
+("}") L:35
+("}") L:36
+(line_comment) L:38
+(line_comment) L:39
+(enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))))))))))))) L:40
+("enum") L:40
+(identifier) L:40
+(enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this)))))))))))) L:40
+("{") L:40
+(enum_constant name: (identifier)) L:41
+(identifier) L:41
+(",") L:41
+(enum_constant name: (identifier)) L:42
+(identifier) L:42
+(",") L:42
+(enum_constant name: (identifier)) L:43
+(identifier) L:43
+(enum_body_declarations (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))))))))))) L:43
+(";") L:43
+(method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this)))))))))) L:45
+(modifiers) L:45
+("public") L:45
+(type_identifier) L:45
+(identifier) L:45
+(formal_parameters) L:45
+("(") L:45
+(")") L:45
+(block (switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))))))))) L:45
+("{") L:45
+(switch_expression condition: (parenthesized_expression (this)) body: (switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this)))))))) L:46
+("switch") L:46
+(parenthesized_expression (this)) L:46
+("(") L:46
+(this) L:46
+(")") L:46
+(switch_block (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) (switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))))))) L:46
+("{") L:46
+(switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) L:47
+(switch_label (identifier)) L:47
+("case") L:47
+(identifier) L:47
+(":") L:47
+(return_statement (identifier)) L:48
+("return") L:48
+(identifier) L:48
+(";") L:48
+(switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) L:49
+(switch_label (identifier)) L:49
+("case") L:49
+(identifier) L:49
+(":") L:49
+(return_statement (identifier)) L:50
+("return") L:50
+(identifier) L:50
+(";") L:50
+(switch_block_statement_group (switch_label (identifier)) (return_statement (identifier))) L:51
+(switch_label (identifier)) L:51
+("case") L:51
+(identifier) L:51
+(":") L:51
+(return_statement (identifier)) L:52
+("return") L:52
+(identifier) L:52
+(";") L:52
+(switch_block_statement_group (switch_label) (throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this)))))) L:53
+(switch_label) L:53
+("default") L:53
+(":") L:53
+(throw_statement (object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))))) L:54
+("throw") L:54
+(object_creation_expression type: (type_identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (this)))) L:54
+("new") L:54
+(type_identifier) L:54
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (this))) L:54
+("(") L:54
+(binary_expression left: (string_literal (string_fragment)) right: (this)) L:54
+(string_literal (string_fragment)) L:54
+(""") L:54
+(string_fragment) L:54
+(""") L:54
+("+") L:54
+(this) L:54
+(")") L:54
+(";") L:54
+("}") L:55
+("}") L:56
+("}") L:57
+(line_comment) L:59
+(line_comment) L:60
+(interface_declaration name: (identifier) body: (interface_body (method_declaration type: (type_identifier) name: (identifier) parameters: (formal_parameters)))) L:61
+("interface") L:61
+(identifier) L:61
+(interface_body (method_declaration type: (type_identifier) name: (identifier) parameters: (formal_parameters))) L:61
+("{") L:61
+(method_declaration type: (type_identifier) name: (identifier) parameters: (formal_parameters)) L:62
+(type_identifier) L:62
+(identifier) L:62
+(formal_parameters) L:62
+("(") L:62
+(")") L:62
+(";") L:62
+("}") L:63
+(enum_declaration name: (identifier) interfaces: (super_interfaces (type_list (type_identifier))) body: (enum_body (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) (enum_body_declarations))) L:65
+("enum") L:65
+(identifier) L:65
+(super_interfaces (type_list (type_identifier))) L:65
+("implements") L:65
+(type_list (type_identifier)) L:65
+(type_identifier) L:65
+(enum_body (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) (enum_body_declarations)) L:65
+("{") L:65
+(enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) L:66
+(identifier) L:66
+(class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment)))))) L:66
+("{") L:66
+(method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))) L:67
+(modifiers (marker_annotation name: (identifier))) L:67
+(marker_annotation name: (identifier)) L:67
+("@") L:67
+(identifier) L:67
+("public") L:68
+(type_identifier) L:68
+(identifier) L:68
+(formal_parameters) L:68
+("(") L:68
+(")") L:68
+(block (return_statement (string_literal (string_fragment)))) L:68
+("{") L:68
+(return_statement (string_literal (string_fragment))) L:69
+("return") L:69
+(string_literal (string_fragment)) L:69
+(""") L:69
+(string_fragment) L:69
+(""") L:69
+(";") L:69
+("}") L:70
+("}") L:71
+(",") L:71
+(enum_constant name: (identifier) body: (class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))))) L:72
+(identifier) L:72
+(class_body (method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment)))))) L:72
+("{") L:72
+(method_declaration (modifiers (marker_annotation name: (identifier))) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (string_literal (string_fragment))))) L:73
+(modifiers (marker_annotation name: (identifier))) L:73
+(marker_annotation name: (identifier)) L:73
+("@") L:73
+(identifier) L:73
+("public") L:74
+(type_identifier) L:74
+(identifier) L:74
+(formal_parameters) L:74
+("(") L:74
+(")") L:74
+(block (return_statement (string_literal (string_fragment)))) L:74
+("{") L:74
+(return_statement (string_literal (string_fragment))) L:75
+("return") L:75
+(string_literal (string_fragment)) L:75
+(""") L:75
+(string_fragment) L:75
+(""") L:75
+(";") L:75
+("}") L:76
+("}") L:77
+(enum_body_declarations) L:77
+(";") L:77
+("}") L:78
+(line_comment) L:80
+(line_comment) L:81
+(enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_body_declarations (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))))))) L:82
+("enum") L:82
+(identifier) L:82
+(enum_body (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (enum_body_declarations (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier)))))) L:82
+("{") L:82
+(enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) L:83
+(identifier) L:83
+(class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier)))))) L:83
+("{") L:83
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))) L:84
+(modifiers) L:84
+("public") L:84
+(floating_point_type) L:84
+("double") L:84
+(identifier) L:84
+(formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) L:84
+("(") L:84
+(formal_parameter type: (floating_point_type) name: (identifier)) L:84
+(floating_point_type) L:84
+("double") L:84
+(identifier) L:84
+(",") L:84
+(formal_parameter type: (floating_point_type) name: (identifier)) L:84
+(floating_point_type) L:84
+("double") L:84
+(identifier) L:84
+(")") L:84
+(block (return_statement (binary_expression left: (identifier) right: (identifier)))) L:84
+("{") L:84
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:85
+("return") L:85
+(binary_expression left: (identifier) right: (identifier)) L:85
+(identifier) L:85
+("+") L:85
+(identifier) L:85
+(";") L:85
+("}") L:86
+("}") L:87
+(",") L:87
+(enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) L:88
+(identifier) L:88
+(class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier)))))) L:88
+("{") L:88
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))) L:89
+(modifiers) L:89
+("public") L:89
+(floating_point_type) L:89
+("double") L:89
+(identifier) L:89
+(formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) L:89
+("(") L:89
+(formal_parameter type: (floating_point_type) name: (identifier)) L:89
+(floating_point_type) L:89
+("double") L:89
+(identifier) L:89
+(",") L:89
+(formal_parameter type: (floating_point_type) name: (identifier)) L:89
+(floating_point_type) L:89
+("double") L:89
+(identifier) L:89
+(")") L:89
+(block (return_statement (binary_expression left: (identifier) right: (identifier)))) L:89
+("{") L:89
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:90
+("return") L:90
+(binary_expression left: (identifier) right: (identifier)) L:90
+(identifier) L:90
+("-") L:90
+(identifier) L:90
+(";") L:90
+("}") L:91
+("}") L:92
+(",") L:92
+(enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) L:93
+(identifier) L:93
+(class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier)))))) L:93
+("{") L:93
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))) L:94
+(modifiers) L:94
+("public") L:94
+(floating_point_type) L:94
+("double") L:94
+(identifier) L:94
+(formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) L:94
+("(") L:94
+(formal_parameter type: (floating_point_type) name: (identifier)) L:94
+(floating_point_type) L:94
+("double") L:94
+(identifier) L:94
+(",") L:94
+(formal_parameter type: (floating_point_type) name: (identifier)) L:94
+(floating_point_type) L:94
+("double") L:94
+(identifier) L:94
+(")") L:94
+(block (return_statement (binary_expression left: (identifier) right: (identifier)))) L:94
+("{") L:94
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:95
+("return") L:95
+(binary_expression left: (identifier) right: (identifier)) L:95
+(identifier) L:95
+("*") L:95
+(identifier) L:95
+(";") L:95
+("}") L:96
+("}") L:97
+(",") L:97
+(enum_constant name: (identifier) body: (class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))))) L:98
+(identifier) L:98
+(class_body (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier)))))) L:98
+("{") L:98
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) body: (block (return_statement (binary_expression left: (identifier) right: (identifier))))) L:99
+(modifiers) L:99
+("public") L:99
+(floating_point_type) L:99
+("double") L:99
+(identifier) L:99
+(formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) L:99
+("(") L:99
+(formal_parameter type: (floating_point_type) name: (identifier)) L:99
+(floating_point_type) L:99
+("double") L:99
+(identifier) L:99
+(",") L:99
+(formal_parameter type: (floating_point_type) name: (identifier)) L:99
+(floating_point_type) L:99
+("double") L:99
+(identifier) L:99
+(")") L:99
+(block (return_statement (binary_expression left: (identifier) right: (identifier)))) L:99
+("{") L:99
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:100
+("return") L:100
+(binary_expression left: (identifier) right: (identifier)) L:100
+(identifier) L:100
+("/") L:100
+(identifier) L:100
+(";") L:100
+("}") L:101
+("}") L:102
+(enum_body_declarations (method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))))) L:102
+(";") L:102
+(method_declaration (modifiers) type: (floating_point_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier)))) L:104
+(modifiers) L:104
+("public") L:104
+("abstract") L:104
+(floating_point_type) L:104
+("double") L:104
+(identifier) L:104
+(formal_parameters (formal_parameter type: (floating_point_type) name: (identifier)) (formal_parameter type: (floating_point_type) name: (identifier))) L:104
+("(") L:104
+(formal_parameter type: (floating_point_type) name: (identifier)) L:104
+(floating_point_type) L:104
+("double") L:104
+(identifier) L:104
+(",") L:104
+(formal_parameter type: (floating_point_type) name: (identifier)) L:104
+(floating_point_type) L:104
+("double") L:104
+(identifier) L:104
+(")") L:104
+(";") L:104
+("}") L:105
+(line_comment) L:107
+(line_comment) L:108
+(enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_body_declarations (field_declaration (modifiers) type: (type_identifier) declarator: (variable_declarator name: (identifier))) (field_declaration (modifiers) type: (integral_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (update_expression (identifier))))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (integral_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (block (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) (return_statement (null_literal))))))) L:109
+("enum") L:109
+(identifier) L:109
+(enum_body (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) (enum_body_declarations (field_declaration (modifiers) type: (type_identifier) declarator: (variable_declarator name: (identifier))) (field_declaration (modifiers) type: (integral_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (update_expression (identifier))))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (integral_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (block (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) (return_statement (null_literal)))))) L:109
+("{") L:109
+(enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) L:110
+(identifier) L:110
+(argument_list (string_literal (string_fragment))) L:110
+("(") L:110
+(string_literal (string_fragment)) L:110
+(""") L:110
+(string_fragment) L:110
+(""") L:110
+(")") L:110
+(",") L:110
+(enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) L:111
+(identifier) L:111
+(argument_list (string_literal (string_fragment))) L:111
+("(") L:111
+(string_literal (string_fragment)) L:111
+(""") L:111
+(string_fragment) L:111
+(""") L:111
+(")") L:111
+(",") L:111
+(enum_constant name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) L:112
+(identifier) L:112
+(argument_list (string_literal (string_fragment))) L:112
+("(") L:112
+(string_literal (string_fragment)) L:112
+(""") L:112
+(string_fragment) L:112
+(""") L:112
+(")") L:112
+(enum_body_declarations (field_declaration (modifiers) type: (type_identifier) declarator: (variable_declarator name: (identifier))) (field_declaration (modifiers) type: (integral_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (update_expression (identifier))))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (integral_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) (method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (block (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) (return_statement (null_literal))))) L:112
+(";") L:112
+(field_declaration (modifiers) type: (type_identifier) declarator: (variable_declarator name: (identifier))) L:114
+(modifiers) L:114
+("private") L:114
+("final") L:114
+(type_identifier) L:114
+(variable_declarator name: (identifier)) L:114
+(identifier) L:114
+(";") L:114
+(field_declaration (modifiers) type: (integral_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) L:115
+(modifiers) L:115
+("private") L:115
+("static") L:115
+(integral_type) L:115
+("int") L:115
+(variable_declarator name: (identifier) value: (decimal_integer_literal)) L:115
+(identifier) L:115
+("=") L:115
+(decimal_integer_literal) L:115
+(";") L:115
+(constructor_declaration name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (update_expression (identifier))))) L:117
+(identifier) L:117
+(formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) L:117
+("(") L:117
+(formal_parameter type: (type_identifier) name: (identifier)) L:117
+(type_identifier) L:117
+(identifier) L:117
+(")") L:117
+(constructor_body (expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) (expression_statement (update_expression (identifier)))) L:117
+("{") L:117
+(expression_statement (assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier))) L:118
+(assignment_expression left: (field_access object: (this) field: (identifier)) right: (identifier)) L:118
+(field_access object: (this) field: (identifier)) L:118
+(this) L:118
+(".") L:118
+(identifier) L:118
+("=") L:118
+(identifier) L:118
+(";") L:118
+(expression_statement (update_expression (identifier))) L:119
+(update_expression (identifier)) L:119
+(identifier) L:119
+("++") L:119
+(";") L:119
+("}") L:120
+(method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) L:122
+(modifiers) L:122
+("public") L:122
+(type_identifier) L:122
+(identifier) L:122
+(formal_parameters) L:122
+("(") L:122
+(")") L:122
+(block (return_statement (identifier))) L:122
+("{") L:122
+(return_statement (identifier)) L:123
+("return") L:123
+(identifier) L:123
+(";") L:123
+("}") L:124
+(method_declaration (modifiers) type: (integral_type) name: (identifier) parameters: (formal_parameters) body: (block (return_statement (identifier)))) L:126
+(modifiers) L:126
+("public") L:126
+("static") L:126
+(integral_type) L:126
+("int") L:126
+(identifier) L:126
+(formal_parameters) L:126
+("(") L:126
+(")") L:126
+(block (return_statement (identifier))) L:126
+("{") L:126
+(return_statement (identifier)) L:127
+("return") L:127
+(identifier) L:127
+(";") L:127
+("}") L:128
+(method_declaration (modifiers) type: (type_identifier) name: (identifier) parameters: (formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) body: (block (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) (return_statement (null_literal)))) L:130
+(modifiers) L:130
+("public") L:130
+("static") L:130
+(type_identifier) L:130
+(identifier) L:130
+(formal_parameters (formal_parameter type: (type_identifier) name: (identifier))) L:130
+("(") L:130
+(formal_parameter type: (type_identifier) name: (identifier)) L:130
+(type_identifier) L:130
+(identifier) L:130
+(")") L:130
+(block (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) (return_statement (null_literal))) L:130
+("{") L:130
+(enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation name: (identifier) arguments: (argument_list)) body: (block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))))) L:131
+("for") L:131
+("(") L:131
+(type_identifier) L:131
+(identifier) L:131
+(":") L:131
+(method_invocation name: (identifier) arguments: (argument_list)) L:131
+(identifier) L:131
+(argument_list) L:131
+("(") L:131
+(")") L:131
+(")") L:131
+(block (if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier))))) L:131
+("{") L:131
+(if_statement condition: (parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) consequence: (block (return_statement (identifier)))) L:132
+("if") L:132
+(parenthesized_expression (method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier)))) L:132
+("(") L:132
+(method_invocation object: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) name: (identifier) arguments: (argument_list (identifier))) L:132
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:132
+(identifier) L:132
+(".") L:132
+(identifier) L:132
+(argument_list) L:132
+("(") L:132
+(")") L:132
+(".") L:132
+(identifier) L:132
+(argument_list (identifier)) L:132
+("(") L:132
+(identifier) L:132
+(")") L:132
+(")") L:132
+(block (return_statement (identifier))) L:132
+("{") L:132
+(return_statement (identifier)) L:133
+("return") L:133
+(identifier) L:133
+(";") L:133
+("}") L:134
+("}") L:135
+(return_statement (null_literal)) L:136
+("return") L:136
+(null_literal) L:136
+(";") L:136
+("}") L:137
+("}") L:138
+(line_comment) L:140
+(line_comment) L:141
+(enum_declaration name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier))))))))))) L:142
+("enum") L:142
+(identifier) L:142
+(enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_body_declarations (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier)))))))))) L:142
+("{") L:142
+(enum_constant name: (identifier)) L:143
+(identifier) L:143
+(",") L:143
+(enum_constant name: (identifier)) L:143
+(identifier) L:143
+(",") L:143
+(enum_constant name: (identifier)) L:143
+(identifier) L:143
+(",") L:143
+(enum_constant name: (identifier)) L:143
+(identifier) L:143
+(enum_body_declarations (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier))))))))) L:143
+(";") L:143
+(method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier)))))))) L:145
+(modifiers) L:145
+("public") L:145
+("static") L:145
+(void_type) L:145
+(identifier) L:145
+(formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) L:145
+("(") L:145
+(formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier)) L:145
+(array_type element: (type_identifier) dimensions: (dimensions)) L:145
+(type_identifier) L:145
+(dimensions) L:145
+("[") L:145
+("]") L:145
+(identifier) L:145
+(")") L:145
+(block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier))))))) L:145
+("{") L:145
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) L:146
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) L:146
+(field_access object: (identifier) field: (identifier)) L:146
+(identifier) L:146
+(".") L:146
+(identifier) L:146
+(".") L:146
+(identifier) L:146
+(argument_list (string_literal (string_fragment))) L:146
+("(") L:146
+(string_literal (string_fragment)) L:146
+(""") L:146
+(string_fragment) L:146
+(""") L:146
+(")") L:146
+(";") L:146
+(enhanced_for_statement type: (type_identifier) name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier)))))) L:147
+("for") L:147
+("(") L:147
+(type_identifier) L:147
+(identifier) L:147
+(":") L:147
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:147
+(identifier) L:147
+(".") L:147
+(identifier) L:147
+(argument_list) L:147
+("(") L:147
+(")") L:147
+(")") L:147
+(block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier))))) L:147
+("{") L:147
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier)))) L:148
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier))) L:148
+(field_access object: (identifier) field: (identifier)) L:148
+(identifier) L:148
+(".") L:148
+(identifier) L:148
+(".") L:148
+(identifier) L:148
+(argument_list (identifier)) L:148
+("(") L:148
+(identifier) L:148
+(")") L:148
+(";") L:148
+("}") L:149
+("}") L:150
+("}") L:151
+(class_declaration (modifiers) name: (identifier) body: (class_body (line_comment) (line_comment) (enum_declaration (modifiers) name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)))) (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal)))))))) L:153
+(modifiers) L:153
+("public") L:153
+("class") L:153
+(identifier) L:153
+(class_body (line_comment) (line_comment) (enum_declaration (modifiers) name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)))) (method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal))))))) L:153
+("{") L:153
+(line_comment) L:155
+(line_comment) L:156
+(enum_declaration (modifiers) name: (identifier) body: (enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)))) L:157
+(modifiers) L:157
+("public") L:157
+("enum") L:157
+(identifier) L:157
+(enum_body (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier)) (enum_constant name: (identifier))) L:157
+("{") L:157
+(enum_constant name: (identifier)) L:158
+(identifier) L:158
+(",") L:158
+(enum_constant name: (identifier)) L:158
+(identifier) L:158
+(",") L:158
+(enum_constant name: (identifier)) L:158
+(identifier) L:158
+(",") L:158
+(enum_constant name: (identifier)) L:158
+(identifier) L:158
+("}") L:159
+(method_declaration (modifiers) type: (void_type) name: (identifier) parameters: (formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) body: (block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal)))))) L:161
+(modifiers) L:161
+("public") L:161
+("static") L:161
+(void_type) L:161
+(identifier) L:161
+(formal_parameters (formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier))) L:161
+("(") L:161
+(formal_parameter type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier)) L:161
+(array_type element: (type_identifier) dimensions: (dimensions)) L:161
+(type_identifier) L:161
+(dimensions) L:161
+("[") L:161
+("]") L:161
+(identifier) L:161
+(")") L:161
+(block (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) (expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) (expression_statement (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal))))) L:161
+("{") L:161
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) L:162
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) L:162
+(field_access object: (identifier) field: (identifier)) L:162
+(identifier) L:162
+(".") L:162
+(identifier) L:162
+(".") L:162
+(identifier) L:162
+(argument_list (string_literal (string_fragment))) L:162
+("(") L:162
+(string_literal (string_fragment)) L:162
+(""") L:162
+(string_fragment) L:162
+(""") L:162
+(")") L:162
+(";") L:162
+(local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) L:163
+(type_identifier) L:163
+(variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier))) L:163
+(identifier) L:163
+("=") L:163
+(field_access object: (identifier) field: (identifier)) L:163
+(identifier) L:163
+(".") L:163
+(identifier) L:163
+(";") L:163
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) L:164
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier)))) L:164
+(field_access object: (identifier) field: (identifier)) L:164
+(identifier) L:164
+(".") L:164
+(identifier) L:164
+(".") L:164
+(identifier) L:164
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))) L:164
+("(") L:164
+(binary_expression left: (string_literal (string_fragment)) right: (identifier)) L:164
+(string_literal (string_fragment)) L:164
+(""") L:164
+(string_fragment) L:164
+(""") L:164
+("+") L:164
+(identifier) L:164
+(")") L:164
+(";") L:164
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:166
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:166
+(field_access object: (identifier) field: (identifier)) L:166
+(identifier) L:166
+(".") L:166
+(identifier) L:166
+(".") L:166
+(identifier) L:166
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:166
+("(") L:166
+(string_literal (escape_sequence) (string_fragment)) L:166
+(""") L:166
+(escape_sequence) L:166
+(string_fragment) L:166
+(""") L:166
+(")") L:166
+(";") L:166
+(local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) L:167
+(type_identifier) L:167
+(variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier))) L:167
+(identifier) L:167
+("=") L:167
+(field_access object: (identifier) field: (identifier)) L:167
+(identifier) L:167
+(".") L:167
+(identifier) L:167
+(";") L:167
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) L:168
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment))))) L:168
+(field_access object: (identifier) field: (identifier)) L:168
+(identifier) L:168
+(".") L:168
+(identifier) L:168
+(".") L:168
+(identifier) L:168
+(argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))) L:168
+("(") L:168
+(binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment))) L:168
+(binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) L:168
+(string_literal (string_fragment)) L:168
+(""") L:168
+(string_fragment) L:168
+(""") L:168
+("+") L:168
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:168
+(identifier) L:168
+(".") L:168
+(identifier) L:168
+(argument_list) L:168
+("(") L:168
+(")") L:168
+("+") L:168
+(string_literal (string_fragment)) L:168
+(""") L:168
+(string_fragment) L:168
+(""") L:168
+(")") L:168
+(";") L:168
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))))) L:169
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment))))) L:169
+(field_access object: (identifier) field: (identifier)) L:169
+(identifier) L:169
+(".") L:169
+(identifier) L:169
+(".") L:169
+(identifier) L:169
+(argument_list (binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment)))) L:169
+("(") L:169
+(binary_expression left: (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) right: (string_literal (string_fragment))) L:169
+(binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) L:169
+(string_literal (string_fragment)) L:169
+(""") L:169
+(string_fragment) L:169
+(""") L:169
+("+") L:169
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:169
+(identifier) L:169
+(".") L:169
+(identifier) L:169
+(argument_list) L:169
+("(") L:169
+(")") L:169
+("+") L:169
+(string_literal (string_fragment)) L:169
+(""") L:169
+(string_fragment) L:169
+(""") L:169
+(")") L:169
+(";") L:169
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:171
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:171
+(field_access object: (identifier) field: (identifier)) L:171
+(identifier) L:171
+(".") L:171
+(identifier) L:171
+(".") L:171
+(identifier) L:171
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:171
+("(") L:171
+(string_literal (escape_sequence) (string_fragment)) L:171
+(""") L:171
+(escape_sequence) L:171
+(string_fragment) L:171
+(""") L:171
+(")") L:171
+(";") L:171
+(local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) L:172
+(type_identifier) L:172
+(variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier))) L:172
+(identifier) L:172
+("=") L:172
+(field_access object: (identifier) field: (identifier)) L:172
+(identifier) L:172
+(".") L:172
+(identifier) L:172
+(";") L:172
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) L:173
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier)))) L:173
+(field_access object: (identifier) field: (identifier)) L:173
+(identifier) L:173
+(".") L:173
+(identifier) L:173
+(".") L:173
+(identifier) L:173
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))) L:173
+("(") L:173
+(binary_expression left: (string_literal (string_fragment)) right: (identifier)) L:173
+(string_literal (string_fragment)) L:173
+(""") L:173
+(string_fragment) L:173
+(""") L:173
+("+") L:173
+(identifier) L:173
+(")") L:173
+(";") L:173
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) L:174
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))))) L:174
+(field_access object: (identifier) field: (identifier)) L:174
+(identifier) L:174
+(".") L:174
+(identifier) L:174
+(".") L:174
+(identifier) L:174
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))) L:174
+("(") L:174
+(binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) L:174
+(string_literal (string_fragment)) L:174
+(""") L:174
+(string_fragment) L:174
+(""") L:174
+("+") L:174
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:174
+(identifier) L:174
+(".") L:174
+(identifier) L:174
+(argument_list) L:174
+("(") L:174
+(")") L:174
+(")") L:174
+(";") L:174
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:176
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:176
+(field_access object: (identifier) field: (identifier)) L:176
+(identifier) L:176
+(".") L:176
+(identifier) L:176
+(".") L:176
+(identifier) L:176
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:176
+("(") L:176
+(string_literal (escape_sequence) (string_fragment)) L:176
+(""") L:176
+(escape_sequence) L:176
+(string_fragment) L:176
+(""") L:176
+(")") L:176
+(";") L:176
+(local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier)))) L:177
+(type_identifier) L:177
+(variable_declarator name: (identifier) value: (field_access object: (identifier) field: (identifier))) L:177
+(identifier) L:177
+("=") L:177
+(field_access object: (identifier) field: (identifier)) L:177
+(identifier) L:177
+(".") L:177
+(identifier) L:177
+(";") L:177
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) L:178
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))))) L:178
+(field_access object: (identifier) field: (identifier)) L:178
+(identifier) L:178
+(".") L:178
+(identifier) L:178
+(".") L:178
+(identifier) L:178
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))) L:178
+("(") L:178
+(binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) L:178
+(string_literal (string_fragment)) L:178
+(""") L:178
+(string_fragment) L:178
+(""") L:178
+("+") L:178
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:178
+(identifier) L:178
+(".") L:178
+(identifier) L:178
+(argument_list) L:178
+("(") L:178
+(")") L:178
+(")") L:178
+(";") L:178
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:180
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:180
+(field_access object: (identifier) field: (identifier)) L:180
+(identifier) L:180
+(".") L:180
+(identifier) L:180
+(".") L:180
+(identifier) L:180
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:180
+("(") L:180
+(string_literal (escape_sequence) (string_fragment)) L:180
+(""") L:180
+(escape_sequence) L:180
+(string_fragment) L:180
+(""") L:180
+(")") L:180
+(";") L:180
+(local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) L:181
+(floating_point_type) L:181
+("double") L:181
+(variable_declarator name: (identifier) value: (decimal_integer_literal)) L:181
+(identifier) L:181
+("=") L:181
+(decimal_integer_literal) L:181
+(";") L:181
+(local_variable_declaration type: (floating_point_type) declarator: (variable_declarator name: (identifier) value: (decimal_integer_literal))) L:182
+(floating_point_type) L:182
+("double") L:182
+(variable_declarator name: (identifier) value: (decimal_integer_literal)) L:182
+(identifier) L:182
+("=") L:182
+(decimal_integer_literal) L:182
+(";") L:182
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) L:183
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier)))))) L:183
+(field_access object: (identifier) field: (identifier)) L:183
+(identifier) L:183
+(".") L:183
+(identifier) L:183
+(".") L:183
+(identifier) L:183
+(argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))) L:183
+("(") L:183
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier)))) L:183
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) L:183
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) L:183
+(binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) L:183
+(binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) L:183
+(binary_expression left: (identifier) right: (string_literal (string_fragment))) L:183
+(identifier) L:183
+("+") L:183
+(string_literal (string_fragment)) L:183
+(""") L:183
+(string_fragment) L:183
+(""") L:183
+("+") L:183
+(field_access object: (identifier) field: (identifier)) L:183
+(identifier) L:183
+(".") L:183
+(identifier) L:183
+("+") L:183
+(string_literal (string_fragment)) L:183
+(""") L:183
+(string_fragment) L:183
+(""") L:183
+("+") L:183
+(identifier) L:183
+("+") L:183
+(string_literal (string_fragment)) L:183
+(""") L:183
+(string_fragment) L:183
+(""") L:183
+("+") L:183
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))) L:183
+(field_access object: (identifier) field: (identifier)) L:183
+(identifier) L:183
+(".") L:183
+(identifier) L:183
+(".") L:183
+(identifier) L:183
+(argument_list (identifier) (identifier)) L:183
+("(") L:183
+(identifier) L:183
+(",") L:183
+(identifier) L:183
+(")") L:183
+(")") L:183
+(";") L:183
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))))) L:184
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier)))))) L:184
+(field_access object: (identifier) field: (identifier)) L:184
+(identifier) L:184
+(".") L:184
+(identifier) L:184
+(".") L:184
+(identifier) L:184
+(argument_list (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))))) L:184
+("(") L:184
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) right: (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier)))) L:184
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) right: (string_literal (string_fragment))) L:184
+(binary_expression left: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) right: (identifier)) L:184
+(binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) right: (string_literal (string_fragment))) L:184
+(binary_expression left: (binary_expression left: (identifier) right: (string_literal (string_fragment))) right: (field_access object: (identifier) field: (identifier))) L:184
+(binary_expression left: (identifier) right: (string_literal (string_fragment))) L:184
+(identifier) L:184
+("+") L:184
+(string_literal (string_fragment)) L:184
+(""") L:184
+(string_fragment) L:184
+(""") L:184
+("+") L:184
+(field_access object: (identifier) field: (identifier)) L:184
+(identifier) L:184
+(".") L:184
+(identifier) L:184
+("+") L:184
+(string_literal (string_fragment)) L:184
+(""") L:184
+(string_fragment) L:184
+(""") L:184
+("+") L:184
+(identifier) L:184
+("+") L:184
+(string_literal (string_fragment)) L:184
+(""") L:184
+(string_fragment) L:184
+(""") L:184
+("+") L:184
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (identifier) (identifier))) L:184
+(field_access object: (identifier) field: (identifier)) L:184
+(identifier) L:184
+(".") L:184
+(identifier) L:184
+(".") L:184
+(identifier) L:184
+(argument_list (identifier) (identifier)) L:184
+("(") L:184
+(identifier) L:184
+(",") L:184
+(identifier) L:184
+(")") L:184
+(")") L:184
+(";") L:184
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:186
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:186
+(field_access object: (identifier) field: (identifier)) L:186
+(identifier) L:186
+(".") L:186
+(identifier) L:186
+(".") L:186
+(identifier) L:186
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:186
+("(") L:186
+(string_literal (escape_sequence) (string_fragment)) L:186
+(""") L:186
+(escape_sequence) L:186
+(string_fragment) L:186
+(""") L:186
+(")") L:186
+(";") L:186
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))))) L:187
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))))) L:187
+(field_access object: (identifier) field: (identifier)) L:187
+(identifier) L:187
+(".") L:187
+(identifier) L:187
+(".") L:187
+(identifier) L:187
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list)))) L:187
+("(") L:187
+(binary_expression left: (string_literal (string_fragment)) right: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list))) L:187
+(string_literal (string_fragment)) L:187
+(""") L:187
+(string_fragment) L:187
+(""") L:187
+("+") L:187
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list)) L:187
+(identifier) L:187
+(".") L:187
+(identifier) L:187
+(argument_list) L:187
+("(") L:187
+(")") L:187
+(")") L:187
+(";") L:187
+(local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))))) L:188
+(type_identifier) L:188
+(variable_declarator name: (identifier) value: (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment))))) L:188
+(identifier) L:188
+("=") L:188
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list (string_literal (string_fragment)))) L:188
+(identifier) L:188
+(".") L:188
+(identifier) L:188
+(argument_list (string_literal (string_fragment))) L:188
+("(") L:188
+(string_literal (string_fragment)) L:188
+(""") L:188
+(string_fragment) L:188
+(""") L:188
+(")") L:188
+(";") L:188
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) L:189
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier)))) L:189
+(field_access object: (identifier) field: (identifier)) L:189
+(identifier) L:189
+(".") L:189
+(identifier) L:189
+(".") L:189
+(identifier) L:189
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))) L:189
+("(") L:189
+(binary_expression left: (string_literal (string_fragment)) right: (identifier)) L:189
+(string_literal (string_fragment)) L:189
+(""") L:189
+(string_fragment) L:189
+(""") L:189
+("+") L:189
+(identifier) L:189
+(")") L:189
+(";") L:189
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:191
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:191
+(field_access object: (identifier) field: (identifier)) L:191
+(identifier) L:191
+(".") L:191
+(identifier) L:191
+(".") L:191
+(identifier) L:191
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:191
+("(") L:191
+(string_literal (escape_sequence) (string_fragment)) L:191
+(""") L:191
+(escape_sequence) L:191
+(string_fragment) L:191
+(""") L:191
+(")") L:191
+(";") L:191
+(local_variable_declaration type: (type_identifier) declarator: (variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)))) L:192
+(type_identifier) L:192
+(variable_declarator name: (identifier) value: (field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier))) L:192
+(identifier) L:192
+("=") L:192
+(field_access object: (field_access object: (identifier) field: (identifier)) field: (identifier)) L:192
+(field_access object: (identifier) field: (identifier)) L:192
+(identifier) L:192
+(".") L:192
+(identifier) L:192
+(".") L:192
+(identifier) L:192
+(";") L:192
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))))) L:193
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier)))) L:193
+(field_access object: (identifier) field: (identifier)) L:193
+(identifier) L:193
+(".") L:193
+(identifier) L:193
+(".") L:193
+(identifier) L:193
+(argument_list (binary_expression left: (string_literal (string_fragment)) right: (identifier))) L:193
+("(") L:193
+(binary_expression left: (string_literal (string_fragment)) right: (identifier)) L:193
+(string_literal (string_fragment)) L:193
+(""") L:193
+(string_fragment) L:193
+(""") L:193
+("+") L:193
+(identifier) L:193
+(")") L:193
+(";") L:193
+(expression_statement (method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment))))) L:195
+(method_invocation object: (field_access object: (identifier) field: (identifier)) name: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_fragment)))) L:195
+(field_access object: (identifier) field: (identifier)) L:195
+(identifier) L:195
+(".") L:195
+(identifier) L:195
+(".") L:195
+(identifier) L:195
+(argument_list (string_literal (escape_sequence) (string_fragment))) L:195
+("(") L:195
+(string_literal (escape_sequence) (string_fragment)) L:195
+(""") L:195
+(escape_sequence) L:195
+(string_fragment) L:195
+(""") L:195
+(")") L:195
+(";") L:195
+(expression_statement (method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal)))) L:196
+(method_invocation object: (identifier) name: (identifier) arguments: (argument_list (null_literal))) L:196
+(identifier) L:196
+(".") L:196
+(identifier) L:196
+(argument_list (null_literal)) L:196
+("(") L:196
+(null_literal) L:196
+(")") L:196
+(";") L:196
+("}") L:197
+("}") L:198

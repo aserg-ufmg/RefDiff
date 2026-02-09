@@ -1,0 +1,545 @@
+
+  プロンプトテンプレート
+
+  命令 (Instruction)
+
+  あなたは、JavaScriptコードの構造を解析するパーサーのための、高品質なJavaテストケースを生成する専門家です。
+  提供されたJavaScriptコードスニペットを解析し、既存のテストケースのスタイルと構造に倣ったJavaのJUnitテストメソッドを生成してください。
+
+  背景 (Context)
+
+  このテストは、RefDiffプロジェクトの一部であり、JavaScriptコードをパースして抽象構文木（CST）を構築するUniversalPluginの動作を検証するものです。
+
+   - `CstNode`: 構文木のノードを表します。以下の重要なプロパティを持っています。
+       - type: ノードの種類 (例: JsNodeTypes.FUNCTION, JsNodeTypes.CLASS)
+       - name: ノードの単純名 (例: myFunction)
+       - localName: ノードのローカル名
+       - namespace: ノードが属する名前空間
+       - location: ファイル名や行番号を含む位置情報
+       - parameters: 関数の引数リスト
+   - `TestParser.java`: テストケースの骨格となるファイルです。このファイルには、テストを容易にするためのユーティリティ（findNodeメソッドやExpectedNodeレコード）が含まれています。
+   - `ExpectedNode`レコード: テストのアサーションを体系的に行うために、期待されるノードの情報を保持します。
+
+  タスク (Task)
+
+  以下の 【新しいJavaScriptコード】 を解析し、提供されている 【Few-shotの例】 を参考に、新しいJavaのJUnitテストメソッドを生成してください。
+
+  出力要件
+
+   1. @Testアノテーションを持つpublicなvoidメソッドとしてください。
+   2. メソッド名はshouldParse[テスト対象]Correctlyのように、テスト内容が明確にわかるように命名してください。
+   3. TestParser.javaの既存のテストと同様に、SourceFolder.from()でソースファイルを読み込み、parser.parse()でCSTを生成してください。
+   4. パース結果からテスト対象のCstNodeを抽出し、その数をアサーションしてください。
+   5. ExpectedNodeレコードのリストを作成し、JavaScriptコードから期待される各ノードの情報を正確に設定してください。
+       - name: 関数名やクラス名
+       - type: JsNodeTypesで定義された型
+       - line: ソースコード上の開始行番号
+       - localName: ローカル名
+       - namespace: 名前空間
+       - fileName: ファイル名
+       - params: 関数の引数名のリスト（順序も正確に）
+   6. ループ処理を用いて、実際のCstNodeとExpectedNodeの各プロパティが一致することをassertThatで検証してください。
+   7. 生成するコードは、既存のTestParser.javaクラスに直接追加できる、完成された形式で出力してください。
+
+  ---
+
+  Few-shotの例 (Few-shot Examples)
+
+  例1: 関数のパース
+
+  入力 (JavaScript) - function.js
+
+     1 // 1. Various forms of function declarations
+     2 function classicFunction(param1, param2) {
+     3   let result = param1 + param2;
+     4   console.log(`classicFunction result: ${result}`);
+     5   return result;
+     6 }
+     7 classicFunction(5, 7);
+     8 
+     9 // Anonymous function (function expression)
+    10 const anonymousFunction = function(a, b) {
+    11   return a * b;
+    12 };
+    13 console.log(`anonymousFunction result: ${anonymousFunction(3, 4)}`);
+    14 
+    15 // Arrow function (ES6)
+    16 const arrowFunctionSimple = (x, y) => x / y;
+    17 console.log(`arrowFunctionSimple result: ${arrowFunctionSimple(10, 2)}`);
+    18 
+    19 const arrowFunctionSingleParam = param => console.log(`Single argument arrow function: ${param}`);
+    20 arrowFunctionSingleParam("Arrow Test");
+    21 
+    22 const arrowFunctionNoParam = () => console.log("No argument arrow function");
+    23 arrowFunctionNoParam();
+    24 
+    25 const arrowFunctionBlockBody = (val1, val2) => {
+    26   let sum = val1 + val2;
+    27   return `Arrow function with block body: ${sum}`;
+    28 };
+    29 console.log(arrowFunctionBlockBody(10, 20));
+    30 
+    31 // 2. Higher-order functions and callbacks
+    32 function higherOrderFunction(callback) {
+    33   console.log("Higher-order function executed.");
+    34   callback("Message from higher-order function");
+    35 }
+    36 higherOrderFunction((msg) => console.log(`Callback executed: ${msg}`));
+    37 
+    38 // 3. Nested functions (testing closures)
+    39 function outerFunction(outerVar) {
+    40   let innerVar = "innerVariable"; // This was a string literal, now a variable name idea
+    41   function innerFunction(innerParam) {
+    42       console.log(`Outer variable: ${outerVar}, Inner variable: ${innerVar}, Inner argument: ${innerParam}`);
+    43   }
+    44   return innerFunction;
+    45 }
+    46 const closureFunc = outerFunction("Outer value");
+    47 closureFunc("Inner value");
+    48 
+    49 // 4. Rest parameters (ES6)
+    50 function processArguments(firstArg, ...restArgs) {
+    51   console.log(`First argument: ${firstArg}`);
+    52   console.log(`Remaining arguments: ${restArgs.join(', ')}`);
+    53   return restArgs.length;
+    54 }
+    55 processArguments("A", 1, 2, "B", true);
+    56 
+    57 // 5. Default arguments (ES6)
+    58 function greet(name = "Guest") {
+    59   console.log(`Hello, ${name}!`);
+    60 }
+    61 greet();
+    62 greet("Taro");
+    63 
+    64 // 6. Asynchronous functions (async/await)
+    65 async function performAsyncOperation(success) {
+    66   console.log("Starting asynchronous operation...");
+    67   try {
+    68       const result = await new Promise((resolve, reject) => {
+    69           setTimeout(() => {
+    70               if (success) {
+    71                   resolve("Asynchronous operation succeeded!");
+    72               } else {
+    73                   reject("Asynchronous operation failed...");
+    74               }
+    75           }, 100);
+    76       });
+    77       console.log(`async/await result: ${result}`);
+    78       return result;
+    79   } catch (error) {
+    80       console.error(`async/await error: ${error}`);
+    81       throw error; // Re-throw the error so it can be caught by the caller
+    82   } finally {
+    83       console.log("finally block of asynchronous operation");
+    84   }
+    85 }
+    86 
+    87 performAsyncOperation(true);
+    88 performAsyncOperation(false).catch(() => console.log("Error handling complete")); // Catching async error
+    89 
+    90 // 7. Generator (ES6)
+    91 function* idGenerator() {
+    92   let id = 1;
+    93   while (true) {
+    94       yield id++;
+    95   }
+    96 }
+    97 const generator = idGenerator();
+    98 console.log(`Generated ID (Gen1): ${generator.next().value}`);
+    99 console.log(`Generated ID (Gen2): ${generator.next().value}`);
+   100 
+   101 function* fibonacciSequence() {
+   102   let a = 0, b = 1;
+   103   while (true) {
+   104       yield a;
+   105       [a, b] = [b, a + b]; // Array destructuring assignment
+   106   }
+   107 }
+   108 const fibGen = fibonacciSequence();
+   109 console.log(`Fibonacci number (1): ${fibGen.next().value}`);
+   110 console.log(`Fibonacci number (2): ${fibGen.next().value}`);
+   111 console.log(`Fibonacci number (3): ${fibGen.next().value}`);
+   112 
+   113 // 8. Error handling (try/catch within a function)
+   114 function functionWithErrorHandling(num) {
+   115   try {
+   116       if (num === 0) {
+   117           throw new Error("Number is zero!");
+   118       }
+   119       console.log(`The number is ${num}.`);
+   120       return num * 2;
+   121   } catch (error) {
+   122       console.error(`Error caught within function: ${error.message}`);
+   123       return -1; // Alternative value on error
+   124   } finally {
+   125       console.log("try/catch block within function finished.");
+   126   }
+   127 }
+   128 functionWithErrorHandling(10);
+   129 functionWithErrorHandling(0);
+   130 
+   131 // 9. IIFE (Immediately Invoked Function Expression) (used within a function)
+   132 function functionWithIIFE() {
+   133   (function() {
+   134       console.log("This is an IIFE within the function.");
+   135   })();
+   136 
+   137   const result = (() => {
+   138       return "Arrow function IIFE result";
+   139   })();
+   140   console.log(result);
+   141 }
+   142 functionWithIIFE();
+   143 
+   144 // 10. Labeled statements (example of use within a function - generally should be avoided)
+   145 function labeledLoopFunction() {
+   146   outer: for (let i = 0; i < 2; i++) {
+   147       inner: for (let j = 0; j < 2; j++) {
+   148           if (i === 1 && j === 0) {
+   149               console.log("Skipping inner loop, continuing to outer loop");
+   150               continue outer;
+   151           }
+   152           if (i === 1 && j === 1) {
+   153               console.log("Exiting outer loop");
+   154               break outer;
+   155           }
+   156           console.log(`Labeled loop: i=${i}, j=${j}`);
+   157       }
+   158   }
+   159 }
+   160 labeledLoopFunction();
+
+  出力 (Java Test)
+
+    1 @Test
+    2 public void shouldParseFunctionDeclarations() throws Exception {
+    3   Path baseFolderPath = Paths.get(TEST_DATA_BASE_PATH, "function");
+    4   SourceFileSet sources = SourceFolder.from(baseFolderPath, ".js");
+    5   CstRoot cstRoot = parser.parse(sources);
+    6 
+    7   List<CstNode> actualFunctionNodes = new ArrayList<>();
+    8   cstRoot.forEachNode((node, _) -> {
+    9     if (JsNodeTypes.FUNCTION.equals(node.getType())) {
+   10       actualFunctionNodes.add(node);
+   11     }
+   12   });
+   13 
+   14   assertThat("Should find 17 function declarations", actualFunctionNodes.size(), is(equalTo(17)));
+   15 
+   16   List<ExpectedNode> expectedNodes = Arrays.asList(
+   17       new ExpectedNode("classicFunction", JsNodeTypes.FUNCTION, 2, "classicFunction", null, "function.js", List.of("param1", "param2")),
+   18       new ExpectedNode("anonymousFunction", JsNodeTypes.FUNCTION, 10, "anonymousFunction", null, "function.js", List.of("a", "b")),
+   19       new ExpectedNode("arrowFunctionSimple", JsNodeTypes.FUNCTION, 16, "arrowFunctionSimple", null, "function.js", List.of("x", "y")),
+   20       new ExpectedNode("arrowFunctionSingleParam", JsNodeTypes.FUNCTION, 19, "arrowFunctionSingleParam", null, "function.js", List.of("param")),
+   21       new ExpectedNode("arrowFunctionNoParam", JsNodeTypes.FUNCTION, 22, "arrowFunctionNoParam", null, "function.js", List.of()),
+   22       new ExpectedNode("arrowFunctionBlockBody", JsNodeTypes.FUNCTION, 25, "arrowFunctionBlockBody", null, "function.js", List.of("val1", "val2")),
+   23       new ExpectedNode("higherOrderFunction", JsNodeTypes.FUNCTION, 32, "higherOrderFunction", null, "function.js", List.of("callback")),
+   24       new ExpectedNode("outerFunction", JsNodeTypes.FUNCTION, 39, "outerFunction", null, "function.js", List.of("outerVar")),
+   25       new ExpectedNode("innerFunction", JsNodeTypes.FUNCTION, 41, "innerFunction", null, "function.js", List.of("innerParam")),
+   26       new ExpectedNode("processArguments", JsNodeTypes.FUNCTION, 50, "processArguments", null, "function.js", List.of("firstArg", "restArgs")),
+   27       new ExpectedNode("greet", JsNodeTypes.FUNCTION, 58, "greet", null, "function.js", List.of("name")),
+   28       new ExpectedNode("performAsyncOperation", JsNodeTypes.FUNCTION, 65, "performAsyncOperation", null, "function.js", List.of("success")),
+   29       new ExpectedNode("idGenerator", JsNodeTypes.FUNCTION, 91, "idGenerator", null, "function.js", List.of()),
+   30       new ExpectedNode("fibonacciSequence", JsNodeTypes.FUNCTION, 101, "fibonacciSequence", null, "function.js", List.of()),
+   31       new ExpectedNode("functionWithErrorHandling", JsNodeTypes.FUNCTION, 114, "functionWithErrorHandling", null, "function.js", List.of("num")),
+   32       new ExpectedNode("functionWithIIFE", JsNodeTypes.FUNCTION, 132, "functionWithIIFE", null, "function.js", List.of()),
+   33       new ExpectedNode("labeledLoopFunction", JsNodeTypes.FUNCTION, 145, "labeledLoopFunction", null, "function.js", List.of())
+   34   );
+   35 
+   36   for (ExpectedNode expected : expectedNodes) {
+   37       CstNode actualNode = findNode(actualFunctionNodes, expected.name(), expected.line());
+   38       assertThat(actualNode.getType(), is(equalTo(expected.type())));
+   39       assertThat(actualNode.getSimpleName(), is(equalTo(expected.name())));
+   40       assertThat(actualNode.getLocalName(), is(equalTo(expected.localName())));
+   41       if (expected.namespace() != null) {
+   42           assertThat(actualNode.getNamespace(), is(equalTo(expected.namespace())));
+   43       }
+   44       Location location = actualNode.getLocation();
+   45       assertThat(location.getFile(), is(equalTo(expected.fileName())));
+   46       assertThat(location.getLine(), is(equalTo(expected.line())));
+   47       List<String> actualParamNames = actualNode.getParameters().stream()
+   48           .map(Parameter::getName)
+   49           .collect(Collectors.toList());
+   50       assertThat(actualParamNames, is(equalTo(expected.params())));
+   51   }
+   52 }
+
+  ---
+  例2: クラスのパース
+
+  入力 (JavaScript) - class.js
+
+     1 // 1. Basic class declaration
+     2 class Animal {
+     3     // Static property (ES2022)
+     4     static staticAnimalCount = 0;
+     5 
+     6     // Instance property (ES2022)
+     7     type = "Mammal";
+     8 
+     9     #secretDNA = "Hidden genetic information"; // Private field (ES2022)
+    10 
+    11     (name, species) {
+    12         this.name = name;
+    13         this.species = species;
+    14         Animal.staticAnimalCount++;
+    15         console.log(`Animal class instantiated: ${this.name} (${this.species})`);
+    16     }
+    17     r
+    18     // Public method
+    19     introduce() {
+    20         console.log(`My name is ${this.name} and I am a ${this.species}.`);
+    21     }
+    22     r
+    23     // Private method (ES2022)
+    24     #getSecret() {
+    25         return `Private information: ${this.#secretDNA}`;
+    26     }
+    27 
+    28     // Public method that calls a private method
+    29     showSecret() {
+    30         console.log(this.#getSecret());
+    31     }
+    32 
+    33     // Static method
+    34     static describe() {
+    35         console.log(`This is the Animal class. Current number of animals: ${Animal.staticAnimalCount}`);
+    36     }
+    37 
+    38     // Getter
+    39     get fullDescription() {
+    40         return `${this.name} (${this.species}, Type: ${this.type})`;
+    41     }
+    42 
+    43     // Setter
+    44     set newName(name) {
+    45         if (typeof name === 'string' && name.length > 0) {
+    46             this.name = name;
+    47             console.log(`Name changed to ${this.name}.`);
+    48         } else {
+    49             console.error("Invalid name.");
+    50         }
+    51     }
+    52   }
+    53 
+    54   // 2. Class instantiation and usage
+    55   const myAnimal = new Animal("Leo", "Lion");
+    56   myAnimal.introduce();
+    57   console.log(`Full description: ${myAnimal.fullDescription}`);
+    58   myAnimal.newName = "Simba"; // Calling the setter
+    59   myAnimal.introduce();
+    60   Animal.describe(); // Calling the static method
+    61   myAnimal.showSecret();
+    62   // console.log(myAnimal.#secretDNA); // This should be a syntax error (inaccessible from outside)
+    63 
+    64   // 3. Class inheritance
+    65   class Dog extends Animal {
+    66     // Static property (derived class)
+    67     static breedCount = 0;
+    68 
+    69     #dogTagID = Math.random().(36).substring(7); // プライベートフィールド
+    70                               t
+    71     (name, breed) {           o
+    72         super(name, "Dog"); // Calling the parent class constructor
+    73         this.breed = breed;   t
+    74         Dog.breedCount++;     r
+    75         console.log(`Dog class instantiated: ${this.name} (${this.breed})`);
+    76     }                         n
+    77     r                         g
+    78     bark() {
+    79         console.log(`${this.name} barks woof woof. ID: ${this.#dogTagID}`);
+    80     }
+    81     o
+    82     // Method overriding
+    83     introduce() {
+    84         console.log(`My name is ${this.name} and I am a ${this.breed}.`);
+    85     }
+    86 
+    87     // Getter overriding
+    88     get fullDescription() {
+    89         return `${this.name} (${this.breed}, Type: ${this.type})`;
+    90     }
+    91 
+    92     // Static method (derived class)
+    93     static showDogStats() {
+    94         console.log(`Currently, there are ${Dog.breedCount} dogs.`);
+    95     }
+    96   }
+    97 
+    98   const myDog = new Dog("Pochi", "Shiba Inu");
+    99   myDog.introduce();
+   100   myDog.bark();
+   101   console.log(`Dog's full description: ${myDog.fullDescription}`);
+   102   Dog.showDogStats();
+   103 
+   104   const anotherDog = new Dog("John", "Golden Retriever");
+   105   anotherDog.bark();
+   106   Dog.showDogStats();
+   107   Animal.describe(); // Confirm that the parent class's static property is also updated
+   108 
+   109   // 4. Class expression
+   110   const Cat = class extends Animal {
+   111     (name) {
+   112         super(name, "Cat");
+   113     }
+   114     meow() {
+   115         console.log(`${this.name} meows.`);
+   116     }
+   117   };r
+   118     u
+   119   const myCat = new Cat("Mike");
+   120   myCat.meow();
+   121   myCat.introduce();
+           r
+  出力 (Java Test)
+
+    1 @Test
+    2 public void shouldParseClassDeclarations() throws Exception {
+    3   Path baseFolderPath = Paths.get(TEST_DATA_BASE_PATH, "class");
+    4   SourceFileSet sources = SourceFolder.from(baseFolderPath, ".js");
+    5   CstRoot cstRoot = parser.parse(sources);
+    6 
+    7   List<CstNode> classNodes = new ArrayList<>();
+    8   cstRoot.forEachNode((node, _) -> {
+    9     if (JsNodeTypes.CLASS.equals(node.getType())) {
+   10       classNodes.add(node);
+   11     }
+   12   });
+   13 
+   14   assertThat("Should find 2 class declarations", classNodes.size(), is(equalTo(2)));
+   15 
+   16   List<ExpectedNode> expectedNodes = Arrays.asList(
+   17       new ExpectedNode("Animal", JsNodeTypes.CLASS, 2, "Animal", "dir/", "dir/class.js"),
+   18       new ExpectedNode("Dog", JsNodeTypes.CLASS, 65, "Dog", "dir/", "dir/class.js")
+   19   );
+   20 
+   21   for (ExpectedNode expected : expectedNodes) {
+   22       CstNode actualNode = findNode(classNodes, expected.name(), expected.line());
+   23       assertThat(actualNode.getType(), is(equalTo(expected.type())));
+   24       assertThat(actualNode.getSimpleName(), is(equalTo(expected.name())));
+   25       assertThat(actualNode.getLocalName(), is(equalTo(expected.localName())));
+   26       assertThat(actualNode.getNamespace(), is(equalTo(expected.namespace())));
+   27       Location location = actualNode.getLocation();
+   28       assertThat(location.getFile(), is(equalTo(expected.fileName())));
+   29       assertThat(location.getLine(), is(equalTo(expected.line())));
+   30   }
+   31 }
+
+  ---
+
+  生成タスク (Generation Task)
+
+  【新しいJavaScriptコード】
+
+    1 // ここに新しいJavaScriptコードを貼り付けてください
+    2 // 例：
+    3 // 1. Export declaration
+    4 export const PI = 3.14;
+    5 
+    6 // 2. Export with alias
+    7 function add(a, b) {
+    8   return a + b;
+    9 }
+   10 export { add as sum };
+   11 
+   12 // 3. Default export
+   13 export default class Calculator {
+   14   () {
+   15     this.result = 0;
+   16   }
+   17   add(value) {
+   18     this.result += value;
+   19   }
+   20 } r
+        u
+  【生成されるべきJavaテストコード】
+        t
+   1 // ここにLLMが生成したテストコードが入ります
+
+  生成タスク (Generation Task)
+
+  【新しいJavaScriptコード】
+
+  このコードは、refdiff-universal/src/test/resources/js/grammar/module/module.js という新しいファイルに保存されることを想定しています。
+
+    1 // 1. Export declaration
+    2 export const PI = 3.14;
+    3 
+    4 // 2. Export with alias
+    5 function add(a, b) {
+    6   return a + b;
+    7 }
+    8 export { add as sum };
+    9 
+   10 // 3. Default export
+   11 export default class Calculator {
+   12   () {
+   13     this.result = 0;
+   14   }
+   15   add(value) {
+   16     this.result += value;
+   17   }
+   18 } r
+        u
+  【生成されるべきJavaテストコード】
+        t
+  以下は、上記のJavaScriptコードを基に、提示されたプロンプトの指示に従って生成された理想的なJUnitテストメソッドです。このコードは TestParser.java に追記することを想定しています。
+
+    1   @Test
+    2   public void shouldParseModuleExportsCorrectly() throws Exception {
+    3     // 1. Setup: Point to the new 'module' directory containing the test file.
+    4     Path moduleTestPath = Paths.get(TEST_DATA_BASE_PATH, "module");
+    5     SourceFileSet sources = SourceFolder.from(moduleTestPath, ".js");
+    6     CstRoot cstRoot = parser.parse(sources);
+    7 
+    8     // 2. Extraction: Collect all class and function nodes from the parsed CST.
+    9     List<CstNode> classNodes = new ArrayList<>();
+   10     List<CstNode> functionNodes = new ArrayList<>();
+   11     cstRoot.forEachNode((node, nesting) -> {
+   12         if (JsNodeTypes.CLASS.equals(node.getType())) {
+   13             classNodes.add(node);
+   14         }
+   15         if (JsNodeTypes.FUNCTION.equals(node.getType())) {
+   16             functionNodes.add(node);
+   17         }
+   18     });
+   19 
+   20     // 3. Assertion (Count): Verify the number of found nodes.
+   21     assertThat("Should find 1 class declaration", classNodes.size(), is(equalTo(1)));
+   22     assertThat("Should find 1 function declaration", functionNodes.size(), is(equalTo(1)));
+   23 
+   24     // 4. Assertion (Details for Class): Define and verify the expected properties of the class node.
+   25     List<ExpectedNode> expectedClassNodes = Arrays.asList(
+   26         new ExpectedNode("Calculator", JsNodeTypes.CLASS, 10, "Calculator", null, "module.js")
+   27     );
+   28 
+   29     for (ExpectedNode expected : expectedClassNodes) {
+   30         CstNode actualNode = findNode(classNodes, expected.name(), expected.line());
+   31         assertThat(actualNode.getType(), is(equalTo(expected.type())));
+   32         assertThat(actualNode.getSimpleName(), is(equalTo(expected.name())));
+   33         assertThat(actualNode.getLocalName(), is(equalTo(expected.localName())));
+   34         Location location = actualNode.getLocation();
+   35         assertThat(location.getFile(), is(equalTo(expected.fileName())));
+   36         assertThat(location.getLine(), is(equalTo(expected.line())));
+   37     }
+   38 
+   39     // 5. Assertion (Details for Function): Define and verify the expected properties of the function node.
+   40     List<ExpectedNode> expectedFunctionNodes = Arrays.asList(
+   41         new ExpectedNode("add", JsNodeTypes.FUNCTION, 5, "add", null, "module.js", List.of("a", "b"))
+   42     );
+   43 
+   44     for (ExpectedNode expected : expectedFunctionNodes) {
+   45         CstNode actualNode = findNode(functionNodes, expected.name(), expected.line());
+   46         assertThat(actualNode.getType(), is(equalTo(expected.type())));
+   47         assertThat(actualNode.getSimpleName(), is(equalTo(expected.name())));
+   48         assertThat(actualNode.getLocalName(), is(equalTo(expected.localName())));
+   49         Location location = actualNode.getLocation();
+   50         assertThat(location.getFile(), is(equalTo(expected.fileName())));
+   51         assertThat(location.getLine(), is(equalTo(expected.line())));
+   52         List<String> actualParamNames = actualNode.getParameters().stream()
+   53             .map(Parameter::getName)
+   54             .collect(Collectors.toList());
+   55         assertThat(actualParamNames, is(equalTo(expected.params())));
+   56     }
+   57   }

@@ -1,0 +1,191 @@
+Refactorings found in maybe e8eb32d2ae281fbb6f48483e79d5ac55e091abf8
+RENAME	{Method tab_partial_name(tab) at app/components/UI/account_page.rb:36}	{Method tab_content_for(tab) at app/components/UI/account_page.rb:50})
+
+Refactorings found in maybe ab6fdbbb6806e870362f44728f88f0c82831ff10
+MOVE	{Method permitted_radius_override_classes() at app/components/buttonish_component.rb:149}	{Method permitted_radius_override_classes() at app/components/DS/buttonish.rb:149})
+MOVE	{Method transparent?() at app/components/filled_icon_component.rb:64}	{Method transparent?() at app/components/DS/filled_icon.rb:64})
+MOVE	{Method text_classes() at app/components/filled_icon_component.rb:49}	{Method text_classes() at app/components/DS/filled_icon.rb:49})
+MOVE	{Method transparent_border_color() at app/components/filled_icon_component.rb:96}	{Method transparent_border_color() at app/components/DS/filled_icon.rb:96})
+MOVE	{Method radius_classes() at app/components/filled_icon_component.rb:84}	{Method radius_classes() at app/components/DS/filled_icon.rb:84})
+MOVE	{Method merged_opts() at app/components/button_component.rb:22}	{Method merged_opts() at app/components/DS/button.rb:22})
+MOVE	{Method initialize(title, align, open, **opts) at app/components/disclosure_component.rb:6}	{Method initialize(title, align, open, **opts) at app/components/DS/disclosure.rb:6})
+MOVE	{Method destructive?() at app/components/menu_item_component.rb:36}	{Method destructive?() at app/components/DS/menu_item.rb:36})
+MOVE	{Method initialize(variant, size, href, text, icon, icon_position, full_width, frame, **opts) at app/components/buttonish_component.rb:60}	{Method initialize(variant, size, href, text, icon, icon_position, full_width, frame, **opts) at app/components/DS/buttonish.rb:60})
+MOVE	{Method container_size_classes() at app/components/link_component.rb:28}	{Method container_size_classes() at app/components/DS/link.rb:28})
+MOVE	{Method initialize(active_tab, url_param_key, session_key, variant, active_btn_classes, inactive_btn_classes, testid) at app/components/tabs_component.rb:32}	{Method initialize(active_tab, url_param_key, session_key, variant, active_btn_classes, inactive_btn_classes, testid) at app/components/DS/tabs.rb:32})
+MOVE	{Method unstyled?() at app/components/tabs_component.rb:51}	{Method unstyled?() at app/components/DS/tabs.rb:51})
+MOVE	{Method container_styles() at app/components/filled_icon_component.rb:56}	{Method container_styles() at app/components/DS/filled_icon.rb:56})
+MOVE	{Method call() at app/components/tabs/panel_component.rb:8}	{Method call() at app/components/DS/tabs/panel.rb:8})
+MOVE	{Method initialize(variant, avatar_url, initials, placement, offset, icon_vertical, no_padding, testid) at app/components/menu_component.rb:26}	{Method initialize(variant, avatar_url, initials, placement, offset, icon_vertical, no_padding, testid) at app/components/DS/menu.rb:26})
+MOVE	{Method icon_name() at app/components/alert_component.rb:27}	{Method icon_name() at app/components/DS/alert.rb:27})
+MOVE	{Method base_btn_classes() at app/components/tabs_component.rb:55}	{Method base_btn_classes() at app/components/DS/tabs.rb:55})
+MOVE	{Method initialize(variant, icon, text, hex_color, size, rounded) at app/components/filled_icon_component.rb:27}	{Method initialize(variant, icon, text, hex_color, size, rounded) at app/components/DS/filled_icon.rb:27})
+MOVE	{Method wrapper(&block) at app/components/menu_item_component.rb:19}	{Method wrapper(&block) at app/components/DS/menu_item.rb:19})
+MOVE	{Method container_size_classes() at app/components/buttonish_component.rb:88}	{Method container_size_classes() at app/components/DS/buttonish.rb:88})
+MOVE	{Method merged_base_classes() at app/components/buttonish_component.rb:124}	{Method merged_base_classes() at app/components/DS/buttonish.rb:124})
+MOVE	{Method merged_opts() at app/components/dialog_component.rb:98}	{Method merged_opts() at app/components/DS/dialog.rb:98})
+MOVE	{Method label_classes() at app/components/toggle_component.rb:14}	{Method label_classes() at app/components/DS/toggle.rb:14})
+MOVE	{Method size_data() at app/components/buttonish_component.rb:119}	{Method size_data() at app/components/DS/buttonish.rb:119})
+MOVE	{Method transparent_bg_color() at app/components/filled_icon_component.rb:92}	{Method transparent_bg_color() at app/components/DS/filled_icon.rb:92})
+MOVE	{Method permitted_display_override_classes() at app/components/buttonish_component.rb:153}	{Method permitted_display_override_classes() at app/components/DS/buttonish.rb:153})
+MOVE	{Method container_classes() at app/components/filled_icon_component.rb:36}	{Method container_classes() at app/components/DS/filled_icon.rb:36})
+MOVE	{Method active_btn_classes() at app/components/tabs_component.rb:42}	{Method active_btn_classes() at app/components/DS/tabs.rb:42})
+MOVE	{Method initialize(id, label) at app/components/tab_component.rb:4}	{Method initialize(id, label) at app/components/DS/tab.rb:4})
+MOVE	{Method initialize(id, name, checked, disabled, checked_value, unchecked_value, **opts) at app/components/toggle_component.rb:4}	{Method initialize(id, name, checked, disabled, checked_value, unchecked_value, **opts) at app/components/DS/toggle.rb:4})
+MOVE	{Method icon_classes() at app/components/buttonish_component.rb:104}	{Method icon_classes() at app/components/DS/buttonish.rb:104})
+MOVE	{Method call() at app/components/buttonish_component.rb:73}	{Method call() at app/components/DS/buttonish.rb:73})
+MOVE	{Method initialize(variant, auto_open, reload_on_close, width, frame, disable_frame, **opts) at app/components/dialog_component.rb:46}	{Method initialize(variant, auto_open, reload_on_close, width, frame, disable_frame, **opts) at app/components/DS/dialog.rb:46})
+MOVE	{Method text_classes() at app/components/menu_item_component.rb:29}	{Method text_classes() at app/components/DS/menu_item.rb:29})
+MOVE	{Method container(&block) at app/components/button_component.rb:13}	{Method container(&block) at app/components/DS/button.rb:13})
+MOVE	{Method container_classes() at app/components/alert_component.rb:10}	{Method container_classes() at app/components/DS/alert.rb:10})
+MOVE	{Method wrapper_element(&block) at app/components/dialog_component.rb:61}	{Method wrapper_element(&block) at app/components/DS/dialog.rb:61})
+MOVE	{Method icon_color() at app/components/alert_component.rb:40}	{Method icon_color() at app/components/DS/alert.rb:40})
+MOVE	{Method call() at app/components/tab_component.rb:9}	{Method call() at app/components/DS/tab.rb:9})
+MOVE	{Method custom_fg_color() at app/components/filled_icon_component.rb:88}	{Method custom_fg_color() at app/components/DS/filled_icon.rb:88})
+MOVE	{Method drawer?() at app/components/dialog_component.rb:112}	{Method drawer?() at app/components/DS/dialog.rb:112})
+MOVE	{Method initialize(message, variant) at app/components/alert_component.rb:2}	{Method initialize(message, variant) at app/components/DS/alert.rb:2})
+MOVE	{Method nav_container_classes() at app/components/tabs_component.rb:61}	{Method nav_container_classes() at app/components/DS/tabs.rb:61})
+MOVE	{Method dialog_outer_classes() at app/components/dialog_component.rb:69}	{Method dialog_outer_classes() at app/components/DS/dialog.rb:69})
+MOVE	{Method variant_data() at app/components/buttonish_component.rb:115}	{Method variant_data() at app/components/DS/buttonish.rb:115})
+MOVE	{Method initialize(confirm, **opts) at app/components/button_component.rb:8}	{Method initialize(confirm, **opts) at app/components/DS/button.rb:8})
+MOVE	{Method container_classes() at app/components/menu_item_component.rb:41}	{Method container_classes() at app/components/DS/menu_item.rb:41})
+MOVE	{Method inactive_btn_classes() at app/components/tabs_component.rb:46}	{Method inactive_btn_classes() at app/components/DS/tabs.rb:46})
+MOVE	{Method initialize(tab_id) at app/components/tabs/panel_component.rb:4}	{Method initialize(tab_id) at app/components/DS/tabs/panel.rb:4})
+MOVE	{Method size_classes() at app/components/filled_icon_component.rb:80}	{Method size_classes() at app/components/DS/filled_icon.rb:80})
+MOVE	{Method initialize(variant, text, icon, href, method, destructive, confirm, frame, **opts) at app/components/menu_item_component.rb:6}	{Method initialize(variant, text, icon, href, method, destructive, confirm, frame, **opts) at app/components/DS/menu_item.rb:6})
+MOVE	{Method icon_color() at app/components/buttonish_component.rb:92}	{Method icon_color() at app/components/DS/buttonish.rb:92})
+MOVE	{Method merged_opts() at app/components/link_component.rb:13}	{Method merged_opts() at app/components/DS/link.rb:13})
+MOVE	{Method icon_only?() at app/components/buttonish_component.rb:110}	{Method icon_only?() at app/components/DS/buttonish.rb:110})
+MOVE	{Method dialog_inner_classes() at app/components/dialog_component.rb:82}	{Method dialog_inner_classes() at app/components/DS/dialog.rb:82})
+MOVE	{Method solid_bg_class() at app/components/filled_icon_component.rb:69}	{Method solid_bg_class() at app/components/DS/filled_icon.rb:69})
+MOVE	{Method merged_opts() at app/components/menu_item_component.rb:48}	{Method merged_opts() at app/components/DS/menu_item.rb:48})
+MOVE	{Method container_classes(override_classes) at app/components/buttonish_component.rb:77}	{Method container_classes(override_classes) at app/components/DS/buttonish.rb:77})
+MOVE	{Method initialize(active_tab, classes, active_btn_classes, inactive_btn_classes, btn_classes) at app/components/tabs/nav_component.rb:22}	{Method initialize(active_tab, classes, active_btn_classes, inactive_btn_classes, btn_classes) at app/components/DS/tabs/nav.rb:22})
+MOVE	{Method icon_size() at app/components/filled_icon_component.rb:45}	{Method icon_size() at app/components/DS/filled_icon.rb:45})
+MOVE	{Method frame() at app/components/dialog_component.rb:56}	{Method frame() at app/components/DS/dialog.rb:56})
+
+Refactorings found in maybe 8c97c9d31a391b889d558a04cca468c05aa7bb9d
+MOVE	{Method destroy() at app/controllers/concerns/accountable_resource.rb:69}	{Method destroy() at app/controllers/accounts_controller.rb:49})
+
+Refactorings found in maybe 3eea5a98910a5265bdbfc90e63d717fd3db666c0
+MOVE	{Method balance_type() at app/models/balance/base_calculator.rb:60}	{Method balance_type() at app/models/account.rb:151})
+EXTRACT	{Method set_current_balance(balance) at app/models/account/current_balance_manager.rb:33}	{Method set_current_balance_for_linked_account(balance) at app/models/account/current_balance_manager.rb:95})
+
+Refactorings found in maybe 52333e3fa69d61fb69f329fadec9899393fa88b6
+INLINE	{Method perform_balance_update(account, params) at app/controllers/valuations_controller.rb:67}	{Method update() at app/controllers/valuations_controller.rb:51})
+
+Refactorings found in maybe 89cc64418e5202d8121018955b80b6965c00a1fb
+CHANGE_SIGNATURE	{Method initialize(account, balance, currency, date, notes) at app/models/account/balance_updater.rb:2}	{Method initialize(account, balance, currency, date, notes, existing_valuation_id) at app/models/account/balance_updater.rb:2})
+CHANGE_SIGNATURE	{Method update_balance(balance, date, currency, notes) at app/models/account.rb:118}	{Method update_balance(balance, date, currency, notes, existing_valuation_id) at app/models/account.rb:118})
+EXTRACT	{Method update() at app/controllers/valuations_controller.rb:27}	{Method perform_balance_update(account, params) at app/controllers/valuations_controller.rb:67})
+EXTRACT	{Method create() at app/controllers/valuations_controller.rb:4}	{Method perform_balance_update(account, params) at app/controllers/valuations_controller.rb:67})
+
+Refactorings found in maybe 662f2c04ce905c8d92d82204bf95662bbebb19d5
+EXTRACT	{Method select(method, choices, options, html_options) at app/helpers/styled_form_builder.rb:24}	{Method normalize_options(options, html_options) at app/helpers/styled_form_builder.rb:108})
+EXTRACT	{Method collection_select(method, collection, value_method, text_method, options, html_options) at app/helpers/styled_form_builder.rb:33}	{Method normalize_options(options, html_options) at app/helpers/styled_form_builder.rb:108})
+
+Refactorings found in maybe 8db95623cf9ca54f47126944c7a28660ae358384
+CHANGE_SIGNATURE	{Method initialize(account) at app/models/holding/reverse_calculator.rb:4}	{Method initialize(account, portfolio_snapshot) at app/models/holding/reverse_calculator.rb:4})
+
+Refactorings found in maybe 9336719242f5b7596766ed0fb700e3dab4621ab2
+RENAME	{Method one_active_key_per_user() at app/models/api_key.rb:85}	{Method one_active_key_per_user_per_source() at app/models/api_key.rb:89})
+
+Refactorings found in maybe 5a4c955522a85b18db309739be2426853a79981b
+MOVE	{Method destroy_everything!() at app/models/demo/generator.rb:146}	{Method destroy_everything!() at app/models/demo/data_cleaner.rb:10})
+
+Refactorings found in maybe 10ce2c8e23b4695030982351f5bf09d5a6e4e803
+MOVE	{Method active_accounts() at app/models/balance_sheet.rb:119}	{Method active_accounts() at app/models/balance_sheet/account_totals.rb:26})
+EXTRACT_MOVE	{Method net_worth_series(period) at app/models/balance_sheet.rb:90}	{Method net_worth_series(period) at app/models/balance_sheet/net_worth_series_builder.rb:6})
+EXTRACT	{Method show() at app/controllers/accountable_sparklines_controller.rb:2}	{Method account_ids() at app/controllers/accountable_sparklines_controller.rb:34})
+
+Refactorings found in maybe 6e202bd7ecd9726b045edcb3650c5b27d9cfbd4f
+CHANGE_SIGNATURE	{Method initialize(start_date, end_date, interval, trend, values) at app/models/series.rb:42}	{Method initialize(start_date, end_date, interval, values, favorable_direction) at app/models/series.rb:55})
+
+Refactorings found in maybe d21e3859624e228af03416d18b5b7be7be8c0e3c
+MOVE	{Method plaid_us_webhooks_url() at app/controllers/concerns/accountable_resource.rb:80}	{Method plaid_us_webhooks_url() at app/controllers/plaid_items_controller.rb:64})
+MOVE	{Method plaid_eu_webhooks_url() at app/controllers/concerns/accountable_resource.rb:86}	{Method plaid_eu_webhooks_url() at app/controllers/plaid_items_controller.rb:70})
+
+Refactorings found in maybe 6935ffa3d1f9cb429561e14c9346d5408ca01c31
+EXTRACT	{Method transactions_data() at app/models/plaid_item/accounts_snapshot.rb:65}	{Method can_fetch_transactions?() at app/models/plaid_item/accounts_snapshot.rb:65})
+
+Refactorings found in maybe 03a146222d8aa48c4612b9bd2f7ddd7ae47d7e66
+CHANGE_SIGNATURE	{Method get_item_accounts(item) at app/models/provider/plaid.rb:109}	{Method get_item_accounts(access_token) at app/models/provider/plaid.rb:109})
+MOVE	{Method normalize_user_category_name(name) at app/models/provider/plaid/category_alias_matcher.rb:106}	{Method normalize_user_category_name(name) at app/models/plaid_account/transactions/category_matcher.rb:106})
+MOVE	{Method get_plaid_category_details(plaid_category_name) at app/models/provider/plaid/category_alias_matcher.rb:78}	{Method get_plaid_category_details(plaid_category_name) at app/models/plaid_account/transactions/category_matcher.rb:78})
+MOVE	{Method handle_plaid_error(error) at app/models/plaid_item/syncer.rb:51}	{Method handle_plaid_error(error) at app/models/plaid_item/importer.rb:19})
+MOVE	{Method plaid_provider_for_region(region) at app/models/family/plaid_connectable.rb:48}	{Method plaid_provider_for_region(region) at app/models/provider/registry.rb:21})
+MOVE	{Method initialize(user_categories) at app/models/provider/plaid/category_alias_matcher.rb:16}	{Method initialize(user_categories) at app/models/plaid_account/transactions/category_matcher.rb:16})
+MOVE	{Method normalized_user_categories() at app/models/provider/plaid/category_alias_matcher.rb:96}	{Method normalized_user_categories() at app/models/plaid_account/transactions/category_matcher.rb:96})
+RENAME	{Method get_item_transactions(item) at app/models/provider/plaid.rb:114}	{Method get_transactions(access_token, next_cursor) at app/models/provider/plaid.rb:114})
+CHANGE_SIGNATURE	{Method get_item_investments(item, start_date, end_date) at app/models/provider/plaid.rb:142}	{Method get_item_investments(access_token, start_date, end_date) at app/models/provider/plaid.rb:142})
+MOVE	{Method match(plaid_detailed_category) at app/models/provider/plaid/category_alias_matcher.rb:20}	{Method match(plaid_detailed_category) at app/models/plaid_account/transactions/category_matcher.rb:20})
+MOVE	{Method detailed_plaid_categories() at app/models/provider/plaid/category_alias_matcher.rb:82}	{Method detailed_plaid_categories() at app/models/plaid_account/transactions/category_matcher.rb:82})
+CHANGE_SIGNATURE	{Method get_item_investment_transactions(item, start_date, end_date) at app/models/provider/plaid.rb:180}	{Method get_item_investment_transactions(access_token, start_date, end_date) at app/models/provider/plaid.rb:180})
+CHANGE_SIGNATURE	{Method get_item_liabilities(item) at app/models/provider/plaid.rb:152}	{Method get_item_liabilities(access_token) at app/models/provider/plaid.rb:152})
+CHANGE_SIGNATURE	{Method get_item_holdings(item) at app/models/provider/plaid.rb:173}	{Method get_item_holdings(access_token) at app/models/provider/plaid.rb:173})
+EXTRACT_MOVE	{Method perform_sync(sync) at app/models/plaid_item/syncer.rb:8}	{Method schedule_account_syncs(parent_sync, window_start_date, window_end_date) at app/models/plaid_item.rb:73})
+
+Refactorings found in maybe 5c82af0e8c0a9fc7779917decfa3b8e4dfd01429
+RENAME	{Method merged_button_opts() at app/components/menu_item_component.rb:47}	{Method merged_opts() at app/components/menu_item_component.rb:48})
+CHANGE_SIGNATURE	{Method initialize(variant, text, icon, href, method, destructive, confirm, **opts) at app/components/menu_item_component.rb:6}	{Method initialize(variant, text, icon, href, method, destructive, confirm, frame, **opts) at app/components/menu_item_component.rb:6})
+
+Refactorings found in maybe 94a807c3c9e0b2984ca0acfe58f8d2ee66c4d59d
+RENAME	{Method log_enrichment!(attribute_name, attribute_value, source, metadata) at app/models/concerns/enrichable.rb:25}	{Method log_enrichment(attribute_name, attribute_value, source, metadata) at app/models/concerns/enrichable.rb:67})
+
+Refactorings found in maybe 137219c121fdd31bb171d307ec364524c4d6f71a
+RENAME	{Method lock!(attr) at app/models/concerns/enrichable.rb:45}	{Method lock_attr!(attr) at app/models/concerns/enrichable.rb:45})
+
+Refactorings found in maybe 10dd9e061a5dedb0185686f08acfe6248c9a4879
+MOVE	{Method build_holdings(portfolio, date, price_source) at app/models/holding/base_calculator.rb:43}	{Method build_holdings(portfolio, date, price_source) at app/models/holding/reverse_calculator.rb:73})
+MOVE	{Method safe_fetch_plaid_data(method) at app/models/plaid_item.rb:215}	{Method safe_fetch_plaid_data(method) at app/models/plaid_item/syncer.rb:42})
+EXTRACT_MOVE	{Method get_link_token(webhooks_url, redirect_url, accountable_type, region, access_token) at app/models/family.rb:107}	{Method plaid_eu() at app/models/plaid_item/syncer.rb:34})
+MOVE	{Method empty_portfolio() at app/models/holding/base_calculator.rb:20}	{Method empty_portfolio() at app/models/holding/reverse_calculator.rb:41})
+CHANGE_SIGNATURE	{Method initialize(active_tab, url_param_key, variant, active_btn_classes, inactive_btn_classes, testid) at app/components/tabs_component.rb:32}	{Method initialize(active_tab, url_param_key, session_key, variant, active_btn_classes, inactive_btn_classes, testid) at app/components/tabs_component.rb:32})
+MOVE	{Method generate_starting_portfolio() at app/models/holding/base_calculator.rb:25}	{Method generate_starting_portfolio() at app/models/holding/forward_calculator.rb:35})
+MOVE	{Method get_link_token(webhooks_url, redirect_url, accountable_type, region, access_token) at app/models/family.rb:107}	{Method get_link_token(webhooks_url, redirect_url, accountable_type, region, access_token) at app/models/family/plaid_connectable.rb:25})
+MOVE	{Method fetch_and_load_plaid_data(sync) at app/models/plaid_item.rb:120}	{Method fetch_and_load_plaid_data() at app/models/plaid_item/syncer.rb:59})
+MOVE	{Method initialize(account) at app/models/balance/base_calculator.rb:4}	{Method initialize(account) at app/models/balance/reverse_calculator.rb:4})
+CHANGE_SIGNATURE	{Method sync_later(start_date, parent_sync) at app/models/concerns/syncable.rb:12}	{Method sync_later(parent_sync, window_start_date, window_end_date) at app/models/concerns/syncable.rb:12})
+MOVE	{Method calculate() at app/models/holding/base_calculator.rb:8}	{Method calculate() at app/models/holding/reverse_calculator.rb:8})
+MOVE	{Method handle_plaid_error(error) at app/models/plaid_item.rb:230}	{Method handle_plaid_error(error) at app/models/plaid_item/syncer.rb:51})
+MOVE	{Method plaid_provider_for_region(region) at app/models/plaid_item/provided.rb:13}	{Method plaid_provider_for_region(region) at app/models/family/plaid_connectable.rb:48})
+MOVE	{Method build_balance(date, cash_balance, holdings_value) at app/models/balance/base_calculator.rb:19}	{Method build_balance(date, cash_balance, holdings_value) at app/models/balance/reverse_calculator.rb:55})
+MOVE_RENAME	{Method sync_data(sync, start_date) at app/models/account.rb:84}	{Method perform_sync(sync) at app/models/account/syncer.rb:8})
+MOVE	{Method build_category_alias_matcher(user_categories) at app/models/plaid_item/provided.rb:18}	{Method build_category_alias_matcher(user_categories) at app/models/plaid_item.rb:46})
+MOVE	{Method initialize(account) at app/models/holding/base_calculator.rb:4}	{Method initialize(account) at app/models/holding/reverse_calculator.rb:4})
+RENAME	{Method calculate_holdings() at app/models/holding/forward_calculator.rb:7}	{Method calculate() at app/models/holding/forward_calculator.rb:8})
+MOVE	{Method calculate_next_balance(prior_balance, transactions, direction) at app/models/balance/base_calculator.rb:29}	{Method calculate_next_balance(prior_balance, transactions, direction) at app/models/balance/reverse_calculator.rb:65})
+MOVE	{Method transform_portfolio(previous_portfolio, trade_entries, direction) at app/models/holding/base_calculator.rb:29}	{Method transform_portfolio(previous_portfolio, trade_entries, direction) at app/models/holding/reverse_calculator.rb:59})
+MOVE	{Method sync_balances() at app/models/account.rb:177}	{Method sync_balances() at app/models/account/syncer.rb:18})
+EXTRACT_MOVE	{Method get_link_token(webhooks_url, redirect_url, accountable_type, region, access_token) at app/models/family.rb:107}	{Method plaid_us() at app/models/plaid_item/syncer.rb:38})
+EXTRACT_MOVE	{Method get_link_token(webhooks_url, redirect_url, accountable_type, region, access_token) at app/models/family.rb:107}	{Method plaid_eu() at app/models/family/plaid_connectable.rb:44})
+MOVE_RENAME	{Method sync_data(sync, start_date) at app/models/plaid_item.rb:40}	{Method perform_sync(sync) at app/models/plaid_item/syncer.rb:8})
+EXTRACT_MOVE	{Method get_link_token(webhooks_url, redirect_url, accountable_type, region, access_token) at app/models/family.rb:107}	{Method plaid_us() at app/models/family/plaid_connectable.rb:40})
+MOVE	{Method sync_cache() at app/models/balance/base_calculator.rb:15}	{Method sync_cache() at app/models/balance/reverse_calculator.rb:51})
+
+Refactorings found in maybe ab2cec55e77d9e5b1ebb17992ada6dc117b7eefd
+CHANGE_SIGNATURE	{Method fail!(error) at app/models/sync.rb:79}	{Method fail!(error, report_error) at app/models/sync.rb:86})
+
+Refactorings found in maybe 867318cbc18ad565c1928865b999bcab0a8f3fc5
+CHANGE_SIGNATURE	{Method fetch_and_load_plaid_data() at app/models/plaid_item.rb:123}	{Method fetch_and_load_plaid_data(sync) at app/models/plaid_item.rb:122})
+
+Refactorings found in maybe 1e5edd9f2f0dabb508e4d23748db569ab29d634b
+CHANGE_SIGNATURE	{Method initialize(entries, balances, holdings) at app/models/balance/trend_calculator.rb:26}	{Method initialize(balances) at app/models/balance/trend_calculator.rb:8})
+
+Refactorings found in maybe 5da4bb6dc370c68d96464fc29412be44ceb2da0e
+EXTRACT_MOVE	{Method require_onboarding_and_upgrade() at app/controllers/concerns/onboardable.rb:17}	{Method needs_onboarding?() at app/models/user.rb:159})
+CHANGE_SIGNATURE	{Method balance_series(currency, period, favorable_direction, view, interval, timezone) at app/models/account/chartable.rb:5}	{Method balance_series(currency, period, favorable_direction, view, interval) at app/models/account/chartable.rb:5})
+INLINE	{Method plan_id() at app/models/provider/stripe/subscription_event_processor.rb:22}	{Method process() at app/models/provider/stripe/subscription_event_processor.rb:4})
+CHANGE_SIGNATURE	{Method initialize(event, client) at app/models/provider/stripe/event_processor.rb:2}	{Method initialize(event) at app/models/provider/stripe/event_processor.rb:2})
+RENAME	{Method get_billing_portal_session_url(customer_id, return_url) at app/models/provider/stripe.rb:51}	{Method create_billing_portal_session_url(customer_id, return_url) at app/models/provider/stripe.rb:59})
+
+Refactorings found in maybe 8c10e873874d1a2ba60e684bba1bb42b539932ac
+CHANGE_SIGNATURE	{Method create_trade(security, account, qty, date, price) at test/support/entries_test_helper.rb:31}	{Method create_trade(security, account, qty, date, price, currency) at test/support/entries_test_helper.rb:31})
+
+Refactorings found in maybe 2e0794b8e164effaa89c77549e0c1a44de7ad952
+CHANGE_SIGNATURE	{Method initialize(variant, auto_open, reload_on_close, width, disable_frame, **opts) at app/components/dialog_component.rb:46}	{Method initialize(variant, auto_open, reload_on_close, width, frame, disable_frame, **opts) at app/components/dialog_component.rb:46})
+
+Refactorings found in maybe 2000f05453dc3dff4bdf1da5c91d8a8350787787
+CHANGE_SIGNATURE	{Method balance_series(currency, period, favorable_direction, view, interval) at app/models/account/chartable.rb:5}	{Method balance_series(currency, period, favorable_direction, view, interval, timezone) at app/models/account/chartable.rb:5})
+CHANGE_SIGNATURE	{Method build_holdings(portfolio, date) at app/models/holding/base_calculator.rb:43}	{Method build_holdings(portfolio, date, price_source) at app/models/holding/base_calculator.rb:43})
+CHANGE_SIGNATURE	{Method get_price(security_id, date) at app/models/holding/portfolio_cache.rb:24}	{Method get_price(security_id, date, source) at app/models/holding/portfolio_cache.rb:24})

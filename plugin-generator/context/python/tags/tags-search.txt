@@ -1,0 +1,10 @@
+GetWikipediaSummaryBlock	search.py	/^class GetWikipediaSummaryBlock(Block, GetRequest):$/;"	c	line:17
+Input	search.py	/^    class Input(BlockSchema):$/;"	c	line:18	class:GetWikipediaSummaryBlock
+Output	search.py	/^    class Output(BlockSchema):$/;"	c	line:21	class:GetWikipediaSummaryBlock
+__init__	search.py	/^    def __init__(self):$/;"	m	line:27	class:GetWikipediaSummaryBlock
+run	search.py	/^    async def run(self, input_data: Input, **kwargs) -> BlockOutput:$/;"	m	line:39	class:GetWikipediaSummaryBlock	typeref:typename:BlockOutput
+GetWeatherInformationBlock	search.py	/^class GetWeatherInformationBlock(Block, GetRequest):$/;"	c	line:63
+Input	search.py	/^    class Input(BlockSchema):$/;"	c	line:64	class:GetWeatherInformationBlock
+Output	search.py	/^    class Output(BlockSchema):$/;"	c	line:79	class:GetWeatherInformationBlock
+__init__	search.py	/^    def __init__(self):$/;"	m	line:91	class:GetWeatherInformationBlock
+run	search.py	/^    async def run($/;"	m	line:116	class:GetWeatherInformationBlock	typeref:typename:BlockOutput

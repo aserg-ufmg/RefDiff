@@ -1,0 +1,27 @@
+{"_type": "tag", "name": "basicDeclaration", "path": "sample-func.ts", "pattern": "/^function basicDeclaration(x: number, y: number): number {$/", "line": 15, "kind": "function"}
+{"_type": "tag", "name": "logMessage", "path": "sample-func.ts", "pattern": "/^function logMessage(message: string): void {$/", "line": 23, "kind": "function"}
+{"_type": "tag", "name": "throwError", "path": "sample-func.ts", "pattern": "/^function throwError(msg: string): never {$/", "line": 31, "kind": "function"}
+{"_type": "tag", "name": "greet", "path": "sample-func.ts", "pattern": "/^function greet(name: string, greeting?: string): string {$/", "line": 91, "kind": "function"}
+{"_type": "tag", "name": "createUser", "path": "sample-func.ts", "pattern": "/^function createUser(name: string, role: string = \"guest\"): void {$/", "line": 99, "kind": "function"}
+{"_type": "tag", "name": "sumAll", "path": "sample-func.ts", "pattern": "/^function sumAll(...numbers: number[]): number {$/", "line": 107, "kind": "function"}
+{"_type": "tag", "name": "renderConfig", "path": "sample-func.ts", "pattern": "/^function renderConfig({ width, height }: { width: number; height: number }): void {$/", "line": 115, "kind": "function"}
+{"_type": "tag", "name": "identity", "path": "sample-func.ts", "pattern": "/^function identity<T>(arg: T): T {$/", "line": 127, "kind": "function"}
+{"_type": "tag", "name": "logLength", "path": "sample-func.ts", "pattern": "/^function logLength<T extends { length: number }>(arg: T): number {$/", "line": 141, "kind": "function"}
+{"_type": "tag", "name": "getTimestamp", "path": "sample-func.ts", "pattern": "/^function getTimestamp(date: Date): number;$/", "line": 155, "kind": "function"}
+{"_type": "tag", "name": "fetchData", "path": "sample-func.ts", "pattern": "/^async function fetchData(url: string): Promise<string> {$/", "line": 172, "kind": "function"}
+{"_type": "tag", "name": "sequence", "path": "sample-func.ts", "pattern": "/^function* sequence(): Generator<number> {$/", "line": 180, "kind": "generator"}
+{"_type": "tag", "name": "asyncSequence", "path": "sample-func.ts", "pattern": "/^async function* asyncSequence(): AsyncGenerator<number> {$/", "line": 189, "kind": "generator"}
+{"_type": "tag", "name": "Fish", "path": "sample-func.ts", "pattern": "/^type Fish = { swim: () => void };$/", "line": 202, "kind": "alias"}
+{"_type": "tag", "name": "Bird", "path": "sample-func.ts", "pattern": "/^type Bird = { fly: () => void };$/", "line": 203, "kind": "alias"}
+{"_type": "tag", "name": "isFish", "path": "sample-func.ts", "pattern": "/^function isFish(pet: Fish | Bird): pet is Fish {$/", "line": 205, "kind": "function"}
+{"_type": "tag", "name": "assertIsString", "path": "sample-func.ts", "pattern": "/^function assertIsString(val: any): asserts val is string {$/", "line": 213, "kind": "function"}
+{"_type": "tag", "name": "constructor", "path": "sample-func.ts", "pattern": "/^    constructor(private initialValue: number) {}$/", "line": 225, "kind": "method"}
+{"_type": "tag", "name": "add", "path": "sample-func.ts", "pattern": "/^    add(n: number): number {$/", "line": 230, "kind": "method"}
+{"_type": "tag", "name": "compute", "path": "sample-func.ts", "pattern": "/^    async compute(): Promise<void> {}$/", "line": 237, "kind": "method"}
+{"_type": "tag", "name": "value", "path": "sample-func.ts", "pattern": "/^    get value(): number {$/", "line": 243, "kind": "method"}
+{"_type": "tag", "name": "value", "path": "sample-func.ts", "pattern": "/^    set value(v: number) {$/", "line": 250, "kind": "method"}
+{"_type": "tag", "name": "description", "path": "sample-func.ts", "pattern": "/^    static description(): string {$/", "line": 258, "kind": "method"}
+{"_type": "tag", "name": "onClick", "path": "sample-func.ts", "pattern": "/^    onClick(this: ClickHandler): void;$/", "line": 285, "kind": "method"}
+{"_type": "tag", "name": "handleEvent", "path": "sample-func.ts", "pattern": "/^function handleEvent(this: ClickHandler) {$/", "line": 288, "kind": "function"}
+{"_type": "tag", "name": "MathOperation", "path": "sample-func.ts", "pattern": "/^type MathOperation = (a: number, b: number) => number;$/", "line": 299, "kind": "alias"}
+{"_type": "tag", "name": "new", "path": "sample-func.ts", "pattern": "/^    new (value?: number): Date;$/", "line": 315, "kind": "method"}

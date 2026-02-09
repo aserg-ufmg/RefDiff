@@ -1,0 +1,75 @@
+globalVar	dir/file.js	/^var globalVar = "This is a global variable.";$/;"	v	line:2
+blockScopedLet	dir/file.js	/^let blockScopedLet = 100;$/;"	v	line:3
+constantValue	dir/file.js	/^const constantValue = true;$/;"	C	line:4
+stringType	dir/file.js	/^let stringType = "Hello, World!";$/;"	v	line:7
+numberType	dir/file.js	/^let numberType = 123.45;$/;"	v	line:8
+booleanType	dir/file.js	/^let booleanType = false;$/;"	v	line:9
+nullType	dir/file.js	/^let nullType = null;$/;"	v	line:10
+undefinedType	dir/file.js	/^let undefinedType = undefined;$/;"	v	line:11
+symbolType	dir/file.js	/^let symbolType = Symbol('unique');$/;"	v	line:12
+bigIntType	dir/file.js	/^let bigIntType = 9007199254740991n;$/;"	v	line:13
+key1	dir/file.js	/^    key1: "value1",$/;"	p	line:16	variable:objectType
+key2	dir/file.js	/^    key2: 200,$/;"	p	line:17	variable:objectType
+nestedKey	dir/file.js	/^        nestedKey: "nestedValue"$/;"	p	line:19	property:objectType.nestedObject
+nestedObject	dir/file.js	/^    nestedObject: {$/;"	p	line:18	variable:objectType
+objectType	dir/file.js	/^let objectType = {$/;"	v	line:15
+anonymousObject93f2ecfe0105	dir/file.js	/^let arrayType = [1, "two", true, null, { prop: "value" }];$/;"	v	line:23
+prop	dir/file.js	/^let arrayType = [1, "two", true, null, { prop: "value" }];$/;"	p	line:23	variable:anonymousObject93f2ecfe0105
+arrayType	dir/file.js	/^let arrayType = [1, "two", true, null, { prop: "value" }];$/;"	v	line:23
+sum	dir/file.js	/^let sum = 10 + 20;$/;"	v	line:26
+difference	dir/file.js	/^let difference = 30 - 5;$/;"	v	line:27
+product	dir/file.js	/^let product = 6 * 7;$/;"	v	line:28
+quotient	dir/file.js	/^let quotient = 49 \/ 7;$/;"	v	line:29
+remainder	dir/file.js	/^let remainder = 10 % 3;$/;"	v	line:30
+exponentiation	dir/file.js	/^let exponentiation = 2 ** 3; \/\/ ES7$/;"	v	line:31
+logicalAnd	dir/file.js	/^let logicalAnd = true && false;$/;"	v	line:33
+logicalOr	dir/file.js	/^let logicalOr = true || false;$/;"	v	line:34
+logicalNot	dir/file.js	/^let logicalNot = !true;$/;"	v	line:35
+comparison	dir/file.js	/^let comparison = (sum > difference) && (product <= quotient);$/;"	v	line:37
+strictEquality	dir/file.js	/^let strictEquality = (10 === "10");$/;"	v	line:38
+looseEquality	dir/file.js	/^let looseEquality = (10 == "10");$/;"	v	line:39
+ternaryOperator	dir/file.js	/^let ternaryOperator = (sum > 0) ? "Positive" : "Negative";$/;"	v	line:41
+count	dir/file.js	/^let count = 0;$/;"	v	line:75
+doWhileCount	dir/file.js	/^let doWhileCount = 0;$/;"	v	line:81
+simpleFileFunction	dir/file.js	/^function simpleFileFunction(param) {$/;"	f	line:88
+propName	dir/file.js	/^const propName = "dynamicProp";$/;"	C	line:95
+method	dir/file.js	/^    method() { \/\/ Shorthand method definition$/;"	m	line:97	variable:extendedObject
+[propName]	dir/file.js	/^    [propName]: "Dynamic property", \/\/ Computed property name$/;"	p	line:100	variable:extendedObject
+constantValue	dir/file.js	/^    constantValue \/\/ Shorthand property value$/;"	p	line:101	variable:extendedObject
+extendedObject	dir/file.js	/^const extendedObject = {$/;"	v	line:96
+first	dir/file.js	/^const [first, second, ...rest] = arrayType;$/;"	C	line:108
+second	dir/file.js	/^const [first, second, ...rest] = arrayType;$/;"	C	line:108
+rest	dir/file.js	/^const [first, second, ...rest] = arrayType;$/;"	C	line:108
+key1	dir/file.js	/^const { key1, nestedObject: { nestedKey } } = objectType;$/;"	C	line:111
+nestedKey	dir/file.js	/^const { key1, nestedObject: { nestedKey } } = objectType;$/;"	C	line:111
+newArray	dir/file.js	/^const newArray = [...arrayType, 4, 5];$/;"	v	line:115
+newProp	dir/file.js	/^const newObject = { ...objectType, newProp: "New property" };$/;"	p	line:118	variable:newObject
+newObject	dir/file.js	/^const newObject = { ...objectType, newProp: "New property" };$/;"	v	line:118
+templateString	dir/file.js	/^const templateString = `The sum is ${sum} and the product is ${product}.`;$/;"	C	line:122
+handleFileAsyncOperations	dir/file.js	/^async function handleFileAsyncOperations() {$/;"	f	line:138
+mightThrowFileError	dir/file.js	/^function mightThrowFileError(shouldThrow) {$/;"	f	line:149
+fileMap	dir/file.js	/^const fileMap = new Map();$/;"	C	line:166
+fileSet	dir/file.js	/^const fileSet = new Set();$/;"	C	line:170
+fileWeakMapKey	dir/file.js	/^const fileWeakMapKey = {};$/;"	C	line:175
+fileWeakMap	dir/file.js	/^const fileWeakMap = new WeakMap();$/;"	C	line:176
+fileWeakSetObj	dir/file.js	/^const fileWeakSetObj = {};$/;"	C	line:179
+fileWeakSet	dir/file.js	/^const fileWeakSet = new WeakSet();$/;"	C	line:180
+a	dir/file.js	/^const fileTarget = { a: 1 };$/;"	p	line:184	variable:fileTarget
+fileTarget	dir/file.js	/^const fileTarget = { a: 1 };$/;"	v	line:184
+fileHandler	dir/file.js	/^const fileHandler = { get: (t, p) => Reflect.get(t, p) * 10 };$/;"	C	line:185
+fileProxy	dir/file.js	/^const fileProxy = new Proxy(fileTarget, fileHandler);$/;"	C	line:186
+FILE_SYMBOL	dir/file.js	/^const FILE_SYMBOL = Symbol('fileSymbol');$/;"	C	line:190
+[FILE_SYMBOL]	dir/file.js	/^    [FILE_SYMBOL]: "File-level symbol"$/;"	p	line:192	variable:fileObjWithSymbol
+fileObjWithSymbol	dir/file.js	/^const fileObjWithSymbol = {$/;"	v	line:191
+fileNullVal	dir/file.js	/^const fileNullVal = null;$/;"	C	line:197
+fileResult	dir/file.js	/^const fileResult = fileNullVal ?? "File-level default";$/;"	C	line:198
+theme	dir/file.js	/^const fileConfig = { settings: { theme: "dark" } };$/;"	p	line:202	property:fileConfig.settings
+settings	dir/file.js	/^const fileConfig = { settings: { theme: "dark" } };$/;"	p	line:202	variable:fileConfig
+fileConfig	dir/file.js	/^const fileConfig = { settings: { theme: "dark" } };$/;"	v	line:202
+fileRegex	dir/file.js	/^const fileRegex = \/(abc)(def)\/d;$/;"	C	line:223
+fileStr	dir/file.js	/^const fileStr = 'abcdef';$/;"	C	line:224
+fileMatch	dir/file.js	/^const fileMatch = fileStr.match(fileRegex);$/;"	C	line:225
+fileArr	dir/file.js	/^const fileArr = [1, 2, 3];$/;"	v	line:231
+a	dir/file.js	/^const fileObj = { a: 1 };$/;"	p	line:235	variable:fileObj
+fileObj	dir/file.js	/^const fileObj = { a: 1 };$/;"	v	line:235
+anonymousFunction93f2ecfe0200	dir/file.js	/^(function() {$/;"	f	line:239

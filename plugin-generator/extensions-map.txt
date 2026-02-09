@@ -1,0 +1,169 @@
+Unknown 
+Abaqus   *.inp
+Abc      *.abc *.abc
+Ada      *.adb *.ads *.Ada *.ada
+Ant      build.xml *.build.xml *.ant *.xml
+Asciidoc *.asc *.adoc *.asciidoc *.asc *.adoc *.asciidoc
+Asm      *.A51 *.29[kK] *.[68][68][kKsSxX] *.[xX][68][68] *.asm *.ASM *.s *.S
+Asp      *.asp *.asa
+Autoconf configure.in *.ac
+AutoIt   *.au3 *.AU3 *.aU3 *.Au3
+Automake Makefile.am GNUmakefile.am *.am
+Awk      *.awk *.gawk *.mawk
+Basic    *.bas *.bi *.bm *.bb *.pb
+Bats     *.bats
+BETA     *.bet
+BibLaTeX
+BibTeX   *.bib
+Clojure  *.clj *.cljs *.cljc
+CMake    CMakeLists.txt *.cmake
+C        *.c
+Cargo    Cargo.toml
+C++      *.c++ *.cc *.cp *.cpp *.cxx *.h *.h++ *.hh *.hp *.hpp *.hxx *.inl
+CPreProcessor
+CSS      *.css
+C#       *.cs
+Ctags    *.ctags
+Cobol    *.cbl *.cob *.CBL *.COB
+CobolFree
+CobolVariable
+CUDA     *.cu *.cuh
+D        *.d *.di
+DBusService *.service
+Diff     *.diff *.patch
+DTD      *.dtd *.mod
+DTS      *.dts *.dtsi
+DosBatch *.bat *.cmd
+Eiffel   *.e
+Elixir   *.ex *.exs
+EmacsLisp *.el
+Erlang   *.erl *.ERL *.hrl *.HRL
+Falcon   *.fal *.ftd
+Flex     *.as *.mxml
+Forth    *.fth *.forth *.fs *.4th *.f
+Fortran  *.f *.for *.ftn *.f77 *.f90 *.f95 *.f03 *.f08 *.f15
+FrontMatter
+FunctionParameters
+Fypp     *.fy
+Gdbinit  .gdbinit *.gdb
+GDScript *.gd
+GemSpec  *.gemspec
+Go       *.go
+GoMod    go.mod
+GPerf    *.perf *.gperf
+Haskell  *.hs
+Haxe     *.hx
+HTML     *.htm *.html
+Iniconf  *.ini *.conf
+Inko     *.inko
+IPythonCell
+ITcl     *.itcl
+Java     *.java
+JavaProperties *.properties
+JavaScript *.js *.jsx *.mjs
+JNI     
+JSON     *.json
+Julia    *.jl
+Kconfig  Kconfig*
+LdScript *.lds.S *.ld.S ld.script *.lds *.scr *.ld *.ldi
+LEX      *.lex *.l
+Lisp     *.cl *.clisp *.l *.lisp *.lsp
+LiterateHaskell *.lhs
+Lua      *.lua
+M4       *.m4 *.spt
+Man      *.man *.1 *.2 *.3 *.4 *.5 *.6 *.7 *.8 *.9 *.3pm *.3stap *.7stap
+Make     [Mm]akefile GNUmakefile *.mak *.mk
+Markdown *.md *.markdown
+MatLab   *.m
+Meson    meson.build
+MesonOptions meson_options.txt
+Moose   
+Myrddin  *.myr
+Nftables *.nft
+NSIS     *.nsi *.nsh
+ObjectiveC *.mm *.m *.h
+OCaml    *.ml *.mli *.aug
+Org      *.org
+Passwd   passwd
+Pascal   *.p *.pas
+Perl     *.pl *.pm *.ph *.plx *.perl
+Perl6    *.p6 *.pm6 *.pm *.pl6 *.t6
+PHP      *.php *.php3 *.php4 *.php5 *.php7 *.phtml
+PkgConfig *.pc
+Pod      *.pod
+PowerShell *.ps1 *.psm1
+Prolog   *.pl
+Protobuf *.proto
+PuppetManifest *.pp
+Python   *.py *.pyx *.pxd *.pxi *.scons *.wsgi
+PythonEntryPoints entry_points.txt
+PythonLoggingConfig
+QemuHX   *.hx
+QtMoc   
+Quarto   *.qmd
+RMarkdown *.rmd
+R        *.r *.R *.s *.q
+Rake     Rakefile *.rake
+Raku     *.raku *.rakumod *.rakutest *.rakudoc
+R6Class 
+RSpec   
+REXX     *.cmd *.rexx *.rx
+Robot    *.robot
+RpmMacros %(.*/)?macros\.d/macros\.([^/]+)$%
+RpmSpec  *.spec
+ReStructuredText *.rest *.reST *.rst
+Ruby     *.rb *.ruby
+Rust     *.rs
+S4Class 
+Scheme   *.SCM *.SM *.sch *.scheme *.scm *.sm *.rkt
+SCSS     *.scss
+SELinuxInterface *.if
+SELinuxTypeEnforcement *.te
+SINEX    *.snx *.sinex
+Sh       *.sh *.SH *.bsh *.bash *.ksh *.ash
+SLang    *.sl
+SML      *.sml *.sig
+Scdoc    *.scd
+SQL      *.sql
+SystemdUnit *.service *.socket *.device *.mount *.automount *.swap *.target *.path *.timer *.snapshot *.slice
+SystemTap *.stp *.stpm
+Tcl      *.tcl *.tk *.wish *.exp
+TclOO   
+Terraform *.tf
+TerraformVariables *.tfvars
+Tex      *.tex
+TeXBeamer
+TTCN     *.ttcn *.ttcn3
+Txt2tags *.t2t *.t2t
+TypeScript *.ts
+TypeSpec *.tsp
+V        *.v
+Vera     *.vr *.vri *.vrh
+Verilog  *.v *.vh
+SystemVerilog *.sv *.svh *.svi
+VHDL     *.vhdl *.vhd
+Vim      vimrc [._]vimrc gvimrc [._]gvimrc *.vim *.vba
+WindRes  *.rc
+YACC     *.y
+YumRepo  *.repo
+Zephir   *.zep
+Zsh      *.zsh
+DBusIntrospect *.xml
+Glade    *.glade
+Maven2   pom.xml *.pom *.xml
+PlistXML *.plist
+RelaxNG  *.rng
+SVG      *.svg
+XRC      *.xrc
+XML      *.xml
+XSLT     *.xsl *.xslt
+Yaml     *.yml *.yaml
+AnsiblePlaybook
+I18nRubyGem
+OpenAPI  openapi.yaml
+Varlink  *.varlink
+Kotlin   *.kt *.kts
+Thrift   *.thrift
+Elm      *.elm
+TOML     *.toml
+RDoc     *.rdoc

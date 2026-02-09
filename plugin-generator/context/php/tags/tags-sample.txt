@@ -1,0 +1,27 @@
+publicAbstractMethod	sample.php	/^    abstract public function publicAbstractMethod(): void;$/;"	f	line:7	class:AbstractBaseClass	typeref:unknown:void
+protectedAbstractMethod	sample.php	/^    abstract protected function protectedAbstractMethod(string $param): string;$/;"	f	line:10	class:AbstractBaseClass	typeref:unknown:string
+interfaceMethod	sample.php	/^    public function interfaceMethod(int $a): bool;$/;"	f	line:17	interface:MyInterface	typeref:unknown:bool
+traitMethod	sample.php	/^    public function traitMethod(string $name): string$/;"	f	line:24	trait:MyTrait	typeref:unknown:string
+privateTraitMethod	sample.php	/^    private function privateTraitMethod(): void$/;"	f	line:30	trait:MyTrait	typeref:unknown:void
+publicMethod	sample.php	/^    public function publicMethod(): void$/;"	f	line:44	class:MethodExamples	typeref:unknown:void
+protectedMethod	sample.php	/^    protected function protectedMethod(string $message): void$/;"	f	line:50	class:MethodExamples	typeref:unknown:void
+privateMethod	sample.php	/^    private function privateMethod(): void$/;"	f	line:56	class:MethodExamples	typeref:unknown:void
+publicStaticMethod	sample.php	/^    public static function publicStaticMethod(): void$/;"	f	line:64	class:MethodExamples	typeref:unknown:void
+protectedStaticMethod	sample.php	/^    protected static function protectedStaticMethod(): void$/;"	f	line:70	class:MethodExamples	typeref:unknown:void
+finalPublicMethod	sample.php	/^    final public function finalPublicMethod(): void$/;"	f	line:76	class:MethodExamples	typeref:unknown:void
+finalPublicStaticMethod	sample.php	/^    final public static function finalPublicStaticMethod(): void$/;"	f	line:82	class:MethodExamples	typeref:unknown:void
+methodWithTypedArgument	sample.php	/^    public function methodWithTypedArgument(int $a, float $b): void$/;"	f	line:90	class:MethodExamples	typeref:unknown:void
+methodWithDefaultValue	sample.php	/^    public function methodWithDefaultValue(string $name = "Guest"): string$/;"	f	line:96	class:MethodExamples	typeref:unknown:string
+methodByReference	sample.php	/^    public function methodByReference(int &$number): void$/;"	f	line:102	class:MethodExamples	typeref:unknown:void
+methodWithVariadicArguments	sample.php	/^    public function methodWithVariadicArguments(string ...$names): void$/;"	f	line:108	class:MethodExamples	typeref:unknown:void
+complexArguments	sample.php	/^    public function complexArguments(string $name, int $id = 0, array ...$data): void$/;"	f	line:114	class:MethodExamples	typeref:unknown:void
+methodWithReturnType	sample.php	/^    public function methodWithReturnType(): int$/;"	f	line:122	class:MethodExamples	typeref:unknown:int
+methodWithVoidReturnType	sample.php	/^    public function methodWithVoidReturnType(): void$/;"	f	line:128	class:MethodExamples	typeref:unknown:void
+methodWithNullableReturnType	sample.php	/^    public function methodWithNullableReturnType(): ?string$/;"	f	line:134	class:MethodExamples	typeref:unknown:?string
+publicAbstractMethod	sample.php	/^    public function publicAbstractMethod(): void$/;"	f	line:142	class:MethodExamples	typeref:unknown:void
+protectedAbstractMethod	sample.php	/^    protected function protectedAbstractMethod(string $param): string$/;"	f	line:147	class:MethodExamples	typeref:unknown:string
+interfaceMethod	sample.php	/^    public function interfaceMethod(int $a): bool$/;"	f	line:153	class:MethodExamples	typeref:unknown:bool
+__construct	sample.php	/^    public function __construct($/;"	f	line:160	class:MethodExamples
+createAnonymousClass	sample.php	/^    public function createAnonymousClass(): object$/;"	f	line:169	class:MethodExamples	typeref:unknown:object
+anonymousMethod	sample.php	/^            public function anonymousMethod(): string$/;"	f	line:172	class:MethodExamples::createAnonymousClass::AnonymousClass72420d3d0100	typeref:unknown:string
+globalFunction	sample.php	/^function globalFunction(string $param): array$/;"	f	line:183	typeref:unknown:array

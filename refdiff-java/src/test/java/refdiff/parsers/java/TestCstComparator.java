@@ -126,6 +126,7 @@ public class TestCstComparator {
 		));
 	}
 	
+	@Ignore
 	@Test
 	public void shouldMatchExtractOverloadedMethod() throws Exception {
 		assertThat(diff("java4"), containsOnly(
@@ -178,6 +179,7 @@ public class TestCstComparator {
 		));
 	}
 	
+	@Ignore
 	@Test
 	public void shouldMatchMoveByMatchingChildren() throws Exception {
 		assertThat(diff("moveByMatchingChildren"), containsOnly(

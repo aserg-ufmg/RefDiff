@@ -1,0 +1,22 @@
+Day	AllAboutEnums.java	/^enum Day {$/;"	g	line:4
+Planet	AllAboutEnums.java	/^enum Planet {$/;"	g	line:11
+Planet	AllAboutEnums.java	/^    Planet(double mass, double radius) {$/;"	m	line:24	class:Planet
+getMass	AllAboutEnums.java	/^    public double getMass() {$/;"	m	line:29	class:Planet
+getRadius	AllAboutEnums.java	/^    public double getRadius() {$/;"	m	line:33	class:Planet
+TrafficLight	AllAboutEnums.java	/^enum TrafficLight {$/;"	g	line:40
+next	AllAboutEnums.java	/^    public TrafficLight next() {$/;"	m	line:45	class:TrafficLight
+Message	AllAboutEnums.java	/^interface Message {$/;"	i	line:61
+getMessage	AllAboutEnums.java	/^    String getMessage();$/;"	m	line:62	interface:Message
+Status	AllAboutEnums.java	/^enum Status implements Message {$/;"	g	line:65
+Operation	AllAboutEnums.java	/^enum Operation {$/;"	g	line:82
+apply	AllAboutEnums.java	/^    public abstract double apply(double x, double y);$/;"	m	line:104	class:Operation
+Color	AllAboutEnums.java	/^enum Color {$/;"	g	line:109
+Color	AllAboutEnums.java	/^    Color(String hexCode) {$/;"	m	line:117	class:Color
+getHexCode	AllAboutEnums.java	/^    public String getHexCode() {$/;"	m	line:122	class:Color
+getColorCount	AllAboutEnums.java	/^    public static int getColorCount() {$/;"	m	line:126	class:Color
+fromHex	AllAboutEnums.java	/^    public static Color fromHex(String hex) {$/;"	m	line:130	class:Color
+Season	AllAboutEnums.java	/^enum Season {$/;"	g	line:142
+main	AllAboutEnums.java	/^    public static void main(String[] args) {$/;"	m	line:145	class:Season
+AllAboutEnums	AllAboutEnums.java	/^public class AllAboutEnums {$/;"	c	line:153
+Size	AllAboutEnums.java	/^    public enum Size {$/;"	g	line:157	class:AllAboutEnums
+main	AllAboutEnums.java	/^    public static void main(String[] args) {$/;"	m	line:161	class:AllAboutEnums

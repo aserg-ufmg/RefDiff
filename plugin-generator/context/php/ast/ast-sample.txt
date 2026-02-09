@@ -1,0 +1,741 @@
+(program (php_tag) (comment) (class_declaration (abstract_modifier) name: (name) body: (declaration_list (comment) (method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type)) (comment) (method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type)))) (comment) (interface_declaration name: (name) body: (declaration_list (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type)))) (comment) (trait_declaration name: (name) body: (declaration_list (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))))) (comment) (class_declaration name: (name) (base_clause (name)) (class_interface_clause (name)) body: (declaration_list (use_declaration (name)) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (echo_statement (binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (comment) (method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (final_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (final_modifier) (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (encapsed_string (string_content)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) reference_modifier: (reference_modifier) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (expression_statement (update_expression argument: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (integer)) (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (integer)))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (optional_type (primitive_type)) body: (compound_statement (return_statement (null)))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (boolean)))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (property_promotion_parameter visibility: (visibility_modifier) type: (primitive_type) name: (variable_name (name))) (property_promotion_parameter visibility: (visibility_modifier) readonly: (readonly_modifier) type: (primitive_type) name: (variable_name (name)))) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (named_type (name)) body: (compound_statement (return_statement (object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content))))))))))))) (comment) (comment) (function_definition name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (array_creation_expression (array_element_initializer (variable_name (name)))))))) L:1
+(php_tag) L:1
+(comment) L:3
+(class_declaration (abstract_modifier) name: (name) body: (declaration_list (comment) (method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type)) (comment) (method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type)))) L:4
+(abstract_modifier) L:4
+("abstract") L:4
+("class") L:4
+(name) L:4
+(declaration_list (comment) (method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type)) (comment) (method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type))) L:5
+("{") L:5
+(comment) L:6
+(method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type)) L:7
+(abstract_modifier) L:7
+("abstract") L:7
+(visibility_modifier) L:7
+("public") L:7
+("function") L:7
+(name) L:7
+(formal_parameters) L:7
+("(") L:7
+(")") L:7
+(":") L:7
+(primitive_type) L:7
+("void") L:7
+(";") L:7
+(comment) L:9
+(method_declaration (abstract_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type)) L:10
+(abstract_modifier) L:10
+("abstract") L:10
+(visibility_modifier) L:10
+("protected") L:10
+("function") L:10
+(name) L:10
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:10
+("(") L:10
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:10
+(primitive_type) L:10
+("string") L:10
+(variable_name (name)) L:10
+("$") L:10
+(name) L:10
+(")") L:10
+(":") L:10
+(primitive_type) L:10
+("string") L:10
+(";") L:10
+("}") L:11
+(comment) L:13
+(interface_declaration name: (name) body: (declaration_list (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type)))) L:14
+("interface") L:14
+(name) L:14
+(declaration_list (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type))) L:15
+("{") L:15
+(comment) L:16
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type)) L:17
+(visibility_modifier) L:17
+("public") L:17
+("function") L:17
+(name) L:17
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:17
+("(") L:17
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:17
+(primitive_type) L:17
+("int") L:17
+(variable_name (name)) L:17
+("$") L:17
+(name) L:17
+(")") L:17
+(":") L:17
+(primitive_type) L:17
+("bool") L:17
+(";") L:17
+("}") L:18
+(comment) L:20
+(trait_declaration name: (name) body: (declaration_list (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))))) L:21
+("trait") L:21
+(name) L:21
+(declaration_list (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment)))) L:22
+("{") L:22
+(comment) L:23
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) L:24
+(visibility_modifier) L:24
+("public") L:24
+("function") L:24
+(name) L:24
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:24
+("(") L:24
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:24
+(primitive_type) L:24
+("string") L:24
+(variable_name (name)) L:24
+("$") L:24
+(name) L:24
+(")") L:24
+(":") L:24
+(primitive_type) L:24
+("string") L:24
+(compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))))) L:25
+("{") L:25
+(return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))) L:26
+("return") L:26
+(binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) L:26
+(encapsed_string (string_content)) L:26
+(""") L:26
+(string_content) L:26
+(""") L:26
+(".") L:26
+(variable_name (name)) L:26
+("$") L:26
+(name) L:26
+(";") L:26
+("}") L:27
+(comment) L:29
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))) L:30
+(visibility_modifier) L:30
+("private") L:30
+("function") L:30
+(name) L:30
+(formal_parameters) L:30
+("(") L:30
+(")") L:30
+(":") L:30
+(primitive_type) L:30
+("void") L:30
+(compound_statement (comment)) L:31
+("{") L:31
+(comment) L:32
+("}") L:33
+("}") L:34
+(comment) L:36
+(class_declaration name: (name) (base_clause (name)) (class_interface_clause (name)) body: (declaration_list (use_declaration (name)) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (echo_statement (binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (comment) (method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (final_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (final_modifier) (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (encapsed_string (string_content)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) reference_modifier: (reference_modifier) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (expression_statement (update_expression argument: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (integer)) (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (integer)))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (optional_type (primitive_type)) body: (compound_statement (return_statement (null)))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (boolean)))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (property_promotion_parameter visibility: (visibility_modifier) type: (primitive_type) name: (variable_name (name))) (property_promotion_parameter visibility: (visibility_modifier) readonly: (readonly_modifier) type: (primitive_type) name: (variable_name (name)))) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (named_type (name)) body: (compound_statement (return_statement (object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content))))))))))))) L:37
+("class") L:37
+(name) L:37
+(base_clause (name)) L:37
+("extends") L:37
+(name) L:37
+(class_interface_clause (name)) L:37
+("implements") L:37
+(name) L:37
+(declaration_list (use_declaration (name)) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (echo_statement (binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (comment) (method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (final_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (method_declaration (final_modifier) (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (encapsed_string (string_content)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) reference_modifier: (reference_modifier) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (expression_statement (update_expression argument: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (integer)) (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (integer)))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (optional_type (primitive_type)) body: (compound_statement (return_statement (null)))) (comment) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (boolean)))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (property_promotion_parameter visibility: (visibility_modifier) type: (primitive_type) name: (variable_name (name))) (property_promotion_parameter visibility: (visibility_modifier) readonly: (readonly_modifier) type: (primitive_type) name: (variable_name (name)))) body: (compound_statement (comment))) (comment) (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (named_type (name)) body: (compound_statement (return_statement (object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content)))))))))))) L:38
+("{") L:38
+(use_declaration (name)) L:39
+("use") L:39
+(name) L:39
+(";") L:39
+(comment) L:41
+(comment) L:43
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:44
+(visibility_modifier) L:44
+("public") L:44
+("function") L:44
+(name) L:44
+(formal_parameters) L:44
+("(") L:44
+(")") L:44
+(":") L:44
+(primitive_type) L:44
+("void") L:44
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:45
+("{") L:45
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:46
+("echo") L:46
+(encapsed_string (string_content) (escape_sequence)) L:46
+(""") L:46
+(string_content) L:46
+(escape_sequence) L:46
+(""") L:46
+(";") L:46
+("}") L:47
+(comment) L:49
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (echo_statement (binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence)))))) L:50
+(visibility_modifier) L:50
+("protected") L:50
+("function") L:50
+(name) L:50
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:50
+("(") L:50
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:50
+(primitive_type) L:50
+("string") L:50
+(variable_name (name)) L:50
+("$") L:50
+(name) L:50
+(")") L:50
+(":") L:50
+(primitive_type) L:50
+("void") L:50
+(compound_statement (echo_statement (binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence))))) L:51
+("{") L:51
+(echo_statement (binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence)))) L:52
+("echo") L:52
+(binary_expression left: (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) right: (encapsed_string (escape_sequence))) L:52
+(binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) L:52
+(encapsed_string (string_content)) L:52
+(""") L:52
+(string_content) L:52
+(""") L:52
+(".") L:52
+(variable_name (name)) L:52
+("$") L:52
+(name) L:52
+(".") L:52
+(encapsed_string (escape_sequence)) L:52
+(""") L:52
+(escape_sequence) L:52
+(""") L:52
+(";") L:52
+("}") L:53
+(comment) L:55
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:56
+(visibility_modifier) L:56
+("private") L:56
+("function") L:56
+(name) L:56
+(formal_parameters) L:56
+("(") L:56
+(")") L:56
+(":") L:56
+(primitive_type) L:56
+("void") L:56
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:57
+("{") L:57
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:58
+("echo") L:58
+(encapsed_string (string_content) (escape_sequence)) L:58
+(""") L:58
+(string_content) L:58
+(escape_sequence) L:58
+(""") L:58
+(";") L:58
+("}") L:59
+(comment) L:61
+(comment) L:63
+(method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:64
+(visibility_modifier) L:64
+("public") L:64
+(static_modifier) L:64
+("static") L:64
+("function") L:64
+(name) L:64
+(formal_parameters) L:64
+("(") L:64
+(")") L:64
+(":") L:64
+(primitive_type) L:64
+("void") L:64
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:65
+("{") L:65
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:66
+("echo") L:66
+(encapsed_string (string_content) (escape_sequence)) L:66
+(""") L:66
+(string_content) L:66
+(escape_sequence) L:66
+(""") L:66
+(";") L:66
+("}") L:67
+(comment) L:69
+(method_declaration (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:70
+(visibility_modifier) L:70
+("protected") L:70
+(static_modifier) L:70
+("static") L:70
+("function") L:70
+(name) L:70
+(formal_parameters) L:70
+("(") L:70
+(")") L:70
+(":") L:70
+(primitive_type) L:70
+("void") L:70
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:71
+("{") L:71
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:72
+("echo") L:72
+(encapsed_string (string_content) (escape_sequence)) L:72
+(""") L:72
+(string_content) L:72
+(escape_sequence) L:72
+(""") L:72
+(";") L:72
+("}") L:73
+(comment) L:75
+(method_declaration (final_modifier) (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:76
+(final_modifier) L:76
+("final") L:76
+(visibility_modifier) L:76
+("public") L:76
+("function") L:76
+(name) L:76
+(formal_parameters) L:76
+("(") L:76
+(")") L:76
+(":") L:76
+(primitive_type) L:76
+("void") L:76
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:77
+("{") L:77
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:78
+("echo") L:78
+(encapsed_string (string_content) (escape_sequence)) L:78
+(""") L:78
+(string_content) L:78
+(escape_sequence) L:78
+(""") L:78
+(";") L:78
+("}") L:79
+(comment) L:81
+(method_declaration (final_modifier) (visibility_modifier) (static_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:82
+(final_modifier) L:82
+("final") L:82
+(visibility_modifier) L:82
+("public") L:82
+(static_modifier) L:82
+("static") L:82
+("function") L:82
+(name) L:82
+(formal_parameters) L:82
+("(") L:82
+(")") L:82
+(":") L:82
+(primitive_type) L:82
+("void") L:82
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:83
+("{") L:83
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:84
+("echo") L:84
+(encapsed_string (string_content) (escape_sequence)) L:84
+(""") L:84
+(string_content) L:84
+(escape_sequence) L:84
+(""") L:84
+(";") L:84
+("}") L:85
+(comment) L:87
+(comment) L:89
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) L:90
+(visibility_modifier) L:90
+("public") L:90
+("function") L:90
+(name) L:90
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:90
+("(") L:90
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:90
+(primitive_type) L:90
+("int") L:90
+(variable_name (name)) L:90
+("$") L:90
+(name) L:90
+(",") L:90
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:90
+(primitive_type) L:90
+("float") L:90
+(variable_name (name)) L:90
+("$") L:90
+(name) L:90
+(")") L:90
+(":") L:90
+(primitive_type) L:90
+("void") L:90
+(compound_statement (comment)) L:91
+("{") L:91
+(comment) L:92
+("}") L:93
+(comment) L:95
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (encapsed_string (string_content)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) L:96
+(visibility_modifier) L:96
+("public") L:96
+("function") L:96
+(name) L:96
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (encapsed_string (string_content)))) L:96
+("(") L:96
+(simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (encapsed_string (string_content))) L:96
+(primitive_type) L:96
+("string") L:96
+(variable_name (name)) L:96
+("$") L:96
+(name) L:96
+("=") L:96
+(encapsed_string (string_content)) L:96
+(""") L:96
+(string_content) L:96
+(""") L:96
+(")") L:96
+(":") L:96
+(primitive_type) L:96
+("string") L:96
+(compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))))) L:97
+("{") L:97
+(return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))) L:98
+("return") L:98
+(binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) L:98
+(encapsed_string (string_content)) L:98
+(""") L:98
+(string_content) L:98
+(""") L:98
+(".") L:98
+(variable_name (name)) L:98
+("$") L:98
+(name) L:98
+(";") L:98
+("}") L:99
+(comment) L:101
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) reference_modifier: (reference_modifier) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (expression_statement (update_expression argument: (variable_name (name)))))) L:102
+(visibility_modifier) L:102
+("public") L:102
+("function") L:102
+(name) L:102
+(formal_parameters (simple_parameter type: (primitive_type) reference_modifier: (reference_modifier) name: (variable_name (name)))) L:102
+("(") L:102
+(simple_parameter type: (primitive_type) reference_modifier: (reference_modifier) name: (variable_name (name))) L:102
+(primitive_type) L:102
+("int") L:102
+(reference_modifier) L:102
+("&") L:102
+(variable_name (name)) L:102
+("$") L:102
+(name) L:102
+(")") L:102
+(":") L:102
+(primitive_type) L:102
+("void") L:102
+(compound_statement (expression_statement (update_expression argument: (variable_name (name))))) L:103
+("{") L:103
+(expression_statement (update_expression argument: (variable_name (name)))) L:104
+(update_expression argument: (variable_name (name))) L:104
+(variable_name (name)) L:104
+("$") L:104
+(name) L:104
+("++") L:104
+(";") L:104
+("}") L:105
+(comment) L:107
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) L:108
+(visibility_modifier) L:108
+("public") L:108
+("function") L:108
+(name) L:108
+(formal_parameters (variadic_parameter type: (primitive_type) name: (variable_name (name)))) L:108
+("(") L:108
+(variadic_parameter type: (primitive_type) name: (variable_name (name))) L:108
+(primitive_type) L:108
+("string") L:108
+("...") L:108
+(variable_name (name)) L:108
+("$") L:108
+(name) L:108
+(")") L:108
+(":") L:108
+(primitive_type) L:108
+("void") L:108
+(compound_statement (comment)) L:109
+("{") L:109
+(comment) L:110
+("}") L:111
+(comment) L:113
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (integer)) (variadic_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (comment))) L:114
+(visibility_modifier) L:114
+("public") L:114
+("function") L:114
+(name) L:114
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name))) (simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (integer)) (variadic_parameter type: (primitive_type) name: (variable_name (name)))) L:114
+("(") L:114
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:114
+(primitive_type) L:114
+("string") L:114
+(variable_name (name)) L:114
+("$") L:114
+(name) L:114
+(",") L:114
+(simple_parameter type: (primitive_type) name: (variable_name (name)) default_value: (integer)) L:114
+(primitive_type) L:114
+("int") L:114
+(variable_name (name)) L:114
+("$") L:114
+(name) L:114
+("=") L:114
+(integer) L:114
+(",") L:114
+(variadic_parameter type: (primitive_type) name: (variable_name (name))) L:114
+(primitive_type) L:114
+("array") L:114
+("...") L:114
+(variable_name (name)) L:114
+("$") L:114
+(name) L:114
+(")") L:114
+(":") L:114
+(primitive_type) L:114
+("void") L:114
+(compound_statement (comment)) L:115
+("{") L:115
+(comment) L:116
+("}") L:117
+(comment) L:119
+(comment) L:121
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (integer)))) L:122
+(visibility_modifier) L:122
+("public") L:122
+("function") L:122
+(name) L:122
+(formal_parameters) L:122
+("(") L:122
+(")") L:122
+(":") L:122
+(primitive_type) L:122
+("int") L:122
+(compound_statement (return_statement (integer))) L:123
+("{") L:123
+(return_statement (integer)) L:124
+("return") L:124
+(integer) L:124
+(";") L:124
+("}") L:125
+(comment) L:127
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (comment))) L:128
+(visibility_modifier) L:128
+("public") L:128
+("function") L:128
+(name) L:128
+(formal_parameters) L:128
+("(") L:128
+(")") L:128
+(":") L:128
+(primitive_type) L:128
+("void") L:128
+(compound_statement (comment)) L:129
+("{") L:129
+(comment) L:130
+("}") L:131
+(comment) L:133
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (optional_type (primitive_type)) body: (compound_statement (return_statement (null)))) L:134
+(visibility_modifier) L:134
+("public") L:134
+("function") L:134
+(name) L:134
+(formal_parameters) L:134
+("(") L:134
+(")") L:134
+(":") L:134
+(optional_type (primitive_type)) L:134
+("?") L:134
+(primitive_type) L:134
+("string") L:134
+(compound_statement (return_statement (null))) L:135
+("{") L:135
+(return_statement (null)) L:136
+("return") L:136
+(null) L:136
+(";") L:136
+("}") L:137
+(comment) L:139
+(comment) L:141
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence))))) L:142
+(visibility_modifier) L:142
+("public") L:142
+("function") L:142
+(name) L:142
+(formal_parameters) L:142
+("(") L:142
+(")") L:142
+(":") L:142
+(primitive_type) L:142
+("void") L:142
+(compound_statement (echo_statement (encapsed_string (string_content) (escape_sequence)))) L:143
+("{") L:143
+(echo_statement (encapsed_string (string_content) (escape_sequence))) L:144
+("echo") L:144
+(encapsed_string (string_content) (escape_sequence)) L:144
+(""") L:144
+(string_content) L:144
+(escape_sequence) L:144
+(""") L:144
+(";") L:144
+("}") L:145
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))))) L:147
+(visibility_modifier) L:147
+("protected") L:147
+("function") L:147
+(name) L:147
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:147
+("(") L:147
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:147
+(primitive_type) L:147
+("string") L:147
+(variable_name (name)) L:147
+("$") L:147
+(name) L:147
+(")") L:147
+(":") L:147
+(primitive_type) L:147
+("string") L:147
+(compound_statement (return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))))) L:148
+("{") L:148
+(return_statement (binary_expression left: (encapsed_string (string_content)) right: (variable_name (name)))) L:149
+("return") L:149
+(binary_expression left: (encapsed_string (string_content)) right: (variable_name (name))) L:149
+(encapsed_string (string_content)) L:149
+(""") L:149
+(string_content) L:149
+(""") L:149
+(".") L:149
+(variable_name (name)) L:149
+("$") L:149
+(name) L:149
+(";") L:149
+("}") L:150
+(comment) L:152
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (boolean)))) L:153
+(visibility_modifier) L:153
+("public") L:153
+("function") L:153
+(name) L:153
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:153
+("(") L:153
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:153
+(primitive_type) L:153
+("int") L:153
+(variable_name (name)) L:153
+("$") L:153
+(name) L:153
+(")") L:153
+(":") L:153
+(primitive_type) L:153
+("bool") L:153
+(compound_statement (return_statement (boolean))) L:154
+("{") L:154
+(return_statement (boolean)) L:155
+("return") L:155
+(boolean) L:155
+(";") L:155
+("}") L:156
+(comment) L:158
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters (property_promotion_parameter visibility: (visibility_modifier) type: (primitive_type) name: (variable_name (name))) (property_promotion_parameter visibility: (visibility_modifier) readonly: (readonly_modifier) type: (primitive_type) name: (variable_name (name)))) body: (compound_statement (comment))) L:160
+(visibility_modifier) L:160
+("public") L:160
+("function") L:160
+(name) L:160
+(formal_parameters (property_promotion_parameter visibility: (visibility_modifier) type: (primitive_type) name: (variable_name (name))) (property_promotion_parameter visibility: (visibility_modifier) readonly: (readonly_modifier) type: (primitive_type) name: (variable_name (name)))) L:160
+("(") L:160
+(property_promotion_parameter visibility: (visibility_modifier) type: (primitive_type) name: (variable_name (name))) L:161
+(visibility_modifier) L:161
+("private") L:161
+(primitive_type) L:161
+("string") L:161
+(variable_name (name)) L:161
+("$") L:161
+(name) L:161
+(",") L:161
+(property_promotion_parameter visibility: (visibility_modifier) readonly: (readonly_modifier) type: (primitive_type) name: (variable_name (name))) L:162
+(visibility_modifier) L:162
+("public") L:162
+(readonly_modifier) L:162
+("readonly") L:162
+(primitive_type) L:162
+("int") L:162
+(variable_name (name)) L:162
+("$") L:162
+(name) L:162
+(")") L:163
+(compound_statement (comment)) L:163
+("{") L:163
+(comment) L:164
+("}") L:165
+(comment) L:167
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (named_type (name)) body: (compound_statement (return_statement (object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content))))))))))) L:169
+(visibility_modifier) L:169
+("public") L:169
+("function") L:169
+(name) L:169
+(formal_parameters) L:169
+("(") L:169
+(")") L:169
+(":") L:169
+(named_type (name)) L:169
+(name) L:169
+(compound_statement (return_statement (object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content)))))))))) L:170
+("{") L:170
+(return_statement (object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content))))))))) L:171
+("return") L:171
+(object_creation_expression (anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content)))))))) L:171
+("new") L:171
+(anonymous_class body: (declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content))))))) L:171
+("class") L:171
+(declaration_list (method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content)))))) L:171
+("{") L:171
+(method_declaration (visibility_modifier) name: (name) parameters: (formal_parameters) return_type: (primitive_type) body: (compound_statement (return_statement (encapsed_string (string_content))))) L:172
+(visibility_modifier) L:172
+("public") L:172
+("function") L:172
+(name) L:172
+(formal_parameters) L:172
+("(") L:172
+(")") L:172
+(":") L:172
+(primitive_type) L:172
+("string") L:172
+(compound_statement (return_statement (encapsed_string (string_content)))) L:173
+("{") L:173
+(return_statement (encapsed_string (string_content))) L:174
+("return") L:174
+(encapsed_string (string_content)) L:174
+(""") L:174
+(string_content) L:174
+(""") L:174
+(";") L:174
+("}") L:175
+("}") L:176
+(";") L:176
+("}") L:177
+("}") L:178
+(comment) L:180
+(comment) L:182
+(function_definition name: (name) parameters: (formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) return_type: (primitive_type) body: (compound_statement (return_statement (array_creation_expression (array_element_initializer (variable_name (name))))))) L:183
+("function") L:183
+(name) L:183
+(formal_parameters (simple_parameter type: (primitive_type) name: (variable_name (name)))) L:183
+("(") L:183
+(simple_parameter type: (primitive_type) name: (variable_name (name))) L:183
+(primitive_type) L:183
+("string") L:183
+(variable_name (name)) L:183
+("$") L:183
+(name) L:183
+(")") L:183
+(":") L:183
+(primitive_type) L:183
+("array") L:183
+(compound_statement (return_statement (array_creation_expression (array_element_initializer (variable_name (name)))))) L:184
+("{") L:184
+(return_statement (array_creation_expression (array_element_initializer (variable_name (name))))) L:185
+("return") L:185
+(array_creation_expression (array_element_initializer (variable_name (name)))) L:185
+("[") L:185
+(array_element_initializer (variable_name (name))) L:185
+(variable_name (name)) L:185
+("$") L:185
+(name) L:185
+("]") L:185
+(";") L:185
+("}") L:186

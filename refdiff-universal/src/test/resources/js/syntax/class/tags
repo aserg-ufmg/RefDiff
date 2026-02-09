@@ -1,0 +1,26 @@
+Animal	dir/class.js	/^class Animal {$/;"	c	line:2
+staticAnimalCount	dir/class.js	/^    static staticAnimalCount = 0;$/;"	M	line:4	class:Animal
+type	dir/class.js	/^    type = "Mammal";$/;"	M	line:7	class:Animal
+secretDNA	dir/class.js	/^    #secretDNA = "Hidden genetic information"; \/\/ Private field (ES2022)$/;"	M	line:9	class:Animal
+constructor	dir/class.js	/^    constructor(name, species) {$/;"	m	line:11	class:Animal
+introduce	dir/class.js	/^    introduce() {$/;"	m	line:19	class:Animal
+#getSecret	dir/class.js	/^    #getSecret() {$/;"	m	line:24	class:Animal
+showSecret	dir/class.js	/^    showSecret() {$/;"	m	line:29	class:Animal
+describe	dir/class.js	/^    static describe() {$/;"	m	line:34	class:Animal
+fullDescription	dir/class.js	/^    get fullDescription() {$/;"	G	line:39	class:Animal
+newName	dir/class.js	/^    set newName(name) {$/;"	S	line:44	class:Animal
+myAnimal	dir/class.js	/^  const myAnimal = new Animal("Leo", "Lion");$/;"	C	line:55
+Dog	dir/class.js	/^  class Dog extends Animal {$/;"	c	line:65
+breedCount	dir/class.js	/^    static breedCount = 0;$/;"	M	line:67	class:Dog
+dogTagID	dir/class.js	/^    #dogTagID = Math.random().toString(36).substring(7); \/\/ プライベートフィールド$/;"	M	line:69	class:Dog
+constructor	dir/class.js	/^    constructor(name, breed) {$/;"	m	line:71	class:Dog
+bark	dir/class.js	/^    bark() {$/;"	m	line:78	class:Dog
+introduce	dir/class.js	/^    introduce() {$/;"	m	line:83	class:Dog
+fullDescription	dir/class.js	/^    get fullDescription() {$/;"	G	line:88	class:Dog
+showDogStats	dir/class.js	/^    static showDogStats() {$/;"	m	line:93	class:Dog
+myDog	dir/class.js	/^  const myDog = new Dog("Pochi", "Shiba Inu");$/;"	C	line:98
+anotherDog	dir/class.js	/^  const anotherDog = new Dog("John", "Golden Retriever");$/;"	C	line:104
+Cat	dir/class.js	/^  const Cat = class extends Animal {$/;"	c	line:110
+constructor	dir/class.js	/^    constructor(name) {$/;"	m	line:111	class:Cat
+meow	dir/class.js	/^    meow() {$/;"	m	line:114	class:Cat
+myCat	dir/class.js	/^  const myCat = new Cat("Mike");$/;"	C	line:119

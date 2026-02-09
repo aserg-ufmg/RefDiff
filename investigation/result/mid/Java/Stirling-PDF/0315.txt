@@ -1,0 +1,134 @@
+Commit: 13bf8210fcf3dd572dfbbb67fa4378e779fcf59a
+No refactorings found.
+
+Commit: 361151e9a721f3eae39032ca911a6df26f4e34c3
+No refactorings found.
+
+Commit: 04ba3cebabe84cd4ae3a13945d136c196697cec9
+No refactorings found.
+
+Commit: d79d179d80a8b39264f91928a06ff2b6b6b0855a
+No refactorings found.
+
+Commit: d15a27540682b9e9718a24aef1f2429c122a9df4
+No refactorings found.
+
+Commit: ed894f021b25df46d48ff91b78e169a8e2199506
+No refactorings found.
+
+Commit: 76d150289e97d8be471a30af6d500fc80bb31cd1
+No refactorings found.
+
+Commit: 526071059e640caee654fb7958ac525be864ecb9
+No refactorings found.
+
+Commit: de43038fd957fbb770c06aa6af9c9a5d3d28b5d6
+No refactorings found.
+
+Commit: cc7f16308541eee3fc7b94285d5d290b3e6870e5
+RENAME	{Class FakeScanController at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/FakeScanController.java:40 LOC:444}	{Class ScannerEffectController at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/ScannerEffectController.java:40 LOC:444})
+RENAME	{Class FakeScanRequest at app/core/src/main/java/stirling/software/SPDF/model/api/misc/FakeScanRequest.java:12 LOC:115}	{Class ScannerEffectRequest at app/core/src/main/java/stirling/software/SPDF/model/api/misc/ScannerEffectRequest.java:12 LOC:115})
+RENAME	{Method fakeScan(FakeScanRequest) at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/FakeScanController.java:55 LOC:270}	{Method scannerEffect(ScannerEffectRequest) at app/core/src/main/java/stirling/software/SPDF/controller/api/misc/ScannerEffectController.java:55 LOC:270})
+
+Commit: 299d52c517fcd91de0edcf0cedb4db25b22dd4af
+No refactorings found.
+
+Commit: 60cb610d247ac4c793d8da268653d70625f5ceee
+No refactorings found.
+
+Commit: 03f184ab2bb2cfdb470de4b4f6ca60d324ca9fce
+No refactorings found.
+
+Commit: 9e41c625a1c9a008685972c5b9ec781f9389781f
+No refactorings found.
+
+Commit: bbf5d5f6d48e295ad2043a2a5575132fa180007e
+EXTRACT	{Method cleanupOldJobs() at common/src/main/java/stirling/software/common/service/TaskManager.java:239 LOC:39}	{Method cleanupJobFiles(JobResult, String) at common/src/main/java/stirling/software/common/service/TaskManager.java:434 LOC:16})
+
+Commit: 69bbb12ecec5d494436eae593fd843c6335b2109
+No refactorings found.
+
+Commit: 2218f0bffa34aaf070811091f88ad04d55861340
+No refactorings found.
+
+Commit: 05c10d3a9fc1078e4f3c5dfa0406e9ea0a759d9e
+No refactorings found.
+
+Commit: 7fa5e130d99227c2202ebddfdd91348176ec0c7b
+No refactorings found.
+
+Commit: 7617e5176b0bd6049e2e83b87f1d13b9077224db
+EXTRACT	{Method isCorruptedPdfError(IOException) at common/src/main/java/stirling/software/common/util/PdfErrorUtils.java:14 LOC:17}	{Method isCorruptedPdfError(String) at common/src/main/java/stirling/software/common/util/PdfErrorUtils.java:34 LOC:20})
+
+Commit: 14d4fbb2a36195eedb034785e5a5ff6a47f268c6
+No refactorings found.
+
+Commit: df88b01b5d09de792aaa9202abce627e2e9329b0
+EXTRACT	{Method processPdfWithOCR(ProcessPdfWithOcrRequest) at stirling-pdf/src/main/java/stirling/software/SPDF/controller/api/misc/OCRController.java:64 LOC:135}	{Method processWithTesseract(List<String>, String, Path, Path) at stirling-pdf/src/main/java/stirling/software/SPDF/controller/api/misc/OCRController.java:317 LOC:92})
+
+Commit: ee0426fa18869a18f9b1b3a11900a893b8aba5f2
+No refactorings found.
+
+Commit: 11e3ccd19ff0be8bcbb481d0db797796d97bf5b5
+No refactorings found.
+
+Commit: 2177eff6c46ef6766958bc99744bed8baae2eca8
+No refactorings found.
+
+Commit: 212d4d0dcb4a20ba28208e46251933eca6de2c01
+No refactorings found.
+
+Commit: bc9c127819a1d96df20bea6dec1ae841cbc347c6
+CHANGE_SIGNATURE	{Method convertEmlToPdf(String, EmlToPdfRequest, byte[], String, boolean, stirling.software.common.service.CustomPDFDocumentFactory) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:131 LOC:44}	{Method convertEmlToPdf(String, EmlToPdfRequest, byte[], String, boolean, stirling.software.common.service.CustomPDFDocumentFactory, TempFileManager) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:131 LOC:46})
+EXTRACT_MOVE	{Method createDir(String) at common/src/main/java/stirling/software/common/util/GeneralUtils.java:347 LOC:12}	{Method exists() at common/src/main/java/stirling/software/common/util/TempFile.java:36 LOC:3})
+CHANGE_SIGNATURE	{Method sanitizeHtmlFilesInZip(Path, boolean) at common/src/main/java/stirling/software/common/util/FileToPdf.java:81 LOC:31}	{Method sanitizeHtmlFilesInZip(Path, boolean, TempFileManager) at common/src/main/java/stirling/software/common/util/FileToPdf.java:83 LOC:33})
+EXTRACT_MOVE	{Method addFileToZip(File, String, ZipOutputStream) at stirling-pdf/src/main/java/stirling/software/SPDF/controller/api/misc/OCRController.java:178 LOC:17}	{Method exists() at common/src/main/java/stirling/software/common/util/TempFile.java:36 LOC:3})
+EXTRACT_MOVE	{Method dynamicYamlPropertySource(ConfigurableEnvironment) at common/src/main/java/stirling/software/common/model/ApplicationProperties.java:65 LOC:25}	{Method exists() at common/src/main/java/stirling/software/common/util/TempFile.java:36 LOC:3})
+CHANGE_SIGNATURE	{Method convertHtmlToPdf(String, HTMLToPdfRequest, byte[], String, boolean) at common/src/main/java/stirling/software/common/util/FileToPdf.java:24 LOC:52}	{Method convertHtmlToPdf(String, HTMLToPdfRequest, byte[], String, boolean, TempFileManager) at common/src/main/java/stirling/software/common/util/FileToPdf.java:24 LOC:54})
+CHANGE_SIGNATURE	{Method convertHtmlToPdf(String, EmlToPdfRequest, String, boolean) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:193 LOC:27}	{Method convertHtmlToPdf(String, EmlToPdfRequest, String, boolean, TempFileManager) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:195 LOC:30})
+
+Commit: 7d7f1272e4b974999d57093179343113334a6e17
+No refactorings found.
+
+Commit: ee8030c1c4148062cde15c49c67d04ef03930c55
+No refactorings found.
+
+Commit: 9923411ade7ff37ffe50603b700b397b8674f17e
+EXTRACT	{Method processEmailHtmlBody(String) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:653 LOC:11}	{Method processEmailHtmlBody(String, EmailContent) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:656 LOC:16})
+RENAME	{Method EmojiPosition(int, float, float, String) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1508 LOC:6}	{Method MarkerPosition(int, float, float, String) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1667 LOC:6})
+RENAME	{Class EmojiPositionFinder at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1516 LOC:91}	{Class AttachmentMarkerPositionFinder at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1675 LOC:75})
+CHANGE_SIGNATURE	{Method appendEnhancedStyles(StringBuilder, EmlToPdfRequest) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:665 LOC:108}	{Method appendEnhancedStyles(StringBuilder) at common/src/main/java/stirling/software/common/util/EmlToPdf.java:741 LOC:108})
+RENAME	{Class EmojiPosition at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1499 LOC:16}	{Class MarkerPosition at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1660 LOC:14})
+RENAME	{Method EmojiPositionFinder() at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1523 LOC:7}	{Method AttachmentMarkerPositionFinder() at common/src/main/java/stirling/software/common/util/EmlToPdf.java:1683 LOC:7})
+
+Commit: cdd1ab704f99259cb6566b2e96dac0b1b249a65e
+No refactorings found.
+
+Commit: ee41dc11c2033501e84d4ba988fbf97c3a361710
+No refactorings found.
+
+Commit: f82662aaafb123c538fdc84caabbf0537ebb231d
+EXTRACT	{Method pdfToPdfA(PdfToPdfARequest) at stirling-pdf/src/main/java/stirling/software/SPDF/controller/api/converters/ConvertPDFToPDFA.java:32 LOC:90}	{Method runLibreOfficeConversion(Path, int) at stirling-pdf/src/main/java/stirling/software/SPDF/controller/api/converters/ConvertPDFToPDFA.java:212 LOC:41})
+
+Commit: 136f16f613652312ea66a97e331b36d3c40b4b92
+CHANGE_SIGNATURE	{Method listTeams(Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:33 LOC:29}	{Method listTeams(HttpServletRequest, Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:34 LOC:50})
+CHANGE_SIGNATURE	{Method viewTeamDetails(Long, Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:63 LOC:51}	{Method viewTeamDetails(HttpServletRequest, Long, Model) at proprietary/src/main/java/stirling/software/proprietary/security/controller/web/TeamWebController.java:85 LOC:59})
+
+Commit: a49eb3a6291492905f0b8572005488b95761f26a
+No refactorings found.
+
+Commit: 069b71be2ccc936559e80862fbf3a5991d402d59
+No refactorings found.
+
+Commit: 0cbe7fe255bd95cfb80d7e9c1a182ab1c390d985
+No refactorings found.
+
+Commit: 0b4747e827d1b553b665a9eb6504beac0c5e29ff
+No refactorings found.
+
+Commit: c7d6a063d75139ff793cc4e8550c9ca791874ab7
+No refactorings found.
+
+Commit: 9fbb0325b52bd27f01c62eeca3bd937200619c9c
+No refactorings found.
+

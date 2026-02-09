@@ -1,0 +1,16 @@
+MethodWithValueReceiver	sample.go	/^func (t TestStruct) MethodWithValueReceiver() {$/;"	f	line:17	struct:main.TestStruct
+CustomIntMethod	sample.go	/^func (i MyInt) CustomIntMethod() {$/;"	f	line:22	type:main.MyInt
+MethodWithPointerReceiver	sample.go	/^func (t *TestStruct) MethodWithPointerReceiver() {$/;"	f	line:29	struct:main.TestStruct
+MethodWithVariadicArgs	sample.go	/^func (t *TestStruct) MethodWithVariadicArgs(numbers ...int) {$/;"	f	line:38	struct:main.TestStruct
+MethodWithMultipleArguments	sample.go	/^func (t TestStruct) MethodWithMultipleArguments(a, b int) {$/;"	f	line:50	struct:main.TestStruct
+MethodWithReturnValue	sample.go	/^func (t *TestStruct) MethodWithReturnValue() string {$/;"	f	line:55	struct:main.TestStruct	typeref:typename:string
+MethodWithNakedReturns	sample.go	/^func (t TestStruct) MethodWithNakedReturns(s string) (result string, err error) {$/;"	f	line:60	struct:main.TestStruct	typeref:typename:(result string, err error)
+main	sample.go	/^func main() {$/;"	f	line:65	package:main
+simpleFunction	sample.go	/^func simpleFunction() {$/;"	f	line:89	package:main
+functionWithParameters	sample.go	/^func functionWithParameters(x int, y string) {$/;"	f	line:94	package:main
+functionWithMultipleSameTypeParameters	sample.go	/^func functionWithMultipleSameTypeParameters(a, b int, c, d float64) {$/;"	f	line:99	package:main
+functionWithReturnValue	sample.go	/^func functionWithReturnValue() int {$/;"	f	line:104	package:main	typeref:typename:int
+functionWithBoth	sample.go	/^func functionWithBoth(x, y int) int {$/;"	f	line:109	package:main	typeref:typename:int
+functionWithMultipleReturnValues	sample.go	/^func functionWithMultipleReturnValues(a, b int) (int, error) {$/;"	f	line:114	package:main	typeref:typename:(int, error)
+functionWithNamedReturnValues	sample.go	/^func functionWithNamedReturnValues(a int, b int) (sum int, diff int) {$/;"	f	line:122	package:main	typeref:typename:(sum int, diff int)
+functionWithVariadicParameters	sample.go	/^func functionWithVariadicParameters(s string, nums ...int) {$/;"	f	line:129	package:main

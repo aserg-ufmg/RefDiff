@@ -12,6 +12,8 @@ dependencies {
     api project(':refdiff-core')
     implementation 'org.eclipse.jdt:org.eclipse.jdt.core:3.16.0'
 
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+
     testImplementation 'junit:junit:4.11'
     testImplementation project(path: ':refdiff-core', configuration: 'testArtifacts')
 }

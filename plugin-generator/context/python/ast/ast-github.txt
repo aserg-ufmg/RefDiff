@@ -1,0 +1,1562 @@
+(module (import_statement name: (dotted_name (identifier))) (import_statement name: (dotted_name (identifier))) (import_statement name: (dotted_name (identifier))) (import_from_statement module_name: (dotted_name (identifier)) name: (dotted_name (identifier)) name: (dotted_name (identifier))) (import_from_statement module_name: (dotted_name (identifier)) name: (dotted_name (identifier))) (import_from_statement module_name: (dotted_name (identifier) (identifier)) name: (dotted_name (identifier))) (import_from_statement module_name: (dotted_name (identifier) (identifier) (identifier)) name: (dotted_name (identifier))) (import_from_statement module_name: (dotted_name (identifier) (identifier) (identifier)) name: (dotted_name (identifier))) (import_from_statement module_name: (dotted_name (identifier) (identifier) (identifier)) name: (dotted_name (identifier)) name: (dotted_name (identifier))) (import_from_statement module_name: (relative_import (import_prefix) (dotted_name (identifier))) name: (dotted_name (identifier))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier))))) (comment) (class_definition name: (identifier) superclasses: (argument_list (identifier)) body: (block (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))))) (class_definition name: (identifier) superclasses: (argument_list (identifier)) body: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (identifier))) (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end)))))) (decorated_definition (decorator (identifier)) definition: (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) (expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) (return_statement (expression_list (identifier) (identifier)))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (none)) body: (block (if_statement condition: (not_operator argument: (identifier)) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (generic_type (identifier) (type_parameter (type (identifier)))))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (comment) (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (return_statement (expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (none)) body: (block (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (if_statement condition: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) consequence: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) alternative: (else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) (comment) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (comment))))) (comment) (function_definition name: (identifier) parameters: (parameters (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (identifier)) body: (block (expression_statement (assignment left: (identifier) right: (list))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (if_statement condition: (call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) alternative: (else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))))) (return_statement (call function: (attribute object: (string (string_start) (string_content (escape_sequence)) (string_end)) attribute: (identifier)) arguments: (argument_list (identifier))))))) L:1
+(import_statement name: (dotted_name (identifier))) L:1
+("import") L:1
+(dotted_name (identifier)) L:1
+(identifier) L:1
+(import_statement name: (dotted_name (identifier))) L:2
+("import") L:2
+(dotted_name (identifier)) L:2
+(identifier) L:2
+(import_statement name: (dotted_name (identifier))) L:3
+("import") L:3
+(dotted_name (identifier)) L:3
+(identifier) L:3
+(import_from_statement module_name: (dotted_name (identifier)) name: (dotted_name (identifier)) name: (dotted_name (identifier))) L:5
+("from") L:5
+(dotted_name (identifier)) L:5
+(identifier) L:5
+("import") L:5
+(dotted_name (identifier)) L:5
+(identifier) L:5
+(",") L:5
+(dotted_name (identifier)) L:5
+(identifier) L:5
+(import_from_statement module_name: (dotted_name (identifier)) name: (dotted_name (identifier))) L:6
+("from") L:6
+(dotted_name (identifier)) L:6
+(identifier) L:6
+("import") L:6
+(dotted_name (identifier)) L:6
+(identifier) L:6
+(import_from_statement module_name: (dotted_name (identifier) (identifier)) name: (dotted_name (identifier))) L:8
+("from") L:8
+(dotted_name (identifier) (identifier)) L:8
+(identifier) L:8
+(".") L:8
+(identifier) L:8
+("import") L:8
+(dotted_name (identifier)) L:8
+(identifier) L:8
+(import_from_statement module_name: (dotted_name (identifier) (identifier) (identifier)) name: (dotted_name (identifier))) L:9
+("from") L:9
+(dotted_name (identifier) (identifier) (identifier)) L:9
+(identifier) L:9
+(".") L:9
+(identifier) L:9
+(".") L:9
+(identifier) L:9
+("import") L:9
+(dotted_name (identifier)) L:9
+(identifier) L:9
+(import_from_statement module_name: (dotted_name (identifier) (identifier) (identifier)) name: (dotted_name (identifier))) L:10
+("from") L:10
+(dotted_name (identifier) (identifier) (identifier)) L:10
+(identifier) L:10
+(".") L:10
+(identifier) L:10
+(".") L:10
+(identifier) L:10
+("import") L:10
+(dotted_name (identifier)) L:10
+(identifier) L:10
+(import_from_statement module_name: (dotted_name (identifier) (identifier) (identifier)) name: (dotted_name (identifier)) name: (dotted_name (identifier))) L:11
+("from") L:11
+(dotted_name (identifier) (identifier) (identifier)) L:11
+(identifier) L:11
+(".") L:11
+(identifier) L:11
+(".") L:11
+(identifier) L:11
+("import") L:11
+(dotted_name (identifier)) L:11
+(identifier) L:11
+(",") L:11
+(dotted_name (identifier)) L:11
+(identifier) L:11
+(import_from_statement module_name: (relative_import (import_prefix) (dotted_name (identifier))) name: (dotted_name (identifier))) L:13
+("from") L:13
+(relative_import (import_prefix) (dotted_name (identifier))) L:13
+(import_prefix) L:13
+(".") L:13
+(dotted_name (identifier)) L:13
+(identifier) L:13
+("import") L:13
+(dotted_name (identifier)) L:13
+(identifier) L:13
+(expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier))))) L:15
+(assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier)))) L:15
+(identifier) L:15
+("=") L:15
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier))) L:15
+(attribute object: (identifier) attribute: (identifier)) L:15
+(identifier) L:15
+(".") L:15
+(identifier) L:15
+(argument_list (identifier)) L:15
+("(") L:15
+(identifier) L:15
+(")") L:15
+(comment) L:18
+(class_definition name: (identifier) superclasses: (argument_list (identifier)) body: (block (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))))) L:19
+("class") L:19
+(identifier) L:19
+(argument_list (identifier)) L:19
+("(") L:19
+(identifier) L:19
+(")") L:19
+(":") L:19
+(block (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end))))) L:20
+(expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))) L:20
+(assignment left: (identifier) right: (string (string_start) (string_content) (string_end))) L:20
+(identifier) L:20
+("=") L:20
+(string (string_start) (string_content) (string_end)) L:20
+(string_start) L:20
+(string_content) L:20
+(string_end) L:20
+(class_definition name: (identifier) superclasses: (argument_list (identifier)) body: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (identifier))) (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end)))))) (decorated_definition (decorator (identifier)) definition: (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) (expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) (return_statement (expression_list (identifier) (identifier)))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (none)) body: (block (if_statement condition: (not_operator argument: (identifier)) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (generic_type (identifier) (type_parameter (type (identifier)))))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (comment) (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (return_statement (expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (none)) body: (block (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (if_statement condition: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) consequence: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) alternative: (else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) (comment) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (comment))))) L:23
+("class") L:23
+(identifier) L:23
+(argument_list (identifier)) L:23
+("(") L:23
+(identifier) L:23
+(")") L:23
+(":") L:23
+(block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (identifier))) (expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end)))))) (decorated_definition (decorator (identifier)) definition: (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) (expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) (return_statement (expression_list (identifier) (identifier)))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (none)) body: (block (if_statement condition: (not_operator argument: (identifier)) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (generic_type (identifier) (type_parameter (type (identifier)))))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (comment) (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (return_statement (expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier))))) (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (none)) body: (block (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (if_statement condition: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) consequence: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) alternative: (else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) (comment) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (comment)))) L:24
+(expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) L:24
+(assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier))) L:24
+(identifier) L:24
+("=") L:24
+(attribute object: (identifier) attribute: (identifier)) L:24
+(identifier) L:24
+(".") L:24
+(identifier) L:24
+(expression_statement (assignment left: (identifier) right: (identifier))) L:26
+(assignment left: (identifier) right: (identifier)) L:26
+(identifier) L:26
+("=") L:26
+(identifier) L:26
+(expression_statement (assignment left: (identifier) right: (string (string_start) (string_content) (string_end)))) L:28
+(assignment left: (identifier) right: (string (string_start) (string_content) (string_end))) L:28
+(identifier) L:28
+("=") L:28
+(string (string_start) (string_content) (string_end)) L:28
+(string_start) L:28
+(string_content) L:28
+(string_end) L:28
+(expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end)))))) L:29
+(assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))))) L:29
+(identifier) L:29
+("=") L:29
+(dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end)))) L:29
+("{") L:29
+(pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) L:29
+(string (string_start) (string_content) (string_end)) L:29
+(string_start) L:29
+(string_content) L:29
+(string_end) L:29
+(":") L:29
+(string (string_start) (string_content) (string_end)) L:29
+(string_start) L:29
+(string_content) L:29
+(string_end) L:29
+("}") L:29
+(decorated_definition (decorator (identifier)) definition: (function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) (expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) (return_statement (expression_list (identifier) (identifier)))))) L:31
+(decorator (identifier)) L:31
+("@") L:31
+(identifier) L:31
+(function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) (expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) (return_statement (expression_list (identifier) (identifier))))) L:32
+("async") L:32
+("def") L:32
+(identifier) L:32
+(parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) L:32
+("(") L:32
+(identifier) L:33
+(",") L:33
+(typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) L:34
+(identifier) L:34
+(":") L:34
+(type (attribute object: (identifier) attribute: (identifier))) L:34
+(attribute object: (identifier) attribute: (identifier)) L:34
+(identifier) L:34
+(".") L:34
+(identifier) L:34
+(",") L:34
+(typed_parameter (identifier) type: (type (identifier))) L:35
+(identifier) L:35
+(":") L:35
+(type (identifier)) L:35
+(identifier) L:35
+(",") L:35
+(typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none)))) L:36
+(identifier) L:36
+(":") L:36
+(type (binary_operator left: (identifier) right: (none))) L:36
+(binary_operator left: (identifier) right: (none)) L:36
+(identifier) L:36
+("|") L:36
+(none) L:36
+(",") L:36
+(")") L:37
+("->") L:37
+(type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) L:37
+(generic_type (identifier) (type_parameter (type (identifier)) (type (identifier)))) L:37
+(identifier) L:37
+(type_parameter (type (identifier)) (type (identifier))) L:37
+("[") L:37
+(type (identifier)) L:37
+(identifier) L:37
+(",") L:37
+(type (identifier)) L:37
+(identifier) L:37
+("]") L:37
+(":") L:37
+(block (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) (expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) (if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) (return_statement (expression_list (identifier) (identifier)))) L:38
+(if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) L:38
+("if") L:38
+(not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) L:38
+("not") L:38
+(parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))))) L:38
+("(") L:38
+(named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) L:38
+(identifier) L:38
+(":=") L:38
+(call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:38
+(attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) L:38
+(attribute object: (identifier) attribute: (identifier)) L:38
+(identifier) L:38
+(".") L:38
+(identifier) L:38
+(".") L:38
+(identifier) L:38
+(argument_list (string (string_start) (string_content) (string_end))) L:38
+("(") L:38
+(string (string_start) (string_content) (string_end)) L:38
+(string_start) L:38
+(string_content) L:38
+(string_end) L:38
+(")") L:38
+(")") L:38
+(":") L:38
+(block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))))))) L:39
+(raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))) L:39
+("raise") L:39
+(call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))))) L:39
+(identifier) L:39
+(argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))) L:39
+("(") L:39
+(keyword_argument name: (identifier) value: (integer)) L:40
+(identifier) L:40
+("=") L:40
+(integer) L:40
+(",") L:40
+(keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))) L:40
+(identifier) L:40
+("=") L:40
+(string (string_start) (string_content) (string_end)) L:40
+(string_start) L:40
+(string_content) L:40
+(string_end) L:40
+(")") L:41
+(if_statement condition: (not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) L:43
+("if") L:43
+(not_operator argument: (parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) L:43
+("not") L:43
+(parenthesized_expression (named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))))) L:43
+("(") L:43
+(named_expression name: (identifier) value: (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) L:43
+(identifier) L:43
+(":=") L:43
+(call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:43
+(attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) L:43
+(attribute object: (identifier) attribute: (identifier)) L:43
+(identifier) L:43
+(".") L:43
+(identifier) L:43
+(".") L:43
+(identifier) L:43
+(argument_list (string (string_start) (string_content) (string_end))) L:43
+("(") L:43
+(string (string_start) (string_content) (string_end)) L:43
+(string_start) L:43
+(string_content) L:43
+(string_end) L:43
+(")") L:43
+(")") L:43
+(":") L:43
+(block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))))))) L:44
+(raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))) L:44
+("raise") L:44
+(call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))))) L:44
+(identifier) L:44
+(argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))) L:44
+("(") L:44
+(keyword_argument name: (identifier) value: (integer)) L:45
+(identifier) L:45
+("=") L:45
+(integer) L:45
+(",") L:45
+(keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))) L:45
+(identifier) L:45
+("=") L:45
+(string (string_start) (string_content) (string_end)) L:45
+(string_start) L:45
+(string_content) L:45
+(string_end) L:45
+(")") L:46
+(expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) L:48
+(assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:48
+(identifier) L:48
+("=") L:48
+(await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:48
+("await") L:48
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:48
+(attribute object: (identifier) attribute: (identifier)) L:48
+(identifier) L:48
+(".") L:48
+(identifier) L:48
+(argument_list) L:48
+("(") L:48
+(")") L:48
+(expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))))) L:49
+(assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier)))))) L:49
+(identifier) L:49
+("=") L:49
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))))) L:49
+(attribute object: (identifier) attribute: (identifier)) L:49
+(identifier) L:49
+(".") L:49
+(identifier) L:49
+(argument_list (call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier)))) L:49
+("(") L:49
+(call function: (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:50
+(attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) L:50
+(attribute object: (identifier) attribute: (identifier)) L:50
+(identifier) L:50
+(".") L:50
+(identifier) L:50
+(".") L:50
+(identifier) L:50
+(argument_list (string (string_start) (string_content) (string_end))) L:50
+("(") L:50
+(string (string_start) (string_content) (string_end)) L:50
+(string_start) L:50
+(string_content) L:50
+(string_end) L:50
+(")") L:50
+(",") L:50
+(keyword_argument name: (identifier) value: (identifier)) L:50
+(identifier) L:50
+("=") L:50
+(identifier) L:50
+(",") L:50
+(keyword_argument name: (identifier) value: (attribute object: (identifier) attribute: (identifier))) L:50
+(identifier) L:50
+("=") L:50
+(attribute object: (identifier) attribute: (identifier)) L:50
+(identifier) L:50
+(".") L:50
+(identifier) L:50
+(")") L:51
+(expression_statement (assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) L:52
+(assignment left: (identifier) right: (binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:52
+(identifier) L:52
+("=") L:52
+(binary_operator left: (string (string_start) (string_content) (string_end)) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:52
+(string (string_start) (string_content) (string_end)) L:52
+(string_start) L:52
+(string_content) L:52
+(string_end) L:52
+("+") L:52
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:52
+(attribute object: (identifier) attribute: (identifier)) L:52
+(identifier) L:52
+(".") L:52
+(identifier) L:52
+(argument_list) L:52
+("(") L:52
+(")") L:52
+(if_statement condition: (not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))))) L:54
+("if") L:54
+(not_operator argument: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier)))) L:54
+("not") L:54
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (identifier) (identifier))) L:54
+(attribute object: (identifier) attribute: (identifier)) L:54
+(identifier) L:54
+(".") L:54
+(identifier) L:54
+(argument_list (identifier) (identifier)) L:54
+("(") L:54
+(identifier) L:54
+(",") L:54
+(identifier) L:54
+(")") L:54
+(":") L:54
+(block (raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))))))) L:55
+(raise_statement (call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))))) L:55
+("raise") L:55
+(call function: (identifier) arguments: (argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))))) L:55
+(identifier) L:55
+(argument_list (keyword_argument name: (identifier) value: (integer)) (keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end)))) L:55
+("(") L:55
+(keyword_argument name: (identifier) value: (integer)) L:56
+(identifier) L:56
+("=") L:56
+(integer) L:56
+(",") L:56
+(keyword_argument name: (identifier) value: (string (string_start) (string_content) (string_end))) L:56
+(identifier) L:56
+("=") L:56
+(string (string_start) (string_content) (string_end)) L:56
+(string_start) L:56
+(string_content) L:56
+(string_end) L:56
+(")") L:57
+(expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) L:59
+(assignment left: (identifier) right: (await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:59
+(identifier) L:59
+("=") L:59
+(await (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:59
+("await") L:59
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:59
+(attribute object: (identifier) attribute: (identifier)) L:59
+(identifier) L:59
+(".") L:59
+(identifier) L:59
+(argument_list) L:59
+("(") L:59
+(")") L:59
+(if_statement condition: (named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) consequence: (block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) L:60
+("if") L:60
+(named_expression name: (identifier) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end))))) L:60
+(identifier) L:60
+(":=") L:60
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:60
+(attribute object: (identifier) attribute: (identifier)) L:60
+(identifier) L:60
+(".") L:60
+(identifier) L:60
+(argument_list (string (string_start) (string_content) (string_end))) L:60
+("(") L:60
+(string (string_start) (string_content) (string_end)) L:60
+(string_start) L:60
+(string_content) L:60
+(string_end) L:60
+(")") L:60
+(":") L:60
+(block (expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))) L:61
+(expression_statement (augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))) L:61
+(augmented_assignment left: (identifier) right: (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))) L:61
+(identifier) L:61
+("+=") L:61
+(string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)) L:61
+(string_start) L:61
+(string_content) L:61
+(interpolation expression: (identifier)) L:61
+("{") L:61
+(identifier) L:61
+("}") L:61
+(string_end) L:61
+(return_statement (expression_list (identifier) (identifier))) L:63
+("return") L:63
+(expression_list (identifier) (identifier)) L:63
+(identifier) L:63
+(",") L:63
+(identifier) L:63
+(function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) return_type: (type (none)) body: (block (if_statement condition: (not_operator argument: (identifier)) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))))) L:65
+("async") L:65
+("def") L:65
+(identifier) L:65
+(parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none))))) L:65
+("(") L:65
+(identifier) L:66
+(",") L:66
+(typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) L:66
+(identifier) L:66
+(":") L:66
+(type (attribute object: (identifier) attribute: (identifier))) L:66
+(attribute object: (identifier) attribute: (identifier)) L:66
+(identifier) L:66
+(".") L:66
+(identifier) L:66
+(",") L:66
+(typed_parameter (identifier) type: (type (binary_operator left: (identifier) right: (none)))) L:66
+(identifier) L:66
+(":") L:66
+(type (binary_operator left: (identifier) right: (none))) L:66
+(binary_operator left: (identifier) right: (none)) L:66
+(identifier) L:66
+("|") L:66
+(none) L:66
+(")") L:67
+("->") L:67
+(type (none)) L:67
+(none) L:67
+(":") L:67
+(block (if_statement condition: (not_operator argument: (identifier)) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))))) L:68
+(if_statement condition: (not_operator argument: (identifier)) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) L:68
+("if") L:68
+(not_operator argument: (identifier)) L:68
+("not") L:68
+(identifier) L:68
+(":") L:68
+(block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end)))))) L:69
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))) L:69
+("raise") L:69
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:69
+(identifier) L:69
+(argument_list (string (string_start) (string_content) (string_end))) L:69
+("(") L:69
+(string (string_start) (string_content) (string_end)) L:69
+(string_start) L:69
+(string_content) L:69
+(string_end) L:69
+(")") L:69
+(expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) L:71
+(assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) L:71
+(identifier) L:71
+("=") L:71
+(dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:71
+("{") L:71
+(dictionary_splat (attribute object: (identifier) attribute: (identifier))) L:72
+("**") L:72
+(attribute object: (identifier) attribute: (identifier)) L:72
+(identifier) L:72
+(".") L:72
+(identifier) L:72
+(",") L:72
+(pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:73
+(string (string_start) (string_content) (string_end)) L:73
+(string_start) L:73
+(string_content) L:73
+(string_end) L:73
+(":") L:73
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:73
+(attribute object: (identifier) attribute: (identifier)) L:73
+(identifier) L:73
+(".") L:73
+(identifier) L:73
+(argument_list) L:73
+("(") L:73
+(")") L:73
+(",") L:73
+("}") L:74
+(expression_statement (assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))))) L:76
+(assignment left: (pattern_list (identifier) (identifier)) right: (expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier)))) L:76
+(pattern_list (identifier) (identifier)) L:76
+(identifier) L:76
+(",") L:76
+(identifier) L:76
+("=") L:76
+(expression_list (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) L:76
+(attribute object: (identifier) attribute: (identifier)) L:76
+(identifier) L:76
+(".") L:76
+(identifier) L:76
+(",") L:76
+(attribute object: (identifier) attribute: (identifier)) L:76
+(identifier) L:76
+(".") L:76
+(identifier) L:76
+(expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) L:77
+(assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end))) L:77
+(identifier) L:77
+("=") L:77
+(string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) L:77
+(string_start) L:77
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:77
+("{") L:77
+(attribute object: (identifier) attribute: (identifier)) L:77
+(identifier) L:77
+(".") L:77
+(identifier) L:77
+("}") L:77
+(string_content) L:77
+(interpolation expression: (identifier)) L:77
+("{") L:77
+(identifier) L:77
+("}") L:77
+(string_content) L:77
+(interpolation expression: (identifier)) L:77
+("{") L:77
+(identifier) L:77
+("}") L:77
+(string_content) L:77
+(string_end) L:77
+(expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) L:79
+(assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier)))))) L:79
+(identifier) L:79
+("=") L:79
+(await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))) L:79
+("await") L:79
+(call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier)))) L:79
+(attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) L:79
+(call function: (identifier) arguments: (argument_list)) L:79
+(identifier) L:79
+(argument_list) L:79
+("(") L:79
+(")") L:79
+(".") L:79
+(identifier) L:79
+(argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))) L:79
+("(") L:79
+(identifier) L:79
+(",") L:79
+(keyword_argument name: (identifier) value: (identifier)) L:79
+(identifier) L:79
+("=") L:79
+(identifier) L:79
+(")") L:79
+(if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) L:81
+("if") L:81
+(comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) L:81
+(attribute object: (identifier) attribute: (identifier)) L:81
+(identifier) L:81
+(".") L:81
+(identifier) L:81
+("!=") L:81
+(integer) L:81
+(":") L:81
+(block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) L:82
+(expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) L:82
+(assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier)))) L:82
+(identifier) L:82
+("=") L:82
+(call function: (identifier) arguments: (argument_list (identifier))) L:82
+(identifier) L:82
+(argument_list (identifier)) L:82
+("(") L:82
+(identifier) L:82
+(")") L:82
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))) L:83
+("raise") L:83
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))) L:83
+(identifier) L:83
+(argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))) L:83
+("(") L:83
+(string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)) L:83
+(string_start) L:83
+(string_content) L:83
+(interpolation expression: (identifier)) L:83
+("{") L:83
+(identifier) L:83
+("}") L:83
+(string_end) L:83
+(")") L:83
+(function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (generic_type (identifier) (type_parameter (type (identifier)))))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) body: (block (if_statement condition: (boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (comment) (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (return_statement (expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier))))) L:85
+("async") L:85
+("def") L:85
+(identifier) L:85
+(parameters (identifier) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (generic_type (identifier) (type_parameter (type (identifier)))))) (typed_parameter (identifier) type: (type (identifier))) (typed_parameter (identifier) type: (type (identifier)))) L:85
+("(") L:85
+(identifier) L:86
+(",") L:86
+(typed_parameter (identifier) type: (type (identifier))) L:87
+(identifier) L:87
+(":") L:87
+(type (identifier)) L:87
+(identifier) L:87
+(",") L:87
+(typed_parameter (identifier) type: (type (identifier))) L:88
+(identifier) L:88
+(":") L:88
+(type (identifier)) L:88
+(identifier) L:88
+(",") L:88
+(typed_parameter (identifier) type: (type (identifier))) L:89
+(identifier) L:89
+(":") L:89
+(type (identifier)) L:89
+(identifier) L:89
+(",") L:89
+(typed_parameter (identifier) type: (type (generic_type (identifier) (type_parameter (type (identifier)))))) L:90
+(identifier) L:90
+(":") L:90
+(type (generic_type (identifier) (type_parameter (type (identifier))))) L:90
+(generic_type (identifier) (type_parameter (type (identifier)))) L:90
+(identifier) L:90
+(type_parameter (type (identifier))) L:90
+("[") L:90
+(type (identifier)) L:90
+(identifier) L:90
+("]") L:90
+(",") L:90
+(typed_parameter (identifier) type: (type (identifier))) L:91
+(identifier) L:91
+(":") L:91
+(type (identifier)) L:91
+(identifier) L:91
+(",") L:91
+(typed_parameter (identifier) type: (type (identifier))) L:92
+(identifier) L:92
+(":") L:92
+(type (identifier)) L:92
+(identifier) L:92
+(",") L:92
+(")") L:93
+("->") L:93
+(type (generic_type (identifier) (type_parameter (type (identifier)) (type (identifier))))) L:93
+(generic_type (identifier) (type_parameter (type (identifier)) (type (identifier)))) L:93
+(identifier) L:93
+(type_parameter (type (identifier)) (type (identifier))) L:93
+("[") L:93
+(type (identifier)) L:93
+(identifier) L:93
+(",") L:93
+(type (identifier)) L:93
+(identifier) L:93
+("]") L:93
+(":") L:93
+(block (if_statement condition: (boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) (comment) (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) (return_statement (expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier)))) L:94
+(if_statement condition: (boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))))) L:94
+("if") L:94
+(boolean_operator left: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) right: (comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer))) L:94
+(comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) L:94
+(identifier) L:94
+("==") L:94
+(attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) L:94
+(attribute object: (identifier) attribute: (identifier)) L:94
+(identifier) L:94
+(".") L:94
+(identifier) L:94
+(".") L:94
+(identifier) L:94
+("and") L:94
+(comparison_operator (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) (integer)) L:94
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:94
+(attribute object: (identifier) attribute: (identifier)) L:94
+(identifier) L:94
+(".") L:94
+(identifier) L:94
+(argument_list (string (string_start) (string_content) (string_end))) L:94
+("(") L:94
+(string (string_start) (string_content) (string_end)) L:94
+(string_start) L:94
+(string_content) L:94
+(string_end) L:94
+(")") L:94
+(">") L:94
+(integer) L:94
+(":") L:94
+(block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end)))))) L:95
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end))))) L:95
+("raise") L:95
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:95
+(identifier) L:95
+(argument_list (string (string_start) (string_content) (string_end))) L:95
+("(") L:95
+(string (string_start) (string_content) (string_end)) L:95
+(string_start) L:95
+(string_content) L:95
+(string_end) L:95
+(")") L:95
+(comment) L:97
+(expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))))) L:98
+(assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier)))))) L:98
+(identifier) L:98
+("=") L:98
+(call function: (identifier) arguments: (argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))))) L:98
+(identifier) L:98
+(argument_list (set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier)))) L:98
+("(") L:98
+(set_comprehension body: (subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) (for_in_clause left: (identifier) right: (identifier))) L:98
+("{") L:98
+(subscript value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) subscript: (integer)) L:98
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:98
+(attribute object: (identifier) attribute: (identifier)) L:98
+(identifier) L:98
+(".") L:98
+(identifier) L:98
+(argument_list (string (string_start) (string_content) (string_end))) L:98
+("(") L:98
+(string (string_start) (string_content) (string_end)) L:98
+(string_start) L:98
+(string_content) L:98
+(string_end) L:98
+(")") L:98
+("[") L:98
+(integer) L:98
+("]") L:98
+(for_in_clause left: (identifier) right: (identifier)) L:98
+("for") L:98
+(identifier) L:98
+("in") L:98
+(identifier) L:98
+("}") L:98
+(")") L:98
+(expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) L:100
+(assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) L:100
+(identifier) L:100
+("=") L:100
+(dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:100
+("{") L:100
+(dictionary_splat (attribute object: (identifier) attribute: (identifier))) L:101
+("**") L:101
+(attribute object: (identifier) attribute: (identifier)) L:101
+(identifier) L:101
+(".") L:101
+(identifier) L:101
+(",") L:101
+(pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:102
+(string (string_start) (string_content) (string_end)) L:102
+(string_start) L:102
+(string_content) L:102
+(string_end) L:102
+(":") L:102
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:102
+(attribute object: (identifier) attribute: (identifier)) L:102
+(identifier) L:102
+(".") L:102
+(identifier) L:102
+(argument_list) L:102
+("(") L:102
+(")") L:102
+(",") L:102
+("}") L:103
+(expression_statement (assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))))) L:104
+(assignment left: (identifier) right: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)))))) L:104
+(identifier) L:104
+("=") L:104
+(dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (true)) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))))) L:104
+("{") L:104
+(pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) L:105
+(string (string_start) (string_content) (string_end)) L:105
+(string_start) L:105
+(string_content) L:105
+(string_end) L:105
+(":") L:105
+(string (string_start) (string_content) (string_end)) L:105
+(string_start) L:105
+(string_content) L:105
+(string_end) L:105
+(",") L:105
+(pair key: (string (string_start) (string_content) (string_end)) value: (true)) L:106
+(string (string_start) (string_content) (string_end)) L:106
+(string_start) L:106
+(string_content) L:106
+(string_end) L:106
+(":") L:106
+(true) L:106
+(",") L:106
+(pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) L:107
+(string (string_start) (string_content) (string_end)) L:107
+(string_start) L:107
+(string_content) L:107
+(string_end) L:107
+(":") L:107
+(identifier) L:107
+(",") L:107
+(pair key: (string (string_start) (string_content) (string_end)) value: (dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)))) L:108
+(string (string_start) (string_content) (string_end)) L:108
+(string_start) L:108
+(string_content) L:108
+(string_end) L:108
+(":") L:108
+(dictionary (pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) (pair key: (string (string_start) (string_content) (string_end)) value: (identifier))) L:108
+("{") L:108
+(pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) L:109
+(string (string_start) (string_content) (string_end)) L:109
+(string_start) L:109
+(string_content) L:109
+(string_end) L:109
+(":") L:109
+(identifier) L:109
+(",") L:109
+(pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) L:110
+(string (string_start) (string_content) (string_end)) L:110
+(string_start) L:110
+(string_content) L:110
+(string_end) L:110
+(":") L:110
+(string (string_start) (string_content) (string_end)) L:110
+(string_start) L:110
+(string_content) L:110
+(string_end) L:110
+(",") L:110
+(pair key: (string (string_start) (string_content) (string_end)) value: (string (string_start) (string_content) (string_end))) L:111
+(string (string_start) (string_content) (string_end)) L:111
+(string_start) L:111
+(string_content) L:111
+(string_end) L:111
+(":") L:111
+(string (string_start) (string_content) (string_end)) L:111
+(string_start) L:111
+(string_content) L:111
+(string_end) L:111
+(",") L:111
+(pair key: (string (string_start) (string_content) (string_end)) value: (identifier)) L:112
+(string (string_start) (string_content) (string_end)) L:112
+(string_start) L:112
+(string_content) L:112
+(string_end) L:112
+(":") L:112
+(identifier) L:112
+(",") L:112
+("}") L:113
+(",") L:113
+("}") L:114
+(expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))))) L:116
+(assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier)))))) L:116
+(identifier) L:116
+("=") L:116
+(await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))))) L:116
+("await") L:116
+(call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier)))) L:116
+(attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) L:116
+(call function: (identifier) arguments: (argument_list)) L:116
+(identifier) L:116
+(argument_list) L:116
+("(") L:116
+(")") L:116
+(".") L:116
+(identifier) L:116
+(argument_list (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) (keyword_argument name: (identifier) value: (identifier)) (keyword_argument name: (identifier) value: (identifier))) L:116
+("(") L:116
+(string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) L:117
+(string_start) L:117
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:117
+("{") L:117
+(attribute object: (identifier) attribute: (identifier)) L:117
+(identifier) L:117
+(".") L:117
+(identifier) L:117
+("}") L:117
+(string_content) L:117
+(interpolation expression: (identifier)) L:117
+("{") L:117
+(identifier) L:117
+("}") L:117
+(string_content) L:117
+(string_end) L:117
+(",") L:117
+(keyword_argument name: (identifier) value: (identifier)) L:118
+(identifier) L:118
+("=") L:118
+(identifier) L:118
+(",") L:118
+(keyword_argument name: (identifier) value: (identifier)) L:119
+(identifier) L:119
+("=") L:119
+(identifier) L:119
+(",") L:119
+(")") L:120
+(if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) L:122
+("if") L:122
+(comparison_operator (attribute object: (identifier) attribute: (identifier)) (integer)) L:122
+(attribute object: (identifier) attribute: (identifier)) L:122
+(identifier) L:122
+(".") L:122
+(identifier) L:122
+("!=") L:122
+(integer) L:122
+(":") L:122
+(block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) L:123
+(expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) L:123
+(assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier)))) L:123
+(identifier) L:123
+("=") L:123
+(call function: (identifier) arguments: (argument_list (identifier))) L:123
+(identifier) L:123
+(argument_list (identifier)) L:123
+("(") L:123
+(identifier) L:123
+(")") L:123
+(if_statement condition: (comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) consequence: (block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))))) L:124
+("if") L:124
+(comparison_operator (string (string_start) (string_content) (string_end)) (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:124
+(string (string_start) (string_content) (string_end)) L:124
+(string_start) L:124
+(string_content) L:124
+(string_end) L:124
+("in") L:124
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:124
+(attribute object: (identifier) attribute: (identifier)) L:124
+(identifier) L:124
+(".") L:124
+(identifier) L:124
+(argument_list) L:124
+("(") L:124
+(")") L:124
+(":") L:124
+(block (expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end))))))) L:125
+(expression_statement (assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))))) L:125
+(assignment left: (identifier) right: (parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end))))) L:125
+(identifier) L:125
+("=") L:125
+(parenthesized_expression (concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)))) L:125
+("(") L:125
+(concatenated_string (string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) (string (string_start) (string_content) (string_end)) (string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end))) L:126
+(string (string_start) (interpolation expression: (identifier)) (string_content) (string_end)) L:126
+(string_start) L:126
+(interpolation expression: (identifier)) L:126
+("{") L:126
+(identifier) L:126
+("}") L:126
+(string_content) L:126
+(string_end) L:126
+(string (string_start) (string_content) (string_end)) L:127
+(string_start) L:127
+(string_content) L:127
+(string_end) L:127
+(string (string_start) (string_content) (interpolation expression: (identifier)) (string_content) (string_end)) L:128
+(string_start) L:128
+(string_content) L:128
+(interpolation expression: (identifier)) L:128
+("{") L:128
+(identifier) L:128
+("}") L:128
+(string_content) L:128
+(string_end) L:128
+(")") L:129
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))) L:130
+("raise") L:130
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))) L:130
+(identifier) L:130
+(argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))) L:130
+("(") L:130
+(string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)) L:130
+(string_start) L:130
+(string_content) L:130
+(interpolation expression: (identifier)) L:130
+("{") L:130
+(identifier) L:130
+("}") L:130
+(string_end) L:130
+(")") L:130
+(expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:132
+(assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:132
+(identifier) L:132
+("=") L:132
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:132
+(attribute object: (identifier) attribute: (identifier)) L:132
+(identifier) L:132
+(".") L:132
+(identifier) L:132
+(argument_list) L:132
+("(") L:132
+(")") L:132
+(expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) L:133
+(assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))) L:133
+(identifier) L:133
+("=") L:133
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:133
+(identifier) L:133
+("[") L:133
+(string (string_start) (string_content) (string_end)) L:133
+(string_start) L:133
+(string_content) L:133
+(string_end) L:133
+("]") L:133
+(expression_statement (assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) L:134
+(assignment left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))) L:134
+(identifier) L:134
+("=") L:134
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:134
+(identifier) L:134
+("[") L:134
+(string (string_start) (string_content) (string_end)) L:134
+(string_start) L:134
+(string_content) L:134
+(string_end) L:134
+("]") L:134
+(return_statement (expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier))) L:136
+("return") L:136
+(expression_list (call function: (identifier) arguments: (argument_list (identifier))) (identifier)) L:136
+(call function: (identifier) arguments: (argument_list (identifier))) L:136
+(identifier) L:136
+(argument_list (identifier)) L:136
+("(") L:136
+(identifier) L:136
+(")") L:136
+(",") L:136
+(identifier) L:136
+(function_definition name: (identifier) parameters: (parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (none)) body: (block (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (if_statement condition: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) consequence: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) alternative: (else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) (comment) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (comment))) L:138
+("async") L:138
+("def") L:138
+(identifier) L:138
+(parameters (identifier) (typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) (typed_parameter (identifier) type: (type (identifier)))) L:138
+("(") L:138
+(identifier) L:139
+(",") L:139
+(typed_parameter (identifier) type: (type (attribute object: (identifier) attribute: (identifier)))) L:139
+(identifier) L:139
+(":") L:139
+(type (attribute object: (identifier) attribute: (identifier))) L:139
+(attribute object: (identifier) attribute: (identifier)) L:139
+(identifier) L:139
+(".") L:139
+(identifier) L:139
+(",") L:139
+(typed_parameter (identifier) type: (type (identifier))) L:139
+(identifier) L:139
+(":") L:139
+(type (identifier)) L:139
+(identifier) L:139
+(")") L:140
+("->") L:140
+(type (none)) L:140
+(none) L:140
+(":") L:140
+(block (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))))) (expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) (if_statement condition: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) consequence: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) alternative: (else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))))) (expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) (if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) (comment) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) (comment)) L:141
+(expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))))) L:141
+(assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier))))) L:141
+(identifier) L:141
+("=") L:141
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (attribute object: (identifier) attribute: (identifier)))) L:141
+(attribute object: (identifier) attribute: (identifier)) L:141
+(identifier) L:141
+(".") L:141
+(identifier) L:141
+(argument_list (attribute object: (identifier) attribute: (identifier))) L:141
+("(") L:141
+(attribute object: (identifier) attribute: (identifier)) L:141
+(identifier) L:141
+(".") L:141
+(identifier) L:141
+(")") L:141
+(if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) consequence: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))))) L:142
+("if") L:142
+(comparison_operator (attribute object: (identifier) attribute: (identifier)) (attribute object: (identifier) attribute: (identifier))) L:142
+(attribute object: (identifier) attribute: (identifier)) L:142
+(identifier) L:142
+(".") L:142
+(identifier) L:142
+("!=") L:142
+(attribute object: (identifier) attribute: (identifier)) L:142
+(identifier) L:142
+(".") L:142
+(identifier) L:142
+(":") L:142
+(block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))))) L:143
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))))) L:143
+("raise") L:143
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) L:143
+(identifier) L:143
+(argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))) L:143
+("(") L:143
+(string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)) L:144
+(string_start) L:144
+(string_content) L:144
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:144
+("{") L:144
+(attribute object: (identifier) attribute: (identifier)) L:144
+(identifier) L:144
+(".") L:144
+(identifier) L:144
+("}") L:144
+(string_content) L:144
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:144
+("{") L:144
+(attribute object: (identifier) attribute: (identifier)) L:144
+(identifier) L:144
+(".") L:144
+(identifier) L:144
+("}") L:144
+(string_end) L:144
+(")") L:145
+(expression_statement (assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))))) L:147
+(assignment left: (identifier) right: (dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))))) L:147
+(identifier) L:147
+("=") L:147
+(dictionary (dictionary_splat (attribute object: (identifier) attribute: (identifier))) (pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:147
+("{") L:147
+(dictionary_splat (attribute object: (identifier) attribute: (identifier))) L:148
+("**") L:148
+(attribute object: (identifier) attribute: (identifier)) L:148
+(identifier) L:148
+(".") L:148
+(identifier) L:148
+(",") L:148
+(pair key: (string (string_start) (string_content) (string_end)) value: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:149
+(string (string_start) (string_content) (string_end)) L:149
+(string_start) L:149
+(string_content) L:149
+(string_end) L:149
+(":") L:149
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:149
+(attribute object: (identifier) attribute: (identifier)) L:149
+(identifier) L:149
+(".") L:149
+(identifier) L:149
+(argument_list) L:149
+("(") L:149
+(")") L:149
+(",") L:149
+("}") L:150
+(if_statement condition: (comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) consequence: (block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) alternative: (else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))))) L:152
+("if") L:152
+(comparison_operator (identifier) (attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier))) L:152
+(identifier) L:152
+("==") L:152
+(attribute object: (attribute object: (identifier) attribute: (identifier)) attribute: (identifier)) L:152
+(attribute object: (identifier) attribute: (identifier)) L:152
+(identifier) L:152
+(".") L:152
+(identifier) L:152
+(".") L:152
+(identifier) L:152
+(":") L:152
+(block (expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) (expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) (comment)) L:153
+(expression_statement (assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier)))) L:153
+(assignment left: (identifier) right: (attribute object: (identifier) attribute: (identifier))) L:153
+(identifier) L:153
+("=") L:153
+(attribute object: (identifier) attribute: (identifier)) L:153
+(identifier) L:153
+(".") L:153
+(identifier) L:153
+(expression_statement (assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)))) L:154
+(assignment left: (identifier) right: (string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end))) L:154
+(identifier) L:154
+("=") L:154
+(string (string_start) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (interpolation expression: (identifier)) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_end)) L:154
+(string_start) L:154
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:154
+("{") L:154
+(attribute object: (identifier) attribute: (identifier)) L:154
+(identifier) L:154
+(".") L:154
+(identifier) L:154
+("}") L:154
+(string_content) L:154
+(interpolation expression: (identifier)) L:154
+("{") L:154
+(identifier) L:154
+("}") L:154
+(string_content) L:154
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:154
+("{") L:154
+(attribute object: (identifier) attribute: (identifier)) L:154
+(identifier) L:154
+(".") L:154
+(identifier) L:154
+("}") L:154
+(string_end) L:154
+(comment) L:154
+(else_clause body: (block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end))))))) L:155
+("else") L:155
+(":") L:155
+(block (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))))) L:156
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end))))) L:156
+("raise") L:156
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)))) L:156
+(identifier) L:156
+(argument_list (string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end))) L:156
+("(") L:156
+(string (string_start) (string_content) (interpolation expression: (attribute object: (identifier) attribute: (identifier))) (string_content) (string_end)) L:157
+(string_start) L:157
+(string_content) L:157
+(interpolation expression: (attribute object: (identifier) attribute: (identifier))) L:157
+("{") L:157
+(attribute object: (identifier) attribute: (identifier)) L:157
+(identifier) L:157
+(".") L:157
+(identifier) L:157
+("}") L:157
+(string_content) L:157
+(string_end) L:157
+(")") L:158
+(expression_statement (assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))))) L:160
+(assignment left: (identifier) right: (await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier)))))) L:160
+(identifier) L:160
+("=") L:160
+(await (call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))))) L:160
+("await") L:160
+(call function: (attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) arguments: (argument_list (identifier) (keyword_argument name: (identifier) value: (identifier)))) L:160
+(attribute object: (call function: (identifier) arguments: (argument_list)) attribute: (identifier)) L:160
+(call function: (identifier) arguments: (argument_list)) L:160
+(identifier) L:160
+(argument_list) L:160
+("(") L:160
+(")") L:160
+(".") L:160
+(identifier) L:160
+(argument_list (identifier) (keyword_argument name: (identifier) value: (identifier))) L:160
+("(") L:160
+(identifier) L:160
+(",") L:160
+(keyword_argument name: (identifier) value: (identifier)) L:160
+(identifier) L:160
+("=") L:160
+(identifier) L:160
+(")") L:160
+(if_statement condition: (comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) (comment) consequence: (block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))))) L:162
+("if") L:162
+(comparison_operator (attribute object: (identifier) attribute: (identifier)) (list (integer) (integer))) L:162
+(attribute object: (identifier) attribute: (identifier)) L:162
+(identifier) L:162
+(".") L:162
+(identifier) L:162
+(not in("not")("in") L:162
+("not") L:162
+("in") L:162
+(list (integer) (integer)) L:162
+("[") L:162
+(integer) L:162
+(",") L:162
+(integer) L:162
+("]") L:162
+(":") L:162
+(comment) L:163
+(block (expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) (raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))))) L:164
+(expression_statement (assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier))))) L:164
+(assignment left: (identifier) right: (call function: (identifier) arguments: (argument_list (identifier)))) L:164
+(identifier) L:164
+("=") L:164
+(call function: (identifier) arguments: (argument_list (identifier))) L:164
+(identifier) L:164
+(argument_list (identifier)) L:164
+("(") L:164
+(identifier) L:164
+(")") L:164
+(raise_statement (call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))))) L:165
+("raise") L:165
+(call function: (identifier) arguments: (argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)))) L:165
+(identifier) L:165
+(argument_list (string (string_start) (string_content) (interpolation expression: (identifier)) (string_end))) L:165
+("(") L:165
+(string (string_start) (string_content) (interpolation expression: (identifier)) (string_end)) L:165
+(string_start) L:165
+(string_content) L:165
+(interpolation expression: (identifier)) L:165
+("{") L:165
+(identifier) L:165
+("}") L:165
+(string_end) L:165
+(")") L:165
+(comment) L:167
+(comment) L:170
+(function_definition name: (identifier) parameters: (parameters (typed_parameter (identifier) type: (type (identifier)))) return_type: (type (identifier)) body: (block (expression_statement (assignment left: (identifier) right: (list))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (if_statement condition: (call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) alternative: (else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))))) (return_statement (call function: (attribute object: (string (string_start) (string_content (escape_sequence)) (string_end)) attribute: (identifier)) arguments: (argument_list (identifier)))))) L:173
+("def") L:173
+(identifier) L:173
+(parameters (typed_parameter (identifier) type: (type (identifier)))) L:173
+("(") L:173
+(typed_parameter (identifier) type: (type (identifier))) L:173
+(identifier) L:173
+(":") L:173
+(type (identifier)) L:173
+(identifier) L:173
+(")") L:173
+("->") L:173
+(type (identifier)) L:173
+(identifier) L:173
+(":") L:173
+(block (expression_statement (assignment left: (identifier) right: (list))) (expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) (if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (if_statement condition: (call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) alternative: (else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))))) (return_statement (call function: (attribute object: (string (string_start) (string_content (escape_sequence)) (string_end)) attribute: (identifier)) arguments: (argument_list (identifier))))) L:174
+(expression_statement (assignment left: (identifier) right: (list))) L:174
+(assignment left: (identifier) right: (list)) L:174
+(identifier) L:174
+("=") L:174
+(list) L:174
+("[") L:174
+("]") L:174
+(expression_statement (assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)))) L:175
+(assignment left: (identifier) right: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list))) L:175
+(identifier) L:175
+("=") L:175
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list)) L:175
+(attribute object: (identifier) attribute: (identifier)) L:175
+(identifier) L:175
+(".") L:175
+(identifier) L:175
+(argument_list) L:175
+("(") L:175
+(")") L:175
+(if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) L:176
+("if") L:176
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:176
+(attribute object: (identifier) attribute: (identifier)) L:176
+(identifier) L:176
+(".") L:176
+(identifier) L:176
+(argument_list (string (string_start) (string_content) (string_end))) L:176
+("(") L:176
+(string (string_start) (string_content) (string_end)) L:176
+(string_start) L:176
+(string_content) L:176
+(string_end) L:176
+(")") L:176
+(":") L:176
+(block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))) L:177
+(expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))) L:177
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) L:177
+(attribute object: (identifier) attribute: (identifier)) L:177
+(identifier) L:177
+(".") L:177
+(identifier) L:177
+(argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))) L:177
+("(") L:177
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:177
+(identifier) L:177
+("[") L:177
+(string (string_start) (string_content) (string_end)) L:177
+(string_start) L:177
+(string_content) L:177
+(string_end) L:177
+("]") L:177
+(")") L:177
+(if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) L:178
+("if") L:178
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:178
+(attribute object: (identifier) attribute: (identifier)) L:178
+(identifier) L:178
+(".") L:178
+(identifier) L:178
+(argument_list (string (string_start) (string_content) (string_end))) L:178
+("(") L:178
+(string (string_start) (string_content) (string_end)) L:178
+(string_start) L:178
+(string_content) L:178
+(string_end) L:178
+(")") L:178
+(":") L:178
+(block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) L:179
+(expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))) L:179
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))) L:179
+(attribute object: (identifier) attribute: (identifier)) L:179
+(identifier) L:179
+(".") L:179
+(identifier) L:179
+(generator_expression body: (string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) (for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) L:179
+("(") L:179
+(string (string_start) (string_content) (interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) (string_end)) L:179
+(string_start) L:179
+(string_content) L:179
+(interpolation expression: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier)))) L:179
+("{") L:179
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (identifier))) L:179
+(attribute object: (identifier) attribute: (identifier)) L:179
+(identifier) L:179
+(".") L:179
+(identifier) L:179
+(argument_list (string (string_start) (string_content) (string_end)) (identifier)) L:179
+("(") L:179
+(string (string_start) (string_content) (string_end)) L:179
+(string_start) L:179
+(string_content) L:179
+(string_end) L:179
+(",") L:179
+(identifier) L:179
+(")") L:179
+("}") L:179
+(string_end) L:179
+(for_in_clause left: (identifier) right: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))) L:179
+("for") L:179
+(identifier) L:179
+("in") L:179
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:179
+(identifier) L:179
+("[") L:179
+(string (string_start) (string_content) (string_end)) L:179
+(string_start) L:179
+(string_content) L:179
+(string_end) L:179
+("]") L:179
+(")") L:179
+(if_statement condition: (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) consequence: (block (if_statement condition: (call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) alternative: (else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))))) L:180
+("if") L:180
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)))) L:180
+(attribute object: (identifier) attribute: (identifier)) L:180
+(identifier) L:180
+(".") L:180
+(identifier) L:180
+(argument_list (string (string_start) (string_content) (string_end))) L:180
+("(") L:180
+(string (string_start) (string_content) (string_end)) L:180
+(string_start) L:180
+(string_content) L:180
+(string_end) L:180
+(")") L:180
+(":") L:180
+(block (if_statement condition: (call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) alternative: (else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))))) L:181
+(if_statement condition: (call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) consequence: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) alternative: (else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) L:181
+("if") L:181
+(call function: (identifier) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier))) L:181
+(identifier) L:181
+(argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) (identifier)) L:181
+("(") L:181
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:181
+(identifier) L:181
+("[") L:181
+(string (string_start) (string_content) (string_end)) L:181
+(string_start) L:181
+(string_content) L:181
+(string_end) L:181
+("]") L:181
+(",") L:181
+(identifier) L:181
+(")") L:181
+(":") L:181
+(block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))))) L:182
+(expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) L:182
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))) L:182
+(attribute object: (identifier) attribute: (identifier)) L:182
+(identifier) L:182
+(".") L:182
+(identifier) L:182
+(argument_list (call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))) L:182
+("(") L:182
+(call function: (attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) arguments: (argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) L:182
+(attribute object: (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) attribute: (identifier)) L:182
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:182
+(identifier) L:182
+("[") L:182
+(string (string_start) (string_content) (string_end)) L:182
+(string_start) L:182
+(string_content) L:182
+(string_end) L:182
+("]") L:182
+(".") L:182
+(identifier) L:182
+(argument_list (string (string_start) (string_content) (string_end)) (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))) L:182
+("(") L:182
+(string (string_start) (string_content) (string_end)) L:182
+(string_start) L:182
+(string_content) L:182
+(string_end) L:182
+(",") L:182
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:182
+(identifier) L:182
+("[") L:182
+(string (string_start) (string_content) (string_end)) L:182
+(string_start) L:182
+(string_content) L:182
+(string_end) L:182
+("]") L:182
+(")") L:182
+(")") L:182
+(else_clause body: (block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))))) L:183
+("else") L:183
+(":") L:183
+(block (expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))))) L:184
+(expression_statement (call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))))) L:184
+(call function: (attribute object: (identifier) attribute: (identifier)) arguments: (argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))))) L:184
+(attribute object: (identifier) attribute: (identifier)) L:184
+(identifier) L:184
+(".") L:184
+(identifier) L:184
+(argument_list (subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end)))) L:184
+("(") L:184
+(subscript value: (identifier) subscript: (string (string_start) (string_content) (string_end))) L:184
+(identifier) L:184
+("[") L:184
+(string (string_start) (string_content) (string_end)) L:184
+(string_start) L:184
+(string_content) L:184
+(string_end) L:184
+("]") L:184
+(")") L:184
+(return_statement (call function: (attribute object: (string (string_start) (string_content (escape_sequence)) (string_end)) attribute: (identifier)) arguments: (argument_list (identifier)))) L:185
+("return") L:185
+(call function: (attribute object: (string (string_start) (string_content (escape_sequence)) (string_end)) attribute: (identifier)) arguments: (argument_list (identifier))) L:185
+(attribute object: (string (string_start) (string_content (escape_sequence)) (string_end)) attribute: (identifier)) L:185
+(string (string_start) (string_content (escape_sequence)) (string_end)) L:185
+(string_start) L:185
+(string_content (escape_sequence)) L:185
+(escape_sequence) L:185
+(string_end) L:185
+(".") L:185
+(identifier) L:185
+(argument_list (identifier)) L:185
+("(") L:185
+(identifier) L:185
+(")") L:185

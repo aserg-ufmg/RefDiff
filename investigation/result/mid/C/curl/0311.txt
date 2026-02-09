@@ -1,0 +1,69 @@
+Commit: 5cdb9b44bdea155633837cb400701eb1fdfd8080
+No refactorings found.
+
+Commit: 9657a2041e7745aecd5b16c5c6d812424edfc6fd
+No refactorings found.
+
+Commit: 8ae93a95f8bdfeb2f30a4b917c805e7c9a0e3e8b
+No refactorings found.
+
+Commit: 53e5cdc47b0024e009ec70f9803e5053b84d87b2
+No refactorings found.
+
+Commit: a15a5f4d29c1e7bb4ada2aef9b40558c41aae146
+No refactorings found.
+
+Commit: 7c23e88d17e0939b4e01c8d05f430e167e148f4b
+No refactorings found.
+
+Commit: 7d1ca2e7e1a3b9d3ba70f587f6bc5e83f905afd5
+CHANGE_SIGNATURE	{Function get_url(void) at tests/libtest/lib1560.c:1528 LOC:39}	{Function get_url(int) at tests/libtest/lib1560.c:1532 LOC:43})
+CHANGE_SIGNATURE	{Function setget_parts(void) at tests/libtest/lib1560.c:1431 LOC:44}	{Function setget_parts(int) at tests/libtest/lib1560.c:1431 LOC:48})
+CHANGE_SIGNATURE	{Function get_parts(void) at tests/libtest/lib1560.c:1568 LOC:29}	{Function get_parts(int) at tests/libtest/lib1560.c:1576 LOC:33})
+
+Commit: 5cefe93eb644f757c5a685263a42961048b7d586
+No refactorings found.
+
+Commit: 74a94e699a8e68025432d48433603b80c72b7afb
+No refactorings found.
+
+Commit: 7ed9dac2f9ac797fec7d3c6682f74a869682ec03
+No refactorings found.
+
+Commit: 9db91370666090f9b40ff4196fc8c71b7c2c3646
+No refactorings found.
+
+Commit: fa0ed1fe4f7de6519dfc5519728e3710bfe077fc
+CHANGE_SIGNATURE	{Function main(void) at docs/examples/websocket.c:109 LOC:27}	{Function main(int, char) at docs/examples/websocket.c:137 LOC:31})
+
+Commit: ac8271d020848bca7da0976bd4eeb57a0bb4178e
+No refactorings found.
+
+Commit: 7d73c712f00cb8d3f12eb3e040ebcc64bc4747b9
+No refactorings found.
+
+Commit: 51f933801eb24a99e347c2833f2bd00928bf5dbd
+CHANGE_SIGNATURE	{Function __init__(self, env, run_dir, timeout, silent, run_env, server_addr, with_dtrace) at tests/http/testenv/curl.py:487 LOC:21}	{Function __init__(self, env, run_dir, timeout, silent, run_env, server_addr, with_dtrace, with_flame) at tests/http/testenv/curl.py:496 LOC:25})
+CHANGE_SIGNATURE	{Function __init__(self, env, protocol, server_descr, server_port, verbose, curl_verbose, download_parallel, server_addr, with_dtrace) at tests/http/scorecard.py:181 LOC:18}	{Function __init__(self, env, protocol, server_descr, server_port, verbose, curl_verbose, download_parallel, server_addr, with_dtrace, with_flame) at tests/http/scorecard.py:181 LOC:20})
+
+Commit: 05263820e526edd81bc681cc499981aadfc8934e
+No refactorings found.
+
+Commit: 5fb10b54768c5c13043b62e6d6873786a34eb9db
+No refactorings found.
+
+Commit: b2ca61a0acc9c0b68d67c536c8df40b4fbccaa93
+No refactorings found.
+
+Commit: c9bb9cd165c1b25c2fe005befdcfe479fc9b68e1
+No refactorings found.
+
+Commit: 3f36e1e502105deb513fadac02d60b13ac68b16f
+No refactorings found.
+
+Commit: 83baac43a861e8b2d939e7a0a00456a4fbc5311c
+No refactorings found.
+
+Commit: db512ee2677e036967ef861a71b1cfa14e537b4f
+No refactorings found.
+

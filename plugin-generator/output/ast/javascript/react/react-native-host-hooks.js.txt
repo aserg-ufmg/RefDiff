@@ -1,0 +1,1745 @@
+(comment) L:1
+(comment) L:10
+(comment) L:11
+(identifier) L:12
+(expression_statement (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier)))))))))))) L:12
+(assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier))))))))))) L:12
+(identifier) L:12
+("=") L:12
+(arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier)))))))))) L:12
+(formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) L:12
+("(") L:12
+(identifier) L:13
+(":") L:13
+(sequence_expression (identifier) (identifier)) L:13
+(identifier) L:13
+(",") L:13
+(identifier) L:14
+(":") L:14
+(sequence_expression (identifier) (identifier)) L:14
+(identifier) L:14
+(",") L:14
+(identifier) L:15
+(":") L:15
+(sequence_expression (identifier) (identifier)) L:15
+(identifier) L:15
+(",") L:15
+(identifier) L:16
+(":") L:16
+(sequence_expression (identifier) (identifier)) L:16
+(identifier) L:16
+(",") L:16
+(identifier) L:17
+(":") L:17
+(sequence_expression (identifier) (identifier)) L:17
+(identifier) L:17
+(",") L:17
+(identifier) L:18
+(":") L:18
+(identifier) L:18
+(",") L:18
+(")") L:19
+("=>") L:19
+(unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier))))))))) L:19
+("void") L:19
+(";") L:19
+(identifier) L:20
+(assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier)))))))) L:20
+(identifier) L:20
+("=") L:20
+(arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier))))))) L:20
+(formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) L:20
+("(") L:20
+(identifier) L:21
+(":") L:21
+(sequence_expression (identifier) (identifier)) L:21
+(identifier) L:21
+(",") L:21
+(identifier) L:22
+(":") L:22
+(sequence_expression (identifier) (identifier)) L:22
+(identifier) L:22
+(",") L:22
+(identifier) L:23
+(":") L:23
+(sequence_expression (identifier) (identifier)) L:23
+(identifier) L:23
+(",") L:23
+(identifier) L:24
+(":") L:24
+(identifier) L:24
+(",") L:24
+(")") L:25
+("=>") L:25
+(unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier)))))) L:25
+("void") L:25
+(";") L:25
+(identifier) L:26
+(assignment_expression left: (identifier) right: (arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier))))) L:26
+(identifier) L:26
+("=") L:26
+(arrow_function parameters: (formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) body: (unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier)))) L:26
+(formal_parameters (ERROR (identifier) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier)) (sequence_expression (identifier) (identifier))) (identifier)) L:26
+("(") L:26
+(identifier) L:27
+(":") L:27
+(sequence_expression (identifier) (identifier)) L:27
+(identifier) L:27
+(",") L:27
+(identifier) L:28
+(":") L:28
+(sequence_expression (identifier) (identifier)) L:28
+(identifier) L:28
+(",") L:28
+(identifier) L:29
+(":") L:29
+(sequence_expression (identifier) (identifier)) L:29
+(identifier) L:29
+(",") L:29
+(identifier) L:30
+(":") L:30
+(identifier) L:30
+(",") L:30
+(")") L:31
+("=>") L:31
+(unary_expression (ERROR (identifier)) argument: (assignment_expression left: (identifier) right: (identifier))) L:31
+("void") L:31
+(";") L:31
+(identifier) L:32
+(assignment_expression left: (identifier) right: (identifier)) L:32
+(identifier) L:32
+("=") L:32
+(identifier) L:32
+(";") L:32
+(expression_statement (identifier) (MISSING ";")) L:33
+(identifier) L:33
+(MISSING ";") L:33
+(expression_statement (assignment_expression left: (identifier) right: (identifier))) L:33
+(assignment_expression left: (identifier) right: (identifier)) L:33
+(identifier) L:33
+("=") L:33
+(identifier) L:33
+(";") L:33
+(expression_statement (identifier) (MISSING ";")) L:34
+(identifier) L:34
+(MISSING ";") L:34
+(expression_statement (assignment_expression left: (identifier) right: (identifier))) L:34
+(assignment_expression left: (identifier) right: (identifier)) L:34
+(identifier) L:34
+("=") L:34
+(identifier) L:34
+(";") L:34
+(expression_statement (identifier) (MISSING ";")) L:35
+(identifier) L:35
+(MISSING ";") L:35
+(expression_statement (assignment_expression left: (identifier) right: (identifier))) L:35
+(assignment_expression left: (identifier) right: (identifier)) L:35
+(identifier) L:35
+("=") L:35
+(identifier) L:35
+(";") L:35
+(comment) L:37
+(comment) L:38
+(expression_statement (identifier) (MISSING ";")) L:39
+(identifier) L:39
+(MISSING ";") L:39
+(expression_statement (assignment_expression left: (identifier) right: (identifier))) L:39
+(assignment_expression left: (identifier) right: (identifier)) L:39
+(identifier) L:39
+("=") L:39
+(identifier) L:39
+(";") L:39
+(comment) L:41
+(comment) L:42
+(expression_statement (identifier) (MISSING ";")) L:43
+(identifier) L:43
+(MISSING ";") L:43
+(expression_statement (assignment_expression left: (identifier) right: (identifier))) L:43
+(assignment_expression left: (identifier) right: (identifier)) L:43
+(identifier) L:43
+("=") L:43
+(identifier) L:43
+(";") L:43
+(expression_statement (identifier) (MISSING ";")) L:45
+(identifier) L:45
+(MISSING ";") L:45
+(expression_statement (assignment_expression left: (identifier) (ERROR) right: (ternary_expression condition: (unary_expression argument: (identifier)) consequence: (MISSING identifier) alternative: (identifier)))) L:45
+(assignment_expression left: (identifier) (ERROR) right: (ternary_expression condition: (unary_expression argument: (identifier)) consequence: (MISSING identifier) alternative: (identifier))) L:45
+(identifier) L:45
+("=") L:45
+("{") L:45
+(ternary_expression condition: (unary_expression argument: (identifier)) consequence: (MISSING identifier) alternative: (identifier)) L:45
+(unary_expression argument: (identifier)) L:45
+("+") L:45
+(identifier) L:45
+("?") L:45
+(MISSING identifier) L:45
+(":") L:45
+(identifier) L:45
+("}") L:45
+(empty_statement) L:45
+(";") L:45
+(expression_statement (identifier) (MISSING ";")) L:46
+(identifier) L:46
+(MISSING ";") L:46
+(expression_statement (assignment_expression left: (identifier) right: (binary_expression left: (identifier) right: (object (pair key: (property_identifier) value: (identifier)) (comment) (comment) (comment) (pair key: (property_identifier) value: (object (pair key: (computed_property_name (identifier)) value: (identifier)) (ERROR)))))) (ERROR)) L:46
+(assignment_expression left: (identifier) right: (binary_expression left: (identifier) right: (object (pair key: (property_identifier) value: (identifier)) (comment) (comment) (comment) (pair key: (property_identifier) value: (object (pair key: (computed_property_name (identifier)) value: (identifier)) (ERROR)))))) L:46
+(identifier) L:46
+("=") L:46
+(binary_expression left: (identifier) right: (object (pair key: (property_identifier) value: (identifier)) (comment) (comment) (comment) (pair key: (property_identifier) value: (object (pair key: (computed_property_name (identifier)) value: (identifier)) (ERROR))))) L:46
+(identifier) L:46
+("<") L:46
+(object (pair key: (property_identifier) value: (identifier)) (comment) (comment) (comment) (pair key: (property_identifier) value: (object (pair key: (computed_property_name (identifier)) value: (identifier)) (ERROR)))) L:46
+("{") L:46
+(pair key: (property_identifier) value: (identifier)) L:47
+(property_identifier) L:47
+(":") L:47
+(identifier) L:47
+(",") L:47
+(comment) L:48
+(comment) L:49
+(comment) L:50
+(pair key: (property_identifier) value: (object (pair key: (computed_property_name (identifier)) value: (identifier)) (ERROR))) L:51
+(property_identifier) L:51
+(":") L:51
+(object (pair key: (computed_property_name (identifier)) value: (identifier)) (ERROR)) L:51
+("{") L:51
+(pair key: (computed_property_name (identifier)) value: (identifier)) L:51
+(computed_property_name (identifier)) L:51
+("[") L:51
+(identifier) L:51
+("]") L:51
+(":") L:51
+(identifier) L:51
+(",") L:51
+("...") L:51
+("}") L:51
+(",") L:51
+("}") L:52
+(">") L:52
+(";") L:52
+(identifier) L:54
+(identifier) L:54
+(identifier) L:54
+(expression_statement (identifier)) L:54
+(identifier) L:54
+(";") L:54
+(identifier) L:55
+(identifier) L:55
+(identifier) L:55
+(expression_statement (identifier)) L:55
+(identifier) L:55
+(";") L:55
+(identifier) L:56
+(identifier) L:56
+(identifier) L:56
+(expression_statement (identifier)) L:56
+(identifier) L:56
+(";") L:56
+(identifier) L:58
+(identifier) L:58
+(string (string_fragment)) L:58
+("'") L:58
+(string_fragment) L:58
+("'") L:58
+("{") L:58
+(identifier) L:59
+(identifier) L:59
+("function") L:59
+(identifier) L:59
+("(") L:59
+(identifier) L:60
+(":") L:60
+(identifier) L:60
+(",") L:60
+(identifier) L:61
+(":") L:61
+(identifier) L:61
+(",") L:61
+(binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments)) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:62
+(call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments)) L:62
+(binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:62
+(call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) L:62
+(binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:62
+(call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) L:62
+(binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:62
+(call_expression function: (binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) L:62
+(binary_expression left: (call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:62
+(call_expression function: (binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier))) L:62
+(binary_expression left: (call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:62
+(call_expression function: (ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) L:62
+(ternary_expression condition: (identifier) (ERROR (identifier)) consequence: (ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) alternative: (binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier)))) L:62
+(identifier) L:62
+("?") L:62
+(":") L:62
+(identifier) L:62
+(",") L:62
+(ternary_expression condition: (identifier) (ERROR) consequence: (identifier) (ERROR (ERROR (identifier) (identifier) (identifier)) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) (ERROR (identifier) (identifier) (identifier) (identifier)) (jsx_opening_element name: (identifier)) (jsx_text) (jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) (jsx_text) (jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) (jsx_text) (jsx_expression (ERROR (identifier)) (identifier) (ERROR)) (jsx_text) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier)))) L:63
+(identifier) L:63
+("?") L:63
+(":") L:63
+(identifier) L:63
+(",") L:63
+(")") L:64
+(":") L:64
+(identifier) L:64
+(";") L:64
+(identifier) L:65
+(identifier) L:65
+("function") L:65
+(identifier) L:65
+(formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) L:65
+("(") L:65
+(identifier) L:66
+(":") L:66
+(identifier) L:66
+(",") L:66
+(identifier) L:67
+(":") L:67
+(identifier) L:67
+(",") L:67
+(identifier) L:68
+(":") L:68
+(identifier) L:68
+(",") L:68
+(")") L:69
+(":") L:69
+(identifier) L:69
+(";") L:69
+(identifier) L:70
+(identifier) L:70
+("function") L:70
+(identifier) L:70
+(jsx_opening_element name: (identifier)) L:70
+("<") L:70
+(identifier) L:70
+(">") L:70
+(jsx_text) L:70
+(jsx_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) L:72
+("{") L:72
+(call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) L:73
+(identifier) L:73
+(":") L:73
+(arguments (identifier) (ERROR (identifier))) L:73
+("(") L:73
+(identifier) L:73
+(":") L:73
+(identifier) L:73
+(")") L:73
+("=") L:73
+(">") L:73
+("void") L:73
+(",") L:73
+("...") L:74
+("}") L:75
+(jsx_text) L:75
+(jsx_expression (call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR)) L:76
+("{") L:76
+(call_expression function: (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) L:77
+(binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:77
+(call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)))) L:77
+(identifier) L:77
+(":") L:77
+(arguments (identifier) (ERROR (identifier))) L:77
+("(") L:77
+(identifier) L:77
+(":") L:77
+(identifier) L:77
+(")") L:77
+("=") L:77
+(">") L:77
+(unary_expression (ERROR) argument: (identifier)) L:77
+("void") L:77
+(",") L:77
+(identifier) L:78
+(":") L:78
+(arguments (identifier) (ERROR (identifier))) L:78
+("(") L:78
+(identifier) L:78
+(":") L:78
+(identifier) L:78
+(")") L:78
+("=") L:78
+(">") L:78
+("void") L:78
+(",") L:78
+("...") L:79
+("}") L:80
+(jsx_text) L:80
+(jsx_expression (binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) (ERROR)) L:81
+("{") L:81
+(binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) (ERROR) right: (identifier)) L:82
+(call_expression function: (identifier) (ERROR) arguments: (arguments (ERROR (identifier)) (identifier))) L:82
+(identifier) L:82
+(":") L:82
+(arguments (ERROR (identifier)) (identifier)) L:82
+("(") L:82
+(identifier) L:82
+(":") L:82
+(identifier) L:82
+(")") L:82
+("=") L:82
+(">") L:82
+(identifier) L:82
+(",") L:82
+("...") L:83
+("}") L:84
+(jsx_text) L:84
+(jsx_expression (ERROR (identifier)) (identifier) (ERROR)) L:85
+("{") L:85
+(identifier) L:85
+(":") L:85
+(identifier) L:85
+(",") L:85
+("...") L:85
+("}") L:85
+(jsx_text) L:85
+("{") L:86
+(sequence_expression (identifier) (ERROR (identifier)) (identifier)) L:87
+(identifier) L:87
+(":") L:87
+(identifier) L:87
+(",") L:87
+(identifier) L:88
+(":") L:88
+(sequence_expression (identifier) (identifier)) L:88
+(identifier) L:88
+(",") L:88
+(identifier) L:89
+(":") L:89
+("(") L:89
+(sequence_expression (identifier) (ERROR (identifier)) (identifier)) L:90
+(identifier) L:90
+(":") L:90
+(identifier) L:90
+(",") L:90
+(identifier) L:91
+(":") L:91
+(sequence_expression (identifier) (identifier)) L:91
+(identifier) L:91
+(",") L:91
+(identifier) L:92
+(":") L:92
+(sequence_expression (identifier) (identifier)) L:92
+(identifier) L:92
+(",") L:92
+(identifier) L:93
+(":") L:93
+(arrow_function parameter: (identifier) (ERROR) body: (unary_expression (ERROR) argument: (identifier))) L:93
+(identifier) L:93
+(",") L:93
+(")") L:94
+("=>") L:94
+(unary_expression (ERROR) argument: (identifier)) L:94
+("void") L:94
+(",") L:94
+(identifier) L:95
+(":") L:95
+(binary_expression left: (call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:95
+(call_expression function: (parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR))) L:95
+(parenthesized_expression (ERROR (sequence_expression (identifier) (ERROR (identifier)) (identifier)) (sequence_expression (identifier) (identifier))) (binary_expression left: (identifier) right: (identifier)) (ERROR)) L:95
+("(") L:95
+(sequence_expression (identifier) (ERROR (identifier)) (identifier)) L:96
+(identifier) L:96
+(":") L:96
+(identifier) L:96
+(",") L:96
+(identifier) L:97
+(":") L:97
+(sequence_expression (identifier) (identifier)) L:97
+(identifier) L:97
+(",") L:97
+(identifier) L:98
+(":") L:98
+(binary_expression left: (identifier) right: (identifier)) L:98
+(identifier) L:98
+("<") L:98
+(identifier) L:98
+(">") L:98
+(",") L:98
+(")") L:99
+("=>") L:99
+("void") L:99
+(",") L:99
+(identifier) L:100
+(":") L:100
+(arguments (identifier) (ERROR (identifier)) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR)) L:100
+("(") L:100
+(identifier) L:101
+(":") L:101
+(identifier) L:101
+(",") L:101
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:102
+(identifier) L:102
+(":") L:102
+(identifier) L:102
+("<") L:102
+(identifier) L:102
+(">") L:102
+(",") L:102
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:103
+(identifier) L:103
+(":") L:103
+(identifier) L:103
+("<") L:103
+(identifier) L:103
+(">") L:103
+(",") L:103
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:104
+(identifier) L:104
+(":") L:104
+(identifier) L:104
+("<") L:104
+(identifier) L:104
+(">") L:104
+(",") L:104
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:105
+(identifier) L:105
+(":") L:105
+(identifier) L:105
+("<") L:105
+(identifier) L:105
+(">") L:105
+(",") L:105
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:106
+(identifier) L:106
+(":") L:106
+(identifier) L:106
+("<") L:106
+(identifier) L:106
+(">") L:106
+(",") L:106
+(")") L:107
+("=") L:107
+(">") L:107
+(unary_expression (ERROR) argument: (identifier)) L:107
+("void") L:107
+(",") L:107
+(identifier) L:108
+(":") L:108
+(arguments (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier)) L:108
+("(") L:108
+(identifier) L:108
+(":") L:108
+(identifier) L:108
+(",") L:108
+(identifier) L:108
+(":") L:108
+(identifier) L:108
+(")") L:108
+("=") L:108
+(">") L:108
+(unary_expression (ERROR) argument: (identifier)) L:108
+("void") L:108
+(",") L:108
+(identifier) L:109
+(":") L:109
+(arguments (ERROR (identifier) (UNEXPECTED 'n')) (identifier) (ERROR (identifier)) (identifier)) L:109
+("(") L:109
+(identifier) L:109
+(":") L:109
+(identifier) L:109
+(",") L:109
+(identifier) L:109
+(":") L:109
+(identifier) L:109
+(")") L:109
+("=") L:109
+(">") L:109
+(unary_expression (ERROR) argument: (identifier)) L:109
+("void") L:109
+(",") L:109
+(identifier) L:110
+(":") L:110
+(arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier))) L:110
+("(") L:110
+(identifier) L:111
+(":") L:111
+(identifier) L:111
+(",") L:111
+(identifier) L:112
+(":") L:112
+(identifier) L:112
+(",") L:112
+(identifier) L:113
+(":") L:113
+(identifier) L:113
+(",") L:113
+(identifier) L:114
+(":") L:114
+(identifier) L:114
+(",") L:114
+(")") L:115
+("=") L:115
+(">") L:115
+(unary_expression (ERROR) argument: (identifier)) L:115
+("void") L:115
+(",") L:115
+(identifier) L:116
+(":") L:116
+(arguments (identifier) (ERROR (identifier))) L:116
+("(") L:116
+(identifier) L:116
+(":") L:116
+(identifier) L:116
+(")") L:116
+("=") L:116
+(">") L:116
+(unary_expression (ERROR) argument: (identifier)) L:116
+("void") L:116
+(",") L:116
+(identifier) L:117
+(":") L:117
+(arguments (identifier) (ERROR (identifier))) L:117
+("(") L:117
+(identifier) L:117
+(":") L:117
+(identifier) L:117
+(")") L:117
+("=") L:117
+(">") L:117
+(unary_expression (ERROR) argument: (identifier)) L:117
+("void") L:117
+(",") L:117
+(identifier) L:118
+(":") L:118
+(arguments) L:118
+("(") L:118
+(")") L:118
+("=") L:118
+(">") L:118
+(unary_expression (ERROR) argument: (identifier)) L:118
+("void") L:118
+(",") L:118
+(identifier) L:119
+(":") L:119
+("(") L:119
+(identifier) L:119
+(":") L:119
+(identifier) L:119
+(",") L:119
+(call_expression function: (binary_expression left: (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier) (UNEXPECTED 'O')) (identifier))) L:119
+(binary_expression left: (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR) right: (unary_expression (ERROR) argument: (identifier))) L:119
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:119
+(identifier) L:119
+(":") L:119
+(identifier) L:119
+("<") L:119
+(identifier) L:119
+(">") L:119
+(")") L:119
+("=>") L:119
+(unary_expression (ERROR) argument: (identifier)) L:119
+("void") L:119
+(",") L:119
+(identifier) L:120
+(":") L:120
+(arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier) (UNEXPECTED 'O')) (identifier)) L:120
+("(") L:120
+(identifier) L:120
+(":") L:120
+(identifier) L:120
+(",") L:120
+(identifier) L:120
+(":") L:120
+(identifier) L:120
+(",") L:120
+(identifier) L:120
+(":") L:120
+(identifier) L:120
+(")") L:120
+("=") L:120
+(">") L:120
+("void") L:120
+(",") L:120
+(identifier) L:121
+(":") L:121
+("(") L:121
+(ternary_expression condition: (identifier) consequence: (MISSING identifier) alternative: (binary_expression left: (binary_expression left: (string (string_fragment)) right: (identifier)) right: (identifier))) L:122
+(identifier) L:122
+("?") L:122
+(MISSING identifier) L:122
+(":") L:122
+(binary_expression left: (binary_expression left: (string (string_fragment)) right: (identifier)) right: (identifier)) L:122
+(binary_expression left: (string (string_fragment)) right: (identifier)) L:122
+(string (string_fragment)) L:122
+("'") L:122
+(string_fragment) L:122
+("'") L:122
+("|") L:122
+(identifier) L:122
+("|") L:122
+(identifier) L:122
+(",") L:122
+(identifier) L:123
+("?") L:123
+(":") L:123
+("{") L:123
+(pair key: (property_identifier) (ERROR (UNEXPECTED ':')) value: (identifier)) L:124
+(property_identifier) L:124
+(":") L:124
+(identifier) L:124
+(",") L:124
+(pair key: (property_identifier) (ERROR (UNEXPECTED ':')) value: (identifier)) L:125
+(property_identifier) L:125
+(":") L:125
+(identifier) L:125
+(",") L:125
+(pair key: (property_identifier) (ERROR (UNEXPECTED ':')) value: (binary_expression left: (string (string_fragment)) right: (string (string_fragment)))) L:126
+(property_identifier) L:126
+(":") L:126
+(binary_expression left: (string (string_fragment)) right: (string (string_fragment))) L:126
+(string (string_fragment)) L:126
+("'") L:126
+(string_fragment) L:126
+("'") L:126
+("|") L:126
+(string (string_fragment)) L:126
+("'") L:126
+(string_fragment) L:126
+("'") L:126
+(",") L:126
+(pair key: (property_identifier) (ERROR (UNEXPECTED ':')) value: (identifier)) L:127
+(property_identifier) L:127
+(":") L:127
+(identifier) L:127
+(",") L:127
+(spread_element (ERROR) (binary_expression left: (identifier) right: (identifier))) L:128
+("...") L:128
+("}") L:129
+(",") L:129
+(")") L:130
+("=>") L:130
+(binary_expression left: (identifier) right: (identifier)) L:130
+(identifier) L:130
+("<") L:130
+(identifier) L:130
+(">") L:130
+(",") L:130
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:131
+(property_identifier) L:131
+(":") L:131
+("(") L:131
+(identifier) L:131
+(":") L:131
+(identifier) L:131
+(",") L:131
+(pair key: (property_identifier) value: (identifier)) L:131
+(property_identifier) L:131
+(":") L:131
+(identifier) L:131
+(")") L:131
+("=>") L:131
+("void") L:131
+(",") L:131
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (unary_expression argument: (MISSING identifier)))) L:132
+(property_identifier) L:132
+(":") L:132
+(arrow_function parameters: (formal_parameters) body: (unary_expression argument: (MISSING identifier))) L:132
+(formal_parameters) L:132
+("(") L:132
+(")") L:132
+("=>") L:132
+(unary_expression argument: (MISSING identifier)) L:132
+("void") L:132
+(MISSING identifier) L:132
+(",") L:132
+(pair key: (property_identifier) (ERROR (identifier)) (ERROR (UNEXPECTED 'n')) value: (identifier)) L:133
+(property_identifier) L:133
+(":") L:133
+("(") L:133
+(identifier) L:134
+(":") L:134
+(identifier) L:134
+(",") L:134
+(pair key: (property_identifier) value: (binary_expression left: (identifier) right: (identifier))) L:135
+(property_identifier) L:135
+(":") L:135
+(binary_expression left: (identifier) right: (identifier)) L:135
+(identifier) L:135
+("<") L:135
+(identifier) L:135
+(">") L:135
+(",") L:135
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:136
+(property_identifier) L:136
+(":") L:136
+("(") L:136
+(identifier) L:137
+(":") L:137
+(identifier) L:137
+(",") L:137
+(pair key: (property_identifier) value: (identifier)) L:138
+(property_identifier) L:138
+(":") L:138
+(identifier) L:138
+(",") L:138
+(pair key: (property_identifier) value: (identifier)) L:139
+(property_identifier) L:139
+(":") L:139
+(identifier) L:139
+(",") L:139
+(pair key: (property_identifier) value: (identifier)) L:140
+(property_identifier) L:140
+(":") L:140
+(identifier) L:140
+(",") L:140
+(pair key: (property_identifier) value: (identifier)) L:141
+(property_identifier) L:141
+(":") L:141
+(identifier) L:141
+(",") L:141
+(")") L:142
+("=>") L:142
+("void") L:142
+(",") L:142
+(")") L:143
+("=>") L:143
+("void") L:143
+(",") L:143
+("...") L:144
+("}") L:145
+(";") L:145
+(identifier) L:146
+(identifier) L:146
+("const") L:146
+(binary_expression left: (call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)))) (ERROR) right: (unary_expression (ERROR (identifier) (identifier)) argument: (identifier))) L:146
+(call_expression function: (identifier) (ERROR) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)))) L:146
+(identifier) L:146
+(":") L:146
+(arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier))) L:146
+("(") L:146
+(identifier) L:147
+(":") L:147
+(identifier) L:147
+(",") L:147
+(identifier) L:148
+(":") L:148
+(identifier) L:148
+(",") L:148
+(")") L:149
+("=") L:149
+(">") L:149
+(unary_expression (ERROR (identifier) (identifier)) argument: (identifier)) L:149
+("void") L:149
+(";") L:149
+(identifier) L:150
+(identifier) L:150
+("const") L:150
+(identifier) L:150
+(":") L:150
+("{") L:150
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:151
+(property_identifier) L:151
+(":") L:151
+("(") L:151
+(identifier) L:151
+(":") L:151
+(identifier) L:151
+(",") L:151
+(pair key: (property_identifier) value: (identifier)) L:151
+(property_identifier) L:151
+(":") L:151
+(identifier) L:151
+(")") L:151
+("=>") L:151
+("void") L:151
+(",") L:151
+("...") L:152
+("}") L:153
+(";") L:153
+(identifier) L:154
+(identifier) L:154
+("const") L:154
+(identifier) L:154
+(":") L:154
+("{") L:154
+(pair key: (property_identifier) value: (identifier)) L:155
+(property_identifier) L:155
+(":") L:155
+(identifier) L:155
+(",") L:155
+(pair key: (property_identifier) value: (identifier)) L:156
+(property_identifier) L:156
+(":") L:156
+(identifier) L:156
+(",") L:156
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:158
+(property_identifier) L:158
+(":") L:158
+("(") L:158
+(identifier) L:158
+(":") L:158
+(identifier) L:158
+(",") L:158
+(pair key: (property_identifier) value: (identifier)) L:158
+(property_identifier) L:158
+(":") L:158
+(identifier) L:158
+(")") L:158
+("=>") L:158
+(identifier) L:158
+(",") L:158
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (ERROR (identifier)) (identifier)) body: (identifier))) L:159
+(property_identifier) L:159
+(":") L:159
+(arrow_function parameters: (formal_parameters (ERROR (identifier)) (identifier)) body: (identifier)) L:159
+(formal_parameters (ERROR (identifier)) (identifier)) L:159
+("(") L:159
+(identifier) L:159
+(":") L:159
+(identifier) L:159
+(")") L:159
+("=>") L:159
+(identifier) L:159
+(",") L:159
+(spread_element (ERROR (identifier) (identifier) (identifier)) (binary_expression left: (call_expression function: (binary_expression left: (object (pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) (pair key: (property_identifier) value: (identifier)) (ERROR (identifier)) (spread_element (ERROR (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (identifier) (property_identifier) (formal_parameters) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))))) (binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier))) (ERROR)) (ERROR (identifier) (identifier) (identifier)) right: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) right: (identifier)) (ERROR (identifier) (string_fragment) (identifier) (identifier) (string (string_fragment)) (object_pattern (ERROR (identifier) (identifier) (identifier)) (object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) (ERROR)) (comment) (identifier) (identifier) (identifier)) (comment) (comment) (comment) (ERROR (identifier) (identifier)) right: (identifier))) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier) (UNEXPECTED 'O')) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (identifier))) L:160
+("...") L:160
+("}") L:161
+(";") L:161
+(identifier) L:162
+(identifier) L:162
+("const") L:162
+(identifier) L:162
+(":") L:162
+(binary_expression left: (call_expression function: (binary_expression left: (object (pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) (pair key: (property_identifier) value: (identifier)) (ERROR (identifier)) (spread_element (ERROR (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (identifier) (property_identifier) (formal_parameters) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))))) (binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier))) (ERROR)) (ERROR (identifier) (identifier) (identifier)) right: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) right: (identifier)) (ERROR (identifier) (string_fragment) (identifier) (identifier) (string (string_fragment)) (object_pattern (ERROR (identifier) (identifier) (identifier)) (object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) (ERROR)) (comment) (identifier) (identifier) (identifier)) (comment) (comment) (comment) (ERROR (identifier) (identifier)) right: (identifier))) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier) (UNEXPECTED 'O')) (identifier) (identifier) (ERROR (identifier)))) (ERROR) right: (identifier)) L:162
+(call_expression function: (binary_expression left: (object (pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) (pair key: (property_identifier) value: (identifier)) (ERROR (identifier)) (spread_element (ERROR (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (identifier) (property_identifier) (formal_parameters) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))))) (binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier))) (ERROR)) (ERROR (identifier) (identifier) (identifier)) right: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) right: (identifier)) (ERROR (identifier) (string_fragment) (identifier) (identifier) (string (string_fragment)) (object_pattern (ERROR (identifier) (identifier) (identifier)) (object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) (ERROR)) (comment) (identifier) (identifier) (identifier)) (comment) (comment) (comment) (ERROR (identifier) (identifier)) right: (identifier))) (ERROR (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier) (UNEXPECTED 'O')) (identifier) (identifier) (ERROR (identifier)))) L:162
+(binary_expression left: (object (pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) (pair key: (property_identifier) value: (identifier)) (ERROR (identifier)) (spread_element (ERROR (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (identifier) (property_identifier) (formal_parameters) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))))) (binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier))) (ERROR)) (ERROR (identifier) (identifier) (identifier)) right: (binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) right: (identifier)) (ERROR (identifier) (string_fragment) (identifier) (identifier) (string (string_fragment)) (object_pattern (ERROR (identifier) (identifier) (identifier)) (object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) (ERROR)) (comment) (identifier) (identifier) (identifier)) (comment) (comment) (comment) (ERROR (identifier) (identifier)) right: (identifier))) L:162
+(object (pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) (pair key: (property_identifier) value: (identifier)) (ERROR (identifier)) (spread_element (ERROR (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (identifier) (property_identifier) (formal_parameters) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))))) (binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier))) (ERROR)) L:162
+("{") L:162
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:163
+(property_identifier) L:163
+(":") L:163
+("(") L:163
+(identifier) L:163
+(":") L:163
+(identifier) L:163
+(",") L:163
+(pair key: (property_identifier) value: (identifier)) L:163
+(property_identifier) L:163
+(":") L:163
+(identifier) L:163
+(")") L:163
+("=>") L:163
+(identifier) L:163
+(",") L:163
+(spread_element (ERROR (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (identifier) (property_identifier) (formal_parameters) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))))) (binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier))) L:164
+("...") L:164
+("}") L:165
+(";") L:165
+(identifier) L:166
+(identifier) L:166
+(identifier) L:166
+(assignment_expression left: (identifier) right: (identifier)) L:166
+(identifier) L:166
+("=") L:166
+(identifier) L:166
+(";") L:166
+(identifier) L:167
+(identifier) L:167
+(identifier) L:167
+(assignment_expression left: (identifier) right: (identifier)) L:167
+(identifier) L:167
+("=") L:167
+(identifier) L:167
+(";") L:167
+(identifier) L:168
+(identifier) L:168
+(identifier) L:168
+(assignment_expression left: (identifier) right: (identifier)) L:168
+(identifier) L:168
+("=") L:168
+(identifier) L:168
+(";") L:168
+(identifier) L:169
+(identifier) L:169
+(identifier) L:169
+(assignment_expression left: (identifier) right: (identifier)) L:169
+(identifier) L:169
+("=") L:169
+(identifier) L:169
+(";") L:169
+(identifier) L:170
+(identifier) L:170
+(identifier) L:170
+(assignment_expression left: (identifier) right: (identifier)) L:170
+(identifier) L:170
+("=") L:170
+(identifier) L:171
+(";") L:171
+(identifier) L:172
+(identifier) L:172
+(identifier) L:172
+(assignment_expression left: (identifier) right: (identifier)) L:172
+(identifier) L:172
+("=") L:172
+(identifier) L:173
+(";") L:173
+(identifier) L:174
+(identifier) L:174
+(identifier) L:174
+(identifier) L:174
+("{") L:174
+(property_identifier) L:175
+(formal_parameters) L:175
+("(") L:175
+(")") L:175
+(":") L:175
+(unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments))) L:175
+("void") L:175
+(";") L:175
+(call_expression function: (identifier) arguments: (arguments)) L:176
+(identifier) L:176
+(arguments) L:176
+("(") L:176
+(")") L:176
+(":") L:176
+(unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) L:176
+("void") L:176
+(";") L:176
+(call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier))) L:177
+(identifier) L:177
+(arguments (ERROR (identifier)) (identifier)) L:177
+("(") L:177
+(identifier) L:177
+(":") L:177
+(identifier) L:177
+(")") L:177
+(":") L:177
+(unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier)))) L:177
+("void") L:177
+(";") L:177
+(call_expression function: (identifier) arguments: (arguments (ERROR (identifier)) (identifier))) L:178
+(identifier) L:178
+(arguments (ERROR (identifier)) (identifier)) L:178
+("(") L:178
+(identifier) L:178
+(":") L:178
+(identifier) L:178
+(")") L:178
+(":") L:178
+(unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR)))))) L:178
+("void") L:178
+(";") L:178
+(call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))))) L:179
+(identifier) L:179
+(arguments (binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) (ERROR (identifier)) (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR)))) L:179
+("(") L:179
+(binary_expression left: (identifier) (ERROR (identifier)) right: (identifier)) L:180
+(identifier) L:180
+(":") L:180
+(identifier) L:180
+("|") L:180
+(identifier) L:180
+(",") L:180
+(identifier) L:181
+(":") L:181
+(identifier) L:181
+(",") L:181
+(ternary_expression condition: (identifier) (ERROR) consequence: (arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) alternative: (object (ERROR))) L:182
+(identifier) L:182
+("?") L:182
+(":") L:182
+(arrow_function parameters: (formal_parameters) body: (unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))))) L:182
+(formal_parameters) L:182
+("(") L:182
+(")") L:182
+("=>") L:182
+(unary_expression (ERROR) argument: (unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")"))))) L:182
+("void") L:182
+(",") L:182
+(")") L:183
+(":") L:183
+(unary_expression (ERROR) argument: (call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")")))) L:183
+("void") L:183
+(";") L:183
+(call_expression function: (identifier) arguments: (arguments (identifier) (MISSING ")"))) L:184
+(identifier) L:184
+(arguments (identifier) (MISSING ")")) L:184
+("(") L:184
+(identifier) L:184
+(MISSING ")") L:184
+(":") L:184
+(object (ERROR)) L:184
+("{") L:184
+("...") L:184
+("}") L:184
+(")") L:184
+(":") L:184
+(binary_expression left: (call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) (ERROR (null)) right: (identifier)) L:184
+(call_expression function: (binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) (ERROR (identifier) (identifier)) arguments: (arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier))) L:184
+(binary_expression left: (unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) right: (identifier)) L:184
+(unary_expression (ERROR (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (identifier) (formal_parameters (identifier) (ERROR (identifier))) (identifier) (identifier) (ERROR (identifier) (formal_parameters (ERROR (identifier)) (identifier)) (UNEXPECTED 'O') (identifier)) (identifier) (identifier) (identifier) (formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier))) argument: (null)) L:184
+("void") L:184
+(";") L:184
+("}") L:185
+(identifier) L:186
+(identifier) L:186
+("function") L:186
+(identifier) L:186
+(formal_parameters (ERROR (identifier)) (identifier)) L:186
+("(") L:186
+(identifier) L:187
+(":") L:187
+(identifier) L:187
+(",") L:187
+(")") L:188
+(":") L:188
+(identifier) L:188
+(";") L:188
+(identifier) L:189
+("export") L:189
+("function") L:189
+(identifier) L:189
+(formal_parameters (ERROR (identifier)) (identifier)) L:189
+("(") L:189
+(identifier) L:190
+(":") L:190
+(identifier) L:190
+(",") L:190
+(")") L:191
+(":") L:191
+(identifier) L:191
+(";") L:191
+(identifier) L:192
+("export") L:192
+("function") L:192
+(identifier) L:192
+(formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)) (ERROR (identifier) (binary_expression left: (identifier) right: (null)))) L:192
+("(") L:192
+(identifier) L:193
+(":") L:193
+(identifier) L:193
+(",") L:193
+(identifier) L:194
+(":") L:194
+(identifier) L:194
+(",") L:194
+(identifier) L:195
+(":") L:195
+(identifier) L:195
+(",") L:195
+(identifier) L:196
+(":") L:196
+(binary_expression left: (identifier) right: (null)) L:196
+(identifier) L:196
+("|") L:196
+(null) L:196
+(",") L:196
+(")") L:197
+(":") L:197
+(identifier) L:197
+(";") L:197
+(identifier) L:198
+("export") L:198
+("function") L:198
+(identifier) L:198
+(formal_parameters (identifier) (ERROR (identifier))) L:198
+("(") L:198
+(identifier) L:199
+(":") L:199
+(identifier) L:199
+(",") L:199
+(")") L:200
+(":") L:200
+(identifier) L:200
+(";") L:200
+(identifier) L:201
+("export") L:201
+("function") L:201
+(identifier) L:201
+(formal_parameters (identifier) (ERROR (identifier))) L:201
+("(") L:201
+(identifier) L:202
+(":") L:202
+(identifier) L:202
+(",") L:202
+(")") L:203
+(":") L:203
+(identifier) L:203
+(";") L:203
+(identifier) L:204
+("export") L:204
+("function") L:204
+(identifier) L:204
+(formal_parameters (ERROR (identifier)) (identifier)) L:204
+("(") L:204
+(identifier) L:205
+(":") L:205
+(identifier) L:205
+(",") L:205
+(")") L:206
+(":") L:206
+(identifier) L:206
+(";") L:206
+(identifier) L:207
+(identifier) L:207
+("function") L:207
+(identifier) L:207
+(formal_parameters (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier)) L:207
+("(") L:207
+(identifier) L:208
+(":") L:208
+(identifier) L:208
+(",") L:208
+(identifier) L:209
+(":") L:209
+(identifier) L:209
+(",") L:209
+(")") L:210
+(":") L:210
+(null) L:210
+("|") L:210
+(identifier) L:210
+(";") L:210
+(identifier) L:211
+("export") L:211
+("function") L:211
+(identifier) L:211
+(arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier)) (identifier)) L:211
+("(") L:211
+(identifier) L:212
+(":") L:212
+(identifier) L:212
+(",") L:212
+(identifier) L:213
+(":") L:213
+(identifier) L:213
+(",") L:213
+(identifier) L:214
+(":") L:214
+(identifier) L:214
+(",") L:214
+(")") L:215
+(":") L:215
+(null) L:215
+("|") L:215
+(identifier) L:215
+(";") L:215
+("}") L:216
+(identifier) L:218
+(identifier) L:218
+("'") L:218
+(identifier) L:218
+("-") L:218
+(binary_expression left: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) right: (identifier)) (ERROR (identifier) (string_fragment) (identifier) (identifier) (string (string_fragment)) (object_pattern (ERROR (identifier) (identifier) (identifier)) (object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) (ERROR)) (comment) (identifier) (identifier) (identifier)) (comment) (comment) (comment) (ERROR (identifier) (identifier)) right: (identifier)) L:218
+(binary_expression left: (binary_expression left: (identifier) right: (identifier)) right: (identifier)) L:218
+(binary_expression left: (identifier) right: (identifier)) L:218
+(identifier) L:218
+("/") L:218
+(identifier) L:218
+("/") L:218
+(identifier) L:218
+("/") L:218
+(identifier) L:218
+("'") L:218
+(string_fragment) L:218
+("}") L:219
+(identifier) L:221
+(identifier) L:221
+(string (string_fragment)) L:221
+("'") L:221
+(string_fragment) L:221
+("'") L:221
+(object_pattern (ERROR (identifier) (identifier) (identifier)) (object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) (ERROR)) L:221
+("{") L:221
+(identifier) L:222
+(identifier) L:222
+(identifier) L:222
+(object_assignment_pattern left: (shorthand_property_identifier_pattern) (ERROR (identifier) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier) (assignment_expression left: (identifier) right: (identifier)) (identifier) (identifier) (identifier)) right: (assignment_expression left: (identifier) right: (identifier))) L:222
+(shorthand_property_identifier_pattern) L:222
+("=") L:222
+(identifier) L:222
+(";") L:222
+(identifier) L:223
+(identifier) L:223
+(identifier) L:223
+(assignment_expression left: (identifier) right: (identifier)) L:223
+(identifier) L:223
+("=") L:223
+(identifier) L:223
+(";") L:223
+(identifier) L:224
+(identifier) L:224
+(identifier) L:224
+(assignment_expression left: (identifier) right: (identifier)) L:224
+(identifier) L:224
+("=") L:224
+(identifier) L:224
+(";") L:224
+(identifier) L:225
+(identifier) L:225
+(identifier) L:225
+(assignment_expression left: (identifier) right: (identifier)) L:225
+(identifier) L:225
+("=") L:225
+(identifier) L:225
+(";") L:225
+("}") L:226
+(comment) L:228
+(identifier) L:229
+("const") L:229
+(identifier) L:229
+(":") L:229
+(identifier) L:229
+(";") L:229
+(comment) L:231
+(comment) L:232
+(comment) L:233
+(identifier) L:234
+(identifier) L:234
+(identifier) L:234
+(":") L:234
+("{") L:234
+(identifier) L:235
+(":") L:235
+(arguments (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (identifier) (ERROR (identifier)) (ERROR (identifier) (UNEXPECTED 'O')) (identifier) (identifier) (ERROR (identifier))) L:235
+("(") L:235
+(identifier) L:236
+(":") L:236
+(identifier) L:236
+(",") L:236
+(identifier) L:237
+(":") L:237
+(identifier) L:237
+(",") L:237
+(identifier) L:238
+(":") L:238
+(identifier) L:238
+(",") L:238
+(identifier) L:239
+(":") L:239
+(identifier) L:239
+(",") L:239
+(identifier) L:240
+(":") L:240
+(identifier) L:240
+(",") L:240
+(")") L:241
+("=") L:241
+(">") L:241
+(identifier) L:241
+(",") L:241
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (ERROR (identifier)) (identifier)) body: (identifier))) L:242
+(property_identifier) L:242
+(":") L:242
+(arrow_function parameters: (formal_parameters (ERROR (identifier)) (identifier)) body: (identifier)) L:242
+(formal_parameters (ERROR (identifier)) (identifier)) L:242
+("(") L:242
+(identifier) L:242
+(":") L:242
+(identifier) L:242
+(")") L:242
+("=>") L:242
+(identifier) L:242
+(",") L:242
+(pair key: (property_identifier) value: (parenthesized_expression (ERROR (identifier)) (sequence_expression (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR (identifier)) right: (identifier)) (ERROR (ERROR (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (identifier))))) L:243
+(property_identifier) L:243
+(":") L:243
+(parenthesized_expression (ERROR (identifier)) (sequence_expression (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR (identifier)) right: (identifier)) (ERROR (ERROR (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (identifier)))) L:243
+("(") L:243
+(identifier) L:244
+(":") L:244
+(sequence_expression (identifier) (ternary_expression condition: (identifier) (ERROR) consequence: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR (identifier)) right: (identifier)) (ERROR (ERROR (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (identifier))) L:244
+(identifier) L:244
+(",") L:244
+(ternary_expression condition: (identifier) (ERROR) consequence: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR (identifier)) right: (identifier)) (ERROR (ERROR (identifier)) (sequence_expression (identifier) (identifier))) (ERROR (UNEXPECTED 'O')) alternative: (identifier)) L:245
+(identifier) L:245
+("?") L:245
+(":") L:245
+(binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR (identifier)) right: (identifier)) L:245
+(binary_expression left: (identifier) right: (identifier)) L:245
+(identifier) L:245
+("<") L:245
+(identifier) L:245
+(">") L:245
+(",") L:245
+(")") L:246
+("=>") L:246
+(identifier) L:246
+(",") L:246
+(identifier) L:247
+(":") L:247
+("(") L:247
+(identifier) L:247
+(":") L:247
+(sequence_expression (identifier) (identifier)) L:247
+(identifier) L:247
+(",") L:247
+(identifier) L:247
+(":") L:247
+(identifier) L:247
+(")") L:247
+("=>") L:247
+(identifier) L:247
+(",") L:247
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:248
+(property_identifier) L:248
+(":") L:248
+("(") L:248
+(identifier) L:249
+(":") L:249
+(identifier) L:249
+(",") L:249
+(pair key: (property_identifier) (ERROR (UNEXPECTED 'O')) value: (ternary_expression condition: (binary_expression left: (identifier) right: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR) right: (identifier))) consequence: (MISSING identifier) (ERROR (UNEXPECTED 'O')) alternative: (identifier))) L:250
+(property_identifier) L:250
+(":") L:250
+(ternary_expression condition: (binary_expression left: (identifier) right: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR) right: (identifier))) consequence: (MISSING identifier) (ERROR (UNEXPECTED 'O')) alternative: (identifier)) L:250
+(binary_expression left: (identifier) right: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR) right: (identifier))) L:250
+(identifier) L:250
+("|") L:250
+(binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR) right: (identifier)) L:250
+(binary_expression left: (identifier) right: (identifier)) L:250
+(identifier) L:250
+("<") L:250
+(identifier) L:250
+(">") L:250
+(",") L:250
+(identifier) L:251
+("?") L:251
+(MISSING identifier) L:251
+(":") L:251
+(identifier) L:251
+(",") L:251
+(")") L:252
+("=>") L:252
+(shorthand_property_identifier) L:252
+(",") L:252
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:253
+(property_identifier) L:253
+(":") L:253
+("(") L:253
+(identifier) L:253
+(":") L:253
+(identifier) L:253
+(",") L:253
+(pair key: (property_identifier) value: (identifier)) L:253
+(property_identifier) L:253
+(":") L:253
+(identifier) L:253
+(")") L:253
+("=>") L:253
+("void") L:253
+(",") L:253
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (identifier))) L:255
+(property_identifier) L:255
+(":") L:255
+(arrow_function parameters: (formal_parameters) body: (identifier)) L:255
+(formal_parameters) L:255
+("(") L:255
+(")") L:255
+("=>") L:255
+(identifier) L:255
+(",") L:255
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:256
+(property_identifier) L:256
+(":") L:256
+("(") L:256
+(identifier) L:256
+(":") L:256
+(identifier) L:256
+(",") L:256
+(pair key: (property_identifier) value: (identifier)) L:256
+(property_identifier) L:256
+(":") L:256
+(identifier) L:256
+(")") L:256
+("=>") L:256
+("void") L:256
+(",") L:256
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:257
+(property_identifier) L:257
+(":") L:257
+("(") L:257
+(identifier) L:257
+(":") L:257
+(identifier) L:257
+(",") L:257
+(pair key: (property_identifier) value: (identifier)) L:257
+(property_identifier) L:257
+(":") L:257
+(identifier) L:257
+(")") L:257
+("=>") L:257
+("void") L:257
+(",") L:257
+(pair key: (property_identifier) value: (parenthesized_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (binary_expression left: (identifier) (ERROR (null)) right: (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR))) L:258
+(property_identifier) L:258
+(":") L:258
+(parenthesized_expression (call_expression function: (identifier) (ERROR) arguments: (arguments (binary_expression left: (identifier) (ERROR (null)) right: (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) (ERROR)) L:258
+("(") L:258
+(call_expression function: (identifier) (ERROR) arguments: (arguments (binary_expression left: (identifier) (ERROR (null)) right: (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier)))) L:259
+(identifier) L:259
+(":") L:259
+(arguments (binary_expression left: (identifier) (ERROR (null)) right: (identifier)) (ERROR (identifier)) (identifier) (identifier) (ERROR (identifier))) L:259
+("(") L:259
+(binary_expression left: (identifier) (ERROR (null)) right: (identifier)) L:260
+(identifier) L:260
+(":") L:260
+(null) L:260
+("|") L:260
+(identifier) L:260
+(",") L:260
+(identifier) L:261
+(":") L:261
+(identifier) L:261
+(",") L:261
+(identifier) L:262
+(":") L:262
+(identifier) L:262
+(",") L:262
+(")") L:263
+("=") L:263
+(">") L:263
+("void") L:263
+(",") L:263
+(")") L:264
+("=>") L:264
+("void") L:264
+(",") L:264
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:265
+(property_identifier) L:265
+(":") L:265
+("(") L:265
+(identifier) L:265
+(":") L:265
+(identifier) L:265
+(",") L:265
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:265
+(property_identifier) L:265
+(":") L:265
+(identifier) L:265
+(")") L:265
+("=>") L:265
+(identifier) L:265
+(",") L:265
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:266
+(property_identifier) L:266
+(":") L:266
+("(") L:266
+(identifier) L:266
+(":") L:266
+(identifier) L:266
+(",") L:266
+(pair key: (property_identifier) value: (identifier)) L:266
+(property_identifier) L:266
+(":") L:266
+(identifier) L:266
+(",") L:266
+(pair key: (property_identifier) value: (binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR) right: (unary_expression argument: (MISSING identifier)))) L:266
+(property_identifier) L:266
+(":") L:266
+(binary_expression left: (binary_expression left: (identifier) right: (identifier)) (ERROR) right: (unary_expression argument: (MISSING identifier))) L:266
+(binary_expression left: (identifier) right: (identifier)) L:266
+(identifier) L:266
+("<") L:266
+(identifier) L:266
+(">") L:266
+(")") L:266
+("=>") L:266
+(unary_expression argument: (MISSING identifier)) L:266
+("void") L:266
+(MISSING identifier) L:266
+(",") L:266
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:267
+(property_identifier) L:267
+(":") L:267
+("(") L:267
+(identifier) L:267
+(":") L:267
+(identifier) L:267
+(",") L:267
+(pair key: (property_identifier) value: (identifier)) L:267
+(property_identifier) L:267
+(":") L:267
+(identifier) L:267
+(")") L:267
+("=>") L:267
+("void") L:267
+(",") L:267
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:269
+(property_identifier) L:269
+(":") L:269
+("(") L:269
+(identifier) L:269
+(":") L:269
+(identifier) L:269
+(",") L:269
+(pair key: (property_identifier) value: (identifier)) L:269
+(property_identifier) L:269
+(":") L:269
+(identifier) L:269
+(")") L:269
+("=>") L:269
+("void") L:269
+(",") L:269
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:270
+(property_identifier) L:270
+(":") L:270
+("(") L:270
+(identifier) L:271
+(":") L:271
+(identifier) L:271
+(",") L:271
+(pair key: (property_identifier) value: (identifier)) L:272
+(property_identifier) L:272
+(":") L:272
+(identifier) L:272
+(",") L:272
+(")") L:273
+("=>") L:273
+("void") L:273
+(",") L:273
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:274
+(property_identifier) L:274
+(":") L:274
+("(") L:274
+(identifier) L:275
+(":") L:275
+(identifier) L:275
+(",") L:275
+(pair key: (property_identifier) value: (identifier)) L:276
+(property_identifier) L:276
+(":") L:276
+(identifier) L:276
+(",") L:276
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (unary_expression argument: (MISSING identifier)))) L:277
+(property_identifier) L:277
+(":") L:277
+(arrow_function parameters: (formal_parameters) body: (unary_expression argument: (MISSING identifier))) L:277
+(formal_parameters) L:277
+("(") L:277
+(")") L:277
+("=>") L:277
+(unary_expression argument: (MISSING identifier)) L:277
+("void") L:277
+(MISSING identifier) L:277
+(",") L:277
+(pair key: (property_identifier) value: (identifier)) L:278
+(property_identifier) L:278
+(":") L:278
+(identifier) L:278
+(",") L:278
+(")") L:279
+("=>") L:279
+("void") L:279
+(",") L:279
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (ERROR (identifier)) (identifier)) body: (array (comment) (identifier) (comment) (identifier) (comment) (identifier) (comment) (identifier)))) L:280
+(property_identifier) L:280
+(":") L:280
+(arrow_function parameters: (formal_parameters (ERROR (identifier)) (identifier)) body: (array (comment) (identifier) (comment) (identifier) (comment) (identifier) (comment) (identifier))) L:280
+(formal_parameters (ERROR (identifier)) (identifier)) L:280
+("(") L:280
+(identifier) L:281
+(":") L:281
+(identifier) L:281
+(",") L:281
+(")") L:282
+("=>") L:282
+(array (comment) (identifier) (comment) (identifier) (comment) (identifier) (comment) (identifier)) L:282
+("[") L:282
+(comment) L:283
+(identifier) L:283
+(",") L:283
+(comment) L:284
+(identifier) L:284
+(",") L:284
+(comment) L:285
+(identifier) L:285
+(",") L:285
+(comment) L:286
+(identifier) L:286
+(",") L:286
+("]") L:287
+(",") L:287
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:288
+(property_identifier) L:288
+(":") L:288
+("(") L:288
+(identifier) L:289
+(":") L:289
+(identifier) L:289
+(",") L:289
+(pair key: (property_identifier) value: (identifier)) L:290
+(property_identifier) L:290
+(":") L:290
+(identifier) L:290
+(",") L:290
+(pair key: (property_identifier) value: (identifier)) L:291
+(property_identifier) L:291
+(":") L:291
+(identifier) L:291
+(",") L:291
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (identifier)) body: (unary_expression (ERROR) argument: (unary_expression argument: (MISSING identifier))))) L:292
+(property_identifier) L:292
+(":") L:292
+(arrow_function parameters: (formal_parameters (identifier)) body: (unary_expression (ERROR) argument: (unary_expression argument: (MISSING identifier)))) L:292
+(formal_parameters (identifier)) L:292
+("(") L:292
+(identifier) L:292
+(")") L:292
+("=>") L:292
+(unary_expression (ERROR) argument: (unary_expression argument: (MISSING identifier))) L:292
+("void") L:292
+(",") L:292
+(")") L:293
+("=>") L:293
+(unary_expression argument: (MISSING identifier)) L:293
+("void") L:293
+(MISSING identifier) L:293
+(",") L:293
+(pair key: (property_identifier) (ERROR (identifier)) value: (identifier)) L:294
+(property_identifier) L:294
+(":") L:294
+("(") L:294
+(identifier) L:295
+(":") L:295
+(identifier) L:295
+(",") L:295
+(pair key: (property_identifier) value: (identifier)) L:296
+(property_identifier) L:296
+(":") L:296
+(identifier) L:296
+(",") L:296
+(pair key: (property_identifier) value: (identifier)) L:297
+(property_identifier) L:297
+(":") L:297
+(identifier) L:297
+(",") L:297
+(")") L:298
+("=>") L:298
+("void") L:298
+(",") L:298
+(pair key: (property_identifier) value: (identifier)) L:299
+(property_identifier) L:299
+(":") L:299
+(identifier) L:299
+(",") L:299
+(pair key: (property_identifier) value: (identifier)) L:300
+(property_identifier) L:300
+(":") L:300
+(identifier) L:300
+(",") L:300
+(pair key: (property_identifier) value: (identifier)) L:301
+(property_identifier) L:301
+(":") L:301
+(identifier) L:301
+(",") L:301
+(pair key: (property_identifier) value: (identifier)) L:302
+(property_identifier) L:302
+(":") L:302
+(identifier) L:302
+(",") L:302
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters) body: (identifier))) L:303
+(property_identifier) L:303
+(":") L:303
+(arrow_function parameters: (formal_parameters) body: (identifier)) L:303
+(formal_parameters) L:303
+("(") L:303
+(")") L:303
+("=>") L:303
+(identifier) L:303
+(",") L:303
+("...") L:304
+("}") L:305
+(";") L:305

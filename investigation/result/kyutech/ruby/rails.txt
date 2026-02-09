@@ -1,0 +1,56 @@
+Refactorings found in rails 02ad9146a3800ce2aecce801df8a6b46f685771a
+EXTRACT	{Method extract_domain_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:98}	{Method domain_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:64})
+EXTRACT	{Method extract_subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:102}	{Method subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:104})
+EXTRACT_MOVE	{Method extract_subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:102}	{Method subdomains_from(_, _) at actionpack/test/dispatch/request_test.rb:344})
+
+Refactorings found in rails 1084b228c3c3ad92e2f6a55a6d79741612b32981
+EXTRACT	{Method depend_on_bootsnap?() at railties/lib/rails/generators/app_base.rb:663}	{Method jruby?() at railties/lib/rails/generators/app_base.rb:749})
+
+Refactorings found in rails 5ca72237e0003ccaa7e480082fbbedb6c0d77e25
+EXTRACT_MOVE	{Method test_db_retrieves_collation() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:252}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+MOVE	{Method run_cmd(cmd, args, action) at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:109}	{Method run_cmd(cmd, *args, **opts) at activerecord/lib/active_record/tasks/abstract_tasks.rb:55})
+EXTRACT_MOVE	{Method collation(configuration, *arguments) at activerecord/lib/active_record/tasks/database_tasks.rb:342}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+MOVE	{Method initialize(db_config) at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:10}	{Method initialize(db_config) at activerecord/lib/active_record/tasks/abstract_tasks.rb:10})
+EXTRACT_MOVE	{Method setup() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:244}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method test_db_retrieves_collation() at activerecord/test/cases/adapters/sqlite3/sqlite_rake_test.rb:159}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method test_creates_database_with_given_collation() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:57}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method test_recreates_database_with_the_given_options() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:204}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method setup() at activerecord/test/cases/tasks/database_tasks_test.rb:10}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+MOVE	{Method run_cmd_error(cmd, args) at activerecord/lib/active_record/tasks/sqlite_database_tasks.rb:81}	{Method run_cmd_error(cmd, args) at activerecord/lib/active_record/tasks/abstract_tasks.rb:59})
+MOVE	{Method establish_connection(config) at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:75}	{Method establish_connection(config) at activerecord/lib/active_record/tasks/abstract_tasks.rb:47})
+MOVE	{Method check_current_protected_environment!(db_config) at activerecord/lib/active_record/tasks/database_tasks.rb:643}	{Method check_current_protected_environment!(db_config, migration_class) at activerecord/lib/active_record/tasks/abstract_tasks.rb:23})
+MOVE	{Method configuration_hash_without_database() at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:79}	{Method configuration_hash_without_database() at activerecord/lib/active_record/tasks/abstract_tasks.rb:51})
+EXTRACT_MOVE	{Method setup() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:244}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+MOVE	{Method using_database_configurations?() at activerecord/lib/active_record/tasks/sqlite_database_tasks.rb:6}	{Method using_database_configurations?() at activerecord/lib/active_record/tasks/abstract_tasks.rb:6})
+CHANGE_SIGNATURE	{Method run_cmd(cmd, args, action) at activerecord/lib/active_record/tasks/postgresql_database_tasks.rb:120}	{Method run_cmd(cmd, *args, **opts) at activerecord/lib/active_record/tasks/postgresql_database_tasks.rb:93})
+EXTRACT_MOVE	{Method test_db_retrieves_collation() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:252}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method test_creates_database_with_given_collation() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:57}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method test_recreates_database_with_the_given_options() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:204}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+EXTRACT_MOVE	{Method collation_current(env_name, db_name) at activerecord/lib/active_record/tasks/database_tasks.rb:337}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19})
+
+Refactorings found in rails db27b67bb9ae8194bdb38559cac194707086de87
+CHANGE_SIGNATURE	{Method initialize(str) at activesupport/lib/active_support/core_ext/string/output_safety.rb:70}	{Method initialize(_str) at activesupport/lib/active_support/core_ext/string/output_safety.rb:70})
+
+Refactorings found in rails 1419ca5ea21b077ddab805e86d67d4484c9b8132
+CHANGE_SIGNATURE	{Method update_column(name, value) at activerecord/lib/active_record/persistence.rb:585}	{Method update_column(name, value, touch) at activerecord/lib/active_record/persistence.rb:585})
+
+Refactorings found in rails c2c7e20a28db867f2ed478def48109c0b1235b7d
+CHANGE_SIGNATURE	{Method try(*) at activesupport/lib/active_support/core_ext/object/try.rb:148}	{Method try(*, &) at activesupport/lib/active_support/core_ext/object/try.rb:148})
+CHANGE_SIGNATURE	{Method try!(*) at activesupport/lib/active_support/core_ext/object/try.rb:155}	{Method try!(*, &) at activesupport/lib/active_support/core_ext/object/try.rb:155})
+
+Refactorings found in rails d43dc9af18766f91eb450e1c6b8c8c5e64f925e6
+INLINE	{Method store() at activesupport/lib/active_support/execution_context.rb:48}	{Method clear() at activesupport/lib/active_support/execution_context.rb:96})
+
+Refactorings found in rails 1b4484c43f32a42824d3de32e22029207f76bc42
+CHANGE_SIGNATURE	{Method step(name, start, &block) at activejob/lib/active_job/continuation.rb:209}	{Method step(name, **options, &block) at activejob/lib/active_job/continuation.rb:225})
+CHANGE_SIGNATURE	{Method interrupt!() at activejob/lib/active_job/continuable.rb:95}	{Method interrupt!(reason) at activejob/lib/active_job/continuable.rb:66})
+RENAME	{Method run_step(name, start, &block) at activejob/lib/active_job/continuation.rb:270}	{Method run_step_inline(name, start, **options, &block) at activejob/lib/active_job/continuation.rb:300})
+CHANGE_SIGNATURE	{Method step(step_name, start, &block) at activejob/lib/active_job/continuable.rb:36}	{Method step(step_name, start, isolated, &block) at activejob/lib/active_job/continuable.rb:36})
+
+Refactorings found in rails bf6cd8f2290dc48d77f5223555a7706bcd76e1c4
+EXTRACT	{Method dockerfile_bun_version() at railties/lib/rails/generators/app_base.rb:556}	{Method capture_command(command, pattern) at railties/lib/rails/generators/app_base.rb:532})
+EXTRACT	{Method dockerfile_yarn_version() at railties/lib/rails/generators/app_base.rb:542}	{Method capture_command(command, pattern) at railties/lib/rails/generators/app_base.rb:532})
+
+Refactorings found in rails ea66b1c750fd2984167382039d77802930865712
+EXTRACT_MOVE	{Method query_source_location() at activerecord/lib/active_record/query_logs.rb:155}	{Method first_clean_frame(kind) at activesupport/lib/active_support/backtrace_cleaner.rb:80})
+EXTRACT_MOVE	{Method query_source_location() at activerecord/lib/active_record/query_logs.rb:155}	{Method first_clean_frame(kind) at activesupport/lib/active_support/backtrace_cleaner.rb:95})

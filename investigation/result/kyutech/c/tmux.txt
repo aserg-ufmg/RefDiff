@@ -1,0 +1,5 @@
+Refactorings found in tmux d361f21065013814fadcfdf68b761de81d8f7b10
+CHANGE_SIGNATURE	{Function default_window_size_skip_client(struct client, int, , __unused, , struct session, , struct window) at resize.c:266}	{Function default_window_size_skip_client(struct client, __unused, , __unused, , struct session, , struct window) at resize.c:266})
+
+Refactorings found in tmux 1365f1ce521be8e3322ca95689ff866a34a6ae3a
+CHANGE_SIGNATURE	{Function clock_gettime(int, struct timespec) at compat/clock_gettime.c:29}	{Function clock_gettime(__unused, struct timespec) at compat/clock_gettime.c:29})

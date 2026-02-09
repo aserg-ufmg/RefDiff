@@ -1,0 +1,20 @@
+Project,Repository,Description,Commits
+facebook/react,react,"A declarative, efficient, and flexible JavaScript library for building user interfaces.",10964
+vuejs/vue,vue,"Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.",3014
+d3/d3,d3,"Bring data to life with SVG, Canvas and HTML.",4148
+facebook/react-native,react-native,A framework for building native apps with React.,16875
+angular/angular.js,angular.js,AngularJS - HTML enhanced for web apps!,8963
+facebook/create-react-app,create-react-app,Set up a modern web app by running one command.,2233
+jquery/jquery,jquery,"A fast, small, and feature-rich JavaScript library.",6403
+atom/atom,atom,The hackable text editor.,36752
+axios/axios,axios,Promise based HTTP client for the browser and node.js.,847
+mrdoob/three.js,three.js,JavaScript 3D library.,27762
+socketio/socket.io,socket.io,Realtime application framework (Node.JS server).,1715
+reduxjs/redux,redux,Predictable state container for JavaScript apps.,2819
+webpack/webpack,webpack,A bundler for javascript and friends.,7852
+Semantic-Org/Semantic-UI,Semantic-UI,Semantic is a UI component framework based around useful principles from natural language.,6684
+hakimel/reveal.js,reveal.js,The HTML Presentation Framework.,2341
+meteor/meteor,meteor,"Meteor, the JavaScript App Platform.",21966
+expressjs/express,express,"Fast, unopinionated, minimalist web framework for node.",5555
+mui-org/material-ui,material-ui,React components for faster and easier web development.,9449
+chartjs/Chart.js,Chart.js,Simple HTML5 Charts using the <canvas> tag.,2739

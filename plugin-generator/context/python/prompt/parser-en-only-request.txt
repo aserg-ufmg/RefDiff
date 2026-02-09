@@ -1,0 +1,36 @@
+# Role
+You are an expert in syntax analysis and a skilled Java programmer.
+Your mission is to implement a Java method that converts an AST (Abstract Syntax Tree) into a CST (Code Structure Tree) as part of a multi-language parser (UniversalPlugin), and to ensure that all test cases pass.
+
+- Analysis: Understand the structure of the new language's AST (`ast-filename.txt`) and identify the syntactic elements (classes, methods, functions, etc.) that should be mapped to the CST.
+- Implementation: Generate Java code to convert the AST to a CST, based on the learned patterns and analysis results.
+
+# Premise
+The code you generate must create `CstNode` objects with the following specifications:
+- `CstNode`: Represents a node in the syntax tree. It has the following important properties:
+  - `type`: The node type (e.g., `PythonNodeTypes.FUNCTION`)
+  - `name`: The simple name of the node (e.g., `my_function`)
+  - `localName`: The local name including modifiers and arguments (e.g., `my_function(arg1, arg2)`)
+  - `location`: Information such as file path, start/end position, and line numbers
+  - `parameters`: A list of function arguments (e.g., `["arg1", "arg2"]`)
+
+# Task (Target for Generation)
+Apply the learned patterns from the above examples to generate a new method for converting a Python AST to a CST.
+Generate the code for the `addNodes` method or a similar helper method defined in `PythonParser.java`.
+This method is responsible for taking a Python AST and building a list of `CstNode` objects.
+
+Target for Generation: Python
+- File references:
+  - Original source files:
+    - @plugin-maker/context/python/src/request.py
+  - AST files:
+    - @plugin-maker/context/python/ast/ast-request.txt
+  - Test file: @refdiff-universal/src/test/java/refdiff/parsers/universal/python/TestParser.java
+  - Conversion processing file: @refdiff-universal/src/main/java/refdiff/parsers/universal/python/PythonParser.java
+
+# Output Requirements
+- Output Language: Java
+- Quality: The generated code must pass all test cases in the provided test file (`TestParser.java`) without any modifications to it.
+- Coding Style: Match the style of existing Java code within the `refdiff-universal` project.
+- Dependencies: Use only classes and libraries that already exist in the project. Do not add any new external dependencies.
+- Output Format: Output only the code block for the implemented Java method. Provide a brief explanation or description before the code.

@@ -1,0 +1,22 @@
+Error processing commit dbd6dc752c8a6de428eacad47d4fd37e52f98183 in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown dbd6dc752c8a6de428eacad47d4fd37e52f98183
+
+Error processing commit df32479b2eca9861125631261010d63778902feb in repository swoole-src: org.eclipse.jgit.errors.MissingObjectException: Missing unknown df32479b2eca9861125631261010d63778902feb
+
+Error processing commit c8c310c99e2d79e3381b33ac4300d6777ddaaa7e in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown c8c310c99e2d79e3381b33ac4300d6777ddaaa7e
+
+Error processing commit e283de3a4fa885aed11525129fd4570f92c1d1a9 in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown e283de3a4fa885aed11525129fd4570f92c1d1a9
+
+Error processing commit 2d2b300b3875cb76b67e5aa6ba39b58519942411 in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown 2d2b300b3875cb76b67e5aa6ba39b58519942411
+
+Error processing commit a12ab9e125f184454fc484483fe2029962fe6a34 in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown a12ab9e125f184454fc484483fe2029962fe6a34
+
+Error processing commit 971a9ca6259752c04da09535707d08ccc5d1ed4b in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown 971a9ca6259752c04da09535707d08ccc5d1ed4b
+
+Error processing commit d0cabbb021bee5c4b831a0235af9534ad07f8d3d in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown d0cabbb021bee5c4b831a0235af9534ad07f8d3d
+
+Error processing commit fd311f1e7548cf45a273d46aa9c9c8d8330d803c in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown fd311f1e7548cf45a273d46aa9c9c8d8330d803c
+
+Error processing commit 85a0cd81863469484f22a9b69c7f4440989d32b8 in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown 85a0cd81863469484f22a9b69c7f4440989d32b8
+
+Error processing commit 254361c1890e67486cd957e9072e518b1c464e27 in repository linux: org.eclipse.jgit.errors.MissingObjectException: Missing unknown 254361c1890e67486cd957e9072e518b1c464e27
+

@@ -1,0 +1,6 @@
+Refactorings found in node 8aa07b78436e85e4edd3eebbce96b15a2f569e1f
+EXTRACT	{Function expand at deps/minimatch/index.js:124}	{Function expand_ at deps/minimatch/index.js:142})
+
+Refactorings found in node eec03020880cf83d20e827d9067bdbeb4e0adf64
+RENAME	{File test-fs-rmdir-recursive-throws-not-found.js at test/parallel/test-fs-rmdir-recursive-throws-not-found.js:1}	{File test-fs-rmdir-throws-not-found.js at test/parallel/test-fs-rmdir-throws-not-found.js:1})
+RENAME	{File test-fs-rmdir-recursive-throws-on-file.js at test/parallel/test-fs-rmdir-recursive-throws-on-file.js:1}	{File test-fs-rmdir-throws-on-file.js at test/parallel/test-fs-rmdir-throws-on-file.js:1})

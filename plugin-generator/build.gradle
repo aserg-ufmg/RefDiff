@@ -1,0 +1,83 @@
+plugins {
+  id 'java'
+  id 'eclipse'
+  id 'application'
+  id 'org.graalvm.buildtools.native' version '0.9.20'
+}
+
+application {
+  mainClass = 'validation.MainValidator'
+}
+
+dependencies {
+  implementation("io.github.bonede:tree-sitter:0.22.6")
+  implementation("io.github.bonede:tree-sitter-java:0.23.4")
+  implementation("io.github.bonede:tree-sitter-c:0.23.2")
+  implementation("io.github.bonede:tree-sitter-javascript:0.23.1")
+  implementation("io.github.bonede:tree-sitter-ruby:0.23.1")
+  implementation("io.github.bonede:tree-sitter-go:0.23.3")
+  implementation("io.github.bonede:tree-sitter-python:0.23.4")
+  implementation("io.github.bonede:tree-sitter-php:0.23.11")
+  implementation("io.github.bonede:tree-sitter-typescript:0.23.2")
+
+  implementation("com.google.code.gson:gson:2.13.2")
+  
+  implementation project(':refdiff-universal')
+  implementation project(':refdiff-core')
+
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
+}
+
+run {
+  def pluginDir = project(':refdiff-universal').projectDir.absolutePath
+  systemProperty "plugin.dir", pluginDir
+}
+
+test {
+  useJUnitPlatform()
+}
+
+task runPluginGenerator(type: JavaExec) {
+    group = "application"
+    description = "Run the Plugin Generator"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set("plugingenerator.PluginGenerator")
+    def pluginDir = project(':refdiff-universal').projectDir.absolutePath
+    systemProperty "plugin.dir", pluginDir
+}
+
+task runValidator(type: JavaExec) {
+    group = "application"
+    description = "Run a validator. Use -Plang=Java or -Plang=C"
+    classpath = sourceSets.main.runtimeClasspath
+    def v = project.hasProperty('lang') ? project.property('lang') : 'Java'
+    mainClass.set("validation.${v}Validator")
+    doFirst {
+      println "Running validator: ${v}Validator"
+      def pluginDir = project(':refdiff-universal').projectDir.absolutePath
+      systemProperty "plugin.dir", pluginDir
+    }
+}
+
+task runJavaTsParser(type: JavaExec) {
+    group = "application"
+    description = "Run the Java TreeSitter Parser"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set("parser.JavaTsParser")
+    doFirst {
+      def pluginDir = project(':refdiff-universal').projectDir.absolutePath
+      systemProperty "plugin.dir", pluginDir
+    }
+}
+
+task runJsTsParser(type: JavaExec) {
+    group = "application"
+    description = "Run the JavaScript TreeSitter Parser"
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set("parser.JsTsParser")
+    doFirst {
+      def pluginDir = project(':refdiff-universal').projectDir.absolutePath
+      systemProperty "plugin.dir", pluginDir
+    }
+}

@@ -1,0 +1,531 @@
+(translation_unit (preproc_include path: (system_lib_string) (comment)) (preproc_include path: (system_lib_string)) (comment) (comment) (function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list)) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence))))))) (comment) (function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier) (identifier)))))) (comment) (function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) body: (compound_statement (return_statement (binary_expression left: (identifier) right: (identifier))))) (comment) (function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (identifier) (identifier))) (declaration type: (primitive_type) declarator: (identifier)) (declaration type: (primitive_type) declarator: (identifier)) body: (compound_statement (return_statement (binary_expression left: (identifier) right: (identifier))))) (comment) (function_definition (storage_class_specifier) type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list)) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence))))))) (comment) (function_definition (storage_class_specifier) type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) body: (compound_statement (return_statement (binary_expression left: (identifier) right: (identifier))))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) (function_definition type: (primitive_type) declarator: (pointer_declarator declarator: (function_declarator declarator: (identifier) parameters: (parameter_list))) body: (compound_statement (return_statement (pointer_expression argument: (identifier))))) (comment) (function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (variadic_parameter))) body: (compound_statement (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) (declaration type: (type_identifier) declarator: (identifier)) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier)))) (comment) (for_statement initializer: (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) condition: (binary_expression left: (identifier) right: (identifier)) update: (update_expression argument: (identifier)) body: (compound_statement (expression_statement (assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))))) (comment))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier)))) (comment) (return_statement (identifier)))) (comment) (function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list)) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence) (escape_sequence))))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (pointer_declarator declarator: (identifier)) value: (call_expression function: (identifier) arguments: (argument_list)))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (pointer_expression argument: (identifier))))) (expression_statement (assignment_expression left: (pointer_expression argument: (identifier)) right: (number_literal))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal))))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_content) (escape_sequence))))) (return_statement (number_literal))))) L:1
+(preproc_include path: (system_lib_string) (comment)) L:1
+("#include") L:1
+(system_lib_string) L:1
+(comment) L:1
+(preproc_include path: (system_lib_string)) L:2
+("#include") L:2
+(system_lib_string) L:2
+(comment) L:4
+(comment) L:12
+(function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list)) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence))))))) L:13
+(primitive_type) L:13
+(function_declarator declarator: (identifier) parameters: (parameter_list)) L:13
+(identifier) L:13
+(parameter_list) L:13
+("(") L:13
+(")") L:13
+(compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)))))) L:13
+("{") L:13
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence))))) L:14
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)))) L:14
+(identifier) L:14
+(argument_list (string_literal (string_content) (escape_sequence))) L:14
+("(") L:14
+(string_literal (string_content) (escape_sequence)) L:14
+(""") L:14
+(string_content) L:14
+(escape_sequence) L:14
+(""") L:14
+(")") L:14
+(";") L:14
+("}") L:15
+(comment) L:17
+(function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier) (identifier)))))) L:18
+(primitive_type) L:18
+(function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) L:18
+(identifier) L:18
+(parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier))) L:18
+("(") L:18
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:18
+(primitive_type) L:18
+(identifier) L:18
+(",") L:18
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:18
+(primitive_type) L:18
+(identifier) L:18
+(")") L:18
+(compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier) (identifier))))) L:18
+("{") L:18
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier) (identifier)))) L:19
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier) (identifier))) L:19
+(identifier) L:19
+(argument_list (string_literal (string_content) (escape_sequence)) (identifier) (identifier)) L:19
+("(") L:19
+(string_literal (string_content) (escape_sequence)) L:19
+(""") L:19
+(string_content) L:19
+(escape_sequence) L:19
+(""") L:19
+(",") L:19
+(identifier) L:20
+(",") L:20
+(identifier) L:20
+(")") L:20
+(";") L:20
+("}") L:21
+(comment) L:23
+(function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) body: (compound_statement (return_statement (binary_expression left: (identifier) right: (identifier))))) L:24
+(primitive_type) L:24
+(function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) L:24
+(identifier) L:24
+(parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier))) L:24
+("(") L:24
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:24
+(primitive_type) L:24
+(identifier) L:24
+(",") L:24
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:24
+(primitive_type) L:24
+(identifier) L:24
+(")") L:24
+(compound_statement (return_statement (binary_expression left: (identifier) right: (identifier)))) L:24
+("{") L:24
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:24
+("return") L:24
+(binary_expression left: (identifier) right: (identifier)) L:24
+(identifier) L:24
+("+") L:24
+(identifier) L:24
+(";") L:24
+("}") L:24
+(comment) L:26
+(function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (identifier) (identifier))) (declaration type: (primitive_type) declarator: (identifier)) (declaration type: (primitive_type) declarator: (identifier)) body: (compound_statement (return_statement (binary_expression left: (identifier) right: (identifier))))) L:34
+(primitive_type) L:34
+(function_declarator declarator: (identifier) parameters: (parameter_list (identifier) (identifier))) L:34
+(identifier) L:34
+(parameter_list (identifier) (identifier)) L:34
+("(") L:34
+(identifier) L:34
+(",") L:34
+(identifier) L:34
+(")") L:34
+(declaration type: (primitive_type) declarator: (identifier)) L:35
+(primitive_type) L:35
+(identifier) L:35
+(";") L:35
+(declaration type: (primitive_type) declarator: (identifier)) L:36
+(primitive_type) L:36
+(identifier) L:36
+(";") L:36
+(compound_statement (return_statement (binary_expression left: (identifier) right: (identifier)))) L:37
+("{") L:37
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:38
+("return") L:38
+(binary_expression left: (identifier) right: (identifier)) L:38
+(identifier) L:38
+("+") L:38
+(identifier) L:38
+(";") L:38
+("}") L:39
+(comment) L:41
+(function_definition (storage_class_specifier) type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list)) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence))))))) L:48
+(storage_class_specifier) L:48
+("static") L:48
+(primitive_type) L:48
+(function_declarator declarator: (identifier) parameters: (parameter_list)) L:48
+(identifier) L:48
+(parameter_list) L:48
+("(") L:48
+(")") L:48
+(compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)))))) L:48
+("{") L:48
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence))))) L:49
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)))) L:49
+(identifier) L:49
+(argument_list (string_literal (string_content) (escape_sequence))) L:49
+("(") L:49
+(string_literal (string_content) (escape_sequence)) L:49
+(""") L:49
+(string_content) L:49
+(escape_sequence) L:49
+(""") L:49
+(")") L:49
+(";") L:49
+("}") L:50
+(comment) L:52
+(function_definition (storage_class_specifier) type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) body: (compound_statement (return_statement (binary_expression left: (identifier) right: (identifier))))) L:60
+(storage_class_specifier) L:60
+("inline") L:60
+(primitive_type) L:60
+(function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier)))) L:60
+(identifier) L:60
+(parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (parameter_declaration type: (primitive_type) declarator: (identifier))) L:60
+("(") L:60
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:60
+(primitive_type) L:60
+(identifier) L:60
+(",") L:60
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:60
+(primitive_type) L:60
+(identifier) L:60
+(")") L:60
+(compound_statement (return_statement (binary_expression left: (identifier) right: (identifier)))) L:60
+("{") L:60
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:60
+("return") L:60
+(binary_expression left: (identifier) right: (identifier)) L:60
+(identifier) L:60
+("*") L:60
+(identifier) L:60
+(";") L:60
+("}") L:60
+(comment) L:62
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) L:69
+(primitive_type) L:69
+(init_declarator declarator: (identifier) value: (number_literal)) L:69
+(identifier) L:69
+("=") L:69
+(number_literal) L:69
+(";") L:69
+(function_definition type: (primitive_type) declarator: (pointer_declarator declarator: (function_declarator declarator: (identifier) parameters: (parameter_list))) body: (compound_statement (return_statement (pointer_expression argument: (identifier))))) L:71
+(primitive_type) L:71
+(pointer_declarator declarator: (function_declarator declarator: (identifier) parameters: (parameter_list))) L:71
+("*") L:71
+(function_declarator declarator: (identifier) parameters: (parameter_list)) L:71
+(identifier) L:71
+(parameter_list) L:71
+("(") L:71
+(")") L:71
+(compound_statement (return_statement (pointer_expression argument: (identifier)))) L:71
+("{") L:71
+(return_statement (pointer_expression argument: (identifier))) L:71
+("return") L:71
+(pointer_expression argument: (identifier)) L:71
+("&") L:71
+(identifier) L:71
+(";") L:71
+("}") L:71
+(comment) L:73
+(function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (variadic_parameter))) body: (compound_statement (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) (declaration type: (type_identifier) declarator: (identifier)) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier)))) (comment) (for_statement initializer: (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) condition: (binary_expression left: (identifier) right: (identifier)) update: (update_expression argument: (identifier)) body: (compound_statement (expression_statement (assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))))) (comment))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier)))) (comment) (return_statement (identifier)))) L:80
+(primitive_type) L:80
+(function_declarator declarator: (identifier) parameters: (parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (variadic_parameter))) L:80
+(identifier) L:80
+(parameter_list (parameter_declaration type: (primitive_type) declarator: (identifier)) (variadic_parameter)) L:80
+("(") L:80
+(parameter_declaration type: (primitive_type) declarator: (identifier)) L:80
+(primitive_type) L:80
+(identifier) L:80
+(",") L:80
+(variadic_parameter) L:80
+("...") L:80
+(")") L:80
+(compound_statement (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) (declaration type: (type_identifier) declarator: (identifier)) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier)))) (comment) (for_statement initializer: (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) condition: (binary_expression left: (identifier) right: (identifier)) update: (update_expression argument: (identifier)) body: (compound_statement (expression_statement (assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))))) (comment))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier)))) (comment) (return_statement (identifier))) L:80
+("{") L:80
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) L:81
+(primitive_type) L:81
+(init_declarator declarator: (identifier) value: (number_literal)) L:81
+(identifier) L:81
+("=") L:81
+(number_literal) L:81
+(";") L:81
+(declaration type: (type_identifier) declarator: (identifier)) L:82
+(type_identifier) L:82
+(identifier) L:82
+(";") L:82
+(comment) L:82
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier)))) L:84
+(call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))) L:84
+(identifier) L:84
+(argument_list (identifier) (identifier)) L:84
+("(") L:84
+(identifier) L:84
+(",") L:84
+(identifier) L:84
+(")") L:84
+(";") L:84
+(comment) L:84
+(for_statement initializer: (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) condition: (binary_expression left: (identifier) right: (identifier)) update: (update_expression argument: (identifier)) body: (compound_statement (expression_statement (assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))))) (comment))) L:86
+("for") L:86
+("(") L:86
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (number_literal))) L:86
+(primitive_type) L:86
+(init_declarator declarator: (identifier) value: (number_literal)) L:86
+(identifier) L:86
+("=") L:86
+(number_literal) L:86
+(";") L:86
+(binary_expression left: (identifier) right: (identifier)) L:86
+(identifier) L:86
+("<") L:86
+(identifier) L:86
+(";") L:86
+(update_expression argument: (identifier)) L:86
+("++") L:86
+(identifier) L:86
+(")") L:86
+(compound_statement (expression_statement (assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))))) (comment)) L:86
+("{") L:86
+(expression_statement (assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))))) L:87
+(assignment_expression left: (identifier) right: (call_expression function: (identifier) arguments: (argument_list (identifier) (identifier)))) L:87
+(identifier) L:87
+("+=") L:87
+(call_expression function: (identifier) arguments: (argument_list (identifier) (identifier))) L:87
+(identifier) L:87
+(argument_list (identifier) (identifier)) L:87
+("(") L:87
+(identifier) L:87
+(",") L:87
+(identifier) L:87
+(")") L:87
+(";") L:87
+(comment) L:87
+("}") L:88
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (identifier)))) L:90
+(call_expression function: (identifier) arguments: (argument_list (identifier))) L:90
+(identifier) L:90
+(argument_list (identifier)) L:90
+("(") L:90
+(identifier) L:90
+(")") L:90
+(";") L:90
+(comment) L:90
+(return_statement (identifier)) L:92
+("return") L:92
+(identifier) L:92
+(";") L:92
+("}") L:93
+(comment) L:95
+(function_definition type: (primitive_type) declarator: (function_declarator declarator: (identifier) parameters: (parameter_list)) body: (compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence) (escape_sequence))))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (pointer_declarator declarator: (identifier)) value: (call_expression function: (identifier) arguments: (argument_list)))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (pointer_expression argument: (identifier))))) (expression_statement (assignment_expression left: (pointer_expression argument: (identifier)) right: (number_literal))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal))))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_content) (escape_sequence))))) (return_statement (number_literal)))) L:100
+(primitive_type) L:100
+(function_declarator declarator: (identifier) parameters: (parameter_list)) L:100
+(identifier) L:100
+(parameter_list) L:100
+("(") L:100
+(")") L:100
+(compound_statement (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence) (escape_sequence))))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (pointer_declarator declarator: (identifier)) value: (call_expression function: (identifier) arguments: (argument_list)))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (pointer_expression argument: (identifier))))) (expression_statement (assignment_expression left: (pointer_expression argument: (identifier)) right: (number_literal))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (comment) (declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal))))) (comment) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) (expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_content) (escape_sequence))))) (return_statement (number_literal))) L:100
+("{") L:100
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence) (escape_sequence))))) L:101
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence) (escape_sequence)))) L:101
+(identifier) L:101
+(argument_list (string_literal (string_content) (escape_sequence) (escape_sequence))) L:101
+("(") L:101
+(string_literal (string_content) (escape_sequence) (escape_sequence)) L:101
+(""") L:101
+(string_content) L:101
+(escape_sequence) L:101
+(escape_sequence) L:101
+(""") L:101
+(")") L:101
+(";") L:101
+(comment) L:103
+(expression_statement (call_expression function: (identifier) arguments: (argument_list))) L:104
+(call_expression function: (identifier) arguments: (argument_list)) L:104
+(identifier) L:104
+(argument_list) L:104
+("(") L:104
+(")") L:104
+(";") L:104
+(comment) L:106
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) L:107
+(call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))) L:107
+(identifier) L:107
+(argument_list (number_literal) (number_literal)) L:107
+("(") L:107
+(number_literal) L:107
+(",") L:107
+(number_literal) L:107
+(")") L:107
+(";") L:107
+(comment) L:109
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) L:110
+(primitive_type) L:110
+(init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) L:110
+(identifier) L:110
+("=") L:110
+(call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))) L:110
+(identifier) L:110
+(argument_list (number_literal) (number_literal)) L:110
+("(") L:110
+(number_literal) L:110
+(",") L:110
+(number_literal) L:110
+(")") L:110
+(";") L:110
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) L:111
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier))) L:111
+(identifier) L:111
+(argument_list (string_literal (string_content) (escape_sequence)) (identifier)) L:111
+("(") L:111
+(string_literal (string_content) (escape_sequence)) L:111
+(""") L:111
+(string_content) L:111
+(escape_sequence) L:111
+(""") L:111
+(",") L:111
+(identifier) L:111
+(")") L:111
+(";") L:111
+(comment) L:113
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) L:114
+(primitive_type) L:114
+(init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) L:114
+(identifier) L:114
+("=") L:114
+(call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))) L:114
+(identifier) L:114
+(argument_list (number_literal) (number_literal)) L:114
+("(") L:114
+(number_literal) L:114
+(",") L:114
+(number_literal) L:114
+(")") L:114
+(";") L:114
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) L:115
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier))) L:115
+(identifier) L:115
+(argument_list (string_literal (string_content) (escape_sequence)) (identifier)) L:115
+("(") L:115
+(string_literal (string_content) (escape_sequence)) L:115
+(""") L:115
+(string_content) L:115
+(escape_sequence) L:115
+(""") L:115
+(",") L:115
+(identifier) L:115
+(")") L:115
+(";") L:115
+(comment) L:117
+(expression_statement (call_expression function: (identifier) arguments: (argument_list))) L:118
+(call_expression function: (identifier) arguments: (argument_list)) L:118
+(identifier) L:118
+(argument_list) L:118
+("(") L:118
+(")") L:118
+(";") L:118
+(comment) L:120
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))))) L:121
+(primitive_type) L:121
+(init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal)))) L:121
+(identifier) L:121
+("=") L:121
+(call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal))) L:121
+(identifier) L:121
+(argument_list (number_literal) (number_literal)) L:121
+("(") L:121
+(number_literal) L:121
+(",") L:121
+(number_literal) L:121
+(")") L:121
+(";") L:121
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) L:122
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier))) L:122
+(identifier) L:122
+(argument_list (string_literal (string_content) (escape_sequence)) (identifier)) L:122
+("(") L:122
+(string_literal (string_content) (escape_sequence)) L:122
+(""") L:122
+(string_content) L:122
+(escape_sequence) L:122
+(""") L:122
+(",") L:122
+(identifier) L:122
+(")") L:122
+(";") L:122
+(comment) L:124
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (pointer_declarator declarator: (identifier)) value: (call_expression function: (identifier) arguments: (argument_list)))) L:125
+(primitive_type) L:125
+(init_declarator declarator: (pointer_declarator declarator: (identifier)) value: (call_expression function: (identifier) arguments: (argument_list))) L:125
+(pointer_declarator declarator: (identifier)) L:125
+("*") L:125
+(identifier) L:125
+("=") L:125
+(call_expression function: (identifier) arguments: (argument_list)) L:125
+(identifier) L:125
+(argument_list) L:125
+("(") L:125
+(")") L:125
+(";") L:125
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (pointer_expression argument: (identifier))))) L:126
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (pointer_expression argument: (identifier)))) L:126
+(identifier) L:126
+(argument_list (string_literal (string_content) (escape_sequence)) (pointer_expression argument: (identifier))) L:126
+("(") L:126
+(string_literal (string_content) (escape_sequence)) L:126
+(""") L:126
+(string_content) L:126
+(escape_sequence) L:126
+(""") L:126
+(",") L:126
+(pointer_expression argument: (identifier)) L:126
+("*") L:126
+(identifier) L:126
+(")") L:126
+(";") L:126
+(expression_statement (assignment_expression left: (pointer_expression argument: (identifier)) right: (number_literal))) L:127
+(assignment_expression left: (pointer_expression argument: (identifier)) right: (number_literal)) L:127
+(pointer_expression argument: (identifier)) L:127
+("*") L:127
+(identifier) L:127
+("=") L:127
+(number_literal) L:127
+(";") L:127
+(comment) L:127
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) L:128
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier))) L:128
+(identifier) L:128
+(argument_list (string_literal (string_content) (escape_sequence)) (identifier)) L:128
+("(") L:128
+(string_literal (string_content) (escape_sequence)) L:128
+(""") L:128
+(string_content) L:128
+(escape_sequence) L:128
+(""") L:128
+(",") L:128
+(identifier) L:129
+(")") L:129
+(";") L:129
+(comment) L:131
+(declaration type: (primitive_type) declarator: (init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal))))) L:132
+(primitive_type) L:132
+(init_declarator declarator: (identifier) value: (call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal)))) L:132
+(identifier) L:132
+("=") L:132
+(call_expression function: (identifier) arguments: (argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal))) L:132
+(identifier) L:132
+(argument_list (number_literal) (number_literal) (number_literal) (number_literal) (number_literal)) L:132
+("(") L:132
+(number_literal) L:132
+(",") L:132
+(number_literal) L:132
+(",") L:132
+(number_literal) L:132
+(",") L:132
+(number_literal) L:132
+(",") L:132
+(number_literal) L:132
+(")") L:132
+(";") L:132
+(comment) L:132
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier)))) L:133
+(call_expression function: (identifier) arguments: (argument_list (string_literal (string_content) (escape_sequence)) (identifier))) L:133
+(identifier) L:133
+(argument_list (string_literal (string_content) (escape_sequence)) (identifier)) L:133
+("(") L:133
+(string_literal (string_content) (escape_sequence)) L:133
+(""") L:133
+(string_content) L:133
+(escape_sequence) L:133
+(""") L:133
+(",") L:133
+(identifier) L:133
+(")") L:133
+(";") L:133
+(expression_statement (call_expression function: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_content) (escape_sequence))))) L:135
+(call_expression function: (identifier) arguments: (argument_list (string_literal (escape_sequence) (string_content) (escape_sequence)))) L:135
+(identifier) L:135
+(argument_list (string_literal (escape_sequence) (string_content) (escape_sequence))) L:135
+("(") L:135
+(string_literal (escape_sequence) (string_content) (escape_sequence)) L:135
+(""") L:135
+(escape_sequence) L:135
+(string_content) L:135
+(escape_sequence) L:135
+(""") L:135
+(")") L:135
+(";") L:135
+(return_statement (number_literal)) L:136
+("return") L:136
+(number_literal) L:136
+(";") L:136
+("}") L:137

@@ -1,0 +1,21 @@
+classicFunction	function.js	/^function classicFunction(param1, param2) {$/;"	f	line:2
+anonymousFunction	function.js	/^const anonymousFunction = function(a, b) {$/;"	f	line:10
+arrowFunctionSimple	function.js	/^const arrowFunctionSimple = (x, y) => x \/ y;$/;"	f	line:16
+arrowFunctionSingleParam	function.js	/^const arrowFunctionSingleParam = param => console.log(`Single argument arrow function: ${param}`/;"	f	line:19
+arrowFunctionNoParam	function.js	/^const arrowFunctionNoParam = () => console.log("No argument arrow function");$/;"	f	line:22
+arrowFunctionBlockBody	function.js	/^const arrowFunctionBlockBody = (val1, val2) => {$/;"	f	line:25
+higherOrderFunction	function.js	/^function higherOrderFunction(callback) {$/;"	f	line:32
+outerFunction	function.js	/^function outerFunction(outerVar) {$/;"	f	line:39
+innerFunction	function.js	/^  function innerFunction(innerParam) {$/;"	f	line:41	function:outerFunction
+closureFunc	function.js	/^const closureFunc = outerFunction("Outer value");$/;"	C	line:46
+processArguments	function.js	/^function processArguments(firstArg, ...restArgs) {$/;"	f	line:50
+greet	function.js	/^function greet(name = "Guest") {$/;"	f	line:58
+performAsyncOperation	function.js	/^async function performAsyncOperation(success) {$/;"	f	line:65
+idGenerator	function.js	/^function* idGenerator() {$/;"	g	line:91
+generator	function.js	/^const generator = idGenerator();$/;"	C	line:97
+fibonacciSequence	function.js	/^function* fibonacciSequence() {$/;"	g	line:101
+fibGen	function.js	/^const fibGen = fibonacciSequence();$/;"	C	line:108
+functionWithErrorHandling	function.js	/^function functionWithErrorHandling(num) {$/;"	f	line:114
+functionWithIIFE	function.js	/^function functionWithIIFE() {$/;"	f	line:132
+anonymousFunction30832a360200	function.js	/^  (function() {$/;"	f	line:133	function:functionWithIIFE
+labeledLoopFunction	function.js	/^function labeledLoopFunction() {$/;"	f	line:145

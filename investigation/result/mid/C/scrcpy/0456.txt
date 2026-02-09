@@ -1,0 +1,201 @@
+Commit: 4841fdd1eff58f313a62c539f31453eac3e21b62
+No refactorings found.
+
+Commit: fc75319bb291121116419c784a5fa507fd820eca
+No refactorings found.
+
+Commit: 9787fe5d261df8255e49b65f37e2d89bf1a129fa
+No refactorings found.
+
+Commit: 98d30288f78b0dd40ae1aa1b285c45f5769f49fc
+No refactorings found.
+
+Commit: d74cfd5711b2ae2a12e38c0e7111e1af0f9af72c
+No refactorings found.
+
+Commit: cd3a5d50b650da6dcafbdbddd606ef5031f1833a
+No refactorings found.
+
+Commit: 772f42134a327eea60955463d0ee8bb712168dd0
+No refactorings found.
+
+Commit: 4e1cf13a5092bfe8651c8f55eda3861b7d01b64a
+No refactorings found.
+
+Commit: 8a02e3c2f58cffc3fdd8c08b26aae04bbf9d5a97
+CHANGE_SIGNATURE	{Method ClipboardManager(IInterface) at server/src/main/java/com/genymobile/scrcpy/wrappers/ClipboardManager.java:34 LOC:3}	{Method ClipboardManager(android.content.ClipboardManager) at server/src/main/java/com/genymobile/scrcpy/wrappers/ClipboardManager.java:22 LOC:3})
+
+Commit: 283326b2f6fa3fdaeecc181f69a3a4bcd429c06a
+No refactorings found.
+
+Commit: 41ed40f5f9ee557c5ccbca8b30a51c74af92da92
+CHANGE_SIGNATURE	{Method InputManager(Object) at server/src/main/java/com/genymobile/scrcpy/wrappers/InputManager.java:46 LOC:3}	{Method InputManager(android.hardware.input.InputManager) at server/src/main/java/com/genymobile/scrcpy/wrappers/InputManager.java:33 LOC:3})
+
+Commit: d2cc930975a8c7a2a073a9bffd9c2576d58cff7b
+No refactorings found.
+
+Commit: 52f5d08d1fab9600e78b21c71fa4a6c106d3783f
+No refactorings found.
+
+Commit: 8cd63cb63eeb4873b304a44fb66d55db03f2dd36
+No refactorings found.
+
+Commit: 6875e9aa88833525b60322597304b01f6ba91987
+No refactorings found.
+
+Commit: 882003f314ad5077a41bbc936831aeb36dd8b078
+CHANGE_SIGNATURE	{Function event_loop(struct scrcpy) at app/src/scrcpy.c:167 LOC:41}	{Function event_loop(struct scrcpy, bool) at app/src/scrcpy.c:167 LOC:41})
+
+Commit: 245981281e99662aa77e53259a0864ead39ff438
+No refactorings found.
+
+Commit: d892a9aac58bd35b778ff8a0a933d11ec8092df1
+No refactorings found.
+
+Commit: c27d116a662c87ee84963820669ee0d2ce60e6f1
+No refactorings found.
+
+Commit: eac711ace68da43b09a4da99f7990143ae93f7c1
+No refactorings found.
+
+Commit: e0423653c892a62342bf665473093a9a020e0ffc
+No refactorings found.
+
+Commit: 538764416099c803fcb041ecffa2c849829b7222
+No refactorings found.
+
+Commit: 2f44da76f4767aec2f42e6882a30c62615e0f139
+No refactorings found.
+
+Commit: fb47b87eebbda65fd28e407cd2a6d33fea476fe3
+No refactorings found.
+
+Commit: dc2fcc46f516588f4575c1fe8cfeca3e57a1653c
+No refactorings found.
+
+Commit: 69264703b11614d022c31096d70eec14870393c7
+No refactorings found.
+
+Commit: a507b4f5593d960aacb075082fd7b55cb672ee32
+No refactorings found.
+
+Commit: a9aadc95df6ec51198430a986ac8f56434b25e9d
+No refactorings found.
+
+Commit: 28b5bfb90e76f059571a88931b86eb86f6ca8dd7
+No refactorings found.
+
+Commit: 328bb74f8002693e4be2703450305e82fc015e88
+No refactorings found.
+
+Commit: 0a09518a49cb495ba76573597cf38169f6813209
+No refactorings found.
+
+Commit: 86a68fac6c631a01e8d0132eee0fc5a831e78417
+No refactorings found.
+
+Commit: 1786f28e6f9f9c597f4d66de88c206489cb87122
+No refactorings found.
+
+Commit: 9cf4d527215a3f21077b4d28466632be26f72917
+No refactorings found.
+
+Commit: 4bd1c5981db307155452fa7594945e069542ddb3
+RENAME	{Function sc_gamepad_processor_process_gamepad_device(struct sc_gamepad_processor, struct sc_gamepad_device_event) at app/src/usb/gamepad_aoa.c:9 LOC:30}	{Function sc_gamepad_processor_process_gamepad_added(struct sc_gamepad_processor, struct sc_gamepad_device_event) at app/src/usb/gamepad_aoa.c:9 LOC:16})
+
+Commit: c59a3c3169973abb4ce236e06990d58ae6567481
+No refactorings found.
+
+Commit: 2780e0bd7b7c1d4bdbbfc07e7a2b978b48abf3c2
+No refactorings found.
+
+Commit: f90dc216d10ac062ab1a06e14e574acc5569d2c3
+No refactorings found.
+
+Commit: 97fa77c76c5502105a3d128a0be2477a04f4fd1b
+No refactorings found.
+
+Commit: 5c3626ed47b983625481f852073cef859e7fcaf9
+No refactorings found.
+
+Commit: 9555d3a537a828731ad89ef5258ba537acf8cc11
+No refactorings found.
+
+Commit: 3b2b3625e478855392c98367818a360dfba239bf
+No refactorings found.
+
+Commit: b2cdaa4bdce0adc256b87c3271c39a1482817dc6
+EXTRACT	{Method injectScroll(Position, float, float, int) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:471 LOC:31}	{Method getEventPointAndDisplayId(Position) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:354 LOC:18})
+EXTRACT	{Method injectTouch(int, long, Position, float, int, int) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:353 LOC:117}	{Method getEventPointAndDisplayId(Position) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:354 LOC:18})
+
+Commit: ff06b6dcc1dde8fb750191e07ba476b2de0c9927
+No refactorings found.
+
+Commit: 3d1f036c04412e17a694e6a0b857b7f9e9217ab3
+No refactorings found.
+
+Commit: 3d5294c1e5819535dfa94bd399e53191283105cd
+No refactorings found.
+
+Commit: 443f315f609b2bbd7d7c4f8e9ffc2b41bdc381f7
+No refactorings found.
+
+Commit: 090488081652593a795ea40697ce703bb5b2a59c
+No refactorings found.
+
+Commit: 4348f12194b5e44e710e61786b452ebe4b9eb850
+No refactorings found.
+
+Commit: 371ff3122590f35996f904d99d02a58986a8c617
+No refactorings found.
+
+Commit: 456fa510f25039d6cd016eb9293a82be1f7a2653
+No refactorings found.
+
+Commit: 9b03bfc3ae881f639f9c4bb381eef7365b785437
+No refactorings found.
+
+Commit: 06385ce83bcfd57ac82e2f5ca4d9575fe1f1649f
+No refactorings found.
+
+Commit: 23960ca11ab676dc85f6c0f6e6f447efed92bba9
+No refactorings found.
+
+Commit: 904f86152ea7693f481e29cdfd8327ac58eb8c34
+No refactorings found.
+
+Commit: e226950cfab9b9e8f2fe8620dc9970bcf13133ee
+CHANGE_SIGNATURE	{Method PositionMapper(Size, Size) at server/src/main/java/com/genymobile/scrcpy/control/PositionMapper.java:12 LOC:4}	{Method PositionMapper(Size, AffineMatrix) at server/src/main/java/com/genymobile/scrcpy/control/PositionMapper.java:13 LOC:4})
+
+Commit: 019ce5eea4e8d0655ab481ab59ac498c3be51d0f
+CHANGE_SIGNATURE	{Method setDisplaySurface(IBinder, Surface, int, Rect, Rect, int) at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:226 LOC:10}	{Method setDisplaySurface(IBinder, Surface, Rect, Rect, int) at server/src/main/java/com/genymobile/scrcpy/video/ScreenCapture.java:217 LOC:10})
+
+Commit: d6033d28f5a326409218bab15acc432b305cb23f
+No refactorings found.
+
+Commit: 5694562a74e068df17193f25c9b1dbdd9342e0c0
+No refactorings found.
+
+Commit: bd9d93194b04970655b22f1eb96d5ad2bd4f2c75
+CHANGE_SIGNATURE	{Method Controller(int, ControlChannel, CleanUp, boolean, boolean) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:100 LOC:37}	{Method Controller(ControlChannel, CleanUp, Options) at server/src/main/java/com/genymobile/scrcpy/control/Controller.java:101 LOC:37})
+EXTRACT_MOVE	{Method scrcpy(Options) at server/src/main/java/com/genymobile/scrcpy/Server.java:76 LOC:138}	{Method CameraCapture(Options) at server/src/main/java/com/genymobile/scrcpy/video/CameraCapture.java:62 LOC:9})
+CHANGE_SIGNATURE	{Method NewDisplayCapture(VirtualDisplayListener, NewDisplay, int) at server/src/main/java/com/genymobile/scrcpy/video/NewDisplayCapture.java:46 LOC:5}	{Method NewDisplayCapture(VirtualDisplayListener, Options) at server/src/main/java/com/genymobile/scrcpy/video/NewDisplayCapture.java:47 LOC:6})
+CHANGE_SIGNATURE	{Method AudioEncoder(AudioCapture, Streamer, int, List<CodecOption>, String) at server/src/main/java/com/genymobile/scrcpy/audio/AudioEncoder.java:70 LOC:7}	{Method AudioEncoder(AudioCapture, Streamer, Options) at server/src/main/java/com/genymobile/scrcpy/audio/AudioEncoder.java:71 LOC:7})
+
+Commit: 794595e3f0db8208a2a1df30c1c5e9442deb4112
+CHANGE_SIGNATURE	{Method start(int, Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:33 LOC:3}	{Method start(Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:33 LOC:3})
+CHANGE_SIGNATURE	{Method runCleanUp(int, Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:45 LOC:60}	{Method runCleanUp(Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:45 LOC:61})
+CHANGE_SIGNATURE	{Method CleanUp(int, Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:28 LOC:4}	{Method CleanUp(Options) at server/src/main/java/com/genymobile/scrcpy/CleanUp.java:28 LOC:4})
+
+Commit: 5e10c37f02cb41054257dc895a5aae7d9df7dd89
+No refactorings found.
+
+Commit: 0e399b65bd2f32f93a0372ed0d64cdc2ba223d86
+No refactorings found.
+
+Commit: 2337f524d167e210a2985d691e5695e5b7e3249f
+No refactorings found.
+
+Commit: 91373d906b100349de959f49172d4605f66f64b2
+No refactorings found.
+

@@ -1,0 +1,58 @@
+Commit: 548b44f75e51557b1df79e6bc8c1659988dc5e2b
+No refactorings found.
+
+Commit: e1eead2badba419ec893c8cdbe456b85a94fa01f
+No refactorings found.
+
+Commit: 3e6e64ec49925a40a0456a1dd658f9aad64c7885
+CHANGE_SIGNATURE	{Method PluginClasspathGradleBuild(Dsl) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/testkit/PluginClasspathGradleBuild.java:62 LOC:3}	{Method PluginClasspathGradleBuild(BuildOutput, Dsl) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/testkit/PluginClasspathGradleBuild.java:63 LOC:3})
+CHANGE_SIGNATURE	{Method GradleVersionTestTemplateInvocationContext(String, boolean) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/junit/GradleCompatibilityExtension.java:88 LOC:4}	{Method GradleVersionTestTemplateInvocationContext(String, boolean, BuildOutput) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/junit/GradleCompatibilityExtension.java:92 LOC:6})
+CHANGE_SIGNATURE	{Method GradleBuild(Dsl) at spring-boot-project/spring-boot-tools/spring-boot-gradle-test-support/src/main/java/org/springframework/boot/testsupport/gradle/testkit/GradleBuild.java:78 LOC:3}	{Method GradleBuild(BuildOutput, Dsl) at spring-boot-project/spring-boot-tools/spring-boot-gradle-test-support/src/main/java/org/springframework/boot/testsupport/gradle/testkit/GradleBuild.java:81 LOC:4})
+CHANGE_SIGNATURE	{Method DslTestTemplateInvocationContext(Dsl) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/junit/GradleMultiDslExtension.java:58 LOC:3}	{Method DslTestTemplateInvocationContext(BuildOutput, Dsl) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/junit/GradleMultiDslExtension.java:62 LOC:4})
+CHANGE_SIGNATURE	{Method PluginClasspathGradleBuild() at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/testkit/PluginClasspathGradleBuild.java:58 LOC:3}	{Method PluginClasspathGradleBuild(BuildOutput) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/test/java/org/springframework/boot/gradle/testkit/PluginClasspathGradleBuild.java:59 LOC:3})
+CHANGE_SIGNATURE	{Method GradleBuild() at spring-boot-project/spring-boot-tools/spring-boot-gradle-test-support/src/main/java/org/springframework/boot/testsupport/gradle/testkit/GradleBuild.java:74 LOC:3}	{Method GradleBuild(BuildOutput) at spring-boot-project/spring-boot-tools/spring-boot-gradle-test-support/src/main/java/org/springframework/boot/testsupport/gradle/testkit/GradleBuild.java:77 LOC:3})
+
+Commit: 05c877d61c97e5c6f62c632cb54aea86f59f5095
+No refactorings found.
+
+Commit: 4db83bd83e1b027e032282480a43ddf76dbb2b69
+No refactorings found.
+
+Commit: ebe5d4e59dceb63d571ef32637d9a5a3feecec82
+No refactorings found.
+
+Commit: 8fdf94c2c906e9553dd64808705a83d54e01dec4
+No refactorings found.
+
+Commit: 19d5f2525fcbdc2e710cc6995bff57dbfffb419d
+No refactorings found.
+
+Commit: 024dba4bb8e1cfe6d151f3e344fcf6f9da64d0c6
+CHANGE_SIGNATURE	{Method jobLauncherApplicationRunner(JobOperator, JobRepository, BatchProperties) at module/spring-boot-batch/src/main/java/org/springframework/boot/batch/autoconfigure/BatchAutoConfiguration.java:82 LOC:12}	{Method jobLauncherApplicationRunner(JobOperator, BatchProperties) at module/spring-boot-batch/src/main/java/org/springframework/boot/batch/autoconfigure/BatchAutoConfiguration.java:81 LOC:11})
+RENAME	{Method retryFailedExecution() at module/spring-boot-batch/src/test/java/org/springframework/boot/batch/autoconfigure/JobLauncherApplicationRunnerTests.java:95 LOC:14}	{Method retryFailedExecutionWithoutIncrementer() at module/spring-boot-batch/src/test/java/org/springframework/boot/batch/autoconfigure/JobLauncherApplicationRunnerTests.java:112 LOC:14})
+CHANGE_SIGNATURE	{Method JobLauncherApplicationRunner(JobOperator, JobRepository) at module/spring-boot-batch/src/main/java/org/springframework/boot/batch/autoconfigure/JobLauncherApplicationRunner.java:101 LOC:6}	{Method JobLauncherApplicationRunner(JobOperator) at module/spring-boot-batch/src/main/java/org/springframework/boot/batch/autoconfigure/JobLauncherApplicationRunner.java:91 LOC:4})
+
+Commit: 7807cffc1bef045c8674a70c80d04d12fcb8fa0e
+No refactorings found.
+
+Commit: 4f2e9a5b321419ee162b917a8adc12a22781b06b
+No refactorings found.
+
+Commit: 0efe9c271b5fbe2bf7f95d174816c72650027fa8
+No refactorings found.
+
+Commit: ea8af9af56f03a226cef1d574939bdac78b9497d
+No refactorings found.
+
+Commit: 08cc62a6b602506425da3829ef25e6278a86b00e
+RENAME	{Method getWhenHasRuntimeRefCreatesKey() at spring-boot-project/spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/net/protocol/jar/JarFileUrlKeyTests.java:76 LOC:5}	{Method equalsWhenHasRuntimeRef() at spring-boot-project/spring-boot-tools/spring-boot-loader/src/test/java/org/springframework/boot/loader/net/protocol/jar/JarFileUrlKeyTests.java:86 LOC:6})
+
+Commit: f61c54632a7ecb5d8dc6ecb8fe1552fb0185135c
+EXTRACT	{Method execute(Project) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/main/java/org/springframework/boot/gradle/plugin/KotlinPluginAction.java:35 LOC:9}	{Method configureKotlinVersionProperty(Project) at spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin/src/main/java/org/springframework/boot/gradle/plugin/KotlinPluginAction.java:42 LOC:7})
+
+Commit: 3ad232dea0a1a81ff59dd7a0eb0c33db58c1a884
+No refactorings found.
+
+Commit: c310b5ed4266146af3fefb14dfb9b4d8372ed7ff
+No refactorings found.
+

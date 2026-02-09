@@ -1,0 +1,167 @@
+(program (package_declaration (scoped_identifier scope: (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) name: (identifier))) (import_declaration (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier))) (import_declaration (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier))) (import_declaration (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) (asterisk)) (block_comment) (annotation_type_declaration (modifiers (marker_annotation name: (identifier)) (annotation name: (identifier) arguments: (annotation_argument_list (field_access object: (identifier) field: (identifier)))) (annotation name: (identifier) arguments: (annotation_argument_list (element_value_array_initializer (field_access object: (identifier) field: (identifier)) (field_access object: (identifier) field: (identifier))))) (annotation name: (identifier) arguments: (annotation_argument_list (element_value_pair key: (identifier) value: (class_literal (type_identifier)))))) name: (identifier) body: (annotation_type_body (annotation_type_element_declaration type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) (annotation_type_element_declaration type: (type_identifier) name: (identifier) value: (string_literal (string_fragment))) (annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) (annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard (type_identifier)))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer))))) L:1
+(package_declaration (scoped_identifier scope: (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) name: (identifier))) L:1
+("package") L:1
+(scoped_identifier scope: (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) name: (identifier)) L:1
+(scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) L:1
+(scoped_identifier scope: (identifier) name: (identifier)) L:1
+(identifier) L:1
+(".") L:1
+(identifier) L:1
+(".") L:1
+(identifier) L:1
+(".") L:1
+(identifier) L:1
+(";") L:1
+(import_declaration (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier))) L:3
+("import") L:3
+(scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) L:3
+(scoped_identifier scope: (identifier) name: (identifier)) L:3
+(identifier) L:3
+(".") L:3
+(identifier) L:3
+(".") L:3
+(identifier) L:3
+(";") L:3
+(import_declaration (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier))) L:4
+("import") L:4
+(scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) L:4
+(scoped_identifier scope: (identifier) name: (identifier)) L:4
+(identifier) L:4
+(".") L:4
+(identifier) L:4
+(".") L:4
+(identifier) L:4
+(";") L:4
+(import_declaration (scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) (asterisk)) L:5
+("import") L:5
+(scoped_identifier scope: (scoped_identifier scope: (identifier) name: (identifier)) name: (identifier)) L:5
+(scoped_identifier scope: (identifier) name: (identifier)) L:5
+(identifier) L:5
+(".") L:5
+(identifier) L:5
+(".") L:5
+(identifier) L:5
+(".") L:5
+(asterisk) L:5
+("*") L:5
+(";") L:5
+(block_comment) L:7
+(annotation_type_declaration (modifiers (marker_annotation name: (identifier)) (annotation name: (identifier) arguments: (annotation_argument_list (field_access object: (identifier) field: (identifier)))) (annotation name: (identifier) arguments: (annotation_argument_list (element_value_array_initializer (field_access object: (identifier) field: (identifier)) (field_access object: (identifier) field: (identifier))))) (annotation name: (identifier) arguments: (annotation_argument_list (element_value_pair key: (identifier) value: (class_literal (type_identifier)))))) name: (identifier) body: (annotation_type_body (annotation_type_element_declaration type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) (annotation_type_element_declaration type: (type_identifier) name: (identifier) value: (string_literal (string_fragment))) (annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) (annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard (type_identifier)))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)))) L:11
+(modifiers (marker_annotation name: (identifier)) (annotation name: (identifier) arguments: (annotation_argument_list (field_access object: (identifier) field: (identifier)))) (annotation name: (identifier) arguments: (annotation_argument_list (element_value_array_initializer (field_access object: (identifier) field: (identifier)) (field_access object: (identifier) field: (identifier))))) (annotation name: (identifier) arguments: (annotation_argument_list (element_value_pair key: (identifier) value: (class_literal (type_identifier)))))) L:11
+(marker_annotation name: (identifier)) L:11
+("@") L:11
+(identifier) L:11
+(annotation name: (identifier) arguments: (annotation_argument_list (field_access object: (identifier) field: (identifier)))) L:12
+("@") L:12
+(identifier) L:12
+(annotation_argument_list (field_access object: (identifier) field: (identifier))) L:12
+("(") L:12
+(field_access object: (identifier) field: (identifier)) L:12
+(identifier) L:12
+(".") L:12
+(identifier) L:12
+(")") L:12
+(annotation name: (identifier) arguments: (annotation_argument_list (element_value_array_initializer (field_access object: (identifier) field: (identifier)) (field_access object: (identifier) field: (identifier))))) L:13
+("@") L:13
+(identifier) L:13
+(annotation_argument_list (element_value_array_initializer (field_access object: (identifier) field: (identifier)) (field_access object: (identifier) field: (identifier)))) L:13
+("(") L:13
+(element_value_array_initializer (field_access object: (identifier) field: (identifier)) (field_access object: (identifier) field: (identifier))) L:13
+("{") L:13
+(field_access object: (identifier) field: (identifier)) L:13
+(identifier) L:13
+(".") L:13
+(identifier) L:13
+(",") L:13
+(field_access object: (identifier) field: (identifier)) L:13
+(identifier) L:13
+(".") L:13
+(identifier) L:13
+("}") L:13
+(")") L:13
+(annotation name: (identifier) arguments: (annotation_argument_list (element_value_pair key: (identifier) value: (class_literal (type_identifier))))) L:14
+("@") L:14
+(identifier) L:14
+(annotation_argument_list (element_value_pair key: (identifier) value: (class_literal (type_identifier)))) L:14
+("(") L:14
+(element_value_pair key: (identifier) value: (class_literal (type_identifier))) L:14
+(identifier) L:14
+("=") L:14
+(class_literal (type_identifier)) L:14
+(type_identifier) L:14
+(".") L:14
+("class") L:14
+(")") L:14
+("public") L:15
+("@interface") L:15
+(identifier) L:15
+(annotation_type_body (annotation_type_element_declaration type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) (annotation_type_element_declaration type: (type_identifier) name: (identifier) value: (string_literal (string_fragment))) (annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) (annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard (type_identifier)))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer))) L:15
+("{") L:15
+(annotation_type_element_declaration type: (array_type element: (type_identifier) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) L:16
+(array_type element: (type_identifier) dimensions: (dimensions)) L:16
+(type_identifier) L:16
+(dimensions) L:16
+("[") L:16
+("]") L:16
+(identifier) L:16
+("(") L:16
+(")") L:16
+("default") L:16
+(element_value_array_initializer) L:16
+("{") L:16
+("}") L:16
+(";") L:16
+(annotation_type_element_declaration type: (type_identifier) name: (identifier) value: (string_literal (string_fragment))) L:18
+(type_identifier) L:18
+(identifier) L:18
+("(") L:18
+(")") L:18
+("default") L:18
+(string_literal (string_fragment)) L:18
+(""") L:18
+(string_fragment) L:18
+(""") L:18
+(";") L:18
+(annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) L:20
+(array_type element: (generic_type (type_identifier) (type_arguments (wildcard))) dimensions: (dimensions)) L:20
+(generic_type (type_identifier) (type_arguments (wildcard))) L:20
+(type_identifier) L:20
+(type_arguments (wildcard)) L:20
+("<") L:20
+(wildcard) L:20
+("?") L:20
+(">") L:20
+(dimensions) L:20
+("[") L:20
+("]") L:20
+(identifier) L:20
+("(") L:20
+(")") L:20
+("default") L:20
+(element_value_array_initializer) L:20
+("{") L:20
+("}") L:20
+(";") L:20
+(annotation_type_element_declaration type: (array_type element: (generic_type (type_identifier) (type_arguments (wildcard (type_identifier)))) dimensions: (dimensions)) name: (identifier) value: (element_value_array_initializer)) L:22
+(array_type element: (generic_type (type_identifier) (type_arguments (wildcard (type_identifier)))) dimensions: (dimensions)) L:22
+(generic_type (type_identifier) (type_arguments (wildcard (type_identifier)))) L:22
+(type_identifier) L:22
+(type_arguments (wildcard (type_identifier))) L:22
+("<") L:22
+(wildcard (type_identifier)) L:22
+("?") L:22
+("extends") L:22
+(type_identifier) L:22
+(">") L:22
+(dimensions) L:22
+("[") L:22
+("]") L:22
+(identifier) L:22
+("(") L:22
+(")") L:22
+("default") L:22
+(element_value_array_initializer) L:22
+("{") L:22
+("}") L:22
+(";") L:22
+("}") L:23

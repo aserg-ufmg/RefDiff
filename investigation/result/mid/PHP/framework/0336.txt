@@ -1,0 +1,594 @@
+Commit: b8e2aa2527fb5601698e8021b3b205632ef2e4ba
+No refactorings found.
+
+Commit: ddeee72f694993b911ba9e13c7d680f923d33416
+No refactorings found.
+
+Commit: f73517ff174d7b131883f4e84511a536784626aa
+No refactorings found.
+
+Commit: 3a66665642b96a1c053bf5cfe7a95fc7e2052c29
+No refactorings found.
+
+Commit: c07036e6f34b47031d83e956512673dc75a2ced3
+No refactorings found.
+
+Commit: a89e514269a21f24f77308a6cc0bab78a99b50b1
+No refactorings found.
+
+Commit: c6e9e71a1885aeee27da56d34a90fedc135822ef
+No refactorings found.
+
+Commit: 7d7fe2312bc17734670e99a4e78d22a1f7bb7621
+No refactorings found.
+
+Commit: ce4faf187fb8a181b21cf95cbb2a5e72e1643ad1
+EXTRACT_MOVE	{method_declaration handleBeginTransactionException($e) at src/Illuminate/Database/Concerns/ManagesTransactions.php:182 LOC:10}	{method_declaration executeBeginTransactionStatement() at src/Illuminate/Database/Connection.php:1478 LOC:4})
+EXTRACT_MOVE	{method_declaration createTransaction() at src/Illuminate/Database/Concerns/ManagesTransactions.php:145 LOC:14}	{method_declaration executeBeginTransactionStatement() at src/Illuminate/Database/Connection.php:1478 LOC:4})
+
+Commit: 450a04ec21f8e48136a48d7f115218e1ccbc9688
+No refactorings found.
+
+Commit: 66d6f8f538388c009d1b9a96b40be312d82b8fa2
+No refactorings found.
+
+Commit: 0b52acbdef545689017b6852c2b44918daeae9d3
+No refactorings found.
+
+Commit: 6d5dfad051e6b7f1c51fb113189b52be3fd36170
+No refactorings found.
+
+Commit: 2ee2ba94ae60efd24c7a787cbb1a2f82f714bb20
+No refactorings found.
+
+Commit: 5073f78db25409e5ba2c9b3a886bef4417220d5d
+No refactorings found.
+
+Commit: 7796b9b4f27a4c1bc1a5f5ae4a923ea5595fbb93
+No refactorings found.
+
+Commit: ab76a5255b33341eb54cb3eeeb1badac4537ade1
+No refactorings found.
+
+Commit: bbc66dae2858aa1b635c416271c1da34d3f05e80
+No refactorings found.
+
+Commit: 1d01a5ac068a3ec86ca8acdac17fb52db6995818
+No refactorings found.
+
+Commit: c2a0ff6f5517d6e2cd809f49d11fc68f84e09f97
+No refactorings found.
+
+Commit: 873927b912722d0c62c7ee4ce33eb92df9de7ac8
+No refactorings found.
+
+Commit: 46980353180273b40b09cc2afbe463ee0fc6e0bc
+No refactorings found.
+
+Commit: 6d26643ad2b0ad13a7c5bc5b9b19084d6e6819af
+No refactorings found.
+
+Commit: a97fa06f95d6d4044ae811a3bb82be9851fcbe5e
+No refactorings found.
+
+Commit: d8f38d8ef150949c20f2a1f89841c48c130a5ab5
+No refactorings found.
+
+Commit: 6dcf2c46da23d159f35d6246234953a74b740d83
+No refactorings found.
+
+Commit: 9258a94251e31b733979ca4b6290cff97fa920f4
+No refactorings found.
+
+Commit: 41e771959af629e37e5a8c7ea6a5ea2e112a2bb2
+No refactorings found.
+
+Commit: f64a9248b33c6bcd846f3c6fd5c0f8994c4c133c
+No refactorings found.
+
+Commit: 5521c5efa31026244322e937fce03ae24280a508
+No refactorings found.
+
+Commit: b8f2502fb6538cf05a5123391f11072fe7d9170d
+CHANGE_SIGNATURE	{method_declaration flushState() at src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:309 LOC:12}	{method_declaration flushState($testCase) at src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:312 LOC:12})
+CHANGE_SIGNATURE	{method_declaration flushHandlersState() at src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:327 LOC:19}	{method_declaration flushHandlersState($testCase) at src/Illuminate/Foundation/Bootstrap/HandleExceptions.php:331 LOC:24})
+
+Commit: 0aaeeeb9c22fb5f288f8eb97515461dc07427e20
+No refactorings found.
+
+Commit: 2a0e9331a0db904236143fe915c281ff4be274a3
+No refactorings found.
+
+Commit: 9472d540e6c80209341b2598e9e5652ab117a515
+No refactorings found.
+
+Commit: 1f81af17619f0bc8a87ec385a71546430c301b24
+No refactorings found.
+
+Commit: 6e3cd5d124b65579450ed3e3c073dffbb9644e2e
+No refactorings found.
+
+Commit: bebbf49c4000e03455b434a0fb9cdde119d4f1e4
+EXTRACT	{method_declaration isShared($abstract) at src/Illuminate/Container/Container.php:270 LOC:30}	{method_declaration getScopedTyped($reflection) at src/Illuminate/Container/Container.php:303 LOC:12})
+CHANGE_SIGNATURE	{method_declaration getConcreteBindingFromAttributes($abstract, $reflectedAttributes) at src/Illuminate/Container/Container.php:1009 LOC:32}	{method_declaration getConcreteBindingFromAttributes($abstract) at src/Illuminate/Container/Container.php:1010 LOC:50})
+
+Commit: 0d09b305229117e17b90605448230f3d29e1b789
+CHANGE_SIGNATURE	{method_declaration morphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1490 LOC:10}	{method_declaration morphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1491 LOC:10})
+CHANGE_SIGNATURE	{method_declaration uuidMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1558 LOC:8}	{method_declaration uuidMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1569 LOC:10})
+CHANGE_SIGNATURE	{method_declaration numericMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1526 LOC:8}	{method_declaration numericMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1529 LOC:10})
+CHANGE_SIGNATURE	{method_declaration nullableNumericMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1542 LOC:8}	{method_declaration nullableNumericMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1548 LOC:12})
+CHANGE_SIGNATURE	{method_declaration nullableUlidMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1606 LOC:8}	{method_declaration nullableUlidMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1628 LOC:12})
+CHANGE_SIGNATURE	{method_declaration nullableMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1508 LOC:10}	{method_declaration nullableMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1510 LOC:10})
+CHANGE_SIGNATURE	{method_declaration ulidMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1590 LOC:8}	{method_declaration ulidMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1609 LOC:10})
+CHANGE_SIGNATURE	{method_declaration nullableUuidMorphs($name, $indexName) at src/Illuminate/Database/Schema/Blueprint.php:1574 LOC:8}	{method_declaration nullableUuidMorphs($name, $indexName, $after) at src/Illuminate/Database/Schema/Blueprint.php:1588 LOC:12})
+
+Commit: fbfe9adfa599df93fe6c15368097b794662a334f
+No refactorings found.
+
+Commit: 326165a840432c92cfe56a7ba89af38847a81995
+No refactorings found.
+
+Commit: 64d5107d46388d579230179257ddbc3420574e7b
+No refactorings found.
+
+Commit: b83089f5de44128a6fead7e95c85ee16483dc1b4
+No refactorings found.
+
+Commit: 087ce3a8a7ffa66cb8d6245c4185098bcc870a9c
+No refactorings found.
+
+Commit: 7eeeed0831a799a78f8144d90af567733c171405
+No refactorings found.
+
+Commit: 31e1213799157913886d554811153eb0687e57c0
+RENAME	{method_declaration testMiddlewareDataProvider() at tests/Queue/FailOnExceptionMiddlewareTest.php:31 LOC:15}	{method_declaration middlewareDataProvider() at tests/Queue/FailOnExceptionMiddlewareTest.php:31 LOC:15})
+
+Commit: 93174e206955448054f89c2e97fe0b436e958bd3
+No refactorings found.
+
+Commit: 59c0cec2fea4581d7e98e91a25928c1a4572e49d
+No refactorings found.
+
+Commit: 30fb902a91e8eb057e2072863396b3344a3e8c32
+No refactorings found.
+
+Commit: 74a2aeab79f5ba56dd919f31cc79cb7724a674a0
+No refactorings found.
+
+Commit: 7d87cdee0f10ac15964d0cf8b19c04220fb9d39d
+No refactorings found.
+
+Commit: ab9e24982d5a51b7a07a157a39eaac598ec69230
+No refactorings found.
+
+Commit: ac498ff3adb6c434cd699f9085bb8bec66754316
+No refactorings found.
+
+Commit: 9bb82f7c10094097f2bc842a967fc17accf0933d
+No refactorings found.
+
+Commit: fe5e22c56ad03f230dc7b84b85e7ff81d0f93bbc
+No refactorings found.
+
+Commit: d33ee45184126f32f593d4b809a846ed88a1dc43
+No refactorings found.
+
+Commit: ed938de2fbfebee225ba51b2a54154f7614110ab
+No refactorings found.
+
+Commit: c3bc7b18325715ff2bb196b5d592bfb092bdf97d
+No refactorings found.
+
+Commit: b735473bd98aa76483f3d7f6484131ca1d87f4e9
+No refactorings found.
+
+Commit: c119641da248211d39b69196896bd35e8ef89bc2
+No refactorings found.
+
+Commit: 6d94b16fd5f4f72bb741f9b900b83179c8ab46c9
+No refactorings found.
+
+Commit: 6ab00c913ef6ec6fad0bd506f7452c0bb9e792c3
+No refactorings found.
+
+Commit: bb5dfb5890a5d9a01304a73c11df3512ff31c025
+No refactorings found.
+
+Commit: d74b1c1d543d887b2e79d7fe26450b2620ee6a4b
+No refactorings found.
+
+Commit: 72f75a5b85c5fdd859e687b567b3304bc60b5204
+No refactorings found.
+
+Commit: 793e60b4b7400c615f8d364b47a304d224f11505
+No refactorings found.
+
+Commit: c082869b577f88eed010c3ddc564663cbc956b07
+No refactorings found.
+
+Commit: d83b9f530a95b44c2ecadbb2cb1b6e8200c31a70
+CHANGE_SIGNATURE	{method_declaration defer($callback) at src/Illuminate/Events/Dispatcher.php:797 LOC:23}	{method_declaration defer($callback, $events) at src/Illuminate/Events/Dispatcher.php:805 LOC:26})
+
+Commit: 810581ae3a98930f98aafde729b01171be0b83db
+No refactorings found.
+
+Commit: b0d7730873dc2f0247a80d1f66c3eb8de6a323ec
+No refactorings found.
+
+Commit: c237b2257a8c70bb5ba5712dfbfee7897a2b118a
+No refactorings found.
+
+Commit: ae7a3da400ad1e3c0f3f981cfef77690802f5db7
+No refactorings found.
+
+Commit: feffcd6d695c5898b9613dee90fdec89ede57f9b
+No refactorings found.
+
+Commit: 48bc5ee333a868b49138bad1fca37bdc071f409b
+No refactorings found.
+
+Commit: 967834c3e252d1c29e887b5d66ccc30c458abf12
+No refactorings found.
+
+Commit: d6ad22074c0deefb0a674232feab946675957b43
+No refactorings found.
+
+Commit: 6e5a4c10da270fe6ff16da6667b631568a3f7bf4
+No refactorings found.
+
+Commit: c6eeca0f08223c7b166b2e86a9356e34bfa334a1
+No refactorings found.
+
+Commit: b03452946cea956e010aaf4dc64e0762ace5557a
+No refactorings found.
+
+Commit: b11b3c71b5d7e663a036018c0cb8d470bbf9b29f
+No refactorings found.
+
+Commit: 44f8553a0044e735ded62b30e7a0871f1529669e
+No refactorings found.
+
+Commit: fc4cef42f1ea6b724e6fda7853b86d78b2d5d45d
+No refactorings found.
+
+Commit: c9af3bce35731b3a9d1b3db7e87262efeaccd5c7
+No refactorings found.
+
+Commit: 0dba49dd00ec999047f6497c5a26936bd6e52621
+CHANGE_SIGNATURE	{function_definition evaluateRelations($attribute) at src/Illuminate/Database/Eloquent/Factories/Factory.php:508 LOC:12}	{function_definition evaluateRelations($attribute, $key) at src/Illuminate/Database/Eloquent/Factories/Factory.php:518 LOC:15})
+CHANGE_SIGNATURE	{method_declaration __construct($count, $states, $has, $for, $afterMaking, $afterCreating, $connection, $recycle, $expandRelationships) at src/Illuminate/Database/Eloquent/Factories/Factory.php:156 LOC:22}	{method_declaration __construct($count, $states, $has, $for, $afterMaking, $afterCreating, $connection, $recycle, $expandRelationships, $excludeRelationships) at src/Illuminate/Database/Eloquent/Factories/Factory.php:164 LOC:24})
+CHANGE_SIGNATURE	{method_declaration withoutParents() at src/Illuminate/Database/Eloquent/Factories/Factory.php:779 LOC:4}	{method_declaration withoutParents($parents) at src/Illuminate/Database/Eloquent/Factories/Factory.php:793 LOC:4})
+
+Commit: d70e372dbd6a33b414b7558f66bc403bc6597063
+No refactorings found.
+
+Commit: c01b73da062ed7943ad9c3a0f5d63e8218348156
+No refactorings found.
+
+Commit: f24396e170ba2a11db49793622fd7731f2c2f933
+No refactorings found.
+
+Commit: c24122b37c1166218737a3e734385d094fe020a4
+No refactorings found.
+
+Commit: e28bab40646d558452e501e30b92b91795effcdc
+No refactorings found.
+
+Commit: b4021b40c864852110a2ddd6d4e86c1bcac2b6ef
+No refactorings found.
+
+Commit: 7b18a6916661746a247e371c370a34b50cc9c58d
+No refactorings found.
+
+Commit: faf54bd45d2e6c27c841875ab6d313f00b3dda92
+No refactorings found.
+
+Commit: 8e2d2866f6e75d8abc3e1b322657da2f5e21b24a
+No refactorings found.
+
+Commit: dae3bb37eb3910f23d502b7fb2f2bd6ecf7163e1
+No refactorings found.
+
+Commit: ad1d5e316b08407b3b5633db4e48d027e90b131c
+No refactorings found.
+
+Commit: 767f9b71918c2b33c64fcb507e7947b76be53165
+No refactorings found.
+
+Commit: f9e89bb5424617edd4c9491399b920b353eaba93
+EXTRACT_MOVE	{method_declaration causedByConcurrencyError($e) at src/Illuminate/Database/DetectsConcurrencyErrors.php:17 LOC:20}	{method_declaration causedByConcurrencyError($e) at src/Illuminate/Database/ConcurrencyErrorDetector.php:18 LOC:20})
+EXTRACT_MOVE	{method_declaration causedByLostConnection($e) at src/Illuminate/Database/DetectsLostConnections.php:16 LOC:71}	{method_declaration causedByLostConnection($e) at src/Illuminate/Database/LostConnectionDetector.php:17 LOC:71})
+
+Commit: 146a2b8f8792e0b5965204a7e55434e3ecbec2e2
+No refactorings found.
+
+Commit: 3acc32dad6c281a689329e98610808480852e328
+No refactorings found.
+
+Commit: 2f073ec2616b33acd5c953d12eb0a6e8f6a59850
+No refactorings found.
+
+Commit: 1972c95f455bcadd2e59f8543eb3cad27365263f
+No refactorings found.
+
+Commit: 983c5f158cccb52341c0475102441974f0f58873
+No refactorings found.
+
+Commit: a3267a351d0c59029c6ebe82c236a5ca1473f50c
+CHANGE_SIGNATURE	{method_declaration validateInteger($attribute, $value) at src/Illuminate/Validation/Concerns/ValidatesAttributes.php:1559 LOC:4}	{method_declaration validateInteger($attribute, $value, $parameters) at src/Illuminate/Validation/Concerns/ValidatesAttributes.php:1560 LOC:8})
+
+Commit: fc6e0c69d5e2c5f6f0b65bfddc5713c48b8f5232
+No refactorings found.
+
+Commit: 3a58c24f59201ddfd38702e80251a0e282991490
+No refactorings found.
+
+Commit: f7ab41418251c40d349edf58e7c34f2beccf5b75
+No refactorings found.
+
+Commit: 7617d3700ce2f45c382e4362ff7ccbefcda307d0
+No refactorings found.
+
+Commit: 3aaba977189b3de32170dfa5b14943ab9933250f
+No refactorings found.
+
+Commit: 9bab5633d67004ce4d331e9dd6b5f1e261e2c613
+No refactorings found.
+
+Commit: 9b65208154cd84a8a0d264c4c16da086e7ee4de5
+No refactorings found.
+
+Commit: 95d6542f47a54942233e369fe1bd176c71ae0662
+No refactorings found.
+
+Commit: ad138584ef0bceaf6ccd8e3e27d66bb339438562
+No refactorings found.
+
+Commit: 2476f3c121be12161365b9724d9ecd4e35dd61ee
+No refactorings found.
+
+Commit: 477b70381c1bf6bbc498dadbd8b0ec3950574b09
+No refactorings found.
+
+Commit: db875da4d51d2e8336dee9f6d7477eac2ec97543
+No refactorings found.
+
+Commit: 673477f618aa0f52cea6d8b89bf8c13d757d3997
+No refactorings found.
+
+Commit: af181f00beed6e2c81127d47cc1eb6de0c6068f0
+No refactorings found.
+
+Commit: 3da600566143b8ffd856e52b21312d66ac13c0b5
+No refactorings found.
+
+Commit: 2a62e88e30985c935a88a0235f39a49263e631bc
+No refactorings found.
+
+Commit: 2bc2b7e59706f7155a87509a7ee4fbe892624735
+No refactorings found.
+
+Commit: b4cba0adce7ab3496ee5cddcd2bd2b1c602daeeb
+No refactorings found.
+
+Commit: 29426d401712936a89e472307dfb6a4eae5cdaef
+No refactorings found.
+
+Commit: a182063ecc4db001173d8c8c430d32c14c613658
+No refactorings found.
+
+Commit: c890a83f6981e9a6753e4209e9b267c0b52a25e0
+CHANGE_SIGNATURE	{method_declaration isUrl() at src/Illuminate/Support/Stringable.php:387 LOC:4}	{method_declaration isUrl($protocols) at src/Illuminate/Support/Stringable.php:388 LOC:4})
+CHANGE_SIGNATURE	{method_declaration isUuid() at src/Illuminate/Support/Stringable.php:397 LOC:4}	{method_declaration isUuid($version) at src/Illuminate/Support/Stringable.php:399 LOC:4})
+
+Commit: 1618e437aa5f54e2f3429ac55f909446d7207593
+No refactorings found.
+
+Commit: 86cc48ec5c6c8a953a66e7f5b1dd5a12b5ff66ea
+No refactorings found.
+
+Commit: d5b1e5fca50d25c1d4dc463eb93068c39593aa3a
+No refactorings found.
+
+Commit: 113f194b166cb40b2756dce33a23b9b072ee4499
+No refactorings found.
+
+Commit: 888d3afad0276090bac81d7e9cb283d5e9183b22
+No refactorings found.
+
+Commit: e4e5258d214d754eee32446be92a53b0232642a7
+No refactorings found.
+
+Commit: 43af1f4ebfa6aa5284447a03aca7e87cf29c80bc
+No refactorings found.
+
+Commit: 31a437bdfaf8a50ad93148f930a6766caf460707
+No refactorings found.
+
+Commit: b39a756d8ed310c1bf00c1eb2ff528d6a810c4aa
+No refactorings found.
+
+Commit: 7ce337e48fb32b53df844af0c7390d87b5c4e47c
+No refactorings found.
+
+Commit: c781ff13c376f71bf033ea64fa0bb66b7a66bf28
+No refactorings found.
+
+Commit: 6eec0d970537a4e0cf58ba9ca6fb67b164e8757a
+No refactorings found.
+
+Commit: f00eaa29c97d996dea5e995e28b546d1618f0aed
+No refactorings found.
+
+Commit: 0bfa0798686206ba764b6a495807360267bfc8a7
+No refactorings found.
+
+Commit: df3343eca3740e1ba9a97e6ee7e04161b9a85c7c
+No refactorings found.
+
+Commit: b59cb3b819c4e604ab6f40583cad4acde92a4635
+No refactorings found.
+
+Commit: 090a083d3e428af7b8ae3263f714e5522642b87c
+No refactorings found.
+
+Commit: 9d9130c334a88cc3b4c3ad01821fd16a2ef2f6e9
+No refactorings found.
+
+Commit: 9bc12a3455f3fbc32ad16f704522371117b8a793
+No refactorings found.
+
+Commit: ad8952d7d0254989d8a4a5b3fc47b9a1298fbca9
+No refactorings found.
+
+Commit: 2c346cea79c919275146944ed60b3d91990c2f43
+No refactorings found.
+
+Commit: 382af9552ae7c2a6dc12b6cab5856d90238e8f22
+No refactorings found.
+
+Commit: 9eded7ec6db123136e0b5b3458a6ea55627e1a94
+No refactorings found.
+
+Commit: 630156fee6d8829917c9cca8c80af5f471ed43c1
+No refactorings found.
+
+Commit: 9d4245b90bd51f77062b22107ddd80e32ade0a06
+No refactorings found.
+
+Commit: ec3da530b1b9f2e12c64461bb1d0065ee243272b
+No refactorings found.
+
+Commit: d41f408ff1fde6b20c3a91e41ab9955e2fd52dff
+No refactorings found.
+
+Commit: a72bd3ba14a06fa9717674d99acc1c123eba3353
+No refactorings found.
+
+Commit: f753abd6950487f819be6671e4f4c0d70a6fa116
+No refactorings found.
+
+Commit: f748796e1387fa43558a6f29ba091f17618833e8
+No refactorings found.
+
+Commit: 7c6bed286f6e15a7a56505f29192f9a2a568e181
+No refactorings found.
+
+Commit: 5d777bd4e11e80a71bced6b034f918f086f18527
+No refactorings found.
+
+Commit: 9a8c66a7a48b845c4119084360b263df6ccc5c2b
+No refactorings found.
+
+Commit: ac8c4e73bf1b5387b709f7736d41427e6af1c93b
+No refactorings found.
+
+Commit: 86f146dbda5635e66d70bef7913f6851f63057f7
+No refactorings found.
+
+Commit: ef418368d0debee6213bf14c70211454200d6318
+No refactorings found.
+
+Commit: 0b23fc28a3f952727fc5ba884b478ab9e847d005
+No refactorings found.
+
+Commit: 7c908946961f2a86e0af7db13d964003b325c157
+No refactorings found.
+
+Commit: 89207fbc63ad7da359d9eba52aa110c033c36c2b
+No refactorings found.
+
+Commit: 33195689a3e3c02de937094c8f6a2108dfe5a1e6
+No refactorings found.
+
+Commit: c82b43b757c608c0afc1b549aa802b12cc847f7c
+No refactorings found.
+
+Commit: 816ffa5e3f11453b6dcfcdf627206523de74aff9
+No refactorings found.
+
+Commit: 488cbf584ae742b7bd9eb01842e4f6d1a373d7e5
+No refactorings found.
+
+Commit: 9499a6c06db67137b1d8a1d1e274f713607c61a3
+No refactorings found.
+
+Commit: 58ea471be2e014cd10a6d8aa9d58ede592dbb582
+No refactorings found.
+
+Commit: 6b11d5f236a3ab0195b0c7e3fd5f2bb8a9c66a13
+No refactorings found.
+
+Commit: 2fd6f3cc477034ed9e2a111602b2070d0a2be8e4
+No refactorings found.
+
+Commit: 20dcabd5b96d30ad28223e15137cd23124aeb9b5
+No refactorings found.
+
+Commit: 347cc4aa36cf4e958a3f0a0b2600e36e2478b937
+No refactorings found.
+
+Commit: 1784f2e64b1df3989ccb092daa923c05d23f6227
+CHANGE_SIGNATURE	{method_declaration spatialIndex($columns, $name) at src/Illuminate/Database/Schema/Blueprint.php:689 LOC:4}	{method_declaration spatialIndex($columns, $name, $operatorClass) at src/Illuminate/Database/Schema/Blueprint.php:690 LOC:4})
+CHANGE_SIGNATURE	{method_declaration indexCommand($type, $columns, $index, $algorithm) at src/Illuminate/Database/Schema/Blueprint.php:1652 LOC:13}	{method_declaration indexCommand($type, $columns, $index, $algorithm, $operatorClass) at src/Illuminate/Database/Schema/Blueprint.php:1654 LOC:13})
+
+Commit: 2f70782dea855e17941c282cd9c49857f0591123
+No refactorings found.
+
+Commit: f866540a592cf6905ec4e74b90cc650754b57f8f
+No refactorings found.
+
+Commit: 2c682e4eb531eae6439579f25d29429ecc0a66ca
+No refactorings found.
+
+Commit: 59b1dfff74f2df0e70ae954a66e5a32217b00cb9
+No refactorings found.
+
+Commit: 5064292e46e55650ad820923b623f97082aaec64
+CHANGE_SIGNATURE	{method_declaration validateBoolean($attribute, $value) at src/Illuminate/Validation/Concerns/ValidatesAttributes.php:491 LOC:6}	{method_declaration validateBoolean($attribute, $value, $parameters) at src/Illuminate/Validation/Concerns/ValidatesAttributes.php:492 LOC:10})
+
+Commit: 2784ca1100c3c61fe4bc355757e83a3d74ced446
+No refactorings found.
+
+Commit: 21f12d8d238e66178f3d9b41447a5b2d54e7ffc3
+No refactorings found.
+
+Commit: 03469f27b3a402211e8dca5b1a0a3b32141e9a3c
+No refactorings found.
+
+Commit: b7510a135f1fbdd76eccf5059ed38a029406b0e3
+No refactorings found.
+
+Commit: 84612f0d1f44a158fb81e0350956afb7633bbabb
+No refactorings found.
+
+Commit: c640bd2369b2da31dddda9633ec4e2ad887e910b
+No refactorings found.
+
+Commit: 4135a808f843ed653421011b7432cd804f7cb26f
+No refactorings found.
+
+Commit: 0d1887e79681e5326bb3e327225c9697097c57e5
+No refactorings found.
+
+Commit: afa42148dacd59073ca8b1a471e66a4a5266c202
+No refactorings found.
+
+Commit: b108609adfd596a53982dc5c3951a265e2be8a44
+No refactorings found.
+
+Commit: 734a450ad8b155f2856cd9571a479d0d9a7f9ce3
+No refactorings found.
+
+Commit: 04e60d7aaeff539659f463d325ea558bc83988fe
+No refactorings found.
+
+Commit: 37a2bc62ffd27d595ab1a5e81d1e5cfb6dc51dd0
+No refactorings found.
+
+Commit: 5191d63d1241538459e33f0fc8d942b3f9b4f85c
+No refactorings found.
+
+Commit: fac2d778f5f3c899cbcf8890011f7cd0727568bf
+No refactorings found.
+

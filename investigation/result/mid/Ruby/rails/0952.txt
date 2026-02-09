@@ -1,0 +1,268 @@
+Commit: 02ad9146a3800ce2aecce801df8a6b46f685771a
+EXTRACT	{Method extract_domain_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:98 LOC:3}	{Method domain_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:64 LOC:3})
+EXTRACT	{Method extract_subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:102 LOC:4}	{Method subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:104 LOC:4})
+EXTRACT_MOVE	{Method extract_subdomains_from(host, tld_length) at actionpack/lib/action_dispatch/http/url.rb:102 LOC:4}	{Method subdomains_from(_, _) at actionpack/test/dispatch/request_test.rb:344 LOC:3})
+
+Commit: d5bab2864e7a56a2611d920919d87713c4ea1646
+No refactorings found.
+
+Commit: 5601888cb9841c6e072fccfcfc46a87bf19942b2
+No refactorings found.
+
+Commit: 7aad0e1b88acdeadcb95b35b707269dd7e61b289
+No refactorings found.
+
+Commit: 1084b228c3c3ad92e2f6a55a6d79741612b32981
+EXTRACT	{Method depend_on_bootsnap?() at railties/lib/rails/generators/app_base.rb:663 LOC:3}	{Method jruby?() at railties/lib/rails/generators/app_base.rb:749 LOC:3})
+
+Commit: 257da8935b1b99e9bbbea80c7d3a305a8a7c1b6c
+No refactorings found.
+
+Commit: 97a4d4f919761a2df7a060576baa2d93c7cba4c7
+No refactorings found.
+
+Commit: f4ec7e88989ab205a967a8647253851a23ebd712
+No refactorings found.
+
+Commit: c8915d211e3cef2ee62a5857fadcff08f745a8b3
+No refactorings found.
+
+Commit: 9fc0effe5a504456d9cdb98524549bdaba67e236
+No refactorings found.
+
+Commit: 5ca72237e0003ccaa7e480082fbbedb6c0d77e25
+EXTRACT_MOVE	{Method test_db_retrieves_collation() at activerecord/test/cases/adapters/sqlite3/sqlite_rake_test.rb:159 LOC:5}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+MOVE	{Method check_current_protected_environment!(db_config) at activerecord/lib/active_record/tasks/database_tasks.rb:643 LOC:16}	{Method check_current_protected_environment!(db_config, migration_class) at activerecord/lib/active_record/tasks/abstract_tasks.rb:23 LOC:16})
+MOVE	{Method initialize(db_config) at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:10 LOC:4}	{Method initialize(db_config) at activerecord/lib/active_record/tasks/abstract_tasks.rb:10 LOC:4})
+EXTRACT_MOVE	{Method collation() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:245 LOC:1}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method collation() at activerecord/test/cases/tasks/database_tasks_test.rb:19 LOC:1}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method setup() at activerecord/test/cases/tasks/database_tasks_test.rb:10 LOC:19}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method test_recreates_database_with_the_given_options() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:204 LOC:12}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method collation(configuration, *arguments) at activerecord/lib/active_record/tasks/database_tasks.rb:342 LOC:4}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+MOVE	{Method using_database_configurations?() at activerecord/lib/active_record/tasks/sqlite_database_tasks.rb:6 LOC:3}	{Method using_database_configurations?() at activerecord/lib/active_record/tasks/abstract_tasks.rb:6 LOC:3})
+MOVE	{Method run_cmd_error(cmd, args) at activerecord/lib/active_record/tasks/sqlite_database_tasks.rb:81 LOC:6}	{Method run_cmd_error(cmd, args) at activerecord/lib/active_record/tasks/abstract_tasks.rb:59 LOC:6})
+MOVE	{Method establish_connection(config) at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:75 LOC:3}	{Method establish_connection(config) at activerecord/lib/active_record/tasks/abstract_tasks.rb:47 LOC:3})
+EXTRACT_MOVE	{Method test_db_retrieves_collation() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:252 LOC:7}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+CHANGE_SIGNATURE	{Method run_cmd(cmd, args, action) at activerecord/lib/active_record/tasks/postgresql_database_tasks.rb:120 LOC:3}	{Method run_cmd(cmd, *args, **opts) at activerecord/lib/active_record/tasks/postgresql_database_tasks.rb:93 LOC:3})
+EXTRACT_MOVE	{Method test_creates_database_with_given_collation() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:57 LOC:11}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method collation() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:245 LOC:1}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method test_db_retrieves_collation() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:252 LOC:7}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method test_creates_database_with_given_collation() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:57 LOC:11}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method setup() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:244 LOC:7}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+MOVE	{Method run_cmd(cmd, args, action) at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:109 LOC:3}	{Method run_cmd(cmd, *args, **opts) at activerecord/lib/active_record/tasks/abstract_tasks.rb:55 LOC:3})
+EXTRACT_MOVE	{Method test_recreates_database_with_the_given_options() at activerecord/test/cases/adapters/trilogy/trilogy_rake_test.rb:204 LOC:12}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method collation_current(env_name, db_name) at activerecord/lib/active_record/tasks/database_tasks.rb:337 LOC:4}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+EXTRACT_MOVE	{Method setup() at activerecord/test/cases/adapters/mysql2/mysql2_rake_test.rb:244 LOC:7}	{Method collation() at activerecord/lib/active_record/tasks/abstract_tasks.rb:19 LOC:3})
+MOVE	{Method configuration_hash_without_database() at activerecord/lib/active_record/tasks/mysql_database_tasks.rb:79 LOC:3}	{Method configuration_hash_without_database() at activerecord/lib/active_record/tasks/abstract_tasks.rb:51 LOC:3})
+
+Commit: 93f3793b472248cba5125a493383b1dec6516ac5
+No refactorings found.
+
+Commit: 6e95f09b2eb4b9814d6001ceb3d245a067707350
+No refactorings found.
+
+Commit: ee807837d4f1ca177e78c152909fda96042e80dc
+No refactorings found.
+
+Commit: 17a2ca0f87395830f1e3d46e45f1d873020f03af
+No refactorings found.
+
+Commit: 8a3aae538dedbd226b9d4420bd9e71dbf0a7eac4
+No refactorings found.
+
+Commit: 85ebf8bb59266a3701ec7932215875ed546ad3fb
+No refactorings found.
+
+Commit: 6415dbbf48b31102171b0b7bc2b8820426a159bf
+No refactorings found.
+
+Commit: bd573b02494d56e5586ccee27aa7a4129024dd4a
+No refactorings found.
+
+Commit: e5bfdf8766e927918f1560f12a62e69e3ff0b995
+No refactorings found.
+
+Commit: db27b67bb9ae8194bdb38559cac194707086de87
+CHANGE_SIGNATURE	{Method initialize(str) at activesupport/lib/active_support/core_ext/string/output_safety.rb:70 LOC:4}	{Method initialize(_str) at activesupport/lib/active_support/core_ext/string/output_safety.rb:70 LOC:3})
+
+Commit: 8641f7f46a80c7843f65d5f589e4469b5c7fd4cd
+No refactorings found.
+
+Commit: 1bf7b671150ceaa544f32f5ea1480090d84025c6
+No refactorings found.
+
+Commit: a1bfeee2cb5cdf3fb2345e2f33cb12fc57031773
+No refactorings found.
+
+Commit: 559d00fd49e6456d0c112ce8854d6f3481dec124
+No refactorings found.
+
+Commit: e841859e7b9f781c6dc5e29c73c18c6dd229c8d5
+No refactorings found.
+
+Commit: af42a4443c2e2018f58022464aaf308cb4d36af1
+No refactorings found.
+
+Commit: b95e35e76cd61a2e83e723d53d4ce2733ac4d1f7
+No refactorings found.
+
+Commit: c3727ec6ac8e047bfac558c890f4e838c5b1f7b8
+No refactorings found.
+
+Commit: 5488eb05d9f178db4030a65b86d49f4adaafbb20
+No refactorings found.
+
+Commit: 65b7e136cffc2b0c1ae309c9ce75f3bc3549a735
+No refactorings found.
+
+Commit: b22fd5a519f92e5c51c62e3b74b4407e492b89e2
+No refactorings found.
+
+Commit: 1419ca5ea21b077ddab805e86d67d4484c9b8132
+CHANGE_SIGNATURE	{Method update_column(name, value) at activerecord/lib/active_record/persistence.rb:585 LOC:3}	{Method update_column(name, value, touch) at activerecord/lib/active_record/persistence.rb:585 LOC:3})
+
+Commit: 8fad423815bbc82f0031c08ed4abe8852fb9416b
+No refactorings found.
+
+Commit: 6f751f00c48cbfdb01691b10a7c6eb9c73d8087f
+No refactorings found.
+
+Commit: 596dcfededb620027b643ea25b9df89c54528354
+No refactorings found.
+
+Commit: 936c11e0c60ea1f98476c164edc4e37f8a58cbba
+RENAME	{Method test_paths_with_partial_dynamic_segments_are_recognised() at actionpack/test/dispatch/routing_test.rb:5207 LOC:9}	{Method test_paths_with_partial_dynamic_segments_are_recognized() at actionpack/test/dispatch/routing_test.rb:5207 LOC:9})
+RENAME	{Method test_paths_with_partial_dynamic_segments_are_recognised() at actionpack/test/dispatch/routing_test.rb:5066 LOC:33}	{Method test_paths_with_partial_dynamic_segments_are_recognized() at actionpack/test/dispatch/routing_test.rb:5066 LOC:33})
+RENAME	{Method test_recognises_inverse_polymorphic_association_changes_with_same_foreign_key() at activerecord/test/cases/autosave_association_test.rb:1805 LOC:20}	{Method test_recognizes_inverse_polymorphic_association_changes_with_same_foreign_key() at activerecord/test/cases/autosave_association_test.rb:1805 LOC:20})
+RENAME	{Method test_optimised_named_route_with_host() at actionpack/test/controller/routing_test.rb:498 LOC:7}	{Method test_optimized_named_route_with_host() at actionpack/test/controller/routing_test.rb:498 LOC:7})
+
+Commit: 343b609fb8c95381e86c6714e82132c023613ffd
+No refactorings found.
+
+Commit: c097bf6c24443323da8fe64030dd963951121dea
+No refactorings found.
+
+Commit: 48a4dc6a9552b8f44fcd9b78b7b4db1e249af0d8
+No refactorings found.
+
+Commit: 74a8c46cfa2c6bc828583e232fcdcb0564fd8672
+No refactorings found.
+
+Commit: 17ecda0f06a22ccd8c92a77c6de0aba99b4b9cbf
+No refactorings found.
+
+Commit: c2e252706a62a37211d3641572e803688120e69c
+No refactorings found.
+
+Commit: 5c87b05b09e6c0e7ee7a9b7b8a4fce530b035c25
+No refactorings found.
+
+Commit: 6daec772c7c6c86711b84b36322d126e1a16c8d8
+No refactorings found.
+
+Commit: 3fc9be93b5302c276ec178365aa3af7006a6f248
+No refactorings found.
+
+Commit: a6a4790d950eb44d9bbe39c0cf822892b5c875ff
+No refactorings found.
+
+Commit: c87bd82ba11a3b2593809021eb0d30bdad2f208c
+No refactorings found.
+
+Commit: 4621f7131d2afce2828dc498530adebc229bb743
+No refactorings found.
+
+Commit: 78d6ff69c54fd84fd076622b16f35faa7a5c11b0
+No refactorings found.
+
+Commit: 7b96382519b8bdd0156ab63c849728e38039293b
+No refactorings found.
+
+Commit: 9496e0067222351d5618973b550451fcdc4a9edf
+No refactorings found.
+
+Commit: 71a41f82b8ebc10eab5dd84f2f3db166d253242f
+No refactorings found.
+
+Commit: b6963db965aa10ef9d63002f3a752cfcb20f0203
+No refactorings found.
+
+Commit: 6d4aa29e3c724a69362d619b7993992b0c21ba71
+No refactorings found.
+
+Commit: fbd6755e4bee1fc811ca895d220b69258dfb4c76
+No refactorings found.
+
+Commit: c2c7e20a28db867f2ed478def48109c0b1235b7d
+CHANGE_SIGNATURE	{Method try!(*) at activesupport/lib/active_support/core_ext/object/try.rb:155 LOC:3}	{Method try!(*, &) at activesupport/lib/active_support/core_ext/object/try.rb:155 LOC:3})
+CHANGE_SIGNATURE	{Method try(*) at activesupport/lib/active_support/core_ext/object/try.rb:148 LOC:3}	{Method try(*, &) at activesupport/lib/active_support/core_ext/object/try.rb:148 LOC:3})
+
+Commit: 1a6d67b51f55dabf44c9751f868987c06be13e1b
+No refactorings found.
+
+Commit: 489e08d75767d7394e2124eb60f76f18ac69728c
+No refactorings found.
+
+Commit: c8e485651fedc093ab150b7fd43cbeed3ed59549
+No refactorings found.
+
+Commit: 228e954bb375b05dc43c04593875034d6130ab07
+No refactorings found.
+
+Commit: f7d6e480332f85aa74bdb0f8ece7bec2581e2224
+No refactorings found.
+
+Commit: ac7bd334725f673d3356ff8b103b6f19c32abe45
+No refactorings found.
+
+Commit: 5c456627237559596334c2c7d1d7585ba5fff147
+No refactorings found.
+
+Commit: 90068225c07136f1fee56cf0a1ebb7829d98fbd2
+No refactorings found.
+
+Commit: 9a14fb110d937a99d126e003cb60b8624f877846
+No refactorings found.
+
+Commit: d43dc9af18766f91eb450e1c6b8c8c5e64f925e6
+INLINE	{Method store() at activesupport/lib/active_support/execution_context.rb:48 LOC:3}	{Method clear() at activesupport/lib/active_support/execution_context.rb:96 LOC:3})
+
+Commit: 1b4484c43f32a42824d3de32e22029207f76bc42
+CHANGE_SIGNATURE	{Method step(name, start, &block) at activejob/lib/active_job/continuation.rb:209 LOC:10}	{Method step(name, **options, &block) at activejob/lib/active_job/continuation.rb:225 LOC:10})
+CHANGE_SIGNATURE	{Method interrupt!() at activejob/lib/active_job/continuable.rb:95 LOC:4}	{Method interrupt!(reason) at activejob/lib/active_job/continuable.rb:66 LOC:4})
+RENAME	{Method run_step(name, start, &block) at activejob/lib/active_job/continuation.rb:270 LOC:15}	{Method run_step_inline(name, start, **options, &block) at activejob/lib/active_job/continuation.rb:300 LOC:15})
+CHANGE_SIGNATURE	{Method step(step_name, start, &block) at activejob/lib/active_job/continuable.rb:36 LOC:15}	{Method step(step_name, start, isolated, &block) at activejob/lib/active_job/continuable.rb:36 LOC:15})
+
+Commit: fa2b2b1b310676955215115e987a4a974ef796e7
+No refactorings found.
+
+Commit: dc2384d5dd3a1798ff0e8485b32665a074211bb4
+No refactorings found.
+
+Commit: 7b680f8ed3eb038a323890a44bbc5b4276394f28
+No refactorings found.
+
+Commit: a0ea187d777ac4423f7b0e4ba641acd6175f01e5
+No refactorings found.
+
+Commit: d5a3063ab9549a6da5b2af4f36b2d9cd1c98e516
+No refactorings found.
+
+Commit: c8f71d5830e3c6b8ca57291f92cbef2de3c811bf
+No refactorings found.
+
+Commit: 2fe62541b1590be55ec262e9e08dcfcd3ed46cb7
+No refactorings found.
+
+Commit: bf6cd8f2290dc48d77f5223555a7706bcd76e1c4
+EXTRACT	{Method dockerfile_bun_version() at railties/lib/rails/generators/app_base.rb:556 LOC:9}	{Method capture_command(command, pattern) at railties/lib/rails/generators/app_base.rb:532 LOC:5})
+EXTRACT	{Method dockerfile_yarn_version() at railties/lib/rails/generators/app_base.rb:542 LOC:9}	{Method capture_command(command, pattern) at railties/lib/rails/generators/app_base.rb:532 LOC:5})
+
+Commit: be7f922d7d5c1a1057180c4d17b3b8950602ee5f
+No refactorings found.
+
+Commit: ea66b1c750fd2984167382039d77802930865712
+EXTRACT_MOVE	{Method query_source_location() at activerecord/lib/active_record/log_subscriber.rb:129 LOC:7}	{Method first_clean_frame(kind) at activesupport/lib/active_support/backtrace_cleaner.rb:95 LOC:6})
+EXTRACT_MOVE	{Method query_source_location() at activerecord/lib/active_record/query_logs.rb:155 LOC:7}	{Method first_clean_frame(kind) at activesupport/lib/active_support/backtrace_cleaner.rb:95 LOC:6})
+EXTRACT_MOVE	{Method enqueue_source_location() at activejob/lib/active_job/log_subscriber.rb:258 LOC:7}	{Method first_clean_frame(kind) at activesupport/lib/active_support/backtrace_cleaner.rb:95 LOC:6})
+

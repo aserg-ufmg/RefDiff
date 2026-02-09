@@ -1,0 +1,10 @@
+/bin/
+/build/
+/.gradle/
+/.settings/
+.classpath
+.project
+
+repo/
+
+*.csv

@@ -1,0 +1,29 @@
+{"_type": "tag", "name": "function_no_args_no_return", "path": "func2.c", "pattern": "/^void function_no_args_no_return(void);$/", "file": true, "line": 15, "typeref": "typename:void", "kind": "prototype"}
+{"_type": "tag", "name": "function_with_args_no_return", "path": "func2.c", "pattern": "/^void function_with_args_no_return(int a, int b);$/", "file": true, "line": 16, "typeref": "typename:void", "kind": "prototype"}
+{"_type": "tag", "name": "add", "path": "func2.c", "pattern": "/^int add(int a, int b);$/", "file": true, "line": 17, "typeref": "typename:int", "kind": "prototype"}
+{"_type": "tag", "name": "old_style_add", "path": "func2.c", "pattern": "/^int old_style_add(int a, int b);$/", "file": true, "line": 20, "typeref": "typename:int", "kind": "prototype"}
+{"_type": "tag", "name": "internal_function", "path": "func2.c", "pattern": "/^static void internal_function(void);$/", "file": true, "line": 23, "typeref": "typename:void", "kind": "prototype"}
+{"_type": "tag", "name": "multiply", "path": "func2.c", "pattern": "/^inline int multiply(int a, int b);$/", "file": true, "line": 24, "typeref": "typename:int", "kind": "prototype"}
+{"_type": "tag", "name": "increment", "path": "func2.c", "pattern": "/^void increment(int* num_ptr);$/", "file": true, "line": 27, "typeref": "typename:void", "kind": "prototype"}
+{"_type": "tag", "name": "get_global_variable_address", "path": "func2.c", "pattern": "/^int* get_global_variable_address(void);$/", "file": true, "line": 28, "typeref": "typename:int *", "kind": "prototype"}
+{"_type": "tag", "name": "create_person", "path": "func2.c", "pattern": "/^Person create_person(const char* name, int age);$/", "file": true, "line": 35, "typeref": "typename:Person", "kind": "prototype"}
+{"_type": "tag", "name": "celebrate_birthday", "path": "func2.c", "pattern": "/^void celebrate_birthday(Person* p);$/", "file": true, "line": 36, "typeref": "typename:void", "kind": "prototype"}
+{"_type": "tag", "name": "perform_calc", "path": "func2.c", "pattern": "/^void perform_calc(int a, int b, ArithmeticOperation func);$/", "file": true, "line": 40, "typeref": "typename:void", "kind": "prototype"}
+{"_type": "tag", "name": "subtract", "path": "func2.c", "pattern": "/^int subtract(int a, int b);$/", "file": true, "line": 41, "typeref": "typename:int", "kind": "prototype"}
+{"_type": "tag", "name": "factorial", "path": "func2.c", "pattern": "/^int factorial(int n);$/", "file": true, "line": 44, "typeref": "typename:int", "kind": "prototype"}
+{"_type": "tag", "name": "sum_all", "path": "func2.c", "pattern": "/^int sum_all(int count, ...);$/", "file": true, "line": 47, "typeref": "typename:int", "kind": "prototype"}
+{"_type": "tag", "name": "main", "path": "func2.c", "pattern": "/^int main() {$/", "line": 55, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "function_no_args_no_return", "path": "func2.c", "pattern": "/^void function_no_args_no_return(void) {$/", "line": 133, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "function_with_args_no_return", "path": "func2.c", "pattern": "/^void function_with_args_no_return(int a, int b) {$/", "line": 137, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "add", "path": "func2.c", "pattern": "/^int add(int a, int b) { return a + b; }$/", "line": 141, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "old_style_add", "path": "func2.c", "pattern": "/^int old_style_add(a, b)$/", "line": 149, "kind": "function"}
+{"_type": "tag", "name": "internal_function", "path": "func2.c", "pattern": "/^static void internal_function(void) {$/", "file": true, "line": 163, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "multiply", "path": "func2.c", "pattern": "/^inline int multiply(int a, int b) { return a * b; }$/", "line": 168, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "increment", "path": "func2.c", "pattern": "/^void increment(int* num_ptr) {$/", "line": 177, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "get_global_variable_address", "path": "func2.c", "pattern": "/^int* get_global_variable_address(void) { return &global_variable; }$/", "line": 183, "typeref": "typename:int *", "kind": "function"}
+{"_type": "tag", "name": "create_person", "path": "func2.c", "pattern": "/^Person create_person(const char* name, int age) {$/", "line": 192, "typeref": "typename:Person", "kind": "function"}
+{"_type": "tag", "name": "celebrate_birthday", "path": "func2.c", "pattern": "/^void celebrate_birthday(Person* p) {$/", "line": 199, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "subtract", "path": "func2.c", "pattern": "/^int subtract(int a, int b) { return a - b; }$/", "line": 210, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "perform_calc", "path": "func2.c", "pattern": "/^void perform_calc(int a, int b, ArithmeticOperation func) {$/", "line": 213, "typeref": "typename:void", "kind": "function"}
+{"_type": "tag", "name": "factorial", "path": "func2.c", "pattern": "/^int factorial(int n) {$/", "line": 225, "typeref": "typename:int", "kind": "function"}
+{"_type": "tag", "name": "sum_all", "path": "func2.c", "pattern": "/^int sum_all(int count, ...) {$/", "line": 239, "typeref": "typename:int", "kind": "function"}

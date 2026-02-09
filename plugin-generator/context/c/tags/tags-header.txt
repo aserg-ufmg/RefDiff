@@ -1,0 +1,18 @@
+basic_func_no_args_no_return	header.h	/^void basic_func_no_args_no_return(void);$/;"	p	line:26	typeref:typename:void
+basic_func_with_args	header.h	/^void basic_func_with_args(int id, const char* name);$/;"	p	line:29	typeref:typename:void
+basic_func_no_args_with_return	header.h	/^int basic_func_no_args_with_return(void);$/;"	p	line:32	typeref:typename:int
+basic_func_with_args_and_return	header.h	/^char* basic_func_with_args_and_return(int buffer_size);$/;"	p	line:35	typeref:typename:char *
+pointer_arg_func	header.h	/^void pointer_arg_func(int* output_value);$/;"	p	line:43	typeref:typename:void
+pointer_return_func	header.h	/^double* pointer_return_func(void);$/;"	p	line:46	typeref:typename:double *
+callback_func	header.h	/^void callback_func(void (*on_complete)(int status));$/;"	p	line:50	typeref:typename:void
+get_arithmetic_operation	header.h	/^int (*get_arithmetic_operation(char operator))(int, int);$/;"	p	line:54	typeref:typename:int (*)(int,int)
+const_arg_func	header.h	/^void const_arg_func(const char* message);$/;"	p	line:63	typeref:typename:void
+const_return_func	header.h	/^const char* const_return_func(void);$/;"	p	line:66	typeref:typename:const char *
+volatile_func	header.h	/^void volatile_func(volatile int* hardware_register);$/;"	p	line:69	typeref:typename:void
+restrict_func	header.h	/^void restrict_func(char* restrict dest, const char* restrict src, size_t n);$/;"	p	line:73	typeref:typename:void
+get_max	header.h	/^static inline int get_max(int a, int b) {$/;"	f	line:85	typeref:typename:int
+printf_like_func	header.h	/^int printf_like_func(const char* format, ...);$/;"	p	line:94	typeref:typename:int
+old_api_function	header.h	/^void old_api_function(void);$/;"	p	line:104	typeref:typename:void
+function_that_never_returns	header.h	/^void function_that_never_returns(void);$/;"	p	line:108	typeref:typename:void
+my_printf	header.h	/^void my_printf(const char *format, ...);$/;"	p	line:112	typeref:typename:void
+old_style_declaration	header.h	/^int old_style_declaration(); \/\/ 引数の型情報が全くない！$/;"	p	line:120	typeref:typename:int

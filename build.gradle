@@ -4,6 +4,7 @@ plugins {
     id 'eclipse'
 }
 
+
 allprojects {
     group = 'com.github.aserg-ufmg'
     version = '2.0.0'
@@ -16,7 +17,7 @@ subprojects {
 }
 
 wrapper {
-    gradleVersion = '6.4.1'
+    gradleVersion = '8.11'
 }
 
 

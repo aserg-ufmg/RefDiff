@@ -117,8 +117,8 @@ public class CstComparator {
 			//return srb.buildForFragment(Collections.emptyList());
 			List<String> tokens = new ArrayList<>();
 			tokens.add(node.getSimpleName());
-			tokens.add("(");
-			tokens.add(")");
+			// tokens.add("("); // parenthesis are not used in Ruby
+			// tokens.add(")");
 			if (node.getParameters() != null) {
 				for (int i = 1; i < node.getParameters().size(); i++) {
 					tokens.add(",");
@@ -348,6 +348,10 @@ public class CstComparator {
 					if (sameRootNode(n1, n2)) {
 						return Optional.of(RelationshipType.INTERNAL_MOVE_RENAME);
 					} else {
+						if (n1.getSimpleName().equals("buffer_full") && n2.getSimpleName().equals("rb_full")) { // TODO remove
+							System.out.println(n1.getSimpleName() + " -> " + n2.getSimpleName());
+							System.out.println(computeHardSimilarityScore(n1, n2));
+						}
 						return Optional.of(RelationshipType.MOVE_RENAME);
 					}
 				}
@@ -380,7 +384,6 @@ public class CstComparator {
 //							if (n2.getSimpleName().equals("parseAndValidateMetadata") && n2.getLocation().getFile().equals("core/src/test/java/feign/DefaultContractTest.java")) {
 //								System.out.println("danilo"); 
 //							}
-							
 							boolean sameLocation = sameLocation(n1, n2);
 							double minScore = threshold.getIdeal();
 							if (score > minScore) {

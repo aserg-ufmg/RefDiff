@@ -1,0 +1,494 @@
+Commit: d3450dd52efcbca0348e9e8ac42fad6263ec9f91
+No refactorings found.
+
+Commit: 4bcb04ad886c0c7b66e6822c08fed4a1f03bece1
+No refactorings found.
+
+Commit: 4be4dc8717589c859734371a727bb7bc911c7ed8
+No refactorings found.
+
+Commit: 109d4fc3b4448c9383393daa5bc64ef155917250
+No refactorings found.
+
+Commit: 2cb0a580f34377c8b014ce20d8fdb370cfc2a12e
+No refactorings found.
+
+Commit: 7cce5aac76898099b954ee91f748f052d23e3253
+MOVE	{method_declaration isHarmonyEvent() at server/harmonyparser.go:70 LOC:1}	{method_declaration isHarmonyEvent() at harmony/harmonyparser.go:57 LOC:1})
+MOVE	{method_declaration Content() at server/harmonyparser.go:381 LOC:3}	{method_declaration Content() at harmony/harmonyparser.go:368 LOC:3})
+MOVE	{function_declaration TestHeaderParsing(t *testing.T) at server/harmonyparser_test.go:9 LOC:84}	{function_declaration TestHeaderParsing(t *testing.T) at harmony/harmonyparser_test.go:9 LOC:84})
+MOVE	{function_declaration TestHarmonyParserStreaming(t *testing.T) at server/harmonyparser_test.go:238 LOC:232}	{function_declaration TestHarmonyParserStreaming(t *testing.T) at harmony/harmonyparser_test.go:238 LOC:232})
+MOVE	{method_declaration CreateToolParser() at server/harmonyparser.go:346 LOC:6}	{method_declaration CreateToolParser() at harmony/harmonyparser.go:333 LOC:6})
+MOVE	{function_declaration overlap(s, delim string) at server/harmonyparser.go:257 LOC:9}	{function_declaration overlap(s, delim string) at harmony/harmonyparser.go:244 LOC:9})
+MOVE	{method_declaration convertToValidChars(userFunctionName string) at server/harmonyparser.go:430 LOC:29}	{method_declaration convertToValidChars(userFunctionName string) at harmony/harmonyparser.go:417 LOC:29})
+MOVE	{method_declaration String() at server/harmonyparser.go:35 LOC:13}	{method_declaration String() at harmony/harmonyparser.go:22 LOC:13})
+MOVE	{method_declaration ConvertAndAdd(userFunctionName string) at server/harmonyparser.go:401 LOC:6}	{method_declaration ConvertAndAdd(userFunctionName string) at harmony/harmonyparser.go:388 LOC:6})
+MOVE	{function_declaration NewFunctionNameMap() at server/harmonyparser.go:394 LOC:6}	{function_declaration NewFunctionNameMap() at harmony/harmonyparser.go:381 LOC:6})
+MOVE	{function_declaration eat(s *HarmonyParser) at server/harmonyparser.go:126 LOC:72}	{function_declaration eat(s *HarmonyParser) at harmony/harmonyparser.go:113 LOC:72})
+MOVE	{method_declaration SetToolName(toolName string) at server/harmonyparser.go:366 LOC:3}	{method_declaration SetToolName(toolName string) at harmony/harmonyparser.go:353 LOC:3})
+MOVE	{function_declaration NewHarmonyMessageHandler() at server/harmonyparser.go:285 LOC:11}	{function_declaration NewHarmonyMessageHandler() at harmony/harmonyparser.go:272 LOC:11})
+MOVE	{function_declaration TestHarmonyParserHeaderEvent(t *testing.T) at server/harmonyparser_test.go:94 LOC:67}	{function_declaration TestHarmonyParserHeaderEvent(t *testing.T) at harmony/harmonyparser_test.go:94 LOC:67})
+MOVE	{function_declaration TestHarmonyParserNonStreaming(t *testing.T) at server/harmonyparser_test.go:162 LOC:75}	{function_declaration TestHarmonyParserNonStreaming(t *testing.T) at harmony/harmonyparser_test.go:162 LOC:75})
+MOVE	{method_declaration AddImplicitStart() at server/harmonyparser.go:88 LOC:3}	{method_declaration AddImplicitStart() at harmony/harmonyparser.go:75 LOC:3})
+MOVE	{method_declaration isHarmonyEvent() at server/harmonyparser.go:76 LOC:1}	{method_declaration isHarmonyEvent() at harmony/harmonyparser.go:63 LOC:1})
+MOVE	{method_declaration Drain() at server/harmonyparser.go:374 LOC:6}	{method_declaration Drain() at harmony/harmonyparser.go:361 LOC:6})
+MOVE	{method_declaration OriginalFromConverted(harmonyFunctionName string) at server/harmonyparser.go:411 LOC:8}	{method_declaration OriginalFromConverted(harmonyFunctionName string) at harmony/harmonyparser.go:398 LOC:8})
+MOVE	{method_declaration deriveName(userFunctionName string) at server/harmonyparser.go:460 LOC:18}	{method_declaration deriveName(userFunctionName string) at harmony/harmonyparser.go:447 LOC:18})
+MOVE	{method_declaration parseHeader(raw string) at server/harmonyparser.go:199 LOC:56}	{method_declaration parseHeader(raw string) at harmony/harmonyparser.go:186 LOC:56})
+MOVE	{function_declaration TestFunctionConvertAndAdd(t *testing.T) at server/harmonyparser_test.go:505 LOC:33}	{function_declaration TestFunctionConvertAndAdd(t *testing.T) at harmony/harmonyparser_test.go:505 LOC:33})
+MOVE	{method_declaration AddContent(content string, toolParser *HarmonyToolCallAccumulator) at server/harmonyparser.go:299 LOC:46}	{method_declaration AddContent(content string, toolParser *HarmonyToolCallAccumulator) at harmony/harmonyparser.go:286 LOC:46})
+CHANGE_SIGNATURE	{function_declaration shouldUseHarmony(model Model) at server/harmonyparser.go:23 LOC:11}	{function_declaration shouldUseHarmony(model *Model) at server/routes.go:49 LOC:11})
+MOVE	{method_declaration AddImplicitStartOrPrefill(lastMessage *api.Message) at server/harmonyparser.go:92 LOC:13}	{method_declaration AddImplicitStartOrPrefill(lastMessage *api.Message) at harmony/harmonyparser.go:79 LOC:13})
+MOVE	{function_declaration TestFunctionConvertToValidChars(t *testing.T) at server/harmonyparser_test.go:473 LOC:31}	{function_declaration TestFunctionConvertToValidChars(t *testing.T) at harmony/harmonyparser_test.go:473 LOC:31})
+MOVE	{method_declaration Add(content string) at server/harmonyparser.go:370 LOC:3}	{method_declaration Add(content string) at harmony/harmonyparser.go:357 LOC:3})
+MOVE	{method_declaration AddContent(content string) at server/harmonyparser.go:106 LOC:18}	{method_declaration AddContent(content string) at harmony/harmonyparser.go:93 LOC:18})
+MOVE	{method_declaration isHarmonyEvent() at server/harmonyparser.go:64 LOC:1}	{method_declaration isHarmonyEvent() at harmony/harmonyparser.go:51 LOC:1})
+MOVE	{method_declaration isHarmonyEvent() at server/harmonyparser.go:80 LOC:1}	{method_declaration isHarmonyEvent() at harmony/harmonyparser.go:67 LOC:1})
+
+Commit: 4ae4f47b16fd75e10aa12e0f6c22001df5410d78
+No refactorings found.
+
+Commit: 073fa31df501d7cb943d3fa0fb19841da9651479
+RENAME	{function_declaration PredictServerFit(allGpus discover.GpuInfoList, f *ggml.GGML, adapters, projectors []string, opts api.Options, numParallel int) at llm/memory.go:84 LOC:19}	{function_declaration predictServerFit(allGpus discover.GpuInfoList, f *ggml.GGML, adapters, projectors []string, opts api.Options, numParallel int) at llm/memory.go:84 LOC:23})
+
+Commit: 91fc3c48e38256e69eb0a52c4540bd9ae0b8a660
+No refactorings found.
+
+Commit: 463a6caad82cd3de259b1135927722c71e9d80de
+No refactorings found.
+
+Commit: fc5fb09f514758ae9f59b11632c3d8f32e951d49
+No refactorings found.
+
+Commit: 05ccb17c6e101637ef0fa8fbd88952da2e7e2ca4
+No refactorings found.
+
+Commit: e3ade453a8f96a5534ae804e32a44aeb0159befa
+No refactorings found.
+
+Commit: 048bd4472adf2bdb41c16010ab286e072252bfd2
+No refactorings found.
+
+Commit: df335aac09cd921beab12891cb40957e7c2ef9b7
+No refactorings found.
+
+Commit: 026bc29237a6478ea087362de83b854825d2e207
+No refactorings found.
+
+Commit: d6f7233a1cf35317ce35531b870fb8cdbacf08ed
+No refactorings found.
+
+Commit: 8de1da4767d2e580977888a8f189b29bd81e1e51
+No refactorings found.
+
+Commit: 6eaf194b8540bdec2b96eafcf98481f4400bdf1e
+No refactorings found.
+
+Commit: d5a0d8d904baaf66a5326463a409fe4fa09b2dd2
+CHANGE_SIGNATURE	{method_declaration load(req *LlmRequest, f *ggml.GGML, gpus discover.GpuInfoList, numParallel int) at server/sched.go:437 LOC:70}	{method_declaration load(req *LlmRequest, f *ggml.GGML, gpus discover.GpuInfoList, requireFull bool) at server/sched.go:384 LOC:117})
+INLINE	{method_declaration EstimatedVRAM() at llm/server.go:1047 LOC:3}	{method_declaration load(req *LlmRequest, f *ggml.GGML, gpus discover.GpuInfoList, requireFull bool) at server/sched.go:384 LOC:117})
+RENAME	{method_declaration initModel(
+	mpath string,
+	params ml.BackendParams,
+	lpath multiLPath,
+	parallel int,
+	kvCacheType string,
+	kvSize int,
+	multiUserCache bool,
+) at runner/ollamarunner/runner.go:831 LOC:36}	{method_declaration allocModel(
+	mpath string,
+	params ml.BackendParams,
+	loraPath []string,
+	parallel int,
+	kvCacheType string,
+	kvSize int,
+	multiUserCache bool,
+) at runner/ollamarunner/runner.go:833 LOC:47})
+MOVE	{function_declaration pickBestPartialFitByLibrary(req *LlmRequest, f *ggml.GGML, gpus discover.GpuInfoList, numParallel *int) at server/sched.go:822 LOC:20}	{function_declaration pickBestPartialFitByLibrary(f *ggml.GGML, projectors []string, adapters []string, opts api.Options, gpus discover.GpuInfoList, numParallel int) at llm/memory.go:66 LOC:16})
+MOVE	{function_declaration pickBestFullFitByLibrary(req *LlmRequest, f *ggml.GGML, gpus discover.GpuInfoList, numParallel *int) at server/sched.go:760 LOC:60}	{function_declaration pickBestFullFitByLibrary(f *ggml.GGML, modelPath string, projectors []string, adapters []string, opts api.Options, gpus discover.GpuInfoList, numParallel int) at llm/memory.go:20 LOC:44})
+CHANGE_SIGNATURE	{method_declaration loadModel(
+	params llama.ModelParams,
+	mpath string,
+	lpath multiLPath,
+	ppath string,
+	kvSize int,
+	kvCacheType string,
+	flashAttention bool,
+	threads int,
+	multiUserCache bool,
+) at runner/llamarunner/runner.go:737 LOC:48}	{method_declaration loadModel(
+	params llama.ModelParams,
+	mpath string,
+	lpath []string,
+	ppath string,
+	kvSize int,
+	kvCacheType string,
+	flashAttention bool,
+	threads int,
+	multiUserCache bool,
+) at runner/llamarunner/runner.go:733 LOC:46})
+RENAME	{method_declaration EstimatedVRAMByGPU(gpuID string) at llm/server.go:1055 LOC:10}	{method_declaration VRAMByGPU(gpuID string) at llm/server.go:1688 LOC:10})
+RENAME	{method_declaration EstimatedVRAMByGPU(gpuid string) at server/sched_test.go:790 LOC:1}	{method_declaration VRAMByGPU(gpuid string) at server/sched_test.go:737 LOC:1})
+INLINE	{method_declaration EstimatedTotal() at llm/server.go:1051 LOC:3}	{method_declaration load(req *LlmRequest, f *ggml.GGML, gpus discover.GpuInfoList, requireFull bool) at server/sched.go:384 LOC:117})
+RENAME	{function_declaration EstimateGPULayers(gpus []discover.GpuInfo, f *ggml.GGML, projectors []string, opts api.Options, numParallel int) at llm/memory.go:74 LOC:288}	{function_declaration estimateGPULayers(gpus []discover.GpuInfo, f *ggml.GGML, projectors []string, opts api.Options, numParallel int) at llm/memory.go:140 LOC:276})
+CHANGE_SIGNATURE	{method_declaration GetRunner(c context.Context, model *Model, opts api.Options, sessionDuration *api.Duration) at server/sched.go:82 LOC:21}	{method_declaration GetRunner(c context.Context, m *Model, opts api.Options, sessionDuration *api.Duration) at server/sched.go:85 LOC:33})
+CHANGE_SIGNATURE	{function_declaration newScenarioRequest(t *testing.T, ctx context.Context, modelName string, estimatedVRAM uint64, duration *api.Duration) at server/sched_test.go:110 LOC:40}	{function_declaration newScenarioRequest(t *testing.T, ctx context.Context, modelName string, vramSize uint64, duration *api.Duration) at server/sched_test.go:112 LOC:40})
+
+Commit: ef7d26ba2cd52a5295620067ab9abd9c0055a558
+No refactorings found.
+
+Commit: 1a19df1f3a39481dfe686c8f1041f91531a04ada
+CHANGE_SIGNATURE	{method_declaration ScaledDotProductAttention(ctx ml.Context, key, value, mask ml.Tensor, scale float64) at ml/backend/ggml/ggml.go:1341 LOC:26}	{method_declaration ScaledDotProductAttention(ctx ml.Context, key, value, mask, sinks ml.Tensor, scale float64) at ml/backend/ggml/ggml.go:1457 LOC:32})
+EXTRACT	{function_declaration Attention(ctx ml.Context, query, key, value ml.Tensor, scale float64, cache kvcache.Cache) at ml/nn/attention.go:24 LOC:47}	{function_declaration AttentionWithSinks(ctx ml.Context, query, key, value, sinks ml.Tensor, scale float64, cache kvcache.Cache) at ml/nn/attention.go:28 LOC:47})
+
+Commit: c385ca86727ce2787d286a733cb35dd96c53bd16
+No refactorings found.
+
+Commit: 837379a94c03e505bbad965a31eb1aa7976edb3c
+No refactorings found.
+
+Commit: a24f90604f883df01500b62992fb80b242022510
+No refactorings found.
+
+Commit: bb71654ebe846d97df306b163c086167239431e5
+No refactorings found.
+
+Commit: d0cf6c82811c2268a396888347ff95087a618d56
+RENAME	{method_declaration AsString() at api/types.go:790 LOC:17}	{method_declaration String() at api/types.go:790 LOC:17})
+RENAME	{method_declaration AsBool() at api/types.go:773 LOC:15}	{method_declaration Bool() at api/types.go:773 LOC:15})
+
+Commit: 8f4ec9ab289fd2a1f96384926a7f7bfd888d4ef9
+No refactorings found.
+
+Commit: ee04dbba51a4299b6ff4bb19f758eeacbf2b35d8
+No refactorings found.
+
+Commit: ea7657b54a000b9cf381e6e83463f50aaa40a161
+No refactorings found.
+
+Commit: 756c78cfc77902130385e14b5d4a35a99d06497b
+No refactorings found.
+
+Commit: d7f4f788d1c0f51919b417a2a1e6cb5dc7553773
+No refactorings found.
+
+Commit: 114c3f22657750cfb57f70c4a0d6e7389fb7a9fe
+No refactorings found.
+
+Commit: f2e9c9aff5f59b21a5d9a9668408732b3de01e20
+No refactorings found.
+
+Commit: 735c41f9ca38fd2507c3e8e93efe6bbb94455a6f
+No refactorings found.
+
+Commit: 759dd78dd600ebf751ff922939256d4f1ec2394d
+No refactorings found.
+
+Commit: 203c137810846865f6358b25c8937bc4b55dfda4
+No refactorings found.
+
+Commit: fa8be9e35ce88ef28cd59062f1c8b647a8261bfc
+No refactorings found.
+
+Commit: 30f8a68c4cc55e0f3a717b891931847c97190843
+No refactorings found.
+
+Commit: fcec04bf4249f91c553ec3d2914a493bf794d105
+No refactorings found.
+
+Commit: 8253ad4d2b2e7ac58268192051b92b59986c874f
+No refactorings found.
+
+Commit: fa7776fd2458fc3a8aeb7f12e4bc65b439955319
+EXTRACT	{method_declaration WriteTo(w io.Writer) at convert/reader_safetensors.go:111 LOC:67}	{method_declaration WriteTo(w io.Writer) at convert/tensor_test.go:50 LOC:15})
+EXTRACT	{method_declaration KV(t *Tokenizer) at convert/convert.go:36 LOC:29}	{method_declaration KV(t *Tokenizer) at convert/convert.go:36 LOC:29})
+CHANGE_SIGNATURE	{function_declaration chatPrompt(ctx context.Context, m *Model, tokenize tokenizeFunc, opts *api.Options, msgs []api.Message, tools []api.Tool, think *bool) at server/prompt.go:22 LOC:91}	{function_declaration chatPrompt(ctx context.Context, m *Model, tokenize tokenizeFunc, opts *api.Options, msgs []api.Message, tools []api.Tool, think *api.ThinkValue) at server/prompt.go:22 LOC:95})
+EXTRACT	{method_declaration Kind() at convert/tensor_test.go:33 LOC:3}	{method_declaration Kind() at convert/tensor_test.go:33 LOC:3})
+
+Commit: 0d38b6650259e6e95c4cc7192d8588e5945427f9
+No refactorings found.
+
+Commit: 4183bb0574a28b73276efef944107d0c45d79c95
+No refactorings found.
+
+Commit: ff89ba90bc97e9f58b8378a664b904bbc94e6f26
+No refactorings found.
+
+Commit: ea85e27bbd76a342ad390576fc2e717a72ce96de
+No refactorings found.
+
+Commit: c116a7523ddc067db2b86aab38172c05ad01c710
+No refactorings found.
+
+Commit: 764be7480f19f1749c518b21cead7c3a44c04b1d
+No refactorings found.
+
+Commit: 80b538e312c173d124fdcb91d40285b32e80d0a9
+No refactorings found.
+
+Commit: 4f8a0166ccc540346dd160796dacdaceac1fde73
+No refactorings found.
+
+Commit: 1e6eab5c334503d95a1d45b143736ae6b1ce5dec
+No refactorings found.
+
+Commit: 6c733bf0a65f59410f091719c429d59cd5488072
+No refactorings found.
+
+Commit: 3bac5cba60b08afb1164611dac3b710583f3b241
+No refactorings found.
+
+Commit: bdd9d22dfd9798cad0b17e812e251f9af4c30f12
+No refactorings found.
+
+Commit: 802ad16ce44312826526d9c6fa4374488a9f4e6c
+No refactorings found.
+
+Commit: 5e67f4f90e13ce19eb103216bd151ce9f5fb9008
+No refactorings found.
+
+Commit: b4fe3adc0a97c160a6af71e7a2c49ceb31a8177c
+No refactorings found.
+
+Commit: d73f8aa8c3979b33f5ea19b80406c20e88ee3b1b
+No refactorings found.
+
+Commit: 92c2e8a56c7eb9a5a99439133220d707710da0f8
+No refactorings found.
+
+Commit: acef9b4c1b4bc97dba88ed02cc707635b96074de
+No refactorings found.
+
+Commit: 9a43994c45f8da1b21fd302d5ef000cee36c4e16
+No refactorings found.
+
+Commit: f8a6e8881975b2964aa2179e74c4426b4a455d0f
+No refactorings found.
+
+Commit: 35fda7b4af556e7eeef2b5dcb3638435382b2576
+No refactorings found.
+
+Commit: 20c3266e943f62ef7947f00b563de5f6c790ecb7
+No refactorings found.
+
+Commit: 34088dbcfb47546fc0f375276173467bc8bbed29
+No refactorings found.
+
+Commit: 1f91cb0c8ccf734f060a7ed065e991233daa0448
+No refactorings found.
+
+Commit: 592d21e7dbffff5bd4c285503a44d87ffaa6fd1b
+No refactorings found.
+
+Commit: 4f473e224c643db9e7b25bd61b3a1a6e2a748b2b
+No refactorings found.
+
+Commit: 2c4ce403344de1b45b1a9312a19b8f8be473664d
+No refactorings found.
+
+Commit: 44b17d2bfa0073e012679152421c0b69671d380e
+No refactorings found.
+
+Commit: 4129af9205763a113719c7ef102d5c6ff0f1e2e8
+No refactorings found.
+
+Commit: 45f216a9c7e65bd30ab0e2b1b9fdb7cb2ad9436d
+No refactorings found.
+
+Commit: d0b32def60b413407ddf4b4b063ba105a1ef2f92
+No refactorings found.
+
+Commit: ba04902670cd5945ded682c1c9de2220475b9c38
+No refactorings found.
+
+Commit: 3944602f512b840953be00b6d028a0ab08b9b5ab
+No refactorings found.
+
+Commit: 73b642e6f341287163c784e1e99a18426ee2ccea
+EXTRACT	{method_declaration KV(t *Tokenizer) at convert/convert.go:36 LOC:29}	{method_declaration KV(t *Tokenizer) at convert/convert.go:36 LOC:29})
+
+Commit: 10a8e04a8dcdd06de4ccaa3c2fe19452d2714b15
+No refactorings found.
+
+Commit: 1c6669e64cc8a482fbf1e35c0249f17b35a4e87a
+No refactorings found.
+
+Commit: c088ac0e79a4a995e8a5a3733f7db2a981ac3364
+No refactorings found.
+
+Commit: 0a066cfd91abdddc6ee172776974a6720a3072d3
+No refactorings found.
+
+Commit: 87b7af6ceef2b4d96374dbff5070b41b17d3f138
+No refactorings found.
+
+Commit: f2527b08fba57d606e12cb21b583249c11724d7a
+No refactorings found.
+
+Commit: 6baf1e31e2e5b28c4ce6d145f4524448c9747204
+No refactorings found.
+
+Commit: ed567ef43b5822423bd165f5f57fb6bad5fce1b3
+No refactorings found.
+
+Commit: a6e64fbdf28f0d6cb97cc7f022ca493b905fe895
+No refactorings found.
+
+Commit: 60cfa2a203201e8513b7da26035f74495e498bc7
+No refactorings found.
+
+Commit: 55bbf3b4a1766fc99e32ebd39f0dd5749152b55d
+No refactorings found.
+
+Commit: 6bda1d24798e40fc9ea1419c6ce22c6cdcc9dfe2
+CHANGE_SIGNATURE	{method_declaration findArguments() at tools/tools.go:167 LOC:76}	{method_declaration findArguments(tool api.Tool) at tools/tools.go:164 LOC:86})
+
+Commit: 9e125d884cf995dfae7fcd74690d525e4326a517
+No refactorings found.
+
+Commit: a6fbfc880c3de9b57e341db374907e2fedda9fa6
+No refactorings found.
+
+Commit: 9f8a18ec050ef67fca11d4f9bea0508eece93a68
+No refactorings found.
+
+Commit: 6b04cad7e816d1a119559e092d59f4fbaa6c3a0b
+No refactorings found.
+
+Commit: 45f56355d557b7130c7c07bbd6e1b634a758d946
+CHANGE_SIGNATURE	{function_declaration splitDim(t Tensor, dim int, replacers ...*strings.Replacer) at convert/tensor.go:15 LOC:42}	{function_declaration splitDim(t Tensor, dim int, splits ...split) at convert/tensor.go:25 LOC:52})
+
+Commit: 0dabb4ef6a1aab240a59b6bb4ef82372d335e3a9
+No refactorings found.
+
+Commit: 2e77aa1ae70372388bd4b08b9957e5198d566a22
+No refactorings found.
+
+Commit: 82ad1dbc07dc2db39c6f502eb148ff3ce00d96b8
+No refactorings found.
+
+Commit: feeabdadd2b272b40747f3e7e74957c40ba2800c
+No refactorings found.
+
+Commit: 09d308d6b6c7995e3fb565e0ecfa184d49205f00
+No refactorings found.
+
+Commit: a8ed68bd9383ffec346fd1b3cf60d94c032bbec8
+No refactorings found.
+
+Commit: 2ae65ae471c9d51d343f401da16c05b98b99a842
+No refactorings found.
+
+Commit: a3b6886b7da0339e63ebf41e6ba5c6b06438a123
+MOVE	{method_declaration AddContent(content string) at server/thinking.go:59 LOC:18}	{method_declaration AddContent(content string) at thinking/parser.go:57 LOC:18})
+MOVE	{function_declaration overlap(s, delim string) at server/thinking.go:165 LOC:9}	{function_declaration overlap(s, delim string) at thinking/parser.go:163 LOC:9})
+MOVE	{function_declaration TestThinkingStreaming(t *testing.T) at server/thinking_test.go:40 LOC:240}	{function_declaration TestThinkingStreaming(t *testing.T) at thinking/parser_test.go:39 LOC:240})
+MOVE	{function_declaration TestExtractThinking(t *testing.T) at server/thinking_test.go:8 LOC:31}	{function_declaration TestExtractThinking(t *testing.T) at thinking/parser_test.go:7 LOC:31})
+EXTRACT_MOVE	{method_declaration String() at server/thinking.go:32 LOC:16}	{method_declaration String() at thinking/parser.go:30 LOC:16})
+MOVE	{function_declaration eat(s *ThinkingParser) at server/thinking.go:79 LOC:84}	{function_declaration eat(s *Parser) at thinking/parser.go:77 LOC:84})
+MOVE	{function_declaration TestInferThinkingTags(t *testing.T) at server/thinking_test.go:281 LOC:123}	{function_declaration TestInferThinkingTags(t *testing.T) at thinking/template_test.go:8 LOC:123})
+
+Commit: 0683efa6379ba69384bb5876f1013d9ef38f1ab0
+RENAME	{method_declaration addContent(content string) at server/thinking.go:59 LOC:18}	{method_declaration AddContent(content string) at server/thinking.go:59 LOC:18})
+CHANGE_SIGNATURE	{function_declaration eat(s *thinkingParser) at server/thinking.go:79 LOC:84}	{function_declaration eat(s *ThinkingParser) at server/thinking.go:79 LOC:84})
+
+Commit: 09430011936652cf55925184aaed6f2cebf62a75
+No refactorings found.
+
+Commit: 65f10c2823d540837a9e79202522957194377735
+No refactorings found.
+
+Commit: aaa7818000c42a82fc030212c35ef83f9799efd7
+No refactorings found.
+
+Commit: f15ffc432061e3d96b3412219a3a0f673b579a12
+No refactorings found.
+
+Commit: 5f57b0ef4268a6bd9e8043d54c351a608a7e1bca
+CHANGE_SIGNATURE	{function_declaration chatPrompt(ctx context.Context, m *Model, tokenize tokenizeFunc, opts *api.Options, msgs []api.Message, tools []api.Tool) at server/prompt.go:22 LOC:83}	{function_declaration chatPrompt(ctx context.Context, m *Model, tokenize tokenizeFunc, opts *api.Options, msgs []api.Message, tools []api.Tool, think *bool) at server/prompt.go:22 LOC:91})
+
+Commit: aa25aff10d1ccc6dd4e85952678d63946bdf89dc
+No refactorings found.
+
+Commit: ea79003180205680000bacf97466fc9d78d71f5e
+No refactorings found.
+
+Commit: 9239a254e054d24b0de3358ba8c4bd9b50730bfd
+No refactorings found.
+
+Commit: 066d0f474671fd38532f4a245533158312a68e75
+No refactorings found.
+
+Commit: aea6fb9b5862932ea4622e854be9ddae8c320658
+No refactorings found.
+
+Commit: eda472df1bd420517ca05c59ba0096e8b518fb69
+No refactorings found.
+
+Commit: f18e0cb5508450bd14db5ec8015709d2c4ab820f
+No refactorings found.
+
+Commit: e8b981fa5d7c1875ec0c290068bcfe3b4662f5c4
+MOVE	{function_declaration readFile(t *testing.T, base, name string) at server/model_test.go:17 LOC:10}	{function_declaration readFile(t *testing.T, base, name string) at tools/tools_test.go:18 LOC:10})
+
+Commit: 884d26093c80491a3fe07f606fc04851dc317199
+No refactorings found.
+
+Commit: 1f371ea92f7ebe4edd208b6732753473b2c4d0cd
+CHANGE_SIGNATURE	{method_declaration load(
+	ctx context.Context,
+	mpath string,
+	params ml.BackendParams,
+	lpath multiLPath,
+	parallel int,
+	kvCacheType string,
+	kvSize int,
+	multiUserCache bool) at runner/ollamarunner/runner.go:871 LOC:27}	{method_declaration load(
+	ctx context.Context,
+	mpath string,
+	params ml.BackendParams,
+	lpath multiLPath,
+	parallel int,
+	kvCacheType string,
+	kvSize int,
+	multiUserCache bool,
+) at runner/ollamarunner/runner.go:868 LOC:28})
+
+Commit: 73d6a82cce18f84ff5c67148783224cf25b30b32
+RENAME	{method_declaration loadModel(
+	ctx context.Context,
+	mpath string,
+	params ml.BackendParams,
+	lpath multiLPath,
+	parallel int,
+	kvCacheType string,
+	kvSize int,
+	multiUserCache bool,
+) at runner/ollamarunner/runner.go:837 LOC:51}	{method_declaration initModel(
+	mpath string,
+	params ml.BackendParams,
+	lpath multiLPath,
+	parallel int,
+	kvCacheType string,
+	kvSize int,
+	multiUserCache bool,
+) at runner/ollamarunner/runner.go:834 LOC:36})
+
+Commit: d950ff12c09c07a1cda7242373071fb9e7af9ddc
+No refactorings found.
+
+Commit: adff143bcda0c7ab4ca3a85dc3db5a81552368c7
+No refactorings found.
+
+Commit: fbe6ae285a23baddb14c5bbce26d4fcb837503e4
+No refactorings found.
+
+Commit: fdd4d479a3cbaff1a7fe849e38a145652f87d611
+No refactorings found.
+
+Commit: 61aeaf7e813bf307f1b28480c7ee2aed639b28f7
+No refactorings found.
+
+Commit: 7359b0270767d1ebda33598d738a4263a4238b3a
+No refactorings found.
+

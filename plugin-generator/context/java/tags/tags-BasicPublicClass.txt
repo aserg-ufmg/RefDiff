@@ -1,0 +1,45 @@
+com.example.parser.test	BasicPublicClass.java	/^package com.example.parser.test;$/;"	p	line:8
+BasicPublicClass	BasicPublicClass.java	/^public class BasicPublicClass {$/;"	c	line:23
+BasicPublicClass	BasicPublicClass.java	/^  public BasicPublicClass(String value) {$/;"	m	line:29	class:BasicPublicClass
+publicMethod	BasicPublicClass.java	/^  public void publicMethod() {$/;"	m	line:33	class:BasicPublicClass
+privateMethod	BasicPublicClass.java	/^  private String privateMethod(int i) {$/;"	m	line:37	class:BasicPublicClass	file:
+PackagePrivateClass	BasicPublicClass.java	/^class PackagePrivateClass {$/;"	c	line:46
+AbstractVehicle	BasicPublicClass.java	/^abstract class AbstractVehicle {$/;"	c	line:58
+move	BasicPublicClass.java	/^  public abstract void move();$/;"	m	line:59	class:AbstractVehicle
+getVehicleType	BasicPublicClass.java	/^  public String getVehicleType() {$/;"	m	line:61	class:AbstractVehicle
+FinalImmutableData	BasicPublicClass.java	/^final class FinalImmutableData {$/;"	c	line:69
+FinalImmutableData	BasicPublicClass.java	/^  public FinalImmutableData(String data) {$/;"	m	line:72	class:FinalImmutableData
+getData	BasicPublicClass.java	/^  public String getData() {$/;"	m	line:76	class:FinalImmutableData
+Car	BasicPublicClass.java	/^class Car extends AbstractVehicle {$/;"	c	line:88
+move	BasicPublicClass.java	/^  public void move() {$/;"	m	line:90	class:Car
+MultiImplementer	BasicPublicClass.java	/^class MultiImplementer implements Runnable, Serializable, Cloneable {$/;"	c	line:98
+run	BasicPublicClass.java	/^  public void run() {$/;"	m	line:100	class:MultiImplementer
+clone	BasicPublicClass.java	/^  public Object clone() throws CloneNotSupportedException {$/;"	m	line:105	class:MultiImplementer
+ComplexHierarchy	BasicPublicClass.java	/^class ComplexHierarchy extends Car implements Comparable<ComplexHierarchy> {$/;"	c	line:113
+compareTo	BasicPublicClass.java	/^  public int compareTo(ComplexHierarchy other) {$/;"	m	line:117	class:ComplexHierarchy
+Box	BasicPublicClass.java	/^class Box<T> {$/;"	c	line:131
+set	BasicPublicClass.java	/^  public void set(T item) {$/;"	m	line:134	class:Box
+get	BasicPublicClass.java	/^  public T get() {$/;"	m	line:138	class:Box
+BoundedGenericCache	BasicPublicClass.java	/^class BoundedGenericCache<K extends String, V extends Map<String, ?>> {$/;"	c	line:149
+BoundedGenericCache	BasicPublicClass.java	/^  public BoundedGenericCache(V cache) {$/;"	m	line:152	class:BoundedGenericCache
+NumberProcessor	BasicPublicClass.java	/^class NumberProcessor<N extends Number> {$/;"	c	line:162
+process	BasicPublicClass.java	/^  public void process(List<? extends N> numbers) {$/;"	m	line:165	class:NumberProcessor
+OuterShell	BasicPublicClass.java	/^class OuterShell {$/;"	c	line:177
+StaticNested	BasicPublicClass.java	/^  static class StaticNested {$/;"	c	line:185	class:OuterShell
+display	BasicPublicClass.java	/^    void display() {$/;"	m	line:186	class:OuterShell.StaticNested
+Inner	BasicPublicClass.java	/^  class Inner {$/;"	c	line:196	class:OuterShell
+display	BasicPublicClass.java	/^    void display() {$/;"	m	line:197	class:OuterShell.Inner
+createRunnable	BasicPublicClass.java	/^  public Runnable createRunnable() {$/;"	m	line:203	class:OuterShell
+createAnonymousClass	BasicPublicClass.java	/^  public Comparable<String> createAnonymousClass() {$/;"	m	line:220	class:OuterShell
+Signal	BasicPublicClass.java	/^enum Signal {$/;"	g	line:244
+Signal	BasicPublicClass.java	/^  Signal(String action) {$/;"	m	line:251	class:Signal
+getAction	BasicPublicClass.java	/^  public String getAction() {$/;"	m	line:255	class:Signal
+Drawable	BasicPublicClass.java	/^interface Drawable<T> {$/;"	i	line:282
+draw	BasicPublicClass.java	/^  void draw(T context);$/;"	m	line:283	interface:Drawable
+clear	BasicPublicClass.java	/^  default void clear() {$/;"	m	line:285	interface:Drawable
+getVersion	BasicPublicClass.java	/^  static int getVersion() {$/;"	m	line:289	interface:Drawable
+ClassMarker	BasicPublicClass.java	/^@interface ClassMarker {$/;"	a	line:298
+value	BasicPublicClass.java	/^  String value();$/;"	m	line:299	annotation:ClassMarker
+priority	BasicPublicClass.java	/^  int priority() default 0;$/;"	m	line:301	annotation:ClassMarker
+AnnotatedClass	BasicPublicClass.java	/^class AnnotatedClass {$/;"	c	line:313
+EmptyClass	BasicPublicClass.java	/^class EmptyClass {$/;"	c	line:329

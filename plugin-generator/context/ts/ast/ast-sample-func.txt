@@ -1,0 +1,1446 @@
+(program (comment) (comment) (comment) (comment) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (identifier))))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (identifier)))))) (comment) (comment) (comment) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (identifier))))))) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (function_expression name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number))))))))))) (comment) (comment) (comment) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (number))))))) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (binary_expression left: (identifier) right: (number))))) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (parenthesized_expression (object (shorthand_property_identifier) (shorthand_property_identifier)))))) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (binary_expression left: (identifier) right: (identifier)))))) (comment) (comment) (comment) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (template_string (template_substitution (binary_expression left: (identifier) right: (string (string_fragment)))) (string_fragment) (template_substitution (identifier)))))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)) value: (string (string_fragment)))) return_type: (type_annotation (predefined_type)) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier) (identifier)))))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (rest_pattern (identifier)) type: (type_annotation (array_type (predefined_type))))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) (number)))))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (object_pattern (shorthand_property_identifier_pattern) (shorthand_property_identifier_pattern)) type: (type_annotation (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))))) return_type: (type_annotation (predefined_type)) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (binary_expression left: (identifier) right: (identifier))))))) (comment) (comment) (comment) (comment) (function_declaration name: (identifier) type_parameters: (type_parameters (type_parameter name: (type_identifier))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (type_identifier)) body: (statement_block (return_statement (identifier)))) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (arrow_function type_parameters: (type_parameters (type_parameter name: (type_identifier))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (array_type (type_identifier))))) return_type: (type_annotation (union_type (type_identifier) (literal_type (undefined)))) body: (subscript_expression object: (identifier) index: (number))))) (comment) (function_declaration name: (identifier) type_parameters: (type_parameters (type_parameter name: (type_identifier) constraint: (constraint (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (identifier) property: (property_identifier))))) (comment) (comment) (comment) (comment) (comment) (function_signature name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type))) (comment) (function_signature name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (predefined_type))))) return_type: (type_annotation (predefined_type)) body: (statement_block (if_statement condition: (parenthesized_expression (binary_expression left: (identifier) right: (identifier))) consequence: (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)))) (return_statement (call_expression function: (member_expression object: (new_expression constructor: (identifier) arguments: (arguments (identifier))) property: (property_identifier)) arguments: (arguments))))) (comment) (comment) (comment) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block (return_statement (string (string_fragment))))) (comment) (generator_function_declaration name: (identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block (expression_statement (yield_expression (number))) (expression_statement (yield_expression (number))))) (comment) (generator_function_declaration name: (identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block (expression_statement (await_expression (new_expression constructor: (identifier) arguments: (arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number)))))))) (expression_statement (yield_expression (number))))) (comment) (comment) (comment) (comment) (type_alias_declaration name: (type_identifier) value: (object_type (property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type)))))) (type_alias_declaration name: (type_identifier) value: (object_type (property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type)))))) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (type_identifier))))) return_type: (type_predicate_annotation (type_predicate name: (identifier) type: (type_identifier))) body: (statement_block (return_statement (binary_expression left: (member_expression object: (parenthesized_expression (as_expression (identifier) (type_identifier))) property: (property_identifier)) right: (undefined))))) (comment) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (asserts_annotation (asserts (type_predicate name: (identifier) type: (predefined_type)))) body: (statement_block (if_statement condition: (parenthesized_expression (binary_expression left: (unary_expression argument: (identifier)) right: (string (string_fragment)))) consequence: (statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment))))))))) (comment) (comment) (comment) (class_declaration name: (type_identifier) body: (class_body (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter (accessibility_modifier) pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block)) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block)) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (this) property: (property_identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (string (string_fragment))))))) (lexical_declaration (variable_declarator name: (identifier) value: (object (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))) (comment) (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (identifier))) (comment) (pair key: (property_identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))))))) (comment) (comment) (comment) (comment) (interface_declaration name: (type_identifier) body: (interface_body (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (method_signature name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type))))) (function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (member_expression object: (this) property: (property_identifier))))) (comment))) (comment) (comment) (comment) (comment) (type_alias_declaration name: (type_identifier) value: (function_type parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (predefined_type))) (comment) (interface_declaration name: (type_identifier) body: (interface_body (call_signature parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type))) (comment) (property_signature name: (property_identifier) type: (type_annotation (array_type (predefined_type)))) (comment))) (comment) (interface_declaration name: (type_identifier) body: (interface_body (construct_signature parameters: (formal_parameters (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) type: (type_annotation (type_identifier))))) (comment) (comment) (comment) (comment) (expression_statement (call_expression function: (parenthesized_expression (function_expression parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment)))))))) arguments: (arguments))) (comment) (expression_statement (call_expression function: (parenthesized_expression (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))))))) arguments: (arguments))) (comment) (comment) (comment) (comment) (lexical_declaration (variable_declarator name: (identifier) value: (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)) (string (string_fragment)) (string (string_fragment)))))) (comment) (comment) (export_statement (export_clause))) L:1
+(comment) L:1
+(comment) L:7
+(comment) L:8
+(comment) L:9
+(comment) L:11
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (identifier))))) L:15
+("function") L:15
+(identifier) L:15
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:15
+("(") L:15
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:15
+(identifier) L:15
+(type_annotation (predefined_type)) L:15
+(":") L:15
+(predefined_type) L:15
+("number") L:15
+(",") L:15
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:15
+(identifier) L:15
+(type_annotation (predefined_type)) L:15
+(":") L:15
+(predefined_type) L:15
+("number") L:15
+(")") L:15
+(type_annotation (predefined_type)) L:15
+(":") L:15
+(predefined_type) L:15
+("number") L:15
+(statement_block (return_statement (binary_expression left: (identifier) right: (identifier)))) L:15
+("{") L:15
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:16
+("return") L:16
+(binary_expression left: (identifier) right: (identifier)) L:16
+(identifier) L:16
+("+") L:16
+(identifier) L:16
+(";") L:16
+("}") L:17
+(comment) L:19
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))))) L:23
+("function") L:23
+(identifier) L:23
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:23
+("(") L:23
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:23
+(identifier) L:23
+(type_annotation (predefined_type)) L:23
+(":") L:23
+(predefined_type) L:23
+("string") L:23
+(")") L:23
+(type_annotation (predefined_type)) L:23
+(":") L:23
+(predefined_type) L:23
+("void") L:23
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier))))) L:23
+("{") L:23
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier)))) L:24
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier))) L:24
+(member_expression object: (identifier) property: (property_identifier)) L:24
+(identifier) L:24
+(".") L:24
+(property_identifier) L:24
+(arguments (identifier)) L:24
+("(") L:24
+(identifier) L:24
+(")") L:24
+(";") L:24
+("}") L:25
+(comment) L:27
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (identifier)))))) L:31
+("function") L:31
+(identifier) L:31
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:31
+("(") L:31
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:31
+(identifier) L:31
+(type_annotation (predefined_type)) L:31
+(":") L:31
+(predefined_type) L:31
+("string") L:31
+(")") L:31
+(type_annotation (predefined_type)) L:31
+(":") L:31
+(predefined_type) L:31
+("never") L:31
+(statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (identifier))))) L:31
+("{") L:31
+(throw_statement (new_expression constructor: (identifier) arguments: (arguments (identifier)))) L:32
+("throw") L:32
+(new_expression constructor: (identifier) arguments: (arguments (identifier))) L:32
+("new") L:32
+(identifier) L:32
+(arguments (identifier)) L:32
+("(") L:32
+(identifier) L:32
+(")") L:32
+(";") L:32
+("}") L:33
+(comment) L:35
+(comment) L:36
+(comment) L:37
+(comment) L:39
+(lexical_declaration (variable_declarator name: (identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (identifier))))))) L:43
+("const") L:43
+(variable_declarator name: (identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (identifier)))))) L:43
+(identifier) L:43
+("=") L:43
+(function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (identifier))))) L:43
+("function") L:43
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:43
+("(") L:43
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:43
+(identifier) L:43
+(type_annotation (predefined_type)) L:43
+(":") L:43
+(predefined_type) L:43
+("number") L:43
+(",") L:43
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:43
+(identifier) L:43
+(type_annotation (predefined_type)) L:43
+(":") L:43
+(predefined_type) L:43
+("number") L:43
+(")") L:43
+(type_annotation (predefined_type)) L:43
+(":") L:43
+(predefined_type) L:43
+("number") L:43
+(statement_block (return_statement (binary_expression left: (identifier) right: (identifier)))) L:43
+("{") L:43
+(return_statement (binary_expression left: (identifier) right: (identifier))) L:44
+("return") L:44
+(binary_expression left: (identifier) right: (identifier)) L:44
+(identifier) L:44
+("+") L:44
+(identifier) L:44
+(";") L:44
+("}") L:45
+(";") L:45
+(comment) L:47
+(lexical_declaration (variable_declarator name: (identifier) value: (function_expression name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number))))))))))) L:51
+("const") L:51
+(variable_declarator name: (identifier) value: (function_expression name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number)))))))))) L:51
+(identifier) L:51
+("=") L:51
+(function_expression name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number))))))))) L:51
+("function") L:51
+(identifier) L:51
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:51
+("(") L:51
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:51
+(identifier) L:51
+(type_annotation (predefined_type)) L:51
+(":") L:51
+(predefined_type) L:51
+("number") L:51
+(")") L:51
+(type_annotation (predefined_type)) L:51
+(":") L:51
+(predefined_type) L:51
+("number") L:51
+(statement_block (return_statement (ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number)))))))) L:51
+("{") L:51
+(return_statement (ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number))))))) L:52
+("return") L:52
+(ternary_expression condition: (binary_expression left: (identifier) right: (number)) consequence: (number) alternative: (binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number)))))) L:52
+(binary_expression left: (identifier) right: (number)) L:52
+(identifier) L:52
+("<=") L:52
+(number) L:52
+("?") L:52
+(number) L:52
+(":") L:52
+(binary_expression left: (identifier) right: (call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number))))) L:52
+(identifier) L:52
+("*") L:52
+(call_expression function: (identifier) arguments: (arguments (binary_expression left: (identifier) right: (number)))) L:52
+(identifier) L:52
+(arguments (binary_expression left: (identifier) right: (number))) L:52
+("(") L:52
+(binary_expression left: (identifier) right: (number)) L:52
+(identifier) L:52
+("-") L:52
+(number) L:52
+(")") L:52
+(";") L:52
+("}") L:53
+(";") L:53
+(comment) L:55
+(comment) L:56
+(comment) L:57
+(comment) L:59
+(lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (number))))))) L:62
+("const") L:62
+(variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (number)))))) L:62
+(identifier) L:62
+("=") L:62
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (identifier) right: (number))))) L:62
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:62
+("(") L:62
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:62
+(identifier) L:62
+(type_annotation (predefined_type)) L:62
+(":") L:62
+(predefined_type) L:62
+("number") L:62
+(")") L:62
+(type_annotation (predefined_type)) L:62
+(":") L:62
+(predefined_type) L:62
+("number") L:62
+("=>") L:62
+(statement_block (return_statement (binary_expression left: (identifier) right: (number)))) L:62
+("{") L:62
+(return_statement (binary_expression left: (identifier) right: (number))) L:63
+("return") L:63
+(binary_expression left: (identifier) right: (number)) L:63
+(identifier) L:63
+("*") L:63
+(number) L:63
+(";") L:63
+("}") L:64
+(";") L:64
+(comment) L:66
+(lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (binary_expression left: (identifier) right: (number))))) L:69
+("const") L:69
+(variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (binary_expression left: (identifier) right: (number)))) L:69
+(identifier) L:69
+("=") L:69
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (binary_expression left: (identifier) right: (number))) L:69
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:69
+("(") L:69
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:69
+(identifier) L:69
+(type_annotation (predefined_type)) L:69
+(":") L:69
+(predefined_type) L:69
+("number") L:69
+(")") L:69
+(type_annotation (predefined_type)) L:69
+(":") L:69
+(predefined_type) L:69
+("number") L:69
+("=>") L:69
+(binary_expression left: (identifier) right: (number)) L:69
+(identifier) L:69
+("*") L:69
+(number) L:69
+(";") L:69
+(comment) L:71
+(lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (parenthesized_expression (object (shorthand_property_identifier) (shorthand_property_identifier)))))) L:75
+("const") L:75
+(variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (parenthesized_expression (object (shorthand_property_identifier) (shorthand_property_identifier))))) L:75
+(identifier) L:75
+("=") L:75
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (parenthesized_expression (object (shorthand_property_identifier) (shorthand_property_identifier)))) L:75
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:75
+("(") L:75
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:75
+(identifier) L:75
+(type_annotation (predefined_type)) L:75
+(":") L:75
+(predefined_type) L:75
+("number") L:75
+(",") L:75
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:75
+(identifier) L:75
+(type_annotation (predefined_type)) L:75
+(":") L:75
+(predefined_type) L:75
+("number") L:75
+(")") L:75
+("=>") L:75
+(parenthesized_expression (object (shorthand_property_identifier) (shorthand_property_identifier))) L:75
+("(") L:75
+(object (shorthand_property_identifier) (shorthand_property_identifier)) L:75
+("{") L:75
+(shorthand_property_identifier) L:75
+(",") L:75
+(shorthand_property_identifier) L:75
+("}") L:75
+(")") L:75
+(";") L:75
+(comment) L:77
+(lexical_declaration (variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (binary_expression left: (identifier) right: (identifier)))))) L:81
+("const") L:81
+(variable_declarator name: (identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (binary_expression left: (identifier) right: (identifier))))) L:81
+(identifier) L:81
+("=") L:81
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (binary_expression left: (identifier) right: (identifier)))) L:81
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:81
+("(") L:81
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:81
+(identifier) L:81
+(type_annotation (predefined_type)) L:81
+(":") L:81
+(predefined_type) L:81
+("number") L:81
+(")") L:81
+("=>") L:81
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (binary_expression left: (identifier) right: (identifier))) L:81
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:81
+("(") L:81
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:81
+(identifier) L:81
+(type_annotation (predefined_type)) L:81
+(":") L:81
+(predefined_type) L:81
+("number") L:81
+(")") L:81
+("=>") L:81
+(binary_expression left: (identifier) right: (identifier)) L:81
+(identifier) L:81
+("*") L:81
+(identifier) L:81
+(";") L:81
+(comment) L:83
+(comment) L:84
+(comment) L:85
+(comment) L:87
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (template_string (template_substitution (binary_expression left: (identifier) right: (string (string_fragment)))) (string_fragment) (template_substitution (identifier)))))) L:91
+("function") L:91
+(identifier) L:91
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:91
+("(") L:91
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:91
+(identifier) L:91
+(type_annotation (predefined_type)) L:91
+(":") L:91
+(predefined_type) L:91
+("string") L:91
+(",") L:91
+(optional_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:91
+(identifier) L:91
+("?") L:91
+(type_annotation (predefined_type)) L:91
+(":") L:91
+(predefined_type) L:91
+("string") L:91
+(")") L:91
+(type_annotation (predefined_type)) L:91
+(":") L:91
+(predefined_type) L:91
+("string") L:91
+(statement_block (return_statement (template_string (template_substitution (binary_expression left: (identifier) right: (string (string_fragment)))) (string_fragment) (template_substitution (identifier))))) L:91
+("{") L:91
+(return_statement (template_string (template_substitution (binary_expression left: (identifier) right: (string (string_fragment)))) (string_fragment) (template_substitution (identifier)))) L:92
+("return") L:92
+(template_string (template_substitution (binary_expression left: (identifier) right: (string (string_fragment)))) (string_fragment) (template_substitution (identifier))) L:92
+("`") L:92
+(template_substitution (binary_expression left: (identifier) right: (string (string_fragment)))) L:92
+("${") L:92
+(binary_expression left: (identifier) right: (string (string_fragment))) L:92
+(identifier) L:92
+("||") L:92
+(string (string_fragment)) L:92
+("'") L:92
+(string_fragment) L:92
+("'") L:92
+("}") L:92
+(string_fragment) L:92
+(template_substitution (identifier)) L:92
+("${") L:92
+(identifier) L:92
+("}") L:92
+("`") L:92
+(";") L:92
+("}") L:93
+(comment) L:95
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)) value: (string (string_fragment)))) return_type: (type_annotation (predefined_type)) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier) (identifier)))))) L:99
+("function") L:99
+(identifier) L:99
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)) value: (string (string_fragment)))) L:99
+("(") L:99
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:99
+(identifier) L:99
+(type_annotation (predefined_type)) L:99
+(":") L:99
+(predefined_type) L:99
+("string") L:99
+(",") L:99
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type)) value: (string (string_fragment))) L:99
+(identifier) L:99
+(type_annotation (predefined_type)) L:99
+(":") L:99
+(predefined_type) L:99
+("string") L:99
+("=") L:99
+(string (string_fragment)) L:99
+(""") L:99
+(string_fragment) L:99
+(""") L:99
+(")") L:99
+(type_annotation (predefined_type)) L:99
+(":") L:99
+(predefined_type) L:99
+("void") L:99
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier) (identifier))))) L:99
+("{") L:99
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier) (identifier)))) L:100
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (identifier) (identifier))) L:100
+(member_expression object: (identifier) property: (property_identifier)) L:100
+(identifier) L:100
+(".") L:100
+(property_identifier) L:100
+(arguments (identifier) (identifier)) L:100
+("(") L:100
+(identifier) L:100
+(",") L:100
+(identifier) L:100
+(")") L:100
+(";") L:100
+("}") L:101
+(comment) L:103
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (rest_pattern (identifier)) type: (type_annotation (array_type (predefined_type))))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) (number)))))) L:107
+("function") L:107
+(identifier) L:107
+(formal_parameters (required_parameter pattern: (rest_pattern (identifier)) type: (type_annotation (array_type (predefined_type))))) L:107
+("(") L:107
+(required_parameter pattern: (rest_pattern (identifier)) type: (type_annotation (array_type (predefined_type)))) L:107
+(rest_pattern (identifier)) L:107
+("...") L:107
+(identifier) L:107
+(type_annotation (array_type (predefined_type))) L:107
+(":") L:107
+(array_type (predefined_type)) L:107
+(predefined_type) L:107
+("number") L:107
+("[") L:107
+("]") L:107
+(")") L:107
+(type_annotation (predefined_type)) L:107
+(":") L:107
+(predefined_type) L:107
+("number") L:107
+(statement_block (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) (number))))) L:107
+("{") L:107
+(return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) (number)))) L:108
+("return") L:108
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) (number))) L:108
+(member_expression object: (identifier) property: (property_identifier)) L:108
+(identifier) L:108
+(".") L:108
+(property_identifier) L:108
+(arguments (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) (number)) L:108
+("(") L:108
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) body: (binary_expression left: (identifier) right: (identifier))) L:108
+(formal_parameters (required_parameter pattern: (identifier)) (required_parameter pattern: (identifier))) L:108
+("(") L:108
+(required_parameter pattern: (identifier)) L:108
+(identifier) L:108
+(",") L:108
+(required_parameter pattern: (identifier)) L:108
+(identifier) L:108
+(")") L:108
+("=>") L:108
+(binary_expression left: (identifier) right: (identifier)) L:108
+(identifier) L:108
+("+") L:108
+(identifier) L:108
+(",") L:108
+(number) L:108
+(")") L:108
+(";") L:108
+("}") L:109
+(comment) L:111
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (object_pattern (shorthand_property_identifier_pattern) (shorthand_property_identifier_pattern)) type: (type_annotation (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))))) return_type: (type_annotation (predefined_type)) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (binary_expression left: (identifier) right: (identifier))))))) L:115
+("function") L:115
+(identifier) L:115
+(formal_parameters (required_parameter pattern: (object_pattern (shorthand_property_identifier_pattern) (shorthand_property_identifier_pattern)) type: (type_annotation (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))))) L:115
+("(") L:115
+(required_parameter pattern: (object_pattern (shorthand_property_identifier_pattern) (shorthand_property_identifier_pattern)) type: (type_annotation (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (property_signature name: (property_identifier) type: (type_annotation (predefined_type)))))) L:115
+(object_pattern (shorthand_property_identifier_pattern) (shorthand_property_identifier_pattern)) L:115
+("{") L:115
+(shorthand_property_identifier_pattern) L:115
+(",") L:115
+(shorthand_property_identifier_pattern) L:115
+("}") L:115
+(type_annotation (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))) L:115
+(":") L:115
+(object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (property_signature name: (property_identifier) type: (type_annotation (predefined_type)))) L:115
+("{") L:115
+(property_signature name: (property_identifier) type: (type_annotation (predefined_type))) L:115
+(property_identifier) L:115
+(type_annotation (predefined_type)) L:115
+(":") L:115
+(predefined_type) L:115
+("number") L:115
+(";") L:115
+(property_signature name: (property_identifier) type: (type_annotation (predefined_type))) L:115
+(property_identifier) L:115
+(type_annotation (predefined_type)) L:115
+(":") L:115
+(predefined_type) L:115
+("number") L:115
+("}") L:115
+(")") L:115
+(type_annotation (predefined_type)) L:115
+(":") L:115
+(predefined_type) L:115
+("void") L:115
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (binary_expression left: (identifier) right: (identifier)))))) L:115
+("{") L:115
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (binary_expression left: (identifier) right: (identifier))))) L:116
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (binary_expression left: (identifier) right: (identifier)))) L:116
+(member_expression object: (identifier) property: (property_identifier)) L:116
+(identifier) L:116
+(".") L:116
+(property_identifier) L:116
+(arguments (binary_expression left: (identifier) right: (identifier))) L:116
+("(") L:116
+(binary_expression left: (identifier) right: (identifier)) L:116
+(identifier) L:116
+("*") L:116
+(identifier) L:116
+(")") L:116
+(";") L:116
+("}") L:117
+(comment) L:119
+(comment) L:120
+(comment) L:121
+(comment) L:123
+(function_declaration name: (identifier) type_parameters: (type_parameters (type_parameter name: (type_identifier))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (type_identifier)) body: (statement_block (return_statement (identifier)))) L:127
+("function") L:127
+(identifier) L:127
+(type_parameters (type_parameter name: (type_identifier))) L:127
+("<") L:127
+(type_parameter name: (type_identifier)) L:127
+(type_identifier) L:127
+(">") L:127
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) L:127
+("(") L:127
+(required_parameter pattern: (identifier) type: (type_annotation (type_identifier))) L:127
+(identifier) L:127
+(type_annotation (type_identifier)) L:127
+(":") L:127
+(type_identifier) L:127
+(")") L:127
+(type_annotation (type_identifier)) L:127
+(":") L:127
+(type_identifier) L:127
+(statement_block (return_statement (identifier))) L:127
+("{") L:127
+(return_statement (identifier)) L:128
+("return") L:128
+(identifier) L:128
+(";") L:128
+("}") L:129
+(comment) L:131
+(lexical_declaration (variable_declarator name: (identifier) value: (arrow_function type_parameters: (type_parameters (type_parameter name: (type_identifier))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (array_type (type_identifier))))) return_type: (type_annotation (union_type (type_identifier) (literal_type (undefined)))) body: (subscript_expression object: (identifier) index: (number))))) L:135
+("const") L:135
+(variable_declarator name: (identifier) value: (arrow_function type_parameters: (type_parameters (type_parameter name: (type_identifier))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (array_type (type_identifier))))) return_type: (type_annotation (union_type (type_identifier) (literal_type (undefined)))) body: (subscript_expression object: (identifier) index: (number)))) L:135
+(identifier) L:135
+("=") L:135
+(arrow_function type_parameters: (type_parameters (type_parameter name: (type_identifier))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (array_type (type_identifier))))) return_type: (type_annotation (union_type (type_identifier) (literal_type (undefined)))) body: (subscript_expression object: (identifier) index: (number))) L:135
+(type_parameters (type_parameter name: (type_identifier))) L:135
+("<") L:135
+(type_parameter name: (type_identifier)) L:135
+(type_identifier) L:135
+(">") L:135
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (array_type (type_identifier))))) L:135
+("(") L:135
+(required_parameter pattern: (identifier) type: (type_annotation (array_type (type_identifier)))) L:135
+(identifier) L:135
+(type_annotation (array_type (type_identifier))) L:135
+(":") L:135
+(array_type (type_identifier)) L:135
+(type_identifier) L:135
+("[") L:135
+("]") L:135
+(")") L:135
+(type_annotation (union_type (type_identifier) (literal_type (undefined)))) L:135
+(":") L:135
+(union_type (type_identifier) (literal_type (undefined))) L:135
+(type_identifier) L:135
+("|") L:135
+(literal_type (undefined)) L:135
+(undefined) L:135
+("=>") L:135
+(subscript_expression object: (identifier) index: (number)) L:135
+(identifier) L:135
+("[") L:135
+(number) L:135
+("]") L:135
+(";") L:135
+(comment) L:137
+(function_declaration name: (identifier) type_parameters: (type_parameters (type_parameter name: (type_identifier) constraint: (constraint (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))))) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (identifier) property: (property_identifier))))) L:141
+("function") L:141
+(identifier) L:141
+(type_parameters (type_parameter name: (type_identifier) constraint: (constraint (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))))) L:141
+("<") L:141
+(type_parameter name: (type_identifier) constraint: (constraint (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type)))))) L:141
+(type_identifier) L:141
+(constraint (object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type))))) L:141
+("extends") L:141
+(object_type (property_signature name: (property_identifier) type: (type_annotation (predefined_type)))) L:141
+("{") L:141
+(property_signature name: (property_identifier) type: (type_annotation (predefined_type))) L:141
+(property_identifier) L:141
+(type_annotation (predefined_type)) L:141
+(":") L:141
+(predefined_type) L:141
+("number") L:141
+("}") L:141
+(">") L:141
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) L:141
+("(") L:141
+(required_parameter pattern: (identifier) type: (type_annotation (type_identifier))) L:141
+(identifier) L:141
+(type_annotation (type_identifier)) L:141
+(":") L:141
+(type_identifier) L:141
+(")") L:141
+(type_annotation (predefined_type)) L:141
+(":") L:141
+(predefined_type) L:141
+("number") L:141
+(statement_block (return_statement (member_expression object: (identifier) property: (property_identifier)))) L:141
+("{") L:141
+(return_statement (member_expression object: (identifier) property: (property_identifier))) L:142
+("return") L:142
+(member_expression object: (identifier) property: (property_identifier)) L:142
+(identifier) L:142
+(".") L:142
+(property_identifier) L:142
+(";") L:142
+("}") L:143
+(comment) L:145
+(comment) L:146
+(comment) L:147
+(comment) L:149
+(comment) L:154
+(function_signature name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type))) L:155
+("function") L:155
+(identifier) L:155
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (type_identifier)))) L:155
+("(") L:155
+(required_parameter pattern: (identifier) type: (type_annotation (type_identifier))) L:155
+(identifier) L:155
+(type_annotation (type_identifier)) L:155
+(":") L:155
+(type_identifier) L:155
+(")") L:155
+(type_annotation (predefined_type)) L:155
+(":") L:155
+(predefined_type) L:155
+("number") L:155
+(";") L:155
+(comment) L:156
+(function_signature name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type))) L:157
+("function") L:157
+(identifier) L:157
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:157
+("(") L:157
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:157
+(identifier) L:157
+(type_annotation (predefined_type)) L:157
+(":") L:157
+(predefined_type) L:157
+("string") L:157
+(")") L:157
+(type_annotation (predefined_type)) L:157
+(":") L:157
+(predefined_type) L:157
+("number") L:157
+(";") L:157
+(comment) L:158
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (predefined_type))))) return_type: (type_annotation (predefined_type)) body: (statement_block (if_statement condition: (parenthesized_expression (binary_expression left: (identifier) right: (identifier))) consequence: (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)))) (return_statement (call_expression function: (member_expression object: (new_expression constructor: (identifier) arguments: (arguments (identifier))) property: (property_identifier)) arguments: (arguments))))) L:159
+("function") L:159
+(identifier) L:159
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (predefined_type))))) L:159
+("(") L:159
+(required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (predefined_type)))) L:159
+(identifier) L:159
+(type_annotation (union_type (type_identifier) (predefined_type))) L:159
+(":") L:159
+(union_type (type_identifier) (predefined_type)) L:159
+(type_identifier) L:159
+("|") L:159
+(predefined_type) L:159
+("string") L:159
+(")") L:159
+(type_annotation (predefined_type)) L:159
+(":") L:159
+(predefined_type) L:159
+("number") L:159
+(statement_block (if_statement condition: (parenthesized_expression (binary_expression left: (identifier) right: (identifier))) consequence: (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)))) (return_statement (call_expression function: (member_expression object: (new_expression constructor: (identifier) arguments: (arguments (identifier))) property: (property_identifier)) arguments: (arguments)))) L:159
+("{") L:159
+(if_statement condition: (parenthesized_expression (binary_expression left: (identifier) right: (identifier))) consequence: (return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)))) L:160
+("if") L:160
+(parenthesized_expression (binary_expression left: (identifier) right: (identifier))) L:160
+("(") L:160
+(binary_expression left: (identifier) right: (identifier)) L:160
+(identifier) L:160
+("instanceof") L:160
+(identifier) L:160
+(")") L:160
+(return_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))) L:160
+("return") L:160
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)) L:160
+(member_expression object: (identifier) property: (property_identifier)) L:160
+(identifier) L:160
+(".") L:160
+(property_identifier) L:160
+(arguments) L:160
+("(") L:160
+(")") L:160
+(";") L:160
+(return_statement (call_expression function: (member_expression object: (new_expression constructor: (identifier) arguments: (arguments (identifier))) property: (property_identifier)) arguments: (arguments))) L:161
+("return") L:161
+(call_expression function: (member_expression object: (new_expression constructor: (identifier) arguments: (arguments (identifier))) property: (property_identifier)) arguments: (arguments)) L:161
+(member_expression object: (new_expression constructor: (identifier) arguments: (arguments (identifier))) property: (property_identifier)) L:161
+(new_expression constructor: (identifier) arguments: (arguments (identifier))) L:161
+("new") L:161
+(identifier) L:161
+(arguments (identifier)) L:161
+("(") L:161
+(identifier) L:161
+(")") L:161
+(".") L:161
+(property_identifier) L:161
+(arguments) L:161
+("(") L:161
+(")") L:161
+(";") L:161
+("}") L:162
+(comment) L:164
+(comment) L:165
+(comment) L:166
+(comment) L:168
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block (return_statement (string (string_fragment))))) L:172
+("async") L:172
+("function") L:172
+(identifier) L:172
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:172
+("(") L:172
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:172
+(identifier) L:172
+(type_annotation (predefined_type)) L:172
+(":") L:172
+(predefined_type) L:172
+("string") L:172
+(")") L:172
+(type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) L:172
+(":") L:172
+(generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type))) L:172
+(type_identifier) L:172
+(type_arguments (predefined_type)) L:172
+("<") L:172
+(predefined_type) L:172
+("string") L:172
+(">") L:172
+(statement_block (return_statement (string (string_fragment)))) L:172
+("{") L:172
+(return_statement (string (string_fragment))) L:173
+("return") L:173
+(string (string_fragment)) L:173
+(""") L:173
+(string_fragment) L:173
+(""") L:173
+(";") L:173
+("}") L:174
+(comment) L:176
+(generator_function_declaration name: (identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block (expression_statement (yield_expression (number))) (expression_statement (yield_expression (number))))) L:180
+("function") L:180
+("*") L:180
+(identifier) L:180
+(formal_parameters) L:180
+("(") L:180
+(")") L:180
+(type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) L:180
+(":") L:180
+(generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type))) L:180
+(type_identifier) L:180
+(type_arguments (predefined_type)) L:180
+("<") L:180
+(predefined_type) L:180
+("number") L:180
+(">") L:180
+(statement_block (expression_statement (yield_expression (number))) (expression_statement (yield_expression (number)))) L:180
+("{") L:180
+(expression_statement (yield_expression (number))) L:181
+(yield_expression (number)) L:181
+("yield") L:181
+(number) L:181
+(";") L:181
+(expression_statement (yield_expression (number))) L:182
+(yield_expression (number)) L:182
+("yield") L:182
+(number) L:182
+(";") L:182
+("}") L:183
+(comment) L:185
+(generator_function_declaration name: (identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block (expression_statement (await_expression (new_expression constructor: (identifier) arguments: (arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number)))))))) (expression_statement (yield_expression (number))))) L:189
+("async") L:189
+("function") L:189
+("*") L:189
+(identifier) L:189
+(formal_parameters) L:189
+("(") L:189
+(")") L:189
+(type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) L:189
+(":") L:189
+(generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type))) L:189
+(type_identifier) L:189
+(type_arguments (predefined_type)) L:189
+("<") L:189
+(predefined_type) L:189
+("number") L:189
+(">") L:189
+(statement_block (expression_statement (await_expression (new_expression constructor: (identifier) arguments: (arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number)))))))) (expression_statement (yield_expression (number)))) L:189
+("{") L:189
+(expression_statement (await_expression (new_expression constructor: (identifier) arguments: (arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number)))))))) L:190
+(await_expression (new_expression constructor: (identifier) arguments: (arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number))))))) L:190
+("await") L:190
+(new_expression constructor: (identifier) arguments: (arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number)))))) L:190
+("new") L:190
+(identifier) L:190
+(arguments (arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number))))) L:190
+("(") L:190
+(arrow_function parameter: (identifier) body: (call_expression function: (identifier) arguments: (arguments (identifier) (number)))) L:190
+(identifier) L:190
+("=>") L:190
+(call_expression function: (identifier) arguments: (arguments (identifier) (number))) L:190
+(identifier) L:190
+(arguments (identifier) (number)) L:190
+("(") L:190
+(identifier) L:190
+(",") L:190
+(number) L:190
+(")") L:190
+(")") L:190
+(";") L:190
+(expression_statement (yield_expression (number))) L:191
+(yield_expression (number)) L:191
+("yield") L:191
+(number) L:191
+(";") L:191
+("}") L:192
+(comment) L:194
+(comment) L:195
+(comment) L:196
+(comment) L:198
+(type_alias_declaration name: (type_identifier) value: (object_type (property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type)))))) L:202
+("type") L:202
+(type_identifier) L:202
+("=") L:202
+(object_type (property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type))))) L:202
+("{") L:202
+(property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type)))) L:202
+(property_identifier) L:202
+(type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type))) L:202
+(":") L:202
+(function_type parameters: (formal_parameters) return_type: (predefined_type)) L:202
+(formal_parameters) L:202
+("(") L:202
+(")") L:202
+("=>") L:202
+(predefined_type) L:202
+("void") L:202
+("}") L:202
+(";") L:202
+(type_alias_declaration name: (type_identifier) value: (object_type (property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type)))))) L:203
+("type") L:203
+(type_identifier) L:203
+("=") L:203
+(object_type (property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type))))) L:203
+("{") L:203
+(property_signature name: (property_identifier) type: (type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type)))) L:203
+(property_identifier) L:203
+(type_annotation (function_type parameters: (formal_parameters) return_type: (predefined_type))) L:203
+(":") L:203
+(function_type parameters: (formal_parameters) return_type: (predefined_type)) L:203
+(formal_parameters) L:203
+("(") L:203
+(")") L:203
+("=>") L:203
+(predefined_type) L:203
+("void") L:203
+("}") L:203
+(";") L:203
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (type_identifier))))) return_type: (type_predicate_annotation (type_predicate name: (identifier) type: (type_identifier))) body: (statement_block (return_statement (binary_expression left: (member_expression object: (parenthesized_expression (as_expression (identifier) (type_identifier))) property: (property_identifier)) right: (undefined))))) L:205
+("function") L:205
+(identifier) L:205
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (type_identifier))))) L:205
+("(") L:205
+(required_parameter pattern: (identifier) type: (type_annotation (union_type (type_identifier) (type_identifier)))) L:205
+(identifier) L:205
+(type_annotation (union_type (type_identifier) (type_identifier))) L:205
+(":") L:205
+(union_type (type_identifier) (type_identifier)) L:205
+(type_identifier) L:205
+("|") L:205
+(type_identifier) L:205
+(")") L:205
+(type_predicate_annotation (type_predicate name: (identifier) type: (type_identifier))) L:205
+(":") L:205
+(type_predicate name: (identifier) type: (type_identifier)) L:205
+(identifier) L:205
+("is") L:205
+(type_identifier) L:205
+(statement_block (return_statement (binary_expression left: (member_expression object: (parenthesized_expression (as_expression (identifier) (type_identifier))) property: (property_identifier)) right: (undefined)))) L:205
+("{") L:205
+(return_statement (binary_expression left: (member_expression object: (parenthesized_expression (as_expression (identifier) (type_identifier))) property: (property_identifier)) right: (undefined))) L:206
+("return") L:206
+(binary_expression left: (member_expression object: (parenthesized_expression (as_expression (identifier) (type_identifier))) property: (property_identifier)) right: (undefined)) L:206
+(member_expression object: (parenthesized_expression (as_expression (identifier) (type_identifier))) property: (property_identifier)) L:206
+(parenthesized_expression (as_expression (identifier) (type_identifier))) L:206
+("(") L:206
+(as_expression (identifier) (type_identifier)) L:206
+(identifier) L:206
+("as") L:206
+(type_identifier) L:206
+(")") L:206
+(".") L:206
+(property_identifier) L:206
+("!==") L:206
+(undefined) L:206
+(";") L:206
+("}") L:207
+(comment) L:209
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (asserts_annotation (asserts (type_predicate name: (identifier) type: (predefined_type)))) body: (statement_block (if_statement condition: (parenthesized_expression (binary_expression left: (unary_expression argument: (identifier)) right: (string (string_fragment)))) consequence: (statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment))))))))) L:213
+("function") L:213
+(identifier) L:213
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:213
+("(") L:213
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:213
+(identifier) L:213
+(type_annotation (predefined_type)) L:213
+(":") L:213
+(predefined_type) L:213
+("any") L:213
+(")") L:213
+(asserts_annotation (asserts (type_predicate name: (identifier) type: (predefined_type)))) L:213
+(":") L:213
+(asserts (type_predicate name: (identifier) type: (predefined_type))) L:213
+("asserts") L:213
+(type_predicate name: (identifier) type: (predefined_type)) L:213
+(identifier) L:213
+("is") L:213
+(predefined_type) L:213
+("string") L:213
+(statement_block (if_statement condition: (parenthesized_expression (binary_expression left: (unary_expression argument: (identifier)) right: (string (string_fragment)))) consequence: (statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)))))))) L:213
+("{") L:213
+(if_statement condition: (parenthesized_expression (binary_expression left: (unary_expression argument: (identifier)) right: (string (string_fragment)))) consequence: (statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment))))))) L:214
+("if") L:214
+(parenthesized_expression (binary_expression left: (unary_expression argument: (identifier)) right: (string (string_fragment)))) L:214
+("(") L:214
+(binary_expression left: (unary_expression argument: (identifier)) right: (string (string_fragment))) L:214
+(unary_expression argument: (identifier)) L:214
+("typeof") L:214
+(identifier) L:214
+("!==") L:214
+(string (string_fragment)) L:214
+(""") L:214
+(string_fragment) L:214
+(""") L:214
+(")") L:214
+(statement_block (throw_statement (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)))))) L:214
+("{") L:214
+(throw_statement (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment))))) L:215
+("throw") L:215
+(new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)))) L:215
+("new") L:215
+(identifier) L:215
+(arguments (string (string_fragment))) L:215
+("(") L:215
+(string (string_fragment)) L:215
+(""") L:215
+(string_fragment) L:215
+(""") L:215
+(")") L:215
+(";") L:215
+("}") L:216
+("}") L:217
+(comment) L:219
+(comment) L:220
+(comment) L:221
+(class_declaration name: (type_identifier) body: (class_body (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter (accessibility_modifier) pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block)) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block)) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (this) property: (property_identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (string (string_fragment))))))) L:223
+("class") L:223
+(type_identifier) L:223
+(class_body (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter (accessibility_modifier) pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block)) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block)) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (this) property: (property_identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) (comment) (method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (string (string_fragment)))))) L:223
+("{") L:223
+(comment) L:224
+(method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter (accessibility_modifier) pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block)) L:225
+(property_identifier) L:225
+(formal_parameters (required_parameter (accessibility_modifier) pattern: (identifier) type: (type_annotation (predefined_type)))) L:225
+("(") L:225
+(required_parameter (accessibility_modifier) pattern: (identifier) type: (type_annotation (predefined_type))) L:225
+(accessibility_modifier) L:225
+("private") L:225
+(identifier) L:225
+(type_annotation (predefined_type)) L:225
+(":") L:225
+(predefined_type) L:225
+("number") L:225
+(")") L:225
+(statement_block) L:225
+("{") L:225
+("}") L:225
+(comment) L:227
+(method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) L:230
+(property_identifier) L:230
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:230
+("(") L:230
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:230
+(identifier) L:230
+(type_annotation (predefined_type)) L:230
+(":") L:230
+(predefined_type) L:230
+("number") L:230
+(")") L:230
+(type_annotation (predefined_type)) L:230
+(":") L:230
+(predefined_type) L:230
+("number") L:230
+(statement_block (return_statement (binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier)))) L:230
+("{") L:230
+(return_statement (binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) L:231
+("return") L:231
+(binary_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier)) L:231
+(member_expression object: (this) property: (property_identifier)) L:231
+(this) L:231
+(".") L:231
+(property_identifier) L:231
+("+") L:231
+(identifier) L:231
+(";") L:231
+("}") L:232
+(comment) L:234
+(method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) body: (statement_block)) L:237
+("async") L:237
+(property_identifier) L:237
+(formal_parameters) L:237
+("(") L:237
+(")") L:237
+(type_annotation (generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type)))) L:237
+(":") L:237
+(generic_type name: (type_identifier) type_arguments: (type_arguments (predefined_type))) L:237
+(type_identifier) L:237
+(type_arguments (predefined_type)) L:237
+("<") L:237
+(predefined_type) L:237
+("void") L:237
+(">") L:237
+(statement_block) L:237
+("{") L:237
+("}") L:237
+(comment) L:239
+(method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (member_expression object: (this) property: (property_identifier))))) L:243
+("get") L:243
+(property_identifier) L:243
+(formal_parameters) L:243
+("(") L:243
+(")") L:243
+(type_annotation (predefined_type)) L:243
+(":") L:243
+(predefined_type) L:243
+("number") L:243
+(statement_block (return_statement (member_expression object: (this) property: (property_identifier)))) L:243
+("{") L:243
+(return_statement (member_expression object: (this) property: (property_identifier))) L:244
+("return") L:244
+(member_expression object: (this) property: (property_identifier)) L:244
+(this) L:244
+(".") L:244
+(property_identifier) L:244
+(";") L:244
+("}") L:245
+(comment) L:247
+(method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))))) L:250
+("set") L:250
+(property_identifier) L:250
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:250
+("(") L:250
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:250
+(identifier) L:250
+(type_annotation (predefined_type)) L:250
+(":") L:250
+(predefined_type) L:250
+("number") L:250
+(")") L:250
+(statement_block (expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier)))) L:250
+("{") L:250
+(expression_statement (assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier))) L:251
+(assignment_expression left: (member_expression object: (this) property: (property_identifier)) right: (identifier)) L:251
+(member_expression object: (this) property: (property_identifier)) L:251
+(this) L:251
+(".") L:251
+(property_identifier) L:251
+("=") L:251
+(identifier) L:251
+(";") L:251
+("}") L:252
+(comment) L:254
+(method_definition name: (property_identifier) parameters: (formal_parameters) return_type: (type_annotation (predefined_type)) body: (statement_block (return_statement (string (string_fragment))))) L:258
+("static") L:258
+(property_identifier) L:258
+(formal_parameters) L:258
+("(") L:258
+(")") L:258
+(type_annotation (predefined_type)) L:258
+(":") L:258
+(predefined_type) L:258
+("string") L:258
+(statement_block (return_statement (string (string_fragment)))) L:258
+("{") L:258
+(return_statement (string (string_fragment))) L:259
+("return") L:259
+(string (string_fragment)) L:259
+(""") L:259
+(string_fragment) L:259
+(""") L:259
+(";") L:259
+("}") L:260
+("}") L:261
+(lexical_declaration (variable_declarator name: (identifier) value: (object (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))) (comment) (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (identifier))) (comment) (pair key: (property_identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))))))) L:263
+("const") L:263
+(variable_declarator name: (identifier) value: (object (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))) (comment) (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (identifier))) (comment) (pair key: (property_identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier))))))) L:263
+(identifier) L:263
+("=") L:263
+(object (comment) (method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))) (comment) (pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (identifier))) (comment) (pair key: (property_identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))))) L:263
+("{") L:263
+(comment) L:264
+(method_definition name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))) L:265
+(property_identifier) L:265
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:265
+("(") L:265
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:265
+(identifier) L:265
+(type_annotation (predefined_type)) L:265
+(":") L:265
+(predefined_type) L:265
+("number") L:265
+(")") L:265
+(statement_block (return_statement (identifier))) L:265
+("{") L:265
+(return_statement (identifier)) L:265
+("return") L:265
+(identifier) L:265
+(";") L:265
+("}") L:265
+(",") L:265
+(comment) L:267
+(pair key: (property_identifier) value: (arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (identifier))) L:268
+(property_identifier) L:268
+(":") L:268
+(arrow_function parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (identifier)) L:268
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:268
+("(") L:268
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:268
+(identifier) L:268
+(type_annotation (predefined_type)) L:268
+(":") L:268
+(predefined_type) L:268
+("number") L:268
+(")") L:268
+("=>") L:268
+(identifier) L:268
+(",") L:268
+(comment) L:270
+(pair key: (property_identifier) value: (function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier))))) L:271
+(property_identifier) L:271
+(":") L:271
+(function_expression parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) body: (statement_block (return_statement (identifier)))) L:271
+("function") L:271
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:271
+("(") L:271
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:271
+(identifier) L:271
+(type_annotation (predefined_type)) L:271
+(":") L:271
+(predefined_type) L:271
+("number") L:271
+(")") L:271
+(statement_block (return_statement (identifier))) L:271
+("{") L:271
+(return_statement (identifier)) L:271
+("return") L:271
+(identifier) L:271
+(";") L:271
+("}") L:271
+("}") L:272
+(";") L:272
+(comment) L:274
+(comment) L:275
+(comment) L:276
+(comment) L:278
+(interface_declaration name: (type_identifier) body: (interface_body (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (method_signature name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type))))) L:283
+("interface") L:283
+(type_identifier) L:283
+(interface_body (property_signature name: (property_identifier) type: (type_annotation (predefined_type))) (method_signature name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type)))) L:283
+("{") L:283
+(property_signature name: (property_identifier) type: (type_annotation (predefined_type))) L:284
+(property_identifier) L:284
+(type_annotation (predefined_type)) L:284
+(":") L:284
+(predefined_type) L:284
+("string") L:284
+(";") L:284
+(method_signature name: (property_identifier) parameters: (formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) return_type: (type_annotation (predefined_type))) L:285
+(property_identifier) L:285
+(formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) L:285
+("(") L:285
+(required_parameter pattern: (this) type: (type_annotation (type_identifier))) L:285
+(this) L:285
+(type_annotation (type_identifier)) L:285
+(":") L:285
+(type_identifier) L:285
+(")") L:285
+(type_annotation (predefined_type)) L:285
+(":") L:285
+(predefined_type) L:285
+("void") L:285
+(";") L:285
+("}") L:286
+(function_declaration name: (identifier) parameters: (formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (member_expression object: (this) property: (property_identifier))))) (comment))) L:288
+("function") L:288
+(identifier) L:288
+(formal_parameters (required_parameter pattern: (this) type: (type_annotation (type_identifier)))) L:288
+("(") L:288
+(required_parameter pattern: (this) type: (type_annotation (type_identifier))) L:288
+(this) L:288
+(type_annotation (type_identifier)) L:288
+(":") L:288
+(type_identifier) L:288
+(")") L:288
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (member_expression object: (this) property: (property_identifier))))) (comment)) L:288
+("{") L:288
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (member_expression object: (this) property: (property_identifier))))) L:289
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (member_expression object: (this) property: (property_identifier)))) L:289
+(member_expression object: (identifier) property: (property_identifier)) L:289
+(identifier) L:289
+(".") L:289
+(property_identifier) L:289
+(arguments (member_expression object: (this) property: (property_identifier))) L:289
+("(") L:289
+(member_expression object: (this) property: (property_identifier)) L:289
+(this) L:289
+(".") L:289
+(property_identifier) L:289
+(")") L:289
+(";") L:289
+(comment) L:289
+("}") L:290
+(comment) L:292
+(comment) L:293
+(comment) L:294
+(comment) L:296
+(type_alias_declaration name: (type_identifier) value: (function_type parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (predefined_type))) L:299
+("type") L:299
+(type_identifier) L:299
+("=") L:299
+(function_type parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (predefined_type)) L:299
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:299
+("(") L:299
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:299
+(identifier) L:299
+(type_annotation (predefined_type)) L:299
+(":") L:299
+(predefined_type) L:299
+("number") L:299
+(",") L:299
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:299
+(identifier) L:299
+(type_annotation (predefined_type)) L:299
+(":") L:299
+(predefined_type) L:299
+("number") L:299
+(")") L:299
+("=>") L:299
+(predefined_type) L:299
+("number") L:299
+(";") L:299
+(comment) L:301
+(interface_declaration name: (type_identifier) body: (interface_body (call_signature parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type))) (comment) (property_signature name: (property_identifier) type: (type_annotation (array_type (predefined_type)))) (comment))) L:305
+("interface") L:305
+(type_identifier) L:305
+(interface_body (call_signature parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type))) (comment) (property_signature name: (property_identifier) type: (type_annotation (array_type (predefined_type)))) (comment)) L:305
+("{") L:305
+(call_signature parameters: (formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) return_type: (type_annotation (predefined_type))) L:306
+(formal_parameters (required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) (required_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:306
+("(") L:306
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:306
+(identifier) L:306
+(type_annotation (predefined_type)) L:306
+(":") L:306
+(predefined_type) L:306
+("string") L:306
+(",") L:306
+(required_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:306
+(identifier) L:306
+(type_annotation (predefined_type)) L:306
+(":") L:306
+(predefined_type) L:306
+("string") L:306
+(")") L:306
+(type_annotation (predefined_type)) L:306
+(":") L:306
+(predefined_type) L:306
+("boolean") L:306
+(";") L:306
+(comment) L:306
+(property_signature name: (property_identifier) type: (type_annotation (array_type (predefined_type)))) L:307
+(property_identifier) L:307
+("?") L:307
+(type_annotation (array_type (predefined_type))) L:307
+(":") L:307
+(array_type (predefined_type)) L:307
+(predefined_type) L:307
+("string") L:307
+("[") L:307
+("]") L:307
+(";") L:307
+(comment) L:307
+("}") L:308
+(comment) L:310
+(interface_declaration name: (type_identifier) body: (interface_body (construct_signature parameters: (formal_parameters (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) type: (type_annotation (type_identifier))))) L:314
+("interface") L:314
+(type_identifier) L:314
+(interface_body (construct_signature parameters: (formal_parameters (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) type: (type_annotation (type_identifier)))) L:314
+("{") L:314
+(construct_signature parameters: (formal_parameters (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) type: (type_annotation (type_identifier))) L:315
+("new") L:315
+(formal_parameters (optional_parameter pattern: (identifier) type: (type_annotation (predefined_type)))) L:315
+("(") L:315
+(optional_parameter pattern: (identifier) type: (type_annotation (predefined_type))) L:315
+(identifier) L:315
+("?") L:315
+(type_annotation (predefined_type)) L:315
+(":") L:315
+(predefined_type) L:315
+("number") L:315
+(")") L:315
+(type_annotation (type_identifier)) L:315
+(":") L:315
+(type_identifier) L:315
+(";") L:315
+("}") L:316
+(comment) L:318
+(comment) L:319
+(comment) L:320
+(comment) L:322
+(expression_statement (call_expression function: (parenthesized_expression (function_expression parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment)))))))) arguments: (arguments))) L:323
+(call_expression function: (parenthesized_expression (function_expression parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment)))))))) arguments: (arguments)) L:323
+(parenthesized_expression (function_expression parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment)))))))) L:323
+("(") L:323
+(function_expression parameters: (formal_parameters) body: (statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment))))))) L:323
+("function") L:323
+(formal_parameters) L:323
+("(") L:323
+(")") L:323
+(statement_block (expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment)))))) L:323
+("{") L:323
+(expression_statement (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment))))) L:324
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments (string (string_fragment)))) L:324
+(member_expression object: (identifier) property: (property_identifier)) L:324
+(identifier) L:324
+(".") L:324
+(property_identifier) L:324
+(arguments (string (string_fragment))) L:324
+("(") L:324
+(string (string_fragment)) L:324
+(""") L:324
+(string_fragment) L:324
+(""") L:324
+(")") L:324
+(";") L:324
+("}") L:325
+(")") L:325
+(arguments) L:325
+("(") L:325
+(")") L:325
+(";") L:325
+(comment) L:327
+(expression_statement (call_expression function: (parenthesized_expression (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))))))) arguments: (arguments))) L:328
+(call_expression function: (parenthesized_expression (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))))))) arguments: (arguments)) L:328
+(parenthesized_expression (arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))))))) L:328
+("(") L:328
+(arrow_function parameters: (formal_parameters) body: (statement_block (expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)))))) L:328
+("async") L:328
+(formal_parameters) L:328
+("(") L:328
+(")") L:328
+("=>") L:328
+(statement_block (expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))))) L:328
+("{") L:328
+(expression_statement (await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)))) L:329
+(await_expression (call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments))) L:329
+("await") L:329
+(call_expression function: (member_expression object: (identifier) property: (property_identifier)) arguments: (arguments)) L:329
+(member_expression object: (identifier) property: (property_identifier)) L:329
+(identifier) L:329
+(".") L:329
+(property_identifier) L:329
+(arguments) L:329
+("(") L:329
+(")") L:329
+(";") L:329
+("}") L:330
+(")") L:330
+(arguments) L:330
+("(") L:330
+(")") L:330
+(";") L:330
+(comment) L:332
+(comment) L:333
+(comment) L:334
+(comment) L:336
+(lexical_declaration (variable_declarator name: (identifier) value: (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)) (string (string_fragment)) (string (string_fragment)))))) L:340
+("const") L:340
+(variable_declarator name: (identifier) value: (new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)) (string (string_fragment)) (string (string_fragment))))) L:340
+(identifier) L:340
+("=") L:340
+(new_expression constructor: (identifier) arguments: (arguments (string (string_fragment)) (string (string_fragment)) (string (string_fragment)))) L:340
+("new") L:340
+(identifier) L:340
+(arguments (string (string_fragment)) (string (string_fragment)) (string (string_fragment))) L:340
+("(") L:340
+(string (string_fragment)) L:340
+(""") L:340
+(string_fragment) L:340
+(""") L:340
+(",") L:340
+(string (string_fragment)) L:340
+(""") L:340
+(string_fragment) L:340
+(""") L:340
+(",") L:340
+(string (string_fragment)) L:340
+(""") L:340
+(string_fragment) L:340
+(""") L:340
+(")") L:340
+(";") L:340
+(comment) L:342
+(comment) L:344
+(export_statement (export_clause)) L:345
+("export") L:345
+(export_clause) L:345
+("{") L:345
+("}") L:345
+(";") L:345

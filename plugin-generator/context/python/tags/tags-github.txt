@@ -1,0 +1,7 @@
+GithubWebhookType	github.py	/^class GithubWebhookType(StrEnum):$/;"	c	line:19
+GithubWebhooksManager	github.py	/^class GithubWebhooksManager(BaseWebhooksManager):$/;"	c	line:23
+validate_payload	github.py	/^    async def validate_payload($/;"	m	line:32	class:GithubWebhooksManager	typeref:typename:tuple[dict,str]
+trigger_ping	github.py	/^    async def trigger_ping($/;"	m	line:65	class:GithubWebhooksManager	typeref:typename:None
+_register_webhook	github.py	/^    async def _register_webhook($/;"	m	line:85	class:GithubWebhooksManager	typeref:typename:tuple[str,dict]
+_deregister_webhook	github.py	/^    async def _deregister_webhook($/;"	m	line:138	class:GithubWebhooksManager	typeref:typename:None
+extract_github_error_msg	github.py	/^def extract_github_error_msg(response: Response) -> str:$/;"	f	line:173	typeref:typename:str

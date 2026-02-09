@@ -1,0 +1,71 @@
+# 役割
+あなたは、Tree-sitterが出力したASTを解析し、指定された CstNode 形式に変換するJavaコードを生成する専門家です。
+あなたの任務は、Javaで実装された多言語対応パーサー（UniversalPlugin）の一部として、Go言語のAST (Abstract Syntax Tree) をCST (Code Structure Tree) に変換するJavaメソッドを実装し、テストケースをすべてPassさせることです。
+
+- 学習: 提供されたJavaScriptとRubyの変換実装例（ソースコード、AST、テストコード）を分析し、ASTノードから CstNode の各プロパティ（type, name, location など）を抽出する共通パターンを学習します。
+- 分析: 新しい言語（Go）のAST (ast.txt) の構造を理解し、CSTにマッピングすべき構文要素（関数、メソッドなど）を特定します。
+- 実装: 学習したパターンと分析結果を基に、Go言語のASTをCSTに変換するJavaコードを生成します。
+
+# 前提
+生成するコードは、以下の仕様を持つ CstNode オブジェクトを作成する必要があります。
+- `CstNode`: 構文木のノードを表します。以下の重要なプロパティを持っています。
+  - type: ノードの種類 (例: GoNodeTypes.FUNCTION_DECLARATION)
+  - name: ノードの単純名 (例: myFunction)
+  - localName: 修飾子や引数を含むローカル名 (例: myFunction(arg1, arg2))
+  - namespace: ノードが属する名前空間 (例: main)
+  - location: ファイルパス、開始/終了位置・行番号などの情報
+  - parameters: 関数の引数リスト (例: ["arg1", "arg2"])
+
+# コンテキスト (学習データ)
+JavaScriptとRubyの例から、ASTからCSTへの変換ロジックを学習してください。特に、ASTの特定のノードタイプから CstNode のプロパティをどのように埋めているかに注目してください。
+
+- 概要:
+  - 元のソースファイル: Tree-sitterが解析したソースコードファイル
+  - ASTファイル: Tree-sitterが出力したASTのテキストファイル
+  - テストファイル: JUnitテストで、ASTからCSTへの変換を検証するコード
+  - 変換処理ファイル: ASTをCSTに変換する処理が実装されたJavaクラス
+
+## 学習データ1: JavaScript
+- ファイル参照:
+    - 元のソースファイル:
+      - @experiment-for-kyutech/ast/js/class.js
+      - @experiment-for-kyutech/ast/js/file.js
+      - @experiment-for-kyutech/ast/js/function.js
+    - ASTファイル:
+      - @experiment-for-kyutech/ast/js/ast-class.txt
+      - @experiment-for-kyutech/ast/js/ast-file.txt
+      - @experiment-for-kyutech/ast/js/ast-function.txt
+    - テストファイル: @refdiff-universal/src/test/java/refdiff/parsers/universal/js/TestParser.java
+    - 変換処理ファイル: @refdiff-universal/src/main/java/refdiff/parsers/universal/js/JsParser.java
+
+### 学習データ2: Ruby
+- ファイル参照:
+    - 元のソースファイル: @experiment-for-kyutech/ast/ruby/method.rb
+    - ASTファイル: @experiment-for-kyutech/ast/ruby/ast-method.txt
+    - テストファイル: @refdiff-universal/src/test/java/refdiff/parsers/universal/ruby/TestParser.java
+    - 変換処理ファイル: @refdiff-universal/src/main/java/refdiff/parsers/universal/ruby/RubyParser.java
+
+# タスク (生成対象)
+上記で学習したテストパターンを応用し、Go言語のASTからCSTへの変換処理を行うメソッドを新規に生成してください。
+GoParser.java に定義されている addNodes メソッド、またはそれに類するヘルパーメソッドのコードを生成してください。
+このメソッドは、GoのASTを受け取り、CstNode のリストを構築する責務を持ちます。
+
+生成対象: Go
+- ファイル参照:
+  - 元のソースファイル:
+    - @experiment-for-kyutech/ast/go/runner.go
+    - @experiment-for-kyutech/ast/go/keyvalue.go
+    - @experiment-for-kyutech/ast/go/updater_windows.go
+  - ASTファイル:
+    - @experiment-for-kyutech/ast/go/ast-keyvalue.txt
+    - @experiment-for-kyutech/ast/go/ast-runner.txt
+    - @experiment-for-kyutech/ast/go/ast-updater_windows.txt
+  - テストファイル: @refdiff-universal/src/test/java/refdiff/parsers/universal/go/TestParser.java
+  - 変換処理ファイル: @refdiff-universal/src/main/java/refdiff/parsers/universal/go/GoParser.java
+
+# 出力要件
+- 出力言語: Java
+- 品質: 提供されたテストファイル (TestParser.java) を修正することなく、すべてのテストケースをパスすること。
+- コーディングスタイル: refdiff-universal プロジェクト内の既存のJavaコードのスタイルに合わせてください。
+- 依存関係: プロジェクトに既に存在するクラスやライブラリのみを使用してください。新たな外部依存を追加しないでください。
+- 出力形式: 実装されたJavaメソッドのコードブロックのみを出力してください。解説や説明はコードの前に簡潔に記述するだけに留めてください。

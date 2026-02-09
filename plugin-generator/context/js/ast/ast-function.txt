@@ -1,0 +1,1489 @@
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))) L:0
+(regex) L:0
+("/") L:0
+(/) L:0
+(integer) L:0
+(".") L:0
+(constant) L:0
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))) L:0
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))) L:0
+(identifier) L:0
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) L:0
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))) L:0
+(identifier) L:0
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)))) L:0
+(call method: (identifier) arguments: (argument_list (identifier))) L:0
+(identifier) L:0
+(argument_list (identifier)) L:0
+(identifier) L:0
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (identifier)))))))) L:1
+(identifier) L:1
+(argument_list (call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (identifier))))))) L:1
+(call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (identifier)))))) L:1
+(identifier) L:1
+(argument_list (identifier) (identifier)) L:1
+("(") L:1
+(identifier) L:1
+(",") L:1
+(identifier) L:1
+(")") L:1
+(block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (identifier))))) L:1
+("{") L:1
+(block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (identifier)))) L:2
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) L:2
+(identifier) L:2
+(argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier)))) L:2
+(assignment left: (identifier) right: (binary left: (identifier) right: (identifier))) L:2
+(identifier) L:2
+("=") L:2
+(binary left: (identifier) right: (identifier)) L:2
+(identifier) L:2
+("+") L:2
+(identifier) L:2
+(";") L:2
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:3
+(identifier) L:3
+(".") L:3
+(identifier) L:3
+(argument_list (subshell (string_content))) L:3
+("(") L:3
+(subshell (string_content)) L:3
+("`") L:3
+(string_content) L:3
+(`) L:3
+(")") L:3
+(";") L:3
+(return (argument_list (identifier))) L:4
+("return") L:4
+(argument_list (identifier)) L:4
+(identifier) L:4
+(";") L:4
+("}") L:5
+(call method: (identifier) arguments: (argument_list (integer) (integer))) L:6
+(identifier) L:6
+(argument_list (integer) (integer)) L:6
+("(") L:6
+(integer) L:6
+(",") L:6
+(integer) L:6
+(")") L:6
+(";") L:6
+(regex) L:8
+("/") L:8
+(/) L:8
+(MISSING ";") L:8
+(call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier)))))))) L:8
+(constant) L:8
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier))))))) L:8
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier)))))) L:8
+(identifier) L:8
+(argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier))))) L:8
+(parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier)))) L:8
+("(") L:8
+(call method: (identifier) arguments: (argument_list (identifier))) L:8
+(identifier) L:8
+(argument_list (identifier)) L:8
+(identifier) L:8
+(")") L:8
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (return (argument_list (binary left: (identifier) right: (identifier)))))))))) L:9
+(identifier) L:9
+(argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (return (argument_list (binary left: (identifier) right: (identifier))))))))) L:9
+(assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (return (argument_list (binary left: (identifier) right: (identifier)))))))) L:9
+(identifier) L:9
+("=") L:9
+(call method: (identifier) arguments: (argument_list (identifier) (identifier)) block: (block body: (block_body (return (argument_list (binary left: (identifier) right: (identifier))))))) L:9
+(identifier) L:9
+(argument_list (identifier) (identifier)) L:9
+("(") L:9
+(identifier) L:9
+(",") L:9
+(identifier) L:9
+(")") L:9
+(block body: (block_body (return (argument_list (binary left: (identifier) right: (identifier)))))) L:9
+("{") L:9
+(block_body (return (argument_list (binary left: (identifier) right: (identifier))))) L:10
+(return (argument_list (binary left: (identifier) right: (identifier)))) L:10
+("return") L:10
+(argument_list (binary left: (identifier) right: (identifier))) L:10
+(binary left: (identifier) right: (identifier)) L:10
+(identifier) L:10
+("*") L:10
+(identifier) L:10
+(";") L:10
+("}") L:11
+(";") L:11
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:12
+(identifier) L:12
+(".") L:12
+(identifier) L:12
+(argument_list (subshell (string_content))) L:12
+("(") L:12
+(subshell (string_content)) L:12
+("`") L:12
+(string_content) L:12
+(`) L:12
+(")") L:12
+(";") L:12
+(regex) L:14
+("/") L:14
+(/) L:14
+(MISSING ";") L:14
+(call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (constant)))))) L:14
+(constant) L:14
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (constant))))) L:14
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (constant)))) L:14
+(identifier) L:14
+(argument_list (parenthesized_statements (constant))) L:14
+(parenthesized_statements (constant)) L:14
+("(") L:14
+(constant) L:14
+(")") L:14
+(call method: (identifier) arguments: (argument_list (pair key: (identifier) (ERROR (destructured_left_assignment (identifier) (identifier))) value: (binary left: (identifier) right: (identifier))))) L:15
+(identifier) L:15
+(argument_list (pair key: (identifier) (ERROR (destructured_left_assignment (identifier) (identifier))) value: (binary left: (identifier) right: (identifier)))) L:15
+(pair key: (identifier) (ERROR (destructured_left_assignment (identifier) (identifier))) value: (binary left: (identifier) right: (identifier))) L:15
+(identifier) L:15
+("=") L:15
+(destructured_left_assignment (identifier) (identifier)) L:15
+("(") L:15
+(identifier) L:15
+(",") L:15
+(identifier) L:15
+(")") L:15
+("=>") L:15
+(binary left: (identifier) right: (identifier)) L:15
+(identifier) L:15
+("/") L:15
+(identifier) L:15
+(";") L:15
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:16
+(identifier) L:16
+(".") L:16
+(identifier) L:16
+(argument_list (subshell (string_content))) L:16
+("(") L:16
+(subshell (string_content)) L:16
+("`") L:16
+(string_content) L:16
+(`) L:16
+(")") L:16
+(";") L:16
+(call receiver: (identifier) (ERROR (assignment left: (identifier) right: (match_pattern value: (identifier) pattern: (identifier)))) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:18
+(identifier) L:18
+(assignment left: (identifier) right: (match_pattern value: (identifier) pattern: (identifier))) L:18
+(identifier) L:18
+("=") L:18
+(match_pattern value: (identifier) pattern: (identifier)) L:18
+(identifier) L:18
+("=>") L:18
+(identifier) L:18
+(".") L:18
+(identifier) L:18
+(argument_list (subshell (string_content))) L:18
+("(") L:18
+(subshell (string_content)) L:18
+("`") L:18
+(string_content) L:18
+(`) L:18
+(")") L:18
+(";") L:18
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:19
+(identifier) L:19
+(argument_list (string (string_content))) L:19
+("(") L:19
+(string (string_content)) L:19
+(""") L:19
+(string_content) L:19
+(") L:19
+(")") L:19
+(";") L:19
+(call receiver: (identifier) (ERROR (assignment left: (identifier) right: (match_pattern value: (parenthesized_statements) pattern: (identifier)))) method: (identifier) arguments: (argument_list (string (string_content)))) L:21
+(identifier) L:21
+(assignment left: (identifier) right: (match_pattern value: (parenthesized_statements) pattern: (identifier))) L:21
+(identifier) L:21
+("=") L:21
+(match_pattern value: (parenthesized_statements) pattern: (identifier)) L:21
+(parenthesized_statements) L:21
+("(") L:21
+(")") L:21
+("=>") L:21
+(identifier) L:21
+(".") L:21
+(identifier) L:21
+(argument_list (string (string_content))) L:21
+("(") L:21
+(string (string_content)) L:21
+(""") L:21
+(string_content) L:21
+(") L:21
+(")") L:21
+(";") L:21
+(call method: (identifier) arguments: (argument_list)) L:22
+(identifier) L:22
+(argument_list) L:22
+("(") L:22
+(")") L:22
+(";") L:22
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) (ERROR (destructured_left_assignment (identifier) (identifier))) right: (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier)))))))) L:24
+(identifier) L:24
+(argument_list (assignment left: (identifier) (ERROR (destructured_left_assignment (identifier) (identifier))) right: (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))))) L:24
+(assignment left: (identifier) (ERROR (destructured_left_assignment (identifier) (identifier))) right: (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier)))))) L:24
+(identifier) L:24
+("=") L:24
+(destructured_left_assignment (identifier) (identifier)) L:24
+("(") L:24
+(identifier) L:24
+(",") L:24
+(identifier) L:24
+(")") L:24
+("=>") L:24
+("{") L:24
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier))))) L:25
+(identifier) L:25
+(argument_list (assignment left: (identifier) right: (binary left: (identifier) right: (identifier)))) L:25
+(assignment left: (identifier) right: (binary left: (identifier) right: (identifier))) L:25
+(identifier) L:25
+("=") L:25
+(binary left: (identifier) right: (identifier)) L:25
+(identifier) L:25
+("+") L:25
+(identifier) L:25
+(";") L:25
+(return (argument_list (subshell (string_content)))) L:26
+("return") L:26
+(argument_list (subshell (string_content))) L:26
+(subshell (string_content)) L:26
+("`") L:26
+(string_content) L:26
+(`) L:26
+(";") L:26
+("}") L:27
+(empty_statement) L:27
+(";") L:27
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (integer) (integer))))) L:28
+(identifier) L:28
+(".") L:28
+(identifier) L:28
+(argument_list (call method: (identifier) arguments: (argument_list (integer) (integer)))) L:28
+("(") L:28
+(call method: (identifier) arguments: (argument_list (integer) (integer))) L:28
+(identifier) L:28
+(argument_list (integer) (integer)) L:28
+("(") L:28
+(integer) L:28
+(",") L:28
+(integer) L:28
+(")") L:28
+(")") L:28
+(";") L:28
+(binary left: (binary left: (call receiver: (regex) (ERROR (integer)) method: (constant)) (ERROR (identifier)) right: (identifier)) right: (identifier)) L:30
+(binary left: (call receiver: (regex) (ERROR (integer)) method: (constant)) (ERROR (identifier)) right: (identifier)) L:30
+(call receiver: (regex) (ERROR (integer)) method: (constant)) L:30
+(regex) L:30
+("/") L:30
+(/) L:30
+(integer) L:30
+(".") L:30
+(constant) L:30
+("-") L:30
+(identifier) L:30
+(identifier) L:30
+("and") L:30
+(identifier) L:30
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) (call method: (identifier) arguments: (argument_list (string (string_content))))))))) L:31
+(identifier) L:31
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) (call method: (identifier) arguments: (argument_list (string (string_content)))))))) L:31
+(call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) (call method: (identifier) arguments: (argument_list (string (string_content))))))) L:31
+(identifier) L:31
+(argument_list (identifier)) L:31
+("(") L:31
+(identifier) L:31
+(")") L:31
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:31
+("{") L:31
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) (call method: (identifier) arguments: (argument_list (string (string_content))))) L:32
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:32
+(identifier) L:32
+(".") L:32
+(identifier) L:32
+(argument_list (string (string_content))) L:32
+("(") L:32
+(string (string_content)) L:32
+(""") L:32
+(string_content) L:32
+(") L:32
+(")") L:32
+(";") L:32
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:33
+(identifier) L:33
+(argument_list (string (string_content))) L:33
+("(") L:33
+(string (string_content)) L:33
+(""") L:33
+(string_content) L:33
+(") L:33
+(")") L:33
+(";") L:33
+("}") L:34
+(call method: (identifier) arguments: (argument_list (pair key: (parenthesized_statements (identifier)) value: (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))) L:35
+(identifier) L:35
+(argument_list (pair key: (parenthesized_statements (identifier)) value: (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))))) L:35
+("(") L:35
+(pair key: (parenthesized_statements (identifier)) value: (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))) L:35
+(parenthesized_statements (identifier)) L:35
+("(") L:35
+(identifier) L:35
+(")") L:35
+("=>") L:35
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:35
+(identifier) L:35
+(".") L:35
+(identifier) L:35
+(argument_list (subshell (string_content))) L:35
+("(") L:35
+(subshell (string_content)) L:35
+("`") L:35
+(string_content) L:35
+(`) L:35
+(")") L:35
+(")") L:35
+(";") L:35
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier)))))))) L:37
+(regex) L:37
+("/") L:37
+(/) L:37
+(integer) L:37
+(".") L:37
+(constant) L:37
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier))))))) L:37
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier)))))) L:37
+(identifier) L:37
+(argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier))))) L:37
+(parenthesized_statements (call method: (identifier) arguments: (argument_list (identifier)))) L:37
+("(") L:37
+(call method: (identifier) arguments: (argument_list (identifier))) L:37
+(identifier) L:37
+(argument_list (identifier)) L:37
+(identifier) L:37
+(")") L:37
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content))))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) (return (argument_list (identifier)))))))) L:38
+(identifier) L:38
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content))))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) (return (argument_list (identifier))))))) L:38
+(call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content))))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) (return (argument_list (identifier)))))) L:38
+(identifier) L:38
+(argument_list (identifier)) L:38
+("(") L:38
+(identifier) L:38
+(")") L:38
+(block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content))))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) (return (argument_list (identifier))))) L:38
+("{") L:38
+(block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content))))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) (return (argument_list (identifier)))) L:39
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content))))) L:39
+(identifier) L:39
+(argument_list (assignment left: (identifier) right: (string (string_content)))) L:39
+(assignment left: (identifier) right: (string (string_content))) L:39
+(identifier) L:39
+("=") L:39
+(string (string_content)) L:39
+(""") L:39
+(string_content) L:39
+(") L:39
+(";") L:39
+(regex) L:39
+("/") L:39
+(/) L:39
+(MISSING ";") L:39
+(call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))))) L:39
+(constant) L:39
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))))))))) L:39
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))))) L:39
+(identifier) L:39
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))))))) L:39
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))))) L:39
+(identifier) L:39
+(argument_list (call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))))) L:39
+(call method: (identifier) arguments: (argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))))) L:39
+(identifier) L:39
+(argument_list (identifier) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) L:39
+(identifier) L:39
+(",") L:39
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))) L:39
+(identifier) L:39
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))) L:39
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))) L:39
+(identifier) L:39
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) L:39
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))) L:39
+(identifier) L:39
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)))) L:39
+(call method: (identifier) arguments: (argument_list (identifier))) L:39
+(identifier) L:39
+(argument_list (identifier)) L:39
+(identifier) L:39
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) L:40
+(identifier) L:40
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))))))) L:40
+(call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))) L:40
+(identifier) L:40
+(argument_list (identifier)) L:40
+("(") L:40
+(identifier) L:40
+(")") L:40
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))))) L:40
+("{") L:40
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))) L:41
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:41
+(identifier) L:41
+(".") L:41
+(identifier) L:41
+(argument_list (subshell (string_content))) L:41
+("(") L:41
+(subshell (string_content)) L:41
+("`") L:41
+(string_content) L:41
+(`) L:41
+(")") L:41
+(";") L:41
+("}") L:42
+(return (argument_list (identifier))) L:43
+("return") L:43
+(argument_list (identifier)) L:43
+(identifier) L:43
+(";") L:43
+("}") L:44
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list (string (string_content))))))) L:45
+(identifier) L:45
+(argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:45
+(assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list (string (string_content))))) L:45
+(identifier) L:45
+("=") L:45
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:45
+(identifier) L:45
+(argument_list (string (string_content))) L:45
+("(") L:45
+(string (string_content)) L:45
+(""") L:45
+(string_content) L:45
+(") L:45
+(")") L:45
+(";") L:45
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:46
+(identifier) L:46
+(argument_list (string (string_content))) L:46
+("(") L:46
+(string (string_content)) L:46
+(""") L:46
+(string_content) L:46
+(") L:46
+(")") L:46
+(";") L:46
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (constant)))))) L:48
+(regex) L:48
+("/") L:48
+(/) L:48
+(integer) L:48
+(".") L:48
+(constant) L:48
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (constant))))) L:48
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (constant)))) L:48
+(identifier) L:48
+(argument_list (parenthesized_statements (constant))) L:48
+(parenthesized_statements (constant)) L:48
+("(") L:48
+(constant) L:48
+(")") L:48
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier) (range end: (identifier))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (call receiver: (identifier) method: (identifier))))))))) L:49
+(identifier) L:49
+(argument_list (call method: (identifier) arguments: (argument_list (identifier) (range end: (identifier))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (call receiver: (identifier) method: (identifier)))))))) L:49
+(call method: (identifier) arguments: (argument_list (identifier) (range end: (identifier))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (call receiver: (identifier) method: (identifier))))))) L:49
+(identifier) L:49
+(argument_list (identifier) (range end: (identifier))) L:49
+("(") L:49
+(identifier) L:49
+(",") L:49
+(range end: (identifier)) L:49
+("...") L:49
+(identifier) L:49
+(")") L:49
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (call receiver: (identifier) method: (identifier)))))) L:49
+("{") L:49
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (call receiver: (identifier) method: (identifier))))) L:50
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:50
+(identifier) L:50
+(".") L:50
+(identifier) L:50
+(argument_list (subshell (string_content))) L:50
+("(") L:50
+(subshell (string_content)) L:50
+("`") L:50
+(string_content) L:50
+(`) L:50
+(")") L:50
+(";") L:50
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:51
+(identifier) L:51
+(".") L:51
+(identifier) L:51
+(argument_list (subshell (string_content))) L:51
+("(") L:51
+(subshell (string_content)) L:51
+("`") L:51
+(string_content) L:51
+(`) L:51
+(")") L:51
+(";") L:51
+(return (argument_list (call receiver: (identifier) method: (identifier)))) L:52
+("return") L:52
+(argument_list (call receiver: (identifier) method: (identifier))) L:52
+(call receiver: (identifier) method: (identifier)) L:52
+(identifier) L:52
+(".") L:52
+(identifier) L:52
+(";") L:52
+("}") L:53
+(call method: (identifier) arguments: (argument_list (string (string_content)) (integer) (integer) (string (string_content)) (true))) L:54
+(identifier) L:54
+(argument_list (string (string_content)) (integer) (integer) (string (string_content)) (true)) L:54
+("(") L:54
+(string (string_content)) L:54
+(""") L:54
+(string_content) L:54
+(") L:54
+(",") L:54
+(integer) L:54
+(",") L:54
+(integer) L:54
+(",") L:54
+(string (string_content)) L:54
+(""") L:54
+(string_content) L:54
+(") L:54
+(",") L:54
+(true) L:54
+(")") L:54
+(";") L:54
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (constant)))))) L:56
+(regex) L:56
+("/") L:56
+(/) L:56
+(integer) L:56
+(".") L:56
+(constant) L:56
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (constant))))) L:56
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (constant)))) L:56
+(identifier) L:56
+(argument_list (parenthesized_statements (constant))) L:56
+(parenthesized_statements (constant)) L:56
+("(") L:56
+(constant) L:56
+(")") L:56
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content)))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))))) L:57
+(identifier) L:57
+(argument_list (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content)))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))))))) L:57
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (string (string_content)))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))))) L:57
+(identifier) L:57
+(argument_list (assignment left: (identifier) right: (string (string_content)))) L:57
+("(") L:57
+(assignment left: (identifier) right: (string (string_content))) L:57
+(identifier) L:57
+("=") L:57
+(string (string_content)) L:57
+(""") L:57
+(string_content) L:57
+(") L:57
+(")") L:57
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))))) L:57
+("{") L:57
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))) L:58
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:58
+(identifier) L:58
+(".") L:58
+(identifier) L:58
+(argument_list (subshell (string_content))) L:58
+("(") L:58
+(subshell (string_content)) L:58
+("`") L:58
+(string_content) L:58
+(`) L:58
+(")") L:58
+(";") L:58
+("}") L:59
+(call method: (identifier) arguments: (argument_list)) L:60
+(identifier) L:60
+(argument_list) L:60
+("(") L:60
+(")") L:60
+(";") L:60
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:61
+(identifier) L:61
+(argument_list (string (string_content))) L:61
+("(") L:61
+(string (string_content)) L:61
+(""") L:61
+(string_content) L:61
+(") L:61
+(")") L:61
+(";") L:61
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) right: (identifier))))))) L:63
+(regex) L:63
+("/") L:63
+(/) L:63
+(integer) L:63
+(".") L:63
+(constant) L:63
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) right: (identifier)))))) L:63
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) right: (identifier))))) L:63
+(identifier) L:63
+(argument_list (parenthesized_statements (binary left: (identifier) right: (identifier)))) L:63
+(parenthesized_statements (binary left: (identifier) right: (identifier))) L:63
+("(") L:63
+(binary left: (identifier) right: (identifier)) L:63
+(identifier) L:63
+("/") L:63
+(identifier) L:63
+(")") L:63
+(identifier) L:64
+(identifier) L:64
+(identifier) L:64
+(argument_list (identifier)) L:64
+("(") L:64
+(identifier) L:64
+(")") L:64
+("{") L:64
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:65
+(identifier) L:65
+(".") L:65
+(identifier) L:65
+(argument_list (string (string_content))) L:65
+("(") L:65
+(string (string_content)) L:65
+(""") L:65
+(string_content) L:65
+(") L:65
+(")") L:65
+(";") L:65
+(identifier) L:66
+("{") L:66
+(identifier) L:67
+(identifier) L:67
+("=") L:67
+(identifier) L:67
+(identifier) L:67
+(constant) L:67
+("(") L:67
+(destructured_left_assignment (identifier) (identifier)) L:67
+("(") L:67
+(identifier) L:67
+(",") L:67
+(identifier) L:67
+(")") L:67
+("=>") L:67
+("{") L:67
+(identifier) L:68
+("(") L:68
+(parenthesized_statements) L:68
+("(") L:68
+(")") L:68
+("=>") L:68
+("{") L:68
+("if") L:69
+(parenthesized_statements (identifier)) L:69
+("(") L:69
+(identifier) L:69
+(")") L:69
+("{") L:69
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:70
+(identifier) L:70
+(argument_list (string (string_content))) L:70
+("(") L:70
+(string (string_content)) L:70
+(""") L:70
+(string_content) L:70
+(") L:70
+(")") L:70
+(";") L:70
+("}") L:71
+("else") L:71
+(hash (ERROR (call method: (identifier) arguments: (argument_list (string (string_content)))))) L:71
+("{") L:71
+(call method: (identifier) arguments: (argument_list (string (string_content)))) L:72
+(identifier) L:72
+(argument_list (string (string_content))) L:72
+("(") L:72
+(string (string_content)) L:72
+(""") L:72
+(string_content) L:72
+(") L:72
+(")") L:72
+(";") L:72
+("}") L:73
+("}") L:74
+(",") L:74
+(integer) L:74
+(")") L:74
+(";") L:74
+("}") L:75
+(")") L:75
+(";") L:75
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:76
+(identifier) L:76
+(".") L:76
+(identifier) L:76
+(argument_list (subshell (string_content))) L:76
+("(") L:76
+(subshell (string_content)) L:76
+("`") L:76
+(string_content) L:76
+(`) L:76
+(")") L:76
+(";") L:76
+(return (argument_list (identifier))) L:77
+("return") L:77
+(argument_list (identifier)) L:77
+(identifier) L:77
+(";") L:77
+("}") L:78
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (identifier))) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call method: (identifier) arguments: (argument_list (identifier))) (binary left: (regex) (ERROR (constant)) (ERROR (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)) right: (identifier))))) L:78
+(identifier) L:78
+(argument_list (parenthesized_statements (identifier))) L:78
+(parenthesized_statements (identifier)) L:78
+("(") L:78
+(identifier) L:78
+(")") L:78
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call method: (identifier) arguments: (argument_list (identifier))) (binary left: (regex) (ERROR (constant)) (ERROR (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)) right: (identifier)))) L:78
+("{") L:78
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call method: (identifier) arguments: (argument_list (identifier))) (binary left: (regex) (ERROR (constant)) (ERROR (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)) right: (identifier))) L:79
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:79
+(identifier) L:79
+(".") L:79
+(identifier) L:79
+(argument_list (subshell (string_content))) L:79
+("(") L:79
+(subshell (string_content)) L:79
+("`") L:79
+(string_content) L:79
+(`) L:79
+(")") L:79
+(";") L:79
+(call method: (identifier) arguments: (argument_list (identifier))) L:80
+(identifier) L:80
+(argument_list (identifier)) L:80
+(identifier) L:80
+(";") L:80
+(binary left: (regex) (ERROR (constant)) (ERROR (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier) (identifier)) right: (identifier)) L:80
+(regex) L:80
+("/") L:80
+(/) L:80
+(constant) L:80
+("-") L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+(identifier) L:80
+("}") L:81
+(call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) L:81
+(identifier) L:81
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))) L:81
+("{") L:81
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))) L:82
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:82
+(identifier) L:82
+(".") L:82
+(identifier) L:82
+(argument_list (string (string_content))) L:82
+("(") L:82
+(string (string_content)) L:82
+(""") L:82
+(string_content) L:82
+(") L:82
+(")") L:82
+(";") L:82
+("}") L:83
+("}") L:84
+(call method: (identifier) arguments: (argument_list (true))) L:86
+(identifier) L:86
+(argument_list (true)) L:86
+("(") L:86
+(true) L:86
+(")") L:86
+(";") L:86
+(call receiver: (call method: (identifier) arguments: (argument_list (false))) method: (identifier) arguments: (argument_list (pair key: (parenthesized_statements) value: (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) L:87
+(call method: (identifier) arguments: (argument_list (false))) L:87
+(identifier) L:87
+(argument_list (false)) L:87
+("(") L:87
+(false) L:87
+(")") L:87
+(".") L:87
+(identifier) L:87
+(argument_list (pair key: (parenthesized_statements) value: (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))) L:87
+("(") L:87
+(pair key: (parenthesized_statements) value: (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))) L:87
+(parenthesized_statements) L:87
+("(") L:87
+(")") L:87
+("=>") L:87
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:87
+(identifier) L:87
+(".") L:87
+(identifier) L:87
+(argument_list (string (string_content))) L:87
+("(") L:87
+(string (string_content)) L:87
+(""") L:87
+(string_content) L:87
+(") L:87
+(")") L:87
+(")") L:87
+(";") L:87
+(regex) L:87
+("/") L:87
+(/) L:87
+(MISSING ";") L:87
+(call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))) L:87
+(constant) L:87
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)))) L:87
+(call method: (identifier) arguments: (argument_list (identifier))) L:87
+(identifier) L:87
+(argument_list (identifier)) L:87
+(identifier) L:87
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (parenthesized_statements (constant)))) L:89
+(regex) L:89
+("/") L:89
+(/) L:89
+(integer) L:89
+(".") L:89
+(constant) L:89
+(argument_list (parenthesized_statements (constant))) L:89
+(parenthesized_statements (constant)) L:89
+("(") L:89
+(constant) L:89
+(")") L:89
+(identifier) L:90
+("*") L:90
+(identifier) L:90
+(argument_list) L:90
+("(") L:90
+(")") L:90
+("{") L:90
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)))) L:91
+(identifier) L:91
+(argument_list (assignment left: (identifier) right: (integer))) L:91
+(assignment left: (identifier) right: (integer)) L:91
+(identifier) L:91
+("=") L:91
+(integer) L:91
+(";") L:91
+("while") L:92
+(parenthesized_statements (true)) L:92
+("(") L:92
+(true) L:92
+(")") L:92
+("{") L:92
+(yield (argument_list (binary left: (identifier) right: (unary (ERROR (identifier)) operand: (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))))) L:93
+("yield") L:93
+(argument_list (binary left: (identifier) right: (unary (ERROR (identifier)) operand: (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list)))))) L:93
+(binary left: (identifier) right: (unary (ERROR (identifier)) operand: (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) L:93
+(identifier) L:93
+("+") L:93
+(unary (ERROR (identifier)) operand: (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list)))) L:93
+("+") L:93
+(";") L:93
+("}") L:94
+("}") L:95
+(identifier) L:96
+(assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))) L:96
+(identifier) L:96
+("=") L:96
+(call method: (identifier) arguments: (argument_list)) L:96
+(identifier) L:96
+(argument_list) L:96
+("(") L:96
+(")") L:96
+(";") L:96
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:97
+(identifier) L:97
+(".") L:97
+(identifier) L:97
+(argument_list (subshell (string_content))) L:97
+("(") L:97
+(subshell (string_content)) L:97
+("`") L:97
+(string_content) L:97
+(`) L:97
+(")") L:97
+(";") L:97
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:98
+(identifier) L:98
+(".") L:98
+(identifier) L:98
+(argument_list (subshell (string_content))) L:98
+("(") L:98
+(subshell (string_content)) L:98
+("`") L:98
+(string_content) L:98
+(`) L:98
+(")") L:98
+(";") L:98
+(binary left: (identifier) right: (call method: (identifier) arguments: (argument_list) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)) (assignment left: (identifier) right: (integer)))) (while (ERROR (parenthesized_statements (true))) condition: (yield (argument_list (identifier))) body: (do (ERROR (array (identifier) (identifier)) (array (identifier) (binary left: (identifier) right: (identifier))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) (MISSING ";") (call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) (MISSING "end"))))))) L:100
+(identifier) L:100
+("*") L:100
+(call method: (identifier) arguments: (argument_list) block: (block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)) (assignment left: (identifier) right: (integer)))) (while (ERROR (parenthesized_statements (true))) condition: (yield (argument_list (identifier))) body: (do (ERROR (array (identifier) (identifier)) (array (identifier) (binary left: (identifier) right: (identifier))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) (MISSING ";") (call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) (MISSING "end")))))) L:100
+(identifier) L:100
+(argument_list) L:100
+("(") L:100
+(")") L:100
+(block body: (block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)) (assignment left: (identifier) right: (integer)))) (while (ERROR (parenthesized_statements (true))) condition: (yield (argument_list (identifier))) body: (do (ERROR (array (identifier) (identifier)) (array (identifier) (binary left: (identifier) right: (identifier))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) (MISSING ";") (call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) (MISSING "end"))))) L:100
+("{") L:100
+(block_body (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)) (assignment left: (identifier) right: (integer)))) (while (ERROR (parenthesized_statements (true))) condition: (yield (argument_list (identifier))) body: (do (ERROR (array (identifier) (identifier)) (array (identifier) (binary left: (identifier) right: (identifier))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) (MISSING ";") (call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) (MISSING "end")))) L:101
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)) (assignment left: (identifier) right: (integer)))) L:101
+(identifier) L:101
+(argument_list (assignment left: (identifier) right: (integer)) (assignment left: (identifier) right: (integer))) L:101
+(assignment left: (identifier) right: (integer)) L:101
+(identifier) L:101
+("=") L:101
+(integer) L:101
+(",") L:101
+(assignment left: (identifier) right: (integer)) L:101
+(identifier) L:101
+("=") L:101
+(integer) L:101
+(";") L:101
+(while (ERROR (parenthesized_statements (true))) condition: (yield (argument_list (identifier))) body: (do (ERROR (array (identifier) (identifier)) (array (identifier) (binary left: (identifier) right: (identifier))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) (MISSING ";") (call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) (MISSING "end"))) L:102
+("while") L:102
+(parenthesized_statements (true)) L:102
+("(") L:102
+(true) L:102
+(")") L:102
+("{") L:102
+(yield (argument_list (identifier))) L:103
+("yield") L:103
+(argument_list (identifier)) L:103
+(identifier) L:103
+(do (ERROR (array (identifier) (identifier)) (array (identifier) (binary left: (identifier) right: (identifier))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) (call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) (MISSING ";") (call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) (MISSING "end")) L:103
+(";") L:103
+(array (identifier) (identifier)) L:104
+("[") L:104
+(identifier) L:104
+(",") L:104
+(identifier) L:104
+("]") L:104
+("=") L:104
+(array (identifier) (binary left: (identifier) right: (identifier))) L:104
+("[") L:104
+(identifier) L:104
+(",") L:104
+(binary left: (identifier) right: (identifier)) L:104
+(identifier) L:104
+("+") L:104
+(identifier) L:104
+("]") L:104
+(";") L:104
+(regex) L:104
+("/") L:104
+(/) L:104
+(MISSING ";") L:104
+(call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))) L:104
+(constant) L:104
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)))) L:104
+(call method: (identifier) arguments: (argument_list (identifier))) L:104
+(identifier) L:104
+(argument_list (identifier)) L:104
+(identifier) L:104
+("}") L:105
+("}") L:106
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))))) L:107
+(identifier) L:107
+(argument_list (assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list)))) L:107
+(assignment left: (identifier) right: (call method: (identifier) arguments: (argument_list))) L:107
+(identifier) L:107
+("=") L:107
+(call method: (identifier) arguments: (argument_list)) L:107
+(identifier) L:107
+(argument_list) L:107
+("(") L:107
+(")") L:107
+(";") L:107
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:108
+(identifier) L:108
+(".") L:108
+(identifier) L:108
+(argument_list (subshell (string_content))) L:108
+("(") L:108
+(subshell (string_content)) L:108
+("`") L:108
+(string_content) L:108
+(`) L:108
+(")") L:108
+(";") L:108
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:109
+(identifier) L:109
+(".") L:109
+(identifier) L:109
+(argument_list (subshell (string_content))) L:109
+("(") L:109
+(subshell (string_content)) L:109
+("`") L:109
+(string_content) L:109
+(`) L:109
+(")") L:109
+(";") L:109
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:110
+(identifier) L:110
+(".") L:110
+(identifier) L:110
+(argument_list (subshell (string_content))) L:110
+("(") L:110
+(subshell (string_content)) L:110
+("`") L:110
+(string_content) L:110
+(`) L:110
+(")") L:110
+(";") L:110
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) L:112
+(regex) L:112
+("/") L:112
+(/) L:112
+(integer) L:112
+(".") L:112
+(constant) L:112
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))) L:112
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))) L:112
+(identifier) L:112
+(argument_list (parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))) L:112
+(parenthesized_statements (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))) L:112
+("(") L:112
+(binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)) L:112
+(identifier) L:112
+("/") L:112
+(identifier) L:112
+(identifier) L:112
+(identifier) L:112
+(identifier) L:112
+(")") L:112
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) (ERROR (identifier) (identifier)) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) L:113
+(identifier) L:113
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))))) L:113
+(call method: (identifier) arguments: (argument_list (identifier)) block: (block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer))))))) L:113
+(identifier) L:113
+(argument_list (identifier)) L:113
+("(") L:113
+(identifier) L:113
+(")") L:113
+(block body: (block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer)))))) L:113
+("{") L:113
+(block_body (call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (binary left: (identifier) right: (integer))))) L:114
+(call method: (identifier) block: (block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))))) L:114
+(identifier) L:114
+(block body: (block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end")))) L:114
+("{") L:114
+(block_body (if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end"))) L:115
+(if (ERROR (parenthesized_statements (binary left: (identifier) right: (integer)))) condition: (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) (MISSING "end")) L:115
+("if") L:115
+(parenthesized_statements (binary left: (identifier) right: (integer))) L:115
+("(") L:115
+(binary left: (identifier) right: (integer)) L:115
+(identifier) L:115
+("===") L:115
+(integer) L:115
+(")") L:115
+("{") L:115
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))))) L:116
+(identifier) L:116
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content))))))) L:116
+(call method: (identifier) arguments: (argument_list (call method: (constant) arguments: (argument_list (string (string_content)))))) L:116
+(identifier) L:116
+(argument_list (call method: (constant) arguments: (argument_list (string (string_content))))) L:116
+(call method: (constant) arguments: (argument_list (string (string_content)))) L:116
+(constant) L:116
+(argument_list (string (string_content))) L:116
+("(") L:116
+(string (string_content)) L:116
+(""") L:116
+(string_content) L:116
+(") L:116
+(")") L:116
+(";") L:116
+(MISSING "end") L:116
+("}") L:117
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:118
+(identifier) L:118
+(".") L:118
+(identifier) L:118
+(argument_list (subshell (string_content))) L:118
+("(") L:118
+(subshell (string_content)) L:118
+("`") L:118
+(string_content) L:118
+(`) L:118
+(")") L:118
+(";") L:118
+(return (argument_list (binary left: (identifier) right: (integer)))) L:119
+("return") L:119
+(argument_list (binary left: (identifier) right: (integer))) L:119
+(binary left: (identifier) right: (integer)) L:119
+(identifier) L:119
+("*") L:119
+(integer) L:119
+(";") L:119
+("}") L:120
+(identifier) L:120
+("(") L:120
+(identifier) L:120
+(")") L:120
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))) L:120
+("{") L:120
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) (return (argument_list (unary operand: (integer)))) (regex) (MISSING ";") (call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))) L:121
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:121
+(identifier) L:121
+(".") L:121
+(identifier) L:121
+(argument_list (subshell (string_content))) L:121
+("(") L:121
+(subshell (string_content)) L:121
+("`") L:121
+(string_content) L:121
+(`) L:121
+(")") L:121
+(";") L:121
+(return (argument_list (unary operand: (integer)))) L:122
+("return") L:122
+(argument_list (unary operand: (integer))) L:122
+(unary operand: (integer)) L:122
+("-") L:122
+(integer) L:122
+(";") L:122
+(regex) L:122
+("/") L:122
+(/) L:122
+(MISSING ";") L:122
+(call method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))) L:122
+(constant) L:122
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) L:122
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))) L:122
+(identifier) L:122
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)))) L:122
+(call method: (identifier) arguments: (argument_list (identifier))) L:122
+(identifier) L:122
+(argument_list (identifier)) L:122
+(identifier) L:122
+("}") L:123
+(MISSING ";") L:123
+(call method: (identifier) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) L:123
+(identifier) L:123
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))) L:123
+("{") L:123
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))) L:124
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:124
+(identifier) L:124
+(".") L:124
+(identifier) L:124
+(argument_list (string (string_content))) L:124
+("(") L:124
+(string (string_content)) L:124
+(""") L:124
+(string_content) L:124
+(") L:124
+(")") L:124
+(";") L:124
+("}") L:125
+(MISSING "end") L:125
+("}") L:126
+(call method: (identifier) arguments: (argument_list (integer))) L:127
+(identifier) L:127
+(argument_list (integer)) L:127
+("(") L:127
+(integer) L:127
+(")") L:127
+(";") L:127
+(call method: (identifier) arguments: (argument_list (integer))) L:128
+(identifier) L:128
+(argument_list (integer)) L:128
+("(") L:128
+(integer) L:128
+(")") L:128
+(";") L:128
+(call receiver: (regex) (ERROR (integer)) method: (constant) (ERROR (parenthesized_statements (call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (constant))))))))) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))))) L:130
+(regex) L:130
+("/") L:130
+(/) L:130
+(integer) L:130
+(".") L:130
+(constant) L:130
+(parenthesized_statements (call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (constant)))))))) L:130
+("(") L:130
+(call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (constant))))))) L:130
+(constant) L:130
+(argument_list (call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (constant)))))) L:130
+(call method: (constant) arguments: (argument_list (call method: (constant) arguments: (argument_list (constant))))) L:130
+(constant) L:130
+(argument_list (call method: (constant) arguments: (argument_list (constant)))) L:130
+(call method: (constant) arguments: (argument_list (constant))) L:130
+(constant) L:130
+(argument_list (constant)) L:130
+(constant) L:130
+(")") L:130
+(argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))))) L:130
+(parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))))) L:130
+("(") L:130
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))))) L:130
+(identifier) L:130
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier)))))) L:130
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (identifier))))) L:130
+(identifier) L:130
+(argument_list (call method: (identifier) arguments: (argument_list (identifier)))) L:130
+(call method: (identifier) arguments: (argument_list (identifier))) L:130
+(identifier) L:130
+(argument_list (identifier)) L:130
+(identifier) L:130
+(")") L:130
+(identifier) L:131
+(identifier) L:131
+(argument_list) L:131
+("(") L:131
+(")") L:131
+("{") L:131
+(parenthesized_statements (call method: (identifier) arguments: (argument_list) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))))) L:132
+("(") L:132
+(call method: (identifier) arguments: (argument_list) block: (block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))))) L:132
+(identifier) L:132
+(argument_list) L:132
+("(") L:132
+(")") L:132
+(block body: (block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))))) L:132
+("{") L:132
+(block_body (call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content))))) L:133
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:133
+(identifier) L:133
+(".") L:133
+(identifier) L:133
+(argument_list (string (string_content))) L:133
+("(") L:133
+(string (string_content)) L:133
+(""") L:133
+(string_content) L:133
+(") L:133
+(")") L:133
+(";") L:133
+("}") L:134
+(")") L:134
+("(") L:134
+(")") L:134
+(";") L:134
+(identifier) L:136
+(identifier) L:136
+("=") L:136
+("(") L:136
+(match_pattern value: (parenthesized_statements) pattern: (hash_pattern (ERROR (identifier) (string (string_content)) (identifier) (identifier) (identifier)))) L:136
+(parenthesized_statements) L:136
+("(") L:136
+(")") L:136
+("=>") L:136
+(hash_pattern (ERROR (identifier) (string (string_content)) (identifier) (identifier) (identifier))) L:136
+("{") L:136
+(identifier) L:137
+(string (string_content)) L:137
+(""") L:137
+(string_content) L:137
+(") L:137
+(";") L:137
+("}") L:138
+(")") L:138
+("(") L:138
+(")") L:138
+(";") L:138
+(identifier) L:139
+(".") L:139
+(identifier) L:139
+("(") L:139
+(identifier) L:139
+(")") L:139
+(";") L:139
+("}") L:140
+(call method: (identifier) arguments: (argument_list)) L:141
+(identifier) L:141
+(argument_list) L:141
+("(") L:141
+(")") L:141
+(";") L:141
+(call receiver: (regex) (ERROR (integer)) method: (constant) arguments: (argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))))))))))))) L:143
+(regex) L:143
+("/") L:143
+(/) L:143
+(integer) L:143
+(".") L:143
+(constant) L:143
+(argument_list (call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))))))))))))) L:143
+(call method: (identifier) arguments: (argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))))))))))) L:143
+(identifier) L:143
+(argument_list (parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))))))))))) L:143
+(parenthesized_statements (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))))))))) L:143
+("(") L:143
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))))))))) L:143
+(identifier) L:143
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))))))) L:143
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))))))) L:143
+(identifier) L:143
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))))) L:143
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))))) L:143
+(identifier) L:143
+(argument_list (call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))))) L:143
+(call method: (identifier) arguments: (argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))))) L:143
+(identifier) L:143
+(argument_list (call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))))) L:143
+(call method: (identifier) arguments: (argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)))) L:143
+(identifier) L:143
+(argument_list (binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier))) L:143
+(binary left: (identifier) (ERROR (identifier) (identifier) (identifier)) right: (identifier)) L:143
+(identifier) L:143
+("-") L:143
+(identifier) L:143
+(identifier) L:143
+(identifier) L:143
+(identifier) L:143
+(")") L:143
+(identifier) L:144
+(identifier) L:144
+(argument_list) L:144
+("(") L:144
+(")") L:144
+("{") L:144
+(identifier) L:145
+(":") L:145
+("for") L:145
+("(") L:145
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)))) L:145
+(identifier) L:145
+(argument_list (assignment left: (identifier) right: (integer))) L:145
+(assignment left: (identifier) right: (integer)) L:145
+(identifier) L:145
+("=") L:145
+(integer) L:145
+(";") L:145
+(binary left: (identifier) right: (integer)) L:145
+(identifier) L:145
+("<") L:145
+(integer) L:145
+(";") L:145
+(identifier) L:145
+("+") L:145
+("+") L:145
+(")") L:145
+("{") L:145
+(hash_key_symbol) L:146
+(":") L:146
+("for") L:146
+("(") L:146
+(call method: (identifier) arguments: (argument_list (assignment left: (identifier) right: (integer)))) L:146
+(identifier) L:146
+(argument_list (assignment left: (identifier) right: (integer))) L:146
+(assignment left: (identifier) right: (integer)) L:146
+(identifier) L:146
+("=") L:146
+(integer) L:146
+(";") L:146
+(binary left: (identifier) right: (integer)) L:146
+(identifier) L:146
+("<") L:146
+(integer) L:146
+(";") L:146
+(identifier) L:146
+("+") L:146
+("+") L:146
+(")") L:146
+("{") L:146
+("if") L:147
+(parenthesized_statements (binary left: (binary left: (identifier) right: (integer)) right: (binary left: (identifier) right: (integer)))) L:147
+("(") L:147
+(binary left: (binary left: (identifier) right: (integer)) right: (binary left: (identifier) right: (integer))) L:147
+(binary left: (identifier) right: (integer)) L:147
+(identifier) L:147
+("===") L:147
+(integer) L:147
+("&&") L:147
+(binary left: (identifier) right: (integer)) L:147
+(identifier) L:147
+("===") L:147
+(integer) L:147
+(")") L:147
+("{") L:147
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:148
+(identifier) L:148
+(".") L:148
+(identifier) L:148
+(argument_list (string (string_content))) L:148
+("(") L:148
+(string (string_content)) L:148
+(""") L:148
+(string_content) L:148
+(") L:148
+(")") L:148
+(";") L:148
+(call method: (identifier) arguments: (argument_list (identifier))) L:149
+(identifier) L:149
+(argument_list (identifier)) L:149
+(identifier) L:149
+(";") L:149
+("}") L:150
+("if") L:151
+(parenthesized_statements (binary left: (binary left: (identifier) right: (integer)) right: (binary left: (identifier) right: (integer)))) L:151
+("(") L:151
+(binary left: (binary left: (identifier) right: (integer)) right: (binary left: (identifier) right: (integer))) L:151
+(binary left: (identifier) right: (integer)) L:151
+(identifier) L:151
+("===") L:151
+(integer) L:151
+("&&") L:151
+(binary left: (identifier) right: (integer)) L:151
+(identifier) L:151
+("===") L:151
+(integer) L:151
+(")") L:151
+("{") L:151
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (string (string_content)))) L:152
+(identifier) L:152
+(".") L:152
+(identifier) L:152
+(argument_list (string (string_content))) L:152
+("(") L:152
+(string (string_content)) L:152
+(""") L:152
+(string_content) L:152
+(") L:152
+(")") L:152
+(then (ERROR (break (argument_list (identifier))) (call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content))))) (call method: (identifier) arguments: (argument_list))) L:152
+(";") L:152
+(break (argument_list (identifier))) L:153
+("break") L:153
+(argument_list (identifier)) L:153
+(identifier) L:153
+(";") L:153
+("}") L:154
+(call receiver: (identifier) method: (identifier) arguments: (argument_list (subshell (string_content)))) L:155
+(identifier) L:155
+(".") L:155
+(identifier) L:155
+(argument_list (subshell (string_content))) L:155
+("(") L:155
+(subshell (string_content)) L:155
+("`") L:155
+(string_content) L:155
+(`) L:155
+(")") L:155
+(";") L:155
+("}") L:156
+("}") L:157
+("}") L:158
+(call method: (identifier) arguments: (argument_list)) L:159
+(identifier) L:159
+(argument_list) L:159
+("(") L:159
+(")") L:159
+(";") L:159

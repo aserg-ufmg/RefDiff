@@ -1,0 +1,45 @@
+MyClass	method.rb	/^class MyClass$/;"	c	line:5
+instance_method_example	method.rb	/^  def instance_method_example$/;"	f	line:7	class:MyClass
+class_method_example	method.rb	/^  def self.class_method_example$/;"	S	line:12	class:MyClass
+another_class_method_example	method.rb	/^  def another_class_method_example$/;"	f	line:21
+greet	method.rb	/^def obj1.greet$/;"	S	line:40	module:obj1
+MySpecificClass	method.rb	/^class MySpecificClass$/;"	c	line:49
+class_specific_method	method.rb	/^def MySpecificClass.class_specific_method$/;"	S	line:52	module:MySpecificClass
+DynamicMethods	method.rb	/^class DynamicMethods$/;"	c	line:61
+dynamic_instance_method	method.rb	/^  define_method :dynamic_instance_method do |name|$/;"	f	line:63	class:DynamicMethods
+User	method.rb	/^class User$/;"	c	line:91
+name	method.rb	/^  attr_accessor :name$/;"	A	line:92	class:User
+name=	method.rb	/^  attr_accessor :name$/;"	A	line:92	class:User
+email	method.rb	/^  attr_reader :email$/;"	A	line:93	class:User
+age=	method.rb	/^  attr_writer :age$/;"	A	line:94	class:User
+initialize	method.rb	/^  def initialize(name, email, age)$/;"	f	line:96	class:User
+display_age	method.rb	/^  def display_age$/;"	f	line:102	class:User
+Greeter	method.rb	/^class Greeter$/;"	c	line:124
+hello	method.rb	/^  def hello$/;"	f	line:125	class:Greeter
+hi	method.rb	/^  alias_method :hi, :hello$/;"	a	line:129	class:Greeter
+GhostMethods	method.rb	/^class GhostMethods$/;"	c	line:140
+method_missing	method.rb	/^  def method_missing(method_name, *args, &block)$/;"	f	line:141	class:GhostMethods
+respond_to_missing?	method.rb	/^  def respond_to_missing?(method_name, include_private = false)$/;"	f	line:151	class:GhostMethods
+ProcRunner	method.rb	/^class ProcRunner$/;"	c	line:169
+MY_PROC	method.rb	/^  MY_PROC = proc { |x| puts "Proc executed: #{x}" }$/;"	C	line:170	class:ProcRunner
+MY_LAMBDA	method.rb	/^  MY_LAMBDA = ->(y) { puts "Lambda executed: #{y}" }$/;"	C	line:171	class:ProcRunner
+initialize	method.rb	/^  def initialize$/;"	f	line:173	class:ProcRunner
+run_proc	method.rb	/^  def run_proc(val)$/;"	f	line:177	class:ProcRunner
+run_lambda	method.rb	/^  def run_lambda(val)$/;"	f	line:181	class:ProcRunner
+run_instance_lambda	method.rb	/^  def run_instance_lambda(val)$/;"	f	line:185	class:ProcRunner
+run_class_proc	method.rb	/^  def self.run_class_proc(val)$/;"	S	line:189	class:ProcRunner
+VisibilityDemo	method.rb	/^class VisibilityDemo$/;"	c	line:204
+public_method	method.rb	/^  def public_method$/;"	f	line:205	class:VisibilityDemo
+protected_method	method.rb	/^  def protected_method$/;"	f	line:213	class:VisibilityDemo
+protected_method_called_from_public	method.rb	/^  def protected_method_called_from_public$/;"	f	line:217	class:VisibilityDemo
+private_method	method.rb	/^  def private_method$/;"	f	line:223	class:VisibilityDemo
+private_method_called_from_public	method.rb	/^  def private_method_called_from_public$/;"	f	line:227	class:VisibilityDemo
+SubVisibilityDemo	method.rb	/^class SubVisibilityDemo < VisibilityDemo$/;"	c	line:232
+call_protected_from_subclass	method.rb	/^  def call_protected_from_subclass(other)$/;"	f	line:233	class:SubVisibilityDemo
+call_own_private	method.rb	/^  def call_own_private$/;"	f	line:237	class:SubVisibilityDemo
+top_level_method_example	method.rb	/^def top_level_method_example(name)$/;"	f	line:260
+AdvancedParameters	method.rb	/^class AdvancedParameters$/;"	c	line:281
+optional_param_method	method.rb	/^  def optional_param_method(a = 1)$/;"	f	line:283	class:AdvancedParameters
+keyword_param_method	method.rb	/^  def keyword_param_method(a: "default")$/;"	f	line:287	class:AdvancedParameters
+hash_splat_param_method	method.rb	/^  def hash_splat_param_method(**options)$/;"	f	line:291	class:AdvancedParameters
+all_param_types	method.rb	/^  def all_param_types(required, optional = "default", *splat, keyword_req:, keyword_opt: "opt", /;"	f	line:295	class:AdvancedParameters

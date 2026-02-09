@@ -282,7 +282,7 @@ public class CCstVisitor extends ASTGenericVisitor {
 		
 		Location location = new Location();
 		location.setBegin(offset);
-		location.setLine(Location.findLineNumber(offset, fileContent));
+		location.setBeginLine(Location.findLineNumber(offset, fileContent));
 		location.setEnd(offset + length);
 		location.setFile(this.fileName);
 		

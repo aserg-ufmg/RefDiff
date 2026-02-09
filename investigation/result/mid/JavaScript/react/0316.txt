@@ -1,0 +1,453 @@
+Commit: 7513996f20e34070141aa605fe282ca6986915a0
+No refactorings found.
+
+Commit: bb4418d6470b95c7d487f3b73a9dc980edff6f06
+No refactorings found.
+
+Commit: 074e92777c22a56269647d614fdae80bf6406485
+No refactorings found.
+
+Commit: ac7da9d46dbfacc6a2f5072a1b2fc9f432a857b9
+No refactorings found.
+
+Commit: 0dca9c247182d7fc34aae7964c0856186e7d1f42
+No refactorings found.
+
+Commit: b9af1404eac698c943b52c466b9c2e4aff85cf70
+No refactorings found.
+
+Commit: e9638c33d7e79162516b89da31549af4090997a5
+No refactorings found.
+
+Commit: 28d4bc496b9c0dd2178caf894054ffce600311d3
+No refactorings found.
+
+Commit: dffacc7b8094576c19790fe8341996f743ba4a89
+No refactorings found.
+
+Commit: da7487b6816b19310b02bb69b35d72e3d7aed3b3
+No refactorings found.
+
+Commit: 9fec565a9b9f78558323adff1013291cf46f7de7
+No refactorings found.
+
+Commit: d85ec5f5bd778d09214e3429e7fd043c4a152242
+No refactorings found.
+
+Commit: 2f0e7e570d3a99adc2a18e7575d1d2bb69660e1f
+No refactorings found.
+
+Commit: 56d0ddae18993eb696ab41d0fc5041948b88024a
+No refactorings found.
+
+Commit: 97cdd5d3c33eda77be4f96a43f72d6916d3badbb
+No refactorings found.
+
+Commit: eb7f8b42c92ed804bbf7f700d2bdda276d591007
+No refactorings found.
+
+Commit: eed25607629f5e67f13f53e91edec12b3388559f
+No refactorings found.
+
+Commit: 463b808176ad7c9429a4981bb45a1da225fd4b85
+No refactorings found.
+
+Commit: 60b5271a9ad0e9eec2489b999ce774d39d09285b
+No refactorings found.
+
+Commit: 033edca72199f5b0dac87e4662b6a4d32a9610ce
+No refactorings found.
+
+Commit: e6dc25daea3d949fa5eae3bdffb8b6b79e30fc82
+No refactorings found.
+
+Commit: 150f022444466266bc09302b8fd47c3e4ce4d791
+No refactorings found.
+
+Commit: 49ded1d12a4c2771f4fa6e4592de2f97184700a9
+No refactorings found.
+
+Commit: 3a43e72d665af98b62d9c3c54bd288597dd27e6e
+EXTRACT	{Function collectStackTrace at packages/react-server/src/ReactFlightStackConfigV8.js:52 LOC:69}	{Function collectStackTracePrivate at packages/react-server/src/ReactFlightStackConfigV8.js:52 LOC:55})
+
+Commit: 8ba3501cd9c982676fab35f1c8092302060d728c
+No refactorings found.
+
+Commit: a7a116577daf3b135c226ed9db8a8c2f9166c023
+No refactorings found.
+
+Commit: 777264b4ef52797f63d0ed3e9e21b66b7ae6780e
+No refactorings found.
+
+Commit: befc1246b07a04b401bc6e914b7f336a442dca1a
+No refactorings found.
+
+Commit: bbea677b77ebf5d696623e2f634c69744eaf9d86
+No refactorings found.
+
+Commit: f1ecf82bfb5fdfa5d1c3aedcf114415fc29bd2da
+No refactorings found.
+
+Commit: b44a99bf58d69d52b5288d9eadcc6d226d705e11
+No refactorings found.
+
+Commit: e4314a0a0f6ea1ab8f739c9119583d148c1be657
+No refactorings found.
+
+Commit: e43986f1f3e6e94f7eef86fb21c830959e0ade6c
+No refactorings found.
+
+Commit: c932e457800f077352b1b322f14a796e589299fb
+No refactorings found.
+
+Commit: 223f81d87728cdc843baa4fc5704c2f3b66fbd45
+No refactorings found.
+
+Commit: 8a6c589be74a389e62a996e74f8777ccd2a237ac
+No refactorings found.
+
+Commit: 7cafeff340f44fff840b332d3463533dc2d3734b
+No refactorings found.
+
+Commit: 0378b46e7e4c5c15ac57308e2894b6d78d5fb488
+No refactorings found.
+
+Commit: bb402876f7413ae2e6809ad442405a5a90c69b45
+No refactorings found.
+
+Commit: 9a645e1d1027962047d2b6b26af12357203784c9
+No refactorings found.
+
+Commit: 2d7f0c425902d13617f5c02c1b7c0f2cd95cd6d9
+No refactorings found.
+
+Commit: 4aad5e45bafe213cf2993614633d5f8d22d5d793
+No refactorings found.
+
+Commit: 453a19a107d02dbcde1f722361918db24426de64
+No refactorings found.
+
+Commit: 5f71eed2ebade22ffd374d291b2a21d94c35ffa7
+No refactorings found.
+
+Commit: 455424dbf3d46d7e9326a64409de063e8f768848
+No refactorings found.
+
+Commit: d45db667d4509a5d82d4509e4aa51fdb266aa136
+No refactorings found.
+
+Commit: 3fc1bc6f28bec1742b5f07d23148f25927e21d41
+No refactorings found.
+
+Commit: ef8b6fa257aba6c4a07b5cdb152859704aa045bc
+No refactorings found.
+
+Commit: 0b78161d7d76b7fb9786f25dd222010b9e417191
+No refactorings found.
+
+Commit: dcf83f7c2db2de64ec370df73294cedb658bd896
+EXTRACT	{Function onScrollEnd at fixtures/view-transition/src/components/SwipeRecognizer.js:60 LOC:29}	{Function onGestureEnd at fixtures/view-transition/src/components/SwipeRecognizer.js:116 LOC:12})
+
+Commit: 94fce500bcd314ea19c5c89c6385be6e62397c09
+No refactorings found.
+
+Commit: 508f7aa78ff53d058ee1151505efd5c4a4aefa01
+No refactorings found.
+
+Commit: e104795f635e2bb423fe9264b1cfdfff15f551e5
+No refactorings found.
+
+Commit: c0d151ce7ed9ebdcbcb7ea69c31d68b03b852d37
+No refactorings found.
+
+Commit: fc41c24aa6e674319aed5bd0b25ca6fb92c268df
+No refactorings found.
+
+Commit: 73aa744b7029556430f409ec3887a714940698ba
+No refactorings found.
+
+Commit: 602917c8cb521e6f9b8eae7070985e2a698fc0d0
+No refactorings found.
+
+Commit: 91d097b2c588a0977a7a10ed12512dc8a34e3a5b
+No refactorings found.
+
+Commit: 7216c0f002222cdee3075410f7432d64724640cc
+No refactorings found.
+
+Commit: 6a3d16ca74acd28632dabccc142d42ce411a811b
+No refactorings found.
+
+Commit: 65c4decb565b4eb1423518e76dbda7bc40a01c04
+No refactorings found.
+
+Commit: 1e0d12b6f273d7345e32c16cd937475ed7c512ad
+No refactorings found.
+
+Commit: e9cab42ece435ac3478ec85847e352177e596ae0
+No refactorings found.
+
+Commit: 3cfcdfb30720a5b8de0e981c8fdabec1abb61588
+No refactorings found.
+
+Commit: 9c2a8dd5f87266308a8a8e55fb7f029ba530d36a
+No refactorings found.
+
+Commit: 811e203ed42c1a496790426a687d5045c473653d
+No refactorings found.
+
+Commit: 58ac15cdc953a21ac1b352b6300abc3da87fa3d6
+No refactorings found.
+
+Commit: bfc8801e0f0bfacb46bc71244e8244736bd995f4
+No refactorings found.
+
+Commit: d2a288febf61a1755b78ce98b3cb17dd412b81e3
+MOVE	{Function addValueToProperties at packages/react-client/src/ReactFlightPerformanceTrack.js:84 LOC:72}	{Function addValueToProperties at packages/shared/ReactPerformanceTrackProperties.js:65 LOC:124})
+MOVE	{File ReactFlightPropertyAccess.js at packages/react-client/src/ReactFlightPropertyAccess.js:1 LOC:0}	{File ReactFlightPropertyAccess.js at packages/shared/ReactFlightPropertyAccess.js:1 LOC:0})
+MOVE	{Function addObjectToProperties at packages/react-client/src/ReactFlightPerformanceTrack.js:71 LOC:12}	{Function addObjectToProperties at packages/shared/ReactPerformanceTrackProperties.js:52 LOC:12})
+
+Commit: 31d91651e042e4939021f21a3d8799c13684a84b
+RENAME	{File ReactFizzContext.js at packages/react-server/src/ReactFizzContext.js:1 LOC:0}	{File ReactFizzLegacyContext.js at packages/react-server/src/ReactFizzLegacyContext.js:1 LOC:0})
+
+Commit: 9406162bc95f1db78169a7f5e11bc56d324b2071
+No refactorings found.
+
+Commit: 9b2a545b32ef19c6b67812d2c3444a709406a58b
+No refactorings found.
+
+Commit: bb6c9d521e7f44eb9a9754a14cde62c8e6439e5e
+No refactorings found.
+
+Commit: cee7939b0017ff58230e19663c22393bfd9025ef
+No refactorings found.
+
+Commit: b42341ddc757129db062298f9fe3ad041c580d2a
+No refactorings found.
+
+Commit: 7a3ffef70339c10f8d65a27b88cd73bfbe13eb8a
+No refactorings found.
+
+Commit: e67b4fe22e0c3c267303ee6737aec1db48055022
+No refactorings found.
+
+Commit: 4a523489b7dc64cd397f619e50223edda1b9a321
+No refactorings found.
+
+Commit: bbc13fa17be8eebef3e6ee47f48c76c0c44e2f36
+No refactorings found.
+
+Commit: 12eaef7ef5fbf6c9d7ec6e16a04bc207a1a68b91
+No refactorings found.
+
+Commit: c80c69fa965a517c2978b0cb39bdb49c0e1cb5c8
+No refactorings found.
+
+Commit: aab72cb1cbfc30f07af7b949fb9dc8d7497d73ca
+RENAME	{File ReactFiberContext.js at packages/react-reconciler/src/ReactFiberContext.js:1 LOC:0}	{File ReactFiberLegacyContext.js at packages/react-reconciler/src/ReactFiberLegacyContext.js:1 LOC:0})
+
+Commit: 2a911f27dd99c46778c27ba004f9d8fe898efd21
+No refactorings found.
+
+Commit: 18ee505e7791f2bb55f0e520667c51588df7ba48
+No refactorings found.
+
+Commit: 1d1b26c701893f4821ebdc6547bcd1efc392f679
+No refactorings found.
+
+Commit: fe3f0ec0374b7323bf259e4154eb4ee739caac7b
+No refactorings found.
+
+Commit: d70ee32b8867f6cf99b1787f8adb4f3705756805
+No refactorings found.
+
+Commit: 6c7b1a1d9898025bb087a3b97d875091e4f67cf3
+No refactorings found.
+
+Commit: ed077194b5b76df6f8fdbf805e1b895e2deb5a07
+No refactorings found.
+
+Commit: 643257ca52c92d74ef7b7c7b474e5cae9e5451e4
+No refactorings found.
+
+Commit: 06e89951be5b4b23ca343d02721521fe392e94c5
+No refactorings found.
+
+Commit: 79d9aed7edb52e89b3ef9ba3d6b480b04180b664
+No refactorings found.
+
+Commit: 374dfe8edf8beef62e5bb312f99c600a232f353f
+No refactorings found.
+
+Commit: 3a2ff8b51b5ab54c22f55a5f826c53419f718887
+No refactorings found.
+
+Commit: 0cf6d0c929e14d4a3c5bcc11a7347b4cad250e7f
+No refactorings found.
+
+Commit: 66cfe048d3ab02afd3eeba9e8d7710acb3a4ab38
+RENAME	{File jsx-captures-context-variable.js at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/jsx-captures-context-variable.js:1 LOC:0}	{File error.invalid-jsx-captures-context-variable.js at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/error.invalid-jsx-captures-context-variable.js:1 LOC:0})
+RENAME	{File repro-uncalled-function-capturing-mutable-values-memoizes-with-captures-values.js at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/repro-uncalled-function-capturing-mutable-values-memoizes-with-captures-values.js:1 LOC:0}	{File error.invalid-uncalled-function-capturing-mutable-values-memoizes-with-captures-values.js at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/error.invalid-uncalled-function-capturing-mutable-values-memoizes-with-captures-values.js:1 LOC:0})
+RENAME	{File hoisting-setstate.js at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/hoisting-setstate.js:1 LOC:0}	{File error.invalid-hoisting-setstate.js at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/error.invalid-hoisting-setstate.js:1 LOC:0})
+
+Commit: e1dc03492eedaec517e14a6e32b8fda571d00767
+No refactorings found.
+
+Commit: 90bee819028bfecb724df298da798607b6a76abf
+MOVE	{Function Component at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/error.todo-useMemo-with-optional.js:1 LOC:7}	{Function Component at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/useMemo-with-optional.js:2 LOC:7})
+
+Commit: 5d24c64cc9c019fc644c4c6f0da640131b80ba18
+No refactorings found.
+
+Commit: 12bc60f50989a7e10b96c6fad429af7739c537df
+No refactorings found.
+
+Commit: a00ca6f6b51e46a0ccec54a2231bfe7a1ed9ae1d
+No refactorings found.
+
+Commit: b7e2de632b2a160bc09edda1fbb9b8f85a6914e8
+No refactorings found.
+
+Commit: ff93c4448c44e8e5562a4102394ebf9f2b0ec847
+No refactorings found.
+
+Commit: 6c86e56a0fa3c8f253da133330cd5b7d1d20e7e5
+No refactorings found.
+
+Commit: 56408a5b12fa4099e9dbbeca7f6bc59e1307e507
+No refactorings found.
+
+Commit: c38e26897848374c34ac6b651fce4a9088ed4dd0
+No refactorings found.
+
+Commit: 80c03eb7e0f05da5e0de6faebbe8dbb434455454
+No refactorings found.
+
+Commit: b6c0aa88140bba2a61c1de16bda2505c89b26235
+No refactorings found.
+
+Commit: 428ab8200128d9421828dbe644c3448d21ea8c45
+No refactorings found.
+
+Commit: 95bcf87e6b29f4efee26d0a79cbdc84776180cce
+No refactorings found.
+
+Commit: 911dbd9e34048b21e96f24acb837b926687aa939
+No refactorings found.
+
+Commit: c0b5a0cad32cbf237d4c0134bef702d6ba3e393c
+No refactorings found.
+
+Commit: e4b88ae4c6c30791b6c1c2794d5a8e32ed19c931
+No refactorings found.
+
+Commit: 6c8bcdaf1b0c3340150e174a342429d94e729fbb
+No refactorings found.
+
+Commit: b367b60927dd85239852bfee60715034c7ca97ba
+EXTRACT	{Function ServerComponent at fixtures/flight/src/App.js:82 LOC:4}	{Function delay at fixtures/flight/src/App.js:36 LOC:3})
+EXTRACT	{Function ThirdPartyComponent at fixtures/flight/src/App.js:41 LOC:5}	{Function delay at fixtures/flight/src/App.js:36 LOC:3})
+EXTRACT	{Function Bar at fixtures/flight/src/App.js:36 LOC:4}	{Function delay at fixtures/flight/src/App.js:36 LOC:3})
+
+Commit: 9666605abfee7e525a22931ce38d40bb29ddc8a5
+No refactorings found.
+
+Commit: 65ec57df3781d2c62456bb136c7f160f7e834492
+RENAME	{Function createFakeWritable at packages/react-dom/src/server/ReactDOMFizzStaticNode.js:75 LOC:15}	{Function createFakeWritableFromReadable at packages/react-dom/src/server/ReactDOMFizzStaticNode.js:107 LOC:15})
+
+Commit: b3d5e9078685c000e7e9ee3668a7a4b4f3256b1f
+No refactorings found.
+
+Commit: 280ff6fed2a84b6ad7588c72d3e66b20f0f3c91a
+No refactorings found.
+
+Commit: 82f3684c63fd60fdacbe4d536214596ffd7a465f
+No refactorings found.
+
+Commit: 142aa0744d0e73dc5390bc19d4d41dd8aeda2b19
+No refactorings found.
+
+Commit: 6ccf328499f06c140ffe96a096744c22319394cc
+No refactorings found.
+
+Commit: ab859e31be5db56106161060033109c9f2d26eca
+No refactorings found.
+
+Commit: e8d15fa19efcd18f0947fe4189652f5b64f74256
+No refactorings found.
+
+Commit: d177272802b7f86a847312c23b7e60a6f56434de
+No refactorings found.
+
+Commit: 22b929156c325eaf52c375f0c62801831951814a
+No refactorings found.
+
+Commit: a3be6829c6425f306a8bef9f7dba72d1347a64b3
+No refactorings found.
+
+Commit: b1759882c0b8045aff27fa9e41600534d396f69c
+No refactorings found.
+
+Commit: dddcae7a11b8241cbd6e2de55f9e68881baea458
+No refactorings found.
+
+Commit: a5110b22f0a02cb87cd2bca5dc4527c73e2f281b
+No refactorings found.
+
+Commit: b4477d3800ccb0bdf26670cd1f021d094159c38f
+No refactorings found.
+
+Commit: 93f1668045b924294f5832d5044fa049cd7af16e
+No refactorings found.
+
+Commit: 37054867c15a7381abe0f73d98f3fecd06da52da
+No refactorings found.
+
+Commit: d742611ce40545127032f4e221c78bf9f70eb437
+No refactorings found.
+
+Commit: 154008172573d64519ebbc23da611a27073b0a8c
+No refactorings found.
+
+Commit: 9cc74fec749bcca2e0f5d1e41aa612b2135641ff
+No refactorings found.
+
+Commit: 157ac578ded11352330dbdfb8cf339b28c6a16d6
+No refactorings found.
+
+Commit: 45da4e055dc7a2b9de6abdae0709e242f8091636
+No refactorings found.
+
+Commit: d8919a0a6854715a4a77db24ed7a94a124487d86
+No refactorings found.
+
+Commit: 65a46c7eebb731ba5c1602afef87365491beb75d
+No refactorings found.
+
+Commit: 3fb17d16a4838e132d0d6dbb08f91b7e7da691eb
+No refactorings found.
+
+Commit: acee65d6d031697ab8c71932a5b028351cbc3b03
+No refactorings found.
+
+Commit: 1ae0a845bde5b95dfc319cadf366cb7b3fb1ca92
+No refactorings found.
+
+Commit: 2b4064eb9b40f65d20a03ce93b246ad762d562e6
+No refactorings found.
+
+Commit: 3531b2672955285c0a59f84be06ac92b0d987a3e
+No refactorings found.
+
+Commit: 4a1f29079ccc61659e026bbcf205bc8d53780927
+No refactorings found.
+
+Commit: 8b55eb4e724271206bd5dec7dba0a35aedc74493
+INLINE	{Function fastAddProperties at packages/react-native-renderer/src/ReactNativeAttributePayloadFabric.js:455 LOC:60}	{Function addNestedProperty at packages/react-native-renderer/src/ReactNativeAttributePayloadFabric.js:414 LOC:60})
+
+Commit: 14094f80cbf52cad4024211080d8491f3334ef61
+No refactorings found.
+
+Commit: 5717f1933f2e8b10406fde1043c3047cbfbddc82
+No refactorings found.
+

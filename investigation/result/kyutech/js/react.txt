@@ -1,0 +1,17 @@
+
+----- Analyzing commits -----
+
+Refactorings found in react 3a43e72d665af98b62d9c3c54bd288597dd27e6e
+EXTRACT	{Function collectStackTrace at packages/react-server/src/ReactFlightStackConfigV8.js:52}	{Function collectStackTracePrivate at packages/react-server/src/ReactFlightStackConfigV8.js:52})
+
+Refactorings found in react dcf83f7c2db2de64ec370df73294cedb658bd896
+EXTRACT	{Function onScrollEnd at fixtures/view-transition/src/components/SwipeRecognizer.js:60}	{Function onGestureEnd at fixtures/view-transition/src/components/SwipeRecognizer.js:116})
+
+Refactorings found in react 31d91651e042e4939021f21a3d8799c13684a84b
+RENAME	{File ReactFizzContext.js at packages/react-server/src/ReactFizzContext.js:1}	{File ReactFizzLegacyContext.js at packages/react-server/src/ReactFizzLegacyContext.js:1})
+
+Refactorings found in react 90bee819028bfecb724df298da798607b6a76abf
+MOVE	{Function Component at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/error.todo-useMemo-with-optional.js:1}	{Function Component at compiler/packages/babel-plugin-react-compiler/src/__tests__/fixtures/compiler/useMemo-with-optional.js:2})
+
+Refactorings found in react 8b55eb4e724271206bd5dec7dba0a35aedc74493
+INLINE	{Function fastAddProperties at packages/react-native-renderer/src/ReactNativeAttributePayloadFabric.js:455}	{Function addNestedProperty at packages/react-native-renderer/src/ReactNativeAttributePayloadFabric.js:414})

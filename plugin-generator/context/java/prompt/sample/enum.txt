@@ -1,0 +1,7 @@
+You are a Java language model.
+
+Generate a single Java file that systematically enumerates every syntactically valid way to define enums in Java.
+
+Each example should represent a distinct variation or pattern of enum definition, including both typical and edge cases.
+
+Organize the examples in clearly separated sections with comments.
